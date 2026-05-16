@@ -1,0 +1,461 @@
+{
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Remover",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "done": "Concluído",
+    "member": "Membro",
+    "seeAll": "Ver tudo",
+    "pending": "Pendente",
+    "in_progress": "Em Progresso",
+    "completed": "Concluído",
+    "cancelled": "Cancelado",
+    "dark": "Escuro",
+    "light": "Claro",
+    "close": "Fechar",
+    "info": "Informação",
+    "search": "Pesquisar guias..."
+  },
+  "auth": {
+    "welcome": "Bem-vindo de volta",
+    "signInSubtitle": "Entre para acessar sua conta",
+    "tagline": "O seu parceiro de proteção de confiança",
+    "email": "Endereço de e-mail",
+    "password": "Senha",
+    "signIn": "Entrar",
+    "forgotPassword": "Esqueceu a senha?",
+    "or": "ou",
+    "googleSignIn": "Entrar com Google",
+    "phoneSignIn": "Entrar com número de telefone",
+    "noAccount": "Não tem uma conta? ",
+    "createAccount": "Crie uma agora",
+    "register": "Registar",
+    "fullName": "Nome Completo",
+    "confirmPassword": "Confirmar Senha",
+    "joinKizola": "Juntar-se à Kizola",
+    "startProtection": "Comece a sua jornada de proteção",
+    "createAccountTitle": "Criar Conta",
+    "signUpSubtitle": "Registe-se para obter a sua assinatura",
+    "phone": "Número de Telefone",
+    "iAgreeTo": "Eu concordo com os",
+    "termsOfService": "Termos de Serviço",
+    "and": "e",
+    "privacyPolicy": "Política de Privacidade",
+    "googleSignUp": "Registar com Google",
+    "alreadyHaveAccount": "Já tem uma conta? "
+  },
+  "profile": {
+    "title": "Meu Perfil",
+    "activeMember": "Membro Ativo",
+    "currentPlan": "Plano Atual",
+    "benefits": "Benefícios",
+    "support": "Suporte",
+    "protected": "Protegido",
+    "subscription": "Assinatura",
+    "startDate": "Data de início",
+    "nextBilling": "Próxima fatura",
+    "status": "Status",
+    "beneficiaries": "Beneficiários",
+    "add": "Adicionar",
+    "none": "Nenhum beneficiário",
+    "noneSubtitle": "Adicione filhos, mulher ou outros beneficiários.",
+    "settings": "Configurações",
+    "myPlan": "Meu Plano",
+    "share": "Partilhar (Afiliado)",
+    "myActivity": "Minha Atividade",
+    "learningCenter": "Centro de Aprendizagem",
+    "editProfile": "Editar Perfil",
+    "changePassword": "Alterar Senha",
+    "signOut": "Sair",
+    "language": "Idioma",
+    "changeLanguage": "Alterar Idioma",
+    "selectLanguage": "Selecione o Idioma",
+    "shareSubtitle": "Envie o link da plataforma com o seu código",
+    "benefitsSubtitle": "Veja os seus serviços incluídos",
+    "activitySubtitle": "Veja os seus pedidos de suporte",
+    "learningSubtitle": "Recursos educativos",
+    "editProfileSubtitle": "Atualize as suas informações pessoais",
+    "changePasswordSubtitle": "Atualize as configurações de segurança",
+    "plan": "Plano",
+    "month": "mês",
+    "noActivePlan": "Sem plano ativo",
+    "benefitsCount": "Benefícios",
+    "support247": "Suporte",
+    "protected100": "Protegido"
+  },
+  "dashboard": {
+    "welcome": "Olá",
+    "welcomeBack": "Bem-vindo de volta,",
+    "protectionStatus": "Status de Proteção",
+    "protected": "Você está protegido",
+    "notProtected": "Ação necessária",
+    "quickActions": "Ações Rápidas",
+    "emergency": "Emergência",
+    "requestHelp": "Pedir Ajuda",
+    "recentActivity": "Atividade Recente",
+    "knowledgeBase": "Base de Conhecimento",
+    "guidesAndResources": "Guias e Recursos",
+    "guidesDescription": "Explore guias sobre impostos, imigração, habitação e mais",
+    "planBenefits": "Benefícios do Plano",
+    "needHelp": "Precisa de Ajuda?",
+    "supportTeamAvailable": "A nossa equipa está disponível para si",
+    "notifications": "Notificações",
+    "markAllAsRead": "Marcar todas",
+    "welcomeToDashboard": "Bem-vindo ao seu Dashboard",
+    "viewBenefits": "Ver Benefícios",
+    "accessServices": "Acesse seus serviços",
+    "requestSupport": "Pedir Suporte",
+    "getHelpNow": "Obtenha ajuda agora",
+    "myPlan": "Meu Plano",
+    "manageSubscription": "Gerir assinatura",
+    "documents": "Documentos",
+    "yourFiles": "Os seus arquivos",
+    "statsBenefits": "Benefícios",
+    "statsRequests": "Pedidos",
+    "statsSatisfaction": "Satisfação",
+    "planUsage": "Uso do plano",
+    "nextBilling": "Próxima cobrança:"
+  },
+  "benefits": {
+    "title": "Os Seus Benefícios",
+    "subtitle": "Explore todos os serviços incluídos no seu plano {{plan}}",
+    "categories": "Categorias de Benefícios",
+    "viewDetails": "Ver Detalhes",
+    "allServices": "Todos os Serviços",
+    "servicesCount": "serviços",
+    "bikeLoanTitle": "Empréstimos até 6.5%",
+    "bikeLoanDesc": "Após 2 anos de contribuição direta, solicite um empréstimo até 6.5% para alugar uma bicicleta 🚲 ou dar uma entrada para uma bicicleta 🚲 diretamente na app.",
+    "newBadge": "Novo",
+    "ctaTitle": "Quer mais benefícios?",
+    "ctaDesc": "Faça upgrade para Premium para acesso ilimitado",
+    "upgrade": "Upgrade",
+    "whatsIncluded": "O que está Incluído",
+    "requestAssistance": "Pedir Assistência",
+    "requestService": "Pedir Este Serviço",
+    "categories_list": {
+      "legal": {
+        "title": "Apoio Jurídico",
+        "description": "Aceda a orientação jurídica profissional através da nossa rede de parceiros. Obtenha ajuda com revisão de documentos, consultas jurídicas e encaminhamento para advogados qualificados.",
+        "features": [
+          "Revisão de documentos legais",
+          "Acesso a consultas básicas",
+          "Encaminhamento para advogados",
+          "Educação sobre direitos"
+        ]
+      },
+      "immigration": {
+        "title": "Assistência à Imigração",
+        "description": "Navegue pelo complexo sistema de imigração com orientação especializada. De pedidos de visto a processos de cidadania, estamos aqui para ajudar.",
+        "features": [
+          "Orientação para pedidos de visto",
+          "Apoio ao Green Card",
+          "Ajuda no processo de cidadania",
+          "Preparação de documentos"
+        ]
+      },
+      "housing": {
+        "title": "Apoio à Habitação",
+        "description": "Encontre habitação estável e compreenda os seus direitos como inquilino. Aceda a recursos para assistência no arrendamento, abrigo e programas de habitação acessível.",
+        "features": [
+          "Ajuda na candidatura ao arrendamento",
+          "Orientação sobre direitos do inquilino",
+          "Recursos de habitação acessível",
+          "Acesso a abrigo de emergência"
+        ]
+      },
+      "tax": {
+        "title": "Serviços Fiscais",
+        "description": "Maximize os seus reembolsos e mantenha-se em conformidade com assistência fiscal profissional. Os nossos parceiros ajudam com declarações, deduções e planeamento fiscal.",
+        "features": [
+          "Preparação de declaração de impostos",
+          "Otimização de deduções",
+          "Ajuda com correspondência fiscal",
+          "Orientação de planeamento fiscal"
+        ]
+      },
+      "education": {
+        "title": "Educação e Carreira",
+        "description": "Avance na sua educação e carreira com orientação para bolsas de estudo, revisão de currículos e recursos de desenvolvimento profissional.",
+        "features": [
+          "Assistência na procura de bolsas",
+          "Revisão de currículo e carta de apresentação",
+          "Preparação para entrevistas",
+          "Sessões de coaching de carreira"
+        ]
+      },
+      "emergency": {
+        "title": "Assistência de Emergência",
+        "description": "Acesso 24/7 a redes de apoio de emergência. Obtenha ajuda imediata durante crises, incluindo habitação, alimentação e intervenção em crises.",
+        "features": [
+          "Linha direta de crise 24/7",
+          "Habitação de emergência",
+          "Assistência alimentar",
+          "Intervenção em crises"
+        ]
+      }
+    },
+    "items": {
+      "legal": {
+        "title": "Orientação Jurídica",
+        "description": "Acesso a consultas e orientação jurídica para questões comuns. A nossa rede de parceiros fornece aconselhamento jurídico básico, revisão de documentos e encaminhamento para advogados qualificados quando necessário.",
+        "category_name": "Jurídico"
+      },
+      "immigration": {
+        "title": "Apoio à Imigração",
+        "description": "Navegue no sistema de imigração com confiança. Obtenha ajuda com formulários, compreenda os seus direitos e receba orientação sobre vistos, green cards e processos de cidadania.",
+        "category_name": "Imigração"
+      },
+      "tax": {
+        "title": "Assistência na Declaração de Impostos",
+        "description": "Ajuda especializada na preparação e entrega de impostos. Os nossos especialistas fiscais auxiliam com declarações individuais, deduções, créditos e garantem que maximiza o seu reembolso mantendo-se em conformidade.",
+        "category_name": "Finanças"
+      },
+      "housing": {
+        "title": "Apoio à Habitação",
+        "description": "Encontre soluções de habitação e compreenda os seus direitos de inquilino. Obtenha assistência com candidaturas ao arrendamento, recursos de abrigo e orientação sobre programas de habitação acessível.",
+        "category_name": "Habitação"
+      },
+      "education": {
+        "title": "Educação e Bolsas",
+        "description": "Desbloqueie oportunidades educacionais com orientação sobre bolsas, ajuda financeira e processos de inscrição. Ajudamo-lo a encontrar recursos para avançar na sua educação.",
+        "category_name": "Educação"
+      },
+      "job": {
+        "title": "Trabalho e Emprego",
+        "description": "Acelere a sua carreira com revisões de currículos, preparação para entrevistas e estratégias de procura de emprego. Ligue-se a recursos de emprego e oportunidades de formação.",
+        "category_name": "Carreira"
+      },
+      "emergency": {
+        "title": "Assistência de Emergência",
+        "description": "Acesso 24/7 a redes de apoio de emergência. Obtenha ajuda imediata durante crises, incluindo habitação de emergência, assistência alimentar e recursos de intervenção em crises.",
+        "category_name": "Emergência"
+      },
+      "recovery": {
+        "title": "Recuperação de Contas",
+        "description": "Recupere o acesso à sua vida digital. Ajudamos a recuperar contas bloqueadas ou pirateadas da Uber, DoorDash e outras plataformas de serviços essenciais.",
+        "category_name": "Digital"
+      }
+    }
+  },
+  "activity": {
+    "title": "Minha Atividade",
+    "subtitle": "Acompanhe os seus pedidos de suporte e histórico de assistência",
+    "totalRequests": "Total de Pedidos",
+    "pending": "Pendente",
+    "resolved": "Resolvido",
+    "all": "Todos",
+    "inProgress": "Em Progresso",
+    "completed": "Concluído",
+    "supportRequests": "Pedidos de Suporte",
+    "items": "itens",
+    "noRequests": "Nenhum pedido encontrado",
+    "noRequestsDesc": "Ainda não enviou nenhum pedido de suporte.",
+    "noFilteredRequests": "Nenhum pedido {{filter}} encontrado.",
+    "requestDetails": "Detalhes do Pedido",
+    "category": "Categoria",
+    "priority": "Prioridade",
+    "submitted": "Enviado",
+    "yourMessage": "A sua Mensagem",
+    "statusUpdates": "Atualizações de Estado",
+    "requestSubmitted": "Pedido Enviado",
+    "reviewingRequest": "A nossa equipa está a analisar o seu pedido",
+    "requestResolved": "O seu pedido foi resolvido"
+  },
+  "learn": {
+    "title": "Centro de Aprendizagem",
+    "subtitle": "Recursos educativos para ajudar a lidar com os desafios da vida",
+    "all": "Todos",
+    "articles_stat": "Artigos",
+    "categories_stat": "Categorias",
+    "category_tax": "Impostos",
+    "category_immigration": "Imigração",
+    "category_housing": "Habitação",
+    "category_legal": "Jurídico",
+    "category_career": "Carreira",
+    "avgRead": "Tempo Médio",
+    "featuredArticle": "Artigo em Destaque",
+    "dailyTip": "Dica do Dia",
+    "readNow": "Ler agora",
+    "allArticles": "Todos os Artigos",
+    "articlesCount": "artigos",
+    "minRead": "min leitura",
+    "needHelp": "Precisa de ajuda personalizada?",
+    "helpDesc": "A nossa equipa de suporte pode fornecer orientação adaptada à sua situação",
+    "contactSupport": "Contactar Suporte",
+    "helpTopic": "Precisa de ajuda com este tópico?",
+    "articles": {
+      "tax": {
+        "title": "Básico sobre Declaração de Impostos",
+        "description": "Guia essencial para compreender os requisitos de declaração de impostos, prazos e deduções a que pode ter direito.",
+        "content": "\n## Compreender a Declaração de Impostos\n\nDeclarar os seus impostos não tem de ser avassalador. Eis o que precisa de saber:\n\n### Prazos Importantes\n- **15 de Abril**: Prazo normal de entrega\n- **15 de Outubro**: Prazo de entrega prorrogado\n- **Trimestral**: Pagamentos de impostos estimados (se trabalhar por conta própria)\n\n### Deduções Comuns\n1. Dedução Padrão (mais comum)\n2. Deduções Detalhadas\n   - Despesas médicas\n   - Impostos estaduais e locais\n   - Juros de hipoteca\n   - Contribuições de caridade\n\n### Documentos Necessários\n- Formulários W-2 de empregadores\n- Formulários 1099 para outros rendimentos\n- Números de Segurança Social para dependentes\n- Informações de conta bancária para depósito direto\n\n### Opções de Entrega Gratuita\n- IRS Free File (rendimentos abaixo de $73.000)\n- Programa VITA para contribuintes qualificados\n- Military OneSource para membros do serviço militar\n"
+      },
+      "immigration": {
+        "title": "Visão Geral do Estatuto de Imigração",
+        "description": "Saiba mais sobre os diferentes tipos de vistos, processos de green card e caminhos para a cidadania.",
+        "content": "\n## Compreender a Imigração nos EUA\n\n### Categorias Comuns de Vistos\n\n**Vistos de Trabalho:**\n- H-1B: Ocupações especializadas\n- L-1: Transferências intracompanhia\n- O-1: Indivíduos com habilidades extraordinárias\n\n**Baseados na Família:**\n- Parentes imediatos de cidadãos dos EUA\n- Categorias de preferência familiar\n- Vistos de noivo(a) (K-1)\n\n### Green Card (Residência Permanente)\n**Caminhos:**\n1. Patrocínio familiar\n2. Baseado no emprego\n3. Lotaria da diversidade\n4. Estatuto de refugiado/asilo\n\n### Processo de Cidadania\n**Requisitos:**\n- 5 anos como residente permanente (3 anos se casado com cidadão dos EUA)\n- Presença física nos EUA\n- Bom caráter moral\n- Proficiência na língua inglesa\n- Conhecimento cívico\n\n### Dicas Importantes\n- Guarde cópias de todos os documentos\n- Comunique mudanças de morada no prazo de 10 dias\n- Mantenha o estatuto válido em todos os momentos\n- Consulte advogados de imigração qualificados para casos complexos\n"
+      },
+      "housing": {
+        "title": "Direitos do Inquilino e Habitação",
+        "description": "Conheça os seus direitos como arrendatário, compreenda os contratos de arrendamento e saiba mais sobre as proteções contra despejo.",
+        "content": "\n## Os Seus Direitos como Inquilino\n\n### Antes de Arrendar\n**O que os Senhorios Podem Perguntar:**\n- Verificação de rendimentos\n- Verificação de crédito\n- Histórico de arrendamento\n- Referências\n\n**O que os Senhorios NÃO Podem Perguntar:**\n- Raça, religião, origem nacional\n- Estado familiar\n- Estado de deficiência\n\n### Essenciais do Contrato de Arrendamento\n- Valor da renda e data de vencimento\n- Termos do depósito de segurança\n- Responsabilidades de manutenção\n- Políticas de animais de estimação\n- Regras de subarrendamento\n\n### Os Seus Direitos Básicos\n1. **Habitabilidade**: Condições seguras e habitáveis\n2. **Privacidade**: Aviso de 24-48 horas para entrada (exceto emergências)\n3. **Reparações**: Resposta atempada a pedidos de manutenção\n4. **Sem Retaliação**: Proteção por exercer direitos legais\n\n### Proteções Contra Despejo\n**Processo Legal Necessário:**\n1. Aviso por escrito\n2. Entrada em tribunal\n3. Oportunidade de audiência\n4. Despejo pelo xerife (se ordenado)\n\n**Despejos Ilegais Incluem:**\n- Mudança de fechaduras\n- Corte de serviços públicos\n- Assédio\n- Remoção de bens\n\n### Obter Ajuda\n- Sindicatos de inquilinos locais\n- Sociedades de apoio judiciário\n- Autoridades de habitação\n- Suporte Kizola Protect\n"
+      },
+      "legal": {
+        "title": "Guia de Consciencialização Jurídica",
+        "description": "Compreender quando precisa de ajuda jurídica e como trabalhar eficazmente com advogados.",
+        "content": "\n## Quando Precisa de um Advogado?\n\n### Situações que Requerem Ajuda Jurídica\n**Assuntos Criminais:**\n- Quaisquer acusações criminais\n- Detenções e investigações\n- Infrações de trânsito com consequências graves\n\n**Assuntos Cíveis:**\n- Reclamações de danos pessoais\n- Disputas de contratos\n- Discriminação no emprego\n- Direito da família (divórcio, custódia)\n- Questões de imigração\n- Disputas de habitação\n\n### Trabalhar com Advogados\n**Consulta Inicial:**\n- Traga todos os documentos relevantes\n- Prepare uma cronologia dos eventos\n- Escreva as suas perguntas\n- Seja honesto sobre todos os factos\n\n**Compreender os Honorários:**\n- Taxas horárias\n- Taxas fixas\n- Taxas de contingência (danos pessoais)\n- Retenções\n\n### Ajuda Jurídica Gratuita e de Baixo Custo\n- Sociedades de Apoio Judiciário\n- Programas pro bono\n- Clínicas de faculdades de direito\n- Centros de autoajuda do tribunal\n- Referenciações de ordens de advogados\n\n### Organização de Documentos\nGuarde ficheiros de:\n- Correspondência\n- Contratos e acordos\n- Documentos judiciais\n- Registos financeiros\n- Evidências/fotos\n\n### Os Seus Direitos\n- Representação competente\n- Comunicações confidenciais\n- Acordos de honorários claros\n- Atualizações regulares do caso\n- Cópias de todos os documentos\n"
+      },
+      "career": {
+        "title": "Construção de Currículo e Procura de Emprego",
+        "description": "Crie um currículo apelativo, brilhe nas entrevistas e navegue no mercado de trabalho moderno de forma eficaz.",
+        "content": "\n## Construir o Seu Perfil Profissional\n\n### Essenciais do Currículo\n**Formato:**\n- Uma página (início de carreira)\n- Duas páginas (experiente)\n- Fonte limpa e legível\n- Formatação consistente\n\n**Secções a Incluir:**\n1. Informações de Contacto\n2. Resumo Profissional\n3. Experiência Profissional\n4. Educação\n5. Competências\n6. Certificações (se relevante)\n\n### Escrever Pontos de Impacto\n**Use o Método STAR:**\n- Situação\n- Tarefa\n- Ação\n- Resultado\n\n**Exemplo:**\n\"Geriu equipa de 5 (Situação) para concluir projeto 2 semanas antes (Tarefa) implementando fluxos de trabalho ágeis (Ação), resultando numa poupança de $50K (Resultado)\"\n\n### Preparação para Entrevistas\n**Perguntas Comuns:**\n- \"Fale-me sobre si\"\n- \"Porque quer esta função?\"\n- \"Quais são os seus pontos fortes/fracos?\"\n- \"Descreva um desafio que superou\"\n\n**Perguntas a Fazer:**\n- Responsabilidades do dia-a-dia\n- Estrutura da equipa\n- Oportunidades de crescimento\n- Cultura da empresa\n\n### Estratégias de Procura de Emprego\n1. **Networking**: 70% dos empregos encontrados através de ligações\n2. **LinkedIn**: Otimize o perfil, interaja com o conteúdo\n3. **Portais de Emprego**: Indeed, Glassdoor, sites específicos da indústria\n4. **Candidaturas Diretas**: Páginas de carreira das empresas\n5. **Recrutadores**: Agências especializadas\n\n### Acompanhamento\n- Email de agradecimento no prazo de 24 horas\n- Verificação de estado após 1-2 semanas\n- Mantenha-se profissional e persistente\n"
+      }
+    }
+  },
+  "support": {
+    "title": "Centro de Suporte",
+    "subtitle": "Estamos aqui para o ajudar 24/7",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "responseTime": "Tempo de Resposta",
+    "hours2448": "24-48 horas",
+    "requestAssistance": "Pedir Assistência",
+    "fullNameLabel": "Nome Completo *",
+    "fullNamePlaceholder": "O seu nome completo",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "seu@email.com",
+    "categoryLabel": "Categoria *",
+    "categoryPlaceholder": "Selecione uma categoria",
+    "priorityLabel": "Nível de Prioridade",
+    "messageLabel": "Mensagem *",
+    "messagePlaceholder": "Descreva como o podemos ajudar... Por favor forneça o máximo de detalhes possível.",
+    "characters": "caracteres",
+    "min20": "(mínimo 20)",
+    "submitRequest": "Enviar Pedido",
+    "requestSubmitted": "Pedido Enviado!",
+    "thankYou": "Obrigado por entrar em contacto. A nossa equipa irá analisar o seu pedido e responder dentro de 24-48 horas.",
+    "responseTimeInfo": "Tempo de resposta: 24-48 horas",
+    "confirmationSent": "Confirmação enviada para",
+    "submitAnother": "Enviar Novo Pedido",
+    "viewActivity": "Ver a Minha Atividade",
+    "fillRequired": "Por favor preencha todos os campos obrigatórios",
+    "moreDetails": "Por favor forneça mais detalhes (pelo menos 20 caracteres)",
+    "failedSubmit": "Falha ao enviar o pedido",
+    "priority_low_label": "Baixa",
+    "priority_low_desc": "Consulta geral, sem urgência",
+    "priority_medium_label": "Média",
+    "priority_medium_desc": "Precisa de atenção em alguns dias",
+    "priority_high_label": "Alta",
+    "priority_high_desc": "Assunto importante, precisa de atenção imediata",
+    "priority_urgent_label": "Urgente",
+    "priority_urgent_desc": "Situação crítica que requer ajuda imediata",
+    "commitmentTitle": "Nosso Compromisso com Você",
+    "commitmentText": "Priorizamos a transparência e o atendimento profissional. Cada solicitação é tratada por um especialista para garantir que receba a melhor orientação possível.",
+    "aiWelcome": "Olá! Sou o assistente virtual da Kizola. Como posso ajudar hoje?",
+    "aiResponsePlans": "Temos 3 planos: Básico ($10/mês), Pro ($25/mês) e Premium ($50/mês). Pode ver mais detalhes na aba de Planos!",
+    "aiResponseLegal": "Oferecemos assistência jurídica completa para imigrantes, incluindo revisão de contratos e defesa básica.",
+    "aiResponseImmigration": "A nossa equipa de imigração pode ajudar com agendamentos no SEF/AIMA, pedidos de residência e manifestação de interesse.",
+    "aiResponseContact": "Pode falar connosco pelo WhatsApp (+1 929 609-7035) ou enviar um bilhete de suporte aqui mesmo!",
+    "aiResponseGreet": "Olá! Como posso ajudar com a sua proteção hoje?",
+    "aiResponseDefault": "Interessante! Para detalhes específicos, recomendo falar com um de nossos consultores via WhatsApp ou abrir um ticket de suporte.",
+    "ticketTab": "Ticket",
+    "aiTab": "Chat IA",
+    "typeMessage": "Escreva sua dúvida..."
+  },
+  "plans": {
+    "title": "Planos de Assinatura",
+    "subtitle": "Escolha a proteção ideal para si",
+    "currentPlan": "Plano Atual",
+    "selected": "Selecionado",
+    "selectPlan": "Selecionar Plano",
+    "whatsIncluded": "O que está incluído:",
+    "note": "Todos os planos incluem os nossos serviços de proteção essenciais. Pode fazer upgrade ou cancelar a qualquer momento.",
+    "month": "/mês",
+    "alreadySubscribed": "Já está subscrito neste plano",
+    "subscribeSuccess": "Subscreveu com sucesso o plano {{plan}}.",
+    "selectFailed": "Falha ao selecionar o plano",
+    "free": {
+      "name": "Grátis",
+      "benefits": [
+        "Acesso ao fórum da comunidade",
+        "Guias públicos do centro de aprendizagem",
+        "Contactos básicos de emergência",
+        "Suporte limitado por e-mail"
+      ]
+    },
+    "basic": {
+      "name": "Básico",
+      "benefits": [
+        "Consulta de orientação jurídica básica",
+        "Recursos de apoio à imigração",
+        "Guias de assistência na declaração de impostos",
+        "Informações de apoio à habitação",
+        "Suporte por e-mail em até 48 horas",
+        "Acesso ao fórum da comunidade",
+        "Acesso ao centro de aprendizagem"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "benefits": [
+        "Tudo o que está no Básico",
+        "Orientação jurídica prioritária",
+        "Revisão de documentos de imigração",
+        "Assistência no preenchimento de impostos",
+        "Apoio em candidaturas de habitação",
+        "Orientação para bolsas de estudo",
+        "Suporte por e-mail em 24 horas",
+        "Chamada de consulta mensal",
+        "Processamento prioritário de pedidos"
+      ]
+    },
+    "premium": {
+      "name": "Premium",
+      "benefits": [
+        "Tudo o que está no Pro",
+        "Consultas jurídicas ilimitadas",
+        "Apoio total em casos de imigração",
+        "Ajuda completa na preparação de impostos",
+        "Assistência habitacional de emergência",
+        "Sessões de coaching de carreira",
+        "Suporte para recuperação de contas de apps",
+        "Linha de suporte dedicada",
+        "Resposta prioritária em 4 horas",
+        "Revisão trimestral de benefícios",
+        "Pedidos ilimitados"
+      ]
+    }
+  },
+  "planDetails": {
+    "title": "Meu Plano",
+    "subtitle": "Gerir a sua assinatura",
+    "currentPlanBadge": "Plano Atual",
+    "noActivePlan": "Sem Plano Ativo",
+    "noPlanDescription": "Não tem uma assinatura ativa. Escolha um plano para começar.",
+    "viewPlans": "Ver Planos",
+    "includedBenefits": "Benefícios Incluídos",
+    "benefits": "benefícios",
+    "otherPlans": "Outros Planos",
+    "upgrade": "Upgrade",
+    "billingInfo": "Informações de Faturação",
+    "paymentMethod": "Método de Pagamento",
+    "billingCycle": "Ciclo de Faturação",
+    "monthly": "Mensal",
+    "cancelSubscription": "Cancelar Assinatura",
+    "cancelNote": "Pode cancelar a qualquer momento. O seu acesso continuará até ao final do período de faturação.",
+    "cancelSubscriptionQuestion": "Cancelar Assinatura?",
+    "cancelModalDescription": "Tem a certeza de que deseja cancelar a sua assinatura {{planName}}? Continuará a ter acesso até {{date}}.",
+    "keepSubscription": "Manter Assinatura",
+    "yesCancel": "Sim, Cancelar",
+    "alreadyOnPlan": "Já está neste plano",
+    "nextBilling": "Próxima fatura:",
+    "cancelConfirmDescription": "A sua assinatura permanecerá ativa até ao final do período de faturação atual. Tem a certeza de que deseja cancelar?",
+    "cancellationRequested": "Cancelamento Solicitado",
+    "cancellationMessage": "O seu pedido de cancelamento foi submetido. Terá acesso até ao final do período de faturação atual."
+  }
+}

@@ -1,0 +1,488 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "done": "Terminé",
+    "member": "Membre",
+    "seeAll": "Voir tout",
+    "pending": "En attente",
+    "in_progress": "En cours",
+    "completed": "Terminé",
+    "cancelled": "Annulé",
+    "dark": "Sombre",
+    "light": "Clair",
+    "close": "Fermer",
+    "info": "Info",
+    "search": "Rechercher des guides..."
+  },
+  "auth": {
+    "welcome": "Bon retour",
+    "signInSubtitle": "Connectez-vous pour accéder à votre compte",
+    "tagline": "Votre partenaire de protection de confiance",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "forgotPassword": "Mot de passe oublié ?",
+    "or": "ou",
+    "googleSignIn": "Se connecter avec Google",
+    "phoneSignIn": "Se connecter avec numéro de téléphone",
+    "noAccount": "Vous n'avez pas de compte ? ",
+    "createAccount": "Créez-en un",
+    "register": "S'inscrire",
+    "fullName": "Nom complet",
+    "confirmPassword": "Confirmer le mot de passe",
+    "joinKizola": "Rejoindre Kizola",
+    "startProtection": "Commencez votre voyage de protection",
+    "createAccountTitle": "Créer un compte",
+    "signUpSubtitle": "Inscrivez-vous pour votre adhésion",
+    "phone": "Numéro de téléphone",
+    "iAgreeTo": "J'accepte les",
+    "termsOfService": "Conditions d'utilisation",
+    "and": "et la",
+    "privacyPolicy": "Politique de confidentialité",
+    "googleSignUp": "S'inscrire avec Google",
+    "alreadyHaveAccount": "Vous avez déjà un compte ? "
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "activeMember": "Membre Actif",
+    "currentPlan": "Forfait Actuel",
+    "benefits": "Avantages",
+    "support": "Support",
+    "protected": "Protégé",
+    "subscription": "Abonnement",
+    "startDate": "Date de début",
+    "nextBilling": "Prochaine facture",
+    "status": "Statut",
+    "beneficiaries": "Bénéficiaires",
+    "add": "Ajouter",
+    "none": "Aucun bénéficiaire",
+    "noneSubtitle": "Ajoutez des enfants, un conjoint ou d'autres bénéficiaires.",
+    "settings": "Paramètres",
+    "myPlan": "Mon Plan",
+    "share": "Partager (Affilié)",
+    "myActivity": "Mon Activité",
+    "learningCenter": "Centre d'Apprentissage",
+    "editProfile": "Modifier le Profil",
+    "changePassword": "Changer le Mot de Passe",
+    "signOut": "Se déconnecter",
+    "language": "Langue",
+    "changeLanguage": "Changer de Langue",
+    "selectLanguage": "Choisir la Langue",
+    "shareSubtitle": "Envoyez le lien de la plateforme avec votre code",
+    "benefitsSubtitle": "Voir vos services inclus",
+    "activitySubtitle": "Voir vos demandes d'assistance",
+    "learningSubtitle": "Ressources éducatives",
+    "editProfileSubtitle": "Mettre à jour vos informations personnelles",
+    "changePasswordSubtitle": "Mettre à jour vos paramètres de sécurité",
+    "plan": "Forfait",
+    "month": "mois",
+    "noActivePlan": "Aucun forfait actif",
+    "benefitsCount": "Avantages",
+    "support247": "Support",
+    "protected100": "Protégé"
+  },
+  "dashboard": {
+    "welcome": "Bonjour",
+    "welcomeBack": "Bon retour,",
+    "protectionStatus": "Statut de Protection",
+    "protected": "Vous êtes protégé",
+    "notProtected": "Action requise",
+    "quickActions": "Actions Rapides",
+    "emergency": "Urgence",
+    "requestHelp": "Demander de l'Aide",
+    "recentActivity": "Activité Récente",
+    "knowledgeBase": "Base de Connaissances",
+    "guidesAndResources": "Guides et Ressources",
+    "guidesDescription": "Explorez des guides sur les impôts, l'immigration, le logement et plus encore",
+    "planBenefits": "Avantages du Plan",
+    "needHelp": "Besoin d'aide ?",
+    "supportTeamAvailable": "Notre équipe est à votre disposition",
+    "notifications": "Notifications",
+    "markAllAsRead": "Tout marquer comme lu",
+    "welcomeToDashboard": "Bienvenue sur votre Dashboard",
+    "viewBenefits": "Voir les Avantages",
+    "accessServices": "Accéder à vos services",
+    "requestSupport": "Demander de l'Assistance",
+    "getHelpNow": "Obtenir de l'aide maintenant",
+    "myPlan": "Mon Forfait",
+    "manageSubscription": "Gérer l'abonnement",
+    "documents": "Documents",
+    "yourFiles": "Vos fichiers",
+    "statsBenefits": "Avantages",
+    "statsRequests": "Demandes",
+    "statsSatisfaction": "Satisfaction",
+    "planUsage": "Utilisation du forfait",
+    "nextBilling": "Prochaine facturation :"
+  },
+  "benefits": {
+    "title": "Vos Avantages",
+    "subtitle": "Explorez tous les services inclus dans votre forfait {{plan}}",
+    "categories": "Catégories d'Avantages",
+    "viewDetails": "Voir les Détails",
+    "allServices": "Tous les Services",
+    "servicesCount": "services",
+    "bikeLoanTitle": "Prêts jusqu'à 6.5%",
+    "bikeLoanDesc": "Après 2 ans de contribution directe, demandez un prêt jusqu'à 6.5% pour louer un vélo 🚲 ou faire un acompte pour un vélo 🚲 directement dans l'application.",
+    "newBadge": "Nouveau",
+    "ctaTitle": "Vous voulez plus d'avantages ?",
+    "ctaDesc": "Passez au Premium pour un accès illimité",
+    "upgrade": "Mettre à niveau",
+    "whatsIncluded": "Ce qui est Inclus",
+    "requestAssistance": "Demander de l'Assistance",
+    "requestService": "Demander ce Service",
+    "categories_list": {
+      "legal": {
+        "title": "Soutien Juridique",
+        "description": "Accédez à une orientation juridique professionnelle grâce à notre réseau de partenaires. Obtenez de l'aide pour la révision de documents, des consultations juridiques et des recommandations d'avocats qualifiés.",
+        "features": [
+          "Révision de documents juridiques",
+          "Accès à des consultations de base",
+          "Recommandations d'avocats",
+          "Éducation sur les droits"
+        ]
+      },
+      "immigration": {
+        "title": "Assistance à l'Immigration",
+        "description": "Naviguez dans le système complexe de l'immigration avec des conseils d'experts. Des demandes de visa aux processus de citoyenneté, nous sommes là pour vous aider.",
+        "features": [
+          "Conseils pour les demandes de visa",
+          "Soutien pour la Green Card",
+          "Aide au processus de citoyenneté",
+          "Préparation de documents"
+        ]
+      },
+      "housing": {
+        "title": "Soutien au Logement",
+        "description": "Trouvez un logement stable et comprenez vos droits en tant que locataire. Accédez à des ressources pour l'aide à la location, l'hébergement et les programmes de logement abordable.",
+        "features": [
+          "Aide à la demande de location",
+          "Conseils sur les droits des locataires",
+          "Ressources de logement abordable",
+          "Accès à l'hébergement d'urgence"
+        ]
+      },
+      "tax": {
+        "title": "Services Fiscaux",
+        "description": "Maximisez vos remboursements et restez en conformité avec une assistance fiscale professionnelle. Nos partenaires vous aident pour les déclarations, les déductions et la planification fiscale.",
+        "features": [
+          "Préparation de la déclaration de revenus",
+          "Optimisation des déductions",
+          "Aide à la correspondance fiscale",
+          "Conseils en planification fiscale"
+        ]
+      },
+      "education": {
+        "title": "Éducation et Carrière",
+        "description": "Faites progresser votre éducation et votre carrière avec des conseils sur les bourses d'études, la révision de CV et des ressources de développement professionnel.",
+        "features": [
+          "Aide à la recherche de bourses",
+          "Révision de CV et lettre de motivation",
+          "Préparation aux entretiens",
+          "Séances de coaching de carrière"
+        ]
+      },
+      "emergency": {
+        "title": "Assistance d'Urgence",
+        "description": "Accès 24h/24 et 7j/7 aux réseaux de soutien d'urgence. Obtenez une aide immédiate en cas de crise, notamment pour le logement, la nourriture et l'intervention en cas de crise.",
+        "features": [
+          "Ligne d'urgence 24h/24 et 7j/7",
+          "Logement d'urgence",
+          "Assistance alimentaire",
+          "Intervention en cas de crise"
+        ]
+      }
+    },
+    "items": {
+      "legal": {
+        "title": "Orientation Juridique",
+        "description": "Accès à des consultations et des conseils juridiques pour les problèmes courants. Notre réseau de partenaires fournit des conseils juridiques de base, la révision de documents et des recommandations d'avocats qualifiés si nécessaire.",
+        "category_name": "Juridique"
+      },
+      "immigration": {
+        "title": "Soutien à l'Immigration",
+        "description": "Naviguez dans le système d'immigration en toute confiance. Obtenez de l'aide pour les formulaires, comprenez vos droits et recevez des conseils sur les visas, les cartes vertes et les processus de citoyenneté.",
+        "category_name": "Immigration"
+      },
+      "tax": {
+        "title": "Aide à la Déclaration de Revenus",
+        "description": "Aide experte pour la préparation et le dépôt des déclarations de revenus. Nos spécialistes fiscais vous aident pour les déclarations individuelles, les déductions, les crédits et s'assurent que vous maximisez votre remboursement tout en restant en conformité.",
+        "category_name": "Finance"
+      },
+      "housing": {
+        "title": "Soutien au Logement",
+        "description": "Trouvez des solutions de logement et comprenez vos droits de locataire. Obtenez de l'aide pour les demandes de location, les ressources d'hébergement et des conseils sur les programmes de logement abordable.",
+        "category_name": "Logement"
+      },
+      "education": {
+        "title": "Éducation et Bourses",
+        "description": "Débloquez des opportunités éducatives avec des conseils sur les bourses, l'aide financière et les processus d'inscription. Nous vous aidons à trouver des ressources pour progresser dans votre éducation.",
+        "category_name": "Éducation"
+      },
+      "job": {
+        "title": "Travail et Emploi",
+        "description": "Accélérez votre carrière avec des révisions de CV, une préparation aux entretiens et des stratégies de recherche d'emploi. Connectez-vous aux ressources d'emploi et aux opportunités de formation.",
+        "category_name": "Carreira"
+      },
+      "emergency": {
+        "title": "Assistance d'Urgence",
+        "description": "Accès 24h/24 et 7j/7 aux réseaux de soutien d'urgence. Obtenez une aide immédiate en cas de crise, notamment pour le logement d'urgence, l'assistance alimentaire et les ressources d'intervention en cas de crise.",
+        "category_name": "Urgence"
+      },
+      "recovery": {
+        "title": "Récupération de Compte",
+        "description": "Retrouvez l'accès à votre vie numérique. Nous vous aidons à récupérer des comptes bloqués ou piratés pour Uber, DoorDash et d'autres plateformes de services essentiels.",
+        "category_name": "Numérique"
+      }
+    }
+  },
+  "activity": {
+    "title": "Mon Activité",
+    "subtitle": "Suivez vos demandes d'assistance et votre historique",
+    "totalRequests": "Demandes Totales",
+    "pending": "En Attente",
+    "resolved": "Résolu",
+    "all": "Tout",
+    "inProgress": "En Cours",
+    "completed": "Terminé",
+    "supportRequests": "Demandes d'Assistance",
+    "items": "articles",
+    "noRequests": "Aucune demande trouvée",
+    "noRequestsDesc": "Vous n'avez pas encore soumis de demande d'assistance.",
+    "noFilteredRequests": "Aucune demande {{filter}} trouvée.",
+    "requestDetails": "Détails de la Demande",
+    "category": "Catégorie",
+    "priority": "Priorité",
+    "submitted": "Soumis",
+    "yourMessage": "Votre Message",
+    "statusUpdates": "Mises à jour du Statut",
+    "requestSubmitted": "Demande Soumise",
+    "reviewingRequest": "Notre équipe examine votre demande",
+    "requestResolved": "Votre demande a été résolue"
+  },
+  "learn": {
+    "title": "Centre d'Apprentissage",
+    "subtitle": "Ressources éducatives pour vous aider à relever les défis de la vie",
+    "all": "Tout",
+    "articles_stat": "Articles",
+    "categories_stat": "Catégories",
+    "category_tax": "Impôts",
+    "category_immigration": "Immigration",
+    "category_housing": "Logement",
+    "category_legal": "Juridique",
+    "category_career": "Carrière",
+    "avgRead": "Temps Moyen",
+    "featuredArticle": "Article en Vedette",
+    "dailyTip": "Conseil du Jour",
+    "readNow": "Lire maintenant",
+    "allArticles": "Tous les Articles",
+    "articlesCount": "articles",
+    "minRead": "min de lecture",
+    "needHelp": "Besoin d'aide personnalisée ?",
+    "helpDesc": "Notre équipe de support peut fournir des conseils adaptés à votre situation",
+    "contactSupport": "Contacter le Support",
+    "helpTopic": "Besoin d'aide avec ce sujet ?",
+    "articles": {
+      "tax": {
+        "title": "Bases de la Déclaration d'Impôts",
+        "description": "Guide essentiel pour comprendre les exigences en matière de déclaration de revenus, les délais et les déductions auxquels vous pourriez avoir droit.",
+        "content": "\n## Comprendre la Déclaration de Revenus\n\nDéclarer vos impôts ne doit pas être accablant. Voici ce que vous devez savoir :\n\n### Délais Clés\n- **15 avril** : Date limite de dépôt standard\n- **15 octobre** : Date limite de dépôt prolongée\n- **Trimestriel** : Paiements d'impôts estimés (si vous êtes travailleur indépendant)\n\n### Déductions Communes\n1. Déduction forfaitaire (la plus courante)\n2. Déductions détaillées\n   - Frais médicaux\n   - Impôts nationaux et locaux\n   - Intérêts hypothécaires\n   - Contributions caritatives\n\n### Documents Dont Vous Aurez Besoin\n- Formulaires W-2 des employeurs\n- Formulaires 1099 pour d'autres revenus\n- Numéros de sécurité sociale pour les personnes à charge\n- Informations sur le compte bancaire pour le dépôt direct\n\n### Options de Dépôt Gratuit\n- IRS Free File (revenus inférieurs à 73 000 $)\n- Programme VITA pour les contribuables qualifiés\n- Military OneSource pour les membres des services\n"
+      },
+      "immigration": {
+        "title": "Aperçu du Statut d'Immigration",
+        "description": "Découvrez les différents types de visas, les processus de carte verte et les voies vers la citoyenneté.",
+        "content": "\n## Comprendre l'Immigration aux États-Unis\n\n### Catégories de Visas Communes\n\n**Visas de Travail :**\n- H-1B : Professions spécialisées\n- L-1 : Transferts intra-entreprise\n- O-1 : Individus aux capacités extraordinaires\n\n**Basé sur la Famille :**\n- Parents immédiats de citoyens américains\n- Catégories de préférence familiale\n- Visas de fiancé(e) (K-1)\n\n### Carte Verte (Résidence Permanente)\n**Voies :**\n1. Parrainage familial\n2. Basé sur l'emploi\n3. Loterie de la diversité\n4. Statut de réfugié/asile\n\n### Processus de Citoyenneté\n**Exigences :**\n- 5 ans en tant que résident permanent (3 ans si marié à un citoyen américain)\n- Présence physique aux États-Unis\n- Bonne moralité\n- Maîtrise de la langue anglaise\n- Connaissances civiques\n\n### Conseils Importants\n- Conservez des copies de tous les documents\n- Signalez les changements d'adresse sous 10 jours\n- Maintenez un statut valide en tout temps\n- Consultez des avocats spécialisés en immigration pour les cas complexes\n"
+      },
+      "housing": {
+        "title": "Droits des Locataires et Logement",
+        "description": "Connaissez vos droits en tant que locataire, comprenez les contrats de bail et informez-vous sur les protections contre l'expulsion.",
+        "content": "\n## Vos Droits en tant que Locataire\n\n### Avant de Louer\n**Ce que les Propriétaires Peuvent Demander :**\n- Vérification des revenus\n- Vérification de solvabilité\n- Historique de location\n- Références\n\n**Ce que les Propriétaires NE Peuvent PAS Demander :**\n- Race, religion, origine nationale\n- Situation familiale\n- État de handicap\n\n### Essentiels du Contrat de Bail\n- Montant du loyer et date d'échéance\n- Conditions du dépôt de garantie\n- Responsabilités d'entretien\n- Politiques concernant les animaux de compagnie\n- Règles de sous-location\n\n### Vos Droits Fondamentaux\n1. **Habitabilité** : Conditions sûres et habitables\n2. **Vie Privée** : Préavis de 24 à 48 heures pour l'entrée (sauf urgence)\n3. **Réparations** : Réponse rapide aux demandes d'entretien\n4. **Pas de Représailles** : Protection pour l'exercice des droits légaux\n\n### Protections contre l'Expulsion\n**Processus Légal Requis :**\n1. Avis écrit\n2. Dépôt au tribunal\n3. Possibilité d'audience\n4. Expulsion par le shérif (si ordonnée)\n\n**Les Expulsions Illégales Comprennent :**\n- Changement de serrures\n- Coupure des services publics\n- Harcèlement\n- Retrait de biens\n\n### Obtenir de l'Aide\n- Syndicats de locataires locaux\n- Sociétés d'aide juridique\n- Autorités du logement\n- Support Kizola Protect\n"
+      },
+      "legal": {
+        "title": "Guide de Sensibilisation Juridique",
+        "description": "Comprendre quand vous avez besoin d'une aide juridique et comment travailler efficacement avec des avocats.",
+        "content": "\n## Quand Avez-vous Besoin d'un Avocat ?\n\n### Situations Nécessitant une Aide Juridique\n**Affaires Pénales :**\n- Toute accusation criminelle\n- Arrestations et enquêtes\n- Infractions au code de la route avec des conséquences graves\n\n**Affaires Civiles :**\n- Demandes de dommages-intérêts pour préjudice corporel\n- Litiges contractuels\n- Discrimination au travail\n- Droit de la famille (divorce, garde)\n- Problèmes d'immigration\n- Litiges liés au logement\n\n### Travailler avec des Avocats\n**Consultation Initiale :**\n- Apportez tous les documents pertinents\n- Préparez une chronologie des événements\n- Notez vos questions\n- Soyez honnête sur tous les faits\n\n**Comprendre les Honoraires :**\n- Tarifs horaires\n- Forfaits\n- Honoraires de résultat (préjudice corporel)\n- Provisions\n\n### Aide Juridique Gratuite ou à Bas Prix\n- Sociétés d'aide juridique\n- Programmes pro bono\n- Cliniques des facultés de droit\n- Centres d'auto-assistance des tribunaux\n- Recommandations des barreaux\n"
+      },
+      "career": {
+        "title": "Rédaction de CV et Recherche d'Emploi",
+        "description": "Créez un CV percutant, réussissez vos entretiens et naviguez efficacement sur le marché du travail moderne.",
+        "content": "\n## Construire Votre Profil Professionnel\n\n### Essentiels du CV\n**Format :**\n- Une page (début de carrière)\n- Deux pages (expérimenté)\n- Police propre et lisible\n- Mise en forme cohérente\n\n**Sections à Inclure :**\n1. Coordonnées\n2. Résumé Professionnel\n3. Expérience Professionnelle\n4. Éducation\n5. Compétences\n6. Certifications (si pertinent)\n\n### Rédiger des Points d'Impact\n**Utilisez la Méthode STAR :**\n- Situation\n- Tâche\n- Action\n- Résultat\n\n**Exemple :**\n\"Géré une équipe de 5 (Situation) pour terminer le projet 2 semaines en avance (Tâche) en mettant en œuvre des flux de travail agiles (Action), ce qui a entraîné des économies de 50 000 $ (Résultat)\"\n\n### Préparation à l'Entretien\n**Questions Courantes :**\n- \"Parlez-moi de vous\"\n- \"Pourquoi voulez-vous ce poste ?\"\n- \"Quels sont vos points forts/faibles ?\"\n- \"Décrivez un défi que vous avez surmonté\"\n\n**Questions à Poser :**\n- Responsabilités quotidiennes\n- Structure de l'équipe\n- Opportunités de croissance\n- Culture d'entreprise\n\n### Stratégies de Recherche d'Emploi\n1. **Réseautage** : 70 % des emplois trouvés par les relations\n2. **LinkedIn** : Optimisez votre profil, engagez-vous avec le contenu\n3. **Sites d'Emploi** : Indeed, Glassdoor, sites spécialisés\n4. **Candidatures Directes** : Pages carrière des entreprises\n5. **Recruteurs** : Agences spécialisées\n\n### Suivi\n- E-mail de remerciement sous 24 heures\n- Vérification du statut après 1-2 semaines\n- Restez professionnel et persistant\n"
+      }
+    }
+  },
+  "support": {
+    "title": "Centre d'Assistance",
+    "subtitle": "Nous sommes là pour vous aider 24/7",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "responseTime": "Temps de Réponse",
+    "hours2448": "24-48 heures",
+    "requestAssistance": "Demander de l'Assistance",
+    "fullNameLabel": "Nom Complet *",
+    "fullNamePlaceholder": "Votre nom complet",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "votre@email.com",
+    "categoryLabel": "Catégorie *",
+    "categoryPlaceholder": "Sélectionnez une catégorie",
+    "priorityLabel": "Niveau de Priorité",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "Décrivez comment nous pouvons vous aider... Veuillez fournir autant de détails que possible.",
+    "characters": "caractères",
+    "min20": "(min 20)",
+    "responseTimeInfo": "Temps de réponse: 24-48 heures",
+    "confirmationSent": "Confirmation envoyée à",
+    "submitAnother": "Soumettre une Autre Demande",
+    "viewActivity": "Voir mon Activité",
+    "fillRequired": "Veuillez remplir tous les champs obligatoires",
+    "moreDetails": "Veuillez fournir plus de détails (au moins 20 caractères)",
+    "failedSubmit": "Échec de la soumission de la demande",
+    "priority_low_label": "Basse",
+    "priority_low_desc": "Demande générale, pas d'urgence",
+    "priority_medium_label": "Moyenne",
+    "priority_medium_desc": "Nécessite une attention sous quelques jours",
+    "priority_high_label": "Haute",
+    "priority_high_desc": "Sujet important, nécessite une attention rapide",
+    "priority_urgent_label": "Urgente",
+    "priority_urgent_desc": "Situation critique nécessitant une aide immédiate",
+    "commitmentTitle": "Notre Engagement envers Vous",
+    "commitmentText": "Nous priorisons la transparence et les soins professionnels. Chaque demande est traitée par un spécialiste pour vous garantir les meilleurs conseils possibles.",
+    "aiWelcome": "Bonjour ! Je suis l'assistant virtuel de Kizola. Comment puis-je vous aider aujourd'hui ?",
+    "aiResponsePlans": "Nous avons 3 forfaits : Basique (10 $/mois), Pro (25 $/mois) et Premium (50 $/mois). Vous pouvez voir plus de détails dans l'onglet Forfaits !",
+    "aiResponseLegal": "Nous offrons une assistance juridique complète pour les immigrants, y compris la révision de contrats et la défense de base.",
+    "aiResponseImmigration": "Notre équipe d'immigration peut vous aider avec les rendez-vous SEF/AIMA, les demandes de résidence et les manifestations d'intérêt.",
+    "aiResponseContact": "Vous pouvez nous parler via WhatsApp (+1 929 609-7035) ou envoyer um ticket de support ici mesmo !",
+    "aiResponseGreet": "Bonjour ! Comment puis-je vous aider avec votre protection aujourd'hui ?",
+    "aiResponseDefault": "Intéressant ! Pour des détails spécifiques, je vous recommande de parler à l'un de nos consultants via WhatsApp ou d'ouvrir un ticket de support.",
+    "ticketTab": "Ticket",
+    "aiTab": "Chat IA",
+    "typeMessage": "Tapez votre question..."
+  },
+  "plans": {
+    "title": "Forfaits d'Adhésion",
+    "subtitle": "Choisissez la protection qui vous convient",
+    "currentPlan": "Forfait Actuel",
+    "selected": "Sélectionné",
+    "selectPlan": "Sélectionner le forfait",
+    "whatsIncluded": "Ce qui est inclus :",
+    "note": "Tous les forfaits incluent nos services de protection de base. Vous pouvez mettre à niveau ou annuler à tout moment.",
+    "month": "/mois",
+    "alreadySubscribed": "Vous êtes déjà abonné à ce forfait",
+    "subscribeSuccess": "Vous vous êtes abonné avec succès au forfait {{plan}}.",
+    "selectFailed": "Échec de la sélection du forfait",
+    "free": {
+      "name": "Gratuit",
+      "benefits": [
+        "Accès au forum communautaire",
+        "Guides publics du centre d'apprentissage",
+        "Contacts d'urgence de base",
+        "Assistance limitée par e-mail"
+      ]
+    },
+    "basic": {
+      "name": "Basique",
+      "benefits": [
+        "Consultation d'orientation juridique de base",
+        "Ressources de soutien à l'immigration",
+        "Guides d'aide à la déclaration de revenus",
+        "Informations sur le soutien au logement",
+        "Assistance par e-mail sous 48 heures",
+        "Accès au forum communautaire",
+        "Accès au centre d'apprentissage"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "benefits": [
+        "Tout ce qui est inclus dans le Basique",
+        "Orientation juridique prioritaire",
+        "Révision des documents d'immigration",
+        "Aide à la déclaration de revenus",
+        "Soutien aux demandes de logement",
+        "Orientation pour les bourses d'études",
+        "Assistance par e-mail 24h/24",
+        "Appel de consultation mensuel",
+        "Traitement prioritaire des demandes"
+      ]
+    },
+    "premium": {
+      "name": "Premium",
+      "benefits": [
+        "Tout ce qui est inclus dans le Pro",
+        "Consultations juridiques illimitées",
+        "Soutien complet pour les cas d'immigration",
+        "Aide complète à la préparation des impôts",
+        "Assistance au logement d'urgence",
+        "Séances de coaching de carrière",
+        "Soutien à la récupération de comptes d'applications",
+        "Ligne d'assistance dédiée",
+        "Réponse prioritaire sous 4 heures",
+        "Revue trimestrielle des avantages",
+        "Demandes illimitées"
+      ]
+    }
+  },
+  "checkout": {
+    "title": "Paiement Sécurisé",
+    "cardNumber": "Numéro de Carte",
+    "expiryDate": "Date d'Expiration",
+    "cvc": "CVC",
+    "cardholderName": "Nom du Titulaire",
+    "pay": "Payer",
+    "processing": "Traitement du paiement...",
+    "success": "Paiement réussi !",
+    "failed": "Paiement échoué",
+    "secureNote": "Vos informations de paiement sont cryptées et sécurisées."
+  },
+  "planDetails": {
+    "title": "Mon Forfait",
+    "subtitle": "Gérer votre abonnement",
+    "currentPlanBadge": "Forfait Actuel",
+    "noActivePlan": "Pas de Forfait Actif",
+    "noPlanDescription": "Vous n'avez pas d'abonnement actif. Choisissez un forfait pour commencer.",
+    "viewPlans": "Voir les Forfaits",
+    "includedBenefits": "Avantages Inclus",
+    "benefits": "avantages",
+    "otherPlans": "Autres Forfaits",
+    "upgrade": "Mettre à niveau",
+    "billingInfo": "Informations de Facturation",
+    "paymentMethod": "Mode de Paiement",
+    "billingCycle": "Cycle de Facturation",
+    "monthly": "Mensuel",
+    "cancelSubscription": "Annuler l'Abonnement",
+    "cancelNote": "Vous pouvez annuler à tout moment. Votre accès restera actif jusqu'à la fin de votre période de facturation.",
+    "cancelSubscriptionQuestion": "Annuler l'Abonnement ?",
+    "cancelModalDescription": "Êtes-vous sûr de vouloir annuler votre abonnement {{planName}} ? Vous continuerez à avoir accès jusqu'au {{date}}.",
+    "keepSubscription": "Garder l'Abonnement",
+    "yesCancel": "Oui, Annuler",
+    "alreadyOnPlan": "Vous êtes déjà sur ce forfait",
+    "nextBilling": "Prochaine facturation :",
+    "cancelConfirmDescription": "Votre abonnement restera actif jusqu'à la fin de la période de facturation actuelle. Êtes-vous sûr de vouloir annuler ?",
+    "cancellationRequested": "Annulation Demandée",
+    "cancellationMessage": "Votre demande d'annulation a été soumise. Vous aurez accès jusqu'à la fin de votre période de facturation actuelle."
+  },
+  "documents": {
+    "title": "Mes Documents",
+    "subtitle": "Gérez vos documents",
+    "total": "Total",
+    "verified": "Vérifiés",
+    "pending": "En attente",
+    "uploaded": "Téléchargé",
+    "uploadNew": "Télécharger un Nouveau Document",
+    "empty": "Aucun document",
+    "emptyMessage": "Téléchargez vos documents pour un accès rapide",
+    "size": "Taille",
+    "date": "Date",
+    "view": "Voir",
+    "deleteConfirm": "Supprimer le Document",
+    "deleteConfirmMessage": "Êtes-vous sûr de vouloir supprimer",
+    "uploadTitle": "Télécharger un Document",
+    "uploadMessage": "Fonctionnalité de téléchargement à venir"
+  }
+}

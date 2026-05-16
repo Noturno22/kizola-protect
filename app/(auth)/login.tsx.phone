@@ -1,0 +1,229 @@
+/**
+ * (auth)/login.tsx — Phone number entry screen.
+ * Premium fintech dark-mode design.
+ */
+
+import React, { useState, useMemo, useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableOpacity,
+  ActivityIndicator,
+  Image,
+  ScrollView,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StatusBar } from 'expo-status-bar';
+import { ShieldCheck, ArrowRight } from 'lucide-react-native';
+import { useTheme, Theme } from '@/providers/ThemeProvider';
+import { PhoneInput } from '@/components/auth/PhoneInput';
+import { usePhoneAuth } from '@/hooks/usePhoneAuth';
+
+const LOGO_URL =
+  'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rp8ormh5clrs4bxi5u20j.jpg';
+
+// Basic E.164 validation — full validation happens server-side
+const isValidPhone = (phone: string) => /^\+[1-9]\d{7,14}$/.test(phone.replace(/[\s\-().]/g, ''));
+
+export default function LoginScreen() {
+  const router = useRouter();
+  const { theme, isDark } = useTheme();
+  const styles = useMemo(() => createStyles(theme), [theme]);
+  const { sendCode, isLoading, error, clearError } = usePhoneAuth();
+
+  const [phone, setPhone] = useState('');
+
+  const handlePhoneChange = useCallback(
+    (fullPhone: string) => {
+      if (error) clearError();
+      setPhone(fullPhone);
+    },
+    [error, clearError]
+  );
+
+  const handleContinue = useCallback(async () => {
+    const normalized = phone.replace(/[\s\-().]/g, '');
+    if (!isValidPhone(normalized)) return;
+    await sendCode(normalized);
+  }, [phone, sendCode]);
+
+  const canSubmit = isValidPhone(phone.replace(/[\s\-().]/g, '')) && !isLoading;
+
+  return (
+    <SafeAreaView style={[styles.root, { backgroundColor: theme.background }]}>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      <LinearGradient colors={theme.headerGradient as [string, string]} style={styles.gradient}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.kav}
+        >
+          <ScrollView
+            contentContainerStyle={styles.scroll}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
+            {/* ── Logo ── */}
+            <View style={styles.logoSection}>
+              <View style={styles.logoWrap}>
+                <Image source={{ uri: LOGO_URL }} style={styles.logo} resizeMode="contain" />
+              </View>
+              <Text style={styles.appName}>Kizola Protect</Text>
+              <View style={styles.badge}>
+                <ShieldCheck size={14} color="#fff" />
+                <Text style={styles.badgeText}>Secure Authentication</Text>
+              </View>
+            </View>
+
+            {/* ── Card ── */}
+            <View style={[styles.card, { backgroundColor: theme.surface }]}>
+              <Text style={[styles.cardTitle, { color: theme.text }]}>Sign in with Phone</Text>
+              <Text style={[styles.cardSubtitle, { color: theme.textSecondary }]}>
+                Enter your phone number and we'll send you a one-time code via SMS.
+              </Text>
+
+              <Text style={[styles.label, { color: theme.text }]}>Phone Number</Text>
+              <PhoneInput value={phone} onChange={handlePhoneChange} disabled={isLoading} />
+
+              {/* Error message */}
+              {error ? (
+                <View style={styles.errorBox}>
+                  <Text style={styles.errorText}>{error}</Text>
+                </View>
+              ) : null}
+
+              {/* CTA */}
+              <TouchableOpacity
+                style={[
+                  styles.btn,
+                  { backgroundColor: theme.primary },
+                  !canSubmit && styles.btnDisabled,
+                ]}
+                onPress={handleContinue}
+                disabled={!canSubmit}
+                activeOpacity={0.85}
+                accessibilityLabel="Send verification code"
+                accessibilityRole="button"
+              >
+                {isLoading ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <>
+                    <Text style={styles.btnText}>Continue</Text>
+                    <ArrowRight size={18} color="#fff" />
+                  </>
+                )}
+              </TouchableOpacity>
+
+              {/* Alt login link */}
+              <TouchableOpacity
+                style={styles.altBtn}
+                onPress={() => router.push('/login')}
+                accessibilityLabel="Sign in with email instead"
+              >
+                <Text style={[styles.altText, { color: theme.textMuted }]}>
+                  Prefer email?{' '}
+                  <Text style={{ color: theme.primary, fontWeight: '600' }}>Sign in with email</Text>
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Footer */}
+            <Text style={[styles.footer, { color: theme.textMuted }]}>
+              By continuing, you agree to our Terms & Privacy Policy.
+            </Text>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </LinearGradient>
+    </SafeAreaView>
+  );
+}
+
+const createStyles = (theme: Theme) =>
+  StyleSheet.create({
+    root: { flex: 1 },
+    gradient: { flex: 1 },
+    kav: { flex: 1 },
+    scroll: { flexGrow: 1, paddingHorizontal: 20, paddingBottom: 32 },
+
+    // Logo section
+    logoSection: { alignItems: 'center', paddingTop: 40, paddingBottom: 28 },
+    logoWrap: {
+      width: 80,
+      height: 80,
+      borderRadius: 20,
+      backgroundColor: '#fff',
+      justifyContent: 'center',
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.18,
+      shadowRadius: 16,
+      elevation: 10,
+      overflow: 'hidden',
+      marginBottom: 12,
+    },
+    logo: { width: 72, height: 72 },
+    appName: { fontSize: 24, fontWeight: '800', color: '#fff', letterSpacing: -0.5 },
+    badge: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 6,
+      marginTop: 6,
+      backgroundColor: 'rgba(255,255,255,0.2)',
+      borderRadius: 20,
+      paddingHorizontal: 12,
+      paddingVertical: 4,
+    },
+    badgeText: { color: 'rgba(255,255,255,0.9)', fontSize: 12, fontWeight: '500' },
+
+    // Card
+    card: {
+      borderRadius: 28,
+      padding: 24,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.12,
+      shadowRadius: 24,
+      elevation: 12,
+    },
+    cardTitle: { fontSize: 22, fontWeight: '800', marginBottom: 8, letterSpacing: -0.3 },
+    cardSubtitle: { fontSize: 14, lineHeight: 20, marginBottom: 24 },
+    label: { fontSize: 13, fontWeight: '600', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5 },
+
+    // Error
+    errorBox: {
+      backgroundColor: 'rgba(239,68,68,0.1)',
+      borderRadius: 10,
+      padding: 12,
+      marginBottom: 16,
+      borderLeftWidth: 3,
+      borderLeftColor: '#EF4444',
+    },
+    errorText: { color: '#EF4444', fontSize: 13, lineHeight: 18 },
+
+    // Button
+    btn: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+      height: 56,
+      borderRadius: 16,
+      marginTop: 8,
+      marginBottom: 16,
+    },
+    btnDisabled: { opacity: 0.55 },
+    btnText: { color: '#fff', fontSize: 16, fontWeight: '700' },
+
+    // Alt
+    altBtn: { alignItems: 'center', paddingVertical: 4 },
+    altText: { fontSize: 13 },
+
+    // Footer
+    footer: { textAlign: 'center', fontSize: 11, marginTop: 24, lineHeight: 16 },
+  });

@@ -1,0 +1,491 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Remove",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "active": "Active",
+    "inactive": "Inactive",
+    "done": "Done",
+    "member": "Member",
+    "seeAll": "See all",
+    "pending": "Pending",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "dark": "Dark",
+    "light": "Light",
+    "close": "Close",
+    "info": "Info",
+    "search": "Search guides..."
+  },
+  "auth": {
+    "welcome": "Welcome Back",
+    "signInSubtitle": "Sign in to access your membership",
+    "tagline": "Your trusted protection partner",
+    "email": "Email address",
+    "password": "Password",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot password?",
+    "or": "or",
+    "googleSignIn": "Sign in with Google",
+    "phoneSignIn": "Sign in with Phone Number",
+    "noAccount": "Don't have an account? ",
+    "createAccount": "Create one",
+    "register": "Register",
+    "fullName": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "joinKizola": "Join Kizola",
+    "startProtection": "Start your protection journey",
+    "createAccountTitle": "Create Account",
+    "signUpSubtitle": "Sign up for your membership",
+    "phone": "Phone Number",
+    "iAgreeTo": "I agree to the",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "googleSignUp": "Sign up with Google",
+    "alreadyHaveAccount": "Already have an account? "
+  },
+  "profile": {
+    "title": "My Profile",
+    "activeMember": "Active Member",
+    "currentPlan": "Current Plan",
+    "benefits": "Benefits",
+    "support": "Support",
+    "protected": "Protected",
+    "subscription": "Subscription",
+    "startDate": "Start Date",
+    "nextBilling": "Next Billing",
+    "status": "Status",
+    "beneficiaries": "Beneficiaries",
+    "add": "Add",
+    "none": "No beneficiaries",
+    "noneSubtitle": "Add children, spouse or other beneficiaries.",
+    "settings": "Settings",
+    "myPlan": "My Plan",
+    "share": "Share (Affiliate)",
+    "myActivity": "My Activity",
+    "learningCenter": "Learning Center",
+    "editProfile": "Edit Profile",
+    "changePassword": "Change Password",
+    "signOut": "Sign Out",
+    "language": "Language",
+    "changeLanguage": "Change Language",
+    "selectLanguage": "Select Language",
+    "shareSubtitle": "Send the platform link with your code",
+    "benefitsSubtitle": "View your included services",
+    "activitySubtitle": "View your support requests",
+    "learningSubtitle": "Educational resources",
+    "editProfileSubtitle": "Update your personal information",
+    "changePasswordSubtitle": "Update your security settings",
+    "plan": "Plan",
+    "month": "month",
+    "noActivePlan": "No active plan",
+    "benefitsCount": "Benefits",
+    "support247": "Support",
+    "protected100": "Protected"
+  },
+  "dashboard": {
+    "welcome": "Hello",
+    "welcomeBack": "Welcome back,",
+    "protectionStatus": "Protection Status",
+    "protected": "You are protected",
+    "notProtected": "Action required",
+    "quickActions": "Quick Actions",
+    "emergency": "Emergency",
+    "requestHelp": "Request Help",
+    "recentActivity": "Recent Activity",
+    "knowledgeBase": "Knowledge Base",
+    "guidesAndResources": "Guides and Resources",
+    "guidesDescription": "Explore guides on taxes, immigration, housing and more",
+    "planBenefits": "Plan Benefits",
+    "needHelp": "Need Help?",
+    "supportTeamAvailable": "Our team is available for you",
+    "notifications": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "welcomeToDashboard": "Welcome to your Dashboard",
+    "viewBenefits": "View Benefits",
+    "accessServices": "Access your services",
+    "requestSupport": "Request Support",
+    "getHelpNow": "Get help now",
+    "myPlan": "My Plan",
+    "manageSubscription": "Manage subscription",
+    "documents": "Documents",
+    "yourFiles": "Your files",
+    "statsBenefits": "Benefits",
+    "statsRequests": "Requests",
+    "statsSatisfaction": "Satisfaction",
+    "planUsage": "Plan usage",
+    "nextBilling": "Next billing:"
+  },
+  "benefits": {
+    "title": "Your Benefits",
+    "subtitle": "Explore all the services included in your {{plan}} plan",
+    "categories": "Benefit Categories",
+    "viewDetails": "View Details",
+    "allServices": "All Services",
+    "servicesCount": "services",
+    "bikeLoanTitle": "Loan / Empréstimos até 6.5%",
+    "bikeLoanDesc": "After 2 years of direct contribution, apply for a loan up to 6.5% to rent a bike 🚲 or make a down payment for a bike 🚲 directly in the app.",
+    "newBadge": "New",
+    "ctaTitle": "Want more benefits?",
+    "ctaDesc": "Upgrade to Premium for unlimited access",
+    "upgrade": "Upgrade",
+    "whatsIncluded": "What's Included",
+    "requestAssistance": "Request Assistance",
+    "requestService": "Request This Service",
+    "categories_list": {
+      "legal": {
+        "title": "Legal Support",
+        "description": "Access professional legal guidance through our partner network. Get help with document review, legal consultations, and referrals to qualified attorneys.",
+        "features": [
+          "Legal document review",
+          "Basic consultation access",
+          "Attorney referrals",
+          "Rights education"
+        ]
+      },
+      "immigration": {
+        "title": "Immigration Assistance",
+        "description": "Navigate the complex immigration system with expert guidance. From visa applications to citizenship processes, we are here to help.",
+        "features": [
+          "Visa application guidance",
+          "Green card support",
+          "Citizenship process help",
+          "Document preparation"
+        ]
+      },
+      "housing": {
+        "title": "Housing Support",
+        "description": "Find stable housing and understand your rights as a tenant. Access resources for rental assistance, shelter, and affordable housing programs.",
+        "features": [
+          "Rental application help",
+          "Tenant rights guidance",
+          "Affordable housing resources",
+          "Emergency shelter access"
+        ]
+      },
+      "tax": {
+        "title": "Tax Services",
+        "description": "Maximize your returns and stay compliant with professional tax assistance. Our partners help with filing, deductions, and tax planning.",
+        "features": [
+          "Tax return preparation",
+          "Deduction optimization",
+          "IRS correspondence help",
+          "Tax planning guidance"
+        ]
+      },
+      "education": {
+        "title": "Education & Career",
+        "description": "Advance your education and career with scholarship guidance, resume reviews, and professional development resources.",
+        "features": [
+          "Scholarship search assistance",
+          "Resume & cover letter review",
+          "Interview preparation",
+          "Career coaching sessions"
+        ]
+      },
+      "emergency": {
+        "title": "Emergency Assistance",
+        "description": "24/7 access to emergency support networks. Get immediate help during crises including housing, food, and crisis intervention.",
+        "features": [
+          "24/7 crisis hotline",
+          "Emergency housing",
+          "Food assistance",
+          "Crisis intervention"
+        ]
+      }
+    },
+    "items": {
+      "legal": {
+        "title": "Legal Guidance",
+        "description": "Access to legal consultations and guidance for common issues. Our partner network provides basic legal advice, document review, and referrals to qualified attorneys when needed.",
+        "category_name": "Legal"
+      },
+      "immigration": {
+        "title": "Immigration Support",
+        "description": "Navigate the immigration system with confidence. Get help with forms, understand your rights, and receive guidance on visas, green cards, and citizenship processes.",
+        "category_name": "Immigration"
+      },
+      "tax": {
+        "title": "Tax Return Assistance",
+        "description": "Expert help with tax preparation and filing. Our tax specialists assist with individual returns, deductions, credits, and ensure you maximize your refund while staying compliant.",
+        "category_name": "Finance"
+      },
+      "housing": {
+        "title": "Housing Support",
+        "description": "Find housing solutions and understand your tenant rights. Get assistance with rental applications, shelter resources, and guidance on affordable housing programs.",
+        "category_name": "Housing"
+      },
+      "education": {
+        "title": "Education & Scholarships",
+        "description": "Unlock educational opportunities with guidance on scholarships, financial aid, and enrollment processes. We help you find resources to advance your education.",
+        "category_name": "Education"
+      },
+      "job": {
+        "title": "Job & Employment",
+        "description": "Accelerate your career with resume reviews, interview preparation, and job search strategies. Connect with employment resources and training opportunities.",
+        "category_name": "Career"
+      },
+      "emergency": {
+        "title": "Emergency Assistance",
+        "description": "24/7 access to emergency support networks. Get immediate help during crises, including emergency housing, food assistance, and crisis intervention resources.",
+        "category_name": "Emergency"
+      },
+      "recovery": {
+        "title": "Account Recovery",
+        "description": "Regain access to your digital life. We help recover locked or hacked accounts for Uber, DoorDash, and other essential service platforms.",
+        "category_name": "Digital"
+      }
+    }
+  },
+  "activity": {
+    "title": "My Activity",
+    "subtitle": "Track your support requests and assistance history",
+    "totalRequests": "Total Requests",
+    "pending": "Pending",
+    "resolved": "Resolved",
+    "all": "All",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "supportRequests": "Support Requests",
+    "items": "items",
+    "noRequests": "No requests found",
+    "noRequestsDesc": "You haven't submitted any support requests yet.",
+    "noFilteredRequests": "No {{filter}} requests found.",
+    "requestDetails": "Request Details",
+    "category": "Category",
+    "priority": "Priority",
+    "submitted": "Submitted",
+    "yourMessage": "Your Message",
+    "statusUpdates": "Status Updates",
+    "requestSubmitted": "Request Submitted",
+    "reviewingRequest": "Our team is reviewing your request",
+    "requestResolved": "Your request has been resolved"
+  },
+  "learn": {
+    "title": "Learning Center",
+    "subtitle": "Educational resources to help you navigate life's challenges",
+    "all": "All",
+    "articles_stat": "Articles",
+    "categories_stat": "Categories",
+    "category_tax": "Tax",
+    "category_immigration": "Immigration",
+    "category_housing": "Housing",
+    "category_legal": "Legal",
+    "category_career": "Career",
+    "avgRead": "Avg. Read",
+    "featuredArticle": "Featured Article",
+    "dailyTip": "Daily Tip",
+    "readNow": "Read now",
+    "allArticles": "All Articles",
+    "articlesCount": "articles",
+    "minRead": "min read",
+    "needHelp": "Need personalized help?",
+    "helpDesc": "Our support team can provide guidance tailored to your specific situation",
+    "contactSupport": "Contact Support",
+    "helpTopic": "Need help with this topic?",
+    "articles": {
+      "tax": {
+        "title": "Tax Return Filing Basics",
+        "description": "Essential guide to understanding tax filing requirements, deadlines, and deductions you may qualify for.",
+        "content": "\n## Understanding Tax Filing\n\nFiling your taxes doesn't have to be overwhelming. Here's what you need to know:\n\n### Key Deadlines\n- **April 15**: Standard filing deadline\n- **October 15**: Extended filing deadline\n- **Quarterly**: Estimated tax payments (if self-employed)\n\n### Common Deductions\n1. Standard Deduction (most common)\n2. Itemized Deductions\n   - Medical expenses\n   - State and local taxes\n   - Mortgage interest\n   - Charitable contributions\n\n### Documents You'll Need\n- W-2 forms from employers\n- 1099 forms for other income\n- Social Security numbers for dependents\n- Bank account information for direct deposit\n\n### Free Filing Options\n- IRS Free File (income under $73,000)\n- VITA program for qualified taxpayers\n- Military OneSource for service members\n"
+      },
+      "immigration": {
+        "title": "Immigration Status Overview",
+        "description": "Learn about different visa types, green card processes, and pathways to citizenship.",
+        "content": "\n## Understanding U.S. Immigration\n\n### Common Visa Categories\n\n**Work Visas:**\n- H-1B: Specialty occupations\n- L-1: Intracompany transfers\n- O-1: Individuals with extraordinary ability\n\n**Family-Based:**\n- Immediate relatives of U.S. citizens\n- Family preference categories\n- Fiancé(e) visas (K-1)\n\n### Green Card (Permanent Residence)\n**Pathways:**\n1. Family sponsorship\n2. Employment-based\n3. Diversity lottery\n4. Refugee/asylee status\n\n### Citizenship Process\n**Requirements:**\n- 5 years as permanent resident (3 years if married to U.S. citizen)\n- Physical presence in the U.S.\n- Good moral character\n- English language proficiency\n- Civics knowledge\n\n### Important Tips\n- Keep copies of all documents\n- Report address changes within 10 days\n- Maintain valid status at all times\n- Consult with qualified immigration attorneys for complex cases\n"
+      },
+      "housing": {
+        "title": "Tenant Rights and Housing",
+        "description": "Know your rights as a renter, understand lease agreements, and learn about eviction protections.",
+        "content": "\n## Your Rights as a Tenant\n\n### Before You Rent\n**What Landlords Can Ask:**\n- Income verification\n- Credit check\n- Rental history\n- References\n\n**What Landlords Cannot Ask:**\n- Race, religion, national origin\n- Family status\n- Disability status\n\n### Lease Agreement Essentials\n- Rent amount and due date\n- Security deposit terms\n- Maintenance responsibilities\n- Pet policies\n- Subletting rules\n\n### Your Basic Rights\n1. **Habitability**: Safe and livable conditions\n2. **Privacy**: 24-48 hour notice for entry (except emergencies)\n3. **Repairs**: Timely response to maintenance requests\n4. **No Retaliation**: Protection for exercising legal rights\n\n### Eviction Protections\n**Legal Process Required:**\n1. Written notice\n2. Court filing\n3. Hearing opportunity\n4. Sheriff eviction (if ordered)\n\n**Illegal Evictions Include:**\n- Lock changes\n- Utility shutoffs\n- Harassment\n- Property removal\n\n### Getting Help\n- Local tenant unions\n- Legal aid societies\n- Housing authorities\n- Kizola Protect support\n"
+      },
+      "legal": {
+        "title": "Legal Awareness Guide",
+        "description": "Understanding when you need legal help and how to work effectively with attorneys.",
+        "content": "\n## When Do You Need a Lawyer?\n\n### Situations Requiring Legal Help\n**Criminal Matters:**\n- Any criminal charges\n- Arrests and investigations\n- Traffic violations with serious consequences\n\n**Civil Matters:**\n- Personal injury claims\n- Contract disputes\n- Employment discrimination\n- Family law (divorce, custody)\n- Immigration issues\n- Housing disputes\n\n### Working with Attorneys\n**Initial Consultation:**\n- Bring all relevant documents\n- Prepare a timeline of events\n- Write down your questions\n- Be honest about all facts\n\n**Understanding Fees:**\n- Hourly rates\n- Flat fees\n- Contingency fees (personal injury)\n- Retainers\n\n### Free and Low-Cost Legal Help\n- Legal Aid societies\n- Pro bono programs\n- Law school clinics\n- Court self-help centers\n- Bar association referrals\n"
+      },
+      "career": {
+        "title": "Resume Building and Job Search",
+        "description": "Create a compelling resume, ace interviews, and navigate the modern job market effectively.",
+        "content": "\n## Building Your Professional Profile\n\n### Resume Essentials\n**Format:**\n- One page (early career)\n- Two pages (experienced)\n- Clean, readable font\n- Consistent formatting\n\n**Sections to Include:**\n1. Contact Information\n2. Professional Summary\n3. Work Experience\n4. Education\n5. Skills\n6. Certifications (if relevant)\n\n### Writing Impactful Bullet Points\n**Use the STAR Method:**\n- Situation\n- Task\n- Action\n- Result\n\n**Example:**\n\"Managed team of 5 (Situation) to complete project 2 weeks early (Task) by implementing agile workflows (Action), resulting in $50K cost savings (Result)\"\n\n### Interview Preparation\n**Common Questions:**\n- \"Tell me about yourself\"\n- \"Why do you want this role?\"\n- \"What are your strengths/weaknesses?\"\n- \"Describe a challenge you overcame\"\n\n**Questions to Ask:**\n- Day-to-day responsibilities\n- Team structure\n- Growth opportunities\n- Company culture\n\n### Job Search Strategies\n1. **Networking**: 70% of jobs found through connections\n2. **LinkedIn**: Optimize profile, engage with content\n3. **Job Boards**: Indeed, Glassdoor, industry-specific sites\n4. **Direct Applications**: Company career pages\n5. **Recruiters**: Specialized agencies\n\n### Following Up\n- Thank you email within 24 hours\n- Status check after 1-2 weeks\n- Stay professional and persistent\n"
+      }
+    }
+  },
+  "support": {
+    "title": "Support Center",
+    "subtitle": "We're here to help you 24/7",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "responseTime": "Response Time",
+    "hours2448": "24-48 hours",
+    "requestAssistance": "Request Assistance",
+    "fullNameLabel": "Full Name *",
+    "fullNamePlaceholder": "Your full name",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "your@email.com",
+    "categoryLabel": "Category *",
+    "categoryPlaceholder": "Select a category",
+    "priorityLabel": "Priority Level",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "Describe how we can help you... Please provide as much detail as possible.",
+    "characters": "characters",
+    "min20": "(min 20)",
+    "submitRequest": "Submit Request",
+    "requestSubmitted": "Request Submitted!",
+    "thankYou": "Thank you for reaching out. Our support team will review your request and get back to you within 24-48 hours.",
+    "responseTimeInfo": "Response time: 24-48 hours",
+    "confirmationSent": "Confirmation sent to",
+    "submitAnother": "Submit Another Request",
+    "viewActivity": "View My Activity",
+    "fillRequired": "Please fill in all required fields",
+    "moreDetails": "Please provide more details in your message (at least 20 characters)",
+    "failedSubmit": "Failed to submit request",
+    "priority_low_label": "Low",
+    "priority_low_desc": "General inquiry, no urgency",
+    "priority_medium_label": "Medium",
+    "priority_medium_desc": "Needs attention within a few days",
+    "priority_high_label": "High",
+    "priority_high_desc": "Important matter, needs prompt attention",
+    "priority_urgent_label": "Urgent",
+    "priority_urgent_desc": "Critical situation requiring immediate help",
+    "commitmentTitle": "Our Commitment to You",
+    "commitmentText": "We prioritize transparency and professional care. Every request is handled by a specialist to ensure you get the best guidance possible.",
+    "aiWelcome": "Hello! I am Kizola's virtual assistant. How can I help today?",
+    "aiResponsePlans": "We have 3 plans: Basic ($10/mo), Pro ($25/mo), and Premium ($50/mo). You can see more details in the Plans tab!",
+    "aiResponseLegal": "We offer complete legal assistance for immigrants, including contract review and basic defense.",
+    "aiResponseImmigration": "Our immigration team can help with SEF/AIMA appointments, residency requests, and expression of interest.",
+    "aiResponseContact": "You can talk to us via WhatsApp (+1 929 609-7035) or send a support ticket right here!",
+    "aiResponseGreet": "Hello! How can I help with your protection today?",
+    "aiResponseDefault": "Interesting! For specific details, I recommend talking to one of our consultants via WhatsApp or opening a support ticket.",
+    "ticketTab": "Ticket",
+    "aiTab": "AI Chat",
+    "typeMessage": "Type your question..."
+  },
+  "plans": {
+    "title": "Membership Plans",
+    "subtitle": "Choose the protection that's right for you",
+    "currentPlan": "Current Plan",
+    "selected": "Selected",
+    "selectPlan": "Select Plan",
+    "whatsIncluded": "What's included:",
+    "note": "All plans include our core protection services. You can upgrade or cancel anytime.",
+    "month": "/month",
+    "alreadySubscribed": "You are already subscribed to this plan",
+    "subscribeSuccess": "You have successfully subscribed to the {{plan}} plan.",
+    "selectFailed": "Failed to select plan",
+    "free": {
+      "name": "Free",
+      "benefits": [
+        "Community forum access",
+        "Public learning center guides",
+        "Basic emergency contacts",
+        "Limited email support"
+      ]
+    },
+    "basic": {
+      "name": "Basic",
+      "benefits": [
+        "Basic legal guidance consultation",
+        "Immigration support resources",
+        "Tax return assistance guides",
+        "Housing support information",
+        "Email support within 48 hours",
+        "Access to community forum",
+        "Learning center access"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "benefits": [
+        "Everything in Basic",
+        "Priority legal guidance",
+        "Immigration document review",
+        "Tax filing assistance",
+        "Housing application support",
+        "Education scholarship guidance",
+        "24-hour email support",
+        "Monthly consultation call",
+        "Priority request handling"
+      ]
+    },
+    "premium": {
+      "name": "Premium",
+      "benefits": [
+        "Everything in Pro",
+        "Unlimited legal consultations",
+        "Full immigration case support",
+        "Complete tax preparation help",
+        "Emergency housing assistance",
+        "Career coaching sessions",
+        "App account recovery support",
+        "Dedicated support line",
+        "Priority 4-hour response",
+        "Quarterly benefits review",
+        "Unlimited requests"
+      ]
+    }
+  },
+  "checkout": {
+    "title": "Secure Checkout",
+    "cardNumber": "Card Number",
+    "expiryDate": "Expiry Date",
+    "cvc": "CVC",
+    "cardholderName": "Cardholder Name",
+    "pay": "Pay",
+    "processing": "Processing payment...",
+    "success": "Payment successful!",
+    "failed": "Payment failed",
+    "secureNote": "Your payment info is encrypted and secure."
+  },
+  "planDetails": {
+    "title": "My Plan",
+    "subtitle": "Manage your subscription",
+    "currentPlanBadge": "Current Plan",
+    "noActivePlan": "No Active Plan",
+    "noPlanDescription": "You don't have an active subscription. Choose a plan to get started.",
+    "viewPlans": "View Plans",
+    "includedBenefits": "Included Benefits",
+    "benefits": "benefits",
+    "otherPlans": "Other Plans",
+    "upgrade": "Upgrade",
+    "billingInfo": "Billing Information",
+    "paymentMethod": "Payment Method",
+    "billingCycle": "Billing Cycle",
+    "monthly": "Monthly",
+    "cancelSubscription": "Cancel Subscription",
+    "cancelNote": "You can cancel anytime. Your access will continue until the end of your billing period.",
+    "cancelSubscriptionQuestion": "Cancel Subscription?",
+    "cancelModalDescription": "Are you sure you want to cancel your {{planName}} subscription? You'll continue to have access until {{date}}.",
+    "keepSubscription": "Keep Subscription",
+    "yesCancel": "Yes, Cancel",
+    "alreadyOnPlan": "You are already on this plan",
+    "nextBilling": "Next billing:",
+    "cancelConfirmDescription": "Your subscription will remain active until the end of the current billing period. Are you sure you want to cancel?",
+    "cancellationRequested": "Cancellation Requested",
+    "cancellationMessage": "Your cancellation request has been submitted. You will have access until the end of your current billing period."
+  },
+  "documents": {
+    "title": "My Documents",
+    "subtitle": "Manage your documents",
+    "total": "Total",
+    "verified": "Verified",
+    "pending": "Pending",
+    "uploaded": "Uploaded",
+    "uploadNew": "Upload New Document",
+    "empty": "No documents",
+    "emptyMessage": "Upload your documents for quick access",
+    "size": "Size",
+    "date": "Date",
+    "view": "View",
+    "deleteConfirm": "Delete Document",
+    "deleteConfirmMessage": "Are you sure you want to delete",
+    "uploadTitle": "Upload Document",
+    "uploadMessage": "Upload functionality coming soon"
+  }
+}
