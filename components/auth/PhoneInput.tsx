@@ -108,6 +108,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
           onPress={() => setModalVisible(true)}
           disabled={disabled}
           accessibilityLabel="Select country code"
+          accessibilityHint="Double tap to select your country code"
         >
           <Text style={styles.flag}>{selectedCountry.flag}</Text>
           <Text style={[styles.code, { color: theme.text }]}>{selectedCountry.code}</Text>
@@ -141,7 +142,11 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
             {/* Header */}
             <View style={styles.modalHeader}>
               <Text style={[styles.modalTitle, { color: theme.text }]}>Select Country</Text>
-              <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <TouchableOpacity
+                onPress={() => setModalVisible(false)}
+                accessibilityLabel="Close country picker"
+                accessibilityRole="button"
+              >
                 <X size={22} color={theme.textMuted} />
               </TouchableOpacity>
             </View>
@@ -175,6 +180,8 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
                     pressed && { backgroundColor: theme.background },
                   ]}
                   onPress={() => handleCountrySelect(item)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${item.name}, code ${item.code}`}
                 >
                   <Text style={styles.flagLarge}>{item.flag}</Text>
                   <Text style={[styles.countryName, { color: theme.text }]}>{item.name}</Text>

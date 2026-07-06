@@ -26,7 +26,11 @@ export function KizolaLogo({
   const textColor = variant === 'light' ? '#FFFFFF' : LogoColors.darkText;
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      accessibilityRole="image"
+      accessibilityLabel="Kizola Protect logo"
+    >
       <View style={[styles.shieldContainer, { width: shield, height: shield }]}>
         <Svg width={shield} height={shield} viewBox="0 0 100 100">
           <Defs>
@@ -92,7 +96,13 @@ export function KizolaLogo({
 
 export function KizolaLogoSimple({ size = 40 }: { size?: number }) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 100 100">
+    <Svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      accessibilityLabel="Kizola Protect"
+      role="img"
+    >
       <Defs>
         <LinearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <Stop offset="0%" stopColor={LogoColors.blue} />

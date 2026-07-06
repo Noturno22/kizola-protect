@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Platform } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
@@ -13,12 +13,27 @@ if (!isConfigValid) {
   console.warn('⚠️ Supabase not configured. Using offline/demo mode.');
 }
 
+const secureStorageAdapter = {
+  getItem: async (key: string) => {
+    try { return await SecureStore.getItemAsync(key); }
+    catch { return null; }
+  },
+  setItem: async (key: string, value: string) => {
+    try { await SecureStore.setItemAsync(key, value); }
+    catch { /* SecureStore unavailable on web */ }
+  },
+  removeItem: async (key: string) => {
+    try { await SecureStore.deleteItemAsync(key); }
+    catch { /* SecureStore unavailable on web */ }
+  },
+};
+
 export const supabase = createClient(
   supabaseUrl || 'https://demo.local',
   supabaseAnonKey || 'demo-key',
   {
     auth: {
-      storage: AsyncStorage,
+      storage: secureStorageAdapter,
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: Platform.OS === 'web',
@@ -34,7 +49,7 @@ export type User = {
   name: string;
   plan: 'none' | 'free' | 'basic' | 'pro' | 'premium';
   status: 'active' | 'inactive';
-  role: 'admin' | 'user';
+  role: 'user' | 'support' | 'finance' | 'admin' | 'super_admin' | 'viewer';
   created_at: string;
   phone?: string;
   policy_number?: string;
@@ -61,6 +76,19 @@ export type SupportRequest = {
   category: 'legal' | 'immigration' | 'tax' | 'housing' | 'education' | 'job' | 'emergency' | 'other';
   priority: 'low' | 'medium' | 'high' | 'urgent';
   status: 'pending' | 'in_progress' | 'completed' | 'cancelled';
+  created_at: string;
+  updated_at: string;
+};
+
+export type UserDocument = {
+  id: string;
+  user_id: string;
+  name: string;
+  file_path: string;
+  file_url: string;
+  file_type: string;
+  file_size: number;
+  status: 'uploaded' | 'pending' | 'verified' | 'rejected';
   created_at: string;
   updated_at: string;
 };
@@ -102,7 +130,7 @@ export const PLANS = {
   basic: {
     id: 'basic',
     name: 'Basic',
-    price: 27.99,
+    price: 19.99,
     color: ['#10B981', '#059669'] as const,
     benefits: [
       'Basic legal guidance consultation',
@@ -118,7 +146,7 @@ export const PLANS = {
   pro: {
     id: 'pro',
     name: 'Pro',
-    price: 29.99,
+    price: 34.99,
     color: ['#0EA5E9', '#2563EB'] as const,
     benefits: [
       'Everything in Basic',
@@ -136,7 +164,7 @@ export const PLANS = {
   premium: {
     id: 'premium',
     name: 'Premium',
-    price: 33.99,
+    price: 49.99,
     color: ['#8B5CF6', '#6366F1'] as const,
     benefits: [
       'Everything in Pro',

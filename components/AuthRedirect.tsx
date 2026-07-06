@@ -3,7 +3,7 @@ import { usePathname, useRouter } from 'expo-router';
 import { useAuth } from '@/providers/AuthProvider';
 
 /** Rotas de login/registro: usuário logado não deve permanecer aqui. */
-const AUTH_ROUTE_PREFIXES = ['/login', '/register', '/login-phone', '/auth', '/onboarding', '/(auth)'] as const;
+const AUTH_ROUTE_PREFIXES = ['/login', '/register', '/login-phone', '/auth', '/onboarding', '/(auth)', '/forgot-password', '/reset-password'] as const;
 
 function isPublicAuthPath(pathname: string) {
   return AUTH_ROUTE_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));

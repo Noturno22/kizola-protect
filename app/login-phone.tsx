@@ -20,7 +20,7 @@ import { Phone, Lock, ArrowRight, ShieldCheck } from 'lucide-react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 
-const LOGO_URL = 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rp8ormh5clrs4bxi5u20j.jpg';
+const LOGO_URL = './assets/images/icon.png';
 
 export default function LoginPhone() {
   const router = useRouter();

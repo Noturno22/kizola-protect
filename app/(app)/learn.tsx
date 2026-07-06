@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, Animated, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, Animated, Dimensions, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -23,7 +23,6 @@ import { LEARNING_ARTICLES, LearningArticle } from '@/lib/supabase';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Search, Bookmark, CheckCircle, Share2 } from 'lucide-react-native';
-import { TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CATEGORY_CONFIG: Record<string, { icon: typeof FileText; color: string; key: string }> = {
@@ -163,10 +162,14 @@ export default function Learn() {
       />
 
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        <ScrollView
-          contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 32 }]}
-          showsVerticalScrollIndicator={false}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{ flex: 1 }}
         >
+          <ScrollView
+            contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 32 }]}
+            showsVerticalScrollIndicator={false}
+          >
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.headerTop}>
@@ -397,7 +400,8 @@ export default function Learn() {
             </LinearGradient>
           </View>
         </ScrollView>
-      </SafeAreaView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
 
       {/* Modern Full-Screen Article Modal */}
       <Modal

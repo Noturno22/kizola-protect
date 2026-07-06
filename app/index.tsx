@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Redirect } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useAuth } from '@/providers/AuthProvider';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const APP_ONBOARDING_COMPLETED_KEY = '@kizola_app_onboarding_completed_v1';
 
 export default function Index() {
+  const router = useRouter();
   const { session, user, loading: authLoading, isDemoMode } = useAuth();
   const { theme } = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
@@ -35,30 +36,26 @@ export default function Index() {
     };
   }, []);
 
-  if (authLoading || !onboardingChecked) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color={theme.primary} />
-      </View>
-    );
-  }
+  useEffect(() => {
+    if (authLoading || !onboardingChecked) return;
 
-  if (!hasCompletedOnboarding) {
-    return <Redirect href="/onboarding" />;
-  }
+    if (!hasCompletedOnboarding) {
+      router.replace('/onboarding');
+    } else {
+      const isAuthenticated = Boolean(session ?? (isDemoMode && user));
+      if (!isAuthenticated) {
+        router.replace('/login');
+      } else {
+        router.replace('/dashboard');
+      }
+    }
+  }, [authLoading, onboardingChecked, hasCompletedOnboarding, session, user, isDemoMode, router]);
 
-  const isAuthenticated = Boolean(session ?? (isDemoMode && user));
-
-  if (!isAuthenticated) {
-    // Redirect to the Twilio-backed phone auth login
-    return <Redirect href="/(auth)/login" />;
-  }
-
-  if (user?.plan === 'none') {
-    return <Redirect href="/dashboard" />;
-  }
-
-  return <Redirect href="/dashboard" />;
+  return (
+    <View style={styles.container}>
+      <ActivityIndicator size="large" color={theme.primary} />
+    </View>
+  );
 }
 
 const createStyles = (theme: Theme) => StyleSheet.create({

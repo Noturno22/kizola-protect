@@ -98,6 +98,14 @@ export default function AppLayout() {
       />
       {/* Hidden screens — not shown in tab bar */}
       <Tabs.Screen
+        name="finance-support"
+        options={{ href: null }}
+      />
+      <Tabs.Screen
+        name="housing-support"
+        options={{ href: null }}
+      />
+      <Tabs.Screen
         name="plans"
         options={{
           title: t('profile.myPlan') || 'Plans',

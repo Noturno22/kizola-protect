@@ -15,14 +15,30 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "app.luar.6xeu64ff9auaiakubrvpo",
+      "associatedDomains": [
+        "applinks:kizola.app",
+        "applinks:www.kizola.app"
+      ],
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "entitlements": {
+        "com.apple.developer.applesignin": [
+          "Default"
+        ]
+      },
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "Kizola Protect needs camera access to scan and upload documents.",
+        "NSPhotoLibraryUsageDescription": "Kizola Protect needs photo library access to upload documents.",
+        "NSMicrophoneUsageDescription": "Kizola Protect needs microphone access for voice messages.",
+        "NSFaceIDUsageDescription": "Kizola Protect uses Face ID for secure authentication."
       }
     },
     "android": {
-      "softwareKeyboardLayoutMode": "adjustResize",
+      "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,19 +52,21 @@
       [
         "expo-router",
         {
-          "origin": "https://LuarStudio.com/"
+          "origin": "https://kizola.app"
         }
       ],
       "expo-font",
       "expo-web-browser",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-localization",
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
       "router": {
-        "origin": "https://LuarStudio.com/"
+        "origin": "https://kizola.app"
       },
       "eas": {
         "projectId": "a1c4f43b-e481-4798-88d6-ceef06453dc6"

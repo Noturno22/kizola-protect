@@ -45,10 +45,9 @@ import {
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 
-const REQUESTS_KEY = '@kizola_support_requests';
 const THEME_KEY = '@kizola_theme';
 
 const NOTIFICATION_ICONS = {
@@ -202,9 +201,9 @@ export default function Dashboard() {
           .limit(3);
         setRecentRequests(requestsData || []);
       } else {
-        const stored = await AsyncStorage.getItem(`${REQUESTS_KEY}_${user.id}`);
+        const stored = await getSecureItem<SupportRequest[]>(SECURE_KEYS.SUPPORT_REQUESTS(user.id));
         if (stored) {
-          const allRequests = JSON.parse(stored);
+          const allRequests = stored;
           setRecentRequests(allRequests.slice(0, 3));
         }
       }
@@ -535,7 +534,7 @@ export default function Dashboard() {
           </View>
         </View>
 
-        {/* ── Need Help ── */}
+        {/* ── Estamos para Ajudar-te ── */}
         <View style={[styles.section, { marginBottom: 36 }]}>
           <TouchableOpacity
             style={[styles.helpCard, { backgroundColor: theme.helpCardBg, borderColor: theme.helpCardBorder }]}
@@ -546,9 +545,9 @@ export default function Dashboard() {
               <MessageCircle size={22} color={theme.accentBlue} strokeWidth={1.8} />
             </View>
             <View style={styles.helpContent}>
-              <Text style={[styles.helpTitle, { color: theme.text }]}>{t('dashboard.needHelp') || 'Precisa de Ajuda?'}</Text>
+              <Text style={[styles.helpTitle, { color: theme.text }]}>{t('dashboard.helpTitle') || 'Estamos para Ajudar-te'}</Text>
               <Text style={[styles.helpDescription, { color: theme.textSecondary }]}>
-                {t('dashboard.supportTeamAvailable') || 'A nossa equipa está disponível para si'}
+                {t('dashboard.helpDescription') || 'Disponíveis 7 dias por semana, 24 horas por dia, 365 dias por ano.'}
               </Text>
             </View>
 

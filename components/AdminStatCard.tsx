@@ -37,6 +37,8 @@ export function AdminStatCard({
           borderColor: theme.cardBorder,
         }
       ]}
+      accessibilityRole="summary"
+      accessibilityLabel={`${title}: ${value}${trendValue ? `, trend ${trend} ${trendValue}` : ''}`}
     >
       <View style={styles.header}>
         <View style={[styles.iconContainer, { backgroundColor: color || theme.accent + '20' }]}>

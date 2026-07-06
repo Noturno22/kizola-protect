@@ -2,10 +2,7 @@ import createContextHook from '@nkzw/create-context-hook';
 import { useState, useCallback, useEffect } from 'react';
 import { Notification, supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useAuth } from './AuthProvider';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const NOTIFICATIONS_KEY = '@kizola_notifications';
-
+import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 export const [NotificationProvider, useNotifications] = createContextHook(() => {
   const { user, isDemoMode } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -18,12 +15,10 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
     setLoading(true);
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        // Load from AsyncStorage in demo mode
-        const stored = await AsyncStorage.getItem(`${NOTIFICATIONS_KEY}_${user.id}`);
+        const stored = await getSecureItem<Notification[]>(SECURE_KEYS.NOTIFICATIONS(user.id));
         if (stored) {
-          const parsed = JSON.parse(stored);
-          setNotifications(parsed);
-          setUnreadCount(parsed.filter((n: Notification) => !n.read).length);
+          setNotifications(stored);
+          setUnreadCount(stored.filter((n: Notification) => !n.read).length);
         } else {
           // Create default notifications for demo
           const defaultNotifications: Notification[] = [
@@ -48,7 +43,7 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
           ];
           setNotifications(defaultNotifications);
           setUnreadCount(2);
-          await AsyncStorage.setItem(`${NOTIFICATIONS_KEY}_${user.id}`, JSON.stringify(defaultNotifications));
+          await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), defaultNotifications);
         }
         return;
       }
@@ -82,7 +77,7 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
         );
         setNotifications(updated);
         setUnreadCount(updated.filter(n => !n.read).length);
-        await AsyncStorage.setItem(`${NOTIFICATIONS_KEY}_${user.id}`, JSON.stringify(updated));
+        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
         return;
       }
 
@@ -110,7 +105,7 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
         const updated = notifications.map(n => ({ ...n, read: true }));
         setNotifications(updated);
         setUnreadCount(0);
-        await AsyncStorage.setItem(`${NOTIFICATIONS_KEY}_${user.id}`, JSON.stringify(updated));
+        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
         return;
       }
 
@@ -146,7 +141,7 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
         if (!notification.read) {
           setUnreadCount(prev => prev + 1);
         }
-        await AsyncStorage.setItem(`${NOTIFICATIONS_KEY}_${user.id}`, JSON.stringify(updated));
+        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
         return;
       }
 
@@ -170,7 +165,7 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
         const updated = notifications.filter(n => n.id !== notificationId);
         setNotifications(updated);
         setUnreadCount(updated.filter(n => !n.read).length);
-        await AsyncStorage.setItem(`${NOTIFICATIONS_KEY}_${user.id}`, JSON.stringify(updated));
+        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
         return;
       }
 

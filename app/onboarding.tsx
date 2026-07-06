@@ -61,7 +61,7 @@ export default function OnboardingScreen() {
     {
       id: '1',
       titleKey: 'dashboard.welcomeToDashboard',
-      descKey: 'dashboard.onboardingSubtitle',
+      descKey: '',
       image: require('@/assets/onboarding/family.png'),
       icon: Shield,
       color: theme.accent,
@@ -350,8 +350,8 @@ export default function OnboardingScreen() {
               >
                 <Text style={styles.buttonText}>
                   {currentIndex === slides.length - 1 
-                    ? (t('dashboard.getStarted') || 'Começar Agora') 
-                    : (t('common.done') || 'Próximo')}
+                    ? t('common.getStarted') 
+                    : t('common.next')}
                 </Text>
                 <ChevronRight size={20} color="#FFF" />
               </LinearGradient>

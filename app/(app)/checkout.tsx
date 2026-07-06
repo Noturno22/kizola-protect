@@ -3,13 +3,13 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   ScrollView,
   Alert,
   ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
+  Linking,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -18,31 +18,25 @@ import {
   CreditCard,
   Lock,
   ArrowLeft,
-  AlertCircle,
-  Crown,
-  Star,
   Shield,
+  CheckCircle,
+  ChevronRight,
+  Smartphone,
 } from 'lucide-react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { PLANS } from '@/lib/supabase';
-import {
-  CardData,
-  processPayment,
-  formatCardNumberInput,
-  formatExpiryInput,
-  validateCard,
-  getCardBrand,
-} from '@/lib/payment';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { getPaymentPlatform, PLAN_IAP_PRODUCTS } from '@/lib/payment';
+import { purchaseProduct, verifyReceipt } from '@/services/iap/iapService';
 
 export default function Checkout() {
   const router = useRouter();
   const { t } = useTranslation();
   const { planId } = useLocalSearchParams<{ planId?: string }>();
   const safePlanId = String(planId || '');
-  const { updateUserPlan } = useAuth();
+  const { session, isDemoMode, updateUserPlan } = useAuth();
   const { theme, isDark } = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -51,149 +45,147 @@ export default function Checkout() {
     plan = PLANS[safePlanId];
   }
 
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvc, setCvc] = useState('');
-  const [cardholderName, setCardholderName] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const paymentPlatform = getPaymentPlatform();
 
-  const cardBrand = useMemo(() => {
-    if (cardNumber.replace(/\s/g, '').length >= 4) {
-      return getCardBrand(cardNumber);
-    }
-    return null;
-  }, [cardNumber]);
-
-  const handleCardNumberChange = (value: string) => {
-    const formatted = formatCardNumberInput(value);
-    if (formatted.replace(/\s/g, '').length <= 16) {
-      setCardNumber(formatted);
-      if (errors.cardNumber) {
-        setErrors((prev) => ({ ...prev, cardNumber: '' }));
-      }
-    }
-  };
-
-  const handleExpiryChange = (value: string) => {
-    const formatted = formatExpiryInput(value);
-    if (formatted.length <= 5) {
-      setExpiryDate(formatted);
-      if (errors.expiryDate) {
-        setErrors((prev) => ({ ...prev, expiryDate: '' }));
-      }
-    }
-  };
-
-  const handleCvcChange = (value: string) => {
-    const cleaned = value.replace(/\D/g, '');
-    if (cleaned.length <= 4) {
-      setCvc(cleaned);
-      if (errors.cvc) {
-        setErrors((prev) => ({ ...prev, cvc: '' }));
-      }
-    }
-  };
-
-  const handleNameChange = (value: string) => {
-    setCardholderName(value);
-    if (errors.cardholderName) {
-      setErrors((prev) => ({ ...prev, cardholderName: '' }));
-    }
-  };
-
-  const getPlanIcon = (planId: string) => {
-    switch (planId) {
+  const getPlanGradient = (id: string) => {
+    switch (id) {
       case 'premium':
-        return <Crown size={24} color={theme.accentPurple} />;
+        return ['#8B5CF6', '#6366F1'] as const;
       case 'pro':
-        return <Star size={24} color={theme.accentBlue} />;
+        return ['#0EA5E9', '#2563EB'] as const;
+      case 'basic':
+        return ['#10B981', '#059669'] as const;
       default:
-        return <Shield size={24} color={theme.success} />;
+        return ['#10B981', '#059669'] as const;
+    }
+  };
+
+  const getPlanIcon = (id: string) => {
+    switch (id) {
+      case 'premium':
+        return '#8B5CF6';
+      case 'pro':
+        return '#3B82F6';
+      case 'basic':
+        return '#22C55E';
+      default:
+        return '#22C55E';
     }
   };
 
   const handlePayment = async () => {
-    const cardData: CardData = {
-      cardNumber,
-      expiryDate,
-      cvc,
-      cardholderName,
-    };
-
-    const validation = validateCard(cardData);
-    if (!validation.valid) {
-      const newErrors: Record<string, string> = {};
-      
-      if (validation.error?.includes('card number')) {
-        newErrors.cardNumber = validation.error;
-      }
-      if (validation.error?.includes('expir')) {
-        newErrors.expiryDate = validation.error;
-      }
-      if (validation.error?.includes('CVC')) {
-        newErrors.cvc = validation.error;
-      }
-      if (validation.error?.includes('name')) {
-        newErrors.cardholderName = validation.error;
-      }
-      
-      setErrors(newErrors);
-      return;
-    }
-
     if (!plan) {
       Alert.alert(t('common.error'), 'Invalid plan selected');
       return;
     }
 
-    setLoading(true);
-    setErrors({});
-
-    try {
-      const result = await processPayment(cardData, {
-        id: plan.id,
-        name: plan.name,
-        price: plan.price,
-        interval: 'month',
-      });
-
-      if (result.success) {
-        await updateUserPlan(plan.id as 'basic' | 'pro' | 'premium');
-        
+    if (isDemoMode) {
+      setLoading(true);
+      try {
+        await updateUserPlan(plan.id as any);
         Alert.alert(
           t('common.success'),
-          result.message || `You are now subscribed to the ${plan.name} plan.`,
+          `Modo de Teste: Plano ${plan.name} ativado com sucesso!`,
           [
             {
               text: t('common.done'),
-              onPress: () => router.replace('/dashboard'),
+              onPress: () => {
+                router.replace('/dashboard');
+              },
             },
           ]
         );
+      } catch (error: any) {
+        Alert.alert(t('common.error'), error.message || 'Falha ao ativar plano em modo teste');
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // IAP flow for mobile (iOS/Android)
+      if (paymentPlatform === 'iap') {
+        const productId = PLAN_IAP_PRODUCTS[plan.id as 'basic' | 'pro' | 'premium'];
+        if (!productId) {
+          throw new Error('No IAP product configured for this plan');
+        }
+
+        const purchaseResult = await purchaseProduct(productId);
+        if (!purchaseResult.success) {
+          if (purchaseResult.userCancelled) {
+            setLoading(false);
+            return;
+          }
+          throw new Error(purchaseResult.error || 'Purchase failed');
+        }
+
+        const verification = await verifyReceipt(purchaseResult.purchase);
+        if (!verification.valid) {
+          throw new Error(verification.error || 'Receipt verification failed');
+        }
+
+        await updateUserPlan(plan.id as any);
+        Alert.alert(
+          t('common.success'),
+          `Plano ${plan.name} ativado com sucesso!`,
+          [{ text: t('common.done'), onPress: () => router.replace('/dashboard') }]
+        );
+        return;
+      }
+
+      // Stripe flow (web)
+      const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
+      const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+
+      if (!supabaseUrl || !anonKey) {
+        throw new Error('Supabase configuration is missing');
+      }
+
+      const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session?.access_token}`,
+          'apikey': anonKey,
+        },
+        body: JSON.stringify({ planId: plan.id }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to create checkout session');
+      }
+
+      if (result.url) {
+        const supported = await Linking.canOpenURL(result.url);
+        if (supported) {
+          await Linking.openURL(result.url);
+          Alert.alert(
+            t('common.success'),
+            `Redirecionando para a página de pagamento Stripe...`,
+            [
+              {
+                text: t('common.done'),
+                onPress: () => {
+                  router.replace('/dashboard');
+                },
+              },
+            ]
+          );
+        } else {
+          Alert.alert(t('common.error'), 'Unable to open payment link');
+        }
       } else {
-        Alert.alert(t('common.error'), result.error || 'Payment failed. Please try again.');
+        throw new Error('No payment URL returned from server');
       }
     } catch (error: any) {
-      Alert.alert(
-        t('common.error'),
-        error.message || 'An unexpected error occurred. Please try again.'
-      );
+      Alert.alert(t('common.error'), error.message || 'Failed to open payment link');
     } finally {
       setLoading(false);
     }
-  };
-
-  const renderError = (field: string) => {
-    if (errors[field]) {
-      return (
-        <View style={styles.errorContainer}>
-          <AlertCircle size={14} color={theme.error} />
-          <Text style={styles.errorText}>{errors[field]}</Text>
-        </View>
-      );
-    }
-    return null;
   };
 
   if (!plan || plan.id === 'free') {
@@ -204,7 +196,7 @@ export default function Checkout() {
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
             <ArrowLeft size={24} color={theme.isDark ? "#FFFFFF" : theme.text} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>{t('checkout.title')}</Text>
+          <Text style={styles.headerTitle}>Finalizar Compra</Text>
         </View>
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>No payment required for the Free plan.</Text>
@@ -221,143 +213,140 @@ export default function Checkout() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style={isDark ? "light" : "dark"} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {/* Header */}
-          <LinearGradient colors={theme.headerGradient as any} style={styles.headerGradient}>
-            <View style={styles.header}>
-              <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-                <ArrowLeft size={24} color={theme.isDark ? "#FFFFFF" : theme.text} />
-              </TouchableOpacity>
-              <Text style={styles.headerTitle}>{t('checkout.title')}</Text>
-            </View>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+              <ArrowLeft size={24} color={theme.text} />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Checkout</Text>
+          </View>
 
-            {/* Plan Summary */}
-            <View style={styles.planSummary}>
-              <View style={styles.planIconContainer}>
-                {getPlanIcon(plan.id)}
+          {/* Plan Card */}
+          <LinearGradient
+            colors={getPlanGradient(plan.id)}
+            style={styles.planCard}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          >
+            <View style={styles.planCardHeader}>
+              <View style={styles.planIconWrapper}>
+                <View style={[styles.planIcon, { backgroundColor: getPlanIcon(plan.id) + '20' }]}>
+                  <Shield size={24} color={getPlanIcon(plan.id)} />
+                </View>
               </View>
-              <View style={styles.planInfo}>
+              <View style={styles.planBadge}>
+                <Text style={styles.planBadgeText}>{plan.name.toUpperCase()}</Text>
+              </View>
+            </View>
+            
+            <View style={styles.planCardContent}>
+              <View>
                 <Text style={styles.planName}>{plan.name} Plan</Text>
-                <Text style={styles.planPrice}>
-                  ${plan.price.toFixed(2)}/month
-                </Text>
+                <Text style={styles.planPeriod}>Monthly subscription</Text>
+              </View>
+              <View style={styles.priceBlock}>
+                <Text style={styles.currency}>R$</Text>
+                <Text style={styles.price}>{plan.price.toFixed(2)}</Text>
+                <Text style={styles.period}>/mês</Text>
               </View>
             </View>
           </LinearGradient>
 
-          {/* Card Form */}
-          <View style={styles.formContainer}>
-            {/* Card Number */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('checkout.cardNumber')}</Text>
-              <View style={[styles.inputContainer, errors.cardNumber && styles.inputError]}>
-                <CreditCard size={20} color={theme.textMuted} />
-                <TextInput
-                  style={styles.input}
-                  placeholder="1234 5678 9012 3456"
-                  placeholderTextColor={theme.textMuted}
-                  value={cardNumber}
-                  onChangeText={handleCardNumberChange}
-                  keyboardType="numeric"
-                  maxLength={19}
-                />
-                {cardBrand && (
-                  <View style={styles.cardBrandBadge}>
-                    <Text style={styles.cardBrandText}>{cardBrand}</Text>
+          {/* Features Summary */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Included in this plan</Text>
+            <View style={styles.featuresCard}>
+              {(() => {
+                const benefits = t(`plans.${plan.id}.benefits`, { returnObjects: true });
+                const benefitsArray = Array.isArray(benefits) ? benefits : [];
+                return benefitsArray.slice(0, 4).map((benefit: string, index: number) => (
+                  <View key={index} style={styles.featureRow}>
+                    <View style={styles.featureCheck}>
+                      <CheckCircle size={16} color={theme.success} />
+                    </View>
+                    <Text style={styles.featureText}>{benefit}</Text>
                   </View>
-                )}
-              </View>
-              {renderError('cardNumber')}
+                ));
+              })()}
+              {(() => {
+                const benefits = t(`plans.${plan.id}.benefits`, { returnObjects: true });
+                const benefitsArray = Array.isArray(benefits) ? benefits : [];
+                if (benefitsArray.length > 4) {
+                  return (
+                    <View style={styles.moreFeaturesRow}>
+                      <Text style={styles.moreFeaturesText}>
+                        +{benefitsArray.length - 4} more benefits
+                      </Text>
+                      <ChevronRight size={16} color={theme.textMuted} />
+                    </View>
+                  );
+                }
+                return null;
+              })()}
             </View>
+          </View>
 
-            {/* Expiry and CVC Row */}
-            <View style={styles.row}>
-              <View style={styles.halfInputGroup}>
-                <Text style={styles.label}>{t('checkout.expiryDate')}</Text>
-                <View style={[styles.inputContainer, errors.expiryDate && styles.inputError]}>
-                  <TextInput
-                    style={styles.input}
-                    placeholder="MM/YY"
-                    placeholderTextColor={theme.textMuted}
-                    value={expiryDate}
-                    onChangeText={handleExpiryChange}
-                    keyboardType="numeric"
-                    maxLength={5}
-                  />
-                </View>
-                {renderError('expiryDate')}
-              </View>
-
-              <View style={styles.halfInputGroup}>
-                <Text style={styles.label}>{t('checkout.cvc')}</Text>
-                <View style={[styles.inputContainer, errors.cvc && styles.inputError]}>
-                  <Lock size={20} color={theme.textMuted} />
-                  <TextInput
-                    style={styles.input}
-                    placeholder="123"
-                    placeholderTextColor={theme.textMuted}
-                    value={cvc}
-                    onChangeText={handleCvcChange}
-                    keyboardType="numeric"
-                    maxLength={4}
-                    secureTextEntry
-                  />
-                </View>
-                {renderError('cvc')}
-              </View>
+          {/* Security Info */}
+          <View style={styles.securityCard}>
+            <View style={styles.securityIcon}>
+              <Lock size={20} color={theme.success} />
             </View>
-
-            {/* Cardholder Name */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('checkout.cardholderName')}</Text>
-              <View style={[styles.inputContainer, errors.cardholderName && styles.inputError]}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="John Doe"
-                  placeholderTextColor={theme.textMuted}
-                  value={cardholderName}
-                  onChangeText={handleNameChange}
-                  autoCapitalize="words"
-                />
-              </View>
-              {renderError('cardholderName')}
-            </View>
-
-            {/* Security Note */}
-            <View style={styles.securityNote}>
-              <Lock size={16} color={theme.textMuted} />
+            <View style={styles.securityContent}>
+              <Text style={styles.securityTitle}>Secure Payment</Text>
               <Text style={styles.securityText}>
-                Your payment info is encrypted and secure. This is a test environment using Stripe mock.
+                {paymentPlatform === 'iap'
+                  ? 'Payment is processed securely through your device\'s app store. We never store your payment details.'
+                  : 'Your payment is processed securely through Stripe. We never store your card details.'}
               </Text>
             </View>
+          </View>
 
-            {/* Pay Button */}
-            <TouchableOpacity
-              style={[styles.payButton, loading && styles.payButtonDisabled]}
-              onPress={handlePayment}
-              disabled={loading}
+          {/* Pay Button */}
+          <TouchableOpacity
+            style={[styles.payButton, loading && styles.payButtonDisabled]}
+            onPress={handlePayment}
+            disabled={loading}
+            activeOpacity={0.8}
+          >
+            <LinearGradient
+              colors={getPlanGradient(plan.id)}
+              style={styles.payButtonGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
             >
               {loading ? (
                 <ActivityIndicator color="#FFFFFF" />
               ) : (
-                <>
-                  <Text style={styles.payButtonText}>Pay ${plan.price.toFixed(2)}</Text>
-                </>
+                <View style={styles.payButtonContent}>
+                  {paymentPlatform === 'iap' ? (
+                    <Smartphone size={20} color="#FFFFFF" />
+                  ) : (
+                    <CreditCard size={20} color="#FFFFFF" />
+                  )}
+                  <Text style={styles.payButtonText}>
+                    {paymentPlatform === 'iap' ? 'Subscribe' : `Pagar R$ ${plan.price.toFixed(2)}`}
+                  </Text>
+                </View>
               )}
-            </TouchableOpacity>
+            </LinearGradient>
+          </TouchableOpacity>
 
-            {/* Test Cards Info */}
-            <View style={styles.testCardsContainer}>
-              <Text style={styles.testCardsTitle}>Test Cards</Text>
-              <Text style={styles.testCardsText}>4242 4242 4242 4242 - Success (Recommended)</Text>
-              <Text style={styles.testCardsText}>4000 0000 0000 9995 - Card Declined</Text>
-              <Text style={styles.testCardsText}>4000 0000 0000 0069 - Card Declined</Text>
-            </View>
-          </View>
+          {/* Cancel Link */}
+          <TouchableOpacity
+            style={styles.cancelButton}
+            onPress={() => router.back()}
+            disabled={loading}
+          >
+            <Text style={styles.cancelButtonText}>Cancel</Text>
+          </TouchableOpacity>
+
+          <View style={styles.bottomSpacer} />
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -375,164 +364,224 @@ const createStyles = (theme: Theme) =>
     },
     scrollContent: {
       flexGrow: 1,
-    },
-    headerGradient: {
-      paddingBottom: 24,
+      paddingHorizontal: 20,
+      paddingTop: 8,
     },
     header: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 20,
-      paddingTop: 16,
-      paddingBottom: 8,
+      paddingVertical: 12,
+      marginBottom: 24,
       gap: 12,
     },
     backButton: {
       padding: 8,
+      borderRadius: 12,
+      backgroundColor: theme.surface,
     },
     headerTitle: {
       fontSize: 24,
       fontWeight: '700',
-      color: theme.isDark ? '#FFFFFF' : theme.text,
+      color: theme.text,
     },
-    planSummary: {
+    planCard: {
+      borderRadius: 24,
+      padding: 24,
+      marginBottom: 24,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 8 },
+      shadowOpacity: 0.3,
+      shadowRadius: 16,
+      elevation: 8,
+    },
+    planCardHeader: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
       alignItems: 'center',
-      paddingHorizontal: 20,
-      marginTop: 8,
-      gap: 16,
+      marginBottom: 20,
     },
-    planIconContainer: {
+    planIconWrapper: {
       width: 56,
       height: 56,
       borderRadius: 16,
-      backgroundColor: '#FFFFFF',
+      backgroundColor: 'rgba(255,255,255,0.2)',
       justifyContent: 'center',
       alignItems: 'center',
     },
-    planInfo: {
-      flex: 1,
+    planIcon: {
+      width: 48,
+      height: 48,
+      borderRadius: 14,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    planBadge: {
+      backgroundColor: 'rgba(255,255,255,0.2)',
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      borderRadius: 20,
+    },
+    planBadgeText: {
+      color: '#FFFFFF',
+      fontSize: 12,
+      fontWeight: '700',
+      letterSpacing: 0.5,
+    },
+    planCardContent: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
     },
     planName: {
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: '700',
-      color: theme.isDark ? '#FFFFFF' : theme.text,
+      color: '#FFFFFF',
       marginBottom: 4,
     },
-    planPrice: {
-      fontSize: 16,
-      color: theme.isDark ? 'rgba(255,255,255,0.85)' : theme.textSecondary,
+    planPeriod: {
+      fontSize: 14,
+      color: 'rgba(255,255,255,0.8)',
     },
-    formContainer: {
-      padding: 20,
-      gap: 20,
-    },
-    inputGroup: {
-      gap: 8,
-    },
-    row: {
+    priceBlock: {
       flexDirection: 'row',
-      gap: 16,
+      alignItems: 'flex-end',
     },
-    halfInputGroup: {
+    currency: {
+      fontSize: 18,
+      fontWeight: '600',
+      color: '#FFFFFF',
+      marginBottom: 6,
+      marginRight: 4,
+    },
+    price: {
+      fontSize: 40,
+      fontWeight: '800',
+      color: '#FFFFFF',
+      lineHeight: 44,
+    },
+    period: {
+      fontSize: 16,
+      color: 'rgba(255,255,255,0.8)',
+      marginBottom: 6,
+      marginLeft: 2,
+    },
+    section: {
+      marginBottom: 20,
+    },
+    sectionTitle: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: theme.text,
+      marginBottom: 12,
+    },
+    featuresCard: {
+      backgroundColor: theme.surface,
+      borderRadius: 16,
+      padding: 16,
+      borderWidth: 1,
+      borderColor: theme.cardBorderAlt,
+    },
+    featureRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 10,
+      gap: 12,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.cardBorderAlt,
+    },
+    featureCheck: {
+      width: 28,
+      height: 28,
+      borderRadius: 14,
+      backgroundColor: theme.success + '15',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    featureText: {
       flex: 1,
-      gap: 8,
+      fontSize: 14,
+      color: theme.textSecondary,
+      lineHeight: 20,
     },
-    label: {
+    moreFeaturesRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingVertical: 12,
+      marginTop: 4,
+    },
+    moreFeaturesText: {
+      fontSize: 14,
+      color: theme.accent,
+      fontWeight: '500',
+    },
+    securityCard: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: theme.surface,
+      borderRadius: 16,
+      padding: 16,
+      marginBottom: 24,
+      borderWidth: 1,
+      borderColor: theme.success + '20',
+      gap: 14,
+    },
+    securityIcon: {
+      width: 44,
+      height: 44,
+      borderRadius: 12,
+      backgroundColor: theme.success + '15',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    securityContent: {
+      flex: 1,
+    },
+    securityTitle: {
       fontSize: 14,
       fontWeight: '600',
       color: theme.text,
       marginBottom: 4,
     },
-    inputContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: theme.surface,
-      borderRadius: 12,
-      borderWidth: 1,
-      borderColor: theme.cardBorderAlt,
-      paddingHorizontal: 16,
-      paddingVertical: 14,
-      gap: 12,
-    },
-    inputError: {
-      borderColor: theme.error,
-    },
-    input: {
-      flex: 1,
-      fontSize: 16,
-      color: theme.text,
-    },
-    cardBrandBadge: {
-      backgroundColor: theme.primary + '20',
-      paddingHorizontal: 8,
-      paddingVertical: 4,
-      borderRadius: 6,
-    },
-    cardBrandText: {
-      fontSize: 12,
-      fontWeight: '600',
-      color: theme.primary,
-    },
-    errorContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 6,
-      marginTop: 4,
-    },
-    errorText: {
-      fontSize: 12,
-      color: theme.error,
-    },
-    securityNote: {
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      gap: 8,
-      padding: 16,
-      backgroundColor: theme.surface,
-      borderRadius: 12,
-      borderWidth: 1,
-      borderColor: theme.cardBorderAlt,
-    },
     securityText: {
-      flex: 1,
       fontSize: 13,
       color: theme.textMuted,
       lineHeight: 18,
     },
     payButton: {
-      backgroundColor: theme.primary,
+      borderRadius: 16,
+      overflow: 'hidden',
+      marginBottom: 12,
+    },
+    payButtonGradient: {
       paddingVertical: 18,
-      borderRadius: 14,
       alignItems: 'center',
       justifyContent: 'center',
     },
     payButtonDisabled: {
       opacity: 0.7,
     },
+    payButtonContent: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 10,
+    },
     payButtonText: {
       fontSize: 18,
       fontWeight: '700',
       color: '#FFFFFF',
     },
-    testCardsContainer: {
-      backgroundColor: theme.surface,
-      borderRadius: 12,
-      padding: 16,
-      borderWidth: 1,
-      borderColor: theme.cardBorderAlt,
-      marginTop: 8,
+    cancelButton: {
+      paddingVertical: 14,
+      alignItems: 'center',
     },
-    testCardsTitle: {
-      fontSize: 14,
-      fontWeight: '600',
-      color: theme.text,
-      marginBottom: 12,
-    },
-    testCardsText: {
-      fontSize: 13,
+    cancelButtonText: {
+      fontSize: 16,
       color: theme.textMuted,
-      marginBottom: 4,
+      fontWeight: '500',
+    },
+    bottomSpacer: {
+      height: 20,
     },
     emptyContainer: {
       flex: 1,

@@ -1,1 +1,229 @@
-# API keys or secrets* Use environment variables* Validate and sanitize user input* Prevent common vulnerabilities (XSS, SQL Injection)⚡ Performance Guidelines* Avoid unnecessary re-renders or loops* Optimize database queries* Use caching when appropriate🧪 Testing & Debugging* Write testable code* Add basic error handling* Log meaningful debug information🧩 Task Execution StrategyWhen given a task:1. Understand the requirement2. Check existing implementation3. Plan minimal changes4. Implement step-by-step5. Test the result6. Refactor if needed📚 Documentation Rules* Add comments only where necessary* Explain complex logic clearly* Keep README updated if major changes occur🚫 What to Avoid* Overengineering* Unnecessary dependencies* Hardcoded values* Ignoring existing patterns🧠 Context Memory StrategyUse project files as long-term memory:* README.md → project overview* AGENTS.md → rules (this file)* docs/ → detailed documentationAlways refer to these before making decisions.🛠️ Default Tech Stack (if not specified)* Frontend: React* Backend: Node.js (Express)* Database: PostgreSQL* Styling: Tailwind CSS🎬 Special Instruction (For Demo / Teaching Projects)* Prefer simple and clear implementations* Add explanatory comments for beginners* Avoid overly complex patterns unless necessary✅ Output ExpectationsEvery output should be:* Working* Clean* Minimal* Easy to understand🔄 Continuous ImprovementIf you see a better approach:* Suggest improvement* Then implement it safely🚀 Final RuleAlways act like a senior software engineerwho writes code that others can easily understand, use, and scale.
+## Table `profiles`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `full_name` | `text` |  Nullable |
+| `email` | `text` |  Nullable |
+| `phone` | `text` |  Nullable |
+| `status` | `text` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+| `role` | `text` |  Nullable |
+| `policy_number` | `text` |  Nullable Unique |
+| `avatar_url` | `text` |  Nullable |
+
+## Table `support_requests`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  Nullable |
+| `category` | `text` |  Nullable |
+| `priority` | `text` |  Nullable |
+| `message` | `text` |  Nullable |
+| `status` | `text` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+| `name` | `text` |  Nullable |
+| `email` | `text` |  Nullable |
+| `updated_at` | `timestamp` |  Nullable |
+
+## Table `activities`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  Nullable |
+| `title` | `text` |  Nullable |
+| `description` | `text` |  Nullable |
+| `status` | `text` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+
+## Table `notifications`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  Nullable |
+| `title` | `text` |  Nullable |
+| `message` | `text` |  Nullable |
+| `read` | `bool` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+| `type` | `text` |  Nullable |
+
+## Table `plans`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `text` | Primary |
+| `name` | `text` |  Unique |
+| `price` | `numeric` |  Nullable |
+| `features` | `jsonb` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+
+## Table `subscriptions`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  Nullable |
+| `plan_id` | `text` |  Nullable |
+| `status` | `text` |  Nullable |
+| `start_date` | `timestamp` |  Nullable |
+| `end_date` | `timestamp` |  Nullable |
+| `created_at` | `timestamp` |  Nullable |
+| `next_billing_date` | `timestamptz` |  Nullable |
+| `plan` | `text` |  |
+| `expires_at` | `timestamptz` |  Nullable |
+| `auto_renew` | `bool` |  Nullable |
+| `cancelled_at` | `timestamptz` |  Nullable |
+
+## Table `documents`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  |
+| `name` | `text` |  |
+| `file_path` | `text` |  |
+| `file_url` | `text` |  Nullable |
+| `file_type` | `text` |  |
+| `file_size` | `int8` |  |
+| `status` | `text` |  |
+| `created_at` | `timestamptz` |  Nullable |
+| `updated_at` | `timestamptz` |  Nullable |
+
+## Table `auth_audit_logs`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  Nullable |
+| `action` | `text` |  |
+| `resource` | `text` |  Nullable |
+| `details` | `jsonb` |  Nullable |
+| `ip_address` | `text` |  Nullable |
+| `created_at` | `timestamptz` |  Nullable |
+
+## Table `housing_requests`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  |
+| `nome` | `text` |  |
+| `email` | `text` |  Nullable |
+| `telefone` | `text` |  Nullable |
+| `estado` | `text` |  |
+| `cidade` | `text` |  |
+| `situacao_atual` | `text` |  |
+| `necessidade` | `text` |  |
+| `observacoes` | `text` |  Nullable |
+| `status` | `text` |  |
+| `assigned_to` | `uuid` |  Nullable |
+| `resolved_at` | `timestamptz` |  Nullable |
+| `created_at` | `timestamptz` |  Nullable |
+| `updated_at` | `timestamptz` |  Nullable |
+
+## Table `finance_requests`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  |
+| `nome` | `text` |  |
+| `email` | `text` |  Nullable |
+| `tipo_ajuda` | `text` |  |
+| `estado` | `text` |  |
+| `descricao` | `text` |  |
+| `observacoes` | `text` |  Nullable |
+| `status` | `text` |  |
+| `assigned_to` | `uuid` |  Nullable |
+| `resolved_at` | `timestamptz` |  Nullable |
+| `created_at` | `timestamptz` |  Nullable |
+| `updated_at` | `timestamptz` |  Nullable |
+
+## Table `satisfaction_ratings`
+
+### Columns
+
+| Name | Type | Constraints |
+|------|------|-------------|
+| `id` | `uuid` | Primary |
+| `user_id` | `uuid` |  |
+| `request_type` | `text` |  |
+| `request_id` | `uuid` |  |
+| `resolved` | `bool` |  |
+| `problem_persists` | `bool` |  Nullable |
+| `what_wasnt_resolved` | `text` |  Nullable |
+| `additional_comments` | `text` |  Nullable |
+| `rating` | `int4` |  Nullable |
+| `created_at` | `timestamptz` |  Nullable |
+
+mais as notificaçoes são para cada usuario e não no geral
+
+## Supabase Admin CLI
+
+Existe um script (`scripts/supabase-admin.js`) para agents executarem operações
+directamente no Supabase **sem precisar do dashboard web**.
+
+### Como usar
+
+```bash
+# Listar todas as tabelas
+node scripts/supabase-admin.js tables
+
+# Ver schema de uma tabela
+node scripts/supabase-admin.js inspect profiles
+
+# Correr query SELECT
+node scripts/supabase-admin.js query "SELECT * FROM profiles LIMIT 5"
+
+# Executar DDL/DML (ALTER TABLE, INSERT, UPDATE, DELETE)
+node scripts/supabase-admin.js sql "ALTER TABLE profiles ADD COLUMN IF NOT EXISTS bio TEXT"
+
+# Executar migrações SQL
+node scripts/supabase-admin.js migrate supabase-migration-correcoes.sql
+
+# Executar todas as migrações pendentes
+node scripts/supabase-admin.js migrate:all
+
+# Chamar função RPC
+node scripts/supabase-admin.js rpc list_tables
+
+# Ver ajuda completa
+node scripts/supabase-admin.js --help
+```
+
+### Pré-requisitos
+
+- O Supabase CLI deve estar linked ao projecto (`supabase link` já foi feito)
+- As RPC functions (`exec_sql`, `exec_select`, `list_tables`, `inspect_table`)
+  foram criadas via `scripts/init-exec-sql.sql`
+
+### Nota para PowerShell
+
+No Windows PowerShell, para passar argumentos JSON ao comando `rpc`, usa `--%`:
+
+```powershell
+node --% scripts/supabase-admin.js rpc inspect_table "{\"table_name\":\"profiles\"}"
+```

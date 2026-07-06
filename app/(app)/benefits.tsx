@@ -19,7 +19,9 @@ import {
   CheckCircle2,
   HelpCircle,
   Bike,
-  ShieldCheck
+  ShieldCheck,
+  DollarSign,
+  ArrowRight,
 } from 'lucide-react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { BENEFIT_CATEGORIES, BENEFITS } from '@/lib/supabase';
@@ -104,7 +106,7 @@ export default function Benefits() {
               <View style={styles.headerTextContainer}>
                 <Text style={styles.headerTitle}>{t('benefits.title')}</Text>
                 <Text style={styles.headerSubtitle}>
-                  {t('benefits.subtitle', { plan: user?.plan || t('common.member') })}
+                  {t('benefits.subtitle') || 'Explore todos os serviços oferecidos exclusivamente para Si.'}
                 </Text>
               </View>
             </View>
@@ -134,6 +136,67 @@ export default function Benefits() {
                 </TouchableOpacity>
               </View>
             </LinearGradient>
+          </View>
+
+          {/* New Services: Habitação + Finanças */}
+          <View style={styles.newServicesContainer}>
+            <Text style={styles.sectionTitle}>Novos Serviços</Text>
+
+            {/* Apoio à Habitação */}
+            <TouchableOpacity
+              style={[styles.newServiceCard, { backgroundColor: '#F59E0B' + '10', borderColor: '#F59E0B' + '30' }]}
+              onPress={() => router.push('/(app)/housing-support')}
+              activeOpacity={0.85}
+            >
+              <LinearGradient
+                colors={['#F59E0B', '#D97706']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.newServiceGradient}
+              />
+              <View style={styles.newServiceContent}>
+                <View style={styles.newServiceIcon}>
+                  <Home size={28} color="#FFFFFF" />
+                </View>
+                <View style={styles.newServiceText}>
+                  <Text style={styles.newServiceTitle}>Apoio à Habitação</Text>
+                  <Text style={styles.newServiceDesc}>
+                    Procura de habitação, Shelter e programas habitacionais
+                  </Text>
+                </View>
+                <View style={styles.newServiceArrow}>
+                  <ArrowRight size={20} color="rgba(255,255,255,0.8)" />
+                </View>
+              </View>
+            </TouchableOpacity>
+
+            {/* Ajuda às Finanças */}
+            <TouchableOpacity
+              style={[styles.newServiceCard, { backgroundColor: '#8B5CF6' + '10', borderColor: '#8B5CF6' + '30' }]}
+              onPress={() => router.push('/(app)/finance-support')}
+              activeOpacity={0.85}
+            >
+              <LinearGradient
+                colors={['#8B5CF6', '#6D28D9']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.newServiceGradient}
+              />
+              <View style={styles.newServiceContent}>
+                <View style={styles.newServiceIcon}>
+                  <DollarSign size={28} color="#FFFFFF" />
+                </View>
+                <View style={styles.newServiceText}>
+                  <Text style={styles.newServiceTitle}>Ajuda às Finanças</Text>
+                  <Text style={styles.newServiceDesc}>
+                    EBT, benefícios estatais, impostos e Tax Return
+                  </Text>
+                </View>
+                <View style={styles.newServiceArrow}>
+                  <ArrowRight size={20} color="rgba(255,255,255,0.8)" />
+                </View>
+              </View>
+            </TouchableOpacity>
           </View>
 
           {/* Categories Grid */}
@@ -473,6 +536,63 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     fontSize: 14,
     fontWeight: '800',
     color: theme.warning,
+  },
+  newServicesContainer: {
+    paddingHorizontal: 24,
+    marginBottom: 32,
+  },
+  newServiceCard: {
+    flexDirection: 'row',
+    borderRadius: 24,
+    marginBottom: 16,
+    borderWidth: 1,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.04,
+    shadowRadius: 12,
+    elevation: 2,
+  },
+  newServiceGradient: {
+    width: 6,
+    height: '100%',
+  },
+  newServiceContent: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    gap: 16,
+  },
+  newServiceIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 18,
+    backgroundColor: theme.isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  newServiceText: {
+    flex: 1,
+  },
+  newServiceTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: theme.text,
+    marginBottom: 4,
+  },
+  newServiceDesc: {
+    fontSize: 14,
+    color: theme.textSecondary,
+    lineHeight: 20,
+  },
+  newServiceArrow: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: theme.isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   sectionContainer: {
     paddingHorizontal: 24,

@@ -7,10 +7,13 @@ import {
   TouchableOpacity, 
   TextInput,
   ActivityIndicator,
-  StatusBar
+  StatusBar,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
+import { useTranslation } from 'react-i18next';
 import { supabase, type User } from '@/lib/supabase';
 import { 
   Search, 
@@ -27,6 +30,7 @@ import { useRouter } from 'expo-router';
 
 function AdminUsers() {
   const { theme, isDark } = useTheme();
+  const { t } = useTranslation();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -115,13 +119,17 @@ function AdminUsers() {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+      >
       
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>User Management</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.userManagement')}</Text>
         <TouchableOpacity style={styles.filterButton}>
           <Filter size={24} color={theme.text} />
         </TouchableOpacity>
@@ -132,7 +140,7 @@ function AdminUsers() {
         <View style={[styles.searchInputWrapper, { backgroundColor: theme.surfaceElevated, borderColor: theme.cardBorder }]}>
           <Search size={20} color={theme.textMuted} />
           <TextInput
-            placeholder="Search users by name or email..."
+            placeholder={t('admin.searchPlaceholder')}
             placeholderTextColor={theme.textMuted}
             style={[styles.searchInput, { color: theme.text }]}
             value={search}
@@ -144,7 +152,7 @@ function AdminUsers() {
       {loading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={theme.accent} />
-          <Text style={[styles.loadingText, { color: theme.textSecondary }]}>Loading users...</Text>
+          <Text style={[styles.loadingText, { color: theme.textSecondary }]}>{t('admin.loadingUsers')}</Text>
         </View>
       ) : (
         <FlatList
@@ -156,11 +164,12 @@ function AdminUsers() {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <UserIcon size={64} color={theme.textMuted} />
-              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>No users found</Text>
+              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t('admin.noUsersFound')}</Text>
             </View>
           }
         />
       )}
+    </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

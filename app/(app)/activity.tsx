@@ -20,10 +20,8 @@ import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase, SupportRequest, isSupabaseConfigured } from '@/lib/supabase';
 import { useFocusEffect } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
-
-const REQUESTS_KEY = '@kizola_support_requests';
 
 const STATUS_CONFIG = {
   pending: { icon: Clock, color: '#F59E0B', bgColor: '#FEF3C7', label: 'Pending' },
@@ -67,10 +65,9 @@ export default function Activity() {
     setLoading(true);
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        // Load from AsyncStorage in demo mode
-        const stored = await AsyncStorage.getItem(`${REQUESTS_KEY}_${user.id}`);
+        const stored = await getSecureItem<SupportRequest[]>(SECURE_KEYS.SUPPORT_REQUESTS(user.id));
         if (stored) {
-          setRequests(JSON.parse(stored));
+          setRequests(stored);
         }
         return;
       }

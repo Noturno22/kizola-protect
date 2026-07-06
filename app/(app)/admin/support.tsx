@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
+import { useTranslation } from 'react-i18next';
 import { supabase, type SupportRequest } from '@/lib/supabase';
 import { 
   ArrowLeft, 
@@ -25,6 +26,7 @@ import { useRouter } from 'expo-router';
 
 function AdminSupport() {
   const { theme, isDark } = useTheme();
+  const { t } = useTranslation();
   const [requests, setRequests] = useState<SupportRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -77,7 +79,7 @@ function AdminSupport() {
         <View style={styles.requestHeader}>
           <View style={[styles.priorityBadge, { backgroundColor: getPriorityColor(item.priority) + '15' }]}>
             <Text style={[styles.priorityText, { color: getPriorityColor(item.priority) }]}>
-              {item.priority}
+              {t(`admin.${item.priority}`) || item.priority}
             </Text>
           </View>
           <Text style={[styles.dateText, { color: theme.textMuted }]}>
@@ -101,7 +103,7 @@ function AdminSupport() {
           <View style={[styles.statusBadge, { backgroundColor: getStatusColor(item.status) + '15' }]}>
             <View style={[styles.statusDot, { backgroundColor: getStatusColor(item.status) }]} />
             <Text style={[styles.statusText, { color: getStatusColor(item.status) }]}>
-              {item.status.replace('_', ' ')}
+              {t(`common.${item.status}`) || item.status.replace('_', ' ')}
             </Text>
           </View>
         </View>
@@ -117,7 +119,7 @@ function AdminSupport() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Support Requests</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.supportRequests')}</Text>
         <TouchableOpacity style={styles.filterButton}>
           <Filter size={24} color={theme.text} />
         </TouchableOpacity>
@@ -137,7 +139,7 @@ function AdminSupport() {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <MessageSquare size={64} color={theme.textMuted} />
-              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>No support requests</Text>
+              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t('admin.noSupportRequests')}</Text>
             </View>
           }
         />

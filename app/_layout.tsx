@@ -30,6 +30,20 @@ export default function RootLayout() {
       }
     };
 
+    // Global fetch logging for network diagnostics
+    const originalFetch = global.fetch;
+    global.fetch = async (...args) => {
+      console.log('FETCH URL:', args[0]);
+      try {
+        const response = await originalFetch(...args);
+        console.log('FETCH STATUS:', response.status);
+        return response;
+      } catch (error) {
+        console.error('FETCH FAILED:', args[0]);
+        console.error(error);
+        throw error;
+      }
+    };
     // Note: On some platforms, this might need different handling
     // For now, LogBox.ignoreLogs handles the UI part.
   }, []);

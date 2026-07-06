@@ -1,5 +1,9 @@
 import { PLANS } from './supabase';
+import type { IapProduct, IapPurchase } from '@/services/iap/types';
 
+/**
+ * Payment module: Stripe (legacy/web) + IAP (Apple/Google).
+ */
 export interface CardData {
   cardNumber: string;
   expiryDate: string;
@@ -192,3 +196,34 @@ export const getPlanPrice = (planId: string): number => {
 export const formatPrice = (price: number): string => {
   return `$${price.toFixed(2)}`;
 };
+
+// IAP product-to-plan mapping
+export const IAP_PRODUCT_PLANS: Record<string, 'basic' | 'pro' | 'premium'> = {
+  'com.kizola.protect.basic.monthly': 'basic',
+  'com.kizola.protect.pro.monthly': 'pro',
+  'com.kizola.protect.premium.monthly': 'premium',
+  'kizola_protect_basic_monthly': 'basic',
+  'kizola_protect_pro_monthly': 'pro',
+  'kizola_protect_premium_monthly': 'premium',
+};
+
+export const PLAN_IAP_PRODUCTS: Record<'basic' | 'pro' | 'premium', string> = {
+  basic: 'com.kizola.protect.basic.monthly',
+  pro: 'com.kizola.protect.pro.monthly',
+  premium: 'com.kizola.protect.premium.monthly',
+};
+
+export function resolvePlanFromProduct(productId: string): 'basic' | 'pro' | 'premium' | null {
+  return IAP_PRODUCT_PLANS[productId] ?? null;
+}
+
+export function isPaidPlan(planId: string): boolean {
+  return planId === 'basic' || planId === 'pro' || planId === 'premium';
+}
+
+export function getPaymentPlatform(): 'stripe' | 'iap' {
+  if (typeof navigator === 'undefined') return 'stripe';
+  const ua = navigator.userAgent.toLowerCase();
+  if (/iphone|ipad|ipod/.test(ua) || /android/.test(ua)) return 'iap';
+  return 'stripe';
+}

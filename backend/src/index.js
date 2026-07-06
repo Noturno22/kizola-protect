@@ -36,13 +36,20 @@ const PORT = process.env.PORT || 3000;
 // Security headers
 app.use(helmet());
 
-// CORS — in production, restrict to your app domain
+// CORS — in production, restrict to your app domains
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? ['https://kizola.app'] // replace with your domain
-    : '*',
-  methods: ['POST', 'GET'],
+    ? [
+        'https://kizola.app',
+        'https://www.kizola.app',
+        'https://app.kizola.app',
+        'https://luarstudio.com',
+        'https://www.luarstudio.com',
+      ]
+    : '*', // dev-mode wildcard — safe for local development only
+  methods: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
 
 // HTTP request logging (dev only)

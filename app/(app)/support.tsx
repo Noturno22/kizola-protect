@@ -39,11 +39,11 @@ import { useAuth } from '@/providers/AuthProvider';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { supabase, isSupabaseConfigured, PRIORITY_OPTIONS } from '@/lib/supabase';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
+import { sendMessage } from '@/services/ai/groq';
 
 const { width } = Dimensions.get('window');
-const REQUESTS_KEY = '@kizola_support_requests';
 
 const CATEGORIES = [
   { id: 'legal', labelKey: 'benefits.items.legal.title', icon: Shield, color: '#3B82F6' },
@@ -124,10 +124,10 @@ export default function Support() {
       };
 
       if (isDemoMode || !isSupabaseConfigured()) {
-        const existing = await AsyncStorage.getItem(`${REQUESTS_KEY}_${user?.id}`);
-        const requests = existing ? JSON.parse(existing) : [];
+        const existing = await getSecureItem<object[]>(SECURE_KEYS.SUPPORT_REQUESTS(user?.id));
+        const requests = existing || [];
         requests.unshift({ ...requestData, id: 'demo-' + Date.now() });
-        await AsyncStorage.setItem(`${REQUESTS_KEY}_${user?.id}`, JSON.stringify(requests));
+        await setSecureItem(SECURE_KEYS.SUPPORT_REQUESTS(user?.id), requests);
       } else {
         const { error } = await supabase.from('support_requests').insert(requestData);
         if (error) throw error;
@@ -149,7 +149,7 @@ export default function Support() {
     }
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!chatInput.trim()) return;
 
     const userMsg = {
@@ -159,13 +159,20 @@ export default function Support() {
       timestamp: new Date(),
     };
 
-    setChatMessages(prev => [...prev, userMsg]);
+    const updatedMessages = [...chatMessages, userMsg];
+    setChatMessages(updatedMessages);
     setChatInput('');
     setIsTyping(true);
 
-    // Simulate AI Response
-    setTimeout(() => {
-      const responseText = getAIResponse(userMsg.text);
+    try {
+      const groqMessages = updatedMessages
+        .filter((m) => m.id !== '1' || m.sender === 'ai')
+        .map((m) => ({
+          role: m.sender === 'ai' ? 'assistant' as const : 'user' as const,
+          text: m.text,
+        }));
+
+      const responseText = await sendMessage(groqMessages);
       const aiMsg = {
         id: (Date.now() + 1).toString(),
         text: responseText,
@@ -173,28 +180,17 @@ export default function Support() {
         timestamp: new Date(),
       };
       setChatMessages(prev => [...prev, aiMsg]);
+    } catch {
+      const fallbackMsg = {
+        id: (Date.now() + 1).toString(),
+        text: 'Desculpa, ocorreu um erro ao contactar o assistente. Por favor, tenta novamente ou contacta-nos pelo WhatsApp (+1 929 609-7035).',
+        sender: 'ai' as const,
+        timestamp: new Date(),
+      };
+      setChatMessages(prev => [...prev, fallbackMsg]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
-  };
-
-  const getAIResponse = (input: string) => {
-    const text = input.toLowerCase();
-    if (text.includes('plano') || text.includes('preço') || text.includes('valor')) {
-      return t('support.aiResponsePlans') || 'Temos 3 planos: Basic ($10/mês), Pro ($25/mês) e Premium ($50/mês). Pode ver mais detalhes na aba de Planos!';
     }
-    if (text.includes('legal') || text.includes('advogado') || text.includes('lei')) {
-      return t('support.aiResponseLegal') || 'Oferecemos assistência jurídica completa para imigrantes, incluindo revisão de contratos e defesa básica.';
-    }
-    if (text.includes('visto') || text.includes('imigração') || text.includes('documento')) {
-      return t('support.aiResponseImmigration') || 'A nossa equipa de imigração pode ajudar com agendamentos no SEF/AIMA, pedidos de residência e manifestação de interesse.';
-    }
-    if (text.includes('contacto') || text.includes('whatsapp') || text.includes('telefone')) {
-      return t('support.aiResponseContact') || 'Pode falar connosco pelo WhatsApp (+1 929 609-7035) ou enviar um bilhete de suporte aqui mesmo!';
-    }
-    if (text.includes('olá') || text.includes('oi') || text.includes('bom dia')) {
-      return t('support.aiResponseGreet') || 'Olá! Como posso ajudar com a sua proteção hoje?';
-    }
-    return t('support.aiResponseDefault') || 'Interessante! Para detalhes específicos, recomendo falar com um de nossos consultores via WhatsApp ou abrir um ticket de suporte.';
   };
 
   const openWhatsApp = () => {

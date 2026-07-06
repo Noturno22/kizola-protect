@@ -24,13 +24,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import * as AppleAuthentication from 'expo-apple-authentication';
 
 import { supabase } from '@/lib/supabase';
 
 WebBrowser.maybeCompleteAuthSession();
-
-const LOGO_URL =
-  'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rp8ormh5clrs4bxi5u20j.jpg';
 
 const LIGHT = {
   gradientColors: ['#EEF2FF', '#F0F9FF', '#FFFFFF'] as const,
@@ -88,6 +86,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [appleLoading, setAppleLoading] = useState(false);
   const D = theme;
 
   const nextRoute = useMemo((): '/dashboard' | null => {
@@ -138,7 +137,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) {
-      Alert.alert('Error', 'Please enter both email and password');
+      Alert.alert(t('common.error') || 'Erro', t('auth.emailPasswordRequired') || 'Por favor, insira o email e a senha.');
       return;
     }
 
@@ -147,7 +146,7 @@ export default function Login() {
       await signIn(email, password);
       router.replace('/dashboard');
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message || 'Invalid email or password');
+      Alert.alert(t('auth.loginFailed') || 'Falha no Login', error.message || t('auth.invalidCredentials') || 'Email ou senha inválidos.');
     } finally {
       setLoading(false);
     }
@@ -218,6 +217,70 @@ export default function Login() {
     }
   };
 
+  const signInWithApple = async () => {
+    try {
+      setAppleLoading(true);
+
+      if (Platform.OS === 'ios') {
+        const credential = await AppleAuthentication.signInAsync({
+          requestedScopes: [
+            AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+            AppleAuthentication.AppleAuthenticationScope.EMAIL,
+          ],
+        });
+
+        if (!credential.identityToken) {
+          throw new Error('No identity token returned from Apple.');
+        }
+
+        const { error } = await supabase.auth.signInWithIdToken({
+          provider: 'apple',
+          token: credential.identityToken,
+        });
+
+        if (error) throw error;
+        return;
+      }
+
+      const redirectTo =
+        Platform.OS === 'web'
+          ? window.location.origin
+          : AuthSession.makeRedirectUri();
+
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+          redirectTo,
+          skipBrowserRedirect: Platform.OS !== 'web',
+        },
+      });
+
+      if (error) {
+        Alert.alert('Erro Apple', error.message);
+        return;
+      }
+
+      if (Platform.OS !== 'web' && data?.url) {
+        const res = await WebBrowser.openAuthSessionAsync(
+          data.url,
+          redirectTo
+        );
+
+        if (res.type === 'success') {
+          const { url } = res;
+          await createSessionFromUrl(url);
+        }
+      }
+    } catch (e: any) {
+      if (e.code === 'ERR_CANCELED' || e.message?.includes('canceled')) {
+        return;
+      }
+      Alert.alert('Erro', e.message);
+    } finally {
+      setAppleLoading(false);
+    }
+  };
+
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <StatusBar style={isDark ? "light" : "dark"} />
@@ -226,6 +289,8 @@ export default function Login() {
         {/* ── Theme Toggle ───────────────────────────────────────────────────── */}
         <TouchableOpacity
           onPress={toggleTheme}
+          accessibilityLabel={isDark ? t('common.light') || 'Light mode' : t('common.dark') || 'Dark mode'}
+          accessibilityRole="button"
           style={[
             styles.themeToggle,
             {
@@ -280,7 +345,7 @@ export default function Login() {
                   },
                 ]}
               >
-                <Image source={{ uri: LOGO_URL }} style={styles.logoImage} resizeMode="contain" />
+              <Image source={require('@/assets/images/icon.png')} style={styles.logoImage} resizeMode="contain" />
               </View>
               <Text style={[styles.appName, { color: theme.text }]}>Kizola Protect</Text>
               <Text style={[styles.tagline, { color: theme.textSecondary }]}>{t('auth.tagline') || 'Your trusted protection partner'}</Text>
@@ -335,8 +400,8 @@ export default function Login() {
               </View>
 
               {/* Forgot Password */}
-              <TouchableOpacity style={styles.forgotPassword}>
-                <Text style={[styles.forgotPasswordText, { color: theme.textSecondary }]}>Forgot password?</Text>
+              <TouchableOpacity style={styles.forgotPassword} onPress={() => router.push('/forgot-password')} accessibilityRole="link" accessibilityLabel={t('auth.forgotPassword') || 'Forgot password'}>
+                <Text style={[styles.forgotPasswordText, { color: theme.primary }]}>{t('auth.forgotPassword') || 'Esqueceu a senha?'}</Text>
               </TouchableOpacity>
 
               {/* Sign In Button */}
@@ -344,6 +409,8 @@ export default function Login() {
                 style={[styles.loginButton, loading && styles.loginButtonDisabled]}
                 onPress={handleLogin}
                 disabled={loading}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.signIn') || 'Sign in'}
                 testID="login-button"
                 activeOpacity={0.85}
               >
@@ -381,6 +448,8 @@ export default function Login() {
                 ]}
                 onPress={signInWithGoogle}
                 disabled={googleLoading}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.googleSignIn') || 'Sign in with Google'}
                 activeOpacity={0.8}
               >
                 {googleLoading ? (
@@ -396,10 +465,45 @@ export default function Login() {
                 )}
               </TouchableOpacity>
 
+              {/* Apple Button */}
+              {Platform.OS === 'ios' ? (
+                <AppleAuthentication.AppleAuthenticationButton
+                  buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+                  buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+                  cornerRadius={12}
+                  style={styles.appleButton}
+                  onPress={signInWithApple}
+                />
+              ) : (
+                <TouchableOpacity
+                  style={[
+                    styles.socialButton,
+                    { backgroundColor: '#000000', borderColor: '#333333' },
+                    appleLoading && styles.loginButtonDisabled,
+                  ]}
+                  onPress={signInWithApple}
+                  disabled={appleLoading}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('auth.appleSignIn') || 'Sign in with Apple'}
+                  activeOpacity={0.8}
+                >
+                  {appleLoading ? (
+                    <ActivityIndicator color="#FFFFFF" />
+                  ) : (
+                    <>
+                      <Ionicons name="logo-apple" size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
+                      <Text style={[styles.socialButtonTextApple, { color: '#FFFFFF' }]}>{t('auth.appleSignIn')}</Text>
+                    </>
+                  )}
+                </TouchableOpacity>
+              )}
+
               {/* Phone Button */}
               <TouchableOpacity
                 style={[styles.socialButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}
                 onPress={() => router.push('/login-phone')}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.phoneSignIn') || 'Sign in with phone number'}
                 activeOpacity={0.8}
               >
                 <Ionicons name="phone-portrait-outline" size={18} color={theme.text} style={{ marginRight: 10 }} />
@@ -408,9 +512,9 @@ export default function Login() {
 
 
               {/* Register */}
-              <View style={styles.registerSection}>
+              <View style={styles.registerSection} accessible={true} accessibilityLabel={t('auth.noAccount') || "Don't have an account"}>
                 <Text style={[styles.registerText, { color: theme.textSecondary }]}>{t('auth.noAccount')}</Text>
-                <TouchableOpacity onPress={() => router.push('/register')}>
+                <TouchableOpacity onPress={() => router.push('/register')} accessibilityRole="link" accessibilityLabel={t('auth.createAccount') || 'Create account'}>
                   <Text style={[styles.registerLink, { color: theme.primary }]}>{t('auth.createAccount')}</Text>
                 </TouchableOpacity>
               </View>
@@ -523,6 +627,8 @@ const styles = StyleSheet.create({
   },
   googleIconText: { fontSize: 12, fontWeight: '800', color: '#4285F4' },
   socialButtonText: { fontSize: 15, fontWeight: '500' },
+  socialButtonTextApple: { fontSize: 15, fontWeight: '600' },
+  appleButton: { width: '100%', height: 50, marginBottom: 12 },
 
   registerSection: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 4 },
   registerText: { fontSize: 13 },

@@ -24,10 +24,11 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase } from '@/lib/supabase';
+import * as AppleAuthentication from 'expo-apple-authentication';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const LOGO_URL = 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/rp8ormh5clrs4bxi5u20j.jpg';
+const LOGO_URL = './assets/images/icon.png';
 
 const LIGHT = {
   gradientColors: ['#EEF2FF', '#F0F9FF', '#FFFFFF'] as const,
@@ -87,6 +88,7 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [appleLoading, setAppleLoading] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const D = theme;
 
@@ -245,6 +247,110 @@ export default function Register() {
     }
   };
 
+  const signUpWithApple = async () => {
+    try {
+      setAppleLoading(true);
+
+      if (Platform.OS === 'ios') {
+        const credential = await AppleAuthentication.signInAsync({
+          requestedScopes: [
+            AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+            AppleAuthentication.AppleAuthenticationScope.EMAIL,
+          ],
+        });
+
+        if (!credential.identityToken) {
+          throw new Error('No identity token returned from Apple.');
+        }
+
+        const { data, error } = await supabase.auth.signInWithIdToken({
+          provider: 'apple',
+          token: credential.identityToken,
+        });
+
+        if (error) throw error;
+
+        const session = data?.user;
+        if (session) {
+          const { data: existingProfile } = await supabase
+            .from('profiles')
+            .select('id, plan')
+            .eq('id', session.id)
+            .maybeSingle();
+
+          if (!existingProfile) {
+            const fullName = credential.fullName
+              ? `${credential.fullName.givenName ?? ''} ${credential.fullName.familyName ?? ''}`.trim()
+              : session.email?.split('@')[0] ?? 'User';
+            await supabase.from('profiles').insert({
+              id: session.id,
+              email: session.email ?? '',
+              full_name: fullName,
+              plan: 'none',
+              status: 'inactive',
+              role: 'user',
+            });
+          }
+        }
+
+        router.replace('/dashboard');
+        return;
+      }
+
+      const redirectTo =
+        Platform.OS === 'web'
+          ? window.location.origin
+          : AuthSession.makeRedirectUri();
+
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+          redirectTo,
+          skipBrowserRedirect: Platform.OS !== 'web',
+        },
+      });
+
+      if (error) {
+        Alert.alert('Erro Apple', error.message);
+        return;
+      }
+
+      if (Platform.OS !== 'web' && data?.url) {
+        const res = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
+        if (res.type !== 'success') return;
+
+        const session = await createSessionFromUrl(res.url);
+        if (!session) return;
+
+        const { data: existingProfile } = await supabase
+          .from('profiles')
+          .select('id, plan')
+          .eq('id', session.user.id)
+          .maybeSingle();
+
+        if (!existingProfile) {
+          await supabase.from('profiles').insert({
+            id: session.user.id,
+            email: session.user.email ?? '',
+            full_name: session.user.user_metadata?.full_name ?? session.user.email?.split('@')[0] ?? 'User',
+            plan: 'none',
+            status: 'inactive',
+            role: 'user',
+          });
+        }
+
+        router.replace('/dashboard');
+      }
+    } catch (e: any) {
+      if (e.code === 'ERR_CANCELED' || e.message?.includes('canceled')) {
+        return;
+      }
+      Alert.alert('Erro', e.message);
+    } finally {
+      setAppleLoading(false);
+    }
+  };
+
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <StatusBar style={isDark ? "light" : "dark"} />
@@ -253,6 +359,8 @@ export default function Register() {
         {/* ── Theme Toggle ───────────────────────────────────────────────────── */}
         <TouchableOpacity
           onPress={toggleTheme}
+          accessibilityLabel={isDark ? t('common.light') || 'Light mode' : t('common.dark') || 'Dark mode'}
+          accessibilityRole="button"
           style={[
             styles.themeToggle,
             {
@@ -288,6 +396,8 @@ export default function Register() {
         {/* ── Back Button ────────────────────────────────────────────────────── */}
         <TouchableOpacity 
           onPress={() => router.back()} 
+          accessibilityRole="button"
+          accessibilityLabel={t('common.back') || 'Back'}
           style={[styles.backButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
         >
           <Ionicons name="arrow-back" size={20} color={theme.text} />
@@ -408,20 +518,27 @@ export default function Register() {
               </View>
 
               {/* Terms */}
-              <TouchableOpacity style={styles.termsContainer} onPress={() => setAgreed(!agreed)}>
-                <View style={[styles.checkbox, agreed && { backgroundColor: theme.primary }, { borderColor: theme.primary }]}>
-                  {agreed && <Ionicons name="checkmark" size={14} color="#FFFFFF" />}
-                </View>
+              <View style={styles.termsContainer}>
+                <TouchableOpacity onPress={() => setAgreed(!agreed)} style={styles.checkboxTouchable}>
+                  <View style={[styles.checkbox, agreed && { backgroundColor: theme.primary }, { borderColor: theme.primary }]}>
+                    {agreed && <Ionicons name="checkmark" size={14} color="#FFFFFF" />}
+                  </View>
+                </TouchableOpacity>
                 <Text style={[styles.termsText, { color: theme.textSecondary }]}>
-                  {t('auth.iAgreeTo')} <Text style={[styles.termsLink, { color: theme.primary }]}>{t('auth.termsOfService')}</Text> {t('auth.and')} <Text style={[styles.termsLink, { color: theme.primary }]}>{t('auth.privacyPolicy')}</Text>
+                  {t('auth.iAgreeTo')}{' '}
+                  <Text style={[styles.termsLink, { color: theme.primary }]} onPress={() => router.push('/terms')}>{t('auth.termsOfService')}</Text>{' '}
+                  {t('auth.and')}{' '}
+                  <Text style={[styles.termsLink, { color: theme.primary }]} onPress={() => router.push('/privacy')}>{t('auth.privacyPolicy')}</Text>
                 </Text>
-              </TouchableOpacity>
+              </View>
 
               {/* Register Button */}
               <TouchableOpacity
                 style={[styles.loginButton, loading && styles.loginButtonDisabled]}
                 onPress={handleRegister}
                 disabled={loading}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.register') || 'Register'}
                 testID="register-button"
                 activeOpacity={0.85}
               >
@@ -458,6 +575,8 @@ export default function Register() {
                 ]}
                 onPress={signUpWithGoogle}
                 disabled={googleLoading}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.googleSignUp') || 'Sign up with Google'}
                 activeOpacity={0.8}
               >
                 {googleLoading ? (
@@ -472,10 +591,45 @@ export default function Register() {
                 )}
               </TouchableOpacity>
 
+              {/* Apple Button */}
+              {Platform.OS === 'ios' ? (
+                <AppleAuthentication.AppleAuthenticationButton
+                  buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_UP}
+                  buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+                  cornerRadius={12}
+                  style={styles.appleButton}
+                  onPress={signUpWithApple}
+                />
+              ) : (
+                <TouchableOpacity
+                  style={[
+                    styles.socialButton,
+                    { backgroundColor: '#000000', borderColor: '#333333' },
+                    appleLoading && styles.loginButtonDisabled,
+                  ]}
+                  onPress={signUpWithApple}
+                  disabled={appleLoading}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('auth.appleSignIn') || 'Sign up with Apple'}
+                  activeOpacity={0.8}
+                >
+                  {appleLoading ? (
+                    <ActivityIndicator color="#FFFFFF" />
+                  ) : (
+                    <>
+                      <Ionicons name="logo-apple" size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
+                      <Text style={[styles.socialButtonTextApple, { color: '#FFFFFF' }]}>{t('auth.appleSignIn')}</Text>
+                    </>
+                  )}
+                </TouchableOpacity>
+              )}
+
               {/* Phone Login Button */}
               <TouchableOpacity
                 style={[styles.socialButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}
                 onPress={() => router.push('/login-phone')}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.phoneSignIn') || 'Sign in with phone number'}
                 activeOpacity={0.8}
               >
                 <Ionicons name="phone-portrait-outline" size={18} color={theme.text} style={{ marginRight: 10 }} />
@@ -483,9 +637,9 @@ export default function Register() {
               </TouchableOpacity>
 
               {/* Login Section */}
-              <View style={styles.registerSection}>
+              <View style={styles.registerSection} accessible={true} accessibilityLabel={t('auth.alreadyHaveAccount') || 'Already have an account'}>
                 <Text style={[styles.registerText, { color: theme.textSecondary }]}>{t('auth.alreadyHaveAccount')}</Text>
-                <TouchableOpacity onPress={() => router.push('/login')}>
+                <TouchableOpacity onPress={() => router.push('/login')} accessibilityRole="link" accessibilityLabel={t('auth.signIn') || 'Sign in'}>
                   <Text style={[styles.registerLink, { color: theme.primary }]}>{t('auth.signIn')}</Text>
                 </TouchableOpacity>
               </View>
@@ -597,12 +751,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingRight: 10,
   },
+  checkboxTouchable: {
+    marginRight: 10,
+  },
   checkbox: {
     width: 20,
     height: 20,
     borderRadius: 6,
     borderWidth: 2,
-    marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -637,6 +793,8 @@ const styles = StyleSheet.create({
   },
   googleIconText: { fontSize: 12, fontWeight: '800', color: '#4285F4' },
   socialButtonText: { fontSize: 15, fontWeight: '500' },
+  socialButtonTextApple: { fontSize: 15, fontWeight: '600' },
+  appleButton: { width: '100%', height: 50, marginBottom: 12 },
 
   registerSection: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 8 },
   registerText: { fontSize: 13 },

@@ -97,6 +97,7 @@ export const OtpInput: React.FC<OtpInputProps> = ({ value, onChange, disabled })
           importantForAutofill="yes"
           accessible
           accessibilityLabel={`OTP digit ${i + 1}`}
+          accessibilityHint={`Enter digit ${i + 1} of your verification code`}
         />
       ))}
     </View>
