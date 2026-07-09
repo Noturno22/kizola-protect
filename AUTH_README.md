@@ -1,45 +1,111 @@
-# Kizola Protect - Phone Authentication
+# Kizola Protect — Authentication
 
-This repository implements a professional, secure phone authentication system using React Native (Expo), Supabase Auth, and Twilio Verify.
+Authentication system using **phone (OTP via Twilio Verify)**, **Google Login**, and **Apple Login** — all backed by Supabase Auth.
 
-## Architecture
+---
 
-The system uses a custom backend to securely handle Twilio API credentials and verification logic, never exposing them to the frontend.
+## Auth Methods
+
+| Method | Status | Dependencies |
+|--------|--------|-------------|
+| Phone OTP (Twilio Verify) | ✅ Live | Twilio Verify Service, custom backend |
+| Google Login | ✅ Live | `expo-auth-session`, Google Cloud Console |
+| Apple Login | ✅ Live | `expo-apple-authentication`, Apple Developer |
+
+---
+
+## 1. Phone Authentication (OTP)
+
+### Architecture
+
+Custom backend handles Twilio credentials server-side — never exposed to the frontend.
 
 ### Components
 
 1.  **Frontend (Expo/React Native)**
-    *   **UI:** Modern, responsive screens in `app/(auth)/login.tsx` and `app/(auth)/verify.tsx`.
-    *   **Components:** `PhoneInput` (with country code picker) and `OtpInput` (with auto-focus and auto-paste).
-    *   **State Management:** Zustand (`store/authStore.ts`) handles state across the login flow and persists the pending phone number using `expo-secure-store` in case of app reload.
-    *   **Services:** `services/auth/phoneAuthService.ts` communicates with the custom backend and handles the final Supabase session exchange.
+    *   **UI:** Screens in `app/(auth)/login.tsx` and `app/(auth)/verify.tsx`.
+    *   **Components:** `PhoneInput` (country code picker), `OtpInput` (auto-focus, auto-paste).
+    *   **State:** Zustand (`store/authStore.ts`) persists pending phone via `expo-secure-store`.
+    *   **Service:** `services/auth/phoneAuthService.ts` communicates with backend + Supabase.
 
 2.  **Backend (Node.js/Express)**
-    *   Located in the `/backend` directory.
+    *   Located in `/backend`.
     *   **Rate Limiting:** Protects Twilio API from abuse.
-    *   **Twilio Verify:** Sends and checks 6-digit OTPs via SMS. No codes are stored in our database.
-    *   **Supabase Admin:** Uses the `SERVICE_ROLE_KEY` to securely get or create a user by their verified phone number and generates a `magiclink` session token to pass back to the frontend.
+    *   **Twilio Verify:** Sends/checks 6-digit OTPs via SMS. No codes stored in our database.
+    *   **Supabase Admin:** Uses `SERVICE_ROLE_KEY` to get/create user by verified phone, returns `magiclink` session token.
 
-## How the Flow Works
+### Flow
 
-1.  **Send OTP:** User enters phone number on the frontend. The app calls `POST /auth/send-code` on the backend. The backend validates the number and calls Twilio Verify to send the SMS.
-2.  **Verify OTP:** User enters the 6-digit code. The app calls `POST /auth/verify-code` with the phone and code. The backend verifies the code with Twilio.
-3.  **Session Generation:** If the code is valid, the backend uses Supabase Admin to find or create the user and generates a session token. It returns this token to the frontend.
-4.  **Sign In:** The frontend receives the session token and exchanges it directly with Supabase (`supabase.auth.verifyOtp({ token, type: 'magiclink' })`) to establish a persistent session on the device.
+1. User enters phone → `POST /auth/send-code` → Twilio sends SMS
+2. User enters code → `POST /auth/verify-code` → Twilio verifies
+3. Backend creates/gets Supabase user → returns session token
+4. Frontend calls `supabase.auth.verifyOtp({ token, type: 'magiclink' })` → persistent session
 
-## Setup Instructions
+---
 
-### 1. Environment Variables
+## 2. Google Login
 
-**Frontend (`.env.local`):**
+### Setup
+
+1. Create project in [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable **Google Sign-In** API
+3. Configure OAuth consent screen (external)
+4. Create OAuth 2.0 credentials (iOS + Android + Web)
+
+### Environment Variables
+
+```env
+EXPO_PUBLIC_GOOGLE_CLIENT_ID=your_android_client_id
+EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=your_ios_client_id
+EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=your_web_client_id
+```
+
+### Integration
+
+- Uses `expo-auth-session` with Google provider
+- Token exchanged via Supabase: `supabase.auth.signInWithIdToken({ provider: 'google', token })`
+- Implementation in `services/auth/socialAuthService.ts`
+- Callback route configured via Expo Router
+
+---
+
+## 3. Apple Login
+
+### Setup
+
+1. Enable **Sign In with Apple** in [Apple Developer Portal](https://developer.apple.com/)
+2. Add `com.apple.developer.applesignin` entitlement in `app.json`
+
+### Environment Variables
+
+```env
+EXPO_PUBLIC_APPLE_CLIENT_ID=com.your.bundle.id
+EXPO_PUBLIC_APPLE_REDIRECT_URL=https://your-project.supabase.co/auth/v1/callback
+```
+
+### Integration
+
+- Uses `expo-apple-authentication` for native modal
+- Token exchanged via Supabase: `supabase.auth.signInWithIdToken({ provider: 'apple', token })`
+- Implementation in `services/auth/socialAuthService.ts`
+
+---
+
+## Environment Variables
+
+### Frontend (`.env.local`)
 ```env
 EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
 EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-# Use your computer's local IP address when testing on a physical device
 EXPO_PUBLIC_API_URL=http://localhost:3000
+EXPO_PUBLIC_GOOGLE_CLIENT_ID=your_android_client_id
+EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=your_ios_client_id
+EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=your_web_client_id
+EXPO_PUBLIC_APPLE_CLIENT_ID=com.your.bundle.id
+EXPO_PUBLIC_APPLE_REDIRECT_URL=https://your-project.supabase.co/auth/v1/callback
 ```
 
-**Backend (`backend/.env`):**
+### Backend (`backend/.env`)
 ```env
 PORT=3000
 TWILIO_ACCOUNT_SID=your_twilio_sid
@@ -49,18 +115,15 @@ SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```
 
-### 2. Running the Backend
+## Running
 
 ```bash
+# Backend
 cd backend
 npm install
 npm run dev
-```
 
-### 3. Running the Frontend
-
-In a new terminal:
-```bash
+# Frontend (new terminal)
 npm install
 npm start
 ```
