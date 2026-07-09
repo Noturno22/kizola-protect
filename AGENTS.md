@@ -2,17 +2,18 @@
 
 ### Columns
 
-| Name | Type | Constraints |
-|------|------|-------------|
-| `id` | `uuid` | Primary |
-| `full_name` | `text` |  Nullable |
-| `email` | `text` |  Nullable |
-| `phone` | `text` |  Nullable |
-| `status` | `text` |  Nullable |
-| `created_at` | `timestamp` |  Nullable |
-| `role` | `text` |  Nullable |
-| `policy_number` | `text` |  Nullable Unique |
-| `avatar_url` | `text` |  Nullable |
+| Name | Type | Constraints | Default |
+|------|------|-------------|---------|
+| `id` | `uuid` | Primary | |
+| `full_name` | `text` | Nullable | |
+| `email` | `text` | Nullable | |
+| `phone` | `text` | Nullable | |
+| `status` | `text` | Nullable | `'inactive'` |
+| `created_at` | `timestamp` | Nullable | `now()` |
+| `role` | `text` | Nullable | `'user'` |
+| `policy_number` | `text` | Nullable Unique | |
+| `avatar_url` | `text` | Nullable | |
+| `plan` | `text` | Nullable | `'none'` |
 
 ## Table `support_requests`
 
