@@ -8,9 +8,9 @@ const corsHeaders = {
 };
 
 const PLANS = {
-  basic: { name: "Basic", price: 27.99 },
-  pro: { name: "Pro", price: 29.99 },
-  premium: { name: "Premium", price: 33.99 },
+  basic: { name: "Basic", price: 19.99 },
+  pro: { name: "Pro", price: 34.99 },
+  premium: { name: "Premium", price: 49.99 },
 };
 
 Deno.serve(async (req) => {
@@ -330,7 +330,7 @@ Deno.serve(async (req) => {
       line_items: [
         {
           price_data: {
-            currency: "brl",
+            currency: "usd",
             product_data: {
               name: `Plano ${plan.name}`,
               description: `Assinatura mensal Kizola Protect - Plano ${plan.name}`,

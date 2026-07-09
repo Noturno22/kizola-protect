@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "<YOUR_APPLE_TEAM_ID>.app.luar.6xeu64ff9auaiakubrvpo",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

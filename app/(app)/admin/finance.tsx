@@ -50,7 +50,7 @@ export default function AdminFinance() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  const PLANS_PRICES = { free: 0, basic: 27.99, pro: 29.99, premium: 33.99 };
+  const PLANS_PRICES = { free: 0, basic: 19.99, pro: 34.99, premium: 49.99 };
 
   useEffect(() => {
     fetchFinanceData();

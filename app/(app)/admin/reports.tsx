@@ -88,7 +88,7 @@ export default function AdminReports() {
         const { data: subs, error } = await supabase.from('subscriptions').select('*, profiles(full_name, email)');
         if (error) throw error;
 
-        const prices = { free: 0, basic: 27.99, pro: 29.99, premium: 33.99 };
+        const prices = { free: 0, basic: 19.99, pro: 34.99, premium: 49.99 };
 
         if (format === 'excel') {
           fileName += '.csv';

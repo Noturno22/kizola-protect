@@ -154,7 +154,7 @@ export default function AdminAudit() {
         user_id: 'u2',
         action: 'plan_change',
         resource: 'subscriptions',
-        details: { old_plan: 'free', new_plan: 'premium', amount: 33.99 },
+        details: { old_plan: 'free', new_plan: 'premium', amount: 49.99 },
         ip_address: '172.56.21.90',
         created_at: new Date(Date.now() - 2 * 3600000).toISOString(),
         profiles: { email: 'maria.immigrant@kizola.com', full_name: 'Maria Santos' }

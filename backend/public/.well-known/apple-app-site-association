@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.app.luar.6xeu64ff9auaiakubrvpo",
+        "paths": ["*", "/forgot-password", "/reset-password", "/checkout", "/auth/verify"]
+      }
+    ]
+  }
+}
