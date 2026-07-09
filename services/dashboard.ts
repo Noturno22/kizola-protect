@@ -184,7 +184,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     satisfactionRate = Math.round((positive / ratings.length) * 100);
   }
 
-  const PLANS = { free: 0, basic: 27.99, pro: 29.99, premium: 33.99 } as const;
+  const PLANS = { free: 0, basic: 19.99, pro: 34.99, premium: 49.99 } as const;
   let totalRevenue = 0;
   let totalMembers = 0;
   if (revenueResult.data) {
@@ -224,7 +224,7 @@ export async function getRevenueChartData(months = 7): Promise<RevenueDataPoint[
   }
 
   const now = new Date();
-  const PLANS = { free: 0, basic: 27.99, pro: 29.99, premium: 33.99 } as const;
+  const PLANS = { free: 0, basic: 19.99, pro: 34.99, premium: 49.99 } as const;
   const data: RevenueDataPoint[] = [];
 
   for (let i = months - 1; i >= 0; i--) {
@@ -581,7 +581,7 @@ export async function getFinanceiroAnalytics(): Promise<FinanceiroAnalytics> {
     throw new Error('Supabase not configured');
   }
 
-  const PLANS = { free: 0, basic: 27.99, pro: 29.99, premium: 33.99 } as const;
+  const PLANS = { free: 0, basic: 19.99, pro: 34.99, premium: 49.99 } as const;
 
   const { data: subs, error } = await supabase
     .from('subscriptions')

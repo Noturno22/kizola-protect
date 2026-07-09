@@ -26,7 +26,7 @@ import {
   AlertCircle,
   Smartphone,
 } from 'lucide-react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -118,7 +118,7 @@ export default function OnboardingScreen() {
 
   const completeOnboarding = async () => {
     try {
-      await AsyncStorage.setItem(APP_ONBOARDING_COMPLETED_KEY, 'true');
+      await SecureStore.setItemAsync(APP_ONBOARDING_COMPLETED_KEY, 'true');
       router.replace('/login');
     } catch (error) {
       console.error('Error saving onboarding status:', error);

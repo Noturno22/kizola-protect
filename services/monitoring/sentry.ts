@@ -1,19 +1,15 @@
 /**
- * Sentry crash reporting configuration template.
+ * Sentry crash reporting configuration.
  *
- * To enable Sentry, install the package and configure environment variables:
- *
- *   npm install @sentry/react-native
+ * ✅ `@sentry/react-native` ~7.2.0 is installed in package.json.
+ * ✅ `initSentry()` is called from `app/_layout.tsx`.
  *
  * Required environment variables (.env):
  *   SENTRY_DSN=https://<key>@sentry.io/<project>
  *   SENTRY_ENVIRONMENT=production
  *   SENTRY_TRACES_SAMPLE_RATE=1.0
  *
- * Usage in app entry point (app/_layout.tsx):
- *
- *   import { initSentry } from '@/services/monitoring/sentry';
- *   initSentry();
+ * Sentry is enabled ONLY when NODE_ENV === 'production' (line 49).
  */
 
 let Sentry: any = null;

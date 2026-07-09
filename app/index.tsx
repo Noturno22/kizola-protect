@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import { useAuth } from '@/providers/AuthProvider';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 export const APP_ONBOARDING_COMPLETED_KEY = '@kizola_app_onboarding_completed_v1';
 
@@ -19,7 +19,7 @@ export default function Index() {
     let isMounted = true;
     (async () => {
       try {
-        const completed = await AsyncStorage.getItem(APP_ONBOARDING_COMPLETED_KEY);
+        const completed = await SecureStore.getItemAsync(APP_ONBOARDING_COMPLETED_KEY);
         if (isMounted) {
           setHasCompletedOnboarding(!!completed);
           setOnboardingChecked(true);

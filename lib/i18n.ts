@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 import en from '../assets/translations/en.json';
 import pt from '../assets/translations/pt.json';
@@ -24,7 +24,7 @@ const languageDetector: any = {
   async: true,
   detect: async (callback: (lang: string) => void) => {
     try {
-      const savedLanguage = await AsyncStorage.getItem(LANGUAGE_KEY);
+      const savedLanguage = await SecureStore.getItemAsync(LANGUAGE_KEY);
       if (savedLanguage) {
         return callback(savedLanguage);
       }
@@ -42,7 +42,7 @@ const languageDetector: any = {
   init: () => {},
   cacheUserLanguage: async (language: string) => {
     try {
-      await AsyncStorage.setItem(LANGUAGE_KEY, language);
+      await SecureStore.setItemAsync(LANGUAGE_KEY, language);
     } catch (error) {}
   },
 };

@@ -131,11 +131,13 @@ export default function ForgotPassword() {
                 </View>
               </View>
 
-              <TouchableOpacity
-                style={styles.primaryButton}
-                onPress={() => router.replace('/login')}
-                activeOpacity={0.85}
-              >
+            <TouchableOpacity
+              style={styles.primaryButton}
+              onPress={() => router.replace('/login')}
+              activeOpacity={0.85}
+              accessibilityRole="button"
+              accessibilityLabel={t('auth.backToLogin') || 'Back to login'}
+            >
                 <LinearGradient
                   colors={[theme.primary, theme.primary + 'DD']}
                   style={StyleSheet.absoluteFillObject}
@@ -151,6 +153,8 @@ export default function ForgotPassword() {
                 style={styles.secondaryButton}
                 onPress={() => setSent(false)}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.resendEmail') || 'Resend email'}
               >
                 <Text style={styles.secondaryButtonText}>
                   {t('auth.resendEmail') || 'Reenviar Email'}
@@ -186,6 +190,8 @@ export default function ForgotPassword() {
               style={styles.backButton}
               onPress={() => router.back()}
               activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.back') || 'Go back'}
             >
               <ArrowLeft size={20} color={theme.text} />
               <Text style={styles.backButtonText}>{t('common.back') || 'Voltar'}</Text>
@@ -224,6 +230,8 @@ export default function ForgotPassword() {
                     autoCapitalize="none"
                     autoComplete="email"
                     testID="forgot-password-email"
+                    accessibilityLabel={t('support.emailLabel') || 'Email'}
+                    accessibilityHint={t('auth.emailPlaceholder') || 'Enter your email address to receive a reset link'}
                   />
                 </View>
               </View>
@@ -235,6 +243,9 @@ export default function ForgotPassword() {
                 disabled={loading}
                 activeOpacity={0.85}
                 testID="forgot-password-submit"
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.sendResetLink') || 'Send reset link'}
+                accessibilityHint={t('auth.forgotPasswordDesc') || 'Sends a password reset email to the address provided'}
               >
                 <LinearGradient
                   colors={loading ? ['#CBD5E1', '#94A3B8'] : [theme.primary, theme.primary + 'DD']}
@@ -259,7 +270,7 @@ export default function ForgotPassword() {
                 <Text style={[styles.backToLoginText, { color: theme.textSecondary }]}>
                   {t('auth.rememberedPassword') || 'Lembrou a senha?'}
                 </Text>
-                <TouchableOpacity onPress={() => router.back()}>
+                <TouchableOpacity onPress={() => router.back()} accessibilityRole="link" accessibilityLabel={t('auth.signIn') || 'Sign in'}>
                   <Text style={[styles.backToLoginLink, { color: theme.primary }]}>
                     {' '}{t('auth.signIn') || 'Entrar'}
                   </Text>

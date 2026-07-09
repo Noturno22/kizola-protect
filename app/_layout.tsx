@@ -4,11 +4,15 @@ import '@/lib/i18n';
 import { LogBox } from 'react-native';
 import { AuthProvider } from '@/providers/AuthProvider'; 
 import { NotificationProvider } from '@/providers/NotificationProvider';
+import { OfflineProvider } from '@/providers/OfflineProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthRedirect } from '@/components/AuthRedirect';
+import { initSentry } from '@/services/monitoring/sentry';
+
+initSentry();
 
 const queryClient = new QueryClient();
 
@@ -53,9 +57,11 @@ export default function RootLayout() {
       <ThemeProvider>
         <AuthProvider>
           <NotificationProvider>
-            <AuthRedirect />
-            <Stack screenOptions={{ headerShown: false }} />
-            <StatusBar style="auto" />
+            <OfflineProvider>
+              <AuthRedirect />
+              <Stack screenOptions={{ headerShown: false }} />
+              <StatusBar style="auto" />
+            </OfflineProvider>
           </NotificationProvider>
         </AuthProvider>
       </ThemeProvider>

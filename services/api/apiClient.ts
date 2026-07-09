@@ -3,20 +3,29 @@
  * 🔒 Axios API Client — Agent-Guardian (CISO)
  * ═══════════════════════════════════════════════════════════════
  *
- * TLS PINNING (OWASP M3 Compliance):
- * ─────────────────────────────────────
- * React Native managed workflow (Expo SDK 54) options:
+ * TLS PINNING (OWASP M3 Compliance) — ACTIVE (production only)
+ * ─────────────────────────────────────────────────────────
+ * Native pinning via @bam.tech/react-native-app-security:
+ *   iOS:   TrustKit — SSL public key pinning
+ *   Android: OkHttp CertificatePinner — SPKI hash pinning
  *
- * Option A — expo-network-addons (RECOMMENDED for managed):
- *   npx expo install expo-network-addons
- *   Configure pinning in app.json → expo.plugins
- *   Supports both iOS and Android certificate pinning.
+ * Configuration lives in:
+ *   app.config.js  →  @bam.tech/react-native-app-security plugin
+ * Enabled ONLY when APP_ENV=production (build time).
  *
- * Option B — Certificate Transparency + fetch adapter:
- *   Implemented below as immediate fallback.
- *   Validates server certificate against known public key hashes.
+ * To configure production certificate hashes:
+ *   1. Ensure https://api.kizola.app is deployed and serving HTTPS
+ *   2. Generate SHA-256 SPKI hashes:
+ *      openssl s_client -servername api.kizola.app -connect api.kizola.app:443 -showcerts \
+ *        | openssl x509 -pubkey -noout \
+ *        | openssl pkey -pubin -outform der \
+ *        | openssl dgst -sha256 -binary \
+ *        | openssl enc -base64
+ *   3. Replace placeholders in app.config.js
+ *   4. Build with APP_ENV=production
  *
- * Production backend MUST use HTTPS (https://api.kizola.app).
+ * JS-level hostname validation below serves as a secondary fallback
+ * (catches development misconfigurations).
  * ═══════════════════════════════════════════════════════════════
  */
 

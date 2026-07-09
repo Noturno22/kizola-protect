@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 const THEME_KEY = '@kizola_theme';
 
@@ -127,7 +127,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const loadTheme = async () => {
     try {
-      const savedTheme = await AsyncStorage.getItem(THEME_KEY);
+      const savedTheme = await SecureStore.getItemAsync(THEME_KEY);
       if (savedTheme !== null) {
         setIsDark(savedTheme === 'dark');
       }
@@ -140,7 +140,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       const newMode = !isDark;
       setIsDark(newMode);
-      await AsyncStorage.setItem(THEME_KEY, newMode ? 'dark' : 'light');
+      await SecureStore.setItemAsync(THEME_KEY, newMode ? 'dark' : 'light');
     } catch (error) {
       console.error('Error saving theme:', error);
     }
@@ -149,7 +149,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const setTheme = async (mode: 'light' | 'dark') => {
     try {
       setIsDark(mode === 'dark');
-      await AsyncStorage.setItem(THEME_KEY, mode);
+      await SecureStore.setItemAsync(THEME_KEY, mode);
     } catch (error) {
       console.error('Error setting theme:', error);
     }

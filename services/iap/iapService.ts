@@ -1,6 +1,13 @@
 /**
  * In-App Purchase service — abstraction over platform-specific purchase APIs.
  *
+ * ⚠️  DEPENDENCY STATUS (Jul 2026):
+ *   - `expo-in-app-purchases` is NOT installed in package.json.
+ *   - IAP migration is DEFERRED (see us-market-execution-plan.md).
+ *   - Before using purchase functions, run:
+ *       npx expo install expo-in-app-purchases
+ *     (Verify SDK 54 compatibility first.)
+ *
  * STRATEGY
  * --------
  * This app uses a server-authoritative receipt-verification model:
