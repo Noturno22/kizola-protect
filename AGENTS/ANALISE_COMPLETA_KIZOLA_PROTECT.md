@@ -1,8 +1,10 @@
 # KIZOLA PROTECT — Análise Completa do Projecto
 
-**Data:** 2026-07-06 (Actualizada)
+**Data:** 2026-07-06
+**Última actualização:** 2026-07-09
 **Plataforma:** React Native (Expo SDK 54) + Node.js/Express + Supabase
 **Versão:** 1.0.0
+**Estado:** Análise de referência — contém informação desactualizada em várias secções (ver notas de actualização abaixo)
 
 ---
 
@@ -25,7 +27,36 @@
 15. [Major Issues — Dívida Técnica](#15-major-issues)
 16. [Todos os Ficheiros do Projecto](#16-todos-os-ficheiros)
 17. [Supabase Migrations — SQL Completo](#17-supabase-migrations)
-18. [Plano de Acção Prioritário](#18-plano-de-acção)
+18. [Plano de Acção Prioritário](#18-plano-de-acão)
+
+---
+
+## ⚠️ Notas de Actualização (2026-07-09)
+
+> **Esta análise reflecte o estado do projecto a 2026-07-06.** Desde então, o seguinte trabalho foi concluído e **não está reflectido** nas tabelas abaixo:
+
+| Item | Estado Anterior | Estado Actual | Fonte |
+|------|----------------|---------------|-------|
+| **Privacy Policy** | ❌ Ausente | ✅ `app/privacy.tsx` (275 linhas) | `us-market-execution-plan.md` |
+| **Terms of Service** | ❌ Ausente | ✅ `app/terms.tsx` (258 linhas) | `us-market-execution-plan.md` |
+| **Apple Login** | ❌ Ausente | ✅ Implementado (`expo-apple-authentication`) | `ANALISE_COMPLETA` 4.1, `EUA.md` |
+| **Google Login** | ✅ Completo | ❌ **Não implementado** (ver secção 4.1) | `us-market-execution-plan.md` draft |
+| **Accessibility** | ❌ Ausente | ⚠️ **~90 props** em 30+ ficheiros | `EUA.md` 3.10, `phase1-remaining.md` |
+| **SecureStore PII** | 🔴 CRITICAL (AsyncStorage) | ✅ Migrado (`lib/secureStorage.ts`) | `EUA.md` 3.2, `phase1-remaining.md` |
+| **i18n Fallback** | PT | ✅ EN (`lib/i18n.ts`) | `phase1-remaining.md` |
+| **es-US Translations** | ❌ Ausente | ✅ `assets/translations/es-US.json` | `phase1-remaining.md` |
+| **Profile.tsx** | 1604 linhas | ⚠️ **Verificar** — draft diz 495, relatório diz 495 | Conflito entre fontes |
+
+> **Decisão Oficial — IAP (In-App Purchases): ADIADO**
+> - A migração Stripe → Apple IAP + Google Play Billing foi **oficialmente adiada** (2026-07-09)
+> - O plano actual (`us-market-execution-plan.md`) **exclui IAP** do scope
+> - Produto pode lançar com Stripe para web + pagamentos fora da app; IAP será fase posterior
+> - **Risco:** App Store Guideline 3.1.1 pode rejeitar se subscrições digitais forem vendidas via Stripe dentro da app
+> - Ver `us-market-execution-plan.md` Onda 1 (fora de scope) e `TAREFAS_MERCADO_US.md` nota inicial
+
+> **Preços:** A secção 12 ainda mostra preços BR ($27.99/$29.99/$33.99). Preços US recomendados ($19.99/$34.99/$49.99) já estão em `lib/supabase.ts` e `us-market-execution-plan.md`.
+
+> **Chaves expostas no Git:** Ver `EUA.md` secção P0.1 — `SERVICE_ROLE_KEY`, `TWILIO_AUTH_TOKEN`, `GROQ_API_KEY` estão committed. **Rotação imediata requerida.**
 
 ---
 
@@ -920,27 +951,27 @@ Premium  → $49.99
 
 ### 14.1 Para App Store / Google Play Submission
 
-| # | Blocker | Guideline | Risco |
-|---|---------|-----------|-------|
-| 1 | **Usar Stripe para subscrições digitais** | App Store 3.1.1 / Play Payments Policy | 🔴 REJEIÇÃO GARANTIDA |
-| 2 | **Sem Privacy Policy** | App Store 5.1.1 / Play Data Safety | 🔴 REJEIÇÃO GARANTIDA |
-| 3 | **Sem Terms of Service** | App Store / Play Legal | 🔴 REJEIÇÃO GARANTIDA |
-| 4 | **Sem Login com Apple (em telas de email)** | App Store 4.8 | 🔴 REJEIÇÃO SE TIVER LOGIN SOCIAL (email login) |
-| 5 | **Sem VoiceOver/TalkBack** | ADA / WCAG 2.1 AA | 🔴 RISCO LEGAL |
-| 6 | **Sem CCPA Data Deletion** | California Consumer Privacy Act | 🔴 RISCO LEGAL |
-| 7 | **Dados sensíveis em AsyncStorage** | CCPA / OWASP M2 | 🔴 RISCO DE SEGURANÇA |
-| 8 | **Sem TLS Pinning** | OWASP M3 | 🔴 MITM VULNERABLE |
+| # | Blocker | Guideline | Risco | Estado (2026-07-09) |
+|---|---------|-----------|-------|---------------------|
+| 1 | **Usar Stripe para subscrições digitais** | App Store 3.1.1 / Play Payments Policy | 🔴 REJEIÇÃO GARANTIDA | **⚠️ ACEITO — IAP adiado oficialmente** |
+| 2 | **Sem Privacy Policy** | App Store 5.1.1 / Play Data Safety | 🔴 REJEIÇÃO GARANTIDA | ✅ **RESOLVIDO** — `app/privacy.tsx` |
+| 3 | **Sem Terms of Service** | App Store / Play Legal | 🔴 REJEIÇÃO GARANTIDA | ✅ **RESOLVIDO** — `app/terms.tsx` |
+| 4 | **Sem Login com Apple (em telas de email)** | App Store 4.8 | 🔴 REJEIÇÃO SE TIVER LOGIN SOCIAL | ✅ **RESOLVIDO** — implementado |
+| 5 | **Sem VoiceOver/TalkBack** | ADA / WCAG 2.1 AA | 🔴 RISCO LEGAL | ⚠️ **PARCIAL** — ~90 props adicionadas |
+| 6 | **Sem CCPA Data Deletion** | California Consumer Privacy Act | 🔴 RISCO LEGAL | ✅ **RESOLVIDO** — `app/(app)/delete-account.tsx` |
+| 7 | **Dados sensíveis em AsyncStorage** | CCPA / OWASP M2 | 🔴 RISCO DE SEGURANÇA | ✅ **RESOLVIDO** — migrado para SecureStore |
+| 8 | **Sem TLS Pinning** | OWASP M3 | 🔴 MITM VULNERABLE | ⚠️ **PARCIAL** — JS validation apenas |
 
 ### 14.2 Para Produção (US Market)
 
-| # | Issue | Severidade | Descrição |
-|---|-------|-----------|-----------|
-| 9 | Sem crash reporting | MAJOR | Sem Sentry/Crashlytics |
-| 10 | Sem analytics | MAJOR | Sem Firebase/Amplitude |
-| 11 | Sem testes | MAJOR | Zero unit/integration/E2E |
-| 12 | Sem experiência offline | MAJOR | App inutilizável sem internet |
-| 13 | Apple login não aparece em telas de email | MINOR | Login com Apple existe na tela login.tsx, mas não noutros fluxos (phone auth) |
-| 14 | Sem deep links universais | MAJOR | Password reset links não funcionam |
+| # | Issue | Severidade | Descrição | Estado (2026-07-09) |
+|---|-------|-----------|-----------|---------------------|
+| 9 | Sem crash reporting | MAJOR | Sem Sentry/Crashlytics | ⚠️ **PARCIAL** — Sentry scaffolded, pkg não instalado |
+| 10 | Sem analytics | MAJOR | Sem Firebase/Amplitude | ❌ NÃO INICIADO |
+| 11 | Sem testes | MAJOR | Zero unit/integration/E2E | ❌ NÃO INICIADO (5 ficheiros draft) |
+| 12 | Sem experiência offline | MAJOR | App inutilizável sem internet | ❌ NÃO INICIADO |
+| 13 | Apple login não aparece em telas de email | MINOR | Login com Apple existe na tela login.tsx, mas não noutros fluxos (phone auth) | ✅ **VERIFICAR** |
+| 14 | Sem deep links universais | MAJOR | Password reset links não funcionam | ❌ NÃO INICIADO |
 
 ---
 
@@ -948,22 +979,22 @@ Premium  → $49.99
 
 ### 15.1 Dívida Técnica
 
-| # | Issue | Local | Descrição |
-|---|-------|-------|-----------|
-| 1 | **Monolithic Screens** | profile.tsx (1604 linhas), support.tsx (1173), learn.tsx (1161), documents.tsx (1015), dashboard.tsx (977) | Ecrãs > 1000 linhas — violam responsabilidade única |
-| 2 | **State Management Inconsistente** | Context + Zustand + React Query | 3 sistemas sem fronteiras claras |
-| 3 | **Zero Testes** | Nenhum ficheiro de teste | Cada alteração é um risco |
-| 4 | **Código Duplicado** | Múltiplos ecrãs | Lógica de fetch/submissão repetida sem hooks |
-| 5 | **Components Genéricos Insuficientes** | Falta design system | Cada ecrã implementa estilos próprios |
-| 6 | **Error Handling Inconsistente** | Espalhado | Alguns ecrãs tratam erros, outros não |
-| 7 | **Código Morto** | `app/(auth)/login.tsx.phone` | Artifact não usado |
-| 8 | **AuthProvider Monolítico** | `providers/AuthProvider.tsx` (686 linhas) | Demasiadas responsabilidades |
-| 9 | **i18n Fallback EN correcto** | `lib/i18n.ts` | Fallback é EN (não PT) |
-| 10 | **Números Mágicos** | Espalhado | Cores, sizes, timings hardcoded |
+| # | Issue | Local | Descrição | Estado (2026-07-09) |
+|---|-------|-------|-----------|---------------------|
+| 1 | **Monolithic Screens** | profile.tsx (1604→?), support.tsx (1173), learn.tsx (1161), documents.tsx (1015), dashboard.tsx (977) | Ecrãs > 1000 linhas — violam responsabilidade única | ⚠️ **CONFLITO** — draft diz profile 495 linhas; análise original 1604. **Verificar código real** |
+| 2 | **State Management Inconsistente** | Context + Zustand + React Query | 3 sistemas sem fronteiras claras | ❌ NÃO RESOLVIDO |
+| 3 | **Zero Testes** | Nenhum ficheiro de teste | Cada alteração é um risco | ❌ **5 ficheiros draft** em `__tests__/` — não executam |
+| 4 | **Código Duplicado** | Múltiplos ecrãs | Lógica de fetch/submissão repetida sem hooks | ❌ NÃO RESOLVIDO |
+| 5 | **Components Genéricos Insuficientes** | Falta design system | Cada ecrã implementa estilos próprios | ❌ NÃO RESOLVIDO |
+| 6 | **Error Handling Inconsistente** | Espalhado | Alguns ecrãs tratam erros, outros não | ❌ NÃO RESOLVIDO |
+| 7 | **Código Morto** | `app/(auth)/login.tsx.phone` | Artifact não usado | ✅ **REMOVIDO** (2026-07-09) |
+| 8 | **AuthProvider Monolítico** | `providers/AuthProvider.tsx` (686→44 linhas) | Demasiadas responsabilidades | ✅ **REFACTORADO** — delega a 4 hooks |
+| 9 | **i18n Fallback EN correcto** | `lib/i18n.ts` | Fallback é EN (não PT) | ✅ **RESOLVIDO** |
+| 10 | **Números Mágicos** | Espalhado | Cores, sizes, timings hardcoded | ❌ NÃO RESOLVIDO — `constants/theme.ts` em falta |
 
 ### 15.2 Performance
 
-| Aspecto | Status | Notas |
+| Aspecto | Estado | Notas |
 |---------|--------|-------|
 | Hermes engine | ✅ Configurado | Metro config |
 | Bundle size | ⚠️ Não verificado | Precisa de `expo-analyze` |
@@ -1133,26 +1164,26 @@ Cria:
 
 ### 18.1 Imediato (Antes de Submeter à App Store)
 
-| # | Tarefa | Prioridade | Esforço |
-|---|--------|-----------|---------|
-| 1 | Migrar Stripe → Apple IAP + Google Play Billing | 🔴 CRITICAL | 3-5 dias |
-| 2 | Adicionar ecrãs Privacy Policy + Terms of Service | 🔴 CRITICAL | 1-2 dias |
-| 3 | Adicionar `accessibilityLabel` + `accessibilityRole` a todos os componentes | 🔴 CRITICAL | 2-3 dias |
-| 4 | Migrar PII de AsyncStorage para SecureStore | 🔴 CRITICAL | 1 dia |
-| 5 | Implementar TLS pinning no Axios | 🔴 CRITICAL | 1 dia |
-| 6 | Rever fluxo Apple Login (aparece só em email login) | 🔴 CRITICAL | 1 dia |
-| 7 | Implementar CCPA data deletion flow | 🔴 CRITICAL | 2 dias |
+| # | Tarefa | Prioridade | Esforço | Estado (2026-07-09) |
+|---|--------|-----------|---------|---------------------|
+| 1 | Migrar Stripe → Apple IAP + Google Play Billing | 🔴 CRITICAL | 3-5 dias | **⚠️ ADIADO OFICIALMENTE** — fora de scope |
+| 2 | Adicionar ecrãs Privacy Policy + Terms of Service | 🔴 CRITICAL | 1-2 dias | ✅ **CONCLUÍDO** |
+| 3 | Adicionar `accessibilityLabel` + `accessibilityRole` a todos os componentes | 🔴 CRITICAL | 2-3 dias | ⚠️ **PARCIAL** — ~90 props |
+| 4 | Migrar PII de AsyncStorage para SecureStore | 🔴 CRITICAL | 1 dia | ✅ **CONCLUÍDO** |
+| 5 | Implementar TLS pinning no Axios | 🔴 CRITICAL | 1 dia | ⚠️ **PARCIAL** — JS validation apenas |
+| 6 | Rever fluxo Apple Login (aparece só em email login) | 🔴 CRITICAL | 1 dia | ✅ **CONCLUÍDO** |
+| 7 | Implementar CCPA data deletion flow | 🔴 CRITICAL | 2 dias | ✅ **CONCLUÍDO** |
 
 ### 18.2 Curto Prazo (Antes do Lançamento US)
 
-| # | Tarefa | Prioridade | Esforço |
-|---|--------|-----------|---------|
-| 8 | Implementar testes unitários (Jest + RNTL) | 🟠 MAJOR | 5-7 dias |
-| 9 | Refactor ecrãs > 1000 linhas em hooks + componentes | 🟠 MAJOR | 3-5 dias |
-| 10 | Implementar NetInfo + cache offline (TanStack Query) | 🟠 MAJOR | 2-3 dias |
-| 11 | Adicionar Firebase Crashlytics + Analytics | 🟠 MAJOR | 2 dias |
-| 12 | Corrigir i18n: fallback EN, adicionar es-US | 🟠 MAJOR | 2 dias |
-| 13 | Adicionar universal links / app links | 🟠 MAJOR | 1-2 dias |
+| # | Tarefa | Prioridade | Esforço | Estado (2026-07-09) |
+|---|--------|-----------|---------|---------------------|
+| 8 | Implementar testes unitários (Jest + RNTL) | 🟠 MAJOR | 5-7 dias | ❌ **NÃO INICIADO** |
+| 9 | Refactor ecrãs > 1000 linhas em hooks + componentes | 🟠 MAJOR | 3-5 dias | ❌ **NÃO INICIADO** (ver Onda 2 `us-market-execution-plan.md`) |
+| 10 | Implementar NetInfo + cache offline (TanStack Query) | 🟠 MAJOR | 2-3 dias | ❌ **NÃO INICIADO** |
+| 11 | Adicionar Firebase Crashlytics + Analytics | 🟠 MAJOR | 2 dias | ⚠️ **PARCIAL** — Sentry scaffolded |
+| 12 | Corrigir i18n: fallback EN, adicionar es-US | 🟠 MAJOR | 2 dias | ✅ **CONCLUÍDO** |
+| 13 | Adicionar universal links / app links | 🟠 MAJOR | 1-2 dias | ❌ **NÃO INICIADO** |
 | 14 | Remover código morto (`login.tsx.phone`) | 🟡 MINOR | < 1 dia |
 
 ### 18.3 Médio Prazo (Pós-Lançamento)
