@@ -33,3 +33,5 @@ export function HelpCard({ theme, styles, onPress }: Props) {
     </View>
   );
 }
+
+export default HelpCard;

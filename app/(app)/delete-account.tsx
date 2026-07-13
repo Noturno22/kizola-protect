@@ -53,12 +53,13 @@ export default function DeleteAccount() {
         throw new Error('No active session. Please log in again.');
       }
 
-      const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
-      const response = await fetch(`${apiUrl}/auth/delete-account`, {
+      const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+      const response = await fetch(`${supabaseUrl}/functions/v1/delete-account`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
+          apikey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!,
         },
         body: JSON.stringify({ reason, userId: user?.id }),
       });

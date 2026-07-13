@@ -137,3 +137,5 @@ const createStyles = (theme: Theme) =>
       color: '#FFFFFF',
     },
   });
+
+export default CategoryChips;

@@ -15,3 +15,15 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/stripe-webhook/deno.json"
 entrypoint = "./functions/create-checkout-session/index.ts"
+
+[functions.send-code]
+enabled = true
+verify_jwt = false
+
+[functions.verify-code]
+enabled = true
+verify_jwt = false
+
+[functions.delete-account]
+enabled = true
+verify_jwt = true

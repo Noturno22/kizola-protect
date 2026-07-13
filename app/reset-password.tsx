@@ -14,12 +14,12 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { Ionicons } from '@expo/vector-icons';
+// Ionicons removed
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useTranslation } from 'react-i18next';
-import { CheckCircle2, Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react-native';
+import { CheckCircle2, Lock, Eye, EyeOff, ShieldCheck, AlertTriangle } from 'lucide-react-native';
 import * as Linking from 'expo-linking';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
 
@@ -210,7 +210,7 @@ export default function ResetPassword() {
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.centerContent}>
             <View style={[styles.errorIconWrapper]}>
-              <Ionicons name="warning-outline" size={48} color="#EF4444" />
+              <AlertTriangle size={48} color="#EF4444" />
             </View>
             <Text style={[styles.errorTitle, { color: theme.text }]}>Link Inválido</Text>
             <Text style={[styles.errorDescription, { color: theme.textSecondary }]}>
@@ -308,7 +308,7 @@ export default function ResetPassword() {
               <View style={styles.inputGroup}>
                 <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Nova Senha</Text>
                 <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                  <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                  <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
                     placeholder="Mínimo 8 caracteres"
@@ -354,7 +354,7 @@ export default function ResetPassword() {
                   styles.inputContainer,
                   { backgroundColor: theme.background, borderColor: confirmPassword && confirmPassword !== password ? '#EF4444' : theme.cardBorderAlt }
                 ]}>
-                  <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                  <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
                     placeholder="Repita a nova senha"

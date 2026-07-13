@@ -35,15 +35,15 @@ import { Platform } from 'react-native';
 import { SECURE_KEYS } from '@/lib/secureStorage';
 
 const BASE_URL =
-  process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000';
+  `${process.env.EXPO_PUBLIC_SUPABASE_URL}/functions/v1`;
 
-const ALLOWED_HOSTNAMES = ['api.kizola.app', 'localhost'];
+const ALLOWED_HOSTNAMES = ['api.kizola.app', 'localhost', 'ixexrjyymlzfxiycucvx.supabase.co'];
 
 // Enforce HTTPS in production
 if (!__DEV__ && BASE_URL.startsWith('http://')) {
   console.error(
     '[apiClient] CRITICAL: Production API URL must use HTTPS. ' +
-    'Set EXPO_PUBLIC_API_URL to an https:// endpoint.'
+    'Set EXPO_PUBLIC_SUPABASE_URL to an https:// endpoint.'
   );
 }
 

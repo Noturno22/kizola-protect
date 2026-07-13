@@ -1,0 +1,10 @@
+.codegraph
+.omo
+.git
+.gitignore
+node_modules
+.expo
+.vscode
+.idea
+dist
+build

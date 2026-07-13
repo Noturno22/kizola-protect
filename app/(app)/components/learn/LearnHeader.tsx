@@ -124,3 +124,5 @@ const createStyles = (theme: Theme, isDark: boolean) =>
       fontWeight: '500',
     },
   });
+
+export default LearnHeader;

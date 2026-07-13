@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+import { ArrowLeft, Moon, Sun } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 
@@ -33,7 +33,7 @@ export default function TermsOfService() {
           accessibilityLabel={t('common.back') || 'Back'}
           accessibilityRole="button"
         >
-          <Ionicons name="arrow-back" size={20} color={theme.text} />
+          <ArrowLeft size={20} color={theme.text} />
         </TouchableOpacity>
 
         {/* ── Theme Toggle ───────────────────────────────────────────────────── */}
@@ -48,7 +48,7 @@ export default function TermsOfService() {
             <View
               style={[styles.themeToggleThumb, { backgroundColor: isDark ? '#3B82F6' : '#2563EB', transform: [{ translateX: isDark ? 22 : 2 }] }]}
             >
-              <Ionicons name={isDark ? 'moon' : 'sunny'} size={12} color="#FFFFFF" />
+              {isDark ? <Moon size={12} color="#FFFFFF" /> : <Sun size={12} color="#FFFFFF" />}
             </View>
           </View>
           <Text style={[styles.themeToggleLabel, { color: theme.textSecondary }]}>

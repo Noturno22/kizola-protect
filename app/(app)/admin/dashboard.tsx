@@ -526,35 +526,6 @@ function AdminDashboard() {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-
-      {/* Admin Bottom Navigation */}
-      <View style={[styles.bottomNav, { backgroundColor: theme.surface, borderTopColor: theme.cardBorder }]}>
-        <TouchableOpacity style={styles.navItem}>
-          <LayoutDashboard size={24} color={theme.accent} />
-          <Text style={[styles.navText, { color: theme.accent }]}>{t('admin.navPanel')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.navItem}
-          onPress={() => router.push('/(app)/admin/users')}
-        >
-          <Users size={24} color={theme.textSecondary} />
-          <Text style={[styles.navText, { color: theme.textSecondary }]}>{t('admin.navUsers')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.navItem}
-          onPress={() => router.push('/(app)/admin/support')}
-        >
-          <MessageSquare size={24} color={theme.textSecondary} />
-          <Text style={[styles.navText, { color: theme.textSecondary }]}>{t('admin.navSupport')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.navItem}
-          onPress={() => router.push('/dashboard')}
-        >
-          <ArrowUpRight size={24} color={theme.textSecondary} />
-          <Text style={[styles.navText, { color: theme.textSecondary }]}>{t('admin.navExit')}</Text>
-        </TouchableOpacity>
-      </View>
     </SafeAreaView>
   );
 }
@@ -565,7 +536,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 24,
-    paddingBottom: 100,
   },
   header: {
     flexDirection: 'row',
@@ -721,26 +691,6 @@ const styles = StyleSheet.create({
   },
   userDate: {
     fontSize: 11,
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 80,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingBottom: 20,
-    borderTopWidth: 1,
-  },
-  navItem: {
-    alignItems: 'center',
-    gap: 4,
-  },
-  navText: {
-    fontSize: 10,
-    fontWeight: '700',
   },
   loadingContainer: {
     flex: 1,

@@ -5,7 +5,7 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import * as SecureStore from 'expo-secure-store';
 
-export const APP_ONBOARDING_COMPLETED_KEY = '@kizola_app_onboarding_completed_v1';
+export const APP_ONBOARDING_COMPLETED_KEY = 'kizola_app_onboarding_completed_v1';
 
 export default function Index() {
   const router = useRouter();

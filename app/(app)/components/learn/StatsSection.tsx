@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Theme } from '@/providers/ThemeProvider';
 
 interface StatsSectionProps {
@@ -20,7 +20,12 @@ export function StatsSection({
 
   return (
     <View style={styles.statsWrapper}>
-      <BlurView intensity={80} tint="light" style={styles.statsContainer}>
+      <LinearGradient
+        colors={theme.isDark ? [theme.surface, theme.surfaceElevated] : ['#FFFFFF', '#F8FAFC']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.statsContainer}
+      >
         <View style={styles.statItem}>
           <Text style={styles.statNumber}>{articleCount}</Text>
           <Text style={styles.statLabel}>{t('learn.articles_stat')}</Text>
@@ -35,7 +40,7 @@ export function StatsSection({
           <Text style={styles.statNumber}>15m</Text>
           <Text style={styles.statLabel}>{t('learn.avgRead')}</Text>
         </View>
-      </BlurView>
+      </LinearGradient>
     </View>
   );
 }
@@ -47,9 +52,9 @@ const createStyles = (theme: Theme) =>
       marginTop: -32,
       marginBottom: 24,
       borderRadius: 24,
-      shadowColor: '#000',
+      shadowColor: theme.isDark ? '#000' : theme.accent,
       shadowOffset: { width: 0, height: 8 },
-      shadowOpacity: 0.1,
+      shadowOpacity: theme.isDark ? 0.1 : 0.08,
       shadowRadius: 16,
       elevation: 8,
       backgroundColor: 'transparent',
@@ -86,3 +91,5 @@ const createStyles = (theme: Theme) =>
       backgroundColor: theme.cardBorderAlt,
     },
   });
+
+export default StatsSection;

@@ -19,7 +19,7 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+import { Moon, Sun, ArrowLeft, User, Mail, Phone, Lock, EyeOff, Eye, Check, ArrowRight, Apple, Smartphone } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
@@ -381,11 +381,7 @@ export default function Register() {
                 },
               ]}
             >
-              <Ionicons
-                name={isDark ? 'moon' : 'sunny'}
-                size={12}
-                color="#FFFFFF"
-              />
+              {isDark ? <Moon size={12} color="#FFFFFF" /> : <Sun size={12} color="#FFFFFF" />}
             </View>
           </View>
           <Text style={[styles.themeToggleLabel, { color: theme.textSecondary }]}>
@@ -400,7 +396,7 @@ export default function Register() {
           accessibilityLabel={t('common.back') || 'Back'}
           style={[styles.backButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
         >
-          <Ionicons name="arrow-back" size={20} color={theme.text} />
+          <ArrowLeft size={20} color={theme.text} />
         </TouchableOpacity>
 
         <KeyboardAvoidingView
@@ -446,7 +442,7 @@ export default function Register() {
 
               {/* Name */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="person-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <User size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder={t('auth.fullName')}
@@ -459,7 +455,7 @@ export default function Register() {
 
               {/* Email */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="mail-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Mail size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder={t('auth.email')}
@@ -474,7 +470,7 @@ export default function Register() {
 
               {/* Phone */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="call-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Phone size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder={t('auth.phone')}
@@ -488,7 +484,7 @@ export default function Register() {
 
               {/* Password */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder={t('auth.password')}
@@ -499,13 +495,13 @@ export default function Register() {
                   testID="password-input"
                 />
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeIcon}>
-                  <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={18} color={theme.textMuted} />
+                  {showPassword ? <EyeOff size={18} color={theme.textMuted} /> : <Eye size={18} color={theme.textMuted} />}
                 </TouchableOpacity>
               </View>
 
               {/* Confirm Password */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder={t('auth.confirmPassword')}
@@ -521,7 +517,7 @@ export default function Register() {
               <View style={styles.termsContainer}>
                 <TouchableOpacity onPress={() => setAgreed(!agreed)} style={styles.checkboxTouchable}>
                   <View style={[styles.checkbox, agreed && { backgroundColor: theme.primary }, { borderColor: theme.primary }]}>
-                    {agreed && <Ionicons name="checkmark" size={14} color="#FFFFFF" />}
+                    {agreed && <Check size={14} color="#FFFFFF" />}
                   </View>
                 </TouchableOpacity>
                 <Text style={[styles.termsText, { color: theme.textSecondary }]}>
@@ -553,7 +549,7 @@ export default function Register() {
                   ) : (
                     <>
                       <Text style={styles.loginButtonText}>{t('auth.register')}</Text>
-                      <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+                      <ArrowRight size={18} color="#FFFFFF" />
                     </>
                   )}
                 </LinearGradient>
@@ -617,7 +613,7 @@ export default function Register() {
                     <ActivityIndicator color="#FFFFFF" />
                   ) : (
                     <>
-                      <Ionicons name="logo-apple" size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
+                      <Apple size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
                       <Text style={[styles.socialButtonTextApple, { color: '#FFFFFF' }]}>{t('auth.appleSignIn')}</Text>
                     </>
                   )}
@@ -632,7 +628,7 @@ export default function Register() {
                 accessibilityLabel={t('auth.phoneSignIn') || 'Sign in with phone number'}
                 activeOpacity={0.8}
               >
-                <Ionicons name="phone-portrait-outline" size={18} color={theme.text} style={{ marginRight: 10 }} />
+                <Smartphone size={18} color={theme.text} style={{ marginRight: 10 }} />
                 <Text style={[styles.socialButtonText, { color: theme.text }]}>{t('auth.phoneSignIn')}</Text>
               </TouchableOpacity>
 

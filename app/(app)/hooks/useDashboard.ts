@@ -500,3 +500,5 @@ const createStyles = (theme: any, planInfo: any) =>
     helpTitle: { fontSize: 15, fontWeight: '700', marginBottom: 3 },
     helpDescription: { fontSize: 12, lineHeight: 17 },
   });
+// Default export for Expo Router (this file is not a route)
+export default function _notARoute() { return null; }

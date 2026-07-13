@@ -40,3 +40,5 @@ export function LearningCard({ theme, styles, onPress }: Props) {
     </View>
   );
 }
+
+export default LearningCard;

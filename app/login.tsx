@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
 import {
@@ -20,10 +20,11 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+import { Moon, Sun, Mail, Lock, EyeOff, Eye, ArrowRight, Apple, Smartphone } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import { ComingSoonModal } from '@/components/ComingSoonModal';
 import * as AppleAuthentication from 'expo-apple-authentication';
 
 import { supabase } from '@/lib/supabase';
@@ -87,6 +88,8 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
+  const [showAppleModal, setShowAppleModal] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
   const D = theme;
 
   const nextRoute = useMemo((): '/dashboard' | null => {
@@ -102,6 +105,9 @@ export default function Login() {
     }
     return false;
   }, [router]);
+
+  const routerRef = useRef(router);
+  routerRef.current = router;
 
   useEffect(() => {
     let mounted = true;
@@ -119,14 +125,14 @@ export default function Login() {
     })();
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) router.replace('/dashboard');
+      if (session && mounted) routerRef.current.replace('/dashboard');
     });
 
     return () => {
       mounted = false;
       listener.subscription.unsubscribe();
     };
-  }, [nextRoute, redirectIfLoggedIn, router]);
+  }, [nextRoute, redirectIfLoggedIn]);
 
   useFocusEffect(
     useCallback(() => {
@@ -207,7 +213,10 @@ export default function Login() {
 
         if (res.type === 'success') {
           const { url } = res;
-          await createSessionFromUrl(url);
+          const session = await createSessionFromUrl(url);
+          if (session) {
+            router.replace('/dashboard');
+          }
         }
       }
     } catch (e: any) {
@@ -268,7 +277,10 @@ export default function Login() {
 
         if (res.type === 'success') {
           const { url } = res;
-          await createSessionFromUrl(url);
+          const session = await createSessionFromUrl(url);
+          if (session) {
+            router.replace('/dashboard');
+          }
         }
       }
     } catch (e: any) {
@@ -311,11 +323,7 @@ export default function Login() {
                 },
               ]}
             >
-              <Ionicons
-                name={isDark ? 'moon' : 'sunny'}
-                size={12}
-                color="#FFFFFF"
-              />
+              {isDark ? <Moon size={12} color="#FFFFFF" /> : <Sun size={12} color="#FFFFFF" />}
             </View>
           </View>
           <Text style={[styles.themeToggleLabel, { color: theme.textSecondary }]}>
@@ -369,7 +377,7 @@ export default function Login() {
 
               {/* Email */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="mail-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Mail size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder="Email address"
@@ -384,7 +392,7 @@ export default function Login() {
 
               {/* Password */}
               <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                <Ionicons name="lock-closed-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                 <TextInput
                   style={[styles.input, { color: theme.text }]}
                   placeholder="Password"
@@ -395,7 +403,7 @@ export default function Login() {
                   testID="password-input"
                 />
                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeIcon}>
-                  <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={18} color={theme.textMuted} />
+                  {showPassword ? <EyeOff size={18} color={theme.textMuted} /> : <Eye size={18} color={theme.textMuted} />}
                 </TouchableOpacity>
               </View>
 
@@ -425,7 +433,7 @@ export default function Login() {
                   ) : (
                     <>
                       <Text style={styles.loginButtonText}>{t('auth.signIn')}</Text>
-                      <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+                      <ArrowRight size={18} color="#FFFFFF" />
                     </>
 
                   )}
@@ -466,47 +474,29 @@ export default function Login() {
               </TouchableOpacity>
 
               {/* Apple Button */}
-              {Platform.OS === 'ios' ? (
-                <AppleAuthentication.AppleAuthenticationButton
-                  buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-                  buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
-                  cornerRadius={12}
-                  style={styles.appleButton}
-                  onPress={signInWithApple}
-                />
-              ) : (
-                <TouchableOpacity
-                  style={[
-                    styles.socialButton,
-                    { backgroundColor: '#000000', borderColor: '#333333' },
-                    appleLoading && styles.loginButtonDisabled,
-                  ]}
-                  onPress={signInWithApple}
-                  disabled={appleLoading}
-                  accessibilityRole="button"
-                  accessibilityLabel={t('auth.appleSignIn') || 'Sign in with Apple'}
-                  activeOpacity={0.8}
-                >
-                  {appleLoading ? (
-                    <ActivityIndicator color="#FFFFFF" />
-                  ) : (
-                    <>
-                      <Ionicons name="logo-apple" size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
-                      <Text style={[styles.socialButtonTextApple, { color: '#FFFFFF' }]}>{t('auth.appleSignIn')}</Text>
-                    </>
-                  )}
-                </TouchableOpacity>
-              )}
+              <TouchableOpacity
+                style={[
+                  styles.socialButton,
+                  { backgroundColor: '#000000', borderColor: '#333333' },
+                ]}
+                onPress={() => setShowAppleModal(true)}
+                accessibilityRole="button"
+                accessibilityLabel={t('auth.appleSignIn') || 'Sign in with Apple'}
+                activeOpacity={0.8}
+              >
+                <Apple size={20} color="#FFFFFF" style={{ marginRight: 10 }} />
+                <Text style={[styles.socialButtonTextApple, { color: '#FFFFFF' }]}>{t('auth.appleSignIn')}</Text>
+              </TouchableOpacity>
 
               {/* Phone Button */}
               <TouchableOpacity
                 style={[styles.socialButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}
-                onPress={() => router.push('/login-phone')}
+                onPress={() => setShowPhoneModal(true)}
                 accessibilityRole="button"
                 accessibilityLabel={t('auth.phoneSignIn') || 'Sign in with phone number'}
                 activeOpacity={0.8}
               >
-                <Ionicons name="phone-portrait-outline" size={18} color={theme.text} style={{ marginRight: 10 }} />
+                <Smartphone size={18} color={theme.text} style={{ marginRight: 10 }} />
                 <Text style={[styles.socialButtonText, { color: theme.text }]}>{t('auth.phoneSignIn')}</Text>
               </TouchableOpacity>
 
@@ -523,6 +513,27 @@ export default function Login() {
           </ScrollView>
         </KeyboardAvoidingView>
       </LinearGradient>
+
+      {/* Apple Login Coming Soon Modal */}
+      <ComingSoonModal
+        visible={showAppleModal}
+        onClose={() => setShowAppleModal(false)}
+        title="Login com Apple"
+        message="Esta área está sendo desenvolvida e será adicionada em breve na versão final. A autenticação com Apple ID requer uma conta de desenvolvedor Apple configurada."
+        icon="apple"
+        accentColor="#000000"
+      />
+
+      {/* Phone Login Coming Soon Modal */}
+      <ComingSoonModal
+        visible={showPhoneModal}
+        onClose={() => setShowPhoneModal(false)}
+        title="Login com Telefone"
+        message="Esta área está sendo desenvolvida e será adicionada em breve na versão final. O login via SMS/OTP estará disponível na versão completa."
+        icon="phone"
+        accentColor={theme.accent}
+      />
+
     </SafeAreaView>
   );
 }

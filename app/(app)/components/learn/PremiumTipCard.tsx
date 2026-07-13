@@ -17,7 +17,7 @@ export function PremiumTipCard({ theme, t }: PremiumTipCardProps) {
   return (
     <View style={styles.tipSection}>
       <LinearGradient
-        colors={[theme.accent, theme.primary]}
+        colors={theme.isDark ? [theme.accent, theme.primary] : [theme.accent, theme.accentBlue]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.premiumTipCard}
@@ -38,7 +38,7 @@ export function PremiumTipCard({ theme, t }: PremiumTipCardProps) {
             <Text style={styles.premiumTipButtonText}>
               {t('learn.contactSupport')}
             </Text>
-            <ChevronRight size={16} color={theme.primary} />
+            <ChevronRight size={16} color={theme.accent} />
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -107,6 +107,8 @@ const createStyles = (theme: Theme) =>
     premiumTipButtonText: {
       fontSize: 14,
       fontWeight: '700',
-      color: theme.primary,
+      color: theme.accent,
     },
   });
+
+export default PremiumTipCard;

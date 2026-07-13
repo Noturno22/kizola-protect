@@ -22,3 +22,5 @@ export function StatsRow({ theme, styles, planInfo, recentRequests, notification
     </View>
   );
 }
+
+export default StatsRow;

@@ -3,8 +3,8 @@
  * 📱 Kizola Protect — Expo Dynamic Config
  * ═══════════════════════════════════════════════════════════════
  *
- * This config extends app.json with environment-aware plugins.
- * app.config.js takes precedence over app.json at build time.
+ * Single source of truth for all Expo configuration.
+ * Environment-aware plugins (TLS pinning in production).
  *
  * TLS PINNING (OWASP M3 Compliance):
  *   Enabled ONLY in production builds via @bam.tech/react-native-app-security.
@@ -23,12 +23,37 @@
  * ═══════════════════════════════════════════════════════════════
  */
 
-const baseConfig = require('./app.json');
-
 const isProduction = process.env.APP_ENV === 'production';
 
-// Start with all plugins from app.json (expo-network-addons was removed)
-const plugins = [...(baseConfig.expo.plugins || [])];
+// ── Base plugins ─────────────────────────────────────────────
+const plugins = [
+  [
+    'expo-router',
+    {
+      origin: 'https://kizola.app',
+    },
+  ],
+  [
+    'expo-splash-screen',
+    {
+      image: './assets/images/splash-icon.png',
+      resizeMode: 'contain',
+      backgroundColor: '#ffffff',
+    },
+  ],
+  [
+    'expo-font',
+    {
+      fonts: [
+        'node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf',
+      ],
+    },
+  ],
+  'expo-web-browser',
+  'expo-secure-store',
+  'expo-localization',
+  'expo-notifications',
+];
 
 // ── TLS Pinning — only in production ──────────────────────────
 if (isProduction) {
@@ -37,7 +62,7 @@ if (isProduction) {
     {
       sslPinning: {
         'api.kizola.app': [
-          // ⚠️  REPLACE WITH REAL SHA-256 HASHS BEFORE BUILDING FOR PRODUCTION
+          // ⚠️  REPLACE WITH REAL SHA-256 HASHES BEFORE BUILDING FOR PRODUCTION
           //     Generate with the openssl command above.
           //     Always include 2 pins (primary + backup) for cert rotation safety.
           //
@@ -54,7 +79,101 @@ if (isProduction) {
 
 module.exports = {
   expo: {
-    ...baseConfig.expo,
+    name: 'Kizola Protect',
+    slug: 'kizola-protect',
+    owner: 'samaina',
+    scheme: 'kizola',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './assets/images/icon.png',
+    userInterfaceStyle: 'automatic',
     plugins,
+    experiments: {
+      typedRoutes: true,
+    },
+    ios: {
+      supportsTablet: true,
+      bundleIdentifier: 'app.luar.6xeu64ff9auaiakubrvpo',
+      associatedDomains: ['applinks:kizola.app', 'applinks:www.kizola.app'],
+      config: {
+        usesNonExemptEncryption: false,
+      },
+      entitlements: {
+        'com.apple.developer.applesignin': ['Default'],
+      },
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+        NSCameraUsageDescription:
+          'Kizola Protect needs camera access to scan and upload documents.',
+        NSPhotoLibraryUsageDescription:
+          'Kizola Protect needs photo library access to upload documents.',
+        NSMicrophoneUsageDescription:
+          'Kizola Protect needs microphone access for voice messages.',
+        NSFaceIDUsageDescription:
+          'Kizola Protect uses Face ID for secure authentication.',
+      },
+    },
+    android: {
+      softwareKeyboardLayoutMode: 'pan',
+      adaptiveIcon: {
+        foregroundImage: './assets/images/adaptive-icon.png',
+        backgroundColor: '#ffffff',
+      },
+      package: 'com.kizolaprotect.app',
+      intentFilters: [
+        {
+          action: 'VIEW',
+          data: [
+            {
+              scheme: 'https',
+              host: 'kizola.app',
+              pathPrefix: '/reset-password',
+            },
+            {
+              scheme: 'https',
+              host: 'www.kizola.app',
+              pathPrefix: '/reset-password',
+            },
+            {
+              scheme: 'kizola',
+              host: '*',
+              pathPrefix: '/reset-password',
+            },
+          ],
+          category: ['BROWSABLE', 'DEFAULT'],
+        },
+        {
+          action: 'VIEW',
+          data: [
+            {
+              scheme: 'https',
+              host: 'kizola.app',
+              pathPrefix: '/',
+            },
+            {
+              scheme: 'https',
+              host: 'www.kizola.app',
+              pathPrefix: '/',
+            },
+            {
+              scheme: 'kizola',
+              host: '*',
+            },
+          ],
+          category: ['BROWSABLE', 'DEFAULT'],
+        },
+      ],
+    },
+    web: {
+      favicon: './assets/images/favicon.png',
+    },
+    extra: {
+      router: {
+        origin: 'https://kizola.app',
+      },
+      eas: {
+        projectId: '347949bd-b8ba-474c-847a-5b6972a40f38',
+      },
+    },
   },
 };

@@ -176,10 +176,13 @@ export function useAuthOperations(ctx: {
       return { data: {}, error: null };
     }
 
-    const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
-    const response = await fetch(`${apiUrl}/auth/send-code`, {
+    const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+    const response = await fetch(`${supabaseUrl}/functions/v1/send-code`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!,
+      },
       body: JSON.stringify({ phone }),
     });
     const result = await response.json();
@@ -205,10 +208,13 @@ export function useAuthOperations(ctx: {
       return { data: { session: {} as Session, user: demoUser } };
     }
 
-    const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
-    const response = await fetch(`${apiUrl}/auth/verify-code`, {
+    const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+    const response = await fetch(`${supabaseUrl}/functions/v1/verify-code`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!,
+      },
       body: JSON.stringify({ phone, code: token }),
     });
     const result = await response.json();

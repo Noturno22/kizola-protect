@@ -113,3 +113,6 @@ export function useLearn() {
     insets,
   };
 }
+
+// Default export for Expo Router (this file is not a route)
+export default function _notARoute() { return null; }

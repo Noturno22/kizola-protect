@@ -94,13 +94,13 @@ export default function SupportForm({
             />
             <View style={styles.contactCardContent}>
               <View style={styles.contactCardIcon}>
-                <Phone size={24} color="#FFFFFF" />
+                <Phone size={24} color={theme.isDark ? '#FFFFFF' : '#1E293B'} />
               </View>
               <Text style={styles.contactCardLabel}>{t('support.whatsapp')}</Text>
               <Text style={styles.contactCardValue}>+1 (929) 609-7035</Text>
               <View style={styles.contactCardAction}>
                 <Text style={styles.contactCardActionText}>{t('common.contact')}</Text>
-                <ChevronRight size={16} color="#FFFFFF" />
+                <ChevronRight size={16} color={theme.isDark ? '#FFFFFF' : '#1E293B'} />
               </View>
             </View>
           </TouchableOpacity>
@@ -114,7 +114,7 @@ export default function SupportForm({
             />
             <View style={styles.contactCardContent}>
               <View style={styles.contactCardIcon}>
-                <Mail size={24} color="#FFFFFF" />
+                <Mail size={24} color={theme.isDark ? '#FFFFFF' : '#1E293B'} />
               </View>
               <Text style={styles.contactCardLabel}>{t('support.email')}</Text>
               <Text style={styles.contactCardValue}>support@kizola.protect</Text>

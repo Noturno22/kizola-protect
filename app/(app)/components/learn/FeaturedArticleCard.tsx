@@ -81,6 +81,7 @@ const createStyles = (theme: Theme) =>
       overflow: 'hidden',
       borderWidth: 1,
       borderColor: theme.cardBorderAlt,
+      backgroundColor: theme.surface,
       marginTop: 16,
     },
     featuredGradient: {
@@ -146,3 +147,5 @@ const createStyles = (theme: Theme) =>
       color: theme.accent,
     },
   });
+
+export default FeaturedArticleCard;

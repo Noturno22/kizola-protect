@@ -42,3 +42,5 @@ export function PlanBenefits({ theme, styles, user, onPress }: Props) {
     </View>
   );
 }
+
+export default PlanBenefits;

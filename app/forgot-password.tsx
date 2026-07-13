@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { Ionicons } from '@expo/vector-icons';
+// Ionicons import removed – using lucide icons
 import { useRouter } from 'expo-router';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
@@ -219,7 +219,7 @@ export default function ForgotPassword() {
                   {t('support.emailLabel') || 'Email'}
                 </Text>
                 <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
-                  <Ionicons name="mail-outline" size={18} color={theme.textMuted} style={styles.inputIcon} />
+                  <Mail size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
                     placeholder={t('auth.emailPlaceholder') || 'exemplo@email.com'}

@@ -71,3 +71,5 @@ export function RecentRequests({ theme, styles, requests, formatDate, getStatusC
     </View>
   );
 }
+
+export default RecentRequests;

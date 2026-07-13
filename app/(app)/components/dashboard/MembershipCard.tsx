@@ -79,3 +79,5 @@ export function MembershipCard({
     </View>
   );
 }
+
+export default MembershipCard;

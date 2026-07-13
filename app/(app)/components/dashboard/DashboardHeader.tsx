@@ -81,3 +81,5 @@ export function DashboardHeader({
     </LinearGradient>
   );
 }
+
+export default DashboardHeader;

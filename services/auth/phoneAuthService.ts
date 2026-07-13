@@ -1,11 +1,9 @@
 /**
  * Phone auth service — frontend layer.
- * Calls the Kizola backend, then exchanges the session token with Supabase.
+ * Calls Supabase Edge Functions for Twilio Verify + session management.
  */
 
-import { apiClient } from '@/services/api/apiClient';
 import { supabase } from '@/lib/supabase';
-import { AxiosError } from 'axios';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -18,7 +16,8 @@ export interface SendCodeResponse {
 export interface VerifyCodeResponse {
   success: boolean;
   userId: string;
-  sessionToken: string;
+  accessToken: string;
+  refreshToken: string;
   isNew: boolean;
 }
 
@@ -29,31 +28,49 @@ export interface AuthServiceError {
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-/** Extracts a clean error message from Axios errors */
-const extractError = (err: unknown): AuthServiceError => {
-  if (err instanceof AxiosError && err.response?.data?.error) {
-    return { message: err.response.data.error, code: err.response.status };
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
+
+/** Calls a Supabase Edge Function */
+const callEdgeFunction = async <T>(name: string, body: Record<string, unknown>): Promise<T> => {
+  const response = await fetch(`${supabaseUrl}/functions/v1/${name}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: anonKey,
+    },
+    body: JSON.stringify(body),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    const error: AuthServiceError = {
+      message: data.error || 'An unexpected error occurred.',
+      code: response.status,
+    };
+    throw error;
   }
-  if (err instanceof Error) return { message: err.message };
-  return { message: 'An unexpected error occurred. Please try again.' };
+
+  return data as T;
 };
 
 // ── Service ────────────────────────────────────────────────────────────────
 
 /**
- * Step 1: Request OTP via backend → Twilio Verify.
+ * Step 1: Request OTP via Supabase Edge Function → Twilio Verify.
  */
 export const sendVerificationCode = async (phone: string): Promise<SendCodeResponse> => {
   try {
-    const { data } = await apiClient.post<SendCodeResponse>('/auth/send-code', { phone });
-    return data;
+    return await callEdgeFunction<SendCodeResponse>('send-code', { phone });
   } catch (err) {
-    throw extractError(err);
+    if (typeof err === 'object' && err !== null && 'message' in err) throw err;
+    throw { message: 'Failed to send verification code. Please try again.' };
   }
 };
 
 /**
- * Step 2: Verify OTP, get session token from backend, exchange with Supabase.
+ * Step 2: Verify OTP, get session tokens from Edge Function, exchange with Supabase.
  * Returns the Supabase session or throws an AuthServiceError.
  */
 export const verifyAndSignIn = async (
@@ -61,24 +78,25 @@ export const verifyAndSignIn = async (
   code: string
 ): Promise<{ userId: string; isNew: boolean }> => {
   try {
-    // 2a. Check code against our backend (Twilio Verify)
-    const { data } = await apiClient.post<VerifyCodeResponse>('/auth/verify-code', { phone, code });
+    // 2a. Verify code via Edge Function (Twilio Verify + create/find user)
+    const result = await callEdgeFunction<VerifyCodeResponse>('verify-code', { phone, code });
 
-    // 2b. Exchange backend session token with Supabase (magiclink type)
-    const { error: supabaseError } = await supabase.auth.verifyOtp({
-      email: `${phone.replace(/\W/g, '')}@phone.kizola.app`,
-      token: data.sessionToken,
-      type: 'magiclink',
-    });
+    // 2b. Set the session in Supabase client
+    if (result.accessToken) {
+      const { error: sessionError } = await supabase.auth.setSession({
+        access_token: result.accessToken,
+        refresh_token: result.refreshToken || '',
+      });
 
-    if (supabaseError) {
-      throw { message: supabaseError.message };
+      if (sessionError) {
+        throw { message: sessionError.message };
+      }
     }
 
-    return { userId: data.userId, isNew: data.isNew };
+    return { userId: result.userId, isNew: result.isNew };
   } catch (err) {
     // Re-throw if already an AuthServiceError shape
     if (typeof err === 'object' && err !== null && 'message' in err) throw err;
-    throw extractError(err);
+    throw { message: 'Verification failed. Please try again.' };
   }
 };

@@ -127,3 +127,6 @@ export const renderArticleContent = (
     );
   });
 };
+
+// Default export for Expo Router (this file is not a route)
+export default function _notARoute() { return null; }

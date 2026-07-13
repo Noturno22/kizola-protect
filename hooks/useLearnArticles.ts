@@ -21,7 +21,7 @@ export const CATEGORY_CONFIG: Record<string, { icon: typeof FileText; color: str
   career: { icon: Briefcase, color: '#EC4899', key: 'learn.category_career' },
 };
 
-const READ_ARTICLES_KEY = '@kizola_read_articles';
+const READ_ARTICLES_KEY = 'kizola_read_articles';
 
 export function useLearnArticles(theme: Theme) {
   const { t } = useTranslation();

@@ -13,12 +13,12 @@ type Props = {
 
 export function DashboardContent({ children, notificationsModal, refreshing, onRefresh, theme }: Props) {
   return (
-    <>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
       <StatusBar style={theme.isDark ? 'light' : 'dark'} />
-      <View style={[StyleSheet.absoluteFillObject, { backgroundColor: theme.background }]} />
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.safeArea}>
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
+          style={styles.scrollView}
+          contentContainerStyle={styles.contentContainer}
           refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={theme.accent} />}
           showsVerticalScrollIndicator={false}
         >
@@ -26,6 +26,23 @@ export function DashboardContent({ children, notificationsModal, refreshing, onR
         </ScrollView>
         {notificationsModal}
       </SafeAreaView>
-    </>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  contentContainer: {
+    flexGrow: 1,
+  },
+});
+
+export default DashboardContent;

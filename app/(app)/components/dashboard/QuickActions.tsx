@@ -46,3 +46,5 @@ export function QuickActions({ theme, styles, actions, onActionPress }: Props) {
     </View>
   );
 }
+
+export default QuickActions;

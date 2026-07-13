@@ -21,3 +21,6 @@ export const CATEGORY_CONFIG: Record<
   legal: { icon: Scale, color: '#3B82F6', key: 'learn.category_legal' },
   career: { icon: Briefcase, color: '#EC4899', key: 'learn.category_career' },
 };
+
+// Default export for Expo Router (this file is not a route)
+export default function _notARoute() { return null; }

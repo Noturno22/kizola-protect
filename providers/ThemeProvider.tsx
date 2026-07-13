@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
-const THEME_KEY = '@kizola_theme';
+const THEME_KEY = 'kizola_theme';
 
 export type Theme = {
   background: string;
@@ -87,8 +87,8 @@ export const lightTheme: Theme = {
   accentBlue: '#2563EB',
   accentPurple: '#7C3AED',
   accentAmber: '#D97706',
-  headerGradient: ['#EEF2FF', '#F1F5F9', '#F8FAFC'],
-  cardGradient: ['#F1F5F9', '#F8FAFC', '#FFFFFF'],
+  headerGradient: ['#E0E7FF', '#EEF2FF', '#F8FAFC'],
+  cardGradient: ['#EEF2FF', '#F8FAFC', '#FFFFFF'],
   shieldGlow: 'rgba(79, 70, 229, 0.1)',
   actionCardBg: '#FFFFFF',
   seeAllColor: '#4F46E5',

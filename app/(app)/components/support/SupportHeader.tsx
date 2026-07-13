@@ -18,9 +18,9 @@ export default function SupportHeader({ children, isDark, theme, styles }: Suppo
       <LinearGradient
         colors={theme.headerGradient}
         locations={[0, 0.3, 0.5]}
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
       />
-      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+      <SafeAreaView style={styles.safeArea}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={{ flex: 1 }}

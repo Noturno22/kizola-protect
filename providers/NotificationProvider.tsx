@@ -72,12 +72,22 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
 
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        const updated = notifications.map(n => 
-          n.id === notificationId ? { ...n, read: true } : n
-        );
-        setNotifications(updated);
-        setUnreadCount(updated.filter(n => !n.read).length);
-        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+        setNotifications(prev => {
+          const updated = prev.map(n => 
+            n.id === notificationId ? { ...n, read: true } : n
+          );
+          return updated;
+        });
+        // Recalculate unreadCount after state update
+        setNotifications(prev => {
+          setUnreadCount(prev.filter(n => !n.read).length);
+          return prev;
+        });
+        // Update secure storage
+        setNotifications(prev => {
+          setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), prev);
+          return prev;
+        });
         return;
       }
 
@@ -88,24 +98,34 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
 
       if (error) throw error;
 
-      setNotifications(prev => 
-        prev.map(n => n.id === notificationId ? { ...n, read: true } : n)
-      );
-      setUnreadCount(prev => Math.max(0, prev - 1));
+      setNotifications(prev => {
+        const updated = prev.map(n => n.id === notificationId ? { ...n, read: true } : n);
+        return updated;
+      });
+      // Recalculate unreadCount after state update
+      setNotifications(prev => {
+        setUnreadCount(prev.filter(n => !n.read).length);
+        return prev;
+      });
     } catch (error) {
       console.error('Error marking notification as read:', error);
     }
-  }, [user, isDemoMode, notifications]);
+  }, [user, isDemoMode]);
 
   const markAllAsRead = useCallback(async () => {
     if (!user) return;
 
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        const updated = notifications.map(n => ({ ...n, read: true }));
-        setNotifications(updated);
-        setUnreadCount(0);
-        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+        setNotifications(prev => {
+          const updated = prev.map(n => ({ ...n, read: true }));
+          return updated;
+        });
+        setNotifications(prev => {
+          setUnreadCount(0);
+          setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), prev);
+          return prev;
+        });
         return;
       }
 
@@ -117,12 +137,18 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
 
       if (error) throw error;
 
-      setNotifications(prev => prev.map(n => ({ ...n, read: true })));
-      setUnreadCount(0);
+      setNotifications(prev => {
+        const updated = prev.map(n => ({ ...n, read: true }));
+        return updated;
+      });
+      setNotifications(prev => {
+        setUnreadCount(0);
+        return prev;
+      });
     } catch (error) {
       console.error('Error marking all notifications as read:', error);
     }
-  }, [user, isDemoMode, notifications]);
+  }, [user, isDemoMode]);
 
   const addNotification = useCallback(async (notification: Omit<Notification, 'id' | 'user_id' | 'created_at'>) => {
     if (!user) return;
@@ -136,12 +162,14 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
 
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        const updated = [newNotification, ...notifications];
-        setNotifications(updated);
-        if (!notification.read) {
-          setUnreadCount(prev => prev + 1);
-        }
-        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+        setNotifications(prev => {
+          const updated = [newNotification, ...prev];
+          if (!notification.read) {
+            setUnreadCount(c => c + 1);
+          }
+          setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+          return updated;
+        });
         return;
       }
 
@@ -155,17 +183,19 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
     } catch (error) {
       console.error('Error adding notification:', error);
     }
-  }, [user, isDemoMode, notifications]);
+  }, [user, isDemoMode]);
 
   const deleteNotification = useCallback(async (notificationId: string) => {
     if (!user) return;
 
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
-        const updated = notifications.filter(n => n.id !== notificationId);
-        setNotifications(updated);
-        setUnreadCount(updated.filter(n => !n.read).length);
-        await setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+        setNotifications(prev => {
+          const updated = prev.filter(n => n.id !== notificationId);
+          setUnreadCount(updated.filter(n => !n.read).length);
+          setSecureItem(SECURE_KEYS.NOTIFICATIONS(user.id), updated);
+          return updated;
+        });
         return;
       }
 
@@ -176,15 +206,15 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
 
       if (error) throw error;
 
-      const notif = notifications.find(n => n.id === notificationId);
-      setNotifications(prev => prev.filter(n => n.id !== notificationId));
-      if (notif && !notif.read) {
-        setUnreadCount(prev => Math.max(0, prev - 1));
-      }
+      setNotifications(prev => {
+        const updated = prev.filter(n => n.id !== notificationId);
+        setUnreadCount(updated.filter(n => !n.read).length);
+        return updated;
+      });
     } catch (error) {
       console.error('Error deleting notification:', error);
     }
-  }, [user, isDemoMode, notifications]);
+  }, [user, isDemoMode]);
 
   useEffect(() => {
     if (user) {

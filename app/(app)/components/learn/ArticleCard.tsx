@@ -192,3 +192,5 @@ const createStyles = (theme: Theme) =>
       alignItems: 'center',
     },
   });
+
+export default ArticleCard;

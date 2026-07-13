@@ -30,7 +30,7 @@ export default function Support() {
   return (
     <SupportHeader isDark={h.isDark} theme={h.theme} styles={h.styles}>
       <Animated.ScrollView
-        contentContainerStyle={[h.styles.scrollContent, { paddingBottom: insets.bottom + 32 }]}
+        contentContainerStyle={h.styles.scrollContent}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: h.scrollY } } }],
           { useNativeDriver: true }

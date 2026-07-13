@@ -111,3 +111,5 @@ const createStyles = (theme: Theme) =>
       gap: 16,
     },
   });
+
+export default ArticleGrid;

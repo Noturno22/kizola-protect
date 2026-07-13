@@ -19,7 +19,7 @@ import {
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase, SupportRequest, isSupabaseConfigured } from '@/lib/supabase';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from 'expo-router';
 import { getSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
 

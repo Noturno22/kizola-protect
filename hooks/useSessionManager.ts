@@ -83,34 +83,21 @@ export function useSessionManager() {
       }
 
       if (!profileData) {
-        console.warn('[Auth] Profile not found, requesting creation via backend...');
+        console.warn('[Auth] Profile not found, creating directly via Supabase...');
 
         const email = authEmail ?? currentSession.user.email ?? '';
-        const token = currentSession.access_token;
-        const apiUrl = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
+        const policyNumber = `KP-${Math.floor(100000 + Math.random() * 900000)}`;
 
-        try {
-          const response = await fetch(`${apiUrl}/auth/create-profile`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-              userId,
-              email,
-              fullName: email.split('@')[0] ?? 'Utilizador',
-            }),
-          });
+        const { error: insertError } = await supabase.from('profiles').upsert({
+          id: userId,
+          email: email || '',
+          full_name: email.split('@')[0] || 'Utilizador',
+          role: email === 'Jeronimo.samaina239898@gmail.com' ? 'admin' : 'user',
+          policy_number: policyNumber,
+        }, { onConflict: 'id', ignoreDuplicates: false });
 
-          if (!response.ok) {
-            const errBody = await response.json().catch(() => ({}));
-            console.error('[Auth] Backend rejected profile creation:', response.status, errBody.error);
-            setUser(null);
-            return;
-          }
-        } catch (err) {
-          console.error('[Auth] Failed to reach backend for profile creation:', err);
+        if (insertError) {
+          console.error('[Auth] Failed to create profile via Supabase:', insertError);
           setUser(null);
           return;
         }
@@ -122,7 +109,7 @@ export function useSessionManager() {
           .maybeSingle();
 
         if (refetchError || !newProfile) {
-          console.error('[Auth] Profile not found after backend creation:', refetchError);
+          console.error('[Auth] Profile not found after creation:', refetchError);
           setUser(null);
           return;
         }
@@ -130,6 +117,12 @@ export function useSessionManager() {
         profileRow = newProfile;
       } else {
         profileRow = profileData;
+      }
+
+      if (!profileRow) {
+        console.error('[Auth] Profile row is null after creation/fetch');
+        setUser(null);
+        return;
       }
 
       const userData = {

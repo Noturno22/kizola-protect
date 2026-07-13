@@ -301,15 +301,15 @@ const createStyles = (theme: any) => {
       borderRadius: 24,
       overflow: 'hidden',
       height: 160,
-      elevation: 8,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.2,
-      shadowRadius: 12,
+      elevation: theme.isDark ? 8 : 1,
+      shadowColor: theme.isDark ? '#000' : '#000',
+      shadowOffset: { width: 0, height: theme.isDark ? 4 : 0.5 },
+      shadowOpacity: theme.isDark ? 0.2 : 0.04,
+      shadowRadius: theme.isDark ? 12 : 2,
     },
     contactCardBg: {
       ...StyleSheet.absoluteFillObject,
-      opacity: 0.9,
+      opacity: theme.isDark ? 0.9 : 1,
     },
     contactCardContent: {
       padding: 24,
@@ -320,13 +320,13 @@ const createStyles = (theme: any) => {
       width: 44,
       height: 44,
       borderRadius: 14,
-      backgroundColor: 'rgba(255,255,255,0.2)',
+      backgroundColor: theme.isDark ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.25)',
       justifyContent: 'center',
       alignItems: 'center',
     },
     contactCardLabel: {
       fontSize: 14,
-      color: 'rgba(255,255,255,0.8)',
+      color: 'rgba(255,255,255,0.85)',
       marginBottom: 4,
     },
     contactCardValue: {
@@ -354,7 +354,8 @@ const createStyles = (theme: any) => {
       padding: 20,
       overflow: 'hidden',
       borderWidth: 1,
-      borderColor: theme.cardBorderAlt,
+      borderColor: theme.isDark ? theme.cardBorderAlt : 'rgba(15, 23, 42, 0.08)',
+      backgroundColor: theme.isDark ? 'transparent' : 'rgba(255,255,255,0.7)',
     },
     commitmentHeader: {
       flexDirection: 'row',
@@ -795,3 +796,6 @@ const createStyles = (theme: any) => {
     },
   });
 };
+
+// Default export for Expo Router (this file is not a route)
+export default function _notARoute() { return null; }

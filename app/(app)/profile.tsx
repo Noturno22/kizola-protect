@@ -469,7 +469,7 @@ const createStyles = (theme: Theme) =>
     },
     scrollContent: {
       flexGrow: 1,
-      paddingBottom: 40,
+      paddingBottom: 24,
     },
     keyboardView: {
       flex: 1,

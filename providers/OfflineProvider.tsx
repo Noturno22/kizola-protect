@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import NetInfo, { type NetInfoState } from '@react-native-community/netinfo';
-import { colors } from '@/constants/colors';
+import { COLORS } from '@/constants/colors';
 
 interface OfflineContextValue {
   isConnected: boolean;
@@ -39,9 +40,10 @@ export function OfflineProvider({ children }: OfflineProviderProps) {
 }
 
 function OfflineBanner({ accessibilityLabel }: { accessibilityLabel: string }) {
+  const insets = useSafeAreaInsets();
   return (
     <View
-      style={styles.banner}
+      style={[styles.banner, { top: insets.top }]}
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="alert"
       accessible
@@ -56,13 +58,14 @@ function OfflineBanner({ accessibilityLabel }: { accessibilityLabel: string }) {
 const styles = StyleSheet.create({
   banner: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: colors.warning,
+    backgroundColor: COLORS.warning,
     paddingVertical: 8,
     paddingHorizontal: 16,
     alignItems: 'center',
+    zIndex: 1000,
   },
   text: {
     color: '#FFFFFF',
