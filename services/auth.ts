@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase'
 
-export async function createProfileIfNotExists(user) {
+export async function createProfileIfNotExists(user: { id: string; email?: string; user_metadata?: { full_name?: string } }) {
   const { data } = await supabase
     .from('profiles')
     .select('*')

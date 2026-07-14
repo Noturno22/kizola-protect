@@ -189,7 +189,7 @@ export default function Checkout() {
     }
   };
 
-  if (!plan || plan.id === 'free') {
+  if (!plan || (plan as any).id === 'free') {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar style={isDark ? "light" : "dark"} />

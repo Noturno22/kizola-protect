@@ -5,7 +5,7 @@ import { Shield, ChevronRight } from 'lucide-react-native';
 interface PlanInfo {
   name: string;
   price: number;
-  benefits: any[];
+  benefits: readonly any[];
 }
 
 interface SubscriptionData {

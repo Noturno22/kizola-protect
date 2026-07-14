@@ -47,7 +47,7 @@ export default function Dashboard() {
         styles={styles}
         planInfo={planInfo}
         isActive={isActive}
-        hasPlan={hasPlan}
+        hasPlan={hasPlan ?? false}
         usagePercentage={usagePercentage}
         nextBillingText={nextBillingText}
       />

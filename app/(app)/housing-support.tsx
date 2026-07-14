@@ -97,21 +97,21 @@ export default function HousingSupport() {
 
       if (!isSupabaseConfigured()) {
         // Demo mode — save locally
-        const existing = await getSecureItem<object[]>(SECURE_KEYS.HOUSING_REQUESTS(user?.id));
+        const existing = await getSecureItem<object[]>(SECURE_KEYS.HOUSING_REQUESTS(user?.id ?? ''));
         const requests = existing || [];
         requests.unshift({ ...requestData, id: 'demo-housing-' + Date.now() });
-        await setSecureItem(SECURE_KEYS.HOUSING_REQUESTS(user?.id), requests);
+        await setSecureItem(SECURE_KEYS.HOUSING_REQUESTS(user?.id ?? ''), requests);
       } else {
         const { error } = await supabase.from('housing_requests').insert(requestData);
         if (error) throw error;
 
-        // Audit log
-        await supabase.from('auth_audit_logs').insert({
+        // Audit log (fire-and-forget, non-critical)
+        supabase.from('auth_audit_logs').insert({
           user_id: user?.id,
           action: 'housing_request_submitted',
           resource: 'housing_requests',
           details: { necessidade, estado, cidade },
-        }).catch(() => {});
+        });
       }
 
       addNotification({
@@ -133,7 +133,7 @@ export default function HousingSupport() {
     return (
       <View style={styles.container}>
         <StatusBar style={isDark ? 'light' : 'dark'} />
-        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFillObject} />
+        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
         <SafeAreaView style={styles.safeArea}>
           <ScrollView contentContainerStyle={styles.successContainer}>
             <View style={styles.successContent}>
@@ -168,7 +168,7 @@ export default function HousingSupport() {
               >
                 <LinearGradient
                   colors={[theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                 />
                 <Text style={styles.primaryButtonText}>Voltar ao Início</Text>
               </TouchableOpacity>
@@ -197,7 +197,7 @@ export default function HousingSupport() {
       <LinearGradient
         colors={theme.headerGradient}
         locations={[0, 0.35, 0.55]}
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
       />
 
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
@@ -399,7 +399,7 @@ export default function HousingSupport() {
               >
                 <LinearGradient
                   colors={loading ? ['#CBD5E1', '#94A3B8'] : [theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                 />

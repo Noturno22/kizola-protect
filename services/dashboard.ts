@@ -424,7 +424,7 @@ export async function getBenefitsAnalytics(): Promise<BenefitsAnalytics> {
     .slice(0, 5)
     .map(([key, count]) => {
       const [type, category] = key.split('_');
-      const total = supportRequests?.length + housingRequests?.length + financeRequests?.length || 1;
+      const total = (supportRequests?.length ?? 0) + (housingRequests?.length ?? 0) + (financeRequests?.length ?? 0) || 1;
       return {
         category: `${type}: ${category}`,
         count,

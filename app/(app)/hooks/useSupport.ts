@@ -98,10 +98,10 @@ export function useSupport() {
       };
 
       if (isDemoMode || !isSupabaseConfigured()) {
-        const existing = await getSecureItem<object[]>(SECURE_KEYS.SUPPORT_REQUESTS(user?.id));
+        const existing = await getSecureItem<object[]>(SECURE_KEYS.SUPPORT_REQUESTS(user?.id ?? ''));
         const requests = existing || [];
         requests.unshift({ ...requestData, id: 'demo-' + Date.now() });
-        await setSecureItem(SECURE_KEYS.SUPPORT_REQUESTS(user?.id), requests);
+        await setSecureItem(SECURE_KEYS.SUPPORT_REQUESTS(user?.id ?? ''), requests);
       } else {
         const { error } = await supabase.from('support_requests').insert(requestData);
         if (error) throw error;
