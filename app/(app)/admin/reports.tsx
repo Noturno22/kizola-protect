@@ -26,7 +26,7 @@ import {
 import { useRouter } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
-import { Print } from 'expo-print';
+import * as Print from 'expo-print';
 import { supabase } from '@/lib/supabase';
 
 type ReportType = 'users' | 'cases' | 'finance';
@@ -111,7 +111,7 @@ export default function AdminReports() {
       }
 
       // Write file locally
-      const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+      const fileUri = `${(FileSystem as any).documentDirectory}${fileName}`;
       await FileSystem.writeAsStringAsync(fileUri, csvContent, {
         encoding: FileSystem.EncodingType.UTF8,
       });
@@ -174,8 +174,8 @@ export default function AdminReports() {
             style={[styles.optionCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }, reportType === 'cases' && styles.optionCardActive]}
             onPress={() => setReportType('cases')}
           >
-            <View style={[styles.iconBox, { backgroundColor: theme.accentYellow + '15' }]}>
-              <MessageSquare size={24} color={theme.accentYellow || '#F59E0B'} />
+            <View style={[styles.iconBox, { backgroundColor: (theme.accentAmber || '#F59E0B') + '15' }]}>
+              <MessageSquare size={24} color={theme.accentAmber || '#F59E0B'} />
             </View>
             <Text style={[styles.optionTitle, { color: theme.text }]}>Casos de Suporte</Text>
             <Text style={[styles.optionDesc, { color: theme.textMuted }]}>Histórico de chamados de ajuda e resoluções.</Text>

@@ -115,7 +115,7 @@ export default function FinanceSupport() {
           action: 'finance_request_submitted',
           resource: 'finance_requests',
           details: { tipo_ajuda: tipoAjuda, estado },
-        }).catch(() => {});
+        });
       }
 
       addNotification({
@@ -137,7 +137,7 @@ export default function FinanceSupport() {
     return (
       <View style={styles.container}>
         <StatusBar style={isDark ? 'light' : 'dark'} />
-        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFillObject} />
+        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
         <SafeAreaView style={styles.safeArea}>
           <ScrollView contentContainerStyle={styles.successContainer}>
             <View style={styles.successContent}>
@@ -172,7 +172,7 @@ export default function FinanceSupport() {
               >
                 <LinearGradient
                   colors={[theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                 />
                 <Text style={styles.primaryButtonText}>Voltar ao Início</Text>
               </TouchableOpacity>
@@ -199,7 +199,7 @@ export default function FinanceSupport() {
       <LinearGradient
         colors={theme.headerGradient}
         locations={[0, 0.35, 0.55]}
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
       />
 
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
@@ -387,7 +387,7 @@ export default function FinanceSupport() {
               >
                 <LinearGradient
                   colors={loading ? ['#CBD5E1', '#94A3B8'] : [theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                 />

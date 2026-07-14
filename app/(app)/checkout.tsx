@@ -115,11 +115,12 @@ export default function Checkout() {
 
         const purchaseResult = await purchaseProduct(productId);
         if (!purchaseResult.success) {
-          if (purchaseResult.userCancelled) {
+          const failResult = purchaseResult as { error: string; userCancelled?: boolean };
+          if (failResult.userCancelled) {
             setLoading(false);
             return;
           }
-          throw new Error(purchaseResult.error || 'Purchase failed');
+          throw new Error(failResult.error || 'Purchase failed');
         }
 
         const verification = await verifyReceipt(purchaseResult.purchase);

@@ -209,7 +209,7 @@ function AdminDashboard() {
         {/* Stats Grid - Atendimento */}
         {atendimentoData && (
           <>
-          <View style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Atendimento</View>
+          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Atendimento</Text>
           <View style={styles.statsGrid}>
             <AdminStatCard 
               title="Pendentes"
@@ -250,7 +250,7 @@ function AdminDashboard() {
         {/* Stats Grid - Financeiro */}
         {financeiroData && (
           <>
-          <View style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Financeiro</View>
+          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Financeiro</Text>
           <View style={styles.statsGrid}>
             <AdminStatCard 
               title="MRR"

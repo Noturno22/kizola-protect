@@ -191,7 +191,7 @@ export default function Documents() {
       if (!isDemoMode && isSupabaseConfigured() && doc.filePath && !fileUri) {
         const { data, error } = await supabase.storage.from('documents').download(doc.filePath);
         if (error) throw error;
-        const cacheDir = FileSystem.cacheDirectory;
+        const cacheDir = (FileSystem as any).cacheDirectory;
         fileUri = `${cacheDir}${doc.name}`;
         await FileSystem.writeAsStringAsync(fileUri, Buffer.from(await data.arrayBuffer()).toString('base64'), { encoding: FileSystem.EncodingType.Base64 });
       }
@@ -212,7 +212,7 @@ export default function Documents() {
       if (!isDemoMode && isSupabaseConfigured() && doc.filePath && !fileUri) {
         const { data, error } = await supabase.storage.from('documents').download(doc.filePath);
         if (error) throw error;
-        const cacheDir = FileSystem.cacheDirectory;
+        const cacheDir = (FileSystem as any).cacheDirectory;
         fileUri = `${cacheDir}${doc.name}`;
         await FileSystem.writeAsStringAsync(fileUri, Buffer.from(await data.arrayBuffer()).toString('base64'), { encoding: FileSystem.EncodingType.Base64 });
       }

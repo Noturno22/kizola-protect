@@ -2,6 +2,7 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 export interface DashboardStats {
   totalUsers: number;
+  totalMembers: number;
   activePlans: number;
   supportTickets: number;
   revenue: number;
@@ -9,6 +10,9 @@ export interface DashboardStats {
   planGrowthPercent: number;
   ticketTrendPercent: number;
   revenueGrowthPercent: number;
+  openCases: number;
+  resolvedCases: number;
+  satisfactionRate: number;
 }
 
 export interface RevenueDataPoint {
@@ -569,8 +573,8 @@ export async function getAtendimentoAnalytics(): Promise<AtendimentoAnalytics> {
       type: c.type,
       status: c.status,
       subType: c.subType,
-      userName: c.profiles?.full_name || 'Membro',
-      userEmail: c.profiles?.email || '',
+      userName: (c.profiles as any)?.[0]?.full_name || (c.profiles as any)?.full_name || 'Membro',
+      userEmail: (c.profiles as any)?.[0]?.email || (c.profiles as any)?.email || '',
       createdAt: c.created_at,
     })),
   };

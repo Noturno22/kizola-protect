@@ -308,7 +308,7 @@ const createStyles = (theme: any) => {
       shadowRadius: theme.isDark ? 12 : 2,
     },
     contactCardBg: {
-      ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFill,
       opacity: theme.isDark ? 0.9 : 1,
     },
     contactCardContent: {
