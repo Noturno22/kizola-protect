@@ -60,7 +60,7 @@ e quais não devem ser introduzidas.
 | Database | Supabase (PostgreSQL) | ✅ (só schemas) |
 | Auth | Supabase Auth + Twilio Verify + Google + Apple | ❌ |
 | Pagamentos | Stripe (Edge Functions) | ❌ |
-| i18n | i18next (14 idiomas) | ❌ |
+| i18n | i18next (15 idiomas) | ❌ |
 | UI | Moti + Reanimated + expo-image | ❌ |
 | AI | Google Gemini + Groq (Llama) | ❌ |
 | Testes | Jest | ❌ |
@@ -231,7 +231,7 @@ devem passar por `t()`.
 
 ```
 Falta documentar:
-- 14 idiomas suportados: EN, PT, FR, ES, ES-US, ZH, JA, KO, VI, TL, AR, RU, HI, BN
+- 15 idiomas suportados: EN, PT, FR, ES, ES-US, ZH, JA, KO, VI, TL, AR, RU, HI, BN, LN
 - Fallback: sempre EN
 - Detecção: SecureStore → device locale → 'en'
 - Estrutura dos JSONs de tradução

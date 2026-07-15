@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, StyleSheet, ScrollView } from 'react-native';
 import { useMemo } from 'react';
 import { CheckCircle2, X } from 'lucide-react-native';
 
@@ -26,6 +26,7 @@ const LANGUAGES = [
   { code: 'ru', label: 'Русский', flag: '🇷🇺' },
   { code: 'hi', label: 'हिन्दी', flag: '🇮🇳' },
   { code: 'bn', label: 'বাংলা', flag: '🇧🇩' },
+  { code: 'ln', label: 'Lingála', flag: '🇨🇩' },
 ];
 
 export default function LanguageModal({
@@ -59,7 +60,7 @@ export default function LanguageModal({
               <X size={24} color={theme.text} />
             </TouchableOpacity>
           </View>
-          <View style={styles.modalBody}>
+          <ScrollView style={styles.modalBody} showsVerticalScrollIndicator={false}>
             {LANGUAGES.map((lang) => {
               const isActive = currentLanguage === lang.code;
               return (
@@ -81,7 +82,7 @@ export default function LanguageModal({
                 </TouchableOpacity>
               );
             })}
-          </View>
+          </ScrollView>
         </View>
       </TouchableOpacity>
     </Modal>
@@ -99,7 +100,7 @@ const createStyles = (theme: any) =>
       backgroundColor: theme.surface,
       borderTopLeftRadius: 24,
       borderTopRightRadius: 24,
-      maxHeight: '80%',
+      maxHeight: '85%',
     },
     modalHeader: {
       flexDirection: 'row',
@@ -124,6 +125,7 @@ const createStyles = (theme: any) =>
     },
     modalBody: {
       padding: 20,
+      paddingBottom: 30,
     },
     languageOption: {
       flexDirection: 'row',

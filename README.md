@@ -18,7 +18,7 @@
 | Database | Supabase (PostgreSQL) + Auth + Storage |
 | Auth | Supabase Auth + Twilio Verify + Google Login + Apple Login |
 | Payments | Stripe (Edge Functions) — IAP Apple/Google planeado |
-| i18n | i18next (14 idiomas: EN, PT, FR, ES, ES-US, ZH, JA, KO, VI, TL, AR, RU, HI, BN) |
+| i18n | i18next (15 idiomas: EN, PT, FR, ES, ES-US, ZH, JA, KO, VI, TL, AR, RU, HI, BN, LN) |
 | UI | Moti + Reanimated + expo-image |
 | AI | Google Gemini + Groq (Llama) |
 
@@ -35,7 +35,7 @@
 - **Documentos:** Upload/download/gestão de documentos com Supabase Storage
 - **Chat IA:** Assistente com Google Gemini + Groq (Llama)
 - **Admin:** Painel administrativo com relatórios, auditoria, utilizadores
-- **i18n:** 14 idiomas com fallback EN
+- **i18n:** 15 idiomas com fallback EN
 - **Notificações:** Push notifications (estrutura preparada)
 - **Satisfação:** Feedback e rating pós-atendimento
 
@@ -129,7 +129,7 @@ app/                     # Expo Router pages
 ├── terms.tsx            # Terms of Service
 └── privacy.tsx          # Privacy Policy
 assets/
-├── translations/        # i18n JSON files (14 idiomas)
+├── translations/        # i18n JSON files (15 idiomas)
 ── ...
 backend/                 # Express API
 └── src/

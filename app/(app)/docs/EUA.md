@@ -71,7 +71,7 @@ O **Kizola Protect** é uma plataforma mobile-first de proteção e assistência
 | **🚨 Segredos no Git** | ❌ **CRÍTICO** | API keys reais expostas — rotação manual necessária |
 | **PCI Compliance** | ⚠️ | Stripe mock + IAP deferido; sem cartões armazenados localmente |
 | **Acessibilidade (WCAG)** | ✅ | ~90 `accessibilityLabel` props em 30+ ficheiros |
-| **i18n Mercado US** | ✅ | Fallback EN, 14 idiomas, `es-US` |
+| **i18n Mercado US** | ✅ | Fallback EN, 15 idiomas, `es-US` |
 
 ### Nota sobre o Nível de Maturidade
 

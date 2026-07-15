@@ -144,56 +144,56 @@ export default function Benefits() {
 
             {/* Apoio à Habitação */}
             <TouchableOpacity
-              style={[styles.newServiceCard, { backgroundColor: '#F59E0B' + '10', borderColor: '#F59E0B' + '30' }]}
+              style={styles.newServiceCard}
               onPress={() => router.push('/(app)/housing-support')}
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#F59E0B', '#D97706']}
+                colors={isDark ? ['#F59E0B', '#D97706'] : ['#FEF3C7', '#FDE68A']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                style={styles.newServiceGradient}
+                style={styles.newServiceCardBg}
               />
               <View style={styles.newServiceContent}>
-                <View style={styles.newServiceIcon}>
+                <View style={[styles.newServiceIcon, { backgroundColor: isDark ? '#F59E0B' : '#D97706' }]}>
                   <Home size={28} color="#FFFFFF" />
                 </View>
                 <View style={styles.newServiceText}>
-                  <Text style={styles.newServiceTitle}>Apoio à Habitação</Text>
-                  <Text style={styles.newServiceDesc}>
+                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#92400E' }]}>Apoio à Habitação</Text>
+                  <Text style={[styles.newServiceDesc, { color: isDark ? 'rgba(255,255,255,0.85)' : '#A16207' }]}>
                     Procura de habitação, Shelter e programas habitacionais
                   </Text>
                 </View>
-                <View style={styles.newServiceArrow}>
-                  <ArrowRight size={20} color="rgba(255,255,255,0.8)" />
+                <View style={[styles.newServiceArrow, { backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : '#D97706' }]}>
+                  <ArrowRight size={20} color={isDark ? 'rgba(255,255,255,0.8)' : '#FFFFFF'} />
                 </View>
               </View>
             </TouchableOpacity>
 
             {/* Ajuda às Finanças */}
             <TouchableOpacity
-              style={[styles.newServiceCard, { backgroundColor: '#8B5CF6' + '10', borderColor: '#8B5CF6' + '30' }]}
+              style={styles.newServiceCard}
               onPress={() => router.push('/(app)/finance-support')}
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#6D28D9']}
+                colors={isDark ? ['#8B5CF6', '#6D28D9'] : ['#EDE9FE', '#DDD6FE']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                style={styles.newServiceGradient}
+                style={styles.newServiceCardBg}
               />
               <View style={styles.newServiceContent}>
-                <View style={styles.newServiceIcon}>
+                <View style={[styles.newServiceIcon, { backgroundColor: isDark ? '#8B5CF6' : '#7C3AED' }]}>
                   <DollarSign size={28} color="#FFFFFF" />
                 </View>
                 <View style={styles.newServiceText}>
-                  <Text style={styles.newServiceTitle}>Ajuda às Finanças</Text>
-                  <Text style={styles.newServiceDesc}>
+                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#5B21B6' }]}>Ajuda às Finanças</Text>
+                  <Text style={[styles.newServiceDesc, { color: isDark ? 'rgba(255,255,255,0.85)' : '#6D28D9' }]}>
                     EBT, benefícios estatais, impostos e Tax Return
                   </Text>
                 </View>
-                <View style={styles.newServiceArrow}>
-                  <ArrowRight size={20} color="rgba(255,255,255,0.8)" />
+                <View style={[styles.newServiceArrow, { backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : '#7C3AED' }]}>
+                  <ArrowRight size={20} color={isDark ? 'rgba(255,255,255,0.8)' : '#FFFFFF'} />
                 </View>
               </View>
             </TouchableOpacity>
@@ -542,23 +542,23 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     marginBottom: 32,
   },
   newServiceCard: {
-    flexDirection: 'row',
     borderRadius: 24,
     marginBottom: 16,
-    borderWidth: 1,
     overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.06,
     shadowRadius: 12,
-    elevation: 2,
+    elevation: 3,
   },
-  newServiceGradient: {
-    width: 6,
-    height: '100%',
+  newServiceCardBg: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   newServiceContent: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
@@ -568,7 +568,6 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 18,
-    backgroundColor: theme.isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -590,7 +589,6 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: theme.isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
     justifyContent: 'center',
     alignItems: 'center',
   },
