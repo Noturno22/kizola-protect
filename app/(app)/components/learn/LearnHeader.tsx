@@ -3,23 +3,31 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { GraduationCap, Search, X } from 'lucide-react-native';
-import { Theme } from '@/providers/ThemeProvider';
+import { useTheme, Theme, darkTheme } from '@/providers/ThemeProvider';
 
 interface LearnHeaderProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  theme: Theme;
-  isDark: boolean;
+  /** @deprecated Passar theme como prop é opcional — o componente usa useTheme() internamente */
+  theme?: Theme;
+  /** @deprecated Passar isDark como prop é opcional — o componente usa useTheme() internamente */
+  isDark?: boolean;
   t: (key: string) => string;
 }
 
 export function LearnHeader({
   searchQuery,
   setSearchQuery,
-  theme,
-  isDark,
+  theme: themeProp,
+  isDark: isDarkProp,
   t,
 }: LearnHeaderProps) {
+  // Consumir o contexto directamente — evita crash quando a prop chega undefined
+  // durante o primeiro render (race condition no mount do ThemeProvider)
+  const { theme: themeCtx, isDark: isDarkCtx } = useTheme();
+  const theme = themeProp ?? themeCtx ?? darkTheme;
+  const isDark = isDarkProp ?? isDarkCtx ?? true;
+
   const styles = createStyles(theme, isDark);
 
   return (
@@ -28,7 +36,7 @@ export function LearnHeader({
         <View style={styles.headerIconContainer}>
           <LinearGradient
             colors={[theme.accent, theme.accentBlue]}
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
           <GraduationCap size={32} color="#FFFFFF" />
         </View>

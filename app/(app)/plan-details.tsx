@@ -104,7 +104,7 @@ export default function PlanDetails() {
   return (
     <>
       <StatusBar style={isDark ? "light" : "dark"} />
-      <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFillObject} />
+      <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
       <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}

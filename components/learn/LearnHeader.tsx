@@ -22,7 +22,7 @@ export default function LearnHeader({ searchQuery, onSearchChange, theme, isDark
         <View style={styles.headerIconContainer}>
           <LinearGradient
             colors={[theme.accent, theme.accentBlue]}
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
           <GraduationCap size={32} color="#FFFFFF" />
         </View>

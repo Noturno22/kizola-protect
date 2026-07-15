@@ -97,15 +97,6 @@ export default function Login() {
     return '/dashboard';
   }, [session]);
 
-  const redirectIfLoggedIn = useCallback(async () => {
-    const { data, error } = await supabase.auth.getSession();
-    if (!error && data?.session) {
-      router.replace('/dashboard');
-      return true;
-    }
-    return false;
-  }, [router]);
-
   const routerRef = useRef(router);
   routerRef.current = router;
 
@@ -115,12 +106,14 @@ export default function Login() {
     (async () => {
       try {
         if (nextRoute) {
-          router.replace(nextRoute);
+          routerRef.current.replace(nextRoute);
           return;
         }
-        await redirectIfLoggedIn();
-      } finally {
-        // Initial session check completed
+        const { data, error } = await supabase.auth.getSession();
+        if (!error && data?.session && mounted) {
+          routerRef.current.replace('/dashboard');
+        }
+      } catch {
       }
     })();
 
@@ -132,13 +125,22 @@ export default function Login() {
       mounted = false;
       listener.subscription.unsubscribe();
     };
-  }, [nextRoute, redirectIfLoggedIn]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nextRoute]);
 
   useFocusEffect(
     useCallback(() => {
-      if (nextRoute) router.replace(nextRoute);
-      else redirectIfLoggedIn().catch(() => {});
-    }, [nextRoute, redirectIfLoggedIn, router])
+      if (nextRoute) {
+        routerRef.current.replace(nextRoute);
+        return;
+      }
+      supabase.auth.getSession().then(({ data, error }) => {
+        if (!error && data?.session) {
+          routerRef.current.replace('/dashboard');
+        }
+      }).catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [nextRoute])
   );
 
   const handleLogin = async () => {

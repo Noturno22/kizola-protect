@@ -88,7 +88,7 @@ export default function Benefits() {
       <LinearGradient 
         colors={theme.headerGradient} 
         locations={[0, 0.35, 0.5]}
-        style={StyleSheet.absoluteFillObject} 
+        style={StyleSheet.absoluteFill} 
       />
 
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
@@ -100,7 +100,7 @@ export default function Benefits() {
           <View style={styles.header}>
             <View style={styles.headerTop}>
               <View style={styles.headerIconContainer}>
-                <BlurView intensity={20} tint="light" style={StyleSheet.absoluteFillObject} />
+                <BlurView intensity={20} tint="light" style={StyleSheet.absoluteFill} />
                 <ShieldCheck size={36} color={theme.isDark ? "#FFFFFF" : theme.accent} />
               </View>
               <View style={styles.headerTextContainer}>

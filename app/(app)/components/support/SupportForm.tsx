@@ -229,7 +229,7 @@ export default function SupportForm({
             colors={loading ? ['#CBD5E1', '#94A3B8'] : [theme.accent, theme.accent + 'DD']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            style={StyleSheet.absoluteFillObject}
+            style={StyleSheet.absoluteFill}
           />
           {loading ? (
             <ActivityIndicator color="#FFFFFF" />

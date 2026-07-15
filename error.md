@@ -358,3 +358,6 @@ O agent só termina quando:
 - ícones renderizarem corretamente;
 - a TabBar estiver compatível com Expo SDK 57;
 - o bug desaparecer sem hacks.
+
+
+O que se passa com a nossa área de tab bar ela está bugada. Os ícones estão encostados no lado esquerdo, no lado direito ou ocupando todo o espaço, quadrados com x no meio. e já estamos com esse erro faz tempo resolva de foram pro , Já mudamos de SDK do Expo pra 54, pra 57. Agora estamos no 56 e nada resolve-se. Resolve mais de forma profissional, agentes e sub-agentes. Já eliminamos essa área do TAB Bar. Refizemos novamente e o erro insiste em aparecer. Todos os ícones estão visíveis, mas tem esses quadrados que parecem ícones com links. Não entendemos o porquê desse erro. Resolva isso. 

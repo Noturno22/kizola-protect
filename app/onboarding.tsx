@@ -334,7 +334,6 @@ export default function OnboardingScreen() {
 
           <MotiView
             animate={{ scale: 1 }}
-            whileTap={{ scale: 0.95 }}
             style={styles.buttonContainer}
           >
             <TouchableOpacity

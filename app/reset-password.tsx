@@ -206,7 +206,7 @@ export default function ResetPassword() {
     return (
       <View style={styles.container}>
         <StatusBar style={isDark ? 'light' : 'dark'} />
-        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFillObject} />
+        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.centerContent}>
             <View style={[styles.errorIconWrapper]}>
@@ -223,7 +223,7 @@ export default function ResetPassword() {
             >
               <LinearGradient
                 colors={[theme.primary, theme.primary + 'DD']}
-                style={StyleSheet.absoluteFillObject}
+                style={StyleSheet.absoluteFill}
               />
               <Text style={styles.primaryButtonText}>Solicitar Novo Link</Text>
             </TouchableOpacity>
@@ -237,7 +237,7 @@ export default function ResetPassword() {
     return (
       <View style={styles.container}>
         <StatusBar style={isDark ? 'light' : 'dark'} />
-        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFillObject} />
+        <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.centerContent}>
             <View style={styles.successIconWrapper}>
@@ -254,7 +254,7 @@ export default function ResetPassword() {
             >
               <LinearGradient
                 colors={[theme.primary, theme.primary + 'DD']}
-                style={StyleSheet.absoluteFillObject}
+                style={StyleSheet.absoluteFill}
               />
               <Text style={styles.primaryButtonText}>Entrar na Conta</Text>
             </TouchableOpacity>
@@ -269,7 +269,7 @@ export default function ResetPassword() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <LinearGradient
         colors={isDark ? ['#060D1F', '#0A1628', '#0D1F3C'] : ['#EEF2FF', '#F0F9FF', '#FFFFFF']}
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
       />
 
       <SafeAreaView style={styles.safeArea}>
@@ -389,7 +389,7 @@ export default function ResetPassword() {
               >
                 <LinearGradient
                   colors={(loading || !sessionReady) ? ['#CBD5E1', '#94A3B8'] : [theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                 />

@@ -24,7 +24,9 @@ export default function Learn() {
     theme, isDark, t, insets,
   } = useLearn();
 
-  const styles = useMemo(() => createStyles(theme), [theme]);
+  // Guard: theme ainda não carregado (async ThemeProvider)
+  const styles = useMemo(() => theme ? createStyles(theme) : null, [theme]);
+  if (!theme || !styles) return null;
 
   return (
     <View style={styles.container}>

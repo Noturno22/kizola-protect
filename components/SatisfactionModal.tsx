@@ -91,11 +91,10 @@ export function SatisfactionModal({
 
         // If unresolved, reopen the case
         if (!resolved && requestType === 'support') {
-          await supabase
+          supabase
             .from('support_requests')
             .update({ status: 'pending', updated_at: new Date().toISOString() })
-            .eq('id', requestId)
-            .catch(() => {});
+            .eq('id', requestId);
         }
       }
 
@@ -179,7 +178,7 @@ export function SatisfactionModal({
                 >
                   <LinearGradient
                     colors={['#22C55E', '#16A34A']}
-                    style={StyleSheet.absoluteFillObject}
+                    style={StyleSheet.absoluteFill}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                   />
@@ -262,7 +261,7 @@ export function SatisfactionModal({
               >
                 <LinearGradient
                   colors={loading ? ['#CBD5E1', '#94A3B8'] : [theme.primary, theme.primary + 'DD']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                 />
                 {loading ? (
                   <ActivityIndicator color="#FFFFFF" />
@@ -307,7 +306,7 @@ export function SatisfactionModal({
               >
                 <LinearGradient
                   colors={['#22C55E', '#16A34A']}
-                  style={StyleSheet.absoluteFillObject}
+                  style={StyleSheet.absoluteFill}
                 />
                 <Text style={styles.submitBtnText}>Fechar</Text>
               </TouchableOpacity>
