@@ -1,11 +1,11 @@
 import { Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSupport } from './hooks/useSupport';
-import SupportHeader from './components/support/SupportHeader';
-import SupportTabs from './components/support/SupportTabs';
-import SupportForm from './components/support/SupportForm';
-import ChatSection from './components/support/ChatSection';
-import SubmitSuccess from './components/support/SubmitSuccess';
+import { useSupport } from '../hooks/useSupport';
+import SupportHeader from '../components/support/SupportHeader';
+import SupportTabs from '../components/support/SupportTabs';
+import SupportForm from '../components/support/SupportForm';
+import ChatSection from '../components/support/ChatSection';
+import SubmitSuccess from '../components/support/SubmitSuccess';
 
 export default function Support() {
   const h = useSupport();

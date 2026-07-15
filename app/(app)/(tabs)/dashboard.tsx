@@ -1,13 +1,13 @@
-import { useDashboard } from './hooks/useDashboard';
-import { DashboardContent } from './components/dashboard/DashboardContent';
-import { DashboardHeader } from './components/dashboard/DashboardHeader';
-import { MembershipCard } from './components/dashboard/MembershipCard';
-import { StatsRow } from './components/dashboard/StatsRow';
-import { QuickActions } from './components/dashboard/QuickActions';
-import { RecentRequests } from './components/dashboard/RecentRequests';
-import { LearningCard } from './components/dashboard/LearningCard';
-import { PlanBenefits } from './components/dashboard/PlanBenefits';
-import { HelpCard } from './components/dashboard/HelpCard';
+import { useDashboard } from '../hooks/useDashboard';
+import { DashboardContent } from '../components/dashboard/DashboardContent';
+import { DashboardHeader } from '../components/dashboard/DashboardHeader';
+import { MembershipCard } from '../components/dashboard/MembershipCard';
+import { StatsRow } from '../components/dashboard/StatsRow';
+import { QuickActions } from '../components/dashboard/QuickActions';
+import { RecentRequests } from '../components/dashboard/RecentRequests';
+import { LearningCard } from '../components/dashboard/LearningCard';
+import { PlanBenefits } from '../components/dashboard/PlanBenefits';
+import { HelpCard } from '../components/dashboard/HelpCard';
 import { NotificationsModal } from '@/components/dashboard';
 
 export default function Dashboard() {

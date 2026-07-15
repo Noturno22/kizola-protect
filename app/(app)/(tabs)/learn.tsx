@@ -3,15 +3,15 @@ import { View, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 're
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { useLearn } from './hooks/useLearn';
+import { useLearn } from '../hooks/useLearn';
 import { LEARNING_ARTICLES } from '@/lib/supabase';
-import { LearnHeader } from './components/learn/LearnHeader';
-import { FeaturedArticleCard } from './components/learn/FeaturedArticleCard';
-import { StatsSection } from './components/learn/StatsSection';
-import { CategoryChips } from './components/learn/CategoryChips';
-import { ArticleGrid } from './components/learn/ArticleGrid';
-import { PremiumTipCard } from './components/learn/PremiumTipCard';
-import { ArticleModal } from './components/learn/ArticleModal';
+import { LearnHeader } from '../components/learn/LearnHeader';
+import { FeaturedArticleCard } from '../components/learn/FeaturedArticleCard';
+import { StatsSection } from '../components/learn/StatsSection';
+import { CategoryChips } from '../components/learn/CategoryChips';
+import { ArticleGrid } from '../components/learn/ArticleGrid';
+import { PremiumTipCard } from '../components/learn/PremiumTipCard';
+import { ArticleModal } from '../components/learn/ArticleModal';
 
 export default function Learn() {
   const {

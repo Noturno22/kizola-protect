@@ -31,12 +31,18 @@ import { useTranslation } from 'react-i18next';
 import { getPaymentPlatform, PLAN_IAP_PRODUCTS } from '@/lib/payment';
 import { purchaseProduct, verifyReceipt } from '@/services/iap/iapService';
 
+const STRIPE_PAYMENT_LINKS: Record<string, string> = {
+  basic: 'https://buy.stripe.com/test_bJe3cp4Nrb271YvfyNdnW00',
+  pro: 'https://buy.stripe.com/test_fZu5kxeo1c6b1Yv86ldnW01',
+  premium: 'https://buy.stripe.com/test_3clcMZ1Bf8TZ7iP0DTdnW02',
+};
+
 export default function Checkout() {
   const router = useRouter();
   const { t } = useTranslation();
   const { planId } = useLocalSearchParams<{ planId?: string }>();
   const safePlanId = String(planId || '');
-  const { session, isDemoMode, updateUserPlan } = useAuth();
+  const { isDemoMode, updateUserPlan } = useAuth();
   const { theme, isDark } = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -106,7 +112,6 @@ export default function Checkout() {
 
     setLoading(true);
     try {
-      // IAP flow for mobile (iOS/Android)
       if (paymentPlatform === 'iap') {
         const productId = PLAN_IAP_PRODUCTS[plan.id as 'basic' | 'pro' | 'premium'];
         if (!productId) {
@@ -137,50 +142,28 @@ export default function Checkout() {
         return;
       }
 
-      // Stripe flow (web)
-      const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
-      const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
-
-      if (!supabaseUrl || !anonKey) {
-        throw new Error('Supabase configuration is missing');
+      const paymentUrl = STRIPE_PAYMENT_LINKS[plan.id];
+      if (!paymentUrl) {
+        throw new Error('No payment link configured for this plan');
       }
 
-      const response = await fetch(`${supabaseUrl}/functions/v1/create-checkout-session`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session?.access_token}`,
-          'apikey': anonKey,
-        },
-        body: JSON.stringify({ planId: plan.id }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to create checkout session');
-      }
-
-      if (result.url) {
-        const supported = await Linking.canOpenURL(result.url);
-        if (supported) {
-          await Linking.openURL(result.url);
-          Alert.alert(
-            t('common.success'),
-            `Redirecionando para a página de pagamento Stripe...`,
-            [
-              {
-                text: t('common.done'),
-                onPress: () => {
-                  router.replace('/dashboard');
-                },
+      const supported = await Linking.canOpenURL(paymentUrl);
+      if (supported) {
+        await Linking.openURL(paymentUrl);
+        Alert.alert(
+          t('common.success'),
+          `Redirecionando para a página de pagamento Stripe...`,
+          [
+            {
+              text: t('common.done'),
+              onPress: () => {
+                router.replace('/dashboard');
               },
-            ]
-          );
-        } else {
-          Alert.alert(t('common.error'), 'Unable to open payment link');
-        }
+            },
+          ]
+        );
       } else {
-        throw new Error('No payment URL returned from server');
+        Alert.alert(t('common.error'), 'Unable to open payment link');
       }
     } catch (error: any) {
       Alert.alert(t('common.error'), error.message || 'Failed to open payment link');
@@ -252,9 +235,9 @@ export default function Checkout() {
                 <Text style={styles.planPeriod}>Monthly subscription</Text>
               </View>
               <View style={styles.priceBlock}>
-                <Text style={styles.currency}>R$</Text>
+                <Text style={styles.currency}>$</Text>
                 <Text style={styles.price}>{plan.price.toFixed(2)}</Text>
-                <Text style={styles.period}>/mês</Text>
+                <Text style={styles.period}>/mo</Text>
               </View>
             </View>
           </LinearGradient>
@@ -331,7 +314,7 @@ export default function Checkout() {
                     <CreditCard size={20} color="#FFFFFF" />
                   )}
                   <Text style={styles.payButtonText}>
-                    {paymentPlatform === 'iap' ? 'Subscribe' : `Pagar R$ ${plan.price.toFixed(2)}`}
+                    {paymentPlatform === 'iap' ? 'Subscribe' : `Pay $${plan.price.toFixed(2)}`}
                   </Text>
                 </View>
               )}

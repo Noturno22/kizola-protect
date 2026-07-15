@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import * as SecureStore from 'expo-secure-store';
+import * as FileSystem from 'expo-file-system';
 import type { SessionManager } from './useSessionManager';
 
 const DEMO_MODE_KEY = 'kizola_demo_user';
@@ -74,9 +75,9 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
     await fetchUserProfile(session.user.id);
   }, [session, user, isDemoMode, fetchUserProfile, setUser]);
 
-  const updateAvatar = useCallback(async (url: string) => {
+  const updateAvatar = useCallback(async (localUri: string) => {
     if (isDemoMode && user) {
-      const updatedUser = { ...user, avatar_url: url };
+      const updatedUser = { ...user, avatar_url: localUri };
       await SecureStore.setItemAsync(DEMO_MODE_KEY, JSON.stringify(updatedUser));
       setUser(updatedUser as any);
       return;
@@ -84,13 +85,44 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
 
     if (!session?.user) throw new Error('No session');
 
-    const { error } = await supabase
-      .from('profiles')
-      .update({ avatar_url: url })
-      .eq('id', session.user.id);
+    const userId = session.user.id;
 
-    if (error) throw error;
-    await fetchUserProfile(session.user.id);
+    const fileContent = await FileSystem.readAsStringAsync(localUri, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+    const decoded = Buffer.from(fileContent, 'base64');
+
+    const ext = localUri.split('.').pop()?.toLowerCase() || 'jpg';
+    const contentType = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
+    const filePath = `${userId}/avatar.${ext}`;
+
+    try {
+      const { data: existingFiles } = await supabase.storage
+        .from('avatars')
+        .list(userId);
+      if (existingFiles?.length) {
+        const oldPaths = existingFiles.map((f) => `${userId}/${f.name}`);
+        await supabase.storage.from('avatars').remove(oldPaths);
+      }
+    } catch {
+      // Cleanup is best-effort — first upload has no old files
+    }
+
+    const { error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(filePath, decoded, { contentType, upsert: true });
+    if (uploadError) throw uploadError;
+
+    const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(filePath);
+    const publicUrl = urlData.publicUrl;
+
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .update({ avatar_url: publicUrl })
+      .eq('id', userId);
+    if (dbError) throw dbError;
+
+    await fetchUserProfile(userId);
   }, [session, user, isDemoMode, fetchUserProfile, setUser]);
 
   return { updateUserPlan, updateAvatar };
