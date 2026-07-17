@@ -224,7 +224,8 @@
     "statsRequests": "リクエスト",
     "statsSatisfaction": "満足度",
     "planUsage": "プラン使用状況",
-    "nextBilling": "次回請求日："
+    "nextBilling": "次回請求日：",
+    "sort": "並べ替え:"
   },
   "benefits": {
     "title": "特典",
@@ -698,7 +699,32 @@
           "content": "\n## 職場の安全と健康\n\n安全で健康的な職場環境は、すべての労働者にとって不可欠です。安全基準と対策を学びましょう。\n\n### 職場の安全基準\n**OSHA（ Occupational Safety and Health Administration）：**\n- 連邦安全基準\n- 雇用主の責任\n- 労働者の権利\n\n**安全対策：**\n- 安全装置の使用\n- 危険の表示\n- 定期的なトレーニング\n\n### 労働者補償\n**適用範囲：**\n- 職場でのけがや病気\n- 上下通勤中の事故\n- 業務起因の疾病\n\n**補償内容：**\n- 医療費の負担\n- 休業手当\n- 永久障害への補償\n\n### 職場の健康管理\n**体力的な健康：**\n- 定期的な運動\n- バランスの取れた食事\n- 十分な睡眠\n\n**メンタルヘルス：**\n- ストレス管理\n- メンタルヘルスサポート\n- 工作環境の改善\n\n### 危険な状況の報告\n1. **即座に報告**：上司に連絡\n2. **記録を残す**：日時と詳細\n3. **必要に応じて医療を受ける**\n4. **労働基準局に報告**\n\n### 安全な職場の維持\n- 定期的な安全確認\n- トレーニングへの参加\n- 安全装置の使用\n- 問題の早期報告\n\n### 重要なリソース\n- OSHAウェブサイト\n- 労働基準局\n- 会社の安全管理者"
         }
       }
-    }
+    },
+    "category_health": "健康",
+    "category_finance": "金融",
+    "category_education": "教育",
+    "category_safety": "安全",
+    "category_community": "コミュニティ",
+    "category_work": "仕事",
+    "beginner": "初級",
+    "intermediate": "中級",
+    "advanced": "上級",
+    "sortRecent": "最近",
+    "sortPopular": "人気",
+    "sortAZ": "A-Z",
+    "sortReadTime": "読了時間",
+    "sortBy": "並べ替え",
+    "difficulty": "難易度",
+    "readTime": "読了時間",
+    "filters": "フィルター",
+    "clearFilters": "フィルターをクリア",
+    "applyFilters": "フィルターを適用",
+    "under5": "5分未満",
+    "fiveTo10": "5-10分",
+    "over10": "10分以上",
+    "noResults": "結果が見つかりません",
+    "tryDifferentFilters": "別のフィルターをお試しください",
+    "relatedArticles": "関連記事"
   },
   "support": {
     "title": "サポートセンター",

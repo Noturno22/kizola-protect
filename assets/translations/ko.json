@@ -197,7 +197,8 @@
     "statsRequests": "요청",
     "statsSatisfaction": "만족도",
     "planUsage": "플랜 사용량",
-    "nextBilling": "다음 결제:"
+    "nextBilling": "다음 결제:",
+    "sort": "정렬:"
   },
   "benefits": {
     "title": "내 혜택",
@@ -671,7 +672,32 @@
           "content": "## 취업 비자 유형\n\n### 임시 취업 비자\n**H-1B:** 전문직\n- 학사 학위 필요\n- 고용주 후원\n- 연간 캡 65,000명\n\n**L-1:** 사내 이전\n- 관리자/임원\n- 전문 지식 보유자\n- 1년 이상 근무\n\n**O-1:** 뛰어난 능력\n- 예술, 과학, 교육\n- 비즈니스, 운동\n- 증빙 서류 필요\n\n### 영주권 취업 경로\n- EB-1: 뛰어난 능력\n- EB-2: 고학력 전문직\n- EB-3: 숙련 노동자\n- EB-4: 특수 이민\n- EB-5: 투자 이민\n\n### 취업 허가 유지\n- 비자 만료 전 갱신 신청\n- 상태 변경 시 USCIS 보고\n- 서류 사본 보관\n- 법률 자문 유지\n\n### 주의사항\n- 취업 허가 없이 근무 금지\n- 고용주 변경 시 절차 준수\n- 서류 만료 방지\n- 이민 변호사 상담"
         }
       }
-    }
+    },
+    "category_health": "건강",
+    "category_finance": "금융",
+    "category_education": "교육",
+    "category_safety": "안전",
+    "category_community": "커뮤니티",
+    "category_work": "직업",
+    "beginner": "초급",
+    "intermediate": "중급",
+    "advanced": "고급",
+    "sortRecent": "최신",
+    "sortPopular": "인기",
+    "sortAZ": "A-Z",
+    "sortReadTime": "읽기 시간",
+    "sortBy": "정렬 기준",
+    "difficulty": "난이도",
+    "readTime": "읽기 시간",
+    "filters": "필터",
+    "clearFilters": "필터 지우기",
+    "applyFilters": "필터 적용",
+    "under5": "5분 미만",
+    "fiveTo10": "5-10분",
+    "over10": "10분 이상",
+    "noResults": "결과를 찾을 수 없습니다",
+    "tryDifferentFilters": "다른 필터를 시도해 보세요",
+    "relatedArticles": "관련 기사"
   },
   "support": {
     "title": "지원 센터",

@@ -224,7 +224,8 @@
     "statsRequests": "请求",
     "statsSatisfaction": "满意度",
     "planUsage": "计划使用情况",
-    "nextBilling": "下次付款："
+    "nextBilling": "下次付款：",
+    "sort": "排序:"
   },
   "benefits": {
     "title": "您的福利",
@@ -698,7 +699,32 @@
           "content": "\n## 职业发展\n\n### 职业规划\n1. **评估您的技能**\n2. **设定职业目标**\n3. **识别差距**\n4. **制定计划**\n5. **定期审查**\n\n### 技能发展\n**技术技能：**\n- 行业特定技能\n- 技术工具\n- 软件技能\n\n**软技能：**\n- 领导力\n- 沟通\n- 解决问题\n- 团队合作\n\n### 导师关系\n**寻找导师：**\n- 寻找经验丰富的同事\n- 建立关系\n- 寻求建议\n- 定期会面\n\n**成为导师：**\n- 分享经验\n- 帮助他人\n- 建立领导力\n\n### 网络建设\n- 行业活动\n- 专业协会\n- LinkedIn\n- 同事关系\n\n### 晋升策略\n1. **超越期望**\n2. **展示领导力**\n3. **承担责任**\n4. **建立人脉**\n5. **持续学习**\n\n### 职业变化\n- 评估原因\n- 研究选项\n- 获取技能\n- 建立人脉\n- 申请职位\n\n### 资源\n- 职业咨询\n- 培训项目\n- 专业协会\n- 导师计划\n"
         }
       }
-    }
+    },
+    "category_health": "健康",
+    "category_finance": "金融",
+    "category_education": "教育",
+    "category_safety": "安全",
+    "category_community": "社区",
+    "category_work": "工作",
+    "beginner": "初级",
+    "intermediate": "中级",
+    "advanced": "高级",
+    "sortRecent": "最新",
+    "sortPopular": "热门",
+    "sortAZ": "A-Z",
+    "sortReadTime": "阅读时间",
+    "sortBy": "排序方式",
+    "difficulty": "难度",
+    "readTime": "阅读时间",
+    "filters": "筛选",
+    "clearFilters": "清除筛选",
+    "applyFilters": "应用筛选",
+    "under5": "少于5分钟",
+    "fiveTo10": "5-10分钟",
+    "over10": "超过10分钟",
+    "noResults": "未找到结果",
+    "tryDifferentFilters": "尝试其他筛选条件",
+    "relatedArticles": "相关文章"
   },
   "support": {
     "title": "支持中心",

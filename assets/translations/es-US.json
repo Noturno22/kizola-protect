@@ -224,7 +224,8 @@
     "statsRequests": "Solicitudes",
     "statsSatisfaction": "Satisfacción",
     "planUsage": "Uso del plan",
-    "nextBilling": "Próximo cobro:"
+    "nextBilling": "Próximo cobro:",
+    "sort": "Ordenar:"
   },
   "benefits": {
     "title": "Tus Beneficios",
@@ -698,7 +699,32 @@
           "content": "\n## Tipos de Visas de Trabajo\n\n### Visas de Trabajo Temporales\n**H-1B:** Ocupaciones especializadas\n- Requiere título universitario\n- Patrocinio del empleador\n- Cap anual de 65,000\n\n**L-1:** Transferencias intraempresa\n- Nivel gerencial/ejecutivo\n- Conocimiento especializado\n- La empresa debe ser relacionada\n\n**O-1:** Habilidad extraordinaria\n- Artes, ciencias, negocios\n- Excelencia demostrada\n\n**TN:** Profesionales TLCAN\n- Canadá y México\n- Ocupaciones específicas\n\n### Visas de Estudiante con Trabajo\n**F-1 OPT:**\n- 12 meses después de graduación\n- Extensión STEM disponible\n- Debe estar relacionado con la carrera\n\n**CPT:**\n- Durante los estudios\n- Requerido para algunos programas\n- Remunerado o voluntario\n\n### Manteniendo el Estatus\n1. Mantén la visa válida\n2. Reporta cambios de dirección\n3. Mantén autorización de empleo\n4. Conoce tus fechas de expiración\n5. Consulta abogado para cambios\n\n### Problemas Comunes\n- Expiración de visa\n- Violaciones de estatus\n- Brechas de empleo\n- Cambios de estatus\n\n### Consejos\n- Guarda copias de todos los documentos\n- Registra fechas de expiración\n- No trabajes sin autorización\n- Consulta abogado antes de cambiar estatus\n\n### Recursos\n- USCIS.gov\n- Departamento de Estado\n- Abogados de inmigración\n- Organizaciones de derechos laborales\n"
         }
       }
-    }
+    },
+    "category_health": "Salud",
+    "category_finance": "Finanzas",
+    "category_education": "Educación",
+    "category_safety": "Seguridad",
+    "category_community": "Comunidad",
+    "category_work": "Trabajo",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "sortRecent": "Reciente",
+    "sortPopular": "Popular",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Tiempo de lectura",
+    "sortBy": "Ordenar por",
+    "difficulty": "Dificultad",
+    "readTime": "Tiempo de lectura",
+    "filters": "Filtros",
+    "clearFilters": "Limpiar filtros",
+    "applyFilters": "Aplicar filtros",
+    "under5": "Menos de 5 min",
+    "fiveTo10": "5-10 min",
+    "over10": "Más de 10 min",
+    "noResults": "No se encontraron resultados",
+    "tryDifferentFilters": "Prueba con otros filtros",
+    "relatedArticles": "Artículos relacionados"
   },
   "support": {
     "title": "Centro de Soporte",

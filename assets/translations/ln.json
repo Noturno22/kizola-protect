@@ -224,7 +224,8 @@
     "statsRequests": "Kokaka",
     "statsSatisfaction": "Mpono",
     "planUsage": "Plan ya Ngai",
-    "nextBilling": "Libikolo:"
+    "nextBilling": "Libikolo:",
+    "sort": "Telesa:"
   },
   "benefits": {
     "title": "Mpacho ya Ngai",
@@ -698,7 +699,32 @@
           "content": "## Anglais d'Affaires\n\n### Importance\n- Trouver emploi\n- Entretiens\n- Travail\n- Développement professionnel\n\n### Compétences\n**Personnel:**\n- Présentation\n- Appels téléphoniques\n- Emails\n\n**Professionnel:**\n- Présentations\n- Réunions\n- Rapports\n\n### Ressources\n**En ligne:**\n- Cours anglais affaires\n- Chaînes YouTube\n- Podcasts\n\n**Personnel:**\n- Cours ESL\n- Ateliers anglais affaires\n- Tutorat\n\n### Malako\n1. Pratiquer régulièrement\n2. Nouveaux mots apprendre\n3. Appels pratiquer\n4. Emails pratiquer\n5. Collègues parler\n\n### Ebandaka Epai\n- Pratiquer okolakisa\n- Apprendre okolakisa\n- Appels okolakisa"
         }
       }
-    }
+    },
+    "category_health": "Monene moko",
+    "category_finance": "Malamu ya sika",
+    "category_education": "Litaye",
+    "category_safety": "Kobikisa",
+    "category_community": "Batu ba kati",
+    "category_work": "Mosala",
+    "beginner": "Nkaka",
+    "intermediate": "Nkaka ya kati",
+    "advanced": "Nkaka ya pole",
+    "sortRecent": "Ya mpe",
+    "sortPopular": "Ya mbongwana",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Mokili ya kotanga",
+    "sortBy": "Telesa na",
+    "difficulty": "Mobikoloko",
+    "readTime": "Mokili ya kotanga",
+    "filters": "Mafilter",
+    "clearFilters": "Kokolisa mafilter",
+    "applyFilters": "Kotinda mafilter",
+    "under5": "Lunene luna minti 5",
+    "fiveTo10": "5-10 minti",
+    "over10": "Lunene luna minti 10",
+    "noResults": "Kobenga kaka moko te",
+    "tryDifferentFilters": "Koya mafilter mangai",
+    "relatedArticles": "Maboko ya kobimisi"
   },
   "support": {
     "title": "Bikisi",

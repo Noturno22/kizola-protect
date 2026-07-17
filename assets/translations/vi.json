@@ -224,7 +224,8 @@
     "statsRequests": "Yêu cầu",
     "statsSatisfaction": "Hài lòng",
     "planUsage": "Sử dụng gói",
-    "nextBilling": "Thanh toán tiếp theo:"
+    "nextBilling": "Thanh toán tiếp theo:",
+    "sort": "Sắp xếp:"
   },
   "benefits": {
     "title": "Quyền lợi của Bạn",
@@ -698,7 +699,32 @@
           "content": "## Kỹ Năng Cứng vs Mềm\n\n### Kỹ Năng Cứng\n**Kỹ năng kỹ thuật:**\n- Máy tính\n- Lập trình\n- Phân tích dữ liệu\n- Quản lý dự án\n\n**Kỹ năng chuyên môn:**\n- Kinh doanh\n- Y tế\n- Kỹ thuật\n- Sáng tạo\n\n### Kỹ Năng Mềm\n**Giao tiếp:**\n- Nói trước công chúng\n- Viết hiệu quả\n- Lắng nghe chủ động\n\n**Lãnh đạo:**\n- Quản lý nhóm\n- Ra quyết định\n- Giải quyết xung đột\n\n**Tư duy:**\n- Tư duy phản biện\n- Giải quyết vấn đề\n- Sáng tạo\n\n### Phát Triển Kỹ Năng\n**Học trực tuyến:**\n- Khóa học Coursera\n- Khóa học LinkedIn Learning\n- Tài liệu miễn phí\n\n**Thực hành:**\n- Tình nguyện\n- Dự án cá nhân\n- Thực tập\n\n### Áp Dụng Vào Sự Nghiệp\n1. Xác định kỹ năng cần thiết\n2. Lập kế hoạch phát triển\n3. Thực hành và áp dụng\n4. Đánh giá và điều chỉnh\n\n### Mẹo Thăng Tiến\n- Xây dựng thương hiệu cá nhân\n- Mở rộng mạng lưới\n- Tìm mentor\n- Thể hiện sự chủ động\n- Luôn học hỏi"
         }
       }
-    }
+    },
+    "category_health": "Sức khỏe",
+    "category_finance": "Tài chính",
+    "category_education": "Giáo dục",
+    "category_safety": "An toàn",
+    "category_community": "Cộng đồng",
+    "category_work": "Việc làm",
+    "beginner": "Cơ bản",
+    "intermediate": "Trung bình",
+    "advanced": "Nâng cao",
+    "sortRecent": "Gần đây",
+    "sortPopular": "Phổ biến",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Thời gian đọc",
+    "sortBy": "Sắp xếp theo",
+    "difficulty": "Độ khó",
+    "readTime": "Thời gian đọc",
+    "filters": "Bộ lọc",
+    "clearFilters": "Xóa bộ lọc",
+    "applyFilters": "Áp dụng bộ lọc",
+    "under5": "Dưới 5 phút",
+    "fiveTo10": "5-10 phút",
+    "over10": "Trên 10 phút",
+    "noResults": "Không tìm thấy kết quả",
+    "tryDifferentFilters": "Thử bộ lọc khác",
+    "relatedArticles": "Bài viết liên quan"
   },
   "support": {
     "title": "Trung tâm Hỗ trợ",

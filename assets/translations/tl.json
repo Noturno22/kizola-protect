@@ -224,7 +224,8 @@
     "statsRequests": "Mga Request",
     "statsSatisfaction": "Kasiyahan",
     "planUsage": "Paggamit ng plano",
-    "nextBilling": "Susunod na pagsingil:"
+    "nextBilling": "Susunod na pagsingil:",
+    "sort": "Ayusin:"
   },
   "benefits": {
     "title": "Iyong Mga Benepisyo",
@@ -698,7 +699,32 @@
           "content": "## Bakit Kailangan ng Network\n\n### Mga Benepisyo\n- Job opportunities\n- Industry insights\n- Mentorship\n- Professional growth\n\n### Online Networking\n**LinkedIn:**\n- Professional profile\n- Connect with professionals\n- Join industry groups\n- Share content\n\n**Other Platforms:**\n- Twitter\n- Industry forums\n- Online communities\n\n### Offline Networking\n- Industry events\n- Conferences\n- Meetups\n- Professional associations\n\n### Mga Tips\n1. Be genuine and authentic\n2. Give before you ask\n3. Follow up consistently\n4. Maintain relationships\n5. Network regularly\n\n### Mga Pagkakamali na Dapat Iwasan\n- Not following up\n- Not giving value\n- Not networking regularly\n- Not maintaining relationships\n\n### Para sa Immigrants\n1. Join immigrant professional groups\n2. Attend cultural events\n3. Volunteer in community\n4. Build relationships gradually\n5. Share your unique perspective"
         }
       }
-    }
+    },
+    "category_health": "Kalusugan",
+    "category_finance": "Pananalapi",
+    "category_education": "Edukasyon",
+    "category_safety": "Kaligtasan",
+    "category_community": "Komunidad",
+    "category_work": "Trabaho",
+    "beginner": "Nagsisimula",
+    "intermediate": "Gitnang Antas",
+    "advanced": "Marunong Na",
+    "sortRecent": "Kamakailan",
+    "sortPopular": "Sikat",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Oras ng Pagbasa",
+    "sortBy": "Ayusin ayon sa",
+    "difficulty": "Hirap",
+    "readTime": "Oras ng Pagbasa",
+    "filters": "Mga Salaan",
+    "clearFilters": "Linisin ang mga Salaan",
+    "applyFilters": "I-apply ang mga Salaan",
+    "under5": "Mas mababa sa 5 min",
+    "fiveTo10": "5-10 min",
+    "over10": "Mahigit sa 10 min",
+    "noResults": "Walang nakitang resulta",
+    "tryDifferentFilters": "Subukan ang ibang mga salaan",
+    "relatedArticles": "Mga Kaugnay na Artikulo"
   },
   "support": {
     "title": "Support Center",

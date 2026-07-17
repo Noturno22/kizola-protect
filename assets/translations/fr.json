@@ -224,7 +224,8 @@
     "statsRequests": "Demandes",
     "statsSatisfaction": "Satisfaction",
     "planUsage": "Utilisation du forfait",
-    "nextBilling": "Prochaine facturation :"
+    "nextBilling": "Prochaine facturation :",
+    "sort": "Trier :"
   },
   "benefits": {
     "title": "Vos Avantages",
@@ -698,7 +699,32 @@
           "content": "\n## Types de Visas de Travail\n\n### Visas de Travail Temporaires\n**H-1B :** Professions spécialisées\n- Nécessite un diplôme universitaire\n- Parrainage de l'employeur\n- Plafond annuel de 65 000\n\n**L-1 :** Transferts intra-entreprise\n- Niveau cadre/exécutif\n- Connaissances spécialisées\n- L'entreprise doit être liée\n\n**O-1 :** Capacité extraordinaire\n- Arts, sciences, affaires\n- Excellence démontrée\n\n**TN :** Professionnels de l'ALÉNA\n- Canada et Mexique\n- Professions spécifiques\n\n### Visas Étudiants avec Travail\n**F-1 OPT :**\n- 12 mois après l'obtention du diplôme\n- Prolongation STEM disponible\n- Doit être lié à la spécialité\n\n**CPT :**\n- Pendant les études\n- Requis pour certains programmes\n- Rémunéré ou bénévole\n\n### Maintenir le Statut\n1. Gardez le visa valide\n2. Signalez les changements d'adresse\n3. Maintenez l'autorisation de travail\n4. Connaissez vos dates d'expiration\n5. Consultez un avocat pour les changements\n\n### Problèmes Courants\n- Expiration du visa\n- Violations de statut\n- Lacunes d'emploi\n- Changements de statut\n\n### Conseils\n- Conservez des copies de tous les documents\n- Notez les dates d'expiration\n- Ne travaillez pas sans autorisation\n- Consultez un avocat avant de changer de statut\n\n### Ressources\n- USCIS.gov\n- Département d'État\n- Avocats en immigration\n- Organisations de droits du travail\n"
         }
       }
-    }
+    },
+    "category_health": "Santé",
+    "category_finance": "Finance",
+    "category_education": "Éducation",
+    "category_safety": "Sécurité",
+    "category_community": "Communauté",
+    "category_work": "Emploi",
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "sortRecent": "Récent",
+    "sortPopular": "Populaire",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Temps de lecture",
+    "sortBy": "Trier par",
+    "difficulty": "Difficulté",
+    "readTime": "Temps de lecture",
+    "filters": "Filtres",
+    "clearFilters": "Effacer les filtres",
+    "applyFilters": "Appliquer les filtres",
+    "under5": "Moins de 5 min",
+    "fiveTo10": "5-10 min",
+    "over10": "Plus de 10 min",
+    "noResults": "Aucun résultat trouvé",
+    "tryDifferentFilters": "Essayez d'autres filtres",
+    "relatedArticles": "Articles similaires"
   },
   "support": {
     "title": "Centre d'Assistance",

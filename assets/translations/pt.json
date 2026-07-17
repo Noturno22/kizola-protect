@@ -224,7 +224,8 @@
     "statsRequests": "Pedidos",
     "statsSatisfaction": "Satisfação",
     "planUsage": "Uso do plano",
-    "nextBilling": "Próxima cobrança:"
+    "nextBilling": "Próxima cobrança:",
+    "sort": "Ordenar:"
   },
   "benefits": {
     "title": "Os Seus Benefícios",
@@ -698,7 +699,32 @@
           "content": "\n## Tipos de Vistos de Trabalho\n\n### Vistos Temporários de Trabalho\n**H-1B:** Ocupações especializadas\n- Requer diploma de licenciatura\n- Patrocínio do empregador\n- Limite anual de 65.000\n\n**L-1:** Transferências intracompanhia\n- Nível de gestor/executivo\n- Conhecimento especializado\n- Empresa deve ser relacionada\n\n**O-1:** Habilidade extraordinária\n- Artes, ciências, negócios\n- Excelência demonstrada\n\n**TN:** Profissionais do NAFTA\n- Canadá e México\n- Ocupações específicas\n\n### Vistos de Estudante com Trabalho\n**F-1 OPT:**\n- 12 meses após graduação\n- Extensão STEM disponível\n- Deve ser relacionado com a especialidade\n\n**CPT:**\n- Durante os estudos\n- Requerido para alguns program as\n- Pago ou não pago\n\n### Mantendo o Estatuto\n1. Manter visto válido\n2. Comunicar mudanças de morada\n3. Manter autorização de trabalho\n4. Conhecer datas de expiração\n5. Consultar advogado para mudanças\n\n### Problemas Comuns\n- Expiração do visto\n- Violações de estatuto\n- Lacunas de emprego\n- Mudanças de estatuto\n\n### Dicas\n- Guardar cópias de todos os documentos\n- Registar datas de expiração\n- Não trabalhar sem autorização\n- Consultar advogado antes de mudar estatuto\n\n### Recursos\n- USCIS.gov\n- Departamento de Estado\n- Advogados de imigração\n- Organizações de direitos dos trabalhadores\n"
         }
       }
-    }
+    },
+    "category_health": "Saúde",
+    "category_finance": "Finanças",
+    "category_education": "Educação",
+    "category_safety": "Segurança",
+    "category_community": "Comunidade",
+    "category_work": "Trabalho",
+    "beginner": "Iniciante",
+    "intermediate": "Intermediário",
+    "advanced": "Avançado",
+    "sortRecent": "Recente",
+    "sortPopular": "Popular",
+    "sortAZ": "A-Z",
+    "sortReadTime": "Tempo de Leitura",
+    "sortBy": "Ordenar por",
+    "difficulty": "Dificuldade",
+    "readTime": "Tempo de Leitura",
+    "filters": "Filtros",
+    "clearFilters": "Limpar Filtros",
+    "applyFilters": "Aplicar Filtros",
+    "under5": "Menos de 5 min",
+    "fiveTo10": "5-10 min",
+    "over10": "Mais de 10 min",
+    "noResults": "Nenhum resultado encontrado",
+    "tryDifferentFilters": "Tente outros filtros",
+    "relatedArticles": "Artigos Relacionados"
   },
   "support": {
     "title": "Centro de Suporte",
