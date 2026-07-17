@@ -4,12 +4,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useLearn } from '../hooks/useLearn';
-import { LEARNING_ARTICLES } from '@/lib/supabase';
 import { LearnHeader } from '../components/learn/LearnHeader';
 import { FeaturedArticleCard } from '../components/learn/FeaturedArticleCard';
 import { StatsSection } from '../components/learn/StatsSection';
 import { CategoryChips } from '../components/learn/CategoryChips';
 import { ArticleGrid } from '../components/learn/ArticleGrid';
+import { CuratedSection } from '../components/learn/CuratedSection';
+import { FilterModal } from '../components/learn/FilterModal';
 import { PremiumTipCard } from '../components/learn/PremiumTipCard';
 import { ArticleModal } from '../components/learn/ArticleModal';
 
@@ -21,12 +22,25 @@ export default function Learn() {
     readArticles, fadeAnim, scrollY,
     filteredArticles, featuredArticle, categories,
     markAsRead, getCategoryConfig,
-    theme, isDark, t, insets,
+    bookmarkedIds, handleToggleBookmark,
+    popularArticles, recentArticles, recommendedArticles, bookmarkArticles,
+    sort, setSort, filters, setFilters,
+    showFilters, setShowFilters,
+    hasActiveFilters, articleCounts,
+    theme, isDark, t,
   } = useLearn();
 
-  // Guard: theme ainda não carregado (async ThemeProvider)
   const styles = useMemo(() => theme ? createStyles(theme) : null, [theme]);
   if (!theme || !styles) return null;
+
+  const sortLabels: Record<string, string> = {
+    recent: t('learn.sortRecent'),
+    popular: t('learn.sortPopular'),
+    az: t('learn.sortAZ'),
+    readTime: t('learn.sortReadTime'),
+  };
+
+  const showCurated = !selectedCategory && !searchQuery;
 
   return (
     <View style={styles.container}>
@@ -53,9 +67,11 @@ export default function Learn() {
               theme={theme}
               isDark={isDark}
               t={t}
+              onFilterPress={() => setShowFilters(!showFilters)}
+              hasActiveFilters={hasActiveFilters}
             />
 
-            {!selectedCategory && !searchQuery && featuredArticle && (
+            {showCurated && featuredArticle && (
               <FeaturedArticleCard
                 featuredArticle={featuredArticle}
                 onPress={() => setSelectedArticle(featuredArticle)}
@@ -65,7 +81,7 @@ export default function Learn() {
             )}
 
             <StatsSection
-              articleCount={LEARNING_ARTICLES.length}
+              articleCount={55}
               categoryCount={categories.length}
               theme={theme}
               t={t}
@@ -79,7 +95,50 @@ export default function Learn() {
               fadeAnim={fadeAnim}
               theme={theme}
               t={t}
+              articleCounts={articleCounts}
             />
+
+            {showCurated && (
+              <>
+                <CuratedSection
+                  title={t('learn.popular')}
+                  articles={popularArticles}
+                  getCategoryConfig={getCategoryConfig}
+                  readArticles={readArticles}
+                  bookmarkedIds={bookmarkedIds}
+                  onSelectArticle={setSelectedArticle}
+                  onToggleBookmark={handleToggleBookmark}
+                  theme={theme}
+                  t={t}
+                />
+
+                <CuratedSection
+                  title={t('learn.recommended')}
+                  articles={recommendedArticles}
+                  getCategoryConfig={getCategoryConfig}
+                  readArticles={readArticles}
+                  bookmarkedIds={bookmarkedIds}
+                  onSelectArticle={setSelectedArticle}
+                  onToggleBookmark={handleToggleBookmark}
+                  theme={theme}
+                  t={t}
+                />
+
+                {bookmarkArticles.length > 0 && (
+                  <CuratedSection
+                    title={t('learn.saved')}
+                    articles={bookmarkArticles}
+                    getCategoryConfig={getCategoryConfig}
+                    readArticles={readArticles}
+                    bookmarkedIds={bookmarkedIds}
+                    onSelectArticle={setSelectedArticle}
+                    onToggleBookmark={handleToggleBookmark}
+                    theme={theme}
+                    t={t}
+                  />
+                )}
+              </>
+            )}
 
             <ArticleGrid
               filteredArticles={filteredArticles}
@@ -90,12 +149,28 @@ export default function Learn() {
               onSelectArticle={setSelectedArticle}
               theme={theme}
               t={t}
+              bookmarkedIds={bookmarkedIds}
+              onToggleBookmark={handleToggleBookmark}
+              sortLabel={sortLabels[sort]}
             />
 
             <PremiumTipCard theme={theme} t={t} />
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
+
+      <FilterModal
+        visible={showFilters}
+        onClose={() => setShowFilters(false)}
+        filters={filters}
+        setFilters={setFilters}
+        sort={sort}
+        setSort={setSort}
+        categories={categories}
+        getCategoryConfig={getCategoryConfig}
+        theme={theme}
+        t={t}
+      />
 
       <ArticleModal
         selectedArticle={selectedArticle}
@@ -106,6 +181,8 @@ export default function Learn() {
         isDark={isDark}
         t={t}
         scrollY={scrollY}
+        isBookmarked={selectedArticle ? bookmarkedIds.includes(selectedArticle.id) : false}
+        onToggleBookmark={handleToggleBookmark}
       />
     </View>
   );
@@ -114,7 +191,6 @@ export default function Learn() {
 const createStyles = (theme: any) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.background,
   },
   safeArea: {
     flex: 1,

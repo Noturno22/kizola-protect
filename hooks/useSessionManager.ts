@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { supabase, type User, isSupabaseConfigured } from '@/lib/supabase';
 import { Session } from '@supabase/supabase-js';
 import * as SecureStore from 'expo-secure-store';
+import * as Linking from 'expo-linking';
+import * as QueryParams from 'expo-auth-session/build/QueryParams';
 
 const DEMO_MODE_KEY = 'kizola_demo_user';
 export const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
@@ -57,11 +59,23 @@ export function useSessionManager() {
         return;
       }
 
-      const { data: profileData, error: profileError } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .maybeSingle();
+      const [profileResult, subResult] = await Promise.all([
+        supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', userId)
+          .maybeSingle(),
+        supabase
+          .from('subscriptions')
+          .select('plan_id')
+          .eq('user_id', userId)
+          .eq('status', 'active')
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .maybeSingle(),
+      ]);
+
+      const { data: profileData, error: profileError } = profileResult;
 
       if (profileError) {
         console.error('[Auth] Error fetching user profile:', profileError);
@@ -69,17 +83,8 @@ export function useSessionManager() {
         return;
       }
 
-      const { data: subData } = await supabase
-        .from('subscriptions')
-        .select('plan_id')
-        .eq('user_id', userId)
-        .eq('status', 'active')
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .maybeSingle();
-
-      if (subData?.plan_id) {
-        subPlanId = subData.plan_id;
+      if (subResult.data?.plan_id) {
+        subPlanId = subResult.data.plan_id;
       }
 
       if (!profileData) {
@@ -134,6 +139,17 @@ export function useSessionManager() {
         policy_number: profileRow.policy_number,
       } as User;
 
+      if (!userData.avatar_url) {
+        const googleAvatar = currentSession.user.user_metadata?.picture;
+        if (googleAvatar) {
+          userData.avatar_url = googleAvatar;
+          supabase
+            .from('profiles')
+            .update({ avatar_url: googleAvatar })
+            .eq('id', userId);
+        }
+      }
+
       setUser(userData);
     } catch (error) {
       console.error('[Auth] fetchUserProfile error:', error);
@@ -157,8 +173,7 @@ export function useSessionManager() {
 
     const bootstrap = async () => {
       try {
-        const isOnline = await checkSupabaseConnectivity();
-        if (!isSupabaseConfigured() || !isOnline) {
+        if (!isSupabaseConfigured()) {
           const demoUserJson = await SecureStore.getItemAsync(DEMO_MODE_KEY);
           if (!cancelled && demoUserJson) {
             setUser(JSON.parse(demoUserJson));
@@ -175,6 +190,38 @@ export function useSessionManager() {
           await fetchUserProfile(initialSession.user.id);
         } else {
           setLoading(false);
+
+          const initialUrl = await Linking.getInitialURL();
+          if (initialUrl && !cancelled) {
+            const { params: query } = QueryParams.getQueryParams(initialUrl);
+            let merged: Record<string, string> = { ...query };
+            try {
+              const urlObj = new URL(initialUrl);
+              if (urlObj.hash) {
+                urlObj.hash.substring(1).split('&').forEach((pair) => {
+                  const [k, v] = pair.split('=');
+                  if (k && v) merged[decodeURIComponent(k)] = decodeURIComponent(v);
+                });
+              }
+            } catch { /* not parseable — query params only */ }
+
+            if (merged.code) {
+              const { data: sd, error } = await supabase.auth.exchangeCodeForSession(merged.code);
+              if (!error && sd?.session) {
+                setSession(sd.session);
+                await fetchUserProfile(sd.session.user.id);
+              }
+            } else if (merged.access_token) {
+              const { data: sd, error } = await supabase.auth.setSession({
+                access_token: merged.access_token,
+                refresh_token: merged.refresh_token ?? '',
+              });
+              if (!error && sd?.session) {
+                setSession(sd.session);
+                await fetchUserProfile(sd.session.user.id);
+              }
+            }
+          }
         }
 
         const { data } = supabase.auth.onAuthStateChange((event, nextSession) => {

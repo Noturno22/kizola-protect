@@ -140,7 +140,7 @@ export default function Benefits() {
 
           {/* New Services: Habitação + Finanças */}
           <View style={styles.newServicesContainer}>
-            <Text style={styles.sectionTitle}>Novos Serviços</Text>
+            <Text style={styles.sectionTitle}>{t('benefits.newServices')}</Text>
 
             {/* Apoio à Habitação */}
             <TouchableOpacity
@@ -159,9 +159,9 @@ export default function Benefits() {
                   <Home size={28} color="#FFFFFF" />
                 </View>
                 <View style={styles.newServiceText}>
-                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#92400E' }]}>Apoio à Habitação</Text>
+                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#92400E' }]}>{t('benefits.housingSupport')}</Text>
                   <Text style={[styles.newServiceDesc, { color: isDark ? 'rgba(255,255,255,0.85)' : '#A16207' }]}>
-                    Procura de habitação, Shelter e programas habitacionais
+                    {t('benefits.housingSupportDesc')}
                   </Text>
                 </View>
                 <View style={[styles.newServiceArrow, { backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : '#D97706' }]}>
@@ -187,9 +187,9 @@ export default function Benefits() {
                   <DollarSign size={28} color="#FFFFFF" />
                 </View>
                 <View style={styles.newServiceText}>
-                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#5B21B6' }]}>Ajuda às Finanças</Text>
+                  <Text style={[styles.newServiceTitle, { color: isDark ? '#FFFFFF' : '#5B21B6' }]}>{t('benefits.financeHelp')}</Text>
                   <Text style={[styles.newServiceDesc, { color: isDark ? 'rgba(255,255,255,0.85)' : '#6D28D9' }]}>
-                    EBT, benefícios estatais, impostos e Tax Return
+                    {t('benefits.financeHelpDesc')}
                   </Text>
                 </View>
                 <View style={[styles.newServiceArrow, { backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : '#7C3AED' }]}>
@@ -606,11 +606,11 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   categoriesGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 16,
     justifyContent: 'space-between',
   },
   categoryCard: {
     width: (width - 48 - 16) / 2,
+    marginBottom: 16,
     backgroundColor: theme.surface,
     borderRadius: 24,
     shadowColor: '#000',

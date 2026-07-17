@@ -13,7 +13,7 @@ export function HelpCard({ theme, styles, onPress }: Props) {
   const { t } = useTranslation();
 
   return (
-    <View style={[styles.section, { marginBottom: 36 }]}>
+    <View style={[styles.section, { marginBottom: 0 }]}> 
       <TouchableOpacity
         style={[styles.helpCard, { backgroundColor: theme.helpCardBg, borderColor: theme.helpCardBorder }]}
         onPress={onPress}

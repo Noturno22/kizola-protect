@@ -3,6 +3,7 @@ import { Bell, X, Info, CheckCircle2, AlertCircle } from 'lucide-react-native';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useTranslation } from 'react-i18next';
+import i18n from '@/lib/i18n';
 
 const NOTIFICATION_ICONS: Record<string, React.ComponentType<any>> = {
   info: Info,
@@ -21,10 +22,10 @@ const getNotificationColors = (isDark: boolean) => ({
 function formatDate(dateString: string) {
   const date = new Date(dateString);
   const diffH = (Date.now() - date.getTime()) / 3600000;
-  if (diffH < 1) return 'Agora';
-  if (diffH < 24) return `${Math.floor(diffH)}h atrás`;
-  if (diffH < 48) return 'Ontem';
-  return date.toLocaleDateString('pt-AO', { month: 'short', day: 'numeric' });
+  if (diffH < 1) return i18n.t('notifNow');
+  if (diffH < 24) return i18n.t('notifHoursAgo', { count: Math.floor(diffH) });
+  if (diffH < 48) return i18n.t('notifYesterday');
+  return date.toLocaleDateString(i18n.language || 'en', { month: 'short', day: 'numeric' });
 }
 
 export function NotificationsModal({ visible, onClose }: { visible: boolean; onClose: () => void }) {
@@ -53,8 +54,8 @@ export function NotificationsModal({ visible, onClose }: { visible: boolean; onC
             {notifications.length === 0 ? (
               <View style={{ alignItems: 'center', paddingVertical: 52, gap: 10 }}>
                 <Bell size={44} color={theme.textMuted} />
-                <Text style={{ fontSize: 18, fontWeight: '700', color: theme.text }}>Sem notificações</Text>
-                <Text style={{ fontSize: 14, color: theme.textSecondary }}>Está tudo em dia!</Text>
+                <Text style={{ fontSize: 18, fontWeight: '700', color: theme.text }}>{t('noNotifications')}</Text>
+                <Text style={{ fontSize: 14, color: theme.textSecondary }}>{t('allCaughtUp')}</Text>
               </View>
             ) : (
               notifications.map((n) => {
@@ -71,8 +72,8 @@ export function NotificationsModal({ visible, onClose }: { visible: boolean; onC
                       <Icon size={18} color={colors.icon} />
                     </View>
                     <View style={{ flex: 1 }}>
-                      <Text style={{ fontSize: 13, fontWeight: '600', color: theme.text, marginBottom: 2 }}>{n.title}</Text>
-                      <Text style={{ fontSize: 12, lineHeight: 17, color: theme.textSecondary, marginBottom: 4 }} numberOfLines={2}>{n.message}</Text>
+                      <Text style={{ fontSize: 13, fontWeight: '600', color: theme.text, marginBottom: 2 }}>{t(n.title)}</Text>
+                      <Text style={{ fontSize: 12, lineHeight: 17, color: theme.textSecondary, marginBottom: 4 }} numberOfLines={2}>{t(n.message)}</Text>
                       <Text style={{ fontSize: 11, color: theme.textMuted }}>{formatDate(n.created_at)}</Text>
                     </View>
                     {!n.read && <View style={{ width: 8, height: 8, borderRadius: 4, marginTop: 4, flexShrink: 0, backgroundColor: theme.accent }} />}

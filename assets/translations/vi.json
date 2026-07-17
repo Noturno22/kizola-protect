@@ -72,7 +72,47 @@
     "emailPlaceholder": "you@email.com",
     "forgotPasswordDesc": "Nhập email liên kết với tài khoản của bạn. Chúng tôi sẽ gửi liên kết để tạo mật khẩu mới.",
     "loginFailed": "Đăng nhập thất bại",
-    "invalidCredentials": "Email hoặc mật khẩu không hợp lệ."
+    "invalidCredentials": "Email hoặc mật khẩu không hợp lệ.",
+    "error": "Lỗi",
+    "errorGoogle": "Lỗi Google",
+    "errorApple": "Lỗi Apple",
+    "loginInterrupted": "Đăng nhập bị gián đoạn. Ứng dụng có thể đã bị đóng. Vui lòng thử lại.",
+    "enterFullName": "Vui lòng nhập họ tên đầy đủ.",
+    "enterEmail": "Vui lòng nhập email của bạn.",
+    "enterPassword": "Vui lòng nhập mật khẩu.",
+    "invalidPhoneDigits": "Số điện thoại không hợp lệ (tối thiểu 8 chữ số).",
+    "passwordsDoNotMatch": "Mật khẩu không khớp.",
+    "passwordMin6": "Mật khẩu phải có ít nhất 6 ký tự.",
+    "acceptTerms": "Vui lòng chấp nhận điều khoản và điều kiện.",
+    "confirmEmailTitle": "Xác nhận email",
+    "confirmEmailDesc": "Chúng tôi đã gửi liên kết xác nhận đến {{email}}. Nhấp vào liên kết, sau đó đăng nhập để tiếp tục.",
+    "goToLogin": "Đi đến Đăng nhập",
+    "alreadyRegistered": "Email này đã được đăng ký. Hãy thử đăng nhập.",
+    "emailInvalid": "Email không hợp lệ. Vui lòng kiểm tra và thử lại.",
+    "registrationError": "Lỗi Đăng ký",
+    "phoneVerification": "Xác minh Số điện thoại",
+    "signInWithPhone": "Đăng nhập bằng Số điện thoại",
+    "enterPhoneSubtitle": "Nhập số điện thoại của bạn để nhận mã bảo mật.",
+    "phonePlaceholder": "ví dụ +1 234 567 8900",
+    "sendCode": "Gửi Mã",
+    "verifyCode": "Xác minh Mã",
+    "enterCodeSentTo": "Nhập mã 6 chữ số đã gửi đến {{phone}}",
+    "codePlaceholder": "Nhập mã 6 chữ số",
+    "verifyAndSignIn": "Xác minh và Đăng nhập",
+    "changePhoneNumber": "Thay đổi số điện thoại",
+    "invalidPhone": "Vui lòng nhập số điện thoại hợp lệ với mã quốc gia (ví dụ +1234567890)",
+    "phoneCountryCodeRequired": "Vui lòng bao gồm mã quốc gia bắt đầu bằng + (ví dụ +1)",
+    "smsSent": "Gửi SMS thành công",
+    "couldNotSendSms": "Không thể gửi SMS",
+    "enterSixDigitCode": "Vui lòng nhập mã 6 chữ số",
+    "invalidCode": "Mã không hợp lệ",
+    "demoMode": "Chế độ Demo",
+    "demoModeA11y": "Vào chế độ demo",
+    "demoModeFailed": "Không thể vào chế độ demo.",
+    "appleComingSoon": "Đăng nhập bằng Apple",
+    "appleComingSoonDesc": "Tính năng này đang được phát triển và sẽ sớm có mặt. Xác thực Apple yêu cầu tài khoản Apple Developer.",
+    "phoneComingSoon": "Đăng nhập bằng Số điện thoại",
+    "phoneComingSoonDesc": "Tính năng này đang được phát triển. Đăng nhập SMS/OTP sẽ có trong phiên bản đầy đủ."
   },
   "profile": {
     "title": "Hồ sơ của tôi",
@@ -87,6 +127,16 @@
     "status": "Trạng thái",
     "beneficiaries": "Người thụ hưởng",
     "add": "Thêm",
+    "addBeneficiary": "Thêm Người thụ hưởng",
+    "editBeneficiary": "Chỉnh sửa Người thụ hưởng",
+    "beneficiaryType": "Loại Người thụ hưởng",
+    "son": "Con trai",
+    "daughter": "Con gái",
+    "spouse": "Vợ/Chồng",
+    "fullName": "Họ và tên",
+    "namePlaceholder": "Nhập họ và tên",
+    "document": "Giấy tờ",
+    "documentPlaceholder": "Nhập số giấy tờ",
     "none": "Không có người thụ hưởng",
     "noneSubtitle": "Thêm con cái, vợ/chồng hoặc người thụ hưởng khác.",
     "settings": "Cài đặt",
@@ -111,12 +161,40 @@
     "noActivePlan": "Không có gói hoạt động",
     "benefitsCount": "Quyền lợi",
     "support247": "Hỗ trợ",
-    "protected100": "Đã bảo vệ"
+    "protected100": "Đã bảo vệ",
+    "deleteAccountSubtitle": "Xóa tài khoản là vĩnh viễn và không thể hoàn tác.",
+    "deleteAccount": {
+      "title": "Xóa Tài khoản",
+      "warning": "Hành động này không thể hoàn tác. Tất cả dữ liệu của bạn sẽ bị xóa vĩnh viễn.",
+      "reasonLabel": "Lý do rời đi",
+      "reasons": {
+        "too_expensive": "Quá đắt",
+        "missing_features": "Thiếu tính năng",
+        "not_helpful": "Không hữu ích",
+        "privacy": "Lo ngại về quyền riêng tư",
+        "duplicate": "Tài khoản trùng lặp",
+        "other": "Khác"
+      },
+      "passwordLabel": "Nhập mật khẩu để xác nhận",
+      "passwordPlaceholder": "Mật khẩu",
+      "confirmLabel": "Tôi hiểu hậu quả",
+      "deleteButton": "Xóa Tài khoản của tôi",
+      "cancelButton": "Hủy",
+      "confirmError": "Vui lòng xác nhận và nhập mật khẩu",
+      "alertDeletedTitle": "Tài khoản đã bị xóa",
+      "alertDeletedDemo": "Đây là tài khoản demo",
+      "alertDeletedDesc": "Tài khoản của bạn đã bị xóa. Bạn sẽ bị đăng xuất.",
+      "alertOk": "OK",
+      "noSession": "Không tìm thấy phiên hoạt động",
+      "deleteFailed": "Xóa tài khoản thất bại",
+      "genericError": "Đã xảy ra lỗi"
+    }
   },
   "dashboard": {
     "welcome": "Xin chào",
     "welcomeBack": "Chào mừng trở lại,",
     "protectionStatus": "Trạng thái Bảo vệ",
+    "planSuffix": "Gói",
     "protected": "Bạn đang được bảo vệ",
     "notProtected": "Cần hành động",
     "quickActions": "Thao tác nhanh",
@@ -267,7 +345,12 @@
         "description": "Lấy lại quyền truy cập vào cuộc sống kỹ thuật số của bạn. Chúng tôi giúp khôi phục tài khoản bị khóa hoặc bị hack cho Uber, DoorDash và các nền tảng dịch vụ thiết yếu khác.",
         "category_name": "Kỹ thuật số"
       }
-    }
+    },
+    "newServices": "Dịch Vụ Mới",
+    "financeHelp": "Hỗ Trợ Tài Chính",
+    "housingSupport": "Hỗ Trợ Nhà Ở",
+    "housingSupportDesc": "Nhận trợ giúp tìm nhà ở ổn định, hiểu quyền lợi người thuê nhà và tiếp cận tài nguyên nhà ở khẩn cấp.",
+    "financeHelpDesc": "Tiếp cận hỗ trợ tài chính cho thanh toán hóa đơn, hỗ trợ ngân sách và cứu trợ kinh tế khẩn cấp."
   },
   "activity": {
     "title": "Hoạt động của Tôi",
@@ -315,31 +398,305 @@
     "helpDesc": "Nhóm hỗ trợ của chúng tôi có thể cung cấp hướng dẫn phù hợp với tình huống cụ thể của bạn",
     "contactSupport": "Liên hệ Hỗ trợ",
     "helpTopic": "Cần trợ giúp về chủ đề này?",
+    "popular": "Phổ biến",
+    "recommended": "Đề xuất",
     "articles": {
       "tax": {
-        "title": "Kiến thức Cơ bản về Khai thuế",
-        "description": "Hướng dẫn cần thiết để hiểu các yêu cầu khai thuế, thời hạn và các khoản khấu trừ bạn có thể đủ điều kiện.",
-        "content": "\n## Hiểu về Khai thuế\n\nKhai thuế không nhất thiết phải quá sức. Đây là những điều bạn cần biết:\n\n### Thời hạn Quan trọng\n- **15 tháng 4**: Thời hạn khai thuế tiêu chuẩn\n- **15 tháng 10**: Thời hạn khai thuế gia hạn\n- **Hàng quý**: Thanh toán thuế ước tính (nếu tự làm chủ)\n\n### Các Khoản Khấu trừ Phổ biến\n1. Khấu trừ Tiêu chuẩn (phổ biến nhất)\n2. Khấu trừ Chi tiết\n   - Chi phí y tế\n   - Thuế tiểu bang và địa phương\n   - Lãi thế chấp\n   - Đóng góp từ thiện\n\n### Tài liệu Bạn Cần\n- Mẫu W-2 từ người sử dụng lao động\n- Mẫu 1099 cho thu nhập khác\n- Số An sinh Xã hội cho người phụ thuộc\n- Thông tin tài khoản ngân hàng để gửi trực tiếp\n\n### Tùy chọn Khai thuế Miễn phí\n- IRS Free File (thu nhập dưới $73,000)\n- Chương trình VITA cho người nộp thuế đủ điều kiện\n- Military OneSource cho quân nhân\n"
+        "1": {
+          "title": "Cơ Bản Về Khai Thuế",
+          "description": "Hướng dẫn thiết yếu để hiểu các yêu cầu khai thuế, thời hạn và các khoản khấu trừ.",
+          "content": "## Hiểu Về Khai Thuế\n\nKhai thuế không cần phải phức tạp. Đây là những gì bạn cần biết:\n\n### Thời Hạn Quan Trọng\n- **15 tháng 4**: Thời hạn khai thuế tiêu chuẩn\n- **15 tháng 10**: Thời hạn khai thuế gia hạn\n- **Hàng quý**: Nước thuế ước tính (người tự kinh doanh)\n\n### Các Khoản Khấu Trừ Phổ Biến\n1. Khấu trừ tiêu chuẩn (phổ biến nhất)\n2. Khấu trừ từng mục\n   - Chi phí y tế\n   - Thuế nhà đất\n   - Tiền lãi vay mua nhà\n   - Ủng hộ từ thiện\n\n### Giấy Tờ Cần Thiết\n- Mẫu W-2 từ người sử dụng lao động\n- Mẫu 1099 cho thu nhập khác\n- Số an sinh xã hội của người phụ thuộc\n- Thông tin tài khoản nhận hoàn thuế\n\n### Tùy Chọn Khai Miễn Phí\n- IRS Free File (thu nhập dưới $73,000)\n- Chương trình VITA cho người đủ điều kiện\n- Military OneSource cho quân nhân"
+        },
+        "2": {
+          "title": "Thuế Cho Người Tự Kinh Doanh",
+          "description": "Chiến lược khai thuế chính cho chủ doanh nghiệp và người làm việc tự do.",
+          "content": "## Hướng Dẫn Thuế Người Tự Kinh Doanh\n\nLàm việc tự do mang thêm trách nhiệm thuế và cơ hội.\n\n### Thuế Tự Kinh Doanh\n- **Thuế An Sinh Xã Hội và Medicare**: 15,3%\n- **Một nửa có thể khấu trừ** vào thu nhập gộp điều chỉnh\n- **Thuế ước tính hàng quý**: 15/4, 15/6, 15/9, 15/1 hàng năm\n\n### Chi Phí Doanh Nghiệp Có Thể Khấu Trù\n**Chi phí văn phòng:** Khấu trừ làm việc tại nhà, vật tư văn phòng, máy tính và thiết bị, đăng ký phần mềm\n\n**Chi phí đi lại:** Dặm xe công việc (67 xu/dặm), nhiên liệu, sửa chữa và bảo trì\n\n**Chi phí chuyên gia:** Phí kế toán và luật sư, giáo dục và đào tạo, phí hội viên chuyên nghiệp\n\n### Mẹo Ghi Sổ\n1. **Giữ tất cả hóa đơn** — kỹ thuật số hoặc giấy\n2. **Sử dụng phần mềm kế toán** (QuickBooks, Wave)\n3. **Tách biệt tài khoản cá nhân và kinh doanh**\n4. **Ghi chép dặm xe hàng tháng**\n5. **Giữ hồ sơ ít nhất 7 năm**\n\n### Sai Lầm Phổ Biến\n- Không khai báo hết thu nhập\n- Phân loại sai nhân viên và nhà thầu độc lập\n- Quên đóng thuế ước tính hàng quý\n- Không giữ đủ hồ sơ"
+        },
+        "3": {
+          "title": "Bảo Mật Mã Số Thuế",
+          "description": "Phương pháp bảo vệ số an sinh xã hội và thông tin thuế khỏi bị đánh cắp.",
+          "content": "## Bảo Mật Mã Số Thuế\n\nTrộm cắp mã số thuế là một trong những tội phạm tài chính tăng nhanh nhất.\n\n### Cách Tội Phạm Có Thông Tin\n- Email giả mạo IRS\n- Rò rỉ dữ liệu\n- Trộm bưu phẩm\n- Kỹ thuật xã hội\n\n### Dấu Hiệu Cảnh Báo\n- Khai điện tử bị từ chối (trùng lặp SSN)\n- Hồ sơ IRS không do bạn yêu cầu\n- Nhận hoàn thuế bạn không yêu cầu\n- Thông báo IRS về thu nhập chưa khai\n\n### Biện Pháp Bảo Vệ\n1. **Khai sớm** — trước kẻ lừa đảo\n2. **Sử dụng khai điện tử** — an toàn hơn gửi thư\n3. **Bảo vệ SSN** — không mang thẻ an sinh xã hội\n4. **Sử dụng mật khẩu mạnh**\n5. **Kích hoạt xác thực hai yếu tố**\n6. **Cảnh giác lừa đảo** — IRS không yêu cầu thông tin qua email hay điện thoại\n\n### Khi Bị Nạn\n1. Tuyên bố trộm cắp danh tính IRS (Mẫu 14039)\n2. Liên hệ 3 hãng tín dụng chính\n3. Yêu cầu đóng băng tín dụng\n4. Báo cáo FTC (identitytheft.gov)\n5. Xin mã PIN cá nhân\n\n### Tài Nguyên IRS\n- Trang trộm cắp danh tính IRS\n- Chương trình mã PIN\n- Chuyên gia thuế được chứng nhận"
+        },
+        "4": {
+          "title": "Hướng Dẫn Đối Phó Kiểm Toán Thuế",
+          "description": "Hiểu quy trình kiểm toán IRS và phương pháp đối phó hiệu quả.",
+          "content": "## Đối Phó Kiểm Toán IRS\n\nNhận thông báo kiểm toán IRS có thể gây stress, nhưng hiểu quy trình sẽ giúp đối phó hiệu quả.\n\n### Nguyên Nhân Kiểm Toán\n- Không khớp với báo cáo bên thứ ba\n- Các khoản khấu trừ bất thường cao\n- Thu nhập biến động mạnh\n- Khấu trừ làm việc tại nhà\n- Khấu trừ xe ô tô\n- Chọn ngẫu nhiên\n\n### Loại Hình Kiểm Toán\n**Kiểm toán qua thư:** Phổ biến nhất (khoảng 75%), yêu cầu giấy tờ cụ thể, thường giới hạn 1-2 vấn đề\n\n**Kiểm toán tại văn phòng:** Thực hiện tại IRS, rộng hơn, cần giấy tờ đầy đủ hơn\n\n**Kiểm toán tại nhà/thương mại:** Tại nhà hoặc nơi kinh doanh, hiếm nhất\n\n### Các Bước Đối Phó\n1. **Bình tĩnh** — hầu hết kiểm toán chỉ yêu cầu giải thích\n2. **Đọc kỹ thông báo** — hiểu yêu cầu gì\n3. **Thu thập giấy tờ** — hóa đơn, sao kê ngân hàng, chứng từ khấu trừ\n4. **Phản hồi đúng hạn** — thường trong 30 ngày\n5. **Thuê chuyên gia thuế**\n6. **Trung thực** — không thao túng giấy tờ\n\n### Sau Kiểm Toán\n- Xem xét kỹ kết quả kiểm toán\n- Có quyền khiếu nại nếu không đồng ý\n- Ghi chép mọi liên lạc\n- Hiểu yêu cầu khai thuế tương lai\n\n### Hỗ Trợ Chuyên Gia\n- Chuyên viên thuế được ủy quyền (Enrolled Agent)\n- Kế toán viên công chứng (CPA)\n- Luật sư thuế (trường hợp phức tạp)"
+        },
+        "5": {
+          "title": "Thuế Giảm Trừ Và Hoàn Tiền Thuế",
+          "description": "Hiểu sự khác biệt giữa giảm trừ thuế và hoàn tiền thuế, cũng như các khoản đủ điều kiện.",
+          "content": "## Thuế Giảm Trừ Và Hoàn Tiền Thuế\n\nHiểu sự khác biệt giữa giảm trừ và hoàn tiền giúp bạn tiết kiệm hàng trăm đến hàng nghìn đô la.\n\n### Giảm Trừ vs Hoàn Tiền\n**Thuế giảm trừ:** Giảm thu nhập chịu thuế, 2 loại (tiêu chuẩn và từng mục), hiệu quả theo thuế suất\n\n**Thuế hoàn tiền:** Giảm trực tiếp số thuế phải đóng, có giá trị hơn giảm trừ, có thể hoàn tiền ngay cả khi không nợ thuế\n\n### Thuế Hoàn Tiền Phổ Biến\n**Thuế Lương EITC:** Dành cho người lao động thu nhập thấp-trung bình, hoàn tiền tối đa, số tiền thay đổi hàng năm\n\n**Thuế Trẻ Em:** Tối đa $2.000 mỗi trẻ đủ điều kiện, một phần hoàn tiền (tối đa $1.600), trẻ dưới 17 tuổi\n\n**Thuế Giáo Dục:** Chi phí giáo dục đại học, tối đa $2.500 mỗi sinh viên, 4 năm đại học\n\n### Các Khoản Khấu Trừ Phổ Biến\n- Tiền lãi vay mua nhà\n- Thuế nhà đất (giới hạn $10.000)\n- Ủng hộ từ thiện\n- Chi phí y tế (vượt quá 7,5% thu nhập gộp điều chỉnh)\n- Tiền lãi vay nợ sinh viên\n\n### Tối Đa Hóa Hoàn Tiền\n1. **Giữ tất cả hóa đơn và hồ sơ**\n2. **Xác nhận đủ điều kiện** — không bỏ lỡ khoản khấu trừ\n3. **Kiểm tra chuyên gia**\n4. **Kiểm tra trước khi khai** — tránh sai lầm phổ biến\n5. **Khai điện tử** — hoàn tiền nhanh hơn"
+        }
       },
       "immigration": {
-        "title": "Tổng quan về Tình trạng Nhập cư",
-        "description": "Tìm hiểu về các loại thị thực khác nhau, quy trình thẻ xanh và con đường nhập tịch.",
-        "content": "\n## Hiểu về Nhập cư Hoa Kỳ\n\n### Các Loại Thị thực Phổ biến\n\n**Thị thực Lao động:**\n- H-1B: Ngành nghề chuyên môn\n- L-1: Chuyển nhượng nội bộ công ty\n- O-1: Cá nhân có khả năng đặc biệt\n\n**Dựa trên Gia đình:**\n- Thân nhân trực hệ của công dân Hoa Kỳ\n- Danh mục ưu tiên gia đình\n- Thị thực hôn phu/thê (K-1)\n\n### Thẻ Xanh (Thường trú Nhân)\n**Con đường:**\n1. Bảo lãnh gia đình\n2. Dựa trên việc làm\n3. Xổ số đa dạng\n4. Tình trạng tị nạn/xin tị nạn\n\n### Quy trình Nhập tịch\n**Yêu cầu:**\n- 5 năm là thường trú nhân (3 năm nếu kết hôn với công dân Hoa Kỳ)\n- Có mặt thực tế tại Hoa Kỳ\n- Tư cách đạo đức tốt\n- Trình độ tiếng Anh\n- Kiến thức công dân\n\n### Mẹo Quan trọng\n- Giữ bản sao tất cả tài liệu\n- Báo cáo thay đổi địa chỉ trong vòng 10 ngày\n- Duy trì tình trạng hợp pháp mọi lúc\n- Tham khảo ý kiến luật sư nhập cư có thẩm quyền cho các trường hợp phức tạp\n"
+        "1": {
+          "title": "Tổng Quan Về Tình Trạng Nhập Cư",
+          "description": "Hiểu các loại thị thực, quy trình thẻ xanh và con đường nhập quốc tịch.",
+          "content": "## Về Nhập Cứu Mỹ\n\n### Loại Thị Thực Phổ Biến\n\n**Thị thực lao động:** H-1B (chuyên nghiệp), L-1 (chuyển nhượng nội bộ), O-1 (năng lực xuất sắc)\n\n**Dựa trên gia đình:** Họ hàng trực hệ công dân Mỹ, ưu tiên gia đình, thị thực hôn phu (K-1)\n\n### Thẻ Xanh\n**Con đường:** 1. Bảo lãnh gia đình, 2. Dựa trên việc làm, 3. Chương trình đa dạng, 4. Người tị nạn/người xin tị nạn\n\n### Quy Trình Nhập Quốc Tịch\n**Yêu cầu:** Thường trú nhân 5 năm (kết hôn với công dân Mỹ 3 năm), cư trú thực tế tại Mỹ, đạo đức tốt, tiếng Anh, kiến thức công dân\n\n### Mẹo Quan Trọng\n- Giữ bản sao tất cả giấy tờ\n- Thay đổi địa chỉ trong vòng 10 ngày\n- Luôn duy trì tình trạng hợp pháp\n- Tham vấn luật sư nhập cư đủ điều kiện cho các trường hợp phức tạp"
+        },
+        "2": {
+          "title": "DACA: Những Điều Người Mơ Cần Biết",
+          "description": "Hiểu chương trình Trì Hoãn Hành Động Vì Trẻ Đến Mỹ và tình trạng hiện tại.",
+          "content": "## DACA Là Gì?\n\nDACA cung cấp sự bảo vệ tạm thời khỏi trục xuất và giấy phép lao động cho người nhập cư đủ điều kiện đến Mỹ khi còn nhỏ.\n\n### Yêu Cầu Đủ Điều Kiện\n- Đến Mỹ trước 16 tuổi\n- Cư trú liên tục tại Mỹ sau ngày 15/6/2007\n- Dưới 31 tuổi tính đến ngày 15/6/2012\n- Đang học, đã tốt nghiệp hoặc có bằng GED\n- Không có tiền án hình sự nghiêm trọng\n\n### Tình Trạng Hiện Tại (Quan Trọng)\n- **Đơn mới:** Hiện không chấp nhận\n- **Gia hạn:** Xử lý cho người hưởng lợi DACA hiện tại\n- **Giấy phép lao động:** Có hiệu lực 2 năm, cần gia hạn\n\n### DACA Cung Cấp Gì\n- Bảo vệ khỏi trục xuất, giấy phép lao động (EAD), số an sinh xã hội, quyền lấy bằng lái xe tiểu bang\n\n### DACA Không Cung Cấp Gì\n- Con đường nhập quốc tịch, hỗ trợ giáo dục đại học liên bang, du lịch nước ngoài\n\n### Bước Tiếp Theo\n1. Tham vấn luật sư nhập cư\n2. Gia hạn đúng hạn\n3. Giữ bản sao tất cả giấy tờ DACA\n4. Khám phá các lựa chọn nhập cư khác\n5. Theo dõi thay đổi chính sách"
+        },
+        "3": {
+          "title": "Giấy Phép Làm Việc Và Giấy Ủy Quyền",
+          "description": "Cách lấy và duy trì giấy phép làm việc tại Hoa Kỳ.",
+          "content": "## Các Loại Giấy Phép Làm Việc\n\n### Giấy Ủy Quyền Làm Việc (EAD)\n**Ai Cần:** Người hưởng DACA, người xin tị nạn, người xin điều chỉnh tình trạng, người giữ TPS, người giữ thị thực sinh viên (OPT/CPT)\n\n### Cách Nộp Đơn EAD\n1. Nộp mẫu I-765 cho USCIS\n2. Đính kèm giấy tờ chứng minh\n3. Đóng phí (hiện tại $410)\n4. Đặt lịch sinh trắc học\n5. Chờ phê duyệt (thường 2-5 tháng)\n\n### Duy Trì Giấy Phép Làm Việc\n- Gia hạn trước khi hết hạn (6 tháng trước)\n- Báo cáo thay đổi địa chỉ cho USCIS\n- Giữ bản sao tất cả giấy tờ\n\n### Vấn Đề Phổ Biến\n- Xử lý chậm (nộp sớm)\n- Yêu cầu bằng chứng bổ sung (phản hồi nhanh)\n- Bị từ chối (tham vấn luật sư ngay)"
+        },
+        "4": {
+          "title": "Quy Trình Nộp Đơn Thẻ Xanh",
+          "description": "Hiểu các bước và thời gian xin thẻ xanh.",
+          "content": "## Quy Trình Nộp Đơn Thẻ Xanh\n\nThẻ xanh là cột mốc quan trọng trong quá trình nhập cư.\n\n### Các Bước Nộp Đơn\n1. **Nộp đơn:** I-130 (dựa trên gia đình) hoặc I-140 (dựa trên việc làm)\n2. **Chờ ưu tiên:** Theo loại ưu tiên\n3. **Nộp hồ sơ:** I-485 hoặc thủ tục lãnh sự\n4. Đặt lịch sinh trắc học\n5. Phỏng vấn\n6. Nhận thẻ xanh\n\n### Thời Gian\n- Bảo lãnh gia đình: vài tháng đến vài năm\n- Dựa trên việc làm: tùy loại và quốc tịch\n- Đầu tư: thường 1-2 năm\n\n### Giấy Tờ Cần Thiết\n- Hộ chiếu còn hiệu lực, giấy khai sinh, giấy tờ kết hôn/li hôn, lý lịch tư pháp, khám sức khỏe, giấy tờ chứng minh tài chính\n\n### Vấn Đề Phổ Biến\n- Xử lý chậm, yêu cầu bằng chứng bổ sung, lý lịch tư pháp, kết quả khám sức khỏe\n\n### Mẹo Quan Trọng\n- Cập nhật đơn thường xuyên\n- Phản hồi yêu cầu USCIS đúng hạn\n- Giữ bản sao tất cả giấy tờ\n- Tham vấn luật sư cho trường hợp phức tạp"
+        },
+        "5": {
+          "title": "Hướng Dẫn Nhập Quốc Tịch",
+          "description": "Hiểu yêu cầu và quy trình naturalization để trở thành công dân Mỹ.",
+          "content": "## Trở Thành Công Dân Mỹ\n\n### Yêu Cầu Đủ Điều Kiện\n- Từ 18 tuổi trở lên\n- Thường trú nhân ít nhất 5 năm\n- Cư trú liên tục tại Mỹ\n- Đạo đức tốt\n- Tiếng Anh cơ bản\n- Kiến thức lịch sử và chính phủ Mỹ\n- Sẵn sàng tuyên thệ trung thành\n\n### Quy Trình Nộp Đơn\n1. Nộp mẫu N-400\n2. Đặt lịch sinh trắc học\n3. Phỏng vấn và kiểm tra\n4. Lễ tuyên thệ\n\n### Nội Dung Kiểm Tra\n**Kiểm tra tiếng Anh:** Đọc, viết, nói\n**Kiểm tra kiến thức công dân:** 100 câu hỏi, ngẫu nhiên 10 câu trong phỏng vấn, cần đúng 6 câu\n\n### Vấn Đề Phổ Biến\n- Tiếng Anh chưa lưu loát\n- Đi nước ngoài thời gian dài\n- Vấn đề thuế\n- Lý lịch tư pháp\n\n### Lợi Ích Nhập Quốc Tịch\n- Quyền bỏ phiếu, nghĩa vụ bồi thẩm đoàn, bảo lãnh gia đình, hộ chiếu Mỹ, không cần gia hạn thẻ xanh\n\n### Lời Khuyên\n- Ôn tập trước kỳ thi\n- Tham gia khóa học nhập quốc tịch\n- Tham vấn luật sư nhập cư\n- Giữ tất cả giấy tờ"
+        }
       },
       "housing": {
-        "title": "Quyền Người Thuê và Nhà ở",
-        "description": "Biết quyền của bạn với tư cách là người thuê nhà, hiểu hợp đồng thuê và tìm hiểu về các biện pháp bảo vệ khỏi bị trục xuất.",
-        "content": "\n## Quyền của Bạn với tư cách Người Thuê\n\n### Trước Khi Thuê\n**Chủ nhà Có thể Hỏi:**\n- Xác minh thu nhập\n- Kiểm tra tín dụng\n- Lịch sử thuê nhà\n- Người tham khảo\n\n**Chủ nhà Không được Hỏi:**\n- Chủng tộc, tôn giáo, nguồn gốc quốc gia\n- Tình trạng gia đình\n- Tình trạng khuyết tật\n\n### Các Điều Khoản Hợp đồng Thuê Cần thiết\n- Số tiền thuê và ngày đến hạn\n- Điều khoản tiền đặt cọc\n- Trách nhiệm bảo trì\n- Chính sách thú cưng\n- Quy tắc cho thuê lại\n\n### Quyền Cơ bản của Bạn\n1. **Khả năng ở**: Điều kiện an toàn và có thể ở được\n2. **Riêng tư**: Thông báo 24-48 giờ trước khi vào (trừ trường hợp khẩn cấp)\n3. **Sửa chữa**: Phản hồi kịp thời các yêu cầu bảo trì\n4. **Không Trả đũa**: Bảo vệ cho việc thực hiện quyền hợp pháp\n\n### Biện pháp Bảo vệ Khỏi Trục xuất\n**Yêu cầu Thủ tục Pháp lý:**\n1. Thông báo bằng văn bản\n2. Nộp đơn lên tòa án\n3. Cơ hội điều trần\n4. Cảnh sát thi hành trục xuất (nếu được lệnh)\n\n**Trục xuất Bất hợp pháp Bao gồm:**\n- Thay khóa\n- Cắt điện nước\n- Quấy rối\n- Di chuyển tài sản\n\n### Tìm kiếm Trợ giúp\n- Nghiệp đoàn người thuê địa phương\n- Hiệp hội trợ giúp pháp lý\n- Cơ quan nhà ở\n- Hỗ trợ Kizola Protect\n"
+        "1": {
+          "title": "Quyền Của Người Thuê Nhà",
+          "description": "Hiểu quyền cơ bản, hợp đồng thuê và cách duy trì nơi ở.",
+          "content": "## Quyền Của Người Thuê Nhà\n\nThuê nhà có nghĩa là bạn có quyền và trách nhiệm nhất định.\n\n### Quyền Cơ Bản Của Người Thuê\n1. **Ổn định chỗ ở:** Môi trường sống phù hợp\n2. **An toàn:** Sửa chữa và vệ sinh\n3. **Quyền riêng tư:** Hạn chế ra vào bất hợp pháp\n4. **Bảo vệ phân biệt đối xử:** Luật nhà ở công bằng\n5. **Thực hiện hợp đồng:** Đối xử công bằng\n\n### Kiểm Tra Hợp Đồng Thuê\n- Tiền thuê và thời hạn thanh toán\n- Tiền đặt cọc và điều kiện hoàn trả\n- Điều khoản gia hạn\n- Quy tắc và điều cấm\n- Trách nhiệm sửa chữa\n\n### Khi Nhận Nhà\n- Viết báo cáo kiểm tra, chụp ảnh, ghi nhận hư hỏng, kiểm tra bảo hiểm, chào hàng xóm\n\n### Khó Thanh Toán Tiền Thuê\n- Thỏa thuận với chủ nhà, tìm chương trình hỗ trợ địa phương, thương lượng kế hoạch thanh toán, tìm hỗ trợ pháp lý\n\n### Khi Phải Rời Nhà\n- Thông báo rời nhà đúng hạn, kiểm tra điều khoản hợp đồng, dọn dẹp khi rời, liên quan hoàn tiền đặt cọc"
+        },
+        "2": {
+          "title": "Hợp Đồng Thuê Nhà",
+          "description": "Các điều khoản quan trọng cần xem xét trước khi ký hợp đồng thuê.",
+          "content": "## Các Điều Khoản Thuê Nhà Cần Thiết\n\n### Điều Khoản Tài Chính\n- **Tiền thuê và ngày đến hạn**\n- **Phí trễ hạn và thời gian ân hạn**\n- **Tiền đặt cọc và điều kiện hoàn trả**\n- **Trách nhiệm chi phí sinh hoạt** (ai trả gì)\n\n### Điều Khoản Chính\n**Điều khoản gia hạn:**\n- Tự động gia hạn hay không\n- Thời hạn thông báo gia hạn\n- Giới hạn tăng tiền thuê\n\n**Điều khoản rời nhà:**\n- Lý do rời nhà\n- Thời hạn thông báo\n- Thủ tục pháp lý\n\n### Trước Khi Ký Hợp Đồng\n1. Kiểm tra tình trạng nhà\n2. Đặt mọi thỏa thuận miệng bằng văn bản\n3. Xác nhận điều kiện hoàn tiền đặt cọc\n4. Hiểu quy tắc và điều cấm\n5. Xác nhận trách nhiệm sửa chữa\n\n### Khi Ký Hợp Đồng\n- Đọc kỹ từng trang\n- Hỏi về điều khoản không rõ ràng\n- Ghi thêm điều kiện đặc biệt\n- Nhận bản sao\n\n### Bẫy Phổ Biến\n- Tiền đặt cọc quá cao\n- Phí trễ hạn không công bằng\n- Quy tắc quá mức\n- Trách nhiệm sửa chữa không rõ ràng"
+        },
+        "3": {
+          "title": "Trục Xuất Và Bảo Vệ",
+          "description": "Phải làm gì khi nhận thông báo trục xuất và cách tự bảo vệ.",
+          "content": "## Hiểu Về Trục Xuất\n\n### Thủ Tục Pháp Luật Bắt Buộc\n1. **Thông báo bằng văn bản** (khác nhau tùy tiểu bang)\n   - Thông báo đóng tiền hoặc rời đi\n   - Thông báo sửa chữa hoặc rời đi\n   - Thông báo rời đi vô điều kiện\n\n2. **Khởi kiện ra tòa**\n   - Nộp đơn trục xuất\n   - Nhận thông báo tòa án\n   - Xuất hiện tại tòa\n\n3. **Phán quyết tòa án**\n   - Lệnh trục xuất\n   - Thời hạn sửa chữa\n   - Quyền kháng cáo\n\n### Bảo Vệ Cho Người Thuê\n- Yêu cầu thủ tục đúng đắn\n- Quyền biện hộ tại tòa\n- Quyền nhận hỗ trợ pháp lý\n- Thời hạn sửa chữa hợp lý\n\n### Đối Phó Trục Xuất\n1. **Bình tĩnh** — xác nhận thông báo bằng văn bản\n2. **Liên hệ hỗ trợ pháp lý** — hỗ trợ pháp lý miễn phí\n3. **Xuất hiện tại tòa** — bắt buộc phải có mặt\n4. **Trình bày lý do** — phản bác lý do trục xuất\n5. **Thử thỏa thuận** — thương lượng chi phí di chuyển\n\n### Cách Tránh Trục Xuất\n- Thanh toán tiền thuê đúng hạn\n- Tuân thủ quy tắc\n- Báo cáo vấn đề sửa chữa\n- Giao tiếp với chủ nhà\n\n### Sau Khi Bị Trục Xuất\n- Xác nhận hoàn tiền đặt cọc\n- Thay đổi địa chỉ\n- Tìm nơi ở mới\n- Kiểm tra lịch sử tín dụng"
+        },
+        "4": {
+          "title": "Tiền Đặt Cọc Và Khi Dọn Nhà",
+          "description": "Cách bảo vệ tiền đặt cọc khi dọn nhà.",
+          "content": "## Bảo Vệ Tiền Đặt Cọc\n\n### Khi Nhận Nhà\n- Chụp ảnh/toàn bộ căn hộ\n- Ghi nhận hư hỏng có sẵn\n- Để chủ nhà xác nhận tình trạng\n- Giữ tất cả hồ sơ\n\n### Khi Dọn Nhà\n- Thông báo chấm dứt hợp đồng (thường 30 ngày trước)\n- Thanh toán hết tiền thuê\n- Dọn dẹp căn hộ\n- Trả chìa khóa\n- Thay đổi địa chỉ\n\n### Hoàn Tiền Đặt Cọc\n**Thời hạn hoàn trả:**\n- Khác nhau tùy tiểu bang (thường 14-30 ngày)\n- Có thể yêu cầu thông báo bằng văn bản\n\n**Có thể bị trừ:**\n- Tiền thuê chưa đóng\n- Hư hỏng vượt mức bình thường\n- Vi phạm hợp đồng\n\n**Trừ bất hợp pháp:**\n- Hư hỏng do sử dụng bình thường\n- Phí dọn dẹp bất hợp lý\n- Trừ không có sự đồng ý bằng văn bản\n\n### Mẹo Nhận Lại Tiền Đặt Cọc\n1. Chụp ảnh khi nhận nhà\n2. Dọn dẹp trước khi rời\n3. Gửi thông báo bằng văn bản\n4. Yêu cầu xác nhận khi trả\n5. Nếu bị từ chối, tìm hỗ trợ pháp lý\n\n### Khi Bị Từ Chối Hoàn Tiền\n- Yêu cầu kiểm tra nhà\n- Nộp đơn hỗ trợ pháp lý\n- Xem xét kiện tụng nhỏ\n- Khiếu nại cơ quan bảo vệ người tiêu dùng"
+        },
+        "5": {
+          "title": "Nhà Ở Công Bằng Và Chống Phân Biệt Đối Xử",
+          "description": "Hiểu sự bảo vệ chống phân biệt đối xử trong nhà ở tại Hoa Kỳ.",
+          "content": "## Bảo Vệ Luật Nhà Ở Công Bằng\n\n### Lớp Được Bảo Vệ\nLuật liên bang cấm phân biệt đối xử dựa trên:\n- Chủng tộc\n- Màu da\n- quốc tịch\n- Tôn giáo\n- Giới tính\n- Tình trạng gia đình\n- Khuyết tật\n\n### Bảo Vệ Bổ Sung\n**Bảo vệ bổ sung theo tiểu bang/địa phương:**\n- Hướng tính dục\n- Bản dạng giới\n- Nguồn gốc\n- Tình trạng phục vụ quân đội\n\n### Các Loại Phân Biệt Đối Xử\n- Từ chối thuê nhà\n- Áp dụng điều kiện khác nhau\n- Quảng cáo phân biệt đối xử\n- Ép buộc di dời\n- Đối xử bất lợi\n\n### Khi Phát Hiện Phân Biệt Đối Xử\n1. **Thu thập bằng chứng** — hồ sơ liên lạc, quảng cáo, lời khai\n2. **Nộp đơn khiếu nại cơ quan nhân quyền**\n3. **Tìm hỗ trợ pháp lý**\n4. **Xem xét kiện tụng**\n\n### Nhà Ở Công Bằng\n- Áp dụng tiêu chuẩn giống nhau cho tất cả người xin\n- Có chính sách bằng văn bản\n- Đào tạo nhân viên\n- Quản lý hồ sơ\n\n### Nhận Sự Giúp Đỡ\n- Bộ Nhà ở và Phát triển Đô thị (HUD)\n- Cơ quan nhà ở công bằng tiểu bang\n- ACLU\n- Tổ chức hỗ trợ pháp lý"
+        }
       },
       "legal": {
-        "title": "Hướng dẫn Nhận thức Pháp lý",
-        "description": "Hiểu khi nào bạn cần trợ giúp pháp lý và cách làm việc hiệu quả với luật sư.",
-        "content": "\n## Khi Nào Bạn Cần Luật sư?\n\n### Các Tình huống Cần Trợ giúp Pháp lý\n**Vấn đề Hình sự:**\n- Bất kỳ cáo buộc hình sự nào\n- Bắt giữ và điều tra\n- Vi phạm giao thông có hậu quả nghiêm trọng\n\n**Vấn đề Dân sự:**\n- Khiếu nại thương tích cá nhân\n- Tranh chấp hợp đồng\n- Phân biệt đối xử trong việc làm\n- Luật gia đình (ly hôn, quyền nuôi con)\n- Vấn đề nhập cư\n- Tranh chấp nhà ở\n\n### Làm việc với Luật sư\n**Tư vấn Ban đầu:**\n- Mang theo tất cả tài liệu liên quan\n- Chuẩn bị dòng thời gian sự kiện\n- Viết ra câu hỏi của bạn\n- Trung thực về mọi sự thật\n\n**Hiểu về Phí:**\n- Phí theo giờ\n- Phí cố định\n- Phí thành công (thương tích cá nhân)\n- Phí giữ chân\n\n### Trợ giúp Pháp lý Miễn phí và Chi phí Thấp\n- Hiệp hội trợ giúp pháp lý\n- Chương trình pro bono\n- Phòng khám trường luật\n- Trung tâm tự trợ giúp tòa án\n- Giới thiệu của hiệp hội luật sư\n"
+        "1": {
+          "title": "Khi Nào Cần Tham Vấn Luật Sư",
+          "description": "Hiểu khi nào cần hỗ trợ pháp lý và cách tìm đại diện giá rẻ.",
+          "content": "## Khi Nào Bạn Cần Luật Sư?\n\n### Tình Huống Cần Hỗ Trợ Pháp Lý\n**Vấn đề hình sự:**\n- Bất kỳ cáo buộc hình sự nào\n- Bị bắt và điều tra\n- Vi phạm giao thông nghiêm trọng\n\n**Vấn đề dân sự:**\n- Ly hôn và luật gia đình\n- Tranh chấp thuê nhà\n- Tranh chấp hợp đồng\n- Thương tích cá nhân\n- Tranh chấp lao động\n\n**Liên quan nhập cư:**\n- Thủ tục trục xuất\n- Phản đối từ chối thị thực\n- Vụ nhập cư có tiền án\n- Đơn thẻ xanh phức tạp\n\n### Tìm Hỗ Trợ Pháp Lý\n**Tổ chức hỗ trợ pháp lý:** Dịch vụ pháp lý miễn phí hoặc giá rẻ\n**Phòng khám pháp lý:** Sinh viên luật تحت sự giám sát cung cấp dịch vụ\n**Luật sư công:** Đại diện miễn phí dựa trên thu nhập\n\n### Mẹo Tiết Kiệm Chi Phí\n1. Tìm nơi tư vấn miễn phí ban đầu\n2. Kiểm tra chương trình hỗ trợ pháp lý\n3. Chọn tư vấn pháp lý thay vì đại diện đầy đủ\n4. Xem xét dịch vụ pháp lý trực tuyến\n\n### Chuẩn Bị Cho Cuộc Tư Vấn\n- Thu thập hồ sơ liên quan\n- Liệt kê câu hỏi\n- Sắp xếp sự kiện theo trình tự\n- Chuẩn bị dòng thời gian vụ việc"
+        },
+        "2": {
+          "title": "Tài Nguyên Pháp Lý Miễn Phí",
+          "description": "Tìm hỗ trợ pháp lý miễn phí hoặc giá rẻ trong cộng đồng.",
+          "content": "## Hỗ Trợ Pháp Lý Miễn Phí\n\n### Tổ Chức Hỗ Trợ Pháp Lý\n**Dịch vụ cung cấp:** Đại diện pháp lý miễn phí, tư vấn và lời khuyên, hỗ trợ giấy tờ, đại diện tại tòa\n\n**Đối tượng:** Người thu nhập thấp, người cao tuổi, người khuyết tật, trẻ em, người nhập cư\n\n### Tìm Hỗ Trợ Pháp Lý Miễn Phí\n- Tìm tổ chức hỗ trợ pháp lý\n- Kiểm tra phòng khám pháp lý\n- Chương trình hiệp hội luật sư\n- Tư vấn pháp lý tại trung tâm cộng đồng\n\n### Hỗ Trợ Pháp Lý Cho Người Nhập Cư\n- Tổ chức hỗ trợ pháp lý nhập cư\n- Tư vấn miễn phí liên quan DACA\n- Hỗ trợ phòng chống trục xuất\n- Hỗ trợ nhập quốc tịch\n\n### Hỗ Trợ Pháp Lý Trực Tuyến\n- Trang web tư vấn pháp lý miễn phí\n- Mẫu đơn pháp lý trực tuyến\n- Hỗ trợ pháp lý tự phục vụ\n- Phòng khám pháp lý trực tuyến\n\n### Điều Kiện Đủ Điều Kiện\n- Kiểm tra điều kiện thu nhập\n- Tùy theo loại vụ việc\n- Khác nhau giữa các khu vực\n- Thời gian chờ đợi"
+        },
+        "3": {
+          "title": "Quyền Của Bạn Khi Gặp Cảnh Sát",
+          "description": "Hiểu quyền hiến pháp khi tiếp xúc với cơ quan thực thi pháp luật.",
+          "content": "## Quyền Hiến Pháp Của Bạn\n\n### Khi Bị Dừng Xe\n- Bình tĩnh và lịch sự\n- Bạn có quyền giữ im lặng\n- Xuất giấy phép, đăng ký, bảo hiểm\n- Bạn có quyền từ chối đồng ý khám xét\n- Quyền được mời luật sư\n\n### Khi Bị Bắt\n- Quyền được mời luật sư\n- Quyền giữ im lặng\n- Có thể từ chối khai cho đến khi luật sư đến\n- Quyền được thông báo (Miranda)\n\n### ICE Tới Nhà\n- Không bắt buộc phải mở cửa\n- Yêu cầu lệnh do thẩm phán ký\n- Chỉ lệnh ICE (mẫu I-200) chưa đủ\n- Vẫn có quyền giữ im lặng\n\n### Mẹo Bảo Vệ Quyền\n1. Bình tĩnh phản ứng\n2. Chỉ cung cấp tên và địa chỉ\n3. Không đồng ý khám xét\n4. Liên hệ luật sư ngay\n5. Từ chối khai bằng văn bản\n\n### Nhận Sự Giúp Đỡ\n- ACLU (Liên minh Dân sự Mỹ)\n- Tổ chức hỗ trợ pháp lý\n- Luật sư nhập cư\n- Trung tâm cộng đồng địa phương"
+        },
+        "4": {
+          "title": "Xử Lý Vi Phạm Giao Thông",
+          "description": "Cách xử lý phiếu phạt giao thông và bảo vệ bằng lái.",
+          "content": "## Hiểu Về Phiếu Phạt Giao Thông\n\n### Khi Nhận Phiếu Phạt\n1. **Đừng bỏ qua** — thời hạn rất nghiêm ngặt\n2. **Đọc kỹ phiếu** — hiểu lỗi bị cáo buộc\n3. **Xem xét lựa chọn** — đóng tiền, khiếu nại, ra tòa\n\n### Các Loại Phiếu Phạt\n**Vi phạm nhẹ:** Chỉ đóng tiền phạt, không ảnh hưởng bằng lái\n**Vi phạm nghiêm trọng:** Tiền phạt + điểm, có thể bị tước bằng lái\n**Lái xe nguy hiểm:** Tiền phạt + điểm + tước bằng lái, tăng phí bảo hiểm\n\n### So Sánh Lựa Chọn\n**Đóng tiền phạt:** Nhanh chóng và đơn giản nhưng thừa nhận có lỗi\n**Khiếu nại:** Có thể giảm tiền phạt, mất thời gian\n**Thuê luật sư:** Đại diện chuyên nghiệp, tốn kém\n\n### Bảo Vệ Bằng Lái\n- Theo dõi tích lũy điểm\n- Học lớp giao thông (giảm điểm)\n- Kiểm tra bằng lái định kỳ\n- So sánh phí bảo hiểm\n\n### Sai Lầm Phổ Biến\n- Bỏ qua phiếu phạt\n- Quên thời hạn\n- Bỏ lỡ khiếu nại bằng văn bản\n- Không thu thập bằng chứng"
+        },
+        "5": {
+          "title": "Cơ Bản Về Luật Lao Động",
+          "description": "Quyền và sự bảo vệ tại nơi làm việc theo luật liên bang và tiểu bang.",
+          "content": "## Quyền Tại Nơi Làm Việc\n\n### Bảo Vệ Liên Bang\n**Đạo Luật Tiêu Chuẩn Lao Động Công Bằng (FLSA):**\n- Lương tối thiểu ($7,25 liên bang, cao hơn ở nhiều tiểu bang)\n- Tiền làm thêm giờ (1,5 lần khi làm hơn 40 giờ/tuần)\n- Hạn chế lao động trẻ em\n\n**Đạo Luật An Toàn và Sức Khỏe Lao Động (OSHA):**\n- Môi trường làm việc an toàn\n- Thông báo về nguy hiểm\n- Đào tạo an toàn\n- Thiết bị bảo hộ\n\n### Cấm Phân Biệt Đối Xử\n- Race, màu da, tôn giáo, giới tính, quốc tịch\n- Mang thai, tuổi tác, khuyết tật\n- Bị trả đũa khi tố giác\n\n### Quyền Của Người Lao Động\n- Nhận lương tối thiểu và tiền làm thêm giờ\n- Môi trường làm việc an toàn\n- Bảo vệ khỏi phân biệt đối xử\n- Quyền thành lập công đoàn\n- Bảo vệ khỏi sa thải bất hợp pháp\n\n### Khi Có Vấn Đề\n1. Ghi chép (ngày, giờ, tình huống, nhân chứng)\n2. Báo cáo phòng nhân sự\n3. Nộp khiếu nại sở lao động tiểu bang\n4. Nộp đơn khiếu nại EEOC\n5. Tham vấn luật sư"
+        }
       },
       "career": {
-        "title": "Xây dựng Sơ yếu Lý lịch và Tìm việc",
-        "description": "Tạo sơ yếu lý lịch hấp dẫn, vượt qua phỏng vấn và điều hướng thị trường việc làm hiện đại một cách hiệu quả.",
-        "content": "\n## Xây dựng Hồ sơ Chuyên nghiệp của Bạn\n\n### Các Yếu tố Cần thiết của Sơ yếu Lý lịch\n**Định dạng:**\n- Một trang (đầu sự nghiệp)\n- Hai trang (có kinh nghiệm)\n- Phông chữ sạch, dễ đọc\n- Định dạng nhất quán\n\n**Các Phần Nên Bao gồm:**\n1. Thông tin Liên hệ\n2. Tóm tắt Chuyên nghiệp\n3. Kinh nghiệm Làm việc\n4. Học vấn\n5. Kỹ năng\n6. Chứng chỉ (nếu liên quan)\n\n### Viết Gạch đầu dòng Có Sức thuyết phục\n**Sử dụng Phương pháp STAR:**\n- Tình huống (Situation)\n- Nhiệm vụ (Task)\n- Hành động (Action)\n- Kết quả (Result)\n\n**Ví dụ:**\n\"Quản lý nhóm 5 người (Tình huống) để hoàn thành dự án sớm 2 tuần (Nhiệm vụ) bằng cách triển khai quy trình làm việc linh hoạt (Hành động), tiết kiệm $50K chi phí (Kết quả)\"\n\n### Chuẩn bị Phỏng vấn\n**Câu hỏi Thường gặp:**\n- \"Hãy giới thiệu về bản thân\"\n- \"Tại sao bạn muốn vai trò này?\"\n- \"Điểm mạnh/yếu của bạn là gì?\"\n- \"Hãy mô tả một thử thách bạn đã vượt qua\"\n\n**Câu hỏi để Hỏi:**\n- Trách nhiệm hàng ngày\n- Cấu trúc nhóm\n- Cơ hội phát triển\n- Văn hóa công ty\n\n### Chiến lược Tìm việc\n1. **Mạng lưới**: 70% việc làm được tìm thấy qua kết nối\n2. **LinkedIn**: Tối ưu hóa hồ sơ, tương tác với nội dung\n3. **Bảng việc làm**: Indeed, Glassdoor, trang web ngành cụ thể\n4. **Đơn trực tiếp**: Trang tuyển dụng của công ty\n5. **Nhà tuyển dụng**: Cơ quan chuyên môn\n\n### Theo dõi\n- Email cảm ơn trong vòng 24 giờ\n- Kiểm tra tình trạng sau 1-2 tuần\n- Duy trì chuyên nghiệp và kiên trì\n"
+        "1": {
+          "title": "Xây Dựng Hồ Sơ Xin Việc Mạnh Mẽ",
+          "description": "Tạo hồ sơ chuyên nghiệp giúp bạn nổi bật với nhà tuyển dụng.",
+          "content": "## Yếu Tố Cần Thiết Của Hồ Sơ\n\n### Hướng Dẫn Định Dạng\n- 1 trang (sơ cấp sự nghiệp)\n- 2 trang (chuyên gia giàu kinh nghiệm)\n- Phông chữ sạch sẽ, dễ đọc (Arial, Calibri)\n- Định dạng nhất quán\n\n### Các Phần Cần Thiết\n**Thông tin liên hệ:** Họ tên, số điện thoại, email, thành phố/tiểu bang\n\n**Tóm tắt sự nghiệp:** 2-3 câu về thành tựu chính\n\n**Kinh nghiệm:** Chức danh hiện tại và trước đây, tên công ty, thời gian, thành tựu chính\n\n**Học vấn:** Bằng cấp, tên trường, năm tốt nghiệp\n\n**Kỹ năng:** Ngôn ngữ, máy tính, kỹ năng ngành\n\n### Kỹ Thuật Tập Trung Thành Tựu\n- Sử dụng số liệu (% tăng doanh thu, số tiền tiết kiệm)\n- Bắt đầu bằng động từ (quản lý, phát triển, triển khai, đạt được)\n- Mô tả tập trung vào kết quả\n\n### Sai Lầm Phổ Biến\n- Sai chính tả và ngữ pháp\n- Hồ sơ quá dài\n- Bao gồm kinh nghiệm không liên quan\n- Mô tả chung chung (không có thành tựu cụ thể)\n\n### Mẹo\n1. Điều chỉnh hồ sơ cho mỗi vị trí\n2. Sử dụng định dạng tương thích ATS\n3. Để chuyên gia kiểm tra\n4. Lưu và nộp dưới dạng PDF"
+        },
+        "2": {
+          "title": "Chiến Thắng Cuộc Phỏng Vấn",
+          "description": "Chuẩn bị và thành công trong phỏng vấn việc làm.",
+          "content": "## Chuẩn Bị Phỏng Vấn\n\n### Trước Cuộc Phỏng Vấn\n**Nghiên cứu công ty:**\n- Sứ mệnh và giá trị\n- Sản phẩm hoặc dịch vụ\n- Tin tức và thành tựu gần đây\n- Văn hóa công ty\n\n**Chuẩn bị câu trả lời:**\n- \"Hãy giới thiệu về bản thân\"\n- \"Tại sao bạn muốn làm việc ở đây\"\n- \"Điểm mạnh và yếu\"\n- \"Thành tựu lớn nhất\"\n\n### Ngày Phỏng Vấn\n- Trang phục phù hợp (business casual trở lên)\n- Đến sớm 10-15 phút\n- Mang bản sao hồ sơ và thư xin việc\n- Chuẩn bị câu hỏi\n\n### Câu Hỏi Phỏng Vấn\n**Câu hỏi dựa trên hành vi:**\n- \"Bạn đã giải quyết tình huống khó khăn như thế nào\"\n- \"Vai trò của bạn trong nhóm\"\n- \"Bạn quản lý stress ra sao\"\n\n### Đặt Câu Hỏi Cho Nhà Tuyển Dụng\n- Cấu trúc nhóm và vai trò\n- Cơ hội phát triển\n- Văn hóa công ty\n- Các bước tiếp theo và thời gian\n\n### Sau Cuộc Phỏng Vấn\n1. Gửi email cảm ơn (trong 24 giờ)\n2. Ghi lại nội dung phỏng vấn\n3. Theo dõi sau 1 tuần\n4. Chờ kết quả trong khi tiếp tục ứng tuyển"
+        },
+        "3": {
+          "title": "Mạng Lưới Để Thành Công Nghề Nghiệp",
+          "description": "Xây dựng mối quan hệ chuyên nghiệp mở ra cơ hội mới.",
+          "content": "## Tại Sao Phải Mạng Lưới?\n\n### Bằng Số Liệu\n- 70-80% việc làm được tìm qua mạng lưới\n- Người được giới thiệu được tuyển dụng nhanh hơn 55%\n- Người có mạng lưới kiếm được nhiều hơn theo thời gian\n\n### Các Loại Mạng Lưới\n**Trực tiếp:**\n- Hội nghị và hội thảo ngành\n- Cuộc họp kinh doanh địa phương\n- Cuộc gặp cựu sinh viên\n\n**Trực tuyến:**\n- Tham gia nhóm LinkedIn\n- Diễn đàn và cộng đồng trực tuyến\n- Webinar chuyên gia\n\n### Chiến Lược Mạng Lưới Hiệu Quả\n1. Xây dựng mối quan hệ chân thành\n2. trước tiên cung cấp sự giúp đỡ\n3. Duy trì mối quan hệ liên tục\n4. Chuẩn bị giới thiệu bản thân rõ ràng\n5. Theo dõi quan trọng\n\n### Mẹo Mạng Lưới\n- Mỗi ngày kết nối 1-2 người mới\n- Tham dự sự kiện mạng lưới thường xuyên\n- Tối ưu hóa hồ sơ LinkedIn\n- Chia sẻ tin tức ngành và ý kiến\n- Gửi email cảm ơn"
+        },
+        "4": {
+          "title": "Tối Ưu Hóa Hồ Sơ LinkedIn",
+          "description": "Tạo sự hiện diện LinkedIn thu hút nhà tuyển dụng và cơ hội.",
+          "content": "## Tại Sao LinkedIn Quan Trọng\n\n### Tình Hình Nền Tảng\n- Hơn 900 triệu chuyên gia toàn cầu\n- Nền tảng tuyển dụng số 1\n- 87% nhà tuyển dụng sử dụng LinkedIn\n\n### Yếu Tố Cần Thiết Của Hồ Sơ\n**1. Ảnh chuyên nghiệp:**\n- Ảnh chụp đầu vai\n- Nền sạch sẽ\n- Trang phục chuyên nghiệp\n- Nụ cười thân thiện\n\n**2. Tiêu đề:**\n- Chức danh hiện tại hoặc mục tiêu\n- Từ khóa kỹ năng chính\n- Dưới 220 ký tự\n\n**3. Tóm tắt:**\n- Giới thiệu nền tảng chuyên nghiệp\n- Nêu bật thành tựu chính\n- Giọng điệu chân thành\n\n### Mẹo Sử Dụng LinkedIn\n- Chia sẻ nội dung thường xuyên\n- Đăng ý kiến về tin tức ngành\n- Tham gia nhóm và thảo luận\n- Kết nối với nhà tuyển dụng\n- Viết và yêu cầu lời giới thiệu\n\n### Chiến Lược Nội Dung\n- Chia sẻ bài báo liên quan ngành\n- Đăng kiến thức chuyên môn\n- Chia sẻ kinh nghiệm dự án\n- Bình luận nội dung của đồng nghiệp"
+        },
+        "5": {
+          "title": "Chuyển Đổi Nghề Nghiệp Thành Công",
+          "description": "Chuyển đổi thành công sang con đường nghề nghiệp hoặc ngành mới.",
+          "content": "## Lập Kế Hoạch Chuyển Đổi\n\n### Đánh Giá Bản Thân\n**Tự hỏi:**\n- Kỹ năng có thể chuyển đổi là gì?\n- Bạn đam mê lĩnh vực nào?\n- Nhu cầu tài chính là gì?\n- Thời hạn chuyển đổi?\n\n### Kỹ Năng Chuyển Đổi\n**Kỹ năng mềm:**\n- Lãnh đạo\n- Giao tiếp\n- Giải quyết vấn đề\n- Làm việc nhóm\n\n**Kỹ năng cứng:**\n- Quản lý dự án\n- Phân tích dữ liệu\n- Lập trình\n- Thiết kế\n\n### Các Bước Chuyển Đổi\n1. **Nghiên cứu:** Tìm hiểu ngành và vị trí mục tiêu\n2. **Giáo dục:** Học kỹ năng hoặc chứng chỉ cần thiết\n3. **Mạng lưới:** Kết nối với chuyên gia ngành\n4. **Thực tập:** Nộp đơn thực tập chuyển nghề\n5. **Điều chỉnh hồ sơ:** Nhấn mạnh kinh nghiệm liên quan\n\n### Đầu Tư Thời Gian Và Chi Phí\n- Khóa học trực tuyến\n- Chứng chỉ chuyên môn\n- Tham dự hội nghị ngành\n- Chương trình cố vấn\n\n### Thách Thức Phổ Biến\n- Lo lắng về khoảng cách nghề nghiệp\n- Giảm lương ban đầu\n- Đường học tập dốc\n- Mạng lưới chưa đủ"
+        }
+      },
+      "health": {
+        "1": {
+          "title": "Hiểu Về Bảo Hiểm Sức Khỏe",
+          "description": "Điều hướng hệ thống bảo hiểm sức khỏe Mỹ và chọn gói phù hợp.",
+          "content": "## Cơ Bản Về Bảo Hiểm Sức Khỏe\n\n### Các Loại Bảo Hiểm\n**Bảo hiểm do người sử dụng lao động cung cấp:**\n- Loại phổ biến nhất\n- Người sử dụng lao động đóng một phần phí\n- Nhiều lựa chọn gói (HMO, PPO, EPO)\n\n**Sàn giao dịch (ACA):**\n- Thời gian đăng ký mở (hàng năm tháng 11-tháng 1)\n- Trợ cấp dựa trên thu nhập\n- Bắt buộc bảo hiểm tình trạng sẵn có\n\n**Medicaid:**\n- Dành cho người thu nhập thấp\n- Điều kiện mỗi tiểu bang khác nhau\n- Miễn phí hoặc giá rẻ\n\n### So Sánh Gói Bảo Hiểm\n**HMO:** Chỉ dùng bác sĩ trong mạng, cần giới thiệu, phí thấp\n\n**PPO:** Có thể dùng ngoài mạng, không cần giới thiệu, phí cao\n\n**EPO:** Chỉ dùng trong mạng, không cần giới thiệu, phí trung bình\n\n### Kiểm Tra Khi Chọn Bảo Hiểm\n1. Phí bảo hiểm hàng tháng\n2. Số tiền tự chi trả (Deductible)\n3. Tỷ lệ đồng chi trả (Copay/Coinsurance)\n4. Bác sĩ trong mạng\n5. Phạm vi thuốc kê đơn\n\n### Dịch Vụ Dự Phòng Miễn Phí\n- Khám sức khỏe định kỳ\n- Tiêm chủng\n- Sàng lọc ung thư\n- Kiểm tra huyết áp và cholesterol"
+        },
+        "2": {
+          "title": "Medicaid Và Bảo Hiểm Thu Nhập Thấp",
+          "description": "Hiểu điều kiện và quyền lợi cho chương trình y tế nhà nước.",
+          "content": "## Medicaid Là Gì?\n\n### Điều Kiện Đủ Điều Kiện\n**Đối tượng:**\n- Người và gia đình thu nhập thấp\n- Phụ nữ mang thai\n- Trẻ em\n- Người khuyết tật\n- Người cao tuổi (65+)\n\n**Giới hạn thu nhập:**\n- Khác nhau tùy tiểu bang\n- Dựa trên Mức Nghèo Liên Bang\n- Tùy quy mô gia đình\n\n### Quyền Lợi\n- Khám bệnh và nhập viện\n- Thuốc kê đơn\n- Xét nghiệm phòng thí nghiệm\n- Cấp cứu\n- Dịch vụ sức khỏe tâm thần\n- Nha khoa (một số tiểu bang)\n\n### Cách Nộp Đơn\n1. Truy cập HealthCare.gov\n2. Liên hệ văn phòng Medicaid tiểu bang\n3. Được hỗ trợ tại trung tâm cộng đồng\n\n### CHIP (Bảo Hiểm Trẻ Em)\n- Trẻ em thu nhập thấp không đủ điều kiện Medicaid\n- Bảo hiểm miễn phí hoặc giá rẻ\n- Bao gồm tiêm chủng, khám sức khỏe, thuốc kê đơn\n\n### Hỗ Trợ Bổ Sung\n- Trợ cấp phí bảo hiểm\n- Chương trình đồng chi trả\n- Chương trình giảm giá thuốc"
+        },
+        "3": {
+          "title": "Cấp Cứu Và Khẩn Cấp Y Khoa",
+          "description": "Khi nào sử dụng dịch vụ cấp cứu và xử lý tình huống y tế khẩn cấp.",
+          "content": "## Dịch Vụ Cấp Cứu Y Khoa\n\n### Phải Vào Phòng Cấp Cứu (ER) Khi\n- Đau ngực hoặc khó thở\n- Chảy máu nghiêm trọng\n- Dấu hiệu đột quỵ\n- Chấn thương nghiêm trọng\n- Phản ứng dị ứng\n- Cấp cứu thai kỳ\n- Mất ý thức\n\n### Khẩn Cấp (Urgent Care)\n- Gãy xương nhẹ\n- Bỏng degree nhẹ\n- Triệu chứng cúm và cảm lạnh\n- Rối loạn tiêu hóa\n- Nhiễm trùng đường tiết niệu\n- Nhiễm trùng mắt hoặc tai\n\n### So Sánh Chi Phí\n**Phòng cấp cứu:** Chi phí cao, dù có bảo hiểm vẫn tự chi trả nhiều\n**Khẩn cấp:** Chi phí trung bình, điều trị nhanh\n**Bác sĩ chính:** Chi phí thấp nhất, cần đặt lịch\n\n### Chuẩn Bị Tình Huống Khẩn Cấp\n1. Danh sách liên hệ khẩn cấp gia đình\n2. Hồ sơ y tế và danh sách thuốc\n3. Phòng cấp cứu gần nhất\n4. Bộ dụng cụ cấp cứu\n\n### Trong Tình Huống Khẩn Cấp\n1. Gọi 911 (nguy hiểm tính mạng)\n2. Bình tĩnh mô tả tình trạng\n3. Cung cấp địa chỉ\n4. Làm theo hướng dẫn"
+        },
+        "4": {
+          "title": "Hỗ Trợ Sức Khỏe Tâm Thần",
+          "description": "Tìm hỗ trợ sức khỏe tâm thần và dịch vụ tư vấn trong cộng đồng.",
+          "content": "## Tại Sao Sức Khỏe Tâm Thần Quan Trọng\n\n### Thách Thức Phổ Biến\n- Stress từ quá trình nhập cư\n- Sốc văn hóa và thích nghi\n- Cảm giác cô đơn và xa cách\n- Tách rời gia đình\n- Phân biệt đối xử và định kiến\n\n### Các Loại Dịch Vụ Sức Khỏe Tâm Thần\n**Tư vấn cá nhân:**\n- Liệu pháp一对一\n- Liệu pháp nhận thức hành vi (CBT)\n- Điều trị PTSD\n\n**Liệu pháp nhóm:**\n- Những người có trải nghiệm tương tự\n- Hỗ trợ lẫn nhau\n- Chi phí hiệu quả\n\n### Tìm Hỗ Trợ\n- Trung tâm sức khỏe tâm thần địa phương\n- Nền tảng tư vấn trực tuyến\n- Cộng đồng tôn giáo và tâm linh\n- Tổ chức hỗ trợ người nhập cư\n\n### Hỗ Trợ Khẩn Cấp\n- Đường dây khủng hoảng quốc gia: 988\n- Tư vấn qua tin nhắn: Gửi HOME đến 741741\n- Hỗ trợ trò chuyện trực tuyến\n\n### Mẹo Tự Chăm Sóc\n1. Tập thể dục đều đặn\n2. Ngủ đủ giấc\n3. Ăn uống lành mạnh\n4. Duy trì kết nối xã hội\n5. Thiền và kỹ thuật thư giãn\n\n### Nhận Sự Giúp Đỡ\n- Không cảm thấy xấu hổ\n- Hỗ trợ chuyên gia là bình thường\n- Can thiệp sớm quan trọng\n- Nhờ gia đình và bạn bè giúp đỡ"
+        },
+        "5": {
+          "title": "Chọn Bác Sĩ Gia Đình",
+          "description": "Cách chọn và thiết lập mối quan hệ với bác sĩ chính.",
+          "content": "## Tầm Quan Trọng Của Bác Sĩ Gia Đình\n\n### Lợi Ích\n- Mối quan hệ bác sĩ lâu dài\n- Chăm sóc phòng ngừa\n- Điều phối bác sĩ chuyên khoa\n- Quản lý bệnh mãn tính\n- Giảm tổng chi phí y tế\n\n### Tiêu Chí Lựa Chọn Bác Sĩ\n**Xem xét thực tế:**\n- Vị trí (gần nhà hoặc nơi làm việc)\n- Giờ khám bệnh\n- Đặt lịch dễ dàng\n- Trong mạng bảo hiểm\n\n**Chuyên môn:**\n- Kinh nghiệm liên quan\n- Đánh giá của bệnh nhân\n- Phong cách giao tiếp\n\n### Khám Lần Đầu\n1. Chuyển hồ sơ y tế\n2. Chia sẻ danh sách thuốc\n3. Thảo luận mục tiêu sức khỏe\n4. Chuẩn bị danh sách câu hỏi\n\n### Mẹo Giao Tiếp Với Bác Sĩ\n- Thành thật mô tả triệu chứng\n- Không ngại đặt câu hỏi\n- Nếu chưa hiểu, hỏi lại\n- Tuân thủ kế hoạch điều trị\n\n### Chăm Sức Khỏe Phòng Ngừa\n- Khám sức khỏe định kỳ\n- Cập nhật tiêm chủng\n- Sàng lọc sức khỏe định kỳ\n- Duy trì lối sống lành mạnh"
+        }
+      },
+      "finance": {
+        "1": {
+          "title": "Mở Tài Khoản Ngân Hàng",
+          "description": "Hướng dẫn từng bước mở tài khoản séc hoặc tiết kiệm tại Mỹ.",
+          "content": "## Tại Sao Cần Tài Khoản Ngân Hàng\n\n### Lợi Ích\n- Nơi giữ tiền an toàn\n- Nhận lương qua chuyển khoản trực tiếp\n- Thanh toán hóa đơn và ngân hàng trực tuyến\n- Xây dựng lịch sử giao dịch ngân hàng\n\n### Các Loại Tài Khoản\n**Tài khoản séc (Checking):**\n- Dành cho giao dịch hàng ngày\n- Thẻ ghi nợ\n- Chuyển khoản tự động\n\n**Tài khoản tiết kiệm (Savings):**\n- Kiếm lãi\n- Dự phòng khẩn cấp\n- Giới hạn rút tiền (6 lần/tháng)\n\n### Giấy Tờ Cần Thiết\n- Giấy tờ tùy thân còn hiệu lực (hộ chiếu, bằng lái xe)\n- Số an sinh xã hội hoặc ITIN\n- Tiền gửi ban đầu\n- Giấy tờ chứng minh địa chỉ (hóa đơn tiện ích)\n\n### Quy Trình Mở Tài Khoản\n1. Chọn ngân hàng hoặc hiệp hội tín dụng\n2. Chuẩn bị giấy tờ cần thiết\n3. Đến chi nhánh hoặc mở trực tuyến\n4. Gửi tiền ban đầu\n5. Đặt làm thẻ ghi nợ\n\n### Ngân Hàng vs Hiệp Hội Tín Dụng\n**Ngân Hàng:** Nhiều chi nhánh hơn, dịch vụ đa dạng, phí có thể cao\n**Hiệp hội tín dụng:** Phí thấp hơn, lãi suất cao hơn, thuộc sở hữu thành viên\n\n### Ngân Hàng Trực Tuyến\n- Truy cập 24/7\n- Ứng dụng di động\n- Phí thấp hơn\n- Kiểm tra mạng lưới ATM"
+        },
+        "2": {
+          "title": "Xây Dựng Và Hiểu Về Tín Dụng",
+          "description": "Cách hoạt động của điểm tín dụng và chiến lược xây dựng tín dụng tốt.",
+          "content": "## Điểm Tín Dụng Là Gì?\n\n### Phạm Vi Điểm\n- 800+: Xuất sắc\n- 740-799: Rất tốt\n- 670-739: Tốt\n- 580-669: Trung bình\n- Dưới 580: Kém\n\n### Yếu Tố Ảnh Hưởng Điểm\n**Lịch sử thanh toán (35%):**\n- Thanh toán đúng hạn\n- Lịch sử trễ hạn\n- Vỡ nợ\n\n**Tỷ lệ sử dụng tín dụng (30%):**\n- Lượng tín dụng sử dụng so với hạn mức\n- Dưới 30% được khuyến nghị\n\n**Thời gian tín dụng (15%):**\n- Thời gian giữ tài khoản tín dụng\n- Tài khoản cũ hơn có lợi\n\n**Tín dụng mới (10%):**\n- Tra cứu tín dụng gần đây\n- Tài khoản mới mở\n\n**Hỗn hợp tín dụng (10%):**\n- Nhiều loại tài khoản tín dụng\n- Thẻ tín dụng, khoản vay, vay mua nhà\n\n### Cách Xây Dựng Tín Dụng\n1. Thanh toán mọi hóa đơn đúng hạn\n2. Giữ tỷ lệ sử dụng thấp\n3. Giữ tài khoản cũ\n4. Kiểm tra báo cáo tín dụng định kỳ\n5. Tránh tra cứu tín dụng không cần thiết"
+        },
+        "3": {
+          "title": "Lập Ngân Sách Và Tiết Kiệm",
+          "description": "Tạo ngân sách hiệu quả và tiết kiệm cho tương lai.",
+          "content": "## Tại Sao Phải Lập Ngân Sách\n\n### Lợi Ích\n- Kiểm soát tài chính\n- Dự phòng khẩn cấp\n- Đạt mục tiêu tài chính\n- Giảm stress tiền bạc\n\n### Quy Tắc 50/30/20\n**50% Cần thiết:**\n- Nhà ở\n- Ăn uống\n- Đi lại\n- Bảo hiểm\n- Tiện ích\n\n**30% Mong muốn:**\n- Giải trí\n- Ăn ngoài\n- Mua sắm\n- Dịch vụ đăng ký\n\n**20% Tiết kiệm và trả nợ:**\n- Dự phòng khẩn cấp\n- Tiết kiệm nghỉ hưu\n- Trả nợ\n- Đầu tư\n\n### Chiến Lược Tiết Kiệm\n**Dự phòng khẩn cấp:**\n- Mục tiêu 3-6 tháng chi phí sinh hoạt\n- Sử dụng tài khoản tiết kiệm lãi suất cao\n- Chuyển khoản tự động\n\n**Tiết kiệm dài hạn:**\n- Tiết kiệm nghỉ hưu (401k, IRA)\n- Tiết kiệm mua nhà\n- Tiết kiệm giáo dục\n\n### Công Cụ Quản Lý Ngân Sách\n- Bảng tính\n- Ứng dụng ngân sách (Mint, YNAB)\n- Tính năng ngân sách trong ứng dụng ngân hàng\n\n### Sai Lầm Phổ Biến\n- Không có quỹ dự phòng\n- Không trả nợ lãi suất cao\n- Giữ đăng ký không cần thiết\n- Không dự phòng chi phí bất ngờ"
+        },
+        "4": {
+          "title": "Chuyển Tiền Về Nhà",
+          "description": "Hiểu tùy chọn chuyển tiền và tìm tỷ giá tốt nhất cho chuyển khoản quốc tế.",
+          "content": "## Tùy Chọn Chuyển Tiền\n\n### Các Loại Dịch Vụ\n**Ngân hàng:**\n- Chuyển khoản điện tử\n- Phí cao ($25-$50)\n- An toàn nhưng chậm\n\n**Dịch vụ chuyển tiền:**\n- Western Union, MoneyGram\n- Nhận tiền mặt tại nhiều điểm\n- Phí trung bình\n\n**Ứng dụng di động:**\n- Wise (trước đây TransferWise)\n- Remitly\n- Xe\n- Phí thấp, chuyển tiền nhanh\n\n### Phương Pháp Chuyển Tiền Tối Ưu\n1. So sánh phí\n2. So sánh tỷ giá hối đoái\n3. Kiểm tra tốc độ chuyển\n4. Xem xét phương thức nhận (tài khoản ngân hàng vs tiền mặt)\n\n### Mẹo Cho Người Chuyển Tiền Thường Xuyên\n- Tự động hóa chuyển tiền định kỳ\n- Cài báo cáo tỷ giá\n- Sử dụng chiết khấu số lượng lớn\n- Tận dụng chương trình thưởng\n\n### Lưu Ý\n- Cẩn thận lừa đảo\n- Sử dụng dịch vụ chính hãng\n- Giữ biên lai\n- Xác nhận thông tin người nhận chính xác"
+        },
+        "5": {
+          "title": "Quản Lý Nợ Và Thẻ Tín Dụng",
+          "description": "Chiến lược trả nợ và sử dụng thẻ tín dụng có trách nhiệm.",
+          "content": "## Hiểu Về Nợ\n\n### Các Loại Nợ\n**Nợ tốt:**\n- Vay mua nhà (tích lũy tài sản)\n- Vay sinh viên (tăng thu nhập tiềm năng)\n- Vay kinh doanh (tạo ra thu nhập)\n\n**Nợ xấu:**\n- Thẻ tín dụng lãi suất cao\n- Dịch vụ rút tiền mặt\n- Khoản vay cá nhân lãi suất cao\n\n### Chiến Lược Trả Nợ\n**Phương pháp tuyết lăn:**\n- Bắt đầu với số dư nhỏ nhất\n- Tạo động lực nhanh\n- Cảm thấy thành tựu\n\n**Phương pháp tuyết lở:**\n- Trả nợ lãi suất cao nhất trước\n- Tiết kiệm tổng lãi\n- Kinh tế nhất\n\n### Quản Lý Thẻ Tín Dụng\n- Thanh toán toàn bộ số dư hàng tháng\n- Dưới 30% hạn mức\n- Kiểm tra báo cáo tín dụng định kỳ\n- Thu hồi thẻ không cần thiết\n\n### Mẹo Quản Lý Nợ\n1. Liệt kê mọi khoản nợ\n2. Lên kế hoạch trả nợ\n3. Tìm nguồn thu nhập bổ sung\n4. Cắt giảm chi phí không cần thiết\n5. Tham vấn chuyên gia"
+        }
+      },
+      "education": {
+        "1": {
+          "title": "Lớp Học Tiếng Anh (ESL)",
+          "description": "Tìm lớp tiếng Anh miễn phí và giá rẻ để cải thiện kỹ năng ngôn ngữ.",
+          "content": "## Tại Sao Phải Học Tiếng Anh\n\n### Lợi Ích\n- Cơ hội việc làm tốt hơn\n- Dễ dàng tiếp cận dịch vụ\n- Hòa nhập xã hội\n- Phát triển giáo dục\n\n### Các Chương Trình ESL\n**Chương trình miễn phí:**\n- Cao đẳng cộng đồng\n- Thư viện công\n- Tổ chức tôn giáo\n- Trung tâm cộng đồng\n\n**Chương trình giá rẻ:**\n- Trường tư thục\n- Nền tảng trực tuyến\n- Lớp học nhóm\n\n### Trình Độ Học\n- Sơ cấp: Chữ cái và câu cơ bản\n- Trung cấp: Giao tiếp hàng ngày\n- Cao cấp: Tiếng Anh kinh doanh\n\n### Tìm Chương Trình ESL\n1. Kiểm tra cao đẳng cộng đồng địa phương\n2. Chương trình thư viện công\n3. Tài nguyên trực tuyến (Khan Academy, Duolingo)\n4. Liên hệ trung tâm cộng đồng\n\n### Mẹo Học Tập\n- Thực hành mỗi ngày ít nhất 30 phút\n- Xem phim và TV tiếng Anh\n- Giao tiếp với người bản ngữ\n- Viết nhật ký\n- Ghi âm và nghe lại"
+        },
+        "2": {
+          "title": "Lấy Bằng Tương Đương Trung Học",
+          "description": "Quy trình lấy bằng tương đương trung học tại Hoa Kỳ.",
+          "content": "## GED Là Gì?\n\n### Tổng Quan\n- Bài kiểm tra phát triển giáo dục chung\n- Tương đương bằng trung học\n- Được các trường đại học và nhà tuyển dụng công nhận\n\n### Điều Kiện Dự Thi\n- Thường từ 18 tuổi trở lên\n- Không đang học trung học\n- Chưa tốt nghiệp trung học\n\n### Các Môn Thi\n1. Toán\n2. Khoa học\n3. Nghiên cứu xã hội\n4. Nghệ thuật ngôn ngữ (tiếng Anh)\n\n### Chuẩn Bị Bài Thi\n**Trực tuyến:**\n- Khóa học chuẩn bị chính thức GED.com\n- Bài giảng miễn phí Khan Academy\n- Tài liệu học tập thư viện\n\n**Trực tiếp:**\n- Lớp chuẩn bị GED\n- Chương trình giáo dục người lớn\n- Dịch vụ dạy kèm\n\n### Học Phí Bài Thi\n- Khoảng $30/môn\n- Khoảng $120 toàn bộ\n- Có thể khác nhau tùy tiểu bang\n\n### Sau Khi Tốt Nghiệp\n- Nhận bằng tương đương trung học\n- Có thể nộp đơn vào đại học\n- Mở rộng cơ hội việc làm\n- Theo đuổi giáo dục tiếp theo"
+        },
+        "3": {
+          "title": "Cơ Hội Đại Học Và Học Bổng",
+          "description": "Hỗ trợ tài chính và cơ hội giáo dục cho người nhập cư.",
+          "content": "## Lựa Chọn Đại Học\n\n### Các Loại Trường\n**Cao đẳng cộng đồng:**\n- Chương trình 2 năm\n- Chi phí thấp\n- Chuyển tiếp đại học 4 năm\n\n**Đại học 4 năm:**\n- Bằng cử nhân\n- Nhiều tài nguyên hơn\n- Chi phí cao hơn\n\n### Hỗ Trợ Tài Chính\n**Trợ cấp:**\n- Pell Grant (liên bang)\n- Trợ cấp tiểu bang\n- Trợ cấp trường\n\n**Học bổng:**\n- Học bổng thành tích học tập\n- Học bổng tài năng\n- Học bổng dân tộc thiểu số\n\n**Khoản vay:**\n- Khoản vay sinh viên liên bang\n- Khoản vay sinh viên tư nhân\n\n### Hỗ Trợ Cho Học Sinh DACA\n- Có thể vào đại học với tình trạng DACA\n- Một số tiểu bang áp dụng học phí nội bang\n- Tìm học bổng dành cho DACA\n\n### Quy Trình Nộp Đơn\n1. Nộp FAFSA (hỗ trợ tài chính liên bang)\n2. Viết đơn xin nhập học từng trường\n3. Nộp đơn xin học bổng riêng\n4. Nhận thông báo trúng tuyển\n5. Chấp nhận hỗ trợ tài chính"
+        },
+        "4": {
+          "title": "Học Trực Tuyến Và Phát Triển Kỹ Năng",
+          "description": "Sử dụng nền tảng trực tuyến để học kỹ năng mới và phát triển nghề nghiệp.",
+          "content": "## Lợi Ích Học Trực Tuyến\n\n### Tại Sao Trực Tuyến?\n- Học theo tốc độ riêng\n- Lịch trình linh hoạt\n- Miễn phí hoặc giá rẻ\n- Không cần đi lại\n\n### Nền Tảng Phổ Biến\n**Tùy chọn miễn phí:**\n- Khan Academy: Toán, khoa học, kinh tế\n- Coursa: Đại học (có chứng chỉ)\n- edX: Khóa học MIT, Harvard\n- freeCodeCamp: Lập trình\n\n**Tùy chọn trả phí:**\n- Udemy: Đa dạng chủ đề\n- LinkedIn Learning: Kỹ năng chuyên môn\n- Skillshare: Kỹ năng sáng tạo\n\n### Kỹ Năng Phổ Biến\n**Lập trình:**\n- Python, JavaScript\n- Phát triển web\n- Phân tích dữ liệu\n\n**Kinh doanh:**\n- Quản lý dự án\n- Tiếp thị kỹ thuật số\n- Phân tích dữ liệu\n\n**Ngôn ngữ:**\n- Tiếng Anh kinh doanh\n- Tiếng Tây Ban Nha\n- Tiếng Trung\n\n### Mẹo Học Tập Hiệu Quả\n1. Đặt mục tiêu học tập\n2. Dành thời gian học định kỳ\n3. Bao gồm bài tập thực hành\n4. Tham gia cộng đồng\n5. Nhận chứng chỉ"
+        },
+        "5": {
+          "title": "Trường Nghề Đào Tạo Chuyên Môn",
+          "description": "Đào tạo nghề thực hành cho công việc tay nghề lương cao.",
+          "content": "## Trường Nghề Là Gì?\n\n### Tổng Quan\n- Đào tạo ngắn hạn, tập trung nghề\n- Học thực hành\n- Chứng chỉ hoặc bằng tốt nghiệp\n- Thường từ 6 tháng đến 2 năm\n\n### Nghề Phổ Biến\n**Y tế:**\n- Trợ lý y tế\n- Trợ lý nha khoa\n- Trợ lý vật lý trị liệu\n- Trợ lý điều dưỡng\n\n**Kỹ thuật:**\n- Thợ điện\n- Thợ ống nước\n- HVAC (điều hòa không khí)\n- Sửa chữa ô tô\n\n**Ẩm thực:**\n- Đầu bếp\n- Thợ làm bánh\n- Nhân viên pha chế\n\n### Tiêu Chí Chọn Trường Nghề\n- Kiểm tra chứng nhận\n- Xem tỷ lệ việc làm\n- Học phí và hỗ trợ tài chính\n- Vị trí và giao thông\n- Cơ hội thực tập\n\n### Hỗ Trợ Tài Chính\n- Kiểm tra điều kiện Pell Grant\n- Trợ cấp giáo dục nghề tiểu bang\n- Hỗ trợ giáo dục của người sử dụng lao động\n- Quyền lợi VA (cựu chiến binh)\n\n### Sau Khi Tốt Nghiệp\n- Xin việc\n- Cơ hội thực tập\n- Xây dựng mạng lưới\n- Xem xét học tiếp"
+        }
+      },
+      "safety": {
+        "1": {
+          "title": "Bảo Vệ Khỏi Lừa Đảo",
+          "description": "Nhận diện và tránh các trò lừa đảo nhắm vào người nhập cư.",
+          "content": "## Trò Lừa Đảo Nhắm Vào Người Nhập Cư\n\n### Lừa Đảo Nhập Cư\n**Luật sư nhập cư giả:**\n- Công chứng viên tự xưng là luật sư\n- Bảo đảm thị thực được chấp thuận\n- Tính phí cho mẫu đơn chính phủ miễn phí\n\n**Trang web lừa đảo:**\n- Trang web giả mạo chính phủ\n- Tính phí dịch vụ không cần thiết\n- Yêu cầu thông tin cá nhân\n\n### Lừa Đảo Tài Chính\n**Cho vay lừa đảo:**\n- Đặt cọc rồi biến mất\n- Công ty không tồn tại\n- Đưa ra điều khoản không thực tế\n\n**Thẻ tín dụng lừa đảo:**\n- Thư chấp thuận trước\n- Phí thường niên cao\n- Dịch vụ không tồn tại\n\n### Dấu Hiệu Cảnh Báo Lừa Đảo\n- Yêu cầu quyết định ngay lập tức\n- Yêu cầu tiền mặt hoặc thẻ quà tặng\n- Từ ngữ \"đảm bảo\" hoặc \"chắc chắn\"\n- Không có hợp đồng bằng văn bản\n- Thông tin liên hệ không rõ ràng\n\n### Mẹo Phòng Tránh\n1. Kiểm tra giấy phép (luật sư, cho vay)\n2. Kiểm tra BBB (Hiệp Hội Doanh Nghiệp Tốt Hơn)\n3. Xem đánh giá trực tuyến\n4. Sử dụng tư vấn miễn phí\n5. Đọc kỹ hợp đồng\n\n### Khi Bị Lừa Đảo\n1. Báo cáo FTC (ftc.gov/complaint)\n2. Báo cáo công an\n3. Thông báo ngân hàng\n4. Tìm hỗ trợ pháp lý"
+        },
+        "2": {
+          "title": "Hỗ Trợ Bạo Lực Gia Đình",
+          "description": "Hỗ trợ và tài nguyên cho người bị bạo lực gia đình.",
+          "content": "## Bạo Lực Gia Đình Là Gì?\n\n### Định Nghĩa\n- Bạo lực thể chất, tình cảm hoặc tình dục\n- Kiểm soát tài chính\n- Đe dọa tình trạng nhập cư\n- Cô lập khỏi sự hỗ trợ\n\n### Dấu Hiệu Cảnh Báo\n- Ghen tuông cực đoan\n- Kiểm soát hành vi\n- Chặn tiếp cận tài chính\n- Cô lập và cách ly\n- Đe dọa và uy hiếp\n\n### Tùy Chọn Hỗ Trợ\n**Hỗ trợ khẩn cấp:**\n- Đường dây nóng bạo lực gia đình quốc gia: 1-800-799-7233\n- Tư vấn qua tin nhắn: Gửi START đến 88788\n- Trò chuyện trực tuyến: thehotline.org\n\n**Nơi ở an toàn:**\n- Nơi trú ẩn bạo lực gia đình\n- Hỗ trợ nhà ở khẩn cấp\n- Hỗ trợ pháp lý\n\n### Hỗ Trợ Đặc Biệt Cho Người Nhập Cư\n- VAWA (Đạo luật Bảo vệ Phụ nữ bị Bạo lực)\n- Thị thực U (nạn nhân tội phạm)\n- Thị thực T (nạn nhân buôn người)\n- Hỗ trợ pháp lý và bảo vệ\n\n### Kế Hoạch An Toàn\n1. Chuẩn bị danh sách liên hệ khẩn cấp\n2. Chuẩn bị giấy tờ quan trọng\n3. Dự phòng tiền mặt\n4. Lên kế hoạch nơi an toàn\n5. Xem xét báo cáo công an\n\n### Nhận Sự Giúp Đỡ\n- Tham vấn chuyên gia\n- Tìm hỗ trợ pháp lý\n- Tham gia nhóm hỗ trợ\n- Nhờ người tin cậy giúp đỡ"
+        },
+        "3": {
+          "title": "Quyền Khi Gặp ICE",
+          "description": "Hiểu quyền hiến pháp khi bị cơ quan nhập cư tiếp cận.",
+          "content": "## Quyền Của Bạn\n\n### Tại Cửa Nhà\n- Không bắt buộc mở cửa\n- Yêu cầu lệnh do thẩm phán ký\n- Chỉ lệnh ICE (mẫu I-200) chưa đủ\n- Vẫn giữ quyền im lặng\n\n### Ngoài Đường\n- Bình tĩnh phản ứng\n- Chỉ cung cấp tên và địa chỉ\n- Không đồng ý khám xét\n- Quyền được mời luật sư\n\n### Nếu ICE Mở Cửa\n- Đừng mở cửa\n- Nói \"Cho tôi xem lệnh\"\n- Kiểm tra lệnh do thẩm phán ký\n- Vẫn giữ quyền im lặng\n\n### Bảo Vệ Quyền\n1. Bình tĩnh phản ứng\n2. Yêu cầu giấy tờ\n3. Không đồng ý khám xét\n4. Gọi luật sư\n5. Từ chối khai bằng văn bản\n\n### Chuẩn Bị Khi Gặp ICE\n1. Lưu sẵn số điện thoại luật sư\n2. Chuẩn bị giấy tờ quan trọng\n3. Danh sách liên hệ gia đình\n4. Mang theo thẻ quyền lợi\n\n### Nhận Sự Giúp Đỡ\n- ACLU (Liên minh Dân sự Mỹ)\n- Tổ chức hỗ trợ pháp lý nhập cư\n- Trung tâm cộng đồng địa phương\n- Đường dây nóng hỗ trợ pháp lý"
+        },
+        "4": {
+          "title": "Dự Phòng Khẩn Cấp Gia Đình",
+          "description": "Lập kế hoạch dự phòng gia đình và chuẩn bị cho tình huống bất ngờ.",
+          "content": "## Tại Sao Phải Chuẩn Bị\n\n### Tình Huống Khẩn Cấp Phổ Biến\n- Thiên tai\n- Cấp cứu y tế\n- Kiểm tra nhập cư\n- Khủng hoảng tài chính\n- Tách rời gia đình\n\n### Kế Hoạch Liên Lạc Gia Đình\n**1. Kế hoạch liên lạc:**\n- Danh sách liên hệ khẩn cấp\n- Điểm tập hợp được chỉ định\n- Phương thức liên lạc từ xa\n\n**2. Chuẩn bị giấy tờ:**\n- Bản sao hộ chiếu\n- Giấy khai sinh\n- Giấy tờ nhập cư\n- Giấy tờ bảo hiểm\n- Hồ sơ y tế\n\n**3. Bộ dụng cụ khẩn cấp:**\n- Nước và thực phẩm 3 ngày\n- Thuốc men\n- Đèn pin và pin\n- Tiền mặt\n- Sạc điện thoại\n\n### Chuẩn Bị Cho Trẻ Em\n- Dạy trẻ kế hoạch khẩn cấp\n- Viết phiếu liên hệ\n- Kiểm tra kế hoạch khẩn cấp của trường\n- Dạy điểm tập hợp an toàn\n\n### Đặc Biệt Cho Người Nhập Cư\n1. Lưu sẵn số điện thoại luật sư\n2. Chuẩn bị bản sao giấy tờ nhập cư\n3. Mang theo thẻ quyền lợi\n4. Lập kế hoạch bảo vệ gia đình"
+        },
+        "5": {
+          "title": "An Toàn Và Quyền Riêng Tư Trực Tuyến",
+          "description": "Bảo vệ thông tin cá nhân và duy trì an toàn trên mạng.",
+          "content": "## Tầm Quan Trọng Của An Toàn Mạng\n\n### Mối Đe Dọa Phổ Biến\n- Đánh cắp danh tính\n- Lừa đảo phishing\n- Lừa đảo lãng mạn\n- Lừa đảo tài chính\n- Xâm phạm quyền riêng tư\n\n### Bảo Vệ Thông Tin\n**Mật khẩu:**\n- Sử dụng mật khẩu mạnh và duy nhất\n- Khác nhau cho mỗi trang web\n- Quản lý mật khẩu\n- Bật xác thực hai yếu tố\n\n**Email:**\n- Không nhấp vào liên hệ đáng ngờ\n- Kiểm tra người gửi\n- Cẩn thận tệp đính kèm\n- Chỉ tin email chính thức\n\n### An Toàn Mạng Xã Hội\n- Kiểm tra cài đặt quyền riêng tư\n- Hạn chế chia sẻ thông tin cá nhân\n- Từ chối kết nối người lạ\n- Cẩn thận chia sẻ vị trí\n\n### An Toàn Giao Dịch Tài Chính\n- Kiểm tra trang web bảo mật (https)\n- Không giao dịch tài chính trên WiFi công cộng\n- Kiểm tra tài khoản định kỳ\n- Báo cáo giao dịch đáng ngờ\n\n### Nhận Biết Lừa Đảo\n1. Cẩn thận với lời đề nghị \"miễn phí\" hoặc \"đảm bảo\"\n2. Từ chối yêu cầu quyết định ngay\n3. Từ chối yêu cầu thông tin cá nhân\n4. Xem xét đánh giá trực tuyến\n5. Nếu nghi ngờ, tham vấn chuyên gia"
+        }
+      },
+      "community": {
+        "1": {
+          "title": "Hội Đoàn Ethnic và Tổ Chức Cộng Đồng",
+          "description": "Kết nối với tổ chức cộng đồng người nhập cư để hỗ trợ và kết nối.",
+          "content": "## Tại Sao Tham Gia Cộng Đồng\n\n### Lợi Ích\n- Kết nối với người cùng nền văn hóa\n- Hỗ trợ thực tiễn\n- Mạng lưới hỗ trợ\n- Chia sẻ kinh nghiệm\n\n### Loại Hình Tổ Chức\n**Hội đoàn ethnic:**\n- Nhóm quốc gia cụ thể\n- Văn hóa và ngôn ngữ chung\n- Sự kiện và hoạt động\n\n**Tổ chức nhập cư:**\n- Hỗ trợ pháp lý\n- Chương trình hòa nhập\n- Dịch vụ dịch thuật\n\n**Tổ chức tôn giáo:**\n- Hỗ trợ tâm linh\n- Chương trình cộng đồng\n- Nguồn hỗ trợ thực tiễn\n\n### Cách Tìm Tổ Chức\n1. Tìm kiếm trực tuyến\n2. Tham khảo thư viện địa phương\n3. Hỏi tổ chức tôn giáo\n4. Liên hệ trung tâm cộng đồng\n5. Tìm kiếm trên mạng xã hội\n\n### Hoạt Động Phổ Biến\n- Lớp học tiếng Anh\n- Chương trình văn hóa\n- Sự kiện kết nối\n- Dịch vụ pháp lý\n- Hỗ trợ việc làm\n\n### Bắt Đầu\n1. Tham gia sự kiện cộng đồng\n2. Tình nguyện\n3. Tham gia nhóm trực tuyến\n4. Chia sẻ kỹ năng"
+        },
+        "2": {
+          "title": "Hòa Nhập Văn Hóa Mỹ",
+          "description": "Hiểu phong tục, tập quán và kỳ vọng xã hội tại Hoa Kỳ.",
+          "content": "## Phong Tục Mỹ\n\n### Giao Tiếp\n**Trực tiếp:**\n- Nói thẳng và rõ ràng\n- Tránh nói vòng vo\n- Sử dụng ngôn ngữ cơ thể phù hợp\n\n**Văn hóa:**\n- Nhìn vào mắt khi nói chuyện\n- Cúi đầu khi chào\n- Giữ khoảng cách cá nhân\n\n### Xã Hội\n**Quy tắc ứng xử:**\n- Đúng giờ\n- Lịch sự khi xếp hàng\n- Tôn trọng không gian cá nhân\n\n**Tình bạn:**\n- Kết bạn có thể mất thời gian\n- Tham gia hoạt động chung\n- Chủ động trong giao tiếp\n\n### Công Việc\n- Giao tiếp cởi mở\n- Tôn trọng ý kiến khác\n- Đúng giờ\n- Mặc trang phục phù hợp\n\n### Giáo Dục Con Cái\n- Phụ huynh tham gia hoạt động trường\n- Hiểu hệ thống giáo dục\n- Hỗ trợ bài tập về nhà\n\n### Bắt Đầu\n1. Quan sát và học hỏi\n2. Đặt câu hỏi khi cần\n3. Tham gia hoạt động cộng đồng\n4. Kết nối với người cùng văn hóa\n5. Chia sẻ văn hóa của bạn"
+        },
+        "3": {
+          "title": "Dịch Vụ Thông Dịch And Phiên Dịch",
+          "description": "Tìm hỗ trợ dịch thuật và thông dịch chuyên nghiệp.",
+          "content": "## Loại Hình Dịch Vụ\n\n### Thông Dịch Khẩu\n**Sử dụng:**\n- Cuộc họp y tế\n- Buổi họp trường\n- Các cuộc gọi điện thoại\n- Tòa án\n\n**Cung cấp:**\n- Tổ chức cộng đồng\n- Bệnh viện\n- Trường học\n- Chính phủ\n\n### Dịch Thuật Văn Bản\n**Sử dụng:**\n- Hồ sơ pháp lý\n- Giấy tờ y tế\n- Hồ sơ học thuật\n- Tài liệu quan trọng\n\n**Lưu ý:**\n- Dịch thuật được chứng nhận\n- Dịch thuật chính xác\n- Mật độ thông tin\n\n### Tìm Hỗ Trợ\n1. Liên hệ bệnh viện\n2. Hỏi trường học\n3. Tìm tổ chức cộng đồng\n4. Liên hệ chính quyền địa phương\n\n### Miễn Phí vs Trả Phí\n**Miễn phí:**\n- Dịch vụ chính phủ\n- Bệnh viện công\n- Trường công\n- Tổ chức phi lợi nhuận\n\n**Trả phí:**\n- Dịch vụ tư nhân\n- Tài liệu pháp lý\n- Dịch vụ khẩn cấp\n\n### Mẹo Sử Dụng\n1. Chuẩn bị trước\n2. Cung cấp bối cảnh\n3. Yêu cầu giải thích thuật ngữ\n4. Kiểm tra bản dịch"
+        },
+        "4": {
+          "title": "Xây Dựng Mạng Lưới Hỗ Trợ",
+          "description": "Tạo và duy trì mối quan hệ hỗ trợ trong cộng đồng mới.",
+          "content": "## Tầm Quan Trọng Của Mạng Lưới\n\n### Lợi Ìch\n- Hỗ trợ thực tiễn\n- Kết nối xã hội\n- Chia sẻ tài nguyên\n- Giảm cô đơn\n\n### Cách Xây Dựng\n**Tại nơi làm việc:**\n- Kết nối với đồng nghiệp\n- Tham gia sự kiện công ty\n- Tình nguyện trong dự án\n\n**Trong cộng đồng:**\n- Tham gia tổ chức\n- Tình nguyện\n- Tham gia sự kiện\n- Tham gia khóa học\n\n**Trực tuyến:**\n- Tham gia nhóm mạng xã hội\n- Tham gia diễn đàn\n- Kết nối với người cùng sở thích\n\n### Duy Trì Mối Quan Hệ\n- Duy trì liên lạc định kỳ\n- Giúp đỡ người khác\n- Tham gia sự kiện\n- Chia sẻ tài nguyên\n\n### Mạng Lưới Hỗ Trợ Chuyên Nghiệp\n- Mentor nghề nghiệp\n- Nhà tư vấn nhập cư\n- Luật sư\n- Bác sĩ\n\n### Mẹo Xây Dựng\n1. Chủ động giao tiếp\n2. Quan tâm đến người khác\n3. Chia sẻ kinh nghiệm\n4. Giúp đỡ khi cần\n5. Duy trì liên lạc"
+        },
+        "5": {
+          "title": "Tình Nguyện Trong Cộng Đồng",
+          "description": "Các cơ hội tình nguyện để đóng góp và kết nối với cộng đồng.",
+          "content": "## Lợi Ích Tình Nguyện\n\n### Lợi Ích Cá Nhân\n- Học kỹ năng mới\n- Mở rộng mạng lưới\n- Cải thiện sức khỏe tinh thần\n- Đóng góp cho cộng đồng\n\n### Lợi Ích Nghề Nghiệp\n- Thêm kinh nghiệm vào hồ sơ\n- Xây dựng kỹ năng\n- Mở rộng mối quan hệ\n- Khám phá sở thích nghề nghiệp\n\n### Cơ Hội Tình Nguyện\n**Dựa trên kỹ năng:**\n- Dạy tiếng Anh\n- Tư vấn pháp lý\n- Dịch thuật\n- Hỗ trợ máy tính\n\n**Tình nguyện cộng đồng:**\n- Phân phát thực phẩm\n- Dọn dẹp cộng đồng\n- Trẻ em và thiếu niên\n- Người cao tuổi\n\n### Tìm Cơ Hội\n1. VolunteerMatch.org\n2. Idealist.org\n3. Cơ quan tình nguyện địa phương\n4. Tổ chức tôn giáo\n\n### Bắt Đầu\n1. Xác định sở thích\n2. Cam kết thời gian phù hợp\n3. Tham gia đào tạo\n4. Đánh giá định kỳ\n\n### Mẹo Tình Nguyện Hiệu Quả\n- Cam kết nhất quán\n- Học hỏi từ kinh nghiệm\n- Chia sẻ với người khác\n- Duy trì thái độ tích cực"
+        }
+      },
+      "work": {
+        "1": {
+          "title": "CV và Thư Xin Việc",
+          "description": "Viết CV và thư xin việc thu hút sự chú ý của nhà tuyển dụng.",
+          "content": "## CV Hoàn Hảo\n\n### Định Dạng CV\n**Thông tin liên hệ:**\n- Họ và tên\n- Địa chỉ (không đầy đủ nếu cần)\n- Số điện thoại\n- Email chuyên nghiệp\n\n**Tóm tắt kinh nghiệm:**\n- Kinh nghiệm làm việc\n- Kỹ năng\n- Giáo dục\n- Thành tích\n\n### Mẹo Viết CV\n**Liệt kê công việc:**\n- Bắt đầu từ gần nhất\n- Sử dụng động từ hành động\n- Quantify thành tích\n- Nhấn mạnh kỹ năng liên quan\n\n**Kỹ năng:**\n- Kỹ năng kỹ thuật\n- Kỹ năng giao tiếp\n- Kỹ năng lãnh đạo\n- Kỹ năng giải quyết vấn đề\n\n### Thư Xin Việc\n**Cấu trúc:**\n- Mở đầu: Vị trí và tại sao bạn quan tâm\n- Thân: Kinh nghiệm và kỹ năng liên quan\n- Kết: Mong muốn phỏng vấn\n\n**Mẹo:**\n- Cá nhân hóa cho từng vị trí\n- Nêu bật kỹ năng phù hợp\n- Thể hiện sự hiểu biết công ty\n- Chuyên nghiệp và ngắn gọn\n\n### Chuẩn Bị Phỏng Vấn\n- Nghiên cứu công ty\n- Thực hành câu hỏi phỏng vấn\n- Chuẩn bị câu hỏi cho nhà tuyển dụng\n- Mặc trang phục phù hợp\n\n### Lỗi Cần Tránh\n- Sai chính tả\n- Thông tin không liên quan\n- CV quá dài\n- Không trung thực"
+        },
+        "2": {
+          "title": "Tìm Việc Làm Tại Mỹ",
+          "description": "Công cụ, nguồn lực và chiến lược tìm việc hiệu quả.",
+          "content": "## Phương Pháp Tìm Việc\n\n### Trực Tuyến\n**Trang web việc làm:**\n- Indeed.com\n- LinkedIn.com\n- Glassdoor.com\n- ZipRecruiter\n\n**Trang web ngành:**\n- Dice.com (kỹ thuật)\n- Health eCareers (y tế)\n- USAJobs.com (chính phủ)\n\n### Tìm Việc Trực Tiếp\n- Đến công ty trực tiếp\n- Hỏi người quen\n- Tham dự hội chợ việc làm\n- Liên hệ nhân sự\n\n### Mạng Lưới Quan Hệ\n- Thông báo tìm việc\n- Tham dự sự kiện ngành\n- Tham gia nhóm LinkedIn\n- Liên hệ cựu đồng nghiệp\n\n### Mẹo Tìm Việc\n1. Dành 2-4 giờ mỗi ngày tìm việc\n2. Đa dạng hóa phương pháp\n3. Theo dõi đơn xin việc\n4. Follow up sau khi nộp\n5. Linh hoạt về vị trí\n\n### Chuẩn Bị Phỏng Vấn\n- Nghiên cứu công ty\n- Thực hành câu hỏi phỏng vấn\n- Chuẩn bị câu hỏi cho nhà tuyển dụng\n- Mặc trang phục phù hợp\n\n### Sau Phỏng Vấn\n1. Gửi email cảm ơn trong 24 giờ\n2. Theo dõi nếu chưa nhận phản hồi\n3. Đừng đặt kỳ vọng quá cao\n4. Tiếp tục tìm việc"
+        },
+        "3": {
+          "title": "Quyền Lợi Người Lao Động",
+          "description": "Hiểu quyền lợi lao động và luật lao động cơ bản tại Mỹ.",
+          "content": "## Quyền Lợi Cơ Bản\n\n### Tiền Lương\n**Lương tối thiểu:**\n- Liên bang: $7.25/giờ\n- Nhiều tiểu bang cao hơn\n- Kiểm tra luật tiểu bang\n\n**Tăng ca:**\n- Trên 40 giờ/tuần: 1.5 lần lương\n- Một số ngoại lệ\n\n### Điều Kiện Làm Việc\n**An toàn:**\n- Môi trường làm việc an toàn\n- Thiết bị bảo hộ\n- Đào tạo an toàn\n\n**Nghỉ phép:**\n- Nghỉ ốm (một số tiểu bang)\n- Nghỉ phép có lương (nếu có)\n- Nghỉ thai sản (theo FMLA)\n\n### Bảo Hiểm\n**Bảo hiểm y tế:**\n- Bảo hiểm qua công ty (nếu có)\n- Bảo hiểm tư nhân\n- Medicaid (nếu đủ điều kiện)\n\n**Bảo hiểm tai nạn:**\n- Workers' Compensation\n- Bảo hiểm残疾\n\n### Phân Biệt và Quấy Rối\n**Phân biệt:**\n- Giới tính, chủng tộc, tôn giáo\n- Tuổi tác, tình trạng nhập cư\n\n**Quấy rối:**\n- Quấy rối tình dục\n- Bắt nạt\n- Phân biệt đối xử\n\n### Khi Bị Vi Phạm\n1. Ghi lại sự việc\n2. Liên hệ HR\n3. Nộp đơn EEOC\n4. Tìm hỗ trợ pháp lý\n\n### Nhận Biết\n- Đọc kỹ hợp đồng\n- Hiểu quyền lợi\n- Đừng sợ phản đối"
+        },
+        "4": {
+          "title": "Bắt Đầu Kinh Doanh Nhỏ",
+          "description": "Hướng dẫn bắt đầu kinh doanh nhỏ tại Hoa Kỳ.",
+          "content": "## Lên Ý Tưởng\n\n### Kiểm Tra Ý Tưởng\n- Nghiên cứu thị trường\n- Xác định đối tượng khách hàng\n- Phân tích đối thủ\n- Đánh giá tính khả thi\n\n### Lựa Chọn Mô Hình\n**Kinh doanh một mình:**\n- Quyền kiểm soát hoàn toàn\n- Thích hợp cho dịch vụ\n- Yêu cầu vốn thấp\n\n**Hợp tác:**\n- Chia sẻ trách nhiệm\n- Bổ sung kỹ năng\n- Chia sẻ lợi nhuận\n\n### Bước Đặt Cơ Sở\n**1. Kế hoạch kinh doanh:**\n- Tổng quan thị trường\n- Phân tích tài chính\n- Chiến lược tiếp thị\n- Dự báo doanh thu\n\n**2. Đăng ký kinh doanh:**\n- Chọn loại hình (LLC, Sole Proprietorship)\n- Đăng ký với tiểu bang\n- Nhận giấy phép kinh doanh\n\n**3. Tài chính:**\n- Vốn cá nhân\n- Khoản vay kinh doanh\n- Nhà đầu tư thiên thần\n- Crowdfunding\n\n### Marketing\n- Hiện diện trực tuyến\n- Mạng xã hội\n- Quảng cáo địa phương\n- Marketing truyền miệng\n\n### Thách Thức\n- Quản lý tài chính\n- Tiếp thị và bán hàng\n- Tuân thủ luật pháp\n- Cân bằng cuộc sống"
+        },
+        "5": {
+          "title": "Kỹ Năng Nghề Nghiệp",
+          "description": "Phát triển kỹ năng mềm và cứng để thăng tiến sự nghiệp.",
+          "content": "## Kỹ Năng Cứng vs Mềm\n\n### Kỹ Năng Cứng\n**Kỹ năng kỹ thuật:**\n- Máy tính\n- Lập trình\n- Phân tích dữ liệu\n- Quản lý dự án\n\n**Kỹ năng chuyên môn:**\n- Kinh doanh\n- Y tế\n- Kỹ thuật\n- Sáng tạo\n\n### Kỹ Năng Mềm\n**Giao tiếp:**\n- Nói trước công chúng\n- Viết hiệu quả\n- Lắng nghe chủ động\n\n**Lãnh đạo:**\n- Quản lý nhóm\n- Ra quyết định\n- Giải quyết xung đột\n\n**Tư duy:**\n- Tư duy phản biện\n- Giải quyết vấn đề\n- Sáng tạo\n\n### Phát Triển Kỹ Năng\n**Học trực tuyến:**\n- Khóa học Coursera\n- Khóa học LinkedIn Learning\n- Tài liệu miễn phí\n\n**Thực hành:**\n- Tình nguyện\n- Dự án cá nhân\n- Thực tập\n\n### Áp Dụng Vào Sự Nghiệp\n1. Xác định kỹ năng cần thiết\n2. Lập kế hoạch phát triển\n3. Thực hành và áp dụng\n4. Đánh giá và điều chỉnh\n\n### Mẹo Thăng Tiến\n- Xây dựng thương hiệu cá nhân\n- Mở rộng mạng lưới\n- Tìm mentor\n- Thể hiện sự chủ động\n- Luôn học hỏi"
+        }
       }
     }
   },
@@ -391,7 +748,9 @@
     "aiResponseDefault": "Thú vị! Để biết chi tiết cụ thể, tôi khuyên bạn nên nói chuyện với chuyên gia tư vấn của chúng tôi qua WhatsApp hoặc mở vé hỗ trợ.",
     "ticketTab": "Vé",
     "aiTab": "Trò chuyện AI",
-    "typeMessage": "Nhập câu hỏi của bạn..."
+    "typeMessage": "Nhập câu hỏi của bạn...",
+    "aiAssistant": "Trợ lý AI",
+    "online": "Trực tuyến"
   },
   "plans": {
     "title": "Gói Thành viên",
@@ -401,6 +760,8 @@
     "selectPlan": "Chọn Gói",
     "whatsIncluded": "Bao gồm:",
     "note": "Tất cả các gói đều bao gồm dịch vụ bảo vệ cốt lõi của chúng tôi. Bạn có thể nâng cấp hoặc hủy bất cứ lúc nào.",
+    "premiumMember": "Thành viên Premium",
+    "premiumNote": "Bạn có quyền truy cập đầy đủ vào tất cả các tính năng premium. Cảm ơn bạn đã là thành viên quý giá!",
     "month": "/tháng",
     "alreadySubscribed": "Bạn đã đăng ký gói này",
     "subscribeSuccess": "Bạn đã đăng ký thành công gói {{plan}}.",
@@ -470,7 +831,24 @@
     "processing": "Đang xử lý thanh toán...",
     "success": "Thanh toán thành công!",
     "failed": "Thanh toán thất bại",
-    "secureNote": "Thông tin thanh toán của bạn được mã hóa và an toàn."
+    "secureNote": "Thông tin thanh toán của bạn được mã hóa và an toàn.",
+    "finalizePurchase": "Hoàn tất mua hàng",
+    "planLabel": "Gói",
+    "monthlySubscription": "Đăng ký hàng tháng",
+    "includedInPlan": "Bao gồm trong gói này",
+    "moreBenefits": "+{{count}} quyền lợi khác",
+    "showLess": "Thu gọn",
+    "securePayment": "Thanh toán an toàn",
+    "stripeSecurityNote": "Thanh toán của bạn được xử lý an toàn qua Stripe. Chúng tôi không lưu trữ thông tin thẻ của bạn.",
+    "iapSecurityNote": "Thanh toán được xử lý an toàn qua cửa hàng ứng dụng trên thiết bị của bạn. Chúng tôi không lưu trữ thông tin thanh toán của bạn.",
+    "payAmount": "Thanh toán ${{price}}",
+    "subscribe": "Đăng ký",
+    "noPaymentRequired": "Không cần thanh toán cho gói Miễn phí.",
+    "viewPlans": "Xem gói",
+    "demoModeSuccess": "Chế độ dùng thử: Gói {{plan}} đã được kích hoạt thành công!",
+    "demoModeFailed": "Kích hoạt gói trong chế độ dùng thử thất bại",
+    "redirectingToPayment": "Đang chuyển hướng đến trang thanh toán Stripe...",
+    "planActivated": "Gói {{plan}} đã được kích hoạt thành công!"
   },
   "planDetails": {
     "title": "Gói của Tôi",
@@ -560,5 +938,314 @@
     "noSupportRequests": "Không có yêu cầu hỗ trợ",
     "priority": "Ưu tiên",
     "status": "Trạng thái"
+  },
+  "onboarding": {
+    "slide1Title": "Mọi Thứ Được Bảo Vệ",
+    "slide1Subtitle": "An ninh gia đình đang hoạt động",
+    "slide2Title": "Giám Sát Thời Gian Thực",
+    "slide2Subtitle": "Trạng thái trực tiếp",
+    "slide3Title": "Lợi Ích Cao Cấp",
+    "slide3Subtitle": "Mở toàn quyền truy cập",
+    "slide4Title": "Hỗ Trợ 24/7",
+    "slide4Subtitle": "Luôn sẵn sàng"
+  },
+  "terms": {
+    "title": "Điều khoản dịch vụ",
+    "lastUpdated": "Cập nhật lần cuối: 4 tháng 7, 2026",
+    "welcome": "Chào mừng đến với Kizola Protect. Bằng cách sử dụng ứng dụng di động và dịch vụ của chúng tôi, bạn đồng ý với các Điều khoản dịch vụ này. Vui lòng đọc kỹ trước khi sử dụng.",
+    "section1Title": "1. Chấp nhận điều khoản",
+    "section1Body": "Bằng cách tạo tài khoản, truy cập hoặc sử dụng Kizola Protect (\"Dịch vụ\"), bạn đồng ý bị ràng buộc bởi các Điều khoản dịch vụ này. Nếu bạn không đồng ý, vui lòng không sử dụng Dịch vụ. Chúng tôi có thể cập nhật các điều khoản này bất kỳ lúc nào, và việc tiếp tục sử dụng đồng nghĩa với việc chấp nhận các điều khoản đã được cập nhật.",
+    "section2Title": "2. Đăng ký tài khoản",
+    "section2Body": "Bạn phải từ 18 tuổi trở lên để sử dụng Dịch vụ này. Bạn đồng ý cung cấp thông tin chính xác, hiện tại và đầy đủ trong quá trình đăng ký và cập nhật thông tin khi cần thiết. Bạn chịu trách nhiệm bảo mật thông tin đăng nhập tài khoản và tất cả các hoạt động thực hiện dưới tài khoản của mình.",
+    "section3Title": "3. Đăng ký và thanh toán",
+    "section3Body": "Một số tính năng yêu cầu đăng ký có phí. Phí đăng ký được tính hàng tháng trước và không được hoàn tiền trừ khi có quy định rõ ràng. Chúng tôiสง quyền thay đổi phí dịch vụ với thông báo trước 30 ngày. Việc hủy đăng ký sẽ có hiệu lực vào cuối kỳ thanh toán hiện tại.",
+    "section4Title": "4. Mô tả dịch vụ",
+    "section4Body": "Kizola Protect cung cấp thông tin, tài nguyên và kết nối đến các dịch vụ chuyên nghiệp bao gồm hướng dẫn pháp lý, hỗ trợ nhập cư, hỗ trợ chuẩn bị khai thuế, tài nguyên nhà ở và nội dung giáo dục. Chúng tôi không tư vấn pháp luật trực tiếp. Nền tảng của chúng tôi kết nối bạn với các chuyên gia bên thứ ba, những người chịu trách nhiệm độc lập về dịch vụ mà họ cung cấp.",
+    "section5Title": "5. Quy tắc ứng xử",
+    "section5Intro": "Bạn đồng ý không:",
+    "section5Bullet1": "Sử dụng Dịch vụ cho bất kỳ mục đích bất hợp pháp nào",
+    "section5Bullet2": "Giả mạo bất kỳ cá nhân hoặc tổ chức nào",
+    "section5Bullet3": "Can thiệp hoặc gây gián đoạn Dịch vụ",
+    "section5Bullet4": "Cố gắng truy cập trái phép vào hệ thống của chúng tôi",
+    "section5Bullet5": "Tải lên mã hoặc nội dung độc hại",
+    "section5Bullet6": "Lạm dụng hệ thống hỗ trợ hoặc quấy rối đội ngũ của chúng tôi",
+    "section5Bullet7": "Sử dụng Dịch vụ để vi phạm bất kỳ luật hoặc quy định nào hiện hành",
+    "section6Title": "6. Sở hữu trí tuệ",
+    "section6Body": "Dịch vụ và các nội dung, tính năng, chức năng gốc đều thuộc sở hữu của Kizola Protect và được bảo vệ bởi luật bản quyền, nhãn hiệu và sở hữu trí tuệ quốc tế. Bạn không được sửa đổi, sao chép, phân phối hoặc tạo các tác phẩm phái phát mà không có sự đồng ý bằng văn bản của chúng tôi.",
+    "section7Title": "7. Giới hạn trách nhiệm",
+    "section7Body": "Kizola Protect không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt,do hậu quả hoặc mang tính trừng phạt nào phát sinh từ việc bạn sử dụng Dịch vụ. Dịch vụ được cung cấp trên cơ sở \"NHƯ NGUYÊN\" và \"KHẢ DỤNG\" mà không có bất kỳ bảo đảm nào, dù rõ ràng hay ngầm định.",
+    "section8Title": "8. Dịch vụ bên thứ ba",
+    "section8Body": "Nền tảng của chúng tôi có thể liên kết hoặc tích hợp với các dịch vụ bên thứ ba. Chúng tôi không chịu trách nhiệm về nội dung, biện pháp bảo mật hoặc hành động của bất kỳ dịch vụ bên thứ ba nào. Các tương tác của bạn với các nhà cung cấp bên thứ ba được điều chỉnh theo các điều khoản và chính sách của riêng họ.",
+    "section9Title": "9. Chấm dứt",
+    "section9Body": "Chúng tôiสง quyền tạm ngưng hoặc chấm dứt tài khoản của bạn bất kỳ lúc nào vì vi phạm các điều khoản này, hoạt động lừa đảo hoặc hành vi có thể gây hại cho người dùng khác hoặc Dịch vụ. Bạn có thể hủy tài khoản bất kỳ lúc nào bằng cách liên hệ với đội ngũ hỗ trợ của chúng tôi.",
+    "section10Title": "10. Luật điều chỉnh",
+    "section10Body": "Các Điều khoản này được điều chỉnh và giải thích theo luật của bang Florida, Hoa Kỳ, không tính đến các quy định xung đột pháp luật. Mọi tranh chấp phát sinh từ các điều khoản này sẽ được giải quyết tại các tòa án của Miami-Dade County, Florida.",
+    "section11Title": "11. Liên hệ",
+    "section11Intro": "Nếu có câu hỏi về các Điều khoản này, vui lòng liên hệ với chúng tôi:",
+    "section11Email": "Email: support@kizolaprotect.com",
+    "section11Address": "Địa chỉ: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section11Phone": "Điện thoại: +1 (929) 609-7035"
+  },
+  "privacy": {
+    "title": "Chính sách bảo mật",
+    "lastUpdated": "Cập nhật lần cuối: 4 tháng 7, 2026",
+    "welcome": "Kizola Protect (\"chúng tôi\") cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng, tiết lộ và bảo vệ thông tin của bạn khi bạn sử dụng ứng dụng di động và dịch vụ của chúng tôi.",
+    "section1Title": "1. Thông tin chúng tôi thu thập",
+    "section1Intro": "Chúng tôi thu thập thông tin bạn cung cấp trực tiếp cho chúng tôi, bao gồm:",
+    "section1Bullet1": "Thông tin định danh cá nhân (tên, địa chỉ email, số điện thoại)",
+    "section1Bullet2": "Thông tin đăng nhập tài khoản (mật khẩu, dữ liệu xác thực)",
+    "section1Bullet3": "Thông tin hồ sơ (ảnh đại diện, tùy chọn, cài đặt ngôn ngữ)",
+    "section1Bullet4": "Thông tin thanh toán (xử lý an toàn thông qua các cổng thanh toán bên thứ ba)",
+    "section1Bullet5": "Tài liệu bạn tải lên để xác minh và hỗ trợ",
+    "section1Bullet6": "Các tin nhắn bạn gửi cho chúng tôi (yêu cầu hỗ trợ, tin nhắn)",
+    "section2Title": "2. Cách chúng tôi sử dụng thông tin của bạn",
+    "section2Intro": "Chúng tôi sử dụng thông tin thu thập được để:",
+    "section2Bullet1": "Tạo và duy trì tài khoản của bạn",
+    "section2Bullet2": "Cung cấp, vận hành và cải thiện dịch vụ của chúng tôi",
+    "section2Bullet3": "Xử lý giao dịch và gửi thông tin liên quan",
+    "section2Bullet4": "Gửi thông báo kỹ thuật, cập nhật, cảnh báo bảo mật và tin nhắn hỗ trợ",
+    "section2Bullet5": "Trả lời bình luận, câu hỏi và yêu cầu của bạn",
+    "section2Bullet6": "Theo dõi và phân tích xu hướng sử dụng cùng sở thích",
+    "section2Bullet7": "Phát hiện, ngăn chặn và giải quyết lạm dụng, gian lận hoặc vấn đề bảo mật",
+    "section2Bullet8": "Tuân thủ nghĩa vụ pháp lý",
+    "section3Title": "3. Chia sẻ thông tin",
+    "section3Intro": "Chúng tôi không bán thông tin cá nhân của bạn. Chúng tôi có thể chia sẻ thông tin của bạn với:",
+    "section3Bullet1": "Nhà cung cấp dịch vụ giúp chúng tôi vận hành nền tảng (lưu trữ, phân tích, xử lý thanh toán)",
+    "section3Bullet2": "Đối tác chuyên nghiệp (luật sư, chuyên gia nhập cư, tư vấn viên thuế) khi bạn yêu cầu dịch vụ của họ",
+    "section3Bullet3": "Cơ quan thực thi pháp luật hoặc quy trình pháp lý khi luật yêu cầu",
+    "section3Bullet4": "Bên thứ ba khi có sự đồng ý rõ ràng của bạn",
+    "section4Title": "4. Bảo mật dữ liệu",
+    "section4Body": "Chúng tôi thực hiện các biện pháp bảo mật tiêu chuẩn ngành bao gồm mã hóa dữ liệu khi lưu trữ và truyền tải, lưu trữ an toàn mã xác thực và kiểm tra bảo mật định kỳ. Tuy nhiên, không có phương pháp lưu trữ điện tử nào an toàn 100%, và chúng tôi không thể đảm bảo bảo mật tuyệt đối.",
+    "section5Title": "5. Quyền lợi của bạn",
+    "section5Intro": "Tùy thuộc vào thẩm quyền pháp lý của bạn, bạn có thể có quyền:",
+    "section5Bullet1": "Truy cập thông tin cá nhân mà chúng tôi lưu giữ về bạn",
+    "section5Bullet2": "Yêu cầu chỉnh sửa thông tin không chính xác",
+    "section5Bullet3": "Yêu cầu xóa thông tin của bạn (xem phần tuân thủ CCPA của chúng tôi)",
+    "section5Bullet4": "Từ chối một số hoạt động xử lý dữ liệu",
+    "section5Bullet5": "Thu hồi sự đồng ý bất kỳ lúc nào",
+    "section5Bullet6": "Nhận bản sao dữ liệu ở định dạng có thể di chuyển",
+    "section6Title": "6. Thông báo CCPA (Cư dân California)",
+    "section6Body": "Nếu bạn là cư dân California, Đạo luật Bảo mật Người tiêu dùng California (CCPA) cấp cho bạn các quyền cụ thể liên quan đến thông tin cá nhân của bạn. Bạn có quyền yêu cầu công khai các thông lệ thu thập dữ liệu của chúng tôi, yêu cầu xóa thông tin cá nhân của bạn và từ chối việc bán thông tin cá nhân của bạn. Chúng tôi không bán thông tin cá nhân của bạn. Để thực hiện quyền lợi, vui lòng liên hệ privacy@kizolaprotect.com hoặc sử dụng tùy chọn \"Xóa dữ liệu của tôi\" trong cài đặt hồ sơ.",
+    "section7Title": "7. Lưu trữ dữ liệu",
+    "section7Body": "Chúng tôi lưu giữ thông tin cá nhân của bạn trong thời gian tài khoản còn hoạt động hoặc khi cần thiết để cung cấp dịch vụ cho bạn. Chúng tôi sẽ lưu giữ và sử dụng thông tin của bạn khi cần thiết để tuân thủ nghĩa vụ pháp lý, giải quyết tranh chấp và thực thi các thỏa thuận.",
+    "section8Title": "8. Quyền riêng tư của trẻ em",
+    "section8Body": "Dịch vụ của chúng tôi không dành cho người dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em. Nếu chúng tôi phát hiện trẻ em đã cung cấp thông tin cá nhân, chúng tôi sẽ thực hiện các bước để xóa thông tin đó.",
+    "section9Title": "9. Thay đổi Chính sách này",
+    "section9Body": "Chúng tôi có thể cập nhật Chính sách Bảo mật này theo thời gian. Chúng tôi sẽ thông báo cho bạn về mọi thay đổi bằng cách đăng Chính sách mới trên trang này và cập nhật ngày \"Cập nhật lần cuối\". Bạn nên thường xuyên xem lại Chính sách này để theo dõi mọi thay đổi.",
+    "section10Title": "10. Liên hệ",
+    "section10Intro": "Nếu bạn có câu hỏi về Chính sách Bảo mật này, vui lòng liên hệ với chúng tôi:",
+    "section10Email": "Email: privacy@kizolaprotect.com",
+    "section10Address": "Địa chỉ: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section10Phone": "Điện thoại: +1 (929) 609-7035"
+  },
+  "notifWelcomeTitle": "Chào mừng đến với Kizola Protect! 🛡️",
+  "notifWelcomeMessage": "Tài khoản của bạn đã được tạo thành công. Khám phá các quyền lợi và bảo vệ tương lai của bạn.",
+  "notifCompleteProfileTitle": "Hoàn thành hồ sơ của bạn 📝",
+  "notifCompleteProfileMessage": "Thêm số điện thoại và giấy tờ để xác minh danh tính.",
+  "notifPlanActivatedTitle": "Gói đã được kích hoạt thành công! ✅",
+  "notifPlanActivatedMessage": "Gói đăng ký {{plan}} của bạn đã được xác nhận. Tận hưởng tất cả quyền lợi ngay bây giờ.",
+  "notifNow": "Bây giờ",
+  "notifHoursAgo": "{{count}}h trước",
+  "notifYesterday": "Hôm qua",
+  "noNotifications": "Không có thông báo",
+  "allCaughtUp": "Đã xem hết!",
+  "satisfaction": {
+    "questionTitle": "Kính gửi quý khách, liệu chúng tôi đã giải quyết được tình huống của bạn chưa?",
+    "questionSubtitle": "Phản hồi của bạn giúp chúng tôi cải thiện dịch vụ.",
+    "yesResolved": "Vâng, đã được giải quyết",
+    "noPersists": "Không, vấn đề vẫn còn",
+    "thankYouResolved": "Tuyệt vời! Cảm ơn phản hồi của bạn.",
+    "unresolvedSorry": "Chúng tôi rất tiếc vì vấn đề vẫn tiếp diễn.",
+    "whatNotResolved": "Điều gì chưa được giải quyết?",
+    "whatNotResolvedPlaceholder": "Mô tả những gì chưa được giải quyết...",
+    "additionalComments": "Bình luận bổ sung",
+    "additionalCommentsPlaceholder": "Chia sẻ bất kỳ bình luận nào khác...",
+    "submit": "Gửi đánh giá",
+    "skip": "Bỏ qua",
+    "doneTitle": "Cảm ơn phản hồi của bạn!",
+    "doneResolvedDesc": "Chúng tôi rất vui được giúp đỡ. Hẹn gặp lại bạn!",
+    "doneUnresolvedDesc": "Đội ngũ của chúng tôi sẽ theo dõi trường hợp của bạn trong thời gian tới.",
+    "close": "Đóng"
+  },
+  "offline": {
+    "banner": "Bạn đang ngoại tuyến. Một số tính năng có thể không khả dụng."
+  },
+  "notifLearning": {
+    "title": "Tài liệu học tập mới",
+    "message": "Xem các hướng dẫn mới của chúng tôi về khai báo thuế và nhập cư."
+  },
+  "housingForm": {
+    "requiredFieldsTitle": "Trường bắt buộc",
+    "requiredFieldsMessage": "Vui lòng điền tất cả các trường bắt buộc trước khi gửi.",
+    "notificationTitle": "Yêu cầu nhà ở đã nhận",
+    "notificationMessage": "Đội ngũ của chúng tôi sẽ xem xét yêu cầu và liên hệ bạn sớm.",
+    "submitError": "Gửi yêu cầu thất bại. Vui lòng thử lại.",
+    "submittedTitle": "Yêu cầu đã gửi!",
+    "submittedDesc": "Yêu cầu hỗ trợ nhà ở của bạn đã được nhận. Đội ngũ sẽ xem xét và liên hệ bạn sớm.",
+    "responseTime": "Thời gian phản hồi trung bình: 24-48 giờ",
+    "specialistsAvailable": "Chuyên gia nhà ở sẵn sàng hỗ trợ",
+    "backToHome": "Về trang chủ",
+    "submitNewRequest": "Gửi yêu cầu mới",
+    "title": "Hỗ trợ nhà ở",
+    "subtitle": "Chúng tôi giúp tìm nhà, chuyển đến nơi ở tạm thời, và hướng dẫn các chương trình nhà ở có sẵn.",
+    "formTitle": "📋 Điền biểu mẫu",
+    "requiredFieldsNote": "Các trường đánh dấu * là bắt buộc",
+    "fullNameLabel": "Họ và tên *",
+    "fullNamePlaceholder": "Họ và tên của bạn",
+    "emailLabel": "Email liên hệ",
+    "emailPlaceholder": "email@vi-du.com",
+    "phoneLabel": "Số điện thoại",
+    "phonePlaceholder": "(000) 000-0000",
+    "stateLabel": "Tiểu bang *",
+    "statePlaceholder": "vd: New York",
+    "cityLabel": "Thành phố *",
+    "cityPlaceholder": "vd: Brooklyn",
+    "currentSituationLabel": "Tình huống hiện tại *",
+    "selectSituation": "Chọn tình huống hiện tại của bạn",
+    "needTypeLabel": "Loại nhu cầu *",
+    "selectNeed": "Chọn loại hỗ trợ cần thiết",
+    "additionalNotesLabel": "Ghi chú bổ sung",
+    "additionalNotesPlaceholder": "Mô tả chi tiết hơn về tình huống của bạn. Bao gồm thông tin liên quan như số lượng thành viên trong gia đình, mức độ khẩn cấp, v.v.",
+    "submitButton": "Gửi yêu cầu nhà ở",
+    "privacyNote": "🔒 Thông tin của bạn được xử lý với tính bảo mật tuyệt đối và chỉ được sử dụng để cung cấp hỗ trợ được yêu cầu.",
+    "need_rental_search": "Tìm nhà cho thuê",
+    "need_shelter_move": "Chuyển đến nơi ở tạm thời (Residence Tiểu bang)",
+    "need_housing_program": "Hướng dẫn chương trình nhà ở",
+    "need_tenant_rights": "Quyền người thuê nhà",
+    "need_emergency": "Nhà ở khẩn cấp",
+    "need_other": "Tình huống khác",
+    "situation_homeless": "Vô gia cư / Nơi ở ngoài trời",
+    "situation_shelter": "Ở nơi tạm trú",
+    "situation_unstable": "Nhà ở không ổn định/không an toàn",
+    "situation_eviction": "Nguy cơ bị đuổi",
+    "situation_overcrowded": "Nhà ở quá đông đúc",
+    "situation_temporary": "Ở tạm với gia đình/bạn bè",
+    "situation_rental": "Đang thuê — tìm kiếm thay thế",
+    "situation_other": "Tình huống khác"
+  },
+  "financeForm": {
+    "requiredFieldsTitle": "Trường bắt buộc",
+    "requiredFieldsMessage": "Vui lòng chọn loại hỗ trợ, tiểu bang và mô tả tình huống.",
+    "insufficientDescriptionTitle": "Mô tả chưa đủ",
+    "insufficientDescriptionMessage": "Vui lòng cung cấp thêm chi tiết về tình huống (tối thiểu 20 ký tự).",
+    "notificationTitle": "Yêu cầu tài chính đã nhận",
+    "notificationMessage": "Đội ngũ chuyên gia tài chính sẽ xem xét trường hợp của bạn sớm.",
+    "submitError": "Gửi yêu cầu thất bại. Vui lòng thử lại.",
+    "submittedTitle": "Yêu cầu đã gửi!",
+    "submittedDesc": "Yêu cầu hỗ trợ tài chính của bạn đã được nhận. Chuyên gia sẽ xem xét và liên hệ bạn sớm.",
+    "specialistsAvailable": "Chuyên gia phúc lợi và thuế sẵn sàng hỗ trợ",
+    "responseTime": "Phản hồi trong 24-48 giờ làm việc",
+    "backToHome": "Về trang chủ",
+    "submitNewRequest": "Gửi yêu cầu mới",
+    "title": "Hỗ trợ tài chính",
+    "subtitle": "Hướng dẫn về phúc lợi tài chính, EBT, thẻ hỗ trợ tiểu bang, thuế và Khai báo thuế.",
+    "formTitle": "💼 Biểu mẫu đăng ký",
+    "helpTypeLabel": "Loại hỗ trợ cần thiết *",
+    "selectHelpType": "Chọn loại hỗ trợ",
+    "stateLabel": "Tiểu bang (Mỹ) *",
+    "selectState": "Chọn tiểu bang",
+    "descriptionLabel": "Mô tả tình huống *",
+    "descriptionPlaceholder": "Mô tả tình huống tài chính hiện tại. Ví dụ: 'Tôi cần giúp nộp đơn SNAP. Tôi là người nhập cư với thị thực lao động và có 3 con...'",
+    "characters": "ký tự",
+    "minChars": "(tối thiểu 20)",
+    "additionalInfoLabel": "Thông tin bổ sung",
+    "additionalInfoPlaceholder": "Tài liệu có sẵn, mức độ khẩn cấp, thông tin liên quan khác...",
+    "submitButton": "Gửi yêu cầu tài chính",
+    "privacyNote": "🔒 Thông tin tài chính của bạn được xử lý với tính bảo mật tuyệt đối.",
+    "type_ebt": "EBT / SNAP (Phiếu thực phẩm)",
+    "type_ebt_desc": "Hỗ trợ thực phẩm",
+    "type_state_benefits": "Phúc lợi tiểu bang (An sinh xã hội, Medicaid)",
+    "type_state_benefits_desc": "Chương trình hỗ trợ tiểu bang",
+    "type_tax_return": "Khai báo thuế (Hoàn thuế)",
+    "type_tax_return_desc": "Hỗ trợ khai báo và hoàn thuế",
+    "type_financial_planning": "Kế hoạch tài chính",
+    "type_financial_planning_desc": "Tổ chức và lên kế hoạch",
+    "type_debt_help": "Quản lý nợ",
+    "type_debt_help_desc": "Hướng dẫn về nợ và tín dụng",
+    "type_banking": "Mở tài khoản ngân hàng",
+    "type_banking_desc": "Hướng dẫn ngân hàng cho người nhập cư",
+    "type_itin": "ITIN (Mã số thuế)",
+    "type_itin_desc": "Lấy ITIN cho người không phải công dân",
+    "type_other": "Tình huống tài chính khác",
+    "type_other_desc": "Nhu cầu tài chính khác",
+    "quickInfo_ebt": "Phiếu thực phẩm",
+    "quickInfo_tax": "Hoàn thuế",
+    "quickInfo_benefits": "Hỗ trợ tiểu bang",
+    "quickInfo_itin": "Mã thuế",
+    "type_benefits": "Phúc lợi"
+  },
+  "resetPassword": {
+    "linkInvalid": "Liên kết không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu liên kết khôi phục mới.",
+    "invalidLink": "Liên kết không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu liên kết khôi phục mới.",
+    "fillAllFields": "Vui lòng điền tất cả các trường.",
+    "passwordsMismatch": "Mật khẩu không khớp. Vui lòng kiểm tra.",
+    "passwordMin8": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "minLengthError": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "weakPasswordTitle": "Mật khẩu yếu",
+    "weakPasswordMessage": "Vui lòng chọn mật khẩu mạnh hơn. Sử dụng chữ hoa, chữ thường, số và ký hiệu.",
+    "resetFailed": "Đặt lại mật khẩu thất bại. Liên kết có thể đã hết hạn. Vui lòng yêu cầu liên kết mới.",
+    "invalidLinkTitle": "Liên kết không hợp lệ",
+    "requestNewLink": "Yêu cầu liên kết mới",
+    "successTitle": "Đã đặt lại mật khẩu!",
+    "successDesc": "Mật khẩu của bạn đã được thay đổi thành công. Bây giờ bạn có thể đăng nhập với mật khẩu mới.",
+    "successMessage": "Mật khẩu của bạn đã được thay đổi thành công. Bây giờ bạn có thể đăng nhập với mật khẩu mới.",
+    "loginButton": "Đăng nhập",
+    "title": "Mật khẩu mới",
+    "newPasswordTitle": "Mật khẩu mới",
+    "subtitle": "Tạo mật khẩu mạnh và an toàn để bảo vệ tài khoản của bạn.",
+    "newPasswordSubtitle": "Tạo mật khẩu mạnh và an toàn để bảo vệ tài khoản của bạn.",
+    "securityNote": "Sử dụng ít nhất 8 ký tự với chữ cái, số và ký hiệu.",
+    "passwordPlaceholder": "Tối thiểu 8 ký tự",
+    "newPasswordPlaceholder": "Tối thiểu 8 ký tự",
+    "newPasswordLabel": "Mật khẩu mới",
+    "confirmPlaceholder": "Nhập lại mật khẩu mới",
+    "confirmPasswordPlaceholder": "Nhập lại mật khẩu mới",
+    "confirmPasswordLabel": "Xác nhận mật khẩu mới",
+    "passwordsMismatchError": "Mật khẩu không khớp",
+    "passwordsMismatchShort": "Mật khẩu không khớp",
+    "passwordsMatch": "✓ Mật khẩu khớp",
+    "verifyingLink": "Đang xác minh liên kết...",
+    "resetButton": "Đặt lại mật khẩu",
+    "submitButton": "Đặt lại mật khẩu",
+    "requestNewRecoveryLink": "Yêu cầu liên kết khôi phục mới",
+    "requestNewLinkBottom": "Yêu cầu liên kết khôi phục mới",
+    "weak": "Yếu",
+    "strengthWeak": "Yếu",
+    "fair": "Trung bình",
+    "strengthFair": "Trung bình",
+    "good": "Tốt",
+    "strengthGood": "Tốt",
+    "strong": "Mạnh",
+    "strengthStrong": "Mạnh"
+  },
+  "changePassword": {
+    "currentLabel": "Mật khẩu hiện tại",
+    "currentPassword": "Mật khẩu hiện tại",
+    "currentPlaceholder": "Nhập mật khẩu hiện tại",
+    "newLabel": "Mật khẩu mới",
+    "newPassword": "Mật khẩu mới",
+    "newPlaceholder": "Nhập mật khẩu mới",
+    "minChars": "Phải có ít nhất 6 ký tự",
+    "minLength": "Phải có ít nhất 6 ký tự",
+    "confirmLabel": "Xác nhận mật khẩu mới",
+    "confirmPassword": "Xác nhận mật khẩu mới",
+    "confirmPlaceholder": "Xác nhận mật khẩu mới"
+  },
+  "phoneInput": {
+    "placeholder": "Số điện thoại",
+    "selectCountry": "Chọn quốc gia",
+    "searchCountry": "Tìm quốc gia..."
+  },
+  "screens": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "phoneLogin": "Đăng nhập SĐT",
+    "forgotPassword": "Quên mật khẩu",
+    "resetPassword": "Đặt lại mật khẩu",
+    "onboarding": "Chào mừng",
+    "terms": "Điều khoản & Bảo mật"
+  },
+  "adminTab": {
+    "label": "Quản trị"
   }
 }

@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Modal } from 'react-native';
+import { useState, useMemo, useRef, useCallback } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Modal, Dimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -26,10 +26,30 @@ export default function PlanDetails() {
   const { t, i18n } = useTranslation();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const [showCancelModal, setShowCancelModal] = useState(false);
+  const carouselRef = useRef<ScrollView>(null);
+  const [activeCarouselIndex, setActiveCarouselIndex] = useState(0);
+  const { width: screenWidth } = Dimensions.get('window');
+  const CARD_WIDTH = screenWidth - 60;
+  const CARD_GAP = 12;
 
   const currentPlan = user?.plan && user.plan !== 'none' ? PLANS[user.plan as keyof typeof PLANS] : null;
   const nextBillingDate = new Date();
   nextBillingDate.setMonth(nextBillingDate.getMonth() + 1);
+
+  const planOrder = ['free', 'basic', 'pro', 'premium'] as const;
+  const currentLevel = currentPlan ? planOrder.indexOf(currentPlan.id as typeof planOrder[number]) : 0;
+  const upgradePlans = currentPlan
+    ? Object.entries(PLANS).filter(([planId]) => {
+        if (planId === currentPlan.id) return false;
+        if (currentLevel > 0 && planId === 'free') return false;
+        return true;
+      })
+    : [];
+
+  const handleCarouselScroll = useCallback((event: { nativeEvent: { contentOffset: { x: number } } }) => {
+    const index = Math.round(event.nativeEvent.contentOffset.x / (CARD_WIDTH + CARD_GAP));
+    setActiveCarouselIndex(index);
+  }, [CARD_WIDTH]);
 
   const handleUpgrade = (planId: 'basic' | 'pro' | 'premium') => {
     if (planId === user?.plan) {
@@ -177,19 +197,28 @@ export default function PlanDetails() {
         <View style={styles.upgradeSection}>
           <Text style={styles.sectionTitle}>{t('planDetails.otherPlans')}</Text>
           
-          {Object.entries(PLANS)
-            .filter(([planId]) => planId !== currentPlan.id)
-            .map(([planId, plan]) => (
+          <ScrollView
+            ref={carouselRef}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            snapToInterval={CARD_WIDTH + CARD_GAP}
+            snapToAlignment="center"
+            decelerationRate="fast"
+            contentContainerStyle={{ paddingRight: CARD_GAP }}
+            onMomentumScrollEnd={handleCarouselScroll}
+          >
+            {upgradePlans.map(([planId, plan], index) => (
               <TouchableOpacity
                 key={planId}
-                style={styles.upgradeCard}
+                style={[styles.upgradeCard, { width: CARD_WIDTH, marginRight: index < upgradePlans.length - 1 ? CARD_GAP : 0 }]}
                 onPress={() => handleUpgrade(planId as 'basic' | 'pro' | 'premium')}
               >
                 <LinearGradient 
                   colors={plan.color} 
                   style={styles.upgradeCardGradient}
                   start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
+                  end={{ x: 1, y: 1 }}
                 >
                   <View style={styles.upgradeContent}>
                     <View style={styles.upgradeIcon}>
@@ -213,6 +242,18 @@ export default function PlanDetails() {
                 </LinearGradient>
               </TouchableOpacity>
             ))}
+          </ScrollView>
+
+          {upgradePlans.length > 1 && (
+            <View style={styles.carouselDots}>
+              {upgradePlans.map((_, index) => (
+                <View
+                  key={index}
+                  style={[styles.dot, index === activeCarouselIndex && styles.dotActive]}
+                />
+              ))}
+            </View>
+          )}
         </View>
 
         {/* Billing Info */}
@@ -473,7 +514,6 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   upgradeCard: {
     borderRadius: 16,
     overflow: 'hidden',
-    marginBottom: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
@@ -481,15 +521,16 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     elevation: 4,
   },
   upgradeCardGradient: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: 'column',
     padding: 16,
+    minHeight: 120,
+    justifyContent: 'space-between',
   },
   upgradeContent: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 14,
+    marginBottom: 12,
   },
   upgradeIcon: {
     width: 44,
@@ -513,7 +554,7 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   upgradeAction: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
+    justifyContent: 'space-between',
     backgroundColor: 'rgba(255,255,255,0.2)',
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -523,6 +564,21 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     color: '#FFFFFF',
+  },
+  carouselDots: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 16,
+    gap: 6,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: theme.textMuted,
+  },
+  dotActive: {
+    backgroundColor: theme.primary,
   },
   billingSection: {
     marginTop: 24,

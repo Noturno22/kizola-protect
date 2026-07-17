@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { PLANS } from './supabase';
 import type { IapProduct, IapPurchase } from '@/services/iap/types';
 
@@ -222,8 +223,5 @@ export function isPaidPlan(planId: string): boolean {
 }
 
 export function getPaymentPlatform(): 'stripe' | 'iap' {
-  if (typeof navigator === 'undefined') return 'stripe';
-  const ua = navigator.userAgent.toLowerCase();
-  if (/iphone|ipad|ipod/.test(ua) || /android/.test(ua)) return 'iap';
   return 'stripe';
 }

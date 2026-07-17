@@ -1,13 +1,30 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { Animated } from 'react-native';
-import { useTheme, Theme } from '@/providers/ThemeProvider';
+import { useTheme } from '@/providers/ThemeProvider';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LEARNING_ARTICLES, LearningArticle } from '@/lib/supabase';
+import { LearningArticle } from '@/lib/supabase';
 import { CATEGORY_CONFIG } from '../constants/learnCategories';
 import { FileText } from 'lucide-react-native';
+import {
+  getLearningArticles,
+  getFeaturedArticles,
+  getPopularArticles,
+  getRecentArticles,
+  getRecommendedArticles,
+  searchArticles,
+  filterArticles,
+  getArticleCounts,
+  getAllCategories,
+  ArticleFilters,
+  ArticleSort,
+} from '@/lib/learning';
+import {
+  getBookmarks,
+  toggleBookmark,
+} from '@/lib/bookmarks';
 
 export function useLearn() {
   const router = useRouter();
@@ -21,9 +38,42 @@ export function useLearn() {
   );
   const [searchQuery, setSearchQuery] = useState('');
   const [readArticles, setReadArticles] = useState<string[]>([]);
+  const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
+  const [sort, setSort] = useState<ArticleSort>('recent');
+  const [filters, setFilters] = useState<ArticleFilters>({});
+  const [showFilters, setShowFilters] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
+
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scrollY = useRef(new Animated.Value(0)).current;
+
+  const allArticles = getLearningArticles();
+  const categories = getAllCategories();
+  const articleCounts = getArticleCounts();
+
+  const featuredArticle = getFeaturedArticles()[0];
+  const popularArticles = getPopularArticles(3);
+  const recentArticles = getRecentArticles(5);
+  const recommendedArticles = getRecommendedArticles(readArticles, 5);
+
+  const bookmarkArticles = bookmarkedIds
+    .map((id) => allArticles.find((a) => a.id === id))
+    .filter((a): a is LearningArticle => a !== undefined);
+
+  const filteredArticles = searchQuery
+    ? searchArticles(searchQuery)
+    : selectedCategory
+      ? allArticles.filter((a) => a.category === selectedCategory)
+      : filterArticles(filters, sort);
+
+  const displayArticles = selectedCategory || searchQuery
+    ? filteredArticles
+    : filterArticles(filters, sort);
+
+  const hasActiveFilters =
+    (filters.categories && filters.categories.length > 0) ||
+    (filters.difficulty && filters.difficulty.length > 0) ||
+    filters.readTime !== undefined;
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -34,15 +84,19 @@ export function useLearn() {
   }, [selectedCategory, searchQuery]);
 
   useEffect(() => {
-    loadReadStatus();
+    loadData();
   }, []);
 
-  const loadReadStatus = async () => {
+  const loadData = async () => {
     try {
-      const saved = await AsyncStorage.getItem('@kizola_read_articles');
-      if (saved) setReadArticles(JSON.parse(saved));
+      const [readData, bookmarkData] = await Promise.all([
+        AsyncStorage.getItem('@kizola_read_articles'),
+        getBookmarks(),
+      ]);
+      if (readData) setReadArticles(JSON.parse(readData));
+      setBookmarkedIds(bookmarkData);
     } catch (e) {
-      console.error('Error loading read status:', e);
+      console.error('Error loading learn data:', e);
     }
   };
 
@@ -56,20 +110,23 @@ export function useLearn() {
     }
   };
 
-  const filteredArticles = LEARNING_ARTICLES.filter((a) => {
-    const matchesCategory = !selectedCategory || a.category === selectedCategory;
-    const matchesSearch =
-      !searchQuery ||
-      t(a.title).toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t(a.description).toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const featuredArticle = LEARNING_ARTICLES[0];
-
-  const categories = Array.from(
-    new Set(LEARNING_ARTICLES.map((a) => a.category)),
+  const handleToggleBookmark = useCallback(
+    async (articleId: string) => {
+      const result = await toggleBookmark(articleId);
+      setBookmarkedIds(result.bookmarks);
+    },
+    [],
   );
+
+  const isArticleBookmarked = useCallback(
+    (articleId: string) => bookmarkedIds.includes(articleId),
+    [bookmarkedIds],
+  );
+
+  const clearFilters = useCallback(() => {
+    setFilters({});
+    setSelectedCategory(null);
+  }, []);
 
   const getCategoryConfig = (category: string) => {
     const config = CATEGORY_CONFIG[category];
@@ -80,7 +137,6 @@ export function useLearn() {
   };
 
   return {
-    // State
     selectedCategory,
     setSelectedCategory,
     selectedArticle,
@@ -91,21 +147,34 @@ export function useLearn() {
     readingProgress,
     setReadingProgress,
 
-    // Refs
+    bookmarkedIds,
+    sort,
+    setSort,
+    filters,
+    setFilters,
+    showFilters,
+    setShowFilters,
+
     fadeAnim,
     scrollY,
 
-    // Derived
-    filteredArticles,
+    filteredArticles: displayArticles,
     featuredArticle,
+    popularArticles,
+    recentArticles,
+    recommendedArticles,
+    bookmarkArticles,
     categories,
+    articleCounts,
 
-    // Handlers
-    loadReadStatus,
+    handleToggleBookmark,
+    isArticleBookmarked,
+    clearFilters,
+    hasActiveFilters,
+    loadReadStatus: loadData,
     markAsRead,
     getCategoryConfig,
 
-    // Context
     theme,
     isDark,
     t,
@@ -114,5 +183,4 @@ export function useLearn() {
   };
 }
 
-// Default export for Expo Router (this file is not a route)
 export default function _notARoute() { return null; }

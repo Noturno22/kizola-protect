@@ -14,6 +14,7 @@ export const [AuthProvider, useAuth] = createContextHook(() => {
     // State
     session: sessionManager.session,
     user: sessionManager.user,
+    setUser: sessionManager.setUser,
     loading: sessionManager.loading,
     isDemoMode: sessionManager.isDemoMode,
 
@@ -27,10 +28,12 @@ export const [AuthProvider, useAuth] = createContextHook(() => {
     signInWithOtp: authOps.signInWithOtp,
     verifyOtp: authOps.verifyOtp,
     signOut: authOps.signOut,
+    signInDemo: authOps.signInDemo,
 
     // Plan & avatar
     updateUserPlan: planManager.updateUserPlan,
     updateAvatar: planManager.updateAvatar,
+    fetchUserProfile: sessionManager.fetchUserProfile,
 
     // Security
     isLockedOut: security.isLockedOut,

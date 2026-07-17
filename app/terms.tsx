@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -10,173 +10,340 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Moon, Sun } from 'lucide-react-native';
+import { ArrowLeft, Moon, Sun, FileText, Shield } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 
-export default function TermsOfService() {
+type Tab = 'terms' | 'privacy';
+
+export default function TermsAndPrivacy() {
   const router = useRouter();
   const { t } = useTranslation();
   const { theme, isDark, toggleTheme } = useTheme();
+  const [activeTab, setActiveTab] = useState<Tab>('terms');
+
+  const renderContent = () => {
+    if (activeTab === 'terms') {
+      return (
+        <>
+          {/* ── Header ──────────────────────────────────────────────────────── */}
+          <View style={styles.header}>
+            <Text style={[styles.title, { color: theme.text }]}>{t('terms.title')}</Text>
+            <Text style={[styles.effectiveDate, { color: theme.textSecondary }]}>{t('terms.lastUpdated')}</Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.welcome')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section1Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section1Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section2Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section2Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section3Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section3Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section4Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section4Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section5Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section5Intro')}
+            </Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              • {t('terms.section5Bullet1')}{'\n'}
+              • {t('terms.section5Bullet2')}{'\n'}
+              • {t('terms.section5Bullet3')}{'\n'}
+              • {t('terms.section5Bullet4')}{'\n'}
+              • {t('terms.section5Bullet5')}{'\n'}
+              • {t('terms.section5Bullet6')}{'\n'}
+              • {t('terms.section5Bullet7')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section6Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section6Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section7Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section7Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section8Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section8Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section9Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section9Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section10Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section10Body')}
+            </Text>
+          </View>
+
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('terms.section11Title')}</Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section11Intro')}
+            </Text>
+            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+              {t('terms.section11Email')}{'\n'}
+              {t('terms.section11Address')}{'\n'}
+              {t('terms.section11Phone')}
+            </Text>
+          </View>
+        </>
+      );
+    }
+
+    return (
+      <>
+        {/* ── Header ──────────────────────────────────────────────────────── */}
+        <View style={styles.header}>
+          <Text style={[styles.title, { color: theme.text }]}>{t('privacy.title')}</Text>
+          <Text style={[styles.effectiveDate, { color: theme.textSecondary }]}>{t('privacy.lastUpdated')}</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.welcome')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section1Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section1Intro')}
+          </Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            • {t('privacy.section1Bullet1')}{'\n'}
+            • {t('privacy.section1Bullet2')}{'\n'}
+            • {t('privacy.section1Bullet3')}{'\n'}
+            • {t('privacy.section1Bullet4')}{'\n'}
+            • {t('privacy.section1Bullet5')}{'\n'}
+            • {t('privacy.section1Bullet6')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section2Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section2Intro')}
+          </Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            • {t('privacy.section2Bullet1')}{'\n'}
+            • {t('privacy.section2Bullet2')}{'\n'}
+            • {t('privacy.section2Bullet3')}{'\n'}
+            • {t('privacy.section2Bullet4')}{'\n'}
+            • {t('privacy.section2Bullet5')}{'\n'}
+            • {t('privacy.section2Bullet6')}{'\n'}
+            • {t('privacy.section2Bullet7')}{'\n'}
+            • {t('privacy.section2Bullet8')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section3Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section3Intro')}
+          </Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            • {t('privacy.section3Bullet1')}{'\n'}
+            • {t('privacy.section3Bullet2')}{'\n'}
+            • {t('privacy.section3Bullet3')}{'\n'}
+            • {t('privacy.section3Bullet4')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section4Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section4Body')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section5Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section5Intro')}
+          </Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            • {t('privacy.section5Bullet1')}{'\n'}
+            • {t('privacy.section5Bullet2')}{'\n'}
+            • {t('privacy.section5Bullet3')}{'\n'}
+            • {t('privacy.section5Bullet4')}{'\n'}
+            • {t('privacy.section5Bullet5')}{'\n'}
+            • {t('privacy.section5Bullet6')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section6Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section6Body')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section7Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section7Body')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section8Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section8Body')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section9Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section9Body')}
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">{t('privacy.section10Title')}</Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section10Intro')}
+          </Text>
+          <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
+            {t('privacy.section10Email')}{'\n'}
+            {t('privacy.section10Address')}{'\n'}
+            {t('privacy.section10Phone')}
+          </Text>
+        </View>
+      </>
+    );
+  };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={[styles.container, { backgroundColor: isDark ? '#060D1F' : '#EEF2FF' }]}>
       <StatusBar style={isDark ? 'light' : 'dark'} />
-      <LinearGradient
-        colors={isDark ? ['#060D1F', '#0A1628', '#0D1F3C'] : ['#EEF2FF', '#F0F9FF', '#FFFFFF']}
-        style={styles.gradient}
-      >
-        {/* ── Back Button ────────────────────────────────────────────────────── */}
-        <TouchableOpacity
-          onPress={() => router.back()}
-          style={[styles.backButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
-          accessibilityLabel={t('common.back') || 'Back'}
-          accessibilityRole="button"
-        >
-          <ArrowLeft size={20} color={theme.text} />
-        </TouchableOpacity>
 
-        {/* ── Theme Toggle ───────────────────────────────────────────────────── */}
-        <TouchableOpacity
-          onPress={toggleTheme}
-          style={[styles.themeToggle, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
-          activeOpacity={0.8}
-          accessibilityLabel={isDark ? (t('common.light') || 'Light') : (t('common.dark') || 'Dark')}
-          accessibilityRole="button"
-        >
-          <View style={[styles.themeToggleTrack, { backgroundColor: isDark ? '#1E3A5F' : '#DBEAFE' }]}>
-            <View
-              style={[styles.themeToggleThumb, { backgroundColor: isDark ? '#3B82F6' : '#2563EB', transform: [{ translateX: isDark ? 22 : 2 }] }]}
-            >
-              {isDark ? <Moon size={12} color="#FFFFFF" /> : <Sun size={12} color="#FFFFFF" />}
-            </View>
+      {/* ── Back Button ────────────────────────────────────────────────────── */}
+      <TouchableOpacity
+        onPress={() => router.back()}
+        style={[styles.backButton, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
+        accessibilityLabel={t('common.back') || 'Back'}
+        accessibilityRole="button"
+      >
+        <ArrowLeft size={20} color={theme.text} />
+      </TouchableOpacity>
+
+      {/* ── Theme Toggle ───────────────────────────────────────────────────── */}
+      <TouchableOpacity
+        onPress={toggleTheme}
+        style={[styles.themeToggle, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, shadowColor: '#000' }]}
+        activeOpacity={0.8}
+        accessibilityLabel={isDark ? (t('common.light') || 'Light') : (t('common.dark') || 'Dark')}
+        accessibilityRole="button"
+      >
+        <View style={[styles.themeToggleTrack, { backgroundColor: isDark ? '#1E3A5F' : '#DBEAFE' }]}>
+          <View
+            style={[styles.themeToggleThumb, { backgroundColor: isDark ? '#3B82F6' : '#2563EB', transform: [{ translateX: isDark ? 22 : 2 }] }]}
+          >
+            {isDark ? <Moon size={12} color="#FFFFFF" /> : <Sun size={12} color="#FFFFFF" />}
           </View>
-          <Text style={[styles.themeToggleLabel, { color: theme.textSecondary }]}>
-            {isDark ? (t('common.dark') || 'Dark') : (t('common.light') || 'Light')}
-          </Text>
-        </TouchableOpacity>
+        </View>
+        <Text style={[styles.themeToggleLabel, { color: theme.textSecondary }]}>
+          {isDark ? (t('common.dark') || 'Dark') : (t('common.light') || 'Light')}
+        </Text>
+      </TouchableOpacity>
+
+      <SafeAreaView style={styles.safeArea}>
+        <LinearGradient
+          colors={isDark ? ['#060D1F', '#0A1628', '#0D1F3C'] : ['#EEF2FF', '#F0F9FF', '#FFFFFF']}
+          style={StyleSheet.absoluteFill}
+        />
+
+        {/* ── Tab Bar ──────────────────────────────────────────────────────────── */}
+        <View style={[styles.tabBar, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
+          <TouchableOpacity
+            style={[styles.tab, activeTab === 'terms' && [styles.activeTab, { backgroundColor: theme.primary + '20' }]]}
+            onPress={() => setActiveTab('terms')}
+            activeOpacity={0.7}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeTab === 'terms' }}
+          >
+            <FileText size={16} color={activeTab === 'terms' ? theme.primary : theme.textSecondary} />
+            <Text style={[styles.tabLabel, { color: activeTab === 'terms' ? theme.primary : theme.textSecondary }]}>
+              {t('terms.title') || 'Terms of Service'}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.tab, activeTab === 'privacy' && [styles.activeTab, { backgroundColor: theme.primary + '20' }]]}
+            onPress={() => setActiveTab('privacy')}
+            activeOpacity={0.7}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeTab === 'privacy' }}
+          >
+            <Shield size={16} color={activeTab === 'privacy' ? theme.primary : theme.textSecondary} />
+            <Text style={[styles.tabLabel, { color: activeTab === 'privacy' ? theme.primary : theme.textSecondary }]}>
+              {t('privacy.title') || 'Privacy Policy'}
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          {/* ── Header ──────────────────────────────────────────────────────── */}
-          <View style={styles.header}>
-            <Text style={[styles.title, { color: theme.text }]}>Terms of Service</Text>
-            <Text style={[styles.effectiveDate, { color: theme.textSecondary }]}>Last Updated: July 4, 2026</Text>
-          </View>
-
-          {/* ── Content ─────────────────────────────────────────────────────── */}
-          <View style={styles.section}>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Welcome to Kizola Protect. By using our mobile application and services, you agree to these Terms of Service. Please read them carefully.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">1. Acceptance of Terms</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              By creating an account, accessing, or using Kizola Protect ("the Service"), you agree to be bound by these Terms of Service. If you do not agree, do not use the Service. We may update these terms at any time, and continued use constitutes acceptance of updated terms.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">2. Account Registration</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              You must be at least 18 years old to use this Service. You agree to provide accurate, current, and complete information during registration and to update such information as needed. You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">3. Subscription and Billing</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Certain features require a paid subscription. Subscription fees are billed monthly in advance and are non-refundable except as expressly stated. We reserve the right to change our fees with 30 days notice. Cancellation takes effect at the end of the current billing period.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">4. Services Description</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Kizola Protect provides information, resources, and connections to professional services including legal guidance, immigration assistance, tax preparation support, housing resources, and educational content. We do not provide legal advice directly. Our platform connects you with third-party professionals who are independently responsible for the services they provide.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">5. User Conduct</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              You agree not to:
-            </Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              • Use the Service for any unlawful purpose{'\n'}
-              • Impersonate any person or entity{'\n'}
-              • Interfere with or disrupt the Service{'\n'}
-              • Attempt to gain unauthorized access to our systems{'\n'}
-              • Upload malicious code or content{'\n'}
-              • Abuse the support system or harass our team{'\n'}
-              • Use the Service to violate any applicable laws or regulations
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">6. Intellectual Property</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              The Service and its original content, features, and functionality are owned by Kizola Protect and are protected by international copyright, trademark, and other intellectual property laws. You may not modify, reproduce, distribute, or create derivative works without our express written consent.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">7. Limitation of Liability</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Kizola Protect shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Service. The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">8. Third-Party Services</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Our platform may link to or integrate with third-party services. We are not responsible for the content, privacy practices, or actions of any third-party services. Your interactions with third-party providers are governed by their respective terms and policies.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">9. Termination</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              We reserve the right to suspend or terminate your account at any time for violation of these terms, fraudulent activity, or behavior that could harm other users or the Service. You may cancel your account at any time by contacting our support team.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">10. Governing Law</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              These Terms shall be governed by and construed in accordance with the laws of the State of Florida, United States, without regard to its conflict of law provisions. Any disputes arising from these terms shall be resolved in the courts of Miami-Dade County, Florida.
-            </Text>
-          </View>
-
-          <View style={styles.section}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]} accessibilityRole="header">11. Contact</Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              For questions about these Terms, please contact us:
-            </Text>
-            <Text style={[styles.bodyText, { color: theme.textSecondary }]}>
-              Email: support@kizolaprotect.com{'\n'}
-              Address: 1401 Brickell Ave, Suite 600, Miami, FL 33131{'\n'}
-              Phone: +1 (929) 609-7035
-            </Text>
-          </View>
+          {renderContent()}
         </ScrollView>
-      </LinearGradient>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  gradient: { flex: 1 },
+  safeArea: { flex: 1 },
 
   // ── Back Button ───────────────────────────────────────────────────────────
   backButton: {
     position: 'absolute',
-    top: 16,
+    top: 56,
     left: 20,
     zIndex: 10,
     width: 40,
@@ -194,7 +361,7 @@ const styles = StyleSheet.create({
   // ── Theme Toggle ──────────────────────────────────────────────────────────
   themeToggle: {
     position: 'absolute',
-    top: 16,
+    top: 56,
     right: 20,
     zIndex: 10,
     flexDirection: 'row',
@@ -224,10 +391,35 @@ const styles = StyleSheet.create({
   },
   themeToggleLabel: { fontSize: 13, fontWeight: '600' },
 
+  // ── Tab Bar ────────────────────────────────────────────────────────────────
+  tabBar: {
+    flexDirection: 'row',
+    marginTop: 100,
+    marginHorizontal: 20,
+    borderRadius: 14,
+    borderWidth: 1,
+    padding: 4,
+    gap: 4,
+  },
+  tab: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  activeTab: {},
+  tabLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+
   // ── Content ───────────────────────────────────────────────────────────────
   scrollContent: {
     paddingHorizontal: 24,
-    paddingTop: 80,
+    paddingTop: 24,
     paddingBottom: 40,
   },
   header: {

@@ -4,6 +4,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import NetInfo, { type NetInfoState } from '@react-native-community/netinfo';
 import { COLORS } from '@/constants/colors';
 
+import i18n from '@/lib/i18n';
+
 interface OfflineContextValue {
   isConnected: boolean;
 }
@@ -49,7 +51,7 @@ function OfflineBanner({ accessibilityLabel }: { accessibilityLabel: string }) {
       accessible
     >
       <Text style={styles.text}>
-        You are offline. Some features may be unavailable.
+        {i18n.t('offline.banner')}
       </Text>
     </View>
   );

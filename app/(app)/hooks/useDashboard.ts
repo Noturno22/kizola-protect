@@ -54,7 +54,7 @@ export function useDashboard() {
   const { user, isDemoMode } = useAuth();
   const { notifications, unreadCount } = useNotifications();
   const { theme, isDark, toggleTheme } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const hasPlan = user?.plan && user.plan !== 'none';
   const planInfo = hasPlan ? PLANS[user.plan as keyof typeof PLANS] : null;
@@ -123,7 +123,7 @@ export function useDashboard() {
   }
 
   const nextBillingText = (isActive && hasPlan && nextBillingObj)
-    ? nextBillingObj.toLocaleDateString('pt-AO', { month: 'long', day: 'numeric', year: 'numeric' })
+    ? nextBillingObj.toLocaleDateString(i18n.language === 'pt' ? 'pt-AO' : i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'es' || i18n.language === 'es-US' ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     : (t('common.notApplicable') === 'common.notApplicable' ? 'Não aplicável' : t('common.notApplicable'));
 
   let usagePercentage = 0;
@@ -153,10 +153,11 @@ export function useDashboard() {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const diffH = (Date.now() - date.getTime()) / 3600000;
-    if (diffH < 1) return 'Agora';
-    if (diffH < 24) return `${Math.floor(diffH)}h atrás`;
-    if (diffH < 48) return 'Ontem';
-    return date.toLocaleDateString('pt-AO', { month: 'short', day: 'numeric' });
+    const locale = i18n.language === 'pt' ? 'pt-AO' : i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'es' || i18n.language === 'es-US' ? 'es-ES' : 'en-US';
+    if (diffH < 1) return t('dashboard.justNow');
+    if (diffH < 24) return t('dashboard.hoursAgo', { count: Math.floor(diffH) });
+    if (diffH < 48) return t('dashboard.yesterday');
+    return date.toLocaleDateString(locale, { month: 'short', day: 'numeric' });
   };
 
   const quickActions = [

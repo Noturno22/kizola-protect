@@ -125,15 +125,15 @@ export default function AdminFinance() {
             </View>
             <View>
               <Text style={[styles.userName, { color: theme.text }]} numberOfLines={1}>
-                {item.nome || 'Membro Kizola'}
+                {item.nome || t('admin.casesMemberKizola')}
               </Text>
               <Text style={[styles.userEmail, { color: theme.textMuted }]} numberOfLines={1}>
-                {item.email || 'sem-email@kizola.com'}
+                {item.email || t('admin.noEmail')}
               </Text>
             </View>
           </View>
           <Text style={[styles.transAmount, { color: theme.text }]}>
-            ${price.toFixed(2)}<Text style={styles.periodText}>/mês</Text>
+            ${price.toFixed(2)}<Text style={styles.periodText}>{t('admin.perMonth')}</Text>
           </Text>
         </View>
 
@@ -145,7 +145,7 @@ export default function AdminFinance() {
           <View style={styles.dateInfo}>
             <Calendar size={12} color={theme.textMuted} />
             <Text style={[styles.dateText, { color: theme.textSecondary }]}>
-              Próximo: {new Date(item.next_billing_date).toLocaleDateString()}
+              {t('admin.proximo')}: {new Date(item.next_billing_date).toLocaleDateString()}
             </Text>
           </View>
         </View>
@@ -162,7 +162,7 @@ export default function AdminFinance() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Painel Financeiro</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.painelFinanceiro')}</Text>
         <TouchableOpacity onPress={fetchFinanceData} style={styles.backButton}>
           <RefreshCw size={20} color={theme.text} />
         </TouchableOpacity>
@@ -181,7 +181,7 @@ export default function AdminFinance() {
               <View style={[styles.iconWrapper, { backgroundColor: theme.accent + '15' }]}>
                 <TrendingUp size={24} color={theme.accent} />
               </View>
-              <Text style={[styles.metricLabel, { color: theme.textMuted }]}>Receita Recorrente Mensal (MRR)</Text>
+              <Text style={[styles.metricLabel, { color: theme.textMuted }]}>{t('admin.mrrLabel')}</Text>
               <Text style={[styles.metricValue, { color: theme.text }]}>${metrics.mrr.toFixed(2)}</Text>
             </View>
 
@@ -189,30 +189,30 @@ export default function AdminFinance() {
               <View style={[styles.iconWrapper, { backgroundColor: '#8B5CF6' + '15' }]}>
                 <DollarSign size={24} color="#8B5CF6" />
               </View>
-              <Text style={[styles.metricLabel, { color: theme.textMuted }]}>Receita Recorrente Anual (ARR)</Text>
+              <Text style={[styles.metricLabel, { color: theme.textMuted }]}>{t('admin.arrLabel')}</Text>
               <Text style={[styles.metricValue, { color: theme.text }]}>${metrics.arr.toFixed(2)}</Text>
             </View>
           </View>
 
           {/* Stripe Status & Subscriptions Info */}
           <View style={[styles.statusCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }]}>
-            <Text style={[styles.sectionTitle, { color: theme.text }]}>Status da Integração</Text>
+            <Text style={[styles.sectionTitle, { color: theme.text }]}>{t('admin.integracaoStatus')}</Text>
             
             <View style={styles.statusRow}>
               <View style={styles.statusLeft}>
                 <CreditCard size={20} color={theme.textSecondary} />
-                <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>Stripe Gateway</Text>
+                <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>{t('admin.stripeGateway')}</Text>
               </View>
               <View style={[styles.stripeBadge, { backgroundColor: theme.success + '15' }]}>
                 <CheckCircle size={14} color={theme.success} />
-                <Text style={[styles.stripeBadgeText, { color: theme.success }]}>LIGADO</Text>
+                <Text style={[styles.stripeBadgeText, { color: theme.success }]}>{t('admin.ligado')}</Text>
               </View>
             </View>
 
             <View style={styles.divider} />
 
             <View style={styles.planDistribution}>
-              <Text style={[styles.distTitle, { color: theme.textSecondary }]}>Distribuição por Plano (Ativos)</Text>
+              <Text style={[styles.distTitle, { color: theme.textSecondary }]}>{t('admin.distribuicaoPlano')}</Text>
               
               <View style={styles.distributionRow}>
                 <View style={styles.distItem}>
@@ -232,12 +232,12 @@ export default function AdminFinance() {
           </View>
 
           {/* Transactions List Header */}
-          <Text style={[styles.listTitle, { color: theme.text }]}>Membros com Assinatura Paga</Text>
+          <Text style={[styles.listTitle, { color: theme.text }]}>{t('admin.assinaturaPaga')}</Text>
 
           {subscriptions.length === 0 ? (
             <View style={[styles.emptyCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }]}>
               <AlertTriangle size={40} color={theme.textMuted} />
-              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>Nenhuma assinatura ativa no momento.</Text>
+              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t('admin.nenhumaAssinatura')}</Text>
             </View>
           ) : (
             <FlatList

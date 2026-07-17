@@ -15,6 +15,7 @@ interface CategoryChipsProps {
   fadeAnim: Animated.Value;
   theme: Theme;
   t: (key: string) => string;
+  articleCounts?: Record<string, number>;
 }
 
 export function CategoryChips({
@@ -25,8 +26,12 @@ export function CategoryChips({
   fadeAnim,
   theme,
   t,
+  articleCounts,
 }: CategoryChipsProps) {
   const styles = createStyles(theme);
+  const totalCount = articleCounts
+    ? Object.values(articleCounts).reduce((sum, c) => sum + c, 0)
+    : 0;
 
   return (
     <View style={styles.categoriesSection}>
@@ -57,6 +62,9 @@ export function CategoryChips({
             ]}
           >
             {t('learn.all')}
+            {totalCount > 0 ? (
+              <Text style={styles.chipCount}> ({totalCount})</Text>
+            ) : null}
           </Text>
         </TouchableOpacity>
         {categories.map((category) => {
@@ -87,6 +95,9 @@ export function CategoryChips({
                 ]}
               >
                 {config.label}
+                {articleCounts?.[category] ? (
+                  <Text style={styles.chipCount}> ({articleCounts[category]})</Text>
+                ) : null}
               </Text>
             </TouchableOpacity>
           );
@@ -135,6 +146,11 @@ const createStyles = (theme: Theme) =>
     },
     categoryChipTextActive: {
       color: '#FFFFFF',
+    },
+    chipCount: {
+      fontSize: 12,
+      fontWeight: '600',
+      color: theme.textMuted,
     },
   });
 

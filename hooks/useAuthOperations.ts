@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
+import { sendWelcomeNotificationIfNeeded } from '@/lib/notifications';
+import i18n from '@/lib/i18n';
 import { Session } from '@supabase/supabase-js';
 import * as SecureStore from 'expo-secure-store';
 import type { SessionManager } from './useSessionManager';
@@ -61,8 +63,8 @@ export function useAuthOperations(ctx: {
       try {
         await supabase.from('notifications').insert({
           user_id: authData.user.id,
-          title: 'Bem-vindo à Kizola Protect! 🛡️',
-          message: 'Sua conta foi criada com sucesso. Explore nossos benefícios e proteja seu futuro.',
+          title: i18n.t('notifWelcomeTitle'),
+          message: i18n.t('notifWelcomeMessage'),
           type: 'success',
           read: false,
         });
@@ -70,8 +72,8 @@ export function useAuthOperations(ctx: {
         if (!phone) {
           await supabase.from('notifications').insert({
             user_id: authData.user.id,
-            title: 'Complete seu perfil 📝',
-            message: 'Adicione seu número de telefone e documentos para verificação de identidade.',
+            title: i18n.t('notifCompleteProfileTitle'),
+            message: i18n.t('notifCompleteProfileMessage'),
             type: 'warning',
             read: false,
           });
@@ -231,11 +233,28 @@ export function useAuthOperations(ctx: {
       if (sessionData.session) {
         setSession(sessionData.session);
         await fetchUserProfile(sessionData.session.user.id);
+        sendWelcomeNotificationIfNeeded(sessionData.session.user.id);
       }
     }
 
     return { data: result, error: null };
   }, [setSession, setIsDemoMode, setUser, fetchUserProfile]);
 
-  return { signUp, signIn, signOut, signInWithOtp, verifyOtp };
+  const signInDemo = useCallback(async () => {
+    const demoUser = {
+      id: 'demo-' + Date.now(),
+      email: 'demo@kizola.app',
+      name: 'Utilizador de Demonstração',
+      plan: 'basic',
+      status: 'active',
+      role: 'user',
+      created_at: new Date().toISOString(),
+    };
+    await SecureStore.setItemAsync(DEMO_MODE_KEY, JSON.stringify(demoUser));
+    setUser(demoUser as any);
+    setIsDemoMode(true);
+    return { user: { id: demoUser.id } };
+  }, [setUser, setIsDemoMode]);
+
+  return { signUp, signIn, signOut, signInWithOtp, verifyOtp, signInDemo };
 }

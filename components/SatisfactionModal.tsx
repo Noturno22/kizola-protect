@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { CheckCircle2, XCircle, X, Star, MessageCircle } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
@@ -32,6 +33,7 @@ export function SatisfactionModal({
 }: SatisfactionModalProps) {
   const { user } = useAuth();
   const { theme, isDark } = useTheme();
+  const { t } = useTranslation();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   const [resolved, setResolved] = useState<boolean | null>(null);
@@ -138,10 +140,10 @@ export function SatisfactionModal({
               </View>
 
               <Text style={[styles.questionTitle, { color: theme.text }]}>
-                Caro cliente, conseguimos resolver a sua situação?
+                {t('satisfaction.questionTitle')}
               </Text>
               <Text style={[styles.questionSubtitle, { color: theme.textSecondary }]}>
-                A sua opinião ajuda-nos a melhorar o nosso serviço.
+                {t('satisfaction.questionSubtitle')}
               </Text>
 
               {/* Star Rating */}
@@ -183,7 +185,7 @@ export function SatisfactionModal({
                     end={{ x: 1, y: 0 }}
                   />
                   <CheckCircle2 size={22} color="#FFFFFF" />
-                  <Text style={styles.answerButtonText}>Sim, foi resolvido</Text>
+                  <Text style={styles.answerButtonText}>{t('satisfaction.yesResolved')}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -195,7 +197,7 @@ export function SatisfactionModal({
                   accessibilityHint="Report that your issue was not resolved"
                 >
                   <XCircle size={22} color="#EF4444" />
-                  <Text style={[styles.answerButtonText, { color: '#EF4444' }]}>Não, o problema persiste</Text>
+                  <Text style={[styles.answerButtonText, { color: '#EF4444' }]}>{t('satisfaction.noPersists')}</Text>
                 </TouchableOpacity>
               </View>
             </>
@@ -211,18 +213,18 @@ export function SatisfactionModal({
               </View>
 
               <Text style={[styles.questionTitle, { color: theme.text }]}>
-                {resolved ? 'Que bom! Obrigado pelo feedback.' : 'Lamentamos que o problema persista.'}
+                {resolved ? t('satisfaction.thankYouResolved') : t('satisfaction.unresolvedSorry')}
               </Text>
 
               {!resolved && (
                 <>
                   <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>
-                    O que não foi resolvido?
+                    {t('satisfaction.whatNotResolved')}
                   </Text>
                   <View style={[styles.textInput, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                     <TextInput
                       style={[styles.textInputField, { color: theme.text }]}
-                      placeholder="Descreva o que ainda não foi resolvido..."
+                      placeholder={t('satisfaction.whatNotResolvedPlaceholder')}
                       placeholderTextColor={theme.textMuted}
                       value={whatWasntResolved}
                       onChangeText={setWhatWasntResolved}
@@ -235,12 +237,12 @@ export function SatisfactionModal({
               )}
 
               <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>
-                Comentários adicionais
+                {t('satisfaction.additionalComments')}
               </Text>
               <View style={[styles.textInput, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                 <TextInput
                   style={[styles.textInputField, { color: theme.text }]}
-                  placeholder="Partilhe qualquer outro comentário..."
+                  placeholder={t('satisfaction.additionalCommentsPlaceholder')}
                   placeholderTextColor={theme.textMuted}
                   value={additionalComments}
                   onChangeText={setAdditionalComments}
@@ -266,7 +268,7 @@ export function SatisfactionModal({
                 {loading ? (
                   <ActivityIndicator color="#FFFFFF" />
                 ) : (
-                  <Text style={styles.submitBtnText}>Enviar Avaliação</Text>
+                  <Text style={styles.submitBtnText}>{t('satisfaction.submit')}</Text>
                 )}
               </TouchableOpacity>
 
@@ -277,7 +279,7 @@ export function SatisfactionModal({
                 accessibilityLabel="Skip feedback"
                 accessibilityHint="Close without submitting feedback"
               >
-                <Text style={[styles.skipBtnText, { color: theme.textMuted }]}>Saltar</Text>
+                <Text style={[styles.skipBtnText, { color: theme.textMuted }]}>{t('satisfaction.skip')}</Text>
               </TouchableOpacity>
             </>
           )}
@@ -288,12 +290,12 @@ export function SatisfactionModal({
                 <CheckCircle2 size={40} color="#22C55E" />
               </View>
               <Text style={[styles.questionTitle, { color: theme.text }]}>
-                Obrigado pelo seu feedback!
+                {t('satisfaction.doneTitle')}
               </Text>
               <Text style={[styles.questionSubtitle, { color: theme.textSecondary }]}>
                 {resolved
-                  ? 'Ficamos felizes por ter conseguido ajudar. Até breve!'
-                  : 'A nossa equipa vai dar seguimento ao seu caso em breve.'
+                  ? t('satisfaction.doneResolvedDesc')
+                  : t('satisfaction.doneUnresolvedDesc')
                 }
               </Text>
               <TouchableOpacity
@@ -308,7 +310,7 @@ export function SatisfactionModal({
                   colors={['#22C55E', '#16A34A']}
                   style={StyleSheet.absoluteFill}
                 />
-                <Text style={styles.submitBtnText}>Fechar</Text>
+                <Text style={styles.submitBtnText}>{t('satisfaction.close')}</Text>
               </TouchableOpacity>
             </>
           )}

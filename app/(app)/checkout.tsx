@@ -52,6 +52,7 @@ export default function Checkout() {
   }
 
   const [loading, setLoading] = useState(false);
+  const [showAllBenefits, setShowAllBenefits] = useState(false);
   const paymentPlatform = getPaymentPlatform();
 
   const getPlanGradient = (id: string) => {
@@ -92,7 +93,7 @@ export default function Checkout() {
         await updateUserPlan(plan.id as any);
         Alert.alert(
           t('common.success'),
-          `Modo de Teste: Plano ${plan.name} ativado com sucesso!`,
+          t('checkout.demoModeSuccess', { plan: plan.name }),
           [
             {
               text: t('common.done'),
@@ -103,7 +104,7 @@ export default function Checkout() {
           ]
         );
       } catch (error: any) {
-        Alert.alert(t('common.error'), error.message || 'Falha ao ativar plano em modo teste');
+        Alert.alert(t('common.error'), error.message || t('checkout.demoModeFailed'));
       } finally {
         setLoading(false);
       }
@@ -136,7 +137,7 @@ export default function Checkout() {
         await updateUserPlan(plan.id as any);
         Alert.alert(
           t('common.success'),
-          `Plano ${plan.name} ativado com sucesso!`,
+          t('checkout.planActivated', { plan: plan.name }),
           [{ text: t('common.done'), onPress: () => router.replace('/dashboard') }]
         );
         return;
@@ -147,12 +148,14 @@ export default function Checkout() {
         throw new Error('No payment link configured for this plan');
       }
 
+      await updateUserPlan(plan.id as any);
+
       const supported = await Linking.canOpenURL(paymentUrl);
       if (supported) {
         await Linking.openURL(paymentUrl);
         Alert.alert(
           t('common.success'),
-          `Redirecionando para a página de pagamento Stripe...`,
+          t('checkout.redirectingToPayment'),
           [
             {
               text: t('common.done'),
@@ -180,15 +183,15 @@ export default function Checkout() {
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
             <ArrowLeft size={24} color={theme.isDark ? "#FFFFFF" : theme.text} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Finalizar Compra</Text>
+          <Text style={styles.headerTitle}>{t('checkout.finalizePurchase')}</Text>
         </View>
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>No payment required for the Free plan.</Text>
+          <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>{t('checkout.noPaymentRequired')}</Text>
           <TouchableOpacity
             style={styles.backToPlansButton}
             onPress={() => router.push('/plans')}
           >
-            <Text style={styles.backToPlansText}>View Plans</Text>
+            <Text style={styles.backToPlansText}>{t('checkout.viewPlans')}</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -208,7 +211,7 @@ export default function Checkout() {
             <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
               <ArrowLeft size={24} color={theme.text} />
             </TouchableOpacity>
-            <Text style={styles.headerTitle}>Checkout</Text>
+            <Text style={styles.headerTitle}>{t('checkout.title')}</Text>
           </View>
 
           {/* Plan Card */}
@@ -231,8 +234,8 @@ export default function Checkout() {
             
             <View style={styles.planCardContent}>
               <View>
-                <Text style={styles.planName}>{plan.name} Plan</Text>
-                <Text style={styles.planPeriod}>Monthly subscription</Text>
+                <Text style={styles.planName}>{plan.name} {t('checkout.planLabel')}</Text>
+                <Text style={styles.planPeriod}>{t('checkout.monthlySubscription')}</Text>
               </View>
               <View style={styles.priceBlock}>
                 <Text style={styles.currency}>$</Text>
@@ -244,12 +247,13 @@ export default function Checkout() {
 
           {/* Features Summary */}
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Included in this plan</Text>
+            <Text style={styles.sectionTitle}>{t('checkout.includedInPlan')}</Text>
             <View style={styles.featuresCard}>
               {(() => {
                 const benefits = t(`plans.${plan.id}.benefits`, { returnObjects: true });
                 const benefitsArray = Array.isArray(benefits) ? benefits : [];
-                return benefitsArray.slice(0, 4).map((benefit: string, index: number) => (
+                const visibleBenefits = showAllBenefits ? benefitsArray : benefitsArray.slice(0, 4);
+                return visibleBenefits.map((benefit: string, index: number) => (
                   <View key={index} style={styles.featureRow}>
                     <View style={styles.featureCheck}>
                       <CheckCircle size={16} color={theme.success} />
@@ -262,13 +266,24 @@ export default function Checkout() {
                 const benefits = t(`plans.${plan.id}.benefits`, { returnObjects: true });
                 const benefitsArray = Array.isArray(benefits) ? benefits : [];
                 if (benefitsArray.length > 4) {
+                  const remaining = benefitsArray.length - 4;
                   return (
-                    <View style={styles.moreFeaturesRow}>
+                    <TouchableOpacity
+                      style={styles.moreFeaturesRow}
+                      onPress={() => setShowAllBenefits(!showAllBenefits)}
+                      activeOpacity={0.7}
+                    >
                       <Text style={styles.moreFeaturesText}>
-                        +{benefitsArray.length - 4} more benefits
+                        {showAllBenefits
+                          ? t('checkout.showLess')
+                          : t('checkout.moreBenefits', { count: remaining })}
                       </Text>
-                      <ChevronRight size={16} color={theme.textMuted} />
-                    </View>
+                      <ChevronRight
+                        size={16}
+                        color={theme.accent}
+                        style={showAllBenefits ? { transform: [{ rotate: '90deg' }] } : undefined}
+                      />
+                    </TouchableOpacity>
                   );
                 }
                 return null;
@@ -282,11 +297,11 @@ export default function Checkout() {
               <Lock size={20} color={theme.success} />
             </View>
             <View style={styles.securityContent}>
-              <Text style={styles.securityTitle}>Secure Payment</Text>
+              <Text style={styles.securityTitle}>{t('checkout.securePayment')}</Text>
               <Text style={styles.securityText}>
                 {paymentPlatform === 'iap'
-                  ? 'Payment is processed securely through your device\'s app store. We never store your payment details.'
-                  : 'Your payment is processed securely through Stripe. We never store your card details.'}
+                  ? t('checkout.iapSecurityNote')
+                  : t('checkout.stripeSecurityNote')}
               </Text>
             </View>
           </View>
@@ -314,7 +329,7 @@ export default function Checkout() {
                     <CreditCard size={20} color="#FFFFFF" />
                   )}
                   <Text style={styles.payButtonText}>
-                    {paymentPlatform === 'iap' ? 'Subscribe' : `Pay $${plan.price.toFixed(2)}`}
+                    {paymentPlatform === 'iap' ? t('checkout.subscribe') : t('checkout.payAmount', { price: plan.price.toFixed(2) })}
                   </Text>
                 </View>
               )}
@@ -327,7 +342,7 @@ export default function Checkout() {
             onPress={() => router.back()}
             disabled={loading}
           >
-            <Text style={styles.cancelButtonText}>Cancel</Text>
+            <Text style={styles.cancelButtonText}>{t('common.cancel')}</Text>
           </TouchableOpacity>
 
           <View style={styles.bottomSpacer} />
@@ -491,8 +506,10 @@ const createStyles = (theme: Theme) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingVertical: 12,
+      paddingVertical: 14,
       marginTop: 4,
+      borderTopWidth: 1,
+      borderTopColor: theme.cardBorderAlt,
     },
     moreFeaturesText: {
       fontSize: 14,

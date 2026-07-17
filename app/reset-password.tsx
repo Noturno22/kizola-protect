@@ -48,10 +48,10 @@ export default function ResetPassword() {
     const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     const isLong = password.length >= 8;
     const score = [hasLower, hasUpper, hasNumber, hasSpecial, isLong].filter(Boolean).length;
-    if (score <= 2) return { score, label: 'Fraca', color: '#EF4444' };
-    if (score <= 3) return { score, label: 'Média', color: '#F59E0B' };
-    if (score <= 4) return { score, label: 'Boa', color: '#10B981' };
-    return { score, label: 'Forte', color: '#22C55E' };
+    if (score <= 2) return { score, label: t('resetPassword.strengthWeak'), color: '#EF4444' };
+    if (score <= 3) return { score, label: t('resetPassword.strengthFair'), color: '#F59E0B' };
+    if (score <= 4) return { score, label: t('resetPassword.strengthGood'), color: '#10B981' };
+    return { score, label: t('resetPassword.strengthStrong'), color: '#22C55E' };
   })();
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function ResetPassword() {
       // 4. Timeout — if no session after 8s, show error
       setTimeout(() => {
         if (!cancelled) {
-          setSessionError('Link inválido ou expirado. Por favor, solicite um novo link de recuperação.');
+          setSessionError(t('resetPassword.invalidLink'));
         }
       }, 8000);
     };
@@ -142,24 +142,24 @@ export default function ResetPassword() {
 
   const handleResetPassword = async () => {
     if (!password.trim() || !confirmPassword.trim()) {
-      Alert.alert(t('common.error') || 'Erro', 'Por favor, preencha todos os campos.');
+      Alert.alert(t('common.error'), t('resetPassword.fillAllFields'));
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert(t('common.error') || 'Erro', 'As senhas não coincidem. Por favor, verifique.');
+      Alert.alert(t('common.error'), t('resetPassword.passwordsMismatch'));
       return;
     }
 
     if (password.length < 8) {
-      Alert.alert(t('common.error') || 'Erro', 'A senha deve ter pelo menos 8 caracteres.');
+      Alert.alert(t('common.error'), t('resetPassword.minLengthError'));
       return;
     }
 
     if (passwordStrength.score < 3) {
       Alert.alert(
-        'Senha Fraca',
-        'Por favor, escolha uma senha mais forte. Use letras maiúsculas, minúsculas, números e símbolos.'
+        t('resetPassword.weakPasswordTitle'),
+        t('resetPassword.weakPasswordMessage')
       );
       return;
     }
@@ -194,8 +194,8 @@ export default function ResetPassword() {
       setSuccess(true);
     } catch (error: any) {
       Alert.alert(
-        t('common.error') || 'Erro',
-        error.message || 'Falha ao redefinir senha. O link pode ter expirado. Solicite um novo link.'
+        t('common.error'),
+        error.message || t('resetPassword.resetFailed')
       );
     } finally {
       setLoading(false);
@@ -212,7 +212,7 @@ export default function ResetPassword() {
             <View style={[styles.errorIconWrapper]}>
               <AlertTriangle size={48} color="#EF4444" />
             </View>
-            <Text style={[styles.errorTitle, { color: theme.text }]}>Link Inválido</Text>
+            <Text style={[styles.errorTitle, { color: theme.text }]}>{t('resetPassword.invalidLinkTitle')}</Text>
             <Text style={[styles.errorDescription, { color: theme.textSecondary }]}>
               {sessionError}
             </Text>
@@ -225,7 +225,7 @@ export default function ResetPassword() {
                 colors={[theme.primary, theme.primary + 'DD']}
                 style={StyleSheet.absoluteFill}
               />
-              <Text style={styles.primaryButtonText}>Solicitar Novo Link</Text>
+              <Text style={styles.primaryButtonText}>{t('resetPassword.requestNewLink')}</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
@@ -243,9 +243,9 @@ export default function ResetPassword() {
             <View style={styles.successIconWrapper}>
               <CheckCircle2 size={64} color="#22C55E" />
             </View>
-            <Text style={[styles.successTitle, { color: theme.text }]}>Senha Redefinida!</Text>
+            <Text style={[styles.successTitle, { color: theme.text }]}>{t('resetPassword.successTitle')}</Text>
             <Text style={[styles.successDescription, { color: theme.textSecondary }]}>
-              A sua senha foi alterada com sucesso. Pode agora entrar na sua conta com a nova senha.
+              {t('resetPassword.successMessage')}
             </Text>
             <TouchableOpacity
               style={[styles.primaryButton, { overflow: 'hidden' }]}
@@ -256,7 +256,7 @@ export default function ResetPassword() {
                 colors={[theme.primary, theme.primary + 'DD']}
                 style={StyleSheet.absoluteFill}
               />
-              <Text style={styles.primaryButtonText}>Entrar na Conta</Text>
+              <Text style={styles.primaryButtonText}>{t('resetPassword.loginButton')}</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
@@ -291,27 +291,27 @@ export default function ResetPassword() {
 
             {/* Form Card */}
             <View style={[styles.formCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-              <Text style={[styles.title, { color: theme.text }]}>Nova Senha</Text>
+              <Text style={[styles.title, { color: theme.text }]}>{t('resetPassword.newPasswordTitle')}</Text>
               <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
-                Crie uma senha forte e segura para proteger a sua conta.
+                {t('resetPassword.newPasswordSubtitle')}
               </Text>
 
               {/* Security Note */}
               <View style={[styles.securityNote, { backgroundColor: theme.primary + '10', borderColor: theme.primary + '25' }]}>
                 <ShieldCheck size={16} color={theme.primary} />
                 <Text style={[styles.securityNoteText, { color: theme.primary }]}>
-                  Use pelo menos 8 caracteres com letras, números e símbolos.
+                  {t('resetPassword.securityNote')}
                 </Text>
               </View>
 
               {/* New Password */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Nova Senha</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('resetPassword.newPasswordLabel')}</Text>
                 <View style={[styles.inputContainer, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                   <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
-                    placeholder="Mínimo 8 caracteres"
+                    placeholder={t('resetPassword.newPasswordPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={password}
                     onChangeText={setPassword}
@@ -349,7 +349,7 @@ export default function ResetPassword() {
 
               {/* Confirm Password */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Confirmar Senha</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('resetPassword.confirmPasswordLabel')}</Text>
                 <View style={[
                   styles.inputContainer,
                   { backgroundColor: theme.background, borderColor: confirmPassword && confirmPassword !== password ? '#EF4444' : theme.cardBorderAlt }
@@ -357,7 +357,7 @@ export default function ResetPassword() {
                   <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
-                    placeholder="Repita a nova senha"
+                    placeholder={t('resetPassword.confirmPasswordPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
@@ -372,10 +372,10 @@ export default function ResetPassword() {
                   </TouchableOpacity>
                 </View>
                 {confirmPassword.length > 0 && confirmPassword !== password && (
-                  <Text style={styles.errorText}>As senhas não coincidem</Text>
+                  <Text style={styles.errorText}>{t('resetPassword.passwordsMismatchShort')}</Text>
                 )}
                 {confirmPassword.length > 0 && confirmPassword === password && (
-                  <Text style={styles.successText}>✓ As senhas coincidem</Text>
+                  <Text style={styles.successText}>✓ {t('resetPassword.passwordsMatch')}</Text>
                 )}
               </View>
 
@@ -398,12 +398,12 @@ export default function ResetPassword() {
                 ) : !sessionReady ? (
                   <>
                     <ActivityIndicator color="#FFFFFF" size="small" />
-                    <Text style={styles.submitButtonText}>A verificar link...</Text>
+                    <Text style={styles.submitButtonText}>{t('resetPassword.verifyingLink')}</Text>
                   </>
                 ) : (
                   <>
                     <Lock size={18} color="#FFFFFF" />
-                    <Text style={styles.submitButtonText}>Redefinir Senha</Text>
+                    <Text style={styles.submitButtonText}>{t('resetPassword.submitButton')}</Text>
                   </>
                 )}
               </TouchableOpacity>
@@ -414,7 +414,7 @@ export default function ResetPassword() {
                 activeOpacity={0.7}
               >
                 <Text style={[styles.backLinkText, { color: theme.textSecondary }]}>
-                  Solicitar novo link de recuperação
+                  {t('resetPassword.requestNewLinkBottom')}
                 </Text>
               </TouchableOpacity>
             </View>

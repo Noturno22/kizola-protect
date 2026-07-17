@@ -17,6 +17,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Search, ChevronDown, X } from 'lucide-react-native';
 import { useTheme } from '@/providers/ThemeProvider';
+import { useTranslation } from 'react-i18next';
 
 // ── Country data ───────────────────────────────────────────────────────────
 
@@ -57,6 +58,7 @@ interface PhoneInputProps {
 
 export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disabled }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]); // default Angola
   const [localNumber, setLocalNumber] = useState('');
@@ -120,7 +122,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
         {/* Phone number field */}
         <TextInput
           style={[styles.input, { color: theme.text }]}
-          placeholder="Phone number"
+          placeholder={t('phoneInput.placeholder')}
           placeholderTextColor={theme.textMuted}
           value={localNumber}
           onChangeText={handleNumberChange}
@@ -141,7 +143,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
           >
             {/* Header */}
             <View style={styles.modalHeader}>
-              <Text style={[styles.modalTitle, { color: theme.text }]}>Select Country</Text>
+              <Text style={[styles.modalTitle, { color: theme.text }]}>{t('phoneInput.selectCountry')}</Text>
               <TouchableOpacity
                 onPress={() => setModalVisible(false)}
                 accessibilityLabel="Close country picker"
@@ -161,7 +163,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({ value, onChange, disable
               <Search size={16} color={theme.textMuted} style={{ marginRight: 8 }} />
               <TextInput
                 style={[styles.searchInput, { color: theme.text }]}
-                placeholder="Search country…"
+                placeholder={t('phoneInput.searchCountry')}
                 placeholderTextColor={theme.textMuted}
                 value={search}
                 onChangeText={setSearch}

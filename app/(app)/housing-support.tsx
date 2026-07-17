@@ -32,26 +32,7 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useRouter } from 'expo-router';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
-
-const HOUSING_NEEDS = [
-  { id: 'rental_search', label: 'Procura de habitação para alugar', icon: '🏠' },
-  { id: 'shelter_move', label: 'Mudança para Shelter (Residência Estatal)', icon: '🏢' },
-  { id: 'housing_program', label: 'Orientação sobre programas habitacionais', icon: '📋' },
-  { id: 'tenant_rights', label: 'Direitos do inquilino', icon: '⚖️' },
-  { id: 'emergency', label: 'Habitação de emergência', icon: '🆘' },
-  { id: 'other', label: 'Outra situação', icon: '💬' },
-] as const;
-
-const CURRENT_SITUATIONS = [
-  { id: 'homeless', label: 'Sem habitação / Na rua' },
-  { id: 'shelter', label: 'Em abrigo temporário' },
-  { id: 'unstable', label: 'Habitação instável / Insegura' },
-  { id: 'eviction', label: 'Risco de despejo' },
-  { id: 'overcrowded', label: 'Habitação superlotada' },
-  { id: 'temporary', label: 'Alojamento temporário com familiares/amigos' },
-  { id: 'rental', label: 'Arrendamento atual — à procura de alternativas' },
-  { id: 'other', label: 'Outra situação' },
-] as const;
+import { useTranslation } from 'react-i18next';
 
 export default function HousingSupport() {
   const router = useRouter();
@@ -60,6 +41,27 @@ export default function HousingSupport() {
   const styles = useMemo(() => createStyles(theme), [theme]);
   const { addNotification } = useNotifications();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
+
+  const HOUSING_NEEDS = [
+    { id: 'rental_search', label: t('housingForm.need_rental_search'), icon: '🏠' },
+    { id: 'shelter_move', label: t('housingForm.need_shelter_move'), icon: '🏢' },
+    { id: 'housing_program', label: t('housingForm.need_housing_program'), icon: '📋' },
+    { id: 'tenant_rights', label: t('housingForm.need_tenant_rights'), icon: '⚖️' },
+    { id: 'emergency', label: t('housingForm.need_emergency'), icon: '🆘' },
+    { id: 'other', label: t('housingForm.need_other'), icon: '💬' },
+  ];
+
+  const CURRENT_SITUATIONS = [
+    { id: 'homeless', label: t('housingForm.situation_homeless') },
+    { id: 'shelter', label: t('housingForm.situation_shelter') },
+    { id: 'unstable', label: t('housingForm.situation_unstable') },
+    { id: 'eviction', label: t('housingForm.situation_eviction') },
+    { id: 'overcrowded', label: t('housingForm.situation_overcrowded') },
+    { id: 'temporary', label: t('housingForm.situation_temporary') },
+    { id: 'rental', label: t('housingForm.situation_rental') },
+    { id: 'other', label: t('housingForm.situation_other') },
+  ];
 
   const [nome, setNome] = useState(user?.name || '');
   const [email, setEmail] = useState(user?.email || '');
@@ -75,7 +77,7 @@ export default function HousingSupport() {
 
   const handleSubmit = async () => {
     if (!nome.trim() || !estado.trim() || !cidade.trim() || !situacaoAtual || !necessidade) {
-      Alert.alert('Campos Obrigatórios', 'Por favor, preencha todos os campos obrigatórios antes de submeter.');
+      Alert.alert(t('housingForm.requiredFieldsTitle'), t('housingForm.requiredFieldsMessage'));
       return;
     }
 
@@ -115,15 +117,15 @@ export default function HousingSupport() {
       }
 
       addNotification({
-        title: 'Pedido de Habitação Recebido',
-        message: 'A nossa equipa irá analisar o seu pedido e entrar em contacto em breve.',
+        title: t('housingForm.notificationTitle'),
+        message: t('housingForm.notificationMessage'),
         type: 'success',
         read: false,
       });
 
       setSubmitted(true);
     } catch (error: any) {
-      Alert.alert('Erro', error.message || 'Falha ao submeter o pedido. Por favor, tente novamente.');
+      Alert.alert(t('common.error'), error.message || t('housingForm.submitError'));
     } finally {
       setLoading(false);
     }
@@ -140,23 +142,23 @@ export default function HousingSupport() {
               <View style={styles.successIconWrapper}>
                 <CheckCircle2 size={64} color="#22C55E" />
               </View>
-              <Text style={[styles.successTitle, { color: theme.text }]}>Pedido Submetido!</Text>
+              <Text style={[styles.successTitle, { color: theme.text }]}>{t('housingForm.submittedTitle')}</Text>
               <Text style={[styles.successDescription, { color: theme.textSecondary }]}>
-                O seu pedido de apoio à habitação foi recebido. A nossa equipa vai analisá-lo e entrar em contacto em breve.
+                {t('housingForm.submittedDesc')}
               </Text>
 
               <View style={[styles.infoCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
                 <View style={styles.infoRow}>
                   <Sparkles size={18} color={theme.accent} />
                   <Text style={[styles.infoText, { color: theme.text }]}>
-                    Tempo médio de resposta: 24-48 horas
+                    {t('housingForm.responseTime')}
                   </Text>
                 </View>
                 <View style={[styles.infoDivider, { backgroundColor: theme.cardBorderAlt }]} />
                 <View style={styles.infoRow}>
                   <Users size={18} color={theme.accent} />
                   <Text style={[styles.infoText, { color: theme.text }]}>
-                    Especialistas em habitação disponíveis
+                    {t('housingForm.specialistsAvailable')}
                   </Text>
                 </View>
               </View>
@@ -170,7 +172,7 @@ export default function HousingSupport() {
                   colors={[theme.primary, theme.primary + 'DD']}
                   style={StyleSheet.absoluteFill}
                 />
-                <Text style={styles.primaryButtonText}>Voltar ao Início</Text>
+                <Text style={styles.primaryButtonText}>{t('housingForm.backToHome')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -179,7 +181,7 @@ export default function HousingSupport() {
                 activeOpacity={0.7}
               >
                 <Text style={[styles.secondaryButtonText, { color: theme.textSecondary }]}>
-                  Submeter Novo Pedido
+                  {t('housingForm.submitNewRequest')}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -213,7 +215,7 @@ export default function HousingSupport() {
             {/* Back Button */}
             <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
               <ArrowLeft size={20} color={isDark ? '#FFFFFF' : theme.text} />
-              <Text style={[styles.backButtonText, { color: isDark ? '#FFFFFF' : theme.text }]}>Voltar</Text>
+              <Text style={[styles.backButtonText, { color: isDark ? '#FFFFFF' : theme.text }]}>{t('common.back')}</Text>
             </TouchableOpacity>
 
             {/* Header */}
@@ -222,27 +224,27 @@ export default function HousingSupport() {
                 <Home size={36} color={isDark ? '#FFFFFF' : theme.accent} />
               </View>
               <Text style={[styles.headerTitle, { color: isDark ? '#FFFFFF' : theme.text }]}>
-                Apoio à Habitação
+                {t('housingForm.title')}
               </Text>
               <Text style={[styles.headerSubtitle, { color: isDark ? 'rgba(255,255,255,0.8)' : theme.textSecondary }]}>
-                Apoiamos na procura de habitação, mudança para Shelter e orientação sobre programas habitacionais disponíveis.
+                {t('housingForm.subtitle')}
               </Text>
             </View>
 
             {/* Form */}
             <View style={[styles.formCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-              <Text style={[styles.formTitle, { color: theme.text }]}>📋 Preencha o Formulário</Text>
+              <Text style={[styles.formTitle, { color: theme.text }]}>{t('housingForm.formTitle')}</Text>
               <Text style={[styles.formSubtitle, { color: theme.textSecondary }]}>
-                Campos marcados com * são obrigatórios
+                {t('housingForm.requiredFieldsNote')}
               </Text>
 
               {/* Nome */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Nome Completo *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.fullNameLabel')}</Text>
                 <View style={[styles.inputWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
-                    placeholder="O seu nome completo"
+                    placeholder={t('housingForm.fullNamePlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={nome}
                     onChangeText={setNome}
@@ -252,11 +254,11 @@ export default function HousingSupport() {
 
               {/* Email */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Email de Contacto</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.emailLabel')}</Text>
                 <View style={[styles.inputWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                   <TextInput
                     style={[styles.input, { color: theme.text }]}
-                    placeholder="email@exemplo.com"
+                    placeholder={t('housingForm.emailPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={email}
                     onChangeText={setEmail}
@@ -269,12 +271,12 @@ export default function HousingSupport() {
               {/* Estado e Cidade (Row) */}
               <View style={styles.rowInputs}>
                 <View style={[styles.inputGroup, { flex: 1, marginRight: 8 }]}>
-                  <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Estado *</Text>
+                  <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.stateLabel')}</Text>
                   <View style={[styles.inputWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                     <MapPin size={16} color={theme.textMuted} style={{ marginRight: 8 }} />
                     <TextInput
                       style={[styles.input, { color: theme.text }]}
-                      placeholder="Ex: New York"
+                      placeholder={t('housingForm.statePlaceholder')}
                       placeholderTextColor={theme.textMuted}
                       value={estado}
                       onChangeText={setEstado}
@@ -283,12 +285,12 @@ export default function HousingSupport() {
                 </View>
 
                 <View style={[styles.inputGroup, { flex: 1, marginLeft: 8 }]}>
-                  <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Cidade *</Text>
+                  <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.cityLabel')}</Text>
                   <View style={[styles.inputWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                     <Building2 size={16} color={theme.textMuted} style={{ marginRight: 8 }} />
                     <TextInput
                       style={[styles.input, { color: theme.text }]}
-                      placeholder="Ex: Brooklyn"
+                      placeholder={t('housingForm.cityPlaceholder')}
                       placeholderTextColor={theme.textMuted}
                       value={cidade}
                       onChangeText={setCidade}
@@ -299,7 +301,7 @@ export default function HousingSupport() {
 
               {/* Situação Atual — Dropdown */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Situação Atual *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.currentSituationLabel')}</Text>
                 <TouchableOpacity
                   style={[styles.dropdownButton, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}
                   onPress={() => { setShowSituationDropdown(!showSituationDropdown); setShowNeedDropdown(false); }}
@@ -311,7 +313,7 @@ export default function HousingSupport() {
                   ]}>
                     {situacaoAtual
                       ? CURRENT_SITUATIONS.find(s => s.id === situacaoAtual)?.label
-                      : 'Selecione a sua situação atual'
+                      : t('housingForm.selectSituation')
                     }
                   </Text>
                   <ChevronDown size={18} color={theme.textMuted} style={{ transform: [{ rotate: showSituationDropdown ? '180deg' : '0deg' }] }} />
@@ -336,7 +338,7 @@ export default function HousingSupport() {
 
               {/* Necessidade — Dropdown */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Tipo de Necessidade *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.needTypeLabel')}</Text>
                 <TouchableOpacity
                   style={[styles.dropdownButton, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}
                   onPress={() => { setShowNeedDropdown(!showNeedDropdown); setShowSituationDropdown(false); }}
@@ -348,7 +350,7 @@ export default function HousingSupport() {
                   ]}>
                     {necessidade
                       ? HOUSING_NEEDS.find(n => n.id === necessidade)?.label
-                      : 'Selecione o tipo de ajuda necessária'
+                      : t('housingForm.selectNeed')
                     }
                   </Text>
                   <ChevronDown size={18} color={theme.textMuted} style={{ transform: [{ rotate: showNeedDropdown ? '180deg' : '0deg' }] }} />
@@ -374,12 +376,12 @@ export default function HousingSupport() {
 
               {/* Observações */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Observações Adicionais</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('housingForm.additionalNotesLabel')}</Text>
                 <View style={[styles.inputWrapper, styles.textAreaWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                   <FileText size={16} color={theme.textMuted} style={{ alignSelf: 'flex-start', marginTop: 2, marginRight: 8 }} />
                   <TextInput
                     style={[styles.input, styles.textArea, { color: theme.text }]}
-                    placeholder="Descreva a sua situação com mais detalhes. Inclua informações relevantes como número de pessoas no agregado familiar, urgência, etc."
+                    placeholder={t('housingForm.additionalNotesPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={observacoes}
                     onChangeText={setObservacoes}
@@ -408,7 +410,7 @@ export default function HousingSupport() {
                 ) : (
                   <>
                     <Send size={18} color="#FFFFFF" />
-                    <Text style={styles.submitButtonText}>Submeter Pedido de Habitação</Text>
+                    <Text style={styles.submitButtonText}>{t('housingForm.submitButton')}</Text>
                   </>
                 )}
               </TouchableOpacity>
@@ -416,7 +418,7 @@ export default function HousingSupport() {
               {/* Info Note */}
               <View style={[styles.privacyNote, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                 <Text style={[styles.privacyNoteText, { color: theme.textSecondary }]}>
-                  🔒 As suas informações são tratadas com total confidencialidade e utilizadas apenas para prestar o apoio solicitado.
+                  {t('housingForm.privacyNote')}
                 </Text>
               </View>
             </View>

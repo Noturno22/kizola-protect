@@ -414,10 +414,12 @@ const createStyles = (theme: any) => {
       justifyContent: 'center',
       gap: 8,
       paddingVertical: 10,
+      paddingHorizontal: 12,
       borderRadius: 12,
     },
     activeTab: {
       backgroundColor: theme.background,
+      marginHorizontal: 4,
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.05,

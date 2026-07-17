@@ -1,8 +1,6 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/providers/AuthProvider';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { useTheme, Theme } from '@/providers/ThemeProvider';
 import * as SecureStore from 'expo-secure-store';
 
 export const APP_ONBOARDING_COMPLETED_KEY = 'kizola_app_onboarding_completed_v1';
@@ -10,8 +8,6 @@ export const APP_ONBOARDING_COMPLETED_KEY = 'kizola_app_onboarding_completed_v1'
 export default function Index() {
   const router = useRouter();
   const { session, user, loading: authLoading, isDemoMode } = useAuth();
-  const { theme } = useTheme();
-  const styles = useMemo(() => createStyles(theme), [theme]);
   const [onboardingChecked, setOnboardingChecked] = useState(false);
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
 
@@ -24,16 +20,14 @@ export default function Index() {
           setHasCompletedOnboarding(!!completed);
           setOnboardingChecked(true);
         }
-      } catch (error) {
+      } catch {
         if (isMounted) {
           setHasCompletedOnboarding(false);
           setOnboardingChecked(true);
         }
       }
     })();
-    return () => {
-      isMounted = false;
-    };
+    return () => { isMounted = false; };
   }, []);
 
   useEffect(() => {
@@ -51,18 +45,6 @@ export default function Index() {
     }
   }, [authLoading, onboardingChecked, hasCompletedOnboarding, session, user, isDemoMode, router]);
 
-  return (
-    <View style={styles.container}>
-      <ActivityIndicator size="large" color={theme.primary} />
-    </View>
-  );
+  // Splash covers the loading period — no spinner needed
+  return null;
 }
-
-const createStyles = (theme: Theme) => StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.background,
-  },
-});

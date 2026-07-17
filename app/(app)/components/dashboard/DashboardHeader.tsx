@@ -73,7 +73,7 @@ export function DashboardHeader({
               </View>
             )}
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBtn}>
+          <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/terms')}>
             <Shield size={20} color={theme.text} />
           </TouchableOpacity>
         </View>

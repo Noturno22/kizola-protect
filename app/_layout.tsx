@@ -1,33 +1,36 @@
 import 'react-native-gesture-handler';
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import '@/lib/i18n';
-import { LogBox } from 'react-native';
-import { AuthProvider } from '@/providers/AuthProvider'; 
+import { LogBox, StyleSheet, View } from 'react-native';
+import { AuthProvider } from '@/providers/AuthProvider';
 import { NotificationProvider } from '@/providers/NotificationProvider';
 import { OfflineProvider } from '@/providers/OfflineProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
-import { Stack, Redirect } from 'expo-router';
+import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthRedirect } from '@/components/AuthRedirect';
+import { AuthReadyMarker } from '@/components/AuthReadyMarker';
 import { initSentry } from '@/services/monitoring/sentry';
 import * as SplashScreen from 'expo-splash-screen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SplashScreen as PremiumSplash } from '@/src/components/Splash/SplashScreen';
+import i18n from '@/lib/i18n';
+import { preloadAllTranslations } from '@/lib/i18n';
 
-SplashScreen.preventAutoHideAsync();
+// Preload heavy modules while splash is visible so they render instantly later
+import '@expo/vector-icons';
+
+SplashScreen.hideAsync().catch(() => {});
+
 initSentry();
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
-  const fontsLoaded = true;
-  const fontError = null;
-  useEffect(() => {
-    if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync();
-    }
-  }, []);
+  const [authReady, setAuthReady] = useState(false);
+  const [splashDismissed, setSplashDismissed] = useState(false);
 
   useEffect(() => {
     if (!__DEV__) return;
@@ -50,52 +53,62 @@ export default function RootLayout() {
     };
   }, []);
 
-  if (!fontsLoaded && !fontError) return null;
+  const handlePremiumSplashComplete = useCallback(() => {
+    setSplashDismissed(true);
+    preloadAllTranslations();
+  }, []);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider>
-            <AuthProvider>
-              <NotificationProvider>
-                <OfflineProvider>
-                  <AuthRedirect />
-                  <Stack
-                    screenOptions={{
-                      headerShown: false,
-                      contentStyle: { backgroundColor: '#0D1B2E' },
-                    }}
-                  >
-                    {/* Public auth screens (fora do grupo (app)) */}
-                    <Stack.Screen name="login" options={{ title: 'Login' }} />
-                    <Stack.Screen name="register" options={{ title: 'Register' }} />
-                    <Stack.Screen name="login-phone" options={{ title: 'Phone Login' }} />
-                    <Stack.Screen name="forgot-password" options={{ title: 'Forgot Password' }} />
-                    <Stack.Screen name="reset-password" options={{ title: 'Reset Password' }} />
-                    <Stack.Screen name="verify" options={{ title: 'Verify' }} />
-                    <Stack.Screen name="onboarding" options={{ title: 'Onboarding' }} />
-                    <Stack.Screen name="terms" options={{ title: 'Terms' }} />
-                    <Stack.Screen name="privacy" options={{ title: 'Privacy' }} />
+    <View style={styles.root}>
+      {/* App content — always rendered so providers init immediately */}
+      <GestureHandlerRootView style={styles.flex}>
+        <SafeAreaProvider>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider>
+              <AuthProvider>
+                <NotificationProvider>
+                  <OfflineProvider>
+                    <AuthReadyMarker onReady={() => setAuthReady(true)} />
+                    <AuthRedirect />
+                    <Stack
+                      screenOptions={{
+                        headerShown: false,
+                        contentStyle: { backgroundColor: '#0D1B2E' },
+                      }}
+                    >
+                      <Stack.Screen name="login" options={{ title: i18n.t('screens.login') }} />
+                      <Stack.Screen name="register" options={{ title: i18n.t('screens.register') }} />
+                      <Stack.Screen name="login-phone" options={{ title: i18n.t('screens.phoneLogin') }} />
+                      <Stack.Screen name="forgot-password" options={{ title: i18n.t('screens.forgotPassword') }} />
+                      <Stack.Screen name="reset-password" options={{ title: i18n.t('screens.resetPassword') }} />
+                      <Stack.Screen name="onboarding" options={{ title: i18n.t('screens.onboarding') }} />
+                      <Stack.Screen name="terms" options={{ title: i18n.t('screens.termsPrivacy') }} />
+                      <Stack.Screen name="(app)" options={{ headerShown: false }} />
+                      <Stack.Screen name="index" options={{ headerShown: false }} />
+                    </Stack>
+                    <StatusBar style="auto" />
+                  </OfflineProvider>
+                </NotificationProvider>
+              </AuthProvider>
+            </ThemeProvider>
+          </QueryClientProvider>
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
 
-                    {/*
-                      O grupo (app) tem o seu próprio _layout.tsx com Tabs.
-                      NÃO registar aqui os screens individuais (dashboard, learn, etc.)
-                      — esses pertencem ao Tabs navigator dentro de (app)/_layout.tsx.
-                      Registar apenas o grupo como um todo.
-                    */}
-                    <Stack.Screen name="(app)" options={{ headerShown: false }} />
-
-                    {/* index screen (redireciona para login ou (app)) */}
-                    <Stack.Screen name="index" options={{ headerShown: false }} />
-                  </Stack>
-                  <StatusBar style="auto" />
-                </OfflineProvider>
-              </NotificationProvider>
-            </AuthProvider>
-          </ThemeProvider>
-        </QueryClientProvider>
-      </SafeAreaProvider>
-    </GestureHandlerRootView>
+      {/* Premium splash overlay — stays on top until auth ready + fade complete */}
+      {!splashDismissed && (
+        <View style={StyleSheet.absoluteFill} pointerEvents="none">
+          <PremiumSplash
+            readyToDismiss={authReady}
+            onAnimationComplete={handlePremiumSplashComplete}
+          />
+        </View>
+      )}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: { flex: 1 },
+  flex: { flex: 1 },
+});

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, RefreshControl, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = {
   children: React.ReactNode;
@@ -13,8 +14,14 @@ type Props = {
 
 export function DashboardContent({ children, notificationsModal, refreshing, onRefresh, theme }: Props) {
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={styles.container}>
       <StatusBar style={theme.isDark ? 'light' : 'dark'} />
+      {/* Gradient background covering entire screen including status bar */}
+      <LinearGradient
+        colors={theme.headerGradient}
+        locations={[0, 0.35, 0.5]}
+        style={StyleSheet.absoluteFill}
+      />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           style={styles.scrollView}
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    paddingBottom: 100,
+    paddingBottom: 24,
   },
 });
 

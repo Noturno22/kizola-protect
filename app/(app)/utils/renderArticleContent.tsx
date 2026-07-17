@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { Theme } from '@/providers/ThemeProvider';
 
 export const createArticleContentStyles = (theme: Theme) =>
@@ -63,6 +63,33 @@ export const createArticleContentStyles = (theme: Theme) =>
     articleSpacing: {
       height: 16,
     },
+    imageContainer: {
+      marginVertical: 16,
+      borderRadius: 12,
+      overflow: 'hidden' as const,
+    },
+    imageCaption: {
+      fontSize: 12,
+      color: theme.textMuted,
+      marginTop: 4,
+      fontStyle: 'italic' as const,
+      textAlign: 'center' as const,
+    },
+    blockquoteContainer: {
+      borderLeftWidth: 4,
+      borderLeftColor: theme.accent,
+      backgroundColor: theme.accent + '08',
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      marginVertical: 12,
+      borderRadius: 8,
+    },
+    blockquoteText: {
+      fontSize: 15,
+      color: theme.textSecondary,
+      lineHeight: 24,
+      fontStyle: 'italic' as const,
+    },
   });
 
 type ArticleContentStyles = ReturnType<typeof createArticleContentStyles>;
@@ -74,6 +101,30 @@ export const renderArticleContent = (
   const lines = content.split('\n');
   return lines.map((line, index) => {
     const trimmedLine = line.trim();
+    if (trimmedLine === '') {
+      return <View key={index} style={styles.articleSpacing} />;
+    }
+    const imageMatch = trimmedLine.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      const [, alt, url] = imageMatch;
+      return (
+        <View key={index} style={styles.imageContainer}>
+          <Image
+            source={{ uri: url }}
+            style={{ width: '100%', height: 200, borderRadius: 12 }}
+            resizeMode="cover"
+          />
+          {alt ? <Text style={styles.imageCaption}>{alt}</Text> : null}
+        </View>
+      );
+    }
+    if (trimmedLine.startsWith('> ')) {
+      return (
+        <View key={index} style={styles.blockquoteContainer}>
+          <Text style={styles.blockquoteText}>{trimmedLine.slice(2)}</Text>
+        </View>
+      );
+    }
     if (trimmedLine.startsWith('## ')) {
       return (
         <Text key={index} style={styles.articleH2}>

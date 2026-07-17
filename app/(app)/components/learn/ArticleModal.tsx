@@ -1,13 +1,16 @@
 import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, Animated, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, Animated, ScrollView, Share } from 'react-native';
+import { Image } from 'expo-image';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
-import { X, Clock, Bookmark, Share2, ChevronRight } from 'lucide-react-native';
+import { X, Clock, Bookmark, BookmarkCheck, Share2, ChevronRight } from 'lucide-react-native';
 import { LearningArticle } from '@/lib/supabase';
 import { Theme } from '@/providers/ThemeProvider';
 import { useRouter } from 'expo-router';
 import { renderArticleContent, createArticleContentStyles } from '../../utils/renderArticleContent';
+import { ArticleTags } from './ArticleTags';
+import { RelatedArticles } from './RelatedArticles';
 
 interface ArticleModalProps {
   selectedArticle: LearningArticle | null;
@@ -22,6 +25,8 @@ interface ArticleModalProps {
   isDark: boolean;
   t: (key: string) => string;
   scrollY: Animated.Value;
+  isBookmarked?: boolean;
+  onToggleBookmark?: (articleId: string) => void;
 }
 
 export function ArticleModal({
@@ -33,6 +38,8 @@ export function ArticleModal({
   isDark,
   t,
   scrollY,
+  isBookmarked,
+  onToggleBookmark,
 }: ArticleModalProps) {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -41,6 +48,19 @@ export function ArticleModal({
     () => createArticleContentStyles(theme),
     [theme],
   );
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'beginner':
+        return { bg: theme.success + '15', text: theme.success };
+      case 'intermediate':
+        return { bg: '#F59E0B15', text: '#F59E0B' };
+      case 'advanced':
+        return { bg: theme.error + '15', text: theme.error };
+      default:
+        return { bg: theme.success + '15', text: theme.success };
+    }
+  };
 
   return (
     <Modal
@@ -79,10 +99,28 @@ export function ArticleModal({
                   </TouchableOpacity>
 
                   <View style={styles.modalNavActions}>
-                    <TouchableOpacity style={styles.modalActionCircle}>
-                      <Bookmark size={20} color={theme.text} />
+                    <TouchableOpacity
+                      style={styles.modalActionCircle}
+                      onPress={() => onToggleBookmark?.(selectedArticle.id)}
+                    >
+                      {isBookmarked ? (
+                        <BookmarkCheck size={20} color={theme.accent} />
+                      ) : (
+                        <Bookmark size={20} color={theme.text} />
+                      )}
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.modalActionCircle}>
+                    <TouchableOpacity
+                      style={styles.modalActionCircle}
+                      onPress={async () => {
+                        try {
+                          await Share.share({
+                            title: t(selectedArticle.title),
+                            message: t(selectedArticle.description),
+                          });
+                        } catch {
+                        }
+                      }}
+                    >
                       <Share2 size={20} color={theme.text} />
                     </TouchableOpacity>
                   </View>
@@ -139,6 +177,13 @@ export function ArticleModal({
                       },
                     ]}
                   >
+                    {selectedArticle.coverImage && (
+                      <Image
+                        source={{ uri: selectedArticle.coverImage }}
+                        style={styles.modalHeroImage}
+                        contentFit="cover"
+                      />
+                    )}
                     <View style={styles.modalHeroContent}>
                       <View
                         style={[
@@ -170,18 +215,44 @@ export function ArticleModal({
                         {t(selectedArticle.title)}
                       </Text>
                       <View style={styles.modalMetaBar}>
-                        <View style={styles.modalMetaItem}>
+                      <View style={styles.modalMetaItem}>
                           <Clock size={16} color={theme.textMuted} />
                           <Text style={styles.modalMetaText}>
                             {selectedArticle.readTime} {t('learn.minRead')}
                           </Text>
                         </View>
                         <View style={styles.modalMetaDivider} />
+                        {(() => {
+                          const diffColors = getDifficultyColor(selectedArticle.difficulty);
+                          return (
+                            <View
+                              style={[
+                                styles.difficultyBadge,
+                                { backgroundColor: diffColors.bg },
+                              ]}
+                            >
+                              <Text
+                                style={[
+                                  styles.difficultyBadgeText,
+                                  { color: diffColors.text },
+                                ]}
+                              >
+                                {t(`learn.${selectedArticle.difficulty}`)}
+                              </Text>
+                            </View>
+                          );
+                        })()}
                         <Text style={styles.modalMetaDate}>
                           {new Date().toLocaleDateString()}
                         </Text>
                       </View>
                     </View>
+
+                    <ArticleTags
+                      tags={selectedArticle.tags}
+                      onTagPress={() => {}}
+                      theme={theme}
+                    />
 
                     <View style={styles.modalArticleContent}>
                       {renderArticleContent(
@@ -189,6 +260,17 @@ export function ArticleModal({
                         articleContentStyles,
                       )}
                     </View>
+
+                    <RelatedArticles
+                      articleId={selectedArticle.id}
+                      getCategoryConfig={getCategoryConfig}
+                      readArticles={[]}
+                      bookmarkedIds={[]}
+                      onSelectArticle={() => {}}
+                      onToggleBookmark={onToggleBookmark ?? (() => {})}
+                      theme={theme}
+                      t={t}
+                    />
 
                     <View style={styles.modalFooter}>
                       <LinearGradient
@@ -240,6 +322,16 @@ const createStyles = (theme: Theme) =>
       position: 'relative',
       borderBottomLeftRadius: 32,
       borderBottomRightRadius: 32,
+      overflow: 'hidden',
+    },
+    modalHeroImage: {
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
     modalNavArea: {
       position: 'absolute',
@@ -367,6 +459,15 @@ const createStyles = (theme: Theme) =>
       fontSize: 14,
       fontWeight: '600',
       color: theme.textMuted,
+    },
+    difficultyBadge: {
+      paddingHorizontal: 10,
+      paddingVertical: 4,
+      borderRadius: 8,
+    },
+    difficultyBadgeText: {
+      fontSize: 12,
+      fontWeight: '700',
     },
     modalArticleContent: {
       gap: 12,

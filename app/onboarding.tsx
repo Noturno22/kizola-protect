@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
@@ -8,14 +8,14 @@ import {
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Image,
   StatusBar,
 } from 'react-native';
+import { Image } from 'expo-image';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { 
-  Shield, 
+import {
+  Shield,
   ChevronRight,
   Bell,
   Users,
@@ -25,12 +25,13 @@ import {
   CheckCircle2,
   AlertCircle,
   Smartphone,
+  Globe,
 } from 'lucide-react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
-import { MotiView, MotiText, AnimatePresence } from 'moti';
+import { MotiView } from 'moti';
+import LanguageModal from '@/components/profile/LanguageModal';
 import { APP_ONBOARDING_COMPLETED_KEY } from './index';
 
 const { width, height } = Dimensions.get('window');
@@ -44,16 +45,17 @@ interface OnboardingSlide {
   color: string;
   bg: string;
   floatingIcons: any[];
-  overlayTitle?: string;
-  overlaySubtitle?: string;
+  overlayTitleKey: string;
+  overlaySubtitleKey: string;
 }
 
 export default function OnboardingScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [languageModalVisible, setLanguageModalVisible] = useState(false);
   const flatListRef = useRef<FlatList>(null);
   const styles = useMemo(() => createStyles(theme, insets), [theme, insets]);
 
@@ -67,8 +69,8 @@ export default function OnboardingScreen() {
       color: theme.accent,
       bg: theme.accent + '20',
       floatingIcons: [Shield, Bell, Users],
-      overlayTitle: 'Tudo protegido',
-      overlaySubtitle: 'Segurança familiar ativa',
+      overlayTitleKey: 'onboarding.slide1Title',
+      overlaySubtitleKey: 'onboarding.slide1Subtitle',
     },
     {
       id: '2',
@@ -79,8 +81,8 @@ export default function OnboardingScreen() {
       color: theme.accentBlue,
       bg: theme.accentBlue + '20',
       floatingIcons: [Activity, Smartphone, Lock],
-      overlayTitle: 'Monitoramento real',
-      overlaySubtitle: 'Status em tempo real',
+      overlayTitleKey: 'onboarding.slide2Title',
+      overlaySubtitleKey: 'onboarding.slide2Subtitle',
     },
     {
       id: '3',
@@ -91,8 +93,8 @@ export default function OnboardingScreen() {
       color: theme.accentPurple,
       bg: theme.accentPurple + '20',
       floatingIcons: [Zap, Bell, Shield],
-      overlayTitle: 'Benefícios Premium',
-      overlaySubtitle: 'Acesso total liberado',
+      overlayTitleKey: 'onboarding.slide3Title',
+      overlaySubtitleKey: 'onboarding.slide3Subtitle',
     },
     {
       id: '4',
@@ -103,56 +105,51 @@ export default function OnboardingScreen() {
       color: theme.accentAmber,
       bg: theme.accentAmber + '20',
       floatingIcons: [Users, Shield, Activity],
-      overlayTitle: 'Suporte 24/7',
-      overlaySubtitle: 'Sempre disponível',
+      overlayTitleKey: 'onboarding.slide4Title',
+      overlaySubtitleKey: 'onboarding.slide4Subtitle',
     },
   ];
 
-  const handleNext = async () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < slides.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1, animated: true });
     } else {
-      await completeOnboarding();
+      completeOnboarding();
     }
-  };
+  }, [currentIndex, slides.length]);
 
-  const completeOnboarding = async () => {
+  const completeOnboarding = useCallback(async () => {
     try {
       await SecureStore.setItemAsync(APP_ONBOARDING_COMPLETED_KEY, 'true');
-      router.replace('/login');
     } catch (error) {
       console.error('Error saving onboarding status:', error);
-      router.replace('/login');
     }
-  };
+    router.replace('/login');
+  }, [router]);
 
-  const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const index = Math.round(contentOffsetX / width);
     if (index !== currentIndex) {
       setCurrentIndex(index);
     }
-  };
+  }, [currentIndex]);
 
-  const renderItem = ({ item, index }: { item: OnboardingSlide; index: number }) => {
+  const renderItem = useCallback(({ item, index }: { item: OnboardingSlide; index: number }) => {
     const isActive = currentIndex === index;
 
     return (
       <View style={styles.slide}>
         {/* Hero Area */}
         <View style={styles.heroArea}>
-          {/* Background Glow */}
+          {/* Background Glow — entrance only, no loop */}
           <MotiView
             from={{ opacity: 0.3, scale: 0.8 }}
-            animate={{ 
-              opacity: isActive ? 0.6 : 0.3, 
-              scale: isActive ? 1.1 : 0.9 
+            animate={{
+              opacity: isActive ? 0.6 : 0.3,
+              scale: isActive ? 1.1 : 0.9,
             }}
-            transition={{
-              type: 'timing',
-              duration: 2000,
-              loop: true,
-            }}
+            transition={{ type: 'timing', duration: 1200 }}
             style={[styles.glowCircle, { backgroundColor: item.color + '40' }]}
           />
 
@@ -161,21 +158,16 @@ export default function OnboardingScreen() {
             <Shield size={height * 0.3} color={theme.accent + '10'} strokeWidth={0.5} />
           </View>
 
-          {/* Floating Icons */}
+          {/* Floating Icons — entrance only, no loop */}
           {item.floatingIcons.map((IconComp, i) => (
             <MotiView
               key={i}
-              from={{ translateY: 0, opacity: 0 }}
-              animate={{ 
-                translateY: isActive ? [0, -15, 0] : 0,
-                opacity: isActive ? 0.8 : 0
+              from={{ translateY: 10, opacity: 0 }}
+              animate={{
+                translateY: isActive ? 0 : 10,
+                opacity: isActive ? 0.7 : 0,
               }}
-              transition={{
-                type: 'timing',
-                duration: 2000 + i * 500,
-                loop: true,
-                delay: i * 200,
-              }}
+              transition={{ type: 'timing', duration: 800, delay: 300 + i * 150 }}
               style={[
                 styles.floatingIcon,
                 i === 0 && { top: '15%', left: '15%' },
@@ -187,53 +179,52 @@ export default function OnboardingScreen() {
             </MotiView>
           ))}
 
-          {/* Main Image */}
+          {/* Main Image — expo-image for caching */}
           <MotiView
             from={{ opacity: 0, scale: 0.9, translateY: 20 }}
-            animate={{ 
-              opacity: isActive ? 1 : 0, 
+            animate={{
+              opacity: isActive ? 1 : 0,
               scale: isActive ? 1 : 0.9,
-              translateY: isActive ? 0 : 20
+              translateY: isActive ? 0 : 20,
             }}
             transition={{ type: 'timing', duration: 800 }}
             style={styles.imageContainer}
           >
-            <Image 
-              source={item.image} 
-              style={styles.heroImage} 
-              resizeMode="contain" 
+            <Image
+              source={item.image}
+              style={styles.heroImage}
+              contentFit="contain"
+              transition={300}
+              cachePolicy="memory-disk"
             />
           </MotiView>
 
-          {/* Glassmorphism Cards */}
-          <AnimatePresence>
-            {isActive && (
-              <MotiView
-                from={{ opacity: 0, scale: 0.8, translateX: -20 }}
-                animate={{ opacity: 1, scale: 1, translateX: 0 }}
-                exit={{ opacity: 0, scale: 0.8, translateX: -20 }}
-                transition={{ type: 'timing', duration: 600, delay: 400 }}
-                style={styles.blurCardContainer}
-              >
-                <BlurView intensity={30} tint="dark" style={styles.blurCard}>
-                  <View style={[styles.cardDot, { backgroundColor: item.color }]} />
-                  <View>
-                    <Text style={styles.cardTitle}>{item.overlayTitle}</Text>
-                    <Text style={styles.cardSubtitle}>{item.overlaySubtitle}</Text>
-                  </View>
-                </BlurView>
-              </MotiView>
-            )}
-          </AnimatePresence>
+          {/* Glassmorphism Card — replaced BlurView with lightweight background */}
+          {isActive && (
+            <MotiView
+              from={{ opacity: 0, scale: 0.8, translateX: -20 }}
+              animate={{ opacity: 1, scale: 1, translateX: 0 }}
+              transition={{ type: 'timing', duration: 600, delay: 400 }}
+              style={styles.blurCardContainer}
+            >
+              <View style={styles.glassCard}>
+                <View style={[styles.cardDot, { backgroundColor: item.color }]} />
+                <View>
+                  <Text style={styles.cardTitle}>{t(item.overlayTitleKey)}</Text>
+                  <Text style={styles.cardSubtitle}>{t(item.overlaySubtitleKey)}</Text>
+                </View>
+              </View>
+            </MotiView>
+          )}
         </View>
 
         {/* Text Area */}
         <View style={styles.textContainer}>
           <MotiView
             from={{ opacity: 0, translateY: 20 }}
-            animate={{ 
-              opacity: isActive ? 1 : 0, 
-              translateY: isActive ? 0 : 20 
+            animate={{
+              opacity: isActive ? 1 : 0,
+              translateY: isActive ? 0 : 20,
             }}
             transition={{ type: 'timing', duration: 600, delay: 200 }}
           >
@@ -252,9 +243,9 @@ export default function OnboardingScreen() {
 
           <MotiView
             from={{ opacity: 0, translateY: 20 }}
-            animate={{ 
-              opacity: isActive ? 1 : 0, 
-              translateY: isActive ? 0 : 20 
+            animate={{
+              opacity: isActive ? 1 : 0,
+              translateY: isActive ? 0 : 20,
             }}
             transition={{ type: 'timing', duration: 600, delay: 400 }}
           >
@@ -265,7 +256,9 @@ export default function OnboardingScreen() {
         </View>
       </View>
     );
-  };
+  }, [currentIndex, theme, t, styles]);
+
+  const keyExtractor = useCallback((item: OnboardingSlide) => item.id, []);
 
   return (
     <View style={styles.container}>
@@ -274,8 +267,8 @@ export default function OnboardingScreen() {
         colors={['#020617', '#031126', '#000814']}
         style={StyleSheet.absoluteFill}
       />
-      
-      {/* Background Particles/Glows */}
+
+      {/* Background Glows */}
       <View style={[styles.bgGlow, { top: '10%', left: '-20%', backgroundColor: theme.accent + '15' }]} />
       <View style={[styles.bgGlow, { bottom: '20%', right: '-30%', backgroundColor: theme.accentBlue + '10' }]} />
 
@@ -291,12 +284,43 @@ export default function OnboardingScreen() {
             <Text style={[styles.logoText, { color: theme.text }]}>KIZOLA</Text>
             <Text style={[styles.logoTextBold, { color: theme.accent }]}>PROTECT</Text>
           </MotiView>
-          
-          <TouchableOpacity onPress={completeOnboarding} activeOpacity={0.7}>
-            <Text style={[styles.skipText, { color: theme.textMuted }]}>
-              {t('common.cancel') || 'Pular'}
-            </Text>
-          </TouchableOpacity>
+
+          <View style={styles.headerRight}>
+            <TouchableOpacity
+              onPress={() => setLanguageModalVisible(true)}
+              activeOpacity={0.7}
+              style={[styles.langButton, { borderColor: theme.textMuted + '40' }]}
+              accessibilityLabel={t('profile.selectLanguage') || 'Select language'}
+              accessibilityRole="button"
+            >
+              <Globe size={16} color={theme.textMuted} />
+              <Text style={[styles.langButtonText, { color: theme.textMuted }]}>
+                {({
+                  pt: 'PT',
+                  en: 'EN',
+                  fr: 'FR',
+                  es: 'ES',
+                  'es-US': 'ES',
+                  zh: '中文',
+                  ja: '日本語',
+                  ko: '한국어',
+                  vi: 'VI',
+                  tl: 'TL',
+                  ar: 'العربية',
+                  ru: 'RU',
+                  hi: 'हिन्दी',
+                  bn: 'বাংলা',
+                  ln: 'LN',
+                } as Record<string, string>)[i18n.language] || 'EN'}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={completeOnboarding} activeOpacity={0.7}>
+              <Text style={[styles.skipText, { color: theme.textMuted }]}>
+                {t('common.cancel') || 'Pular'}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <FlatList
@@ -308,9 +332,17 @@ export default function OnboardingScreen() {
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
           scrollEventThrottle={16}
-          keyExtractor={(item) => item.id}
+          keyExtractor={keyExtractor}
           decelerationRate="fast"
-          snapToInterval={width}
+          removeClippedSubviews={false}
+          windowSize={3}
+          maxToRenderPerBatch={2}
+          initialNumToRender={1}
+          getItemLayout={(_, index) => ({
+            length: width,
+            offset: width * index,
+            index,
+          })}
         />
 
         <View style={styles.footer}>
@@ -320,10 +352,10 @@ export default function OnboardingScreen() {
               return (
                 <MotiView
                   key={index}
-                  animate={{ 
+                  animate={{
                     width: active ? 28 : 8,
                     opacity: active ? 1 : 0.3,
-                    backgroundColor: active ? theme.accent : theme.textMuted
+                    backgroundColor: active ? theme.accent : theme.textMuted,
                   }}
                   transition={{ type: 'timing', duration: 300 }}
                   style={styles.dot}
@@ -332,10 +364,7 @@ export default function OnboardingScreen() {
             })}
           </View>
 
-          <MotiView
-            animate={{ scale: 1 }}
-            style={styles.buttonContainer}
-          >
+          <MotiView animate={{ scale: 1 }} style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={handleNext}
               activeOpacity={0.9}
@@ -348,18 +377,27 @@ export default function OnboardingScreen() {
                 style={styles.buttonGradient}
               >
                 <Text style={styles.buttonText}>
-                  {currentIndex === slides.length - 1 
-                    ? t('common.getStarted') 
+                  {currentIndex === slides.length - 1
+                    ? t('common.getStarted')
                     : t('common.next')}
                 </Text>
                 <ChevronRight size={20} color="#FFF" />
               </LinearGradient>
             </TouchableOpacity>
-            {/* Button Glow */}
+            {/* Button Glow — static, no animation */}
             <View style={[styles.buttonGlow, { shadowColor: theme.accent }]} />
           </MotiView>
         </View>
       </SafeAreaView>
+
+      <LanguageModal
+        visible={languageModalVisible}
+        onClose={() => setLanguageModalVisible(false)}
+        theme={theme}
+        currentLanguage={i18n.language}
+        onChangeLanguage={(lang) => i18n.changeLanguage(lang)}
+        t={t}
+      />
     </View>
   );
 }
@@ -386,6 +424,25 @@ const createStyles = (theme: Theme, insets: any) => StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 16,
     zIndex: 10,
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  langButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+  },
+  langButtonText: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.5,
   },
   logoContainer: {
     flexDirection: 'row',
@@ -451,10 +508,6 @@ const createStyles = (theme: Theme, insets: any) => StyleSheet.create({
   heroImage: {
     width: '100%',
     height: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 20 },
-    shadowOpacity: 0.5,
-    shadowRadius: 30,
   },
   blurCardContainer: {
     position: 'absolute',
@@ -463,7 +516,7 @@ const createStyles = (theme: Theme, insets: any) => StyleSheet.create({
     zIndex: 10,
     width: '60%',
   },
-  blurCard: {
+  glassCard: {
     padding: 12,
     borderRadius: 20,
     flexDirection: 'row',
@@ -471,7 +524,7 @@ const createStyles = (theme: Theme, insets: any) => StyleSheet.create({
     gap: 12,
     borderWidth: 1,
     borderColor: 'rgba(0,200,180,0.3)',
-    overflow: 'hidden',
+    backgroundColor: 'rgba(10,20,40,0.75)',
   },
   cardDot: {
     width: 8,
@@ -566,4 +619,3 @@ const createStyles = (theme: Theme, insets: any) => StyleSheet.create({
     zIndex: 1,
   },
 });
-

@@ -25,6 +25,7 @@ import {
   Filter,
   ChevronDown
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 
@@ -58,6 +59,7 @@ const ACTION_TYPES = [
 
 export default function AdminAudit() {
   const { theme, isDark } = useTheme();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const [logs, setLogs] = useState<AuditLogItem[]>([]);
@@ -194,15 +196,15 @@ export default function AdminAudit() {
 
   const getActionLabel = (action: string) => {
     const act = action.toLowerCase();
-    if (act === 'login') return 'Login de Membro';
-    if (act === 'logout') return 'Logout de Membro';
-    if (act === 'password_reset_requested') return 'Recuperação Iniciada';
-    if (act === 'password_reset_completed') return 'Senha Redefinida';
-    if (act === 'plan_change') return 'Mudança de Plano';
-    if (act === 'data_update') return 'Dados Alterados';
-    if (act === 'data_delete') return 'Exclusão de Dados';
-    if (act === 'admin_action') return 'Ação de Administrador';
-    if (act === 'profile_created') return 'Conta Criada';
+    if (act === 'login') return t('admin.auditLoginMember');
+    if (act === 'logout') return t('admin.auditLogoutMember');
+    if (act === 'password_reset_requested') return t('admin.auditPasswordResetRequested');
+    if (act === 'password_reset_completed') return t('admin.auditPasswordResetCompleted');
+    if (act === 'plan_change') return t('admin.auditPlanChange');
+    if (act === 'data_update') return t('admin.auditDataUpdate');
+    if (act === 'data_delete') return t('admin.auditDataDelete');
+    if (act === 'admin_action') return t('admin.auditAdminAction');
+    if (act === 'profile_created') return t('admin.auditProfileCreated');
     return action.toUpperCase();
   };
 
@@ -230,13 +232,13 @@ export default function AdminAudit() {
         <View style={styles.logUserInfo}>
           <User size={14} color={theme.textMuted} />
           <Text style={[styles.userText, { color: theme.textSecondary }]} numberOfLines={1}>
-            {item.profiles?.email || 'Sistema (Automático)'}
+            {item.profiles?.email || t('admin.auditSystemAuto')}
           </Text>
         </View>
 
         {item.resource && (
           <Text style={[styles.resourceText, { color: theme.textMuted }]}>
-            Tabela / Módulo: {item.resource}
+            {t('admin.auditTableModule')}: {item.resource}
           </Text>
         )}
       </TouchableOpacity>
@@ -252,7 +254,7 @@ export default function AdminAudit() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Registros de Auditoria</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.auditLogTitle')}</Text>
         <TouchableOpacity onPress={fetchAuditLogs} style={styles.backButton}>
           <RefreshCw size={20} color={theme.text} />
         </TouchableOpacity>
@@ -272,14 +274,14 @@ export default function AdminAudit() {
             >
               <Filter size={20} color={theme.text} />
               <Text style={[styles.filterToggleText, { color: theme.text }]}>
-                Filtros {showFilters ? '▲' : '▼'}
+                {t('admin.auditFilters')} {showFilters ? '▲' : '▼'}
               </Text>
             </TouchableOpacity>
             
             <View style={[styles.searchWrapper, { backgroundColor: theme.surfaceElevated, borderColor: theme.cardBorder }]}>
               <Search size={20} color={theme.textMuted} />
               <TextInput
-                placeholder="Pesquisar por ação, usuário, IP, recurso..."
+                placeholder={t('admin.auditSearchPlaceholder')}
                 placeholderTextColor={theme.textMuted}
                 style={[styles.searchInput, { color: theme.text }]}
                 value={searchQuery}
@@ -292,13 +294,13 @@ export default function AdminAudit() {
             <View style={styles.filtersContainer}>
               {/* Action Filter */}
               <View style={styles.filterGroup}>
-                <Text style={[styles.filterLabel, { color: theme.text }]}>Tipo de Ação</Text>
+                <Text style={[styles.filterLabel, { color: theme.text }]}>{t('admin.auditActionType')}</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filterScroll}>
                   <TouchableOpacity
                     style={[styles.filterChip, actionFilter === 'all' && styles.filterChipActive, { backgroundColor: theme.surface, borderColor: theme.cardBorder }]}
                     onPress={() => setActionFilter('all')}
                   >
-                    <Text style={[styles.filterChipText, { color: actionFilter === 'all' ? '#FFF' : theme.textSecondary }]}>Todas</Text>
+                    <Text style={[styles.filterChipText, { color: actionFilter === 'all' ? '#FFF' : theme.textSecondary }]}>{t('admin.auditAll')}</Text>
                   </TouchableOpacity>
                   {ACTION_TYPES.map((action) => (
                     <TouchableOpacity
@@ -316,7 +318,7 @@ export default function AdminAudit() {
 
               {/* Date Filter */}
               <View style={styles.filterGroup}>
-                <Text style={[styles.filterLabel, { color: theme.text }]}>Período</Text>
+                <Text style={[styles.filterLabel, { color: theme.text }]}>{t('admin.auditPeriod')}</Text>
                 <View style={styles.dateFilterRow}>
                   {(['all', 'today', 'week', 'month'] as const).map((period) => (
                     <TouchableOpacity
@@ -325,7 +327,7 @@ export default function AdminAudit() {
                       onPress={() => setDateFilter(period)}
                     >
                       <Text style={[styles.periodText, { color: dateFilter === period ? '#FFF' : theme.textSecondary }]}>
-                        {period === 'all' ? 'Todo Histórico' : period === 'today' ? 'Hoje' : period === 'week' ? 'Última Semana' : 'Este Mês'}
+                        {period === 'all' ? t('admin.auditAllHistory') : period === 'today' ? t('admin.auditToday') : period === 'week' ? t('admin.auditLastWeek') : t('admin.auditThisMonth')}
                       </Text>
                     </TouchableOpacity>
                   ))}
@@ -337,7 +339,7 @@ export default function AdminAudit() {
           {/* Results count */}
           <View style={styles.resultsInfo}>
             <Text style={[styles.resultsText, { color: theme.textSecondary }]}>
-              {logs.length} registro{logs.length !== 1 ? 's' : ''} encontrado{logs.length !== 1 ? 's' : ''}
+              {logs.length} {t('admin.auditRecordsFound', { count: logs.length })}
             </Text>
           </View>
 
@@ -350,7 +352,7 @@ export default function AdminAudit() {
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
                 <ShieldAlert size={64} color={theme.textMuted} />
-                <Text style={[styles.emptyText, { color: theme.textSecondary }]}>Nenhum registro de segurança encontrado.</Text>
+                <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t('admin.auditNoRecords')}</Text>
               </View>
             }
           />
@@ -368,41 +370,41 @@ export default function AdminAudit() {
           <View style={[styles.modalSheet, { backgroundColor: theme.surface }]}>
             <View style={styles.modalDragIndicator} />
             <ScrollView contentContainerStyle={styles.modalScroll}>
-              <Text style={[styles.modalTitle, { color: theme.text }]}>Detalhes da Ação</Text>
+              <Text style={[styles.modalTitle, { color: theme.text }]}>{t('admin.auditActionDetails')}</Text>
 
               <View style={[styles.detailsBlock, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}>
-                <Text style={[styles.blockTitle, { color: theme.text }]}>Rastreabilidade</Text>
+                <Text style={[styles.blockTitle, { color: theme.text }]}>{t('admin.auditTraceability')}</Text>
                 
                 <View style={styles.detailRow}>
-                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Tipo de Ação:</Text>
+                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.auditActionType')}:</Text>
                   <Text style={[styles.detailValue, { color: getActionColor(selectedLog.action) }]}>
                     {getActionLabel(selectedLog.action)}
                   </Text>
                 </View>
 
                 <View style={styles.detailRow}>
-                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Email:</Text>
+                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.casesEmail')}:</Text>
                   <Text style={[styles.detailValue, { color: theme.text }]}>
                     {selectedLog.profiles?.email || 'N/A'}
                   </Text>
                 </View>
 
                 <View style={styles.detailRow}>
-                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Nome Completo:</Text>
+                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.auditFullName')}:</Text>
                   <Text style={[styles.detailValue, { color: theme.text }]}>
-                    {selectedLog.profiles?.full_name || 'Sistema'}
+                    {selectedLog.profiles?.full_name || t('admin.auditSystem')}
                   </Text>
                 </View>
 
                 <View style={styles.detailRow}>
-                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Endereço IP:</Text>
+                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.auditIPAddress')}:</Text>
                   <Text style={[styles.detailValue, { color: theme.text }]}>
-                    {selectedLog.ip_address || 'Não registrado'}
+                    {selectedLog.ip_address || t('admin.auditNotRegistered')}
                   </Text>
                 </View>
 
                 <View style={styles.detailRow}>
-                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Horário:</Text>
+                  <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.auditTime')}:</Text>
                   <Text style={[styles.detailValue, { color: theme.text }]}>
                     {new Date(selectedLog.created_at).toLocaleString()}
                   </Text>
@@ -410,7 +412,7 @@ export default function AdminAudit() {
               </View>
 
               <View style={[styles.detailsBlock, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}>
-                <Text style={[styles.blockTitle, { color: theme.text }]}>Dados Adicionais (JSON)</Text>
+                <Text style={[styles.blockTitle, { color: theme.text }]}>{t('admin.auditAdditionalData')}</Text>
                 <Text style={[styles.jsonText, { color: theme.textSecondary }]}>
                   {JSON.stringify(selectedLog.details, null, 2)}
                 </Text>
@@ -420,7 +422,7 @@ export default function AdminAudit() {
                 style={[styles.closeButton, { backgroundColor: theme.accent }]}
                 onPress={() => setSelectedLog(null)}
               >
-                <Text style={styles.closeButtonText}>Fechar Detalhes</Text>
+                <Text style={styles.closeButtonText}>{t('admin.auditCloseDetails')}</Text>
               </TouchableOpacity>
             </ScrollView>
           </View>

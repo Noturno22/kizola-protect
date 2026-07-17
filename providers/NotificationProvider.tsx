@@ -3,6 +3,8 @@ import { useState, useCallback, useEffect } from 'react';
 import { Notification, supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useAuth } from './AuthProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
+import { preloadNotificationSound, playNotificationSound, unloadNotificationSound } from '@/lib/notificationSound';
+import i18n from '@/lib/i18n';
 export const [NotificationProvider, useNotifications] = createContextHook(() => {
   const { user, isDemoMode } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -25,8 +27,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
             {
               id: '1',
               user_id: user.id,
-              title: 'Welcome to Kizola Protect',
-              message: 'Your membership is now active. Explore your benefits!',
+              title: i18n.t('notifWelcomeTitle'),
+              message: i18n.t('notifWelcomeMessage'),
               type: 'success',
               read: false,
               created_at: new Date().toISOString(),
@@ -34,8 +36,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
             {
               id: '2',
               user_id: user.id,
-              title: 'New Learning Resources',
-              message: 'Check out our new guides on tax filing and immigration.',
+              title: i18n.t('notifLearning.title'),
+              message: i18n.t('notifLearning.message'),
               type: 'info',
               read: false,
               created_at: new Date(Date.now() - 86400000).toISOString(),
@@ -160,6 +162,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
       created_at: new Date().toISOString(),
     };
 
+    playNotificationSound();
+
     try {
       if (isDemoMode || !isSupabaseConfigured()) {
         setNotifications(prev => {
@@ -215,6 +219,18 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
       console.error('Error deleting notification:', error);
     }
   }, [user, isDemoMode]);
+
+  useEffect(() => {
+    preloadNotificationSound();
+
+    return () => {
+      unloadNotificationSound();
+    };
+  }, []);
+
+  // ── Push Token Registration (disabled — deferred to next version) ──
+
+  // ── Notification Listeners (disabled — deferred to next version) ──
 
   useEffect(() => {
     if (user) {

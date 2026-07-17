@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useMemo } from 'react';
 import { User, FileText, X } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import type { BeneficiaryRelationship } from '@/hooks/useBeneficiaries';
 
 interface BeneficiaryModalProps {
@@ -29,7 +30,7 @@ interface BeneficiaryModalProps {
   onSave: () => void;
 }
 
-const RELATIONSHIPS: BeneficiaryRelationship[] = ['Filho', 'Mulher', 'Outro'];
+const RELATIONSHIP_KEYS: BeneficiaryRelationship[] = ['Filho', 'Mulher', 'Outro'];
 
 export default function BeneficiaryModal({
   visible,
@@ -45,7 +46,14 @@ export default function BeneficiaryModal({
   onChangeDocument,
   onSave,
 }: BeneficiaryModalProps) {
+  const { t } = useTranslation();
   const styles = useMemo(() => createStyles(theme), [theme]);
+
+  const relationshipLabels: Record<BeneficiaryRelationship, string> = {
+    'Filho': t('profile.son'),
+    'Mulher': t('profile.spouse'),
+    'Outro': t('profile.other'),
+  };
 
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
@@ -58,7 +66,7 @@ export default function BeneficiaryModal({
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>
-                {editingId ? 'Editar Beneficiário' : 'Adicionar Beneficiário'}
+                {editingId ? t('profile.editBeneficiary') : t('profile.addBeneficiary')}
               </Text>
               <TouchableOpacity onPress={onClose} style={styles.modalCloseButton} accessibilityLabel="Close" accessibilityRole="button">
                 <X size={24} color={theme.text} />
@@ -66,21 +74,22 @@ export default function BeneficiaryModal({
             </View>
 
             <ScrollView contentContainerStyle={styles.modalBody}>
-              <Text style={styles.inputLabel}>Tipo</Text>
+              <Text style={styles.inputLabel}>{t('profile.beneficiaryType')}</Text>
               <View style={styles.relationshipRow}>
-                {RELATIONSHIPS.map((rel) => {
+                {RELATIONSHIP_KEYS.map((rel) => {
                   const active = relationship === rel;
+                  const label = relationshipLabels[rel];
                   return (
                     <TouchableOpacity
                       key={rel}
                       onPress={() => onChangeRelationship(rel)}
                       style={[styles.relationshipChip, active && styles.relationshipChipActive]}
-                      accessibilityLabel={rel}
+                      accessibilityLabel={label}
                       accessibilityRole="radio"
                       accessibilityState={{ selected: active }}
                     >
                       <Text style={[styles.relationshipChipText, active && styles.relationshipChipTextActive]}>
-                        {rel}
+                        {label}
                       </Text>
                     </TouchableOpacity>
                   );
@@ -88,14 +97,14 @@ export default function BeneficiaryModal({
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Nome completo</Text>
+                <Text style={styles.inputLabel}>{t('profile.fullName')}</Text>
                 <View style={styles.inputWrapper}>
                   <User size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={styles.input}
                     value={fullName}
                     onChangeText={onChangeFullName}
-                    placeholder="Ex.: Maria da Silva"
+                    placeholder={t('profile.namePlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     accessibilityLabel="Full Name"
                     accessibilityRole="none"
@@ -104,14 +113,14 @@ export default function BeneficiaryModal({
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Documento</Text>
+                <Text style={styles.inputLabel}>{t('profile.document')}</Text>
                 <View style={styles.inputWrapper}>
                   <FileText size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={styles.input}
                     value={document}
                     onChangeText={onChangeDocument}
-                    placeholder="Ex.: BI / NIF / RG / CPF"
+                    placeholder={t('profile.documentPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     autoCapitalize="characters"
                     accessibilityLabel="Document"
@@ -130,7 +139,7 @@ export default function BeneficiaryModal({
                 {saving ? (
                   <ActivityIndicator color="#FFFFFF" />
                 ) : (
-                  <Text style={styles.saveButtonText}>Salvar</Text>
+                  <Text style={styles.saveButtonText}>{t('common.save')}</Text>
                 )}
               </TouchableOpacity>
             </ScrollView>

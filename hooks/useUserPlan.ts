@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
+import i18n from '@/lib/i18n';
 import * as SecureStore from 'expo-secure-store';
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import type { SessionManager } from './useSessionManager';
 
 const DEMO_MODE_KEY = 'kizola_demo_user';
@@ -63,8 +64,8 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
     try {
       await supabase.from('notifications').insert({
         user_id: session.user.id,
-        title: 'Plano Ativado com Sucesso! ✅',
-        message: `Sua assinatura do plano ${plan.toUpperCase()} foi confirmada. Aproveite todos os seus benefícios agora mesmo.`,
+        title: i18n.t('notifPlanActivatedTitle'),
+        message: i18n.t('notifPlanActivatedMessage', { plan: plan.toUpperCase() }),
         type: 'success',
         read: false,
       });
@@ -87,10 +88,9 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
 
     const userId = session.user.id;
 
-    const fileContent = await FileSystem.readAsStringAsync(localUri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
-    const decoded = Buffer.from(fileContent, 'base64');
+    const file = new File(localUri);
+    const arrayBuffer = await file.arrayBuffer();
+    const decoded = new Uint8Array(arrayBuffer);
 
     const ext = localUri.split('.').pop()?.toLowerCase() || 'jpg';
     const contentType = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
@@ -122,7 +122,7 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
       .eq('id', userId);
     if (dbError) throw dbError;
 
-    await fetchUserProfile(userId);
+    setUser({ ...user!, avatar_url: publicUrl } as any);
   }, [session, user, isDemoMode, fetchUserProfile, setUser]);
 
   return { updateUserPlan, updateAvatar };

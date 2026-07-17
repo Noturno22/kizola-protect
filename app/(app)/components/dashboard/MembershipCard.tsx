@@ -40,14 +40,14 @@ export function MembershipCard({
           <View style={[styles.planBadge, { borderColor: theme.accent }]}>
             <Zap size={12} color={theme.accent} />
             <Text style={[styles.planBadgeText, { color: theme.accent }]}>
-              {planInfo?.name ? `${planInfo.name} Plan` : (t('common.noPlan') === 'common.noPlan' ? 'Sem Plano' : t('common.noPlan'))}
+              {planInfo?.name ? `${planInfo.name} ${t('dashboard.planSuffix')}` : (t('common.noPlan') === 'common.noPlan' ? 'Sem Plano' : t('common.noPlan'))}
             </Text>
           </View>
           <View style={[styles.statusBadge, {
             backgroundColor: isActive ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)',
             borderColor: isActive ? 'rgba(34,197,94,0.35)' : 'rgba(239,68,68,0.35)',
           }]}>
-            <PulseDot color={isActive ? '#22C55E' : '#EF4444'} />
+            <PulseDot color={isActive ? '#22C55E' : '#EF4444'} size={12} />
             <Text style={[styles.statusText, { color: isActive ? '#22C55E' : '#EF4444' }]}>
               {isActive ? t('common.active') || 'Ativo' : t('common.inactive') || 'Inativo'}
             </Text>

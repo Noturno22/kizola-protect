@@ -51,9 +51,9 @@ export default function BeneficiariesSection({
               <Users size={22} color={theme.primary} />
             </View>
             <View style={styles.beneficiariesEmptyText}>
-              <Text style={styles.beneficiariesEmptyTitle}>Nenhum beneficiário</Text>
+              <Text style={styles.beneficiariesEmptyTitle}>{t('profile.none')}</Text>
               <Text style={styles.beneficiariesEmptySubtitle}>
-                Adicione filhos, mulher ou outros beneficiários com nome e documento.
+                {t('profile.noneSubtitle')}
               </Text>
             </View>
           </View>

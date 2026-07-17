@@ -209,10 +209,10 @@ function AdminDashboard() {
         {/* Stats Grid - Atendimento */}
         {atendimentoData && (
           <>
-          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Atendimento</Text>
+          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>{t('admin.atendimento')}</Text>
           <View style={styles.statsGrid}>
             <AdminStatCard 
-              title="Pendentes"
+              title={t('admin.atendimentoPending')}
               value={formatNumber(atendimentoData.pendingCount)}
               icon={MessageSquare}
               color="#F59E0B"
@@ -220,7 +220,7 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="Em Progresso"
+              title={t('admin.atendimentoInProgress')}
               value={formatNumber(atendimentoData.inProgressCount)}
               icon={MessageSquare}
               color="#3B82F6"
@@ -228,7 +228,7 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="Resolvidos"
+              title={t('admin.atendimentoResolved')}
               value={formatNumber(atendimentoData.resolvedCount)}
               icon={ShieldCheck}
               color="#22C55E"
@@ -236,7 +236,7 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="Total de Casos"
+              title={t('admin.atendimentoTotalCases')}
               value={formatNumber(atendimentoData.totalCount)}
               icon={ClipboardList}
               color="#8B5CF6"
@@ -250,10 +250,10 @@ function AdminDashboard() {
         {/* Stats Grid - Financeiro */}
         {financeiroData && (
           <>
-          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>Financeiro</Text>
+          <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 24, marginBottom: 16 }]}>{t('admin.financeiro')}</Text>
           <View style={styles.statsGrid}>
             <AdminStatCard 
-              title="MRR"
+              title={t('admin.mrr')}
               value={formatCurrency(financeiroData.mrr)}
               icon={DollarSign}
               color="#10B981"
@@ -261,7 +261,7 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="ARR"
+              title={t('admin.arr')}
               value={formatCurrency(financeiroData.arr)}
               icon={TrendingUp}
               color="#059669"
@@ -269,7 +269,7 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="Assinaturas Ativas"
+              title={t('admin.activeSubscriptions')}
               value={formatNumber(financeiroData.activeSubscriptions)}
               icon={Users}
               color="#3B82F6"
@@ -277,8 +277,8 @@ function AdminDashboard() {
               trendValue="—"
             />
             <AdminStatCard 
-              title="Status Stripe"
-              value={financeiroData.stripeStatus === 'connected' ? 'Conectado' : 'Desconectado'}
+              title={t('admin.statusStripe')}
+              value={financeiroData.stripeStatus === 'connected' ? t('admin.conectado') : t('admin.desconectado')}
               icon={ShieldAlert}
               color={financeiroData.stripeStatus === 'connected' ? '#22C55E' : '#EF4444'}
               trend="neutral"
@@ -292,7 +292,7 @@ function AdminDashboard() {
         {satisfactionData && (
           <View style={[styles.satisfactionCard, { backgroundColor: theme.surfaceElevated, borderColor: theme.cardBorder }]}>
             <View style={styles.cardHeader}>
-              <Text style={[styles.cardTitle, { color: theme.text }]}>Análise de Satisfação</Text>
+              <Text style={[styles.cardTitle, { color: theme.text }]}>{t('admin.analiseSatisfacao')}</Text>
               <TouchableOpacity onPress={() => router.push('/(app)/admin/reports')}>
                 <Text style={[styles.seeMore, { color: theme.accent }]}>{t('admin.seeAll')}</Text>
               </TouchableOpacity>
@@ -300,21 +300,21 @@ function AdminDashboard() {
             <View style={styles.satisfactionStats}>
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: '#22C55E' }]}>{satisfactionData.satisfactionRate}%</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Taxa de Resolução</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.taxaResolucao')}</Text>
               </View>
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: theme.accent }]}>{satisfactionData.avgRating.toFixed(1)}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Avaliação Média</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.avaliacaoMedia')}</Text>
               </View>
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: theme.text }]}>{satisfactionData.totalRatings}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Total de Avaliações</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.totalAvaliacoes')}</Text>
               </View>
             </View>
             <View style={styles.satisfactionBreakdown}>
-              <Text style={[styles.breakdownTitle, { color: theme.text }]}>Por Categoria</Text>
+              <Text style={[styles.breakdownTitle, { color: theme.text }]}>{t('admin.porCategoria')}</Text>
               <View style={styles.breakdownRow}>
                 <View style={styles.breakdownItem}>
                   <Text style={[styles.breakdownItemLabel, { color: '#3B82F6' }]}>Suporte</Text>
@@ -340,7 +340,7 @@ function AdminDashboard() {
         {benefitsData && (
           <View style={[styles.satisfactionCard, { backgroundColor: theme.surfaceElevated, borderColor: theme.cardBorder }]}>
             <View style={styles.cardHeader}>
-              <Text style={[styles.cardTitle, { color: theme.text }]}>Benefícios & Serviços</Text>
+              <Text style={[styles.cardTitle, { color: theme.text }]}>{t('admin.beneficiosServicos')}</Text>
               <TouchableOpacity onPress={() => router.push('/(app)/admin/reports')}>
                 <Text style={[styles.seeMore, { color: theme.accent }]}>{t('admin.seeAll')}</Text>
               </TouchableOpacity>
@@ -348,7 +348,7 @@ function AdminDashboard() {
             <View style={styles.satisfactionStats}>
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: theme.accent }]}>{benefitsData.totalRequests}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Total de Pedidos</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.totalPedidos')}</Text>
               </View>
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
@@ -367,7 +367,7 @@ function AdminDashboard() {
               </View>
             </View>
             <View style={styles.satisfactionBreakdown}>
-              <Text style={[styles.breakdownTitle, { color: theme.text }]}>Serviços Mais Solicitados</Text>
+              <Text style={[styles.breakdownTitle, { color: theme.text }]}>{t('admin.servicosMaisSolicitados')}</Text>
               <View style={styles.breakdownRow}>
                 {benefitsData.topServices.slice(0, 3).map((service, index) => (
                   <View key={index} style={styles.breakdownItem}>
@@ -391,7 +391,7 @@ function AdminDashboard() {
         )}
 
         {/* Módulos Administrativos */}
-        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16, marginBottom: 16 }]}>Módulos Kizola</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16, marginBottom: 16 }]}>{t('admin.modulosKizola')}</Text>
         <View style={styles.modulesGrid}>
           <TouchableOpacity 
             style={[styles.moduleCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }]}
@@ -402,8 +402,8 @@ function AdminDashboard() {
               <ClipboardList size={20} color="#3B82F6" />
             </View>
             <View>
-              <Text style={[styles.moduleTitle, { color: theme.text }]}>Gestão de Casos</Text>
-              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>Suporte, Habitação e Finanças</Text>
+              <Text style={[styles.moduleTitle, { color: theme.text }]}>{t('admin.gestaoDeCasos')}</Text>
+              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>{t('admin.gestaoCasosDesc')}</Text>
             </View>
           </TouchableOpacity>
 
@@ -416,8 +416,8 @@ function AdminDashboard() {
               <DollarSign size={20} color="#10B981" />
             </View>
             <View>
-              <Text style={[styles.moduleTitle, { color: theme.text }]}>Painel Financeiro</Text>
-              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>MRR, ARR e status Stripe</Text>
+              <Text style={[styles.moduleTitle, { color: theme.text }]}>{t('admin.painelFinanceiro')}</Text>
+              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>{t('admin.painelFinanceiroDesc')}</Text>
             </View>
           </TouchableOpacity>
 
@@ -430,8 +430,8 @@ function AdminDashboard() {
               <FileText size={20} color="#F59E0B" />
             </View>
             <View>
-              <Text style={[styles.moduleTitle, { color: theme.text }]}>Relatórios</Text>
-              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>Exportação em Excel e PDF</Text>
+              <Text style={[styles.moduleTitle, { color: theme.text }]}>{t('admin.relatorios')}</Text>
+              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>{t('admin.relatoriosDesc')}</Text>
             </View>
           </TouchableOpacity>
 
@@ -444,8 +444,8 @@ function AdminDashboard() {
               <ShieldAlert size={20} color="#8B5CF6" />
             </View>
             <View>
-              <Text style={[styles.moduleTitle, { color: theme.text }]}>Segurança & Logs</Text>
-              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>Rastreabilidade de auditorias</Text>
+              <Text style={[styles.moduleTitle, { color: theme.text }]}>{t('admin.segurancaLogs')}</Text>
+              <Text style={[styles.moduleSubtitle, { color: theme.textSecondary }]}>{t('admin.segurancaLogsDesc')}</Text>
             </View>
           </TouchableOpacity>
         </View>

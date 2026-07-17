@@ -32,17 +32,7 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useRouter } from 'expo-router';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
-
-const FINANCE_TYPES = [
-  { id: 'ebt', label: 'EBT / SNAP (Vale Alimentação)', icon: '🍎', description: 'Assistência para alimentação' },
-  { id: 'state_benefits', label: 'Benefícios Estatais (Welfare, Medicaid)', icon: '🏛️', description: 'Programas de assistência do estado' },
-  { id: 'tax_return', label: 'Tax Return (Devolução de Impostos)', icon: '💵', description: 'Ajuda com declaração e devolução' },
-  { id: 'financial_planning', label: 'Planejamento Financeiro', icon: '📊', description: 'Organização e planejamento' },
-  { id: 'debt_help', label: 'Gestão de Dívidas', icon: '💳', description: 'Orientação sobre dívidas e crédito' },
-  { id: 'banking', label: 'Abertura de Conta Bancária', icon: '🏦', description: 'Orientação bancária para imigrantes' },
-  { id: 'itin', label: 'ITIN (Número de Identificação Fiscal)', icon: '📋', description: 'Obtenção do ITIN para não-cidadãos' },
-  { id: 'other', label: 'Outra Situação Financeira', icon: '💬', description: 'Outras necessidades financeiras' },
-] as const;
+import { useTranslation } from 'react-i18next';
 
 const US_STATES = [
   'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -61,6 +51,18 @@ export default function FinanceSupport() {
   const styles = useMemo(() => createStyles(theme), [theme]);
   const { addNotification } = useNotifications();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
+
+  const FINANCE_TYPES = [
+    { id: 'ebt', label: t('financeForm.type_ebt'), icon: '🍎', description: t('financeForm.type_ebt_desc') },
+    { id: 'state_benefits', label: t('financeForm.type_state_benefits'), icon: '🏛️', description: t('financeForm.type_state_benefits_desc') },
+    { id: 'tax_return', label: t('financeForm.type_tax_return'), icon: '💵', description: t('financeForm.type_tax_return_desc') },
+    { id: 'financial_planning', label: t('financeForm.type_financial_planning'), icon: '📊', description: t('financeForm.type_financial_planning_desc') },
+    { id: 'debt_help', label: t('financeForm.type_debt_help'), icon: '💳', description: t('financeForm.type_debt_help_desc') },
+    { id: 'banking', label: t('financeForm.type_banking'), icon: '🏦', description: t('financeForm.type_banking_desc') },
+    { id: 'itin', label: t('financeForm.type_itin'), icon: '📋', description: t('financeForm.type_itin_desc') },
+    { id: 'other', label: t('financeForm.type_other'), icon: '💬', description: t('financeForm.type_other_desc') },
+  ];
 
   const [nome, setNome] = useState(user?.name || '');
   const [email, setEmail] = useState(user?.email || '');
@@ -73,16 +75,16 @@ export default function FinanceSupport() {
   const [showTypeDropdown, setShowTypeDropdown] = useState(false);
   const [showStateDropdown, setShowStateDropdown] = useState(false);
 
-  const selectedType = FINANCE_TYPES.find(t => t.id === tipoAjuda);
+  const selectedType = FINANCE_TYPES.find(ft => ft.id === tipoAjuda);
 
   const handleSubmit = async () => {
     if (!tipoAjuda || !estado.trim() || !descricao.trim()) {
-      Alert.alert('Campos Obrigatórios', 'Por favor, selecione o tipo de ajuda, o estado e descreva a sua situação.');
+      Alert.alert(t('financeForm.requiredFieldsTitle'), t('financeForm.requiredFieldsMessage'));
       return;
     }
 
     if (descricao.trim().length < 20) {
-      Alert.alert('Descrição Insuficiente', 'Por favor, forneça mais detalhes sobre a sua situação (mínimo 20 caracteres).');
+      Alert.alert(t('financeForm.insufficientDescriptionTitle'), t('financeForm.insufficientDescriptionMessage'));
       return;
     }
 
@@ -119,15 +121,15 @@ export default function FinanceSupport() {
       }
 
       addNotification({
-        title: 'Pedido Financeiro Recebido',
-        message: 'A nossa equipa de especialistas financeiros vai analisar o seu caso em breve.',
+        title: t('financeForm.notificationTitle'),
+        message: t('financeForm.notificationMessage'),
         type: 'success',
         read: false,
       });
 
       setSubmitted(true);
     } catch (error: any) {
-      Alert.alert('Erro', error.message || 'Falha ao submeter o pedido. Por favor, tente novamente.');
+      Alert.alert(t('common.error'), error.message || t('financeForm.submitError'));
     } finally {
       setLoading(false);
     }
@@ -144,23 +146,23 @@ export default function FinanceSupport() {
               <View style={styles.successIconWrapper}>
                 <CheckCircle2 size={64} color="#22C55E" />
               </View>
-              <Text style={[styles.successTitle, { color: theme.text }]}>Pedido Enviado!</Text>
+              <Text style={[styles.successTitle, { color: theme.text }]}>{t('financeForm.submittedTitle')}</Text>
               <Text style={[styles.successDescription, { color: theme.textSecondary }]}>
-                O seu pedido de ajuda financeira foi recebido. Um especialista irá analisá-lo e contactá-lo em breve.
+                {t('financeForm.submittedDesc')}
               </Text>
 
               <View style={[styles.infoCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
                 <View style={styles.infoRow}>
                   <TrendingUp size={18} color={theme.accent} />
                   <Text style={[styles.infoText, { color: theme.text }]}>
-                    Especialistas em benefícios e impostos disponíveis
+                    {t('financeForm.specialistsAvailable')}
                   </Text>
                 </View>
                 <View style={[styles.infoDivider, { backgroundColor: theme.cardBorderAlt }]} />
                 <View style={styles.infoRow}>
                   <Sparkles size={18} color={theme.accent} />
                   <Text style={[styles.infoText, { color: theme.text }]}>
-                    Resposta em 24-48 horas úteis
+                    {t('financeForm.responseTime')}
                   </Text>
                 </View>
               </View>
@@ -174,7 +176,7 @@ export default function FinanceSupport() {
                   colors={[theme.primary, theme.primary + 'DD']}
                   style={StyleSheet.absoluteFill}
                 />
-                <Text style={styles.primaryButtonText}>Voltar ao Início</Text>
+                <Text style={styles.primaryButtonText}>{t('financeForm.backToHome')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -183,7 +185,7 @@ export default function FinanceSupport() {
                 activeOpacity={0.7}
               >
                 <Text style={[styles.secondaryButtonText, { color: theme.textSecondary }]}>
-                  Submeter Novo Pedido
+                  {t('financeForm.submitNewRequest')}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -215,7 +217,7 @@ export default function FinanceSupport() {
             {/* Back */}
             <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
               <ArrowLeft size={20} color={isDark ? '#FFFFFF' : theme.text} />
-              <Text style={[styles.backButtonText, { color: isDark ? '#FFFFFF' : theme.text }]}>Voltar</Text>
+              <Text style={[styles.backButtonText, { color: isDark ? '#FFFFFF' : theme.text }]}>{t('common.back')}</Text>
             </TouchableOpacity>
 
             {/* Header */}
@@ -224,10 +226,10 @@ export default function FinanceSupport() {
                 <DollarSign size={36} color={isDark ? '#FFFFFF' : theme.accent} />
               </View>
               <Text style={[styles.headerTitle, { color: isDark ? '#FFFFFF' : theme.text }]}>
-                Ajuda às Finanças
+                {t('financeForm.title')}
               </Text>
               <Text style={[styles.headerSubtitle, { color: isDark ? 'rgba(255,255,255,0.8)' : theme.textSecondary }]}>
-                Orientação sobre benefícios financeiros, EBT, cartões de ajuda estatal, impostos e Tax Return.
+                {t('financeForm.subtitle')}
               </Text>
             </View>
 
@@ -239,10 +241,10 @@ export default function FinanceSupport() {
               style={styles.quickInfoContainer}
             >
               {[
-                { icon: '💰', label: 'EBT/SNAP', desc: 'Vale alimentação' },
-                { icon: '📑', label: 'Tax Return', desc: 'Devolução impostos' },
-                { icon: '🏛️', label: 'Benefícios', desc: 'Ajuda estatal' },
-                { icon: '📋', label: 'ITIN', desc: 'ID Fiscal' },
+                { icon: '💰', label: 'EBT/SNAP', desc: t('financeForm.quickInfo_ebt') },
+                { icon: '📑', label: 'Tax Return', desc: t('financeForm.quickInfo_tax') },
+                { icon: '🏛️', label: t('financeForm.type_benefits'), desc: t('financeForm.quickInfo_benefits') },
+                { icon: '📋', label: 'ITIN', desc: t('financeForm.quickInfo_itin') },
               ].map((item, i) => (
                 <View key={i} style={[styles.quickInfoCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
                   <Text style={styles.quickInfoEmoji}>{item.icon}</Text>
@@ -254,11 +256,11 @@ export default function FinanceSupport() {
 
             {/* Form */}
             <View style={[styles.formCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-              <Text style={[styles.formTitle, { color: theme.text }]}>💼 Formulário de Pedido</Text>
+              <Text style={[styles.formTitle, { color: theme.text }]}>💼 {t('financeForm.formTitle')}</Text>
 
               {/* Tipo de Ajuda */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Tipo de Ajuda Necessária *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('financeForm.helpTypeLabel')}</Text>
                 <TouchableOpacity
                   style={[styles.dropdownButton, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}
                   onPress={() => { setShowTypeDropdown(!showTypeDropdown); setShowStateDropdown(false); }}
@@ -276,7 +278,7 @@ export default function FinanceSupport() {
                       </>
                     ) : (
                       <Text style={[styles.dropdownText, { color: theme.textMuted }]}>
-                        Selecione o tipo de ajuda
+                        {t('financeForm.selectHelpType')}
                       </Text>
                     )}
                   </View>
@@ -285,19 +287,19 @@ export default function FinanceSupport() {
 
                 {showTypeDropdown && (
                   <View style={[styles.dropdownMenu, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-                    {FINANCE_TYPES.map(t => (
+                    {FINANCE_TYPES.map(ft => (
                       <TouchableOpacity
-                        key={t.id}
-                        style={[styles.dropdownItem, tipoAjuda === t.id && { backgroundColor: theme.primary + '15' }]}
-                        onPress={() => { setTipoAjuda(t.id); setShowTypeDropdown(false); }}
+                        key={ft.id}
+                        style={[styles.dropdownItem, tipoAjuda === ft.id && { backgroundColor: theme.primary + '15' }]}
+                        onPress={() => { setTipoAjuda(ft.id); setShowTypeDropdown(false); }}
                       >
-                        <Text style={styles.dropdownItemEmoji}>{t.icon}</Text>
+                        <Text style={styles.dropdownItemEmoji}>{ft.icon}</Text>
                         <View style={{ flex: 1 }}>
-                          <Text style={[styles.dropdownItemText, { color: tipoAjuda === t.id ? theme.primary : theme.text }]}>
-                            {t.label}
+                          <Text style={[styles.dropdownItemText, { color: tipoAjuda === ft.id ? theme.primary : theme.text }]}>
+                            {ft.label}
                           </Text>
                           <Text style={[styles.dropdownItemSubText, { color: theme.textMuted }]}>
-                            {t.description}
+                            {ft.description}
                           </Text>
                         </View>
                       </TouchableOpacity>
@@ -308,7 +310,7 @@ export default function FinanceSupport() {
 
               {/* Estado */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Estado (USA) *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('financeForm.stateLabel')}</Text>
                 <TouchableOpacity
                   style={[styles.dropdownButton, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}
                   onPress={() => { setShowStateDropdown(!showStateDropdown); setShowTypeDropdown(false); }}
@@ -316,7 +318,7 @@ export default function FinanceSupport() {
                 >
                   <MapPin size={16} color={theme.textMuted} style={{ marginRight: 8 }} />
                   <Text style={[styles.dropdownText, { color: estado ? theme.text : theme.textMuted, flex: 1 }]}>
-                    {estado || 'Selecione o estado'}
+                    {estado || t('financeForm.selectState')}
                   </Text>
                   <ChevronDown size={18} color={theme.textMuted} style={{ transform: [{ rotate: showStateDropdown ? '180deg' : '0deg' }] }} />
                 </TouchableOpacity>
@@ -344,11 +346,11 @@ export default function FinanceSupport() {
 
               {/* Descrição */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Descrição da Situação *</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('financeForm.descriptionLabel')}</Text>
                 <View style={[styles.inputWrapper, styles.textAreaWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                   <TextInput
                     style={[styles.input, styles.textArea, { color: theme.text }]}
-                    placeholder="Descreva a sua situação financeira atual. Ex: 'Preciso de ajuda para pedir o SNAP. Sou imigrante com visto de trabalho e tenho 3 filhos...'"
+                    placeholder={t('financeForm.descriptionPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={descricao}
                     onChangeText={setDescricao}
@@ -358,17 +360,17 @@ export default function FinanceSupport() {
                   />
                 </View>
                 <Text style={[styles.charCount, { color: descricao.length < 20 ? '#EF4444' : theme.textMuted }]}>
-                  {descricao.length} caracteres {descricao.length < 20 ? `(mínimo 20)` : '✓'}
+                  {descricao.length} {t('financeForm.characters')} {descricao.length < 20 ? `(${t('financeForm.minChars')})` : '✓'}
                 </Text>
               </View>
 
               {/* Observações */}
               <View style={styles.inputGroup}>
-                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>Informações Adicionais</Text>
+                <Text style={[styles.inputLabel, { color: theme.textSecondary }]}>{t('financeForm.additionalInfoLabel')}</Text>
                 <View style={[styles.inputWrapper, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt, height: 80, alignItems: 'flex-start', paddingVertical: 12 }]}>
                   <TextInput
                     style={[styles.input, { height: 56, color: theme.text }]}
-                    placeholder="Documentos disponíveis, urgência, outras informações relevantes..."
+                    placeholder={t('financeForm.additionalInfoPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     value={observacoes}
                     onChangeText={setObservacoes}
@@ -396,14 +398,14 @@ export default function FinanceSupport() {
                 ) : (
                   <>
                     <Send size={18} color="#FFFFFF" />
-                    <Text style={styles.submitButtonText}>Submeter Pedido Financeiro</Text>
+                    <Text style={styles.submitButtonText}>{t('financeForm.submitButton')}</Text>
                   </>
                 )}
               </TouchableOpacity>
 
               <View style={[styles.privacyNote, { backgroundColor: theme.background, borderColor: theme.cardBorderAlt }]}>
                 <Text style={[styles.privacyNoteText, { color: theme.textSecondary }]}>
-                  🔒 As suas informações financeiras são tratadas com total confidencialidade.
+                  🔒 {t('financeForm.privacyNote')}
                 </Text>
               </View>
             </View>

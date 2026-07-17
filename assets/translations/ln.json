@@ -72,7 +72,47 @@
     "emailPlaceholder": "you@email.com",
     "forgotPasswordDesc": "Sila koya email ya ngai. Nako kosenda linki ya kokanisa lametro",
     "loginFailed": "Naza Nazali",
-    "invalidCredentials": "Na email na lametro nazali"
+    "invalidCredentials": "Na email na lametro nazali",
+    "error": "Nsɔngɔ",
+    "errorGoogle": "Nsɔngɔ ya Google",
+    "errorApple": "Nsɔngɔ ya Apple",
+    "loginInterrupted": "Kotrika ekosalisaka. App ekosalaki kobanga. Ndenge tolobi soki.",
+    "enterFullName": "Ndenge tolobi likambo lyako nyoso.",
+    "enterEmail": "Ndenge tolobi email yako.",
+    "enterPassword": "Ndenge tolobi mot de passe.",
+    "invalidPhoneDigits": "Numero ya telephone teko na ngai (minimum digit 8).",
+    "passwordsDoNotMatch": "Mot de passe teko ekokani.",
+    "passwordMin6": "Mot de passe ekolaka minimum karakter 6.",
+    "acceptTerms": "Ndenge tolongi misala miye ya ngai.",
+    "confirmEmailTitle": "Longi email yako",
+    "confirmEmailDesc": "Tetomisaki lien ya confirmation ya {{email}}. Kliki na lien, soki tologi na kotrika.",
+    "goToLogin": "Kenda na Kotrika",
+    "alreadyRegistered": "Email nai ekolaki na ngai. Yebi kotrika.",
+    "emailInvalid": "Email teko na ngai. Ndenge komeki soki tolobi.",
+    "registrationError": "Nsɔngɔ ya Ngai-Mitunia",
+    "phoneVerification": "Kolongia na Telephone",
+    "signInWithPhone": "Kotrika na Telephone",
+    "enterPhoneSubtitle": "Tolobi numero ya telephone yako na kotambola code ya bopetansi.",
+    "phonePlaceholder": "kaka +1 234 567 8900",
+    "sendCode": "Tumisa Code",
+    "verifyCode": "Kolongia Code",
+    "enterCodeSentTo": "Tolobi code ya digit 6 etelemaki na {{phone}}",
+    "codePlaceholder": "Tolobi code ya digit 6",
+    "verifyAndSignIn": "Kolongia na Kotrika",
+    "changePhoneNumber": "Sela numero ya telephone",
+    "invalidPhone": "Ndenge tolobi numero ya telephone ya ngai na code ya mokili (kaka +1234567890)",
+    "phoneCountryCodeRequired": "Ndenge tolongi code ya mokili ekomoki na + (kaka +1)",
+    "smsSent": "Sms etumbimaki na nkombo",
+    "couldNotSendSms": "Ekopesi kosalela Sms",
+    "enterSixDigitCode": "Ndenge tolobi code ya digit 6",
+    "invalidCode": "Code teko na ngai",
+    "demoMode": "Mode ya Demo",
+    "demoModeA11y": "Kenda na mode ya demo",
+    "demoModeFailed": "Ekopesi kenda na mode ya demo.",
+    "appleComingSoon": "Kotrika na Apple",
+    "appleComingSoonDesc": "Fonctionnalité nai ekolaki na ngai na esika ya makambo, na mobeko tomona yako. Authentification Apple ekolaka compte ya développeur Apple.",
+    "phoneComingSoon": "Kotrika na Telephone",
+    "phoneComingSoonDesc": "Fonctionnalité nai ekolaki na ngai. Kotrika na SMS/OTP monana yako na version ya ngai."
   },
   "profile": {
     "title": "Ngai",
@@ -87,6 +127,16 @@
     "status": "Status",
     "beneficiaries": "Nkisi ya Ngai",
     "add": "Koyaka",
+    "addBeneficiary": "Koyaka Nkisi",
+    "editBeneficiary": "Sombisa Nkisi",
+    "beneficiaryType": "Mope Ndenge ya Nkisi",
+    "son": "Mwana wa Kiume",
+    "daughter": "Mwana wa Kinsu",
+    "spouse": "Moko na moko",
+    "fullName": "Lenindo Lotenuma",
+    "namePlaceholder": "Bika lenindo lotenuma",
+    "document": "Papya",
+    "documentPlaceholder": "Bika nombo ya papya",
     "none": "Nazalaka",
     "noneSubtitle": "Koyaka mwana, moko na moko na moko",
     "settings": "Paramètres",
@@ -111,12 +161,40 @@
     "noActivePlan": "Nazalaka",
     "benefitsCount": "Mpacho",
     "support247": "Bikisi",
-    "protected100": "Nakokende"
+    "protected100": "Nakokende",
+    "deleteAccountSubtitle": "La suppression de votre compte est permanente et ne peut pas être annulée.",
+    "deleteAccount": {
+      "title": "Supprimer le compte",
+      "warning": "Cette action est irréversible. Toutes vos données seront définitivement supprimées.",
+      "reasonLabel": "Raison du départ",
+      "reasons": {
+        "too_expensive": "Trop cher",
+        "missing_features": "Fonctionnalités manquantes",
+        "not_helpful": "Pas utile",
+        "privacy": "Préoccupations de confidentialité",
+        "duplicate": "Compte en double",
+        "other": "Autre"
+      },
+      "passwordLabel": "Entrez votre mot de passe pour confirmer",
+      "passwordPlaceholder": "Mot de passe",
+      "confirmLabel": "Je comprends les conséquences",
+      "deleteButton": "Supprimer mon compte",
+      "cancelButton": "Annuler",
+      "confirmError": "Veuillez confirmer et entrer votre mot de passe",
+      "alertDeletedTitle": "Compte supprimé",
+      "alertDeletedDemo": "Ceci est un compte de démonstration",
+      "alertDeletedDesc": "Votre compte a été supprimé. Vous serez déconnecté.",
+      "alertOk": "OK",
+      "noSession": "Aucune session active trouvée",
+      "deleteFailed": "Échec de la suppression du compte",
+      "genericError": "Une erreur s'est produite"
+    }
   },
   "dashboard": {
     "welcome": "Moni",
     "welcomeBack": "Moni,",
     "protectionStatus": "Status ya Kokende",
+    "planSuffix": "Plan",
     "protected": "Nakokende",
     "notProtected": "Sila kokende",
     "quickActions": "Mpono ya Siku",
@@ -267,7 +345,12 @@
         "description": "Kokanisa compte na ngai",
         "category_name": "Digital"
       }
-    }
+    },
+    "newServices": "Sevisi Eswa",
+    "financeHelp": "Likolasi ya Moni",
+    "housingSupport": "Likolasi ya Ndako",
+    "housingSupportDesc": "Kolaka likolasi na kolaka ndako, kolaka misango ya moni, na kolaka ndako ya ndako.",
+    "financeHelpDesc": "Kolaka likolasi ya moni na kolaka ndako, kolaka ndako na kolaka ndako ya ndako."
   },
   "activity": {
     "title": "Ebandeli ya Ngai",
@@ -315,31 +398,305 @@
     "helpDesc": "Bikisi na ngai",
     "contactSupport": "Kokaka Bikisi",
     "helpTopic": "Kokaka bikisi?",
+    "popular": "Ya kotiki",
+    "recommended": "Na kokamwa",
     "articles": {
       "tax": {
-        "title": "Lilongi ya Impôt",
-        "description": "Lilongi ya impôt",
-        "content": "Lilongi ya impôt na ngai"
+        "1": {
+          "title": "Fédéral Tax esengaka",
+          "description": "Kolaka biso ya fédéral tax na Amerika.",
+          "content": "## Base ya Fédéral Tax\n\n### État ya Filing\n- Monene (Single)\n- Mwenyio ya Kolelwa (Married Filing Jointly)\n- Mwenyio ya Kolabana (Married Filing Separately)\n- Motema ya Ndako (Head of Household)\n\n### Brackets ya Mukomba\n- 10%: $0 - $11,000\n- 12%: $11,001 - $44,725\n- 22%: $44,726 - $95,375\n- 24%: $95,376 - $182,100\n- 32%: $182,101 - $231,250\n- 35%: $231,251 - $578,125\n- 37%: $578,126+\n\n### Tax Credit\n- Child Tax Credit\n- Earned Income Tax Credit\n- Education Credits\n\n### Siku ya Filing\n- 15 Avrilaka mbala nzambe\n- 6 misi ya boyokani\n- Online okangama na poto\n\n### Malako\n1. Yomba état ya monene\n2. Mukomba wese kolakisa\n3. Documents boyebaka\n4. Filing na ntango\n5. Kolamba mosalisi ya tax\n\n### Ebandaka Epai\n- Kolakisa mukomba\n- Boyekoli ya filing\n- Documents ezo na boyokani"
+        },
+        "2": {
+          "title": "Kolakisa Tax Return",
+          "description": "Ndenge ya kolakisa tax return na molayi.",
+          "content": "## Tax Return Filing\n\n### Documents Ezali\n- W-2 (ya salaire)\n- 1099 (ya freelance/bisungu)\n- 1098 (ya ekolo/ndako)\n- Social Security Number (SSN) okanda ITIN\n\n### Ndenge ya Filing\n\n**Online:**\n- IRS Free File\n- TurboTax\n- H&R Block\n- TaxAct\n\n**Na Poto:**\n- Form ya papier\n- Na ntango ya monene\n\n### Processus\n1. Documents ezali kolakisa\n2. État ya monene\n3. Déduction esengaka (Standard okanda Itemized)\n4. Credit eko apply\n5. Tax ezali kolakisa\n6. Filing na payement\n\n### Malako\n1. Filing online - ya monene na boyebo\n2. IRS Free File ($73,000 na komi ya mokomba)\n3. Documents ezali kolakisa\n4. Filing na ntango\n5. Direct deposit boyebaka\n\n### Ebandaka Epai\n- Filing na poto: ya monene\n- Documents eko salaka\n- Boyokani eko salaka"
+        },
+        "3": {
+          "title": "Epai ya Boyokani na Tax",
+          "description": "Boyokani ezali na filing ya tax esengaka.",
+          "content": "## Boyokani Ezali\n\n### 1. Mukomba eko Salaka\n- Mukomba ya freelance okolakisa\n- Mukomba ya side job okolakisa\n- Mukomba ya bisungu okolakisa\n\n### 2. État ya Monene\n- État ya mwenyio esengaka\n- Motema ya ndako okanda na boyokani\n\n### 3. Déduction eko Salaka\n- Standard deduction okanda itemized deduction\n- Ekosala boyokani esengaka\n\n### 4. Documents eko Salaka\n- Receipt eko salaka\n- W-2/1099 eko langa\n\n### 5. Déduction ya Boyokani\n- Ekosala ya bisungu\n- Ekosala ya medical\n- Don na association\n\n### Malako\n1. Documents wese boyebaka\n2. État ya monene\n3. Mukomba wese kolakisa\n4. Déduction kolakisa\n5. Mosalisi ya business kolamba\n\n### Ebandaka Epai\n- Mukomba okolakisa\n- État okoyeba\n- Documents okolakisa"
+        },
+        "4": {
+          "title": "Kolakisa ITIN",
+          "description": "Ndenge ya kolakisa ITIN (Individual Taxpayer Identification Number).",
+          "content": "## ITIN Engaka?\n\n### Boyebaka\n- Ya filing ya tax na kati ya Amerika\n- Form W-7 ezali kolakisa\n- IRS ezali kosalela\n\n### Ekolengi\n- Wana ya SSN okolakisa\n- Wana ya SSN ekolengi\n- Tax filing ezali kosala\n\n### Processus ya Kolakisa\n1. Form W-7 kolakisa\n2. Documents ezali kolakisa\n3. Tax return kolakisa\n4. Poto okanda na office na boyokani\n\n### Documents Ezali\n- Passeport\n- Naissance\n- Marriage\n- Proof ya ndako\n\n### Ntango\n- 7-11 semaines na ntango\n- Na tax season na monene\n\n### Malako\n1. Form ya monene\n2. Documents wese kolakisa\n3. Tax return kolakisa\n4. Poto ya monene\n5. Copie kolakisa\n\n### Ebandaka Epai\n- Form eko salaka\n- Documents eko salaka\n- Tax return eko salaka"
+        },
+        "5": {
+          "title": "Tax Credit na Avantage",
+          "description": "Tax credit na avantage esengaka ya basungi na Amerika.",
+          "content": "## Tax Credit\n\n### Child Tax Credit\n- $2,000 na mwana wese\n- SSN ezali kosala\n- Mukomba esengaka\n\n### Earned Income Tax Credit (EITC)\n- Ya salarier ya mokomba na komi\n- $7,430 na monene (3+ basungi)\n- SSN ezali kosala\n\n### Child and Dependent Care Credit\n- Ekosala ya childcare\n- $3,000 na monene (1 mwana)\n- $6,000 na monene (2+ basungi)\n\n### Education Credits\n- American Opportunity Credit\n- Lifetime Learning Credit\n\n### Avantage\n- Tax free scholarship\n- Ekolo ya serivisi\n- Health ya serivisi\n\n### Malako\n1. Ekosala boyebaka kolakisa\n2. SSN kolakisa\n3. Form ya monene\n4. Filing na ntango\n5. Mosalisi ya business kolamba\n\n### Ebandaka Epai\n- Credit eko salaka\n- Form eko salaka\n- SSN eko salaka"
+        }
       },
       "immigration": {
-        "title": "Lilongi ya Immigration",
-        "description": "Lilongi ya immigration",
-        "content": "Lilongi ya immigration na ngai"
+        "1": {
+          "title": "État ya Immigration",
+          "description": "État ya immigration na Amerika biso boyebaka.",
+          "content": "## État ya Immigration\n\n### État ya Molayi\n- Nationalité (Citizenship)\n- Résident ya molayi (Green Card)\n- Visa ya salaire (Work Visa)\n- Visa ya ekolo (Student Visa)\n\n### État ya Ntango\n- B-1/B-2 Visitor\n- J-1 Exchange Visitor\n- H-1B Worker\n\n### État ya Monene\n- DACA\n- TPS (Temporary Protected Status)\n- Asylum applicant\n\n### Boyebaka Ezali\n1. État esengaka biso boyebaka\n2. État ekolakisa\n3. État ya molayi\n4. Filing ya biso ezali kosala\n\n### Malako\n1. État wana boyebaka\n2. État kolakisa\n3. Kolakisa na état\n4. Documents kolakisa\n5. Mosalisi ya avocat kolamba\n\n### Ebandaka Epai\n- État eko salaka\n- Filing eko salaka\n- Documents eko salaka"
+        },
+        "2": {
+          "title": "Kolakisa Green Card",
+          "description": "Ndenge ya kolakisa Green Card (résident ya molayi) na Amerika.",
+          "content": "## Green Card Engaka?\n\n### Boyebaka\n- Kolakisa na Amerika ya molayi\n- Kolakisa na salaire\n- 5 misi na ntango ya nationalité\n\n### Ndenge ya Kolakisa\n\n**Ya Mwenyio:**\n- Mwenyio ya mwasi okanda mwasi\n- Tata na mama\n- Basungi\n\n**Ya Salariaire:**\n- Employer sponsor\n- EB-1, EB-2, EB-3 catégories\n\n**Lotterie:**\n- Lotterie ya mbala nzambe\n- 55,000 Green Cards\n\n### Processus\n1. Pétition ya filing (Form I-130 okanda I-140)\n2. Visa ekosala boyokani\n3. Form I-485 ya filing\n4. Interview\n5. Décision\n\n### Malako\n1. Form ya monene\n2. Documents kolakisa\n3. Filing na ntango\n4. Interview boyebaka\n5. Mosalisi ya avocat kolamba\n\n### Ebandaka Epai\n- Pétition eko salaka\n- Documents eko salaka\n- Interview eko salaka"
+        },
+        "3": {
+          "title": "Kolakisa Nationalité",
+          "description": "Ndenge ya kolakisa nationalité na Amerika.",
+          "content": "## Nationalité Engaka?\n\n### Avantage\n- Vote ya mboka\n- Passeport\n- Sponsor na mwenyio\n- Politique ya mboka\n\n### Éligibilité\n- 18+ misi\n- 5 misi Green Card (okanda 3 misi ya mwenyio)\n- 30 misi na Amerika\n- Langue (Anglais)\n- Histoire na gouvernement\n\n### Processus\n1. Form N-405 ya filing\n2. Biométrie appointment\n3. Interview\n4. Examen\n5. Serment\n\n### Examen\n- Histoire ya mboka (100 questions)\n- Examen ya Anglais\n- Interview\n\n### Malako\n1. Histoire ya mboka boyebaka\n2. Anglais boyebaka\n3. Form ya monene\n4. Interview boyebaka\n5. Mosalisi ya avocat kolamba\n\n### Ebandaka Epai\n- Histoire okolakisa\n- Anglais okolakisa\n- Form okolakisa"
+        },
+        "4": {
+          "title": "Interview ya Immigration",
+          "description": "Boyebaka ya interview ya immigration.",
+          "content": "## Interview Engaka?\n\n### État\n- Interview ya Green Card\n- Interview ya nationalité\n- Interview ya visa\n\n### Boyebaka\n\n**Documents:**\n- Passeport\n- Green Card\n- Naissance\n- Marriage\n- Proof ya ndako\n\n**Questions:**\n- Boyebaka ya monene\n- Boyebaka ya mwenyio\n- Salariaire\n- Histoire ya crime\n\n### Na Interview\n1. Boyebaka na ntango\n2. Documents wese kolakisa\n3. Vrai ya monene\n4. Anglais na monene\n5. Calme boyebaka\n\n### Malako\n1. Boyebaka na ntango\n2. Documents wese kolakisa\n3. Vrai ya monene\n4. Calme boyebaka\n5. Avocat kolamba\n\n### Ebandaka Epai\n- Ntango okolakisa\n- Documents okolakisa\n- Vrai okolakisa"
+        },
+        "5": {
+          "title": "Kolamba Mosalisi ya Avocat",
+          "description": "Ndenge ya kolamba mosalisi ya avocat ya immigration.",
+          "content": "## Mosalisi ya Avocat Engaka?\n\n### Boyebaka\n- Processus ya monene\n- Ntango esengaka\n- Documents ezali kosala\n- Interview ezali kosala\n\n### Ndenge ya Kolamba\n\n**Référence:**\n- Basungi na mwenyio\n- Associations ya mboka\n- Église na mosquée\n\n**Online:**\n- AILA (American Immigration Lawyers Association)\n- Avvo\n- Martindale-Hubbell\n\n**Évaluation:**\n- Expérience\n- Taux de succès\n- Frais\n- Communication\n\n### Questions\n1. Expérience wana? 2. Taux de succès na molayi? 3. Frais ezali? 4. Processus na ntango? 5. Communication nango?\n\n### Malako\n1. Avocat basungi kolamba\n2. Référence kolakisa\n3. Frais kolakisa\n4. Contrat kolakisa\n5. Documents wese kolakisa\n\n### Ebandaka Epai\n- Avocat okolamba\n- Frais okolamba\n- Documents okolamba"
+        }
       },
       "housing": {
-        "title": "Lilongi ya Ndako",
-        "description": "Lilongi ya ndako",
-        "content": "Lilongi ya ndako na ngai"
+        "1": {
+          "title": "Kolamba Ndako",
+          "description": "Ndenge ya kolamba ndako okanda appartement na Amerika.",
+          "content": "## Étapes ya Kolamba Ndako\n\n### Budget\n- 30% ya mukomba na ndako\n- Security deposit okanda\n- Utilities kolakisa\n\n### Ndenge ya Kolamba\n- Apartments.com\n- Zillow\n- Craigslist\n- Realtor ya mboka\n- Signes ya mboka\n\n### Documents Ezali\n- Proof ya mukomba (Pay Stub, Bank Statement)\n- Identification\n- Références\n- Crédit report\n\n### Bail\n- Montant ya bail\n- Security deposit (1-2 misi)\n- Ntango ya bail\n- Règles na conditions\n\n### Malako\n1. Voir na ndako\n2. Contrat kolakisa\n3. Receipt ya deposit kolakisa\n4. État ya ndako kolakisa\n5. Na proprieté kolamba\n\n### Ebandaka Epai\n- Contrat okolakisa\n- Deposit receipt okolakisa\n- État ya ndako okolakisa"
+        },
+        "2": {
+          "title": "Crédit na Bail",
+          "description": "Boyebaka ya crédit na mukomba na bail.",
+          "content": "## Crédit Engaka?\n\n### Boyebaka\n- Proprietor crédito ya credit score\n- Proof ya mukomba\n- Références\n\n### Crédit Score\n- 670+: Molayi\n- 580-669: Acceptable\n- 580 na komi: Monene\n\n### Bail na Crédit\n\n**Alternatives:**\n- Security deposit ya monene\n- Co-signer\n- Bail pré-payé\n- Preuve alternative\n\n### Malako\n1. Credit score kolakisa\n2. Erreurs kolakisa\n3. Documents ya mukomba kolakisa\n4. Références kolakisa\n5. Alternatives kolamba\n\n### Ebandaka Epai\n- Credit score okolakisa\n- Documents okolakisa\n- Alternatives okolamba"
+        },
+        "3": {
+          "title": "Droits ya Locataire",
+          "description": "Droits na protection ya locataire.",
+          "content": "## Droits ya Locataire\n\n### Droits de Base\n- Ndako ya sécurité na santé\n- Privacy\n- Respect\n- Boyekoli ya molayi\n\n### Devoirs ya Locataire\n- Bail na ntango\n- Ndako ya monene\n- Règles kolakisa\n- Problèmes kolakisa\n\n### Problèmes\n\n**Ya Ndako:**\n- Insectes\n- Problèmes ya eau\n- Température\n\n**Ya Proprietor:**\n- Augmentation de loyer\n- Éviction\n- Privacy violation\n\n### Solution\n1. Écrire na monene\n2. Ntango kolakisa\n3. Avocat kolamba\n4. Action légale\n5. Plainte ya monene\n\n### Malako\n1. Écrire na monene\n2. Problèmes wese kolakisa\n3. Ntango kolakisa\n4. Avocat kolamba\n5. Plainte ya monene\n\n### Ebandaka Epai\n- Écriture okolakisa\n- Ntango okolakisa\n- Avocat okolamba"
+        },
+        "4": {
+          "title": "Ndako ya Serivisi",
+          "description": "Alternatives ya ndako ya serivisi na Amerika.",
+          "content": "## Ndako ya Serivisi\n\n### État\n- Public Housing\n- Section 8 (Housing Choice Voucher)\n- LIHTC (Low-Income Housing Tax Credit)\n\n### Éligibilité\n- Mukomba na 50% AMI na komi\n- Nationalité okanda immigration état\n- Conditions ya biso\n\n### Processus ya Kolakisa\n1. Form ya kolakisa kolakisa\n2. Proof ya mukomba kolakisa\n3. Waiting list na boyokani\n4. Éligible okanda ndako ekolakisa\n\n### Limites\n- Waiting list ya monene\n- Ndako ezali na number\n- Mukomba esengaka\n\n### Malako\n1. Kolakisa na ntango ya monene\n2. Documents wese kolakisa\n3. Status kolakisa\n4. Alternatives kolamba\n5. Association ya serivisi kolamba\n\n### Ebandaka Epai\n- Kolakisa okolakisa\n- Documents okolakisa\n- Status okolakisa"
+        },
+        "5": {
+          "title": "Maintenance ya Ndako",
+          "description": "Kolakisa ndako na bail na Amerika.",
+          "content": "## Maintenance\n\n### Devoirs ya Proprietor\n- Réparations ya monene\n- Sécurité\n- Gaz, eau, électricité\n\n### Devoirs ya Locataire\n- Réparations ya motone\n- Nettoyage\n- Jardin\n\n### Problèmes\n1. Écrire na monene\n2. Photos kolakisa\n3. Ntango kolakisa\n4. Avocat kolamba\n5. Plainte ya monene\n\n### Boyebaka Ezali\n- Communication écrite\n- Délai\n- Documentation\n- Droits légaux\n\n### Malako\n1. Problèmes wese écrire na monene\n2. Photos kolakisa\n3. Ntango kolakisa\n4. Avocat kolamba\n5. Plainte ya monene\n\n### Ebandaka Epai\n- Écriture okolakisa\n- Photos okolakisa\n- Ntango okolakisa\n- Avocat okolamba"
+        }
       },
       "legal": {
-        "title": "Lilongi ya Lokola",
-        "description": "Lilongi ya lokola",
-        "content": "Lilongi ya lokola na ngai"
+        "1": {
+          "title": "Kolamba Mosalisi ya Avocat",
+          "description": "Ndenge ya kolamba mosalisi ya avocat na Amerika.",
+          "content": "## Mosalisi ya Avocat Engaka?\n\n### États\n- Immigration\n- Salariaire\n- Mwenyio\n- Crime\n- Civil\n\n### Ndenge ya Kolamba\n**Référence:**\n- Basungi na mwenyio\n- Associations ya mboka\n- Avocat références\n\n**Online:**\n- Martindale-Hubbell\n- Avvo\n- Guides légaux\n\n**Mwabí:**\n- Legal aid organizations\n- Pro bono programs\n- Legal school clinics\n\n### Questions Ezali\n1. Expérience na molayi? 2. Frais ezali? 3. Naza kolamba nani? 4. Ntango esengaka? 5. Résultat possible?\n\n### Frais\n**Na heure:** $150-$500+\n**Fixe:** $1,000-$10,000+\n**Résultat:** 30-40%\n\n### Malako\n1. Avocat ya expérience kolamba\n2. Références kolamba\n3. Contrat kolakisa\n4. Correspondance wese kolakisa\n5. Mises à jour kolamba\n\n### Ebandaka Epai\n- Avocat okolamba\n- Frais okolamba\n- Correspondance okolakisa"
+        },
+        "2": {
+          "title": "Legal Aid Mwabí",
+          "description": "Alternatives ya legal aid mwabí okanda cot.",
+          "content": "## Legal Aid Mwabí\n\n### Legal Aid Organizations\n- Mwabí na mokomba na komi\n- Immigration, salaire, mwenyio\n- Éligibilité ya mukomba\n\n### Pro bono Programs\n- Avocat ya mwabí\n- Immigration, salaire\n- ACLU, NILC\n\n### Ressources\n**Fédéral:**\n- Legal Services Corporation\n- Department of Justice\n\n**État:**\n- State Bar Association\n- Legal Aid organizations\n\n**Local:**\n- Avocat ya mboka\n- Legal school clinics\n- Église na mosquée\n\n### Éligibilité\n- Mukomba na komi\n- Immigration\n- Mwenyio\n- Ndako\n\n### Ndenge ya Kolakisa\n1. Legal aid organization kolamba\n2. Form kolakisa\n3. Documents ya mukomba kolakisa\n4. Approbation na ntango\n5. Appointment kolakisa\n\n### Malako\n1. Organization kolamba\n2. Form kolakisa\n3. Documents kolakisa\n4. Approbation na ntango\n5. Appointment kolakisa"
+        },
+        "3": {
+          "title": "Contrat Boyebaka",
+          "description": "Ndenge ya kolakisa documents légaux.",
+          "content": "## Contrat Éléments\n\n### Éléments\n1. Noms na addresses ya parties\n2. Conditions na règles\n3. Devoirs ya parties\n4. Conditions ya résiliation\n5. Règlement ya différends\n\n### Ndenge ya Kolakisa\n1. Première na tous kolakisa\n2. Questions kolamba\n3. Conditions kolamba\n4. Délais kolakisa\n5. Copie kolakisa\n\n### Malako\n1. Boyekoli na monene\n2. Avocat kolamba\n3. Documents wese kolakisa\n4. Conditions kolamba\n5. Modifications kolakisa\n\n### Ebandaka Epai\n- Contrat okolakisa\n- Questions okolamba\n- Documents okolakisa\n- Assistance okolamba"
+        },
+        "4": {
+          "title": "Droits ya Travailleurs",
+          "description": "Droits légaux ya travailleurs na Amerika.",
+          "content": "## Droits\n\n### Sécurité\n- Environnement ya molayi\n- Harcèlement ezali\n- Discrimination ezali\n\n### Rémunération\n- Salaire minimum\n- Salaire overtime\n- Vol ya salaire ezali\n\n### Privacy\n- Fouille illégale ezali\n- Surveillance ezali na consentement\n- Documents ezali na sécurité\n\n### Ndenge ya Plainte\n- Human Resources\n- EEOC\n- Département du travail\n- Avocat\n\n### Malako\n1. Droits wese boyebaka\n2. Problèmes wese documenter\n3. Human Resources kolamba\n4. Avocat kolamba\n5. Documents wese kolakisa\n\n### Ebandaka Epai\n- Droits okolamba\n- Problèmes okolakisa\n- Assistance okolamba"
+        },
+        "5": {
+          "title": "Lois na Discrimination",
+          "description": "Protection na discrimination ya travail na lieux publics.",
+          "content": "## États ya Discrimination\n\n### Discrimination ya Travail\n- Race na ethnie\n- Genre na orientation sexuelle\n- Religion\n- Âge\n- Handicap\n- État immigration\n\n### Discrimination ya Lieux Publics\n- Services governementaux\n- Boutiques na restaurants\n- Écoles\n- Hôpitaux\n\n### Lois\n- Title VII Civil Rights Act\n- Americans with Disabilities Act\n- Age Discrimination Act\n- Equal Pay Act\n\n### Ndenge ya Plainte\n1. Incidents documenter\n2. Plainte EEOC\n3. Avocat kolamba\n4. Résultat na ntango\n5. Procès okanda si nécessaire\n\n### Malako\n1. Tout documenter\n2. Avocat kolamba\n3. Na ntango kolakisa\n4. Documents wese kolakisa\n5. Mises à jour kolamba\n\n### Ebandaka Epai\n- Incidents okolakisa\n- Avocat okolamba\n- Plainte okolakisa"
+        }
       },
       "career": {
-        "title": "Lilongi ya Travailler",
-        "description": "Lilongi ya travail",
-        "content": "Lilongi ya travail na ngai"
+        "1": {
+          "title": "Kolakisa CV (Resume)",
+          "description": "Guide ya kolakisa CV ya molayi na Amerika.",
+          "content": "## Éléments ya CV\n\n### Éléments\n1. Contact information\n2. Objectif okanda résumé\n3. Expérience ya travail\n4. Formation\n5. Compétences\n6. Références\n\n### Format\n**Chronologique:**\n- Ya plus courant\n- Progression ya carrière\n- Ya expérimentés\n\n**Fonctionnel:**\n- Compétences na focus\n- Ya changement de carrière\n\n### Malako\n1. 1-2 pages na monene\n2. Verbes d'action\n3. Réalisations quantifier\n4. Adapt na emploi wese\n5. Orthographe na grammaire\n\n### Ebandaka Epai\n- Adapter okolakisa\n- Trop long\n- Fautes orthographiques\n- Contact information ezali"
+        },
+        "2": {
+          "title": "Recherche d'Emploi",
+          "description": "Stratégies na ressources na recherche d'emploi na Amerika.",
+          "content": "## Ndenge ya Recherche\n\n### Online\n- Indeed.com\n- LinkedIn.com\n- Glassdoor.com\n- ZipRecruiter\n\n### Réseautage\n- Basungi na mwenyio\n- Anciens collègues\n- Événements industriels\n- Groupes online\n\n### Agences d'Emploi\n- Travail temporaire\n- Emploi permanent\n- Travail contractuel\n\n### Salons d'Emploi\n- Salons carrière\n- Événements industriels\n- Salons locaux\n\n### Malako\n1. Beaucoup postuler\n2. CV adapter\n3. Suivi des candidatures\n4. Réseautage régulier\n5. Entretiens pratiquer\n\n### Ebandaka Epai\n- Adapter okolakisa\n- Suivi okolakisa\n- Réseautage okolakisa\n- Pratiquer okolakisa"
+        },
+        "3": {
+          "title": "Compétences d'Entretien",
+          "description": "Conseils pour entretien d'emploi réussi.",
+          "content": "## Avant Entretien\n\n### Préparation\n1. Entreprise étudier\n2. Questions pratiquer\n3. Questions pour recruteur préparer\n4. Tenue préparer\n5. Itinéraire planifier\n\n### Questions Courantes\n- Parlez de vous\n- Pourquoi cet emploi?\n- Vos forces?\n- Vos faiblesses?\n- Où vous voyez dans 5 ans?\n\n### Malako\n1. Arriver 10-15 min avant\n2. Copies CV apporter\n3. Contact visuel maintenir\n4. Confiant rester\n5. Email remerciement\n\n### Ebandaka Epai\n- Étudier okolakisa\n- Pratiquer okolakisa\n- CV okolakisa\n- Remercier okolakisa"
+        },
+        "4": {
+          "title": "Droits des Travailleurs",
+          "description": "Droits légaux des travailleurs aux USA.",
+          "content": "## Droits\n\n### Sécurité\n- Environnement sûr\n- Harcèlement interdit\n- Discrimination interdite\n\n### Rémunération\n- Salaire minimum\n- Heures supplémentaires\n- Vol de salaire interdit\n\n### Vie Privée\n- Fouille illégale interdite\n- Surveillance interdite\n- Documents protégés\n\n### Recours\n- Ressources humaines\n- EEOC\n- Département du travail\n- Avocat\n\n### Malako\n1. Vos droits connaître\n2. Problèmes documenter\n3. RH solliciter\n4. Avocat consulter\n5. Documents conserver\n\n### Ebandaka Epai\n- Droits okolamba\n- Problèmes okolakisa\n- Assistance okolamba"
+        },
+        "5": {
+          "title": "Réseautage Professionnel",
+          "description": "Stratégies pour relations professionnelles.",
+          "content": "## Pourquoi Réseautage\n\n### Avantages\n- Opportunités emploi\n- Perspectives industrie\n- Mentorat\n- Développement professionnel\n\n### Online\n**LinkedIn:**\n- Profil professionnel\n- Connexions\n- Groupes industriels\n\n**Autres:**\n- Twitter\n- Forums industriels\n- Communautés professionnelles\n\n### Hors ligne\n- Événements industriels\n- Conférences\n- Meetups\n- Associations professionnelles\n\n### Malako\n1. Sincère et honnête rester\n2. Donner avant demander\n3. Suivi régulier\n4. Relations maintenir\n5. Réseautage régulier\n\n### Ebandaka Epai\n- Suivi okolakisa\n- Donner okolakisa\n- Réseautage okolakisa\n- Relations okolakisa"
+        }
+      },
+      "health": {
+        "1": {
+          "title": "Plans d'Assurance Maladie",
+          "description": "Types d'assurance maladie aux USA.",
+          "content": "## Types d'Assurance\n\n### Patronale\n- La plus courante\n- Employeur paie une partie\n- Options HMO, PPO, EPO\n\n### Marché (ACA)\n- HealthCare.gov\n- Subventions pour faible revenu\n- Inscription: 1 nov - 15 jan\n\n### Medicaid\n- Faible revenu\n- Couverture gratuite\n- Disponible la plupart des États\n\n### Medicare\n- 65+ ou handicapés\n- Part A: hôpital\n- Part B: ambulatoire\n- Part D: médicaments\n\n### Malako\n1. Plans comparer\n2. Réseau médecins vérifier\n3. Coûts vérifier\n4. Couverture vérifier\n5. Courtier consulter\n\n### Ebandaka Epai\n- Plans okolakisa\n- Réseau okolakisa\n- Coûts okolakisa"
+        },
+        "2": {
+          "title": "Trouver Médecin ou Hôpital",
+          "description": "Trouver prestataire dans votre réseau.",
+          "content": "## Méthodes de Recherche\n\n### Dans votre réseau\n- Appeler assurance\n- Site assurance vérifier\n- Médecin traitant demander\n\n### Types de Médecins\n**Médecin traitant:**\n- Premier contact maladie\n- Réfère spécialistes\n\n**Spécialistes:**\n- Cardiologue\n- Dermatologue\n- Orthopédiste\n\n### Malako\n1. Réseau vérifier avant rendez-vous\n2. Qualifications vérifier\n3. Référer demander\n4. Disponibilité vérifier\n5. Coûts demander\n\n### Urgence\n- Danger de vie: ER\n- Appeler 911\n- Pas de référé nécessaire\n\n### Ebandaka Epai\n- Réseau okolakisa\n- Qualifications okolakisa\n- Référé okolamba"
+        },
+        "3": {
+          "title": "Urgence Médicale",
+          "description": "Quand aller aux urgences et paiement.",
+          "content": "## Quand Aller\n\n### Urgence\n- Difficulté respiratoire\n- Douleur thoracique sévère\n- Hémorragie\n- Perte de conscience\n- Blessures graves\n- Réaction allergique\n\n### Pas Urgence\n- Rhume\n- Fièvre légère\n- Mal de tête léger\n\n### Coûts\n- Visite ER: $1,000-$3,000+\n- Ambulance: $500-$2,000+\n- Factures imprévues\n\n### Malako\n1. Danger de vie: aller ER\n2. Appeler 911\n3. Coûts demander\n4. Documents conserver\n5. Réclamation assurance\n\n### Ebandaka Epai\n- Réseau okolakisa\n- Coûts okolamba\n- Documents okolakisa"
+        },
+        "4": {
+          "title": "Médicaments sur Ordonnance",
+          "description": "Comprendre ordonnances et économies.",
+          "content": "## Types de Médicaments\n\n### Générique vs Marque\n- Générique: moins cher, même composition\n- Marque: cher, breveté\n\n### Économies\n- Génériques utiliser\n- Programmes réduction\n- Pharmacie par correspondance\n- Cartes réduction demander\n\n### Pharmacies\n- CVS, Walgreens, Rite Aid\n- Walmart\n- Target\n- En ligne\n\n### Malako\n1. Générique demander\n2. Pharmacies comparer\n3. Programmes réduction utiliser\n4. Couverture vérifier\n5. Reçus conserver\n\n### Ebandaka Epai\n- Générique okolamba\n- Pharmacies okolakisa\n- Couverture okolakisa"
+        },
+        "5": {
+          "title": "Santé Mentale et Bien-être",
+          "description": "Ressources pour santé mentale et bien-être.",
+          "content": "## Santé Mentale\n\n### Problèmes Courants\n- Anxiété\n- Dépression\n- Stress\n- Traumatisme\n\n### Ressources\n**Lignes d'aide:**\n- Suicide: 988\n- Crise texto: HOME au 741741\n- SAMHSA: 1-800-662-4357\n\n**Thérapie:**\n- Individuelle\n- Groupe\n- Familiale\n- En ligne\n\n### Malako\n1. Prestataire culturel compétent\n2. Services linguistiques demander\n3. Couverture vérifier\n4. Référé médecin demander\n5. Groupes soutien chercher\n\n### Pour Immigrés\n1. Prestataire culturel compétent\n2. Services linguistiques demander\n3. Groupe soutien dans langue\n4. Avocat consulter\n5. Organisation communautaire contacter"
+        }
+      },
+      "finance": {
+        "1": {
+          "title": "Kolakisa Compte Banque",
+          "description": "Guide ya kolakisa compte chèque okanda épargne na Amerika.",
+          "content": "## Banque Engaka?\n\n### Avantages\n- Sécurité ya sika\n- Dépôt direct na salaire\n- Banque en ligne\n- Carte débit\n\n### États ya Compte\n**Compte chèque:**\n- Transactions quotidiennes\n- Carte débit\n- Découvert possible\n\n**Compte épargne:**\n- Épargne\n- Intérêts\n- Retraits limités (6/mois)\n\n### Documents Ezali\n- Identification valide\n- Numéro sécurité sociale okanda ITIN\n- Preuve adresse\n- Dépôt initial\n\n### Étapes\n1. Banque okanda credit union choisir\n2. Documents apporter\n3. Formulaire remplir\n4. Dépôt initial payer\n5. Banque en ligne configurer\n\n### Malako\n1. Banques comparer\n2. Frais vérifier\n3. Réseau ATM vérifier\n4. Services en ligne vérifier\n5. Bonus demander\n\n### Ebandaka Epai\n- Banques okolakisa\n- Frais okolakisa\n- Banque en ligne okolakisa"
+        },
+        "2": {
+          "title": "Score de Crédit",
+          "description": "Comprendre score crédit et amélioration.",
+          "content": "## Score de Crédit\n\n### Niveaux\n- 800+: Excellent\n- 740-799: Très bon\n- 670-739: Bon\n- 580-669: Moyen\n- 580 en dessous: Mauvais\n\n### Facteurs\n**Historique paiement (35%):**\n- Paiement à temps\n- Paiement retardé\n- Recouvrement\n\n**Utilisation crédit (30%):**\n- Utilisé vs disponible\n- 30% recommandé\n\n**Ancienneté (15%):**\n- Âge comptes\n- Plus ancien = mieux\n\n**Mix crédit (10%):**\n- Types divers\n\n**Nouveau crédit (10%):**\n- Demandes récentes\n- Nouveaux comptes\n\n### Comment Améliorer\n1. Payer à temps\n2. Utilisation réduire\n3. Anciens comptes garder\n4. Vérifier régulièrement\n5. Erreurs contester\n\n### Malako\n1. Vérifier gratuit annualcreditreport.com\n2. Rappels paiement\n3. Anciens comptes garder\n4. Demandes limiter\n5. Conseiller crédit"
+        },
+        "3": {
+          "title": "Budget et Épargne",
+          "description": "Créer budget et épargner pour l'avenir.",
+          "content": "## Budget\n\n### Règle 50/30/20\n**50% Besoins:**\n- Logement\n- Utilités\n- Alimentation\n- Transport\n- Assurance\n\n**30% Loisirs:**\n- Divertissement\n- Restaurants\n- Shopping\n- Abonnements\n\n**20% Épargne:**\n- Fonds d'urgence\n- Retraite\n- Remboursement dette\n- Investissement\n\n### Conseils Budget\n1. Dépenses suivre\n2. Limite fixer\n3. Vérifier régulièrement\n4. Ajuster si nécessaire\n5. Urgence épargner\n\n### Fonds d'urgence\n- Objectif: 3-6 mois dépenses\n- Compte épargne haute rendement\n- Transfert auto configurer\n\n### Méthodes Épargne\n- Abonnements inutiles annuler\n- Cuisiner maison\n- Offres et coupons chercher\n- Prix comparer\n- Activités gratuites\n\n### Ebandaka Epai\n- Budget okolakisa\n- Urgence okolakisa\n- Dépenses okolakisa"
+        },
+        "4": {
+          "title": "Envoyer Argent à l'Étranger",
+          "description": "Méthodes envoyer argent hors USA.",
+          "content": "## Méthodes d'Envoi\n\n### Services en ligne\n- Wise\n- Remitly\n- Xoom\n- WorldRemit\n\n### Banque\n- Virement international\n- Cher\n- Lent\n\n### Centres transfert\n- Western Union\n- MoneyGram\n- Centres locaux\n\n### Malako\n1. Frais comparer\n2. Taux changer comparer\n3. Vitesse vérifier\n4. Limites vérifier\n5. Reçus conserver\n\n### Pour Envois Réguliers\n1. Transfert auto configurer\n2. Taux vérifier régulièrement\n3. Réduction volume demander\n4. Reçus conserver\n5. Limites vérifier\n\n### Ebandaka Epai\n- Frais okolakisa\n- Taux okolakisa\n- Reçus okolakisa"
+        },
+        "5": {
+          "title": "Gestion Dette et Carte Crédit",
+          "description": "Stratégies rembourser dette et gérer cartes crédit.",
+          "content": "## Types de Dettes\n\n### Bonne Dette\n- Hypothèque\n- Prêt étudiant\n- Prêt entreprise\n\n### Mauvaise Dette\n- Carte crédit (haut intérêt)\n- Prêt payday\n- Avance comptant\n\n### Stratégies Remboursement\n**Avalanche:**\n- Plus haut intérêt d'abord\n\n**Boule de neige:**\n- Plus petite dette d'abord\n\n### Conseils Carte Crédit\n1. Payer intégralement\n2. Utilisation <30%\n3. Anciennes cartes garder\n4. Historique vérifier\n5. Erreurs contester\n\n### Ebandaka Epai\n- Intégral okolakisa\n- Utilisation okolakisa\n- Historique okolakisa"
+        }
+      },
+      "education": {
+        "1": {
+          "title": "Cours d'Anglais (ESL)",
+          "description": "Cours gratuits ou à bas coût pour améliorer langues.",
+          "content": "## Pourquoi Anglais\n\n### Avantages\n- Meilleurs emplois\n- Accès services\n- Inclusion sociale\n- Meilleure éducation\n\n### Programmes Gratuits\n**Community college:**\n- Cours gratuits\n- Niveaux variés\n- Horaires flexibles\n\n**Bibliothèque:**\n- Cours gratuits\n- Tuteurs\n- Sessions pratique\n\n**En ligne:**\n- Khan Academy\n- Duolingo\n- Coursera\n\n### Niveaux\n- Débutant\n- Intermédiaire\n- Avancé\n- Anglais académique\n\n### Malako\n1. Cours local trouver\n2. Horaire vérifier\n3. Cahier apporter\n4. Pratiquer quotidien\n5. Avec camarades parler\n\n### Ebandaka Epai\n- Pratiquer okolakisa\n- Cahier okolakisa\n- Camarades okolamba"
+        },
+        "2": {
+          "title": "Diplôme (GED)",
+          "description": "Processus obtenir diplôme équivalent lycée.",
+          "content": "## GED Engaka?\n\n### Aperçu\n- General Educational Development\n- Équivalent diplôme lycée\n- Reconnu collèges et employeurs\n\n### Éligibilité\n1. Âge (généralement 18+)\n2. Pas inscrit lycée\n3. Pas diplômé\n\n### Sujets\n1. Mathématiques\n2. Sciences\n3. Études sociales\n4. Arts langagiers (Anglais)\n\n### Préparation\n**En ligne:**\n- GED.com officiel\n- Khan Academy\n- Ressources bibliothèque\n\n**Personnel:**\n- Cours préparation GED\n- Programmes éducation adultes\n- Tutorat\n\n### Frais Examen\n- Par sujet environ $30\n- Total environ $120\n- Varie par État\n\n### Après Examen\n1. Diplôme obtenir\n2. Inscription collège\n3. Meilleur emploi\n4. Éducation poursuivre\n\n### Malako\n1. Pratiquer régulièrement\n2. Calendrier vérifier\n3. ID valide apporter\n4. Résultats conserver\n5. Cours préparation aider"
+        },
+        "3": {
+          "title": "Collège et Bourses",
+          "description": "Admission collège et obtenir bourses.",
+          "content": "## Types de Collèges\n\n### Community College\n- 2 ans\n- Moins cher\n- Transfert 4 ans\n\n### Université 4 ans\n- Licence\n- Plus cher\n- Plus ressources\n\n### Options Financement\n**Aide financière:**\n- FAFSA\n- Bourse Pell\n- Aide État\n\n**Bourses:**\n- Mérite\n- Besoin\n- Sport\n- Culturel/ethnique\n\n### Critères\n1. Diplôme ou GED\n2. Scores tests (SAT/ACT)\n3. Relevés notes\n4. Lettres recommandation\n5. Personnel récit\n\n### Pour Étudiants DACA\n1. Peuvent postuler collège\n2. Aide financière disponible\n3. Bourses DACA\n\n### Malako\n1. Postuler à temps\n2. Beaucoup de bourses\n3. Dates limites vérifier\n4. Dossier adapter\n5. Conseiller aider\n\n### Ebandaka Epai\n- Postuler okolakisa\n- Bourses okolamba\n- Dates okolakisa"
+        },
+        "4": {
+          "title": "Apprentissage en Ligne",
+          "description": "Plateformes apprentissage nouvelles compétences.",
+          "content": "## Plateformes\n\n### Gratuites\n- Khan Academy\n- Coursera (observateur)\n- edX (observateur)\n- freeCodeCamp\n\n### Payantes\n- Udemy\n- LinkedIn Learning\n- Skillshare\n- Pluralsight\n\n### Compétences Populaires\n**Technologie:**\n- Programmation (Python, JavaScript)\n- Développement web\n- Analyse données\n- Support IT\n\n**Business:**\n- Gestion projet\n- Marketing digital\n- Leadership\n\n**Langues:**\n- Anglais affaires\n- Espagnol\n- Mandarin\n\n### Malako\n1. Plateforme choisir\n2. Horaire fixer\n3. Exercices compléter\n4. Notes prendre\n5. Pratiquer régulièrement\n\n### Ebandaka Epai\n- Horaire okolakisa\n- Exercices okolakisa\n- Notes okolakisa"
+        },
+        "5": {
+          "title": "École Professionnelle",
+          "description": "Programmes formation pratique.",
+          "content": "## École Pro Engaka?\n\n### Aperçu\n- Formation courte\n- Pratique\n- Certificat ou associé\n- 6 mois à 2 ans\n\n### Métiers Populaires\n**Santé:**\n- Assistant médical\n- Assistant dentaire\n- Assistant pharmacie\n\n**Qualifié:**\n- Électricien\n- Plombier\n- Technicien HVAC\n- Soudeur\n\n**Technologie:**\n- Support IT\n- Développement web\n- Analyse données\n\n### Critères\n1. Diplôme ou GED\n2. Formulaire demande\n3. Scores tests\n4. Entretien\n\n### Avantages\n- Formation rapide\n- Expérience pratique\n- Fort taux emploi\n- Travail immédiat\n\n### Malako\n1. Accréditation vérifier\n2. Taux emploi vérifier\n3. Coûts vérifier\n4. Horaire vérifier\n5. Emplacement vérifier\n\n### Ebandaka Epai\n- Accréditation okolakisa\n- Emploi okolakisa\n- Coûts okolakisa"
+        }
+      },
+      "safety": {
+        "1": {
+          "title": "Lois et Règles aux USA",
+          "description": "Lois importantes pour immigrés aux USA.",
+          "content": "## Lois Importantes\n\n### Circulation\n- Ceinture obligatoire\n- Âge légal 21 ans\n- Arrêter rouge à droite\n- Respecter panneaux et limites\n\n### Comportement\n- Droit manifestation pacifique\n- Discrimination illégale\n- Violence illégale\n\n### Avec Police\n1. Rester calme\n2. Demander droits\n3. Parler sans avocat\n4. Montrer identité\n5. Cooperer\n\n### Urgence\n- Appeler 911\n- Urgence gratuite\n- Anglais ou espagnol\n\n### Malako\n1. Lois respecter\n2. ID toujours avoir\n3. Rester calme\n4. Connaître droits\n5. Demander aide\n\n### Ebandaka Epai\n- Lois okolakisa\n- ID okolakisa\n- Calme okolakisa"
+        },
+        "2": {
+          "title": "Plan Sécurité Famille",
+          "description": "Préparation urgence pour famille.",
+          "content": "## Préparation\n\n### Planifier\n1. Noms et téléphones famille\n2. Contact urgence\n3. Lieu rassemblement\n4. Évacuation chemin\n5. Copies documents\n\n### Kit URGENCE\n**Nécessaire:**\n- Eau (3 jours)\n- Nourriture (3 jours)\n- Médicaments\n- Identité\n- Argent liquide\n- Téléphone chargeur\n- Copies documents\n\n### Documents\n**Garder en sécurité:**\n- Passeport\n- Acte naissance\n- Acte mariage\n- Assurances\n- Relevés bancaires\n\n### Sécurité Famille\n- Savoir où sont membres\n- Numéros téléphones mémoriser\n- Mots de passe partager\n- Lieu rassemblement fixer\n\n### Malako\n1. Plan réviser régulièrement\n2. Kit mettre à jour\n3. Avec famille pratiquer\n4. Contacts urgence mémoriser\n5. Copies mettre à jour\n\n### Ebandaka Epai\n- Plan okolakisa\n- Documents okolakisa\n- Pratiquer okolakisa"
+        },
+        "3": {
+          "title": "Attention Fraude Immigration",
+          "description": "Protection contre arnaques et fraudes.",
+          "content": "## Fraudes Courantes\n\n### Signes\n- Appels inattendus\n- Pression immédiate\n- Demande argent\n- Demande infos personnelles\n\n### Alertes\n1. Numéros inconnus\n2. Menaces arrestation\n3. Pression argent\n4. Infos personnelles\n5. Décision immédiate\n\n### Protection\n1. Ne pas croire numéros inconnus\n2. Ne jamais envoyer argent\n3. Ne pas partager infos\n4. Vérifier indépendamment\n5. Signaler\n\n### Contacts\n- Ligne fraude\n- FTC: 1-877-382-4357\n- Aide immigration\n\n### Malako\n1. Rester vigilant\n2. Ne pas croire inconnus\n3. Ne jamais envoyer argent\n4. Ne pas partager infos\n5. Signaler\n\n### Ebandaka Epai\n- Croire okolakisa\n- Envoyer okolakisa\n- Partager okolakisa"
+        },
+        "4": {
+          "title": "Protection Violence et Harcèlement",
+          "description": "Protection contre violence et harcèlement.",
+          "content": "## Types\n\n### Violence domestique\n- Physique\n- Émotionnelle\n- Économique\n- Sexuelle\n\n### Violence publique\n- Vol\n- Coups\n- Discrimination\n\n### Violence en ligne\n- Cyberharcèlement\n- Menaces en ligne\n\n### Ressources\n**Violence domestique:**\n- Ligne nationale: 1-800-799-7233\n- Texto: ENVOYER au 88788\n- Shelter\n- Aide légale\n\n**Autres:**\n- Police: 911\n- Associations communautaires\n- Aide légale\n\n### Malako\n1. Demander aide\n2. Plan sécurité créer\n3. Documents conserver\n4. Identité conserver\n5. Avocat consulter\n\n### Ebandaka Epai\n- Aide okolamba\n- Plan okolakisa\n- Documents okolakisa"
+        },
+        "5": {
+          "title": "Protection Raids ICE",
+          "description": "Que faire en cas de raid ICE.",
+          "content": "## Vos Droits\n\n### Droits Légaux\n1. Droit garder silence\n2. Droit avocat\n3. Droit refuser entrée\n\n### Préparation\n**Documents:**\n- Copies identité\n- Numéro avocat\n- Contact urgence\n\n**Sécurité:**\n- Documents sécuriser\n- Instructions famille\n- Numéro avocat mémoriser\n\n### Pendant Raid\n1. Rester calme\n2. Ne pas parler sans avocat\n3. Ne pas donner documents\n4. Refuser entrée\n5. Appeler avocat\n\n### Aide Légale\n- Organisations aide légale\n- ACLU\n- Cliniques légales\n\n### Malako\n1. Connaître droits\n2. Documents prêts\n3. Numéro avocat mémoriser\n4. Instructions famille\n5. Rester vigilant\n\n### Ebandaka Epai\n- Droits okolamba\n- Documents okolakisa\n- Numéro okolakisa"
+        }
+      },
+      "community": {
+        "1": {
+          "title": "Organisations et Services Communautaires",
+          "description": "Ressources communautaires pour immigrés aux USA.",
+          "content": "## Ressources Communautaires\n\n### Types\n- Aide légale\n- Aide alimentaire\n- Aide logement\n- Services santé\n- Programmes éducation\n\n### Comment Trouver\n**En ligne:**\n- 211.org\n- Appeler 211\n- Organisations communautaires\n\n**Local:**\n- Bibliothèque\n- Églises et mosquées\n- Centres culturels\n\n### Services\n**Alimentaire:**\n- Banque alimentaire\n- Soupe populaire\n- WIC\n\n**Logement:**\n- Aide logement\n- Shelter urgence\n- Aide loyer\n\n**Éducation:**\n- Cours ESL\n- Programmes GED\n- Éducation adultes\n\n### Malako\n1. Organisations locales trouver\n2. Services vérifier\n3. Visiter régulièrement\n4. Bénévolat faire\n5. Autres aider\n\n### Ebandaka Epai\n- Ressources okolakisa\n- Services okolakisa\n- Bénévolat okolakisa"
+        },
+        "2": {
+          "title": "Adaptation Culturelle",
+          "description": "Adapter culture américaine et vivre.",
+          "content": "## Différences Culturelles\n\n### Valeurs\n- Individualisme\n- Ponctualité\n- Communication directe\n\n### Communication\n- Contact visuel\n- Poignée de main\n- Espace personnel\n\n### Style de Vie\n- Équilibre travail-vie\n- Loisirs\n- Normes sociales\n\n### Méthodes Adaptation\n1. Nouvelles personnes rencontrer\n2. Activités communautaires\n3. Nouvelle langue apprendre\n4. Événements culturels\n5. Temps famille\n\n### Défis\n- Barrière langue\n- Différences culturelles\n- Solitude\n- Stress financier\n\n### Malako\n1. Patience\n2. Continuer apprendre\n3. Demander aide\n4. Culture garder\n5. Nouvelle culture adopter\n\n### Ebandaka Epai\n- Patience okolakisa\n- Apprendre okolakisa\n- Aide okolamba"
+        },
+        "3": {
+          "title": "Soutien Famille et Enfants",
+          "description": "Ressources pour famille et enfants.",
+          "content": "## Pour Enfants\n\n### Éducation\n- Public école: gratuit\n- Pré-maternelle\n- Éducation spéciale\n\n### Santé\n- Assurance santé enfants\n- Medicaid\n- Vaccinations\n\n### Activités\n- Parcs et loisirs\n- Équipes sport\n- Programmes bibliothèque\n\n## Pour Famille\n\n### Soutien\n- Thérapie familiale\n- Aide famille d'accueil\n- Soutien parents\n\n### Ressources\n**En ligne:**\n- Magazines parentalité\n- Blogs famille\n- Groupes soutien\n\n**Local:**\n- Centres famille\n- Organisations communautaires\n- Écoles\n\n### Malako\n1. Éducation enfants impliquer\n2. Activités famille\n3. Demander aide\n4. Réseau créer\n5. Ressources utiliser\n\n### Ebandaka Epai\n- Éducation okolakisa\n- Activités okolakisa\n- Aide okolamba"
+        },
+        "4": {
+          "title": "Services pour Seniors",
+          "description": "Ressources et services pour personnes âgées.",
+          "content": "## Services\n\n### Santé\n- Medicare\n- Medicaid\n- Soins à domicile\n\n### Nutrition\n- Meals on Wheels\n- Centres alimentaires communautaires\n- SNAP\n\n### Transport\n- Transport communautaire\n- NEMT\n- Navette bibliothèque\n\n### Social\n- Centres seniors\n- Activités\n- Programmes amitié\n\n### Malako\n1. Services vérifier\n2. Centre communautaire visiter\n3. Activités sociales participer\n4. Transport vérifier\n5. Santé utiliser\n\n### Ebandaka Epai\n- Services okolakisa\n- Activités okolakisa\n- Transport okolakisa"
+        },
+        "5": {
+          "title": "Participation Communautaire",
+          "description": "Méthodes participer à votre communauté.",
+          "content": "## Méthodes de Participation\n\n### Bénévolat\n- Banque alimentaire\n- Shelter\n- Bibliothèque\n- École\n\n### Culturel\n- Festivals\n- Musées\n- Centres arts\n- Concerts\n\n### Politique\n- Vote\n- Réunions publiques\n- Plaidoyer\n\n### Social\n- Événements communautaires\n- Réunions quartier\n- Groupes\n\n### Malako\n1. Groupes intérêts trouver\n2. Participer régulièrement\n3. Nouvelles personnes rencontrer\n4. Culture partager\n5. Autres cultures apprendre\n\n### Avantages\n- Nouveaux amis\n- Pratiquer langue\n- Apprendre culture\n- Être membre communauté\n- Fierté personnelle\n\n### Ebandaka Epai\n- Participer okolakisa\n- Personnes okolamba\n- Culture okolakisa"
+        }
+      },
+      "work": {
+        "1": {
+          "title": "Démarrer Entreprise",
+          "description": "Guide démarrer entreprise aux USA.",
+          "content": "## Types d'Entreprises\n\n### Entrepreneur Individuel\n- Plus simple\n- Contrôle total\n- Responsabilité personnelle\n\n### LLC\n- Responsabilité limitée\n- Flexibilité fiscale\n- Plus complexe\n\n### Corporation\n- Plus complexe\n- Responsabilité limitée\n- Coûts élevés\n\n### Étapes\n1. Plan affaires créer\n2. Enregistrer\n3. Licence obtenir\n4. Compte ouvrir\n5. Assurance acheter\n\n### Malako\n1. Étude marché\n2. Plan affaires\n3. Avocat aider\n4. Comptable aider\n5. Vérifier licences\n\n### Ebandaka Epai\n- Plan okolakisa\n- Enregistrer okolakisa\n- Licence okolakisa"
+        },
+        "2": {
+          "title": "Travailleur Indépendant",
+          "description": "Opportunités travailler indépendamment.",
+          "content": "## Travail Indépendant\n\n### Aperçu\n- Travailler pour soi\n- Horaires flexibles\n- Fixer prix\n- Projets variés\n\n### Domaines Populaires\n**Créatif:**\n- Design graphique\n- Écriture\n- Photographie\n\n**Technique:**\n- Développement web\n- Programmation\n- Analyse données\n\n**Services:**\n- Conseil\n- Enseignement\n- Traduction\n\n### Plateformes\n- Upwork\n- Fiverr\n- Freelancer\n- 99designs\n\n### Comment Commencer\n1. Compétences identifier\n2. Portfolio créer\n3. S'inscrire plateforme\n4. Profil créer\n5. Premier projet compléter\n\n### Malako\n1. Spécialiser\n2. Portfolio créer\n3. Prix fixer\n4. À temps compléter\n5. Communication développer\n\n### Ebandaka Epai\n- Spécialiser okolakisa\n- Portfolio okolakisa\n- Communication okolakisa"
+        },
+        "3": {
+          "title": "Négociation Salaire et Promotion",
+          "description": "Compétences négociation salaire et promotion.",
+          "content": "## Quand Négocier\n\n### Opportunités\n- Offre emploi\n- Évaluation annuelle\n- Promotion\n- Nouvelles responsabilités\n\n### Préparation\n1. Recherche\n2. Votre valeur\n3. Exemples prêts\n4. Limites fixer\n\n### Compétences\n**Communication:**\n- Clair parler\n- Confiant rester\n- Écouter\n\n**Recherche:**\n- Taux marché\n- Standards industrie\n- Votre expérience\n\n### Stratégies\n1. Chiffres utiliser\n2. Exemples donner\n3. Options présenter\n4. Patient rester\n5. Confirmer écrit\n\n### Malako\n1. Rechercher\n2. Pratiquer\n3. Options préparer\n4. Calme rester\n5. Confirmer écrit\n\n### Ebandaka Epai\n- Rechercher okolakisa\n- Pratiquer okolakisa\n- Calme okolakisa"
+        },
+        "4": {
+          "title": "Options Assurance Maladie Travailleurs",
+          "description": "Assurance maladie pour travailleurs.",
+          "content": "## Options\n\n### Patronale\n- Plus courante\n- Employeur paie\n- Plans variés\n\n### Individuelle\n- Marché ACA\n- Privée\n- Taux groupe\n\n### Medicaid\n- Faible revenu\n- Gratuite\n\n### COBRA\n- Après perte emploi\n- 18-36 mois\n- Cher\n\n### Malako\n1. Options comparer\n2. Coûts vérifier\n3. Couverture vérifier\n4. Réseau vérifier\n5. Courtier consulter\n\n### Ebandaka Epai\n- Options okolakisa\n- Coûts okolakisa\n- Couverture okolakisa"
+        },
+        "5": {
+          "title": "Anglais d'Affaires",
+          "description": "Compétences langues nécessaires pour travail.",
+          "content": "## Anglais d'Affaires\n\n### Importance\n- Trouver emploi\n- Entretiens\n- Travail\n- Développement professionnel\n\n### Compétences\n**Personnel:**\n- Présentation\n- Appels téléphoniques\n- Emails\n\n**Professionnel:**\n- Présentations\n- Réunions\n- Rapports\n\n### Ressources\n**En ligne:**\n- Cours anglais affaires\n- Chaînes YouTube\n- Podcasts\n\n**Personnel:**\n- Cours ESL\n- Ateliers anglais affaires\n- Tutorat\n\n### Malako\n1. Pratiquer régulièrement\n2. Nouveaux mots apprendre\n3. Appels pratiquer\n4. Emails pratiquer\n5. Collègues parler\n\n### Ebandaka Epai\n- Pratiquer okolakisa\n- Apprendre okolakisa\n- Appels okolakisa"
+        }
       }
     }
   },
@@ -391,7 +748,9 @@
     "aiResponseDefault": "Moni. Sila koya bikisi na ngai",
     "ticketTab": "Ticket",
     "aiTab": "AI Chat",
-    "typeMessage": "Sila koya mando..."
+    "typeMessage": "Sila koya mando...",
+    "aiAssistant": "Mokonzi ya AI",
+    "online": "Na online"
   },
   "plans": {
     "title": "Plan ya Abonnement",
@@ -401,6 +760,8 @@
     "selectPlan": "Kolanda Plan",
     "whatsIncluded": "Nazali",
     "note": "Plan nyoso nazali",
+    "premiumMember": "Membro Premium",
+    "premiumNote": "Oyo na bolingo na biso ny Premium. Mibali yo na likambo na nzambe!",
     "month": "/mwezi",
     "alreadySubscribed": "Naza na plan",
     "subscribeSuccess": "Nayo na plan {{plan}}",
@@ -470,7 +831,24 @@
     "processing": "Paiement...",
     "success": "Nayo!",
     "failed": "Nazali",
-    "secureNote": "Paiement na bino nazali"
+    "secureNote": "Paiement na bino nazali",
+    "finalizePurchase": "Fini yo kotisa",
+    "planLabel": "Plan",
+    "monthlySubscription": "Abonnement na mois",
+    "includedInPlan": "Ezali na plan nayo",
+    "moreBenefits": "+{{count}} avantages mingi",
+    "showLess": "Montrer moins",
+    "securePayment": "Paiement sécure",
+    "stripeSecurityNote": "Paiement na yɔ̌ ngai ezali sécure na Stripe. Tózámi kosúna na bacoordinates ya carte nayo mpo na kati.",
+    "iapSecurityNote": "Paiement ezali sécure na boutique ya applications na appareil nayo. Tózámi kosúna na informations ya paiement nayo mpo na kati.",
+    "payAmount": "Kotisa ${{price}}",
+    "subscribe": "Abonner",
+    "noPaymentRequired": "Kosúna na paiement mpo na plan ya motó.",
+    "viewPlans": "Montrer ba plans",
+    "demoModeSuccess": "Mode démo: Plan {{plan}} ezali activé na succès !",
+    "demoModeFailed": "Échec ya activation ya plan na mode démo",
+    "redirectingToPayment": "Na redirection na page ya paiement Stripe...",
+    "planActivated": "Plan {{plan}} ezali activé na succès !"
   },
   "planDetails": {
     "title": "Plan ya Ngai",
@@ -560,5 +938,314 @@
     "noSupportRequests": "Nazalaka",
     "priority": "Priority",
     "status": "Status"
+  },
+  "onboarding": {
+    "slide1Title": "Nyonso Ebatelami",
+    "slide1Subtitle": "Bosɛkí ya libota ezali kosala",
+    "slide2Title": "Kokɛngɛla na Ngonga Yango",
+    "slide2Subtitle": "Ekombo ya mbala moko",
+    "slide3Title": "Litomba ya Minyɔlɔ",
+    "slide3Subtitle": "Kofungwama ya banzela nyonso",
+    "slide4Title": "Lisungi 24/7",
+    "slide4Subtitle": "Ntango nyonso ezali"
+  },
+  "terms": {
+    "title": "Misango ya Sevisi",
+    "lastUpdated": "Yanoki Kusukuma: 4 Yuli 2026",
+    "welcome": "Moni na Kizola Protect. Soki ozali kosalela application na biso ya mobile na sevisi na biso, ozali kotonga na misango ya sevisi ebi. Sila tangaka misango ebi na makambo.",
+    "section1Title": "1. Kotonga na Misango",
+    "section1Body": "Soki ozali kosala compte, kokaka, na kosalela Kizola Protect (\"Sevisi\"), ozali kotonga na misango ya sevisi ebi. Soki ozali na ndenge ya kotonga na yango te, sila tosewisela sevisi te. Biso tokoki kusukuma misango ebi na siku nyoso, na kosalela na ndenge ya misango ya kusukumaka ezali ndenge ya kotonga.",
+    "section2Title": "2. Compte ya Moni",
+    "section2Body": "Okoki kosalela sevisi ebi soki ozeni miaka 18. Ozali kotonga na kosendaka makambo mibimbimbe na yango, na mibalo, na makambo nyoso, na kosukumaka makambo ebi na ndenge ya bino. Ozali kotonga na kosalela makambo ya compte na bino, na kosalela makambo ya compte na bino na ndenge ya makambo nyoso.",
+    "section3Title": "3. Abonnement na Ngambu",
+    "section3Body": "Fonctions ezali na abonnement ya mpango. Mpango ya abonnement ezali kosangwa na misungi ya misungi, na ndenge ya mpango ya ndenge ya misungi. Biso tokoki kusukuma mpango na biso na misungi ya misungi ya misungi. Na kosukumaka misungi ya misungi ya misungi, okoki kosalela misungi ya misungi ya misungi.",
+    "section4Title": "4. Makambo ya Sevisi",
+    "section4Body": "Kizola Protect ezali na makambo, na mpacho, na misangi na misungi ya mpango ya lokola, na misungi ya ndako, na misungi ya impôt, na misungi ya ndako, na misungi ya lilongi. Biso tozali na ndenge ya kosendaka lokola te. Plateforme na biso ezali na ndenge ya kosangisa bino na misungi ya nyoso ezali na ndenge ya kosalela sevisi na bino.",
+    "section5Title": "5. Ndenge ya Moni",
+    "section5Intro": "Ozali kotonga na misango ebi te:",
+    "section5Bullet1": "Kosalela sevisi na ndenge ya lokola te",
+    "section5Bullet2": "Kosala moni na ndenge ya moko te",
+    "section5Bullet3": "Kosalela sevisi na ndenge ya kosangisa te",
+    "section5Bullet4": "Kokaka ndenge ya ndenge ya ndako ya moni na ndenge ya ndako te",
+    "section5Bullet5": "Kokaka code na ndenge ya ndako te",
+    "section5Bullet6": "Kokaka sevisi na ndenge ya ndako te",
+    "section5Bullet7": "Kosalela sevisi na ndenge ya ndako na ndenge ya ndako te",
+    "section6Title": "6. Ndenge ya Lokola",
+    "section6Body": "Sevisi na misungi na bino, na fonctions na bino, ezali na ndenge ya Kizola Protect na ndenge ya lokola ya nyoso, na ndenge ya ndenge ya ndenge, na ndenge ya ndenge ya ndenge. Okoki kusukuma misungi ebi te, kokaka misungi ebi te, kosangisa misungi ebi te, kosala misungi ebi te na ndenge ya ndenge ya ndenge.",
+    "section7Title": "7. Ndenge ya Lokola",
+    "section7Body": "Kizola Protect ezali na ndenge ya lokola te na ndenge ya ndako ya ndenge ya ndako, na ndenge ya ndako ya ndako, na ndenge ya ndako ya ndako, na ndenge ya ndako ya ndako. Sevisi ezali na ndenge ya ndako ya ndako na ndenge ya ndako, na ndenge ya ndako ya ndako, na ndenge ya ndako ya ndako.",
+    "section8Title": "8. Misungi ya Nyoso",
+    "section8Body": "Plateforme na biso tokoki kosangisa misungi ya nyoso na ndenge ya ndako. Biso tozali na ndenge ya ndako te na ndenge ya ndako, na ndenge ya ndako, na ndenge ya ndako, na ndenge ya ndako. Bino na misungi ya nyoso na ndako, okoki kosalela misungi ya nyoso na ndako.",
+    "section9Title": "9. Lokolisa",
+    "section9Body": "Biso tokoki kusukuma compte na bino na siku nyoso na ndenge ya misango ebi, na ndenge ya ndako, na ndenge ya ndako, na ndenge ya ndako. Okoki lokolisa compte na bino na siku nyoso na ndenge ya ndako na ndenge ya ndako.",
+    "section10Title": "10. Loi na Ngambo",
+    "section10Body": "Misango ebi ezali na ndenge ya loi na État Florida, États-Unis, na ndenge ya ndako na ndako, na ndenge ya ndako na ndako. Misungi nyoso na ndako na ndako, na ndenge ya ndako na ndako, ezali kosangwa na Cour ya Miami-Dade County, Florida.",
+    "section11Title": "11. Kokonaka",
+    "section11Intro": "Na kokaka misango ebi, sila kokonaka biso na:",
+    "section11Email": "Email: support@kizolaprotect.com",
+    "section11Address": "Adresse: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section11Phone": "Telephone: +1 (929) 609-7035"
+  },
+  "privacy": {
+    "title": "Politiki ya Lilongi",
+    "lastUpdated": "Yanoki Kusukuma: 4 Yuli 2026",
+    "welcome": "Kizola Protect (\"biso,\" \"ya biso,\" na \"bisoki\") ezali na ndenge ya kokende lilongi ya bino. Politiki ya lilongi ebi ezali kokambaka ndenge ya biso na kosangisa, kosalela, kokambaka, na kokende makambo ya bino na bino na kosalela application na biso ya mobile na sevisi na biso.",
+    "section1Title": "1. Makambo ya Bino",
+    "section1Intro": "Biso tokosangisa makambo na bino na ndenge ya bino, na moko:",
+    "section1Bullet1": "Makambo ya moni (nini, email, telephone)",
+    "section1Bullet2": "Makambo ya compte (mot de passe, makambo ya ndenge)",
+    "section1Bullet3": "Makambo ya profil (avatar, misango, ndenge ya lilongi)",
+    "section1Bullet4": "Makambo ya mpango (ezali na ndenge ya ndako ya ndako na ndako)",
+    "section1Bullet5": "Papie na bino ezali na ndenge ya ndako na ndako",
+    "section1Bullet6": "Makambo ya bino ezali na ndenge ya ndako na ndako",
+    "section2Title": "2. Ndenge ya Kosalela Makambo",
+    "section2Intro": "Biso tokosalela makambo tokosangisaka na ndenge ya ndako:",
+    "section2Bullet1": "Kosala na kokende compte na bino",
+    "section2Bullet2": "Kosendaka sevisi na biso, kosalela na kokende",
+    "section2Bullet3": "Kokaka misungi na kosendaka makambo",
+    "section2Bullet4": "Kosendaka makambo ya ndako, misungi, kokende, na misungi ya sevisi",
+    "section2Bullet5": "Kokaka makambo ya bino, makambo, na misungi",
+    "section2Bullet6": "Kokaka ndenge ya kosalela na misango ya bino",
+    "section2Bullet7": "Kokaka ndenge ya ndako, ndenge ya ndako, na kokende ya ndako",
+    "section2Bullet8": "Kokaka ndenge ya loi",
+    "section3Title": "3. Kokambaka Makambo",
+    "section3Intro": "Biso tokoki kosendaka makambo ya bino te na bino na ndako. Biso tokoki kokambaka makambo na bino na ndako ya ndako:",
+    "section3Bullet1": "Makambo ya ndako ezali na ndenge ya ndako na ndako",
+    "section3Bullet2": "Misungi ya mpango ezali na ndenge ya ndako na ndako",
+    "section3Bullet3": "Loi na ndako na ndako, soki loi ezali na ndenge ya ndako",
+    "section3Bullet4": "Makambo na bino na ndako ya ndako",
+    "section4Title": "4. Kokende Makambo",
+    "section4Body": "Biso tokosala ndenge ya ndako ya ndako na ndako, na ndenge ya ndako na ndako, na ndenge ya ndako na ndako. Biso tokoki kokende ndenge ya ndako na ndako te, na ndenge ya ndako na ndako, na ndenge ya ndako na ndako.",
+    "section5Title": "5. Lokola ya Bino",
+    "section5Intro": "Na ndenge ya ndako ya bino, bino okoki na lokola ya ndako:",
+    "section5Bullet1": "Kokaka makambo ya bino ezali na ndako",
+    "section5Bullet2": "Kokaka ndenge ya ndako ya ndako",
+    "section5Bullet3": "Kokaka ndako ya makambo ya bino (monana politiki ya CCPA na biso)",
+    "section5Bullet4": "Kokaka ndenge ya ndako ya ndako",
+    "section5Bullet5": "Kokaka ndenge ya ndako na ndako na siku nyoso",
+    "section5Bullet6": "Kokaka ndenge ya ndako na ndako na ndenge ya ndako",
+    "section6Title": "6. CCPA na Moni (Bino na California)",
+    "section6Body": "Soki bino ozeni na California, California Consumer Privacy Act (CCPA) ezali na lokola ya ndako ya ndako ya makambo ya bino. Bino okoki kokaka ndako ya makambo ya ndako, kokaka ndako ya makambo ya bino, na kokaka ndako ya makambo ya bino na ndako. Biso tokoki kosendaka makambo ya bino te na ndako. Na kokaka lokola ya bino, sila kokonaka biso na privacy@kizolaprotect.com na ndenge ya \"Suna Data ya Ngai\" na profil na bino.",
+    "section7Title": "7. Kokende Makambo",
+    "section7Body": "Biso tokokende makambo ya bino na siku nyoso soki compte na bino ezali na ndako, na ndenge ya ndako. Biso tokokende na kosalela makambo na bino na ndenge ya ndako na ndako, kokaka ndako na ndako, na kokaka ndako na ndako.",
+    "section8Title": "8. Lilongi ya Bana",
+    "section8Body": "Sevisi na biso ezali na ndako ya bino te na bino na ndako ya ndako. Biso tokoki kosangisa makambo ya bino te na bino na ndako. Soki bino ozeni na ndako ya bino na ndako, biso tokokaka ndako ya bino na ndako.",
+    "section9Title": "9. Kusukuma Politiki",
+    "section9Body": "Biso tokoki kusukuma politiki ya lilongi ebi na siku nyoso. Biso tokokaka bino na ndako ya ndako na ndako na ndako, na ndako na ndako. Bino okoki kokaka politiki ebi na ndako na ndako na ndako.",
+    "section10Title": "10. Kokonaka Biso",
+    "section10Intro": "Soki bino ozeni na makambo ya politiki ya lilongi ebi, sila kokonaka biso na:",
+    "section10Email": "Email: privacy@kizolaprotect.com",
+    "section10Address": "Adresse: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section10Phone": "Telephone: +1 (929) 609-7035"
+  },
+  "notifWelcomeTitle": "Boyekani na Kizola Protect! 🛡️",
+  "notifWelcomeMessage": "Kombo na yo ekoki kaka. Kanga makamshi na biso mpe suka bokosi na yo.",
+  "notifCompleteProfileTitle": "Teka profil na yo malamu 📝",
+  "notifCompleteProfileMessage": "Tambula nombo na likolo na yo mpe basiloko ya kokonda identity.",
+  "notifPlanActivatedTitle": "Plan ekoki kaka! ✅",
+  "notifPlanActivatedMessage": "Abonnement na yo ya plan {{plan}} ekoki kaka. Fanda makamshi na biso mpoka.",
+  "notifNow": "Sekondi ndakatika",
+  "notifHoursAgo": "saa {{count}} ezombe",
+  "notifYesterday": "Lobi",
+  "noNotifications": "Mpasi na makamshi",
+  "allCaughtUp": "Nioso ekoki kosomaswa!",
+  "satisfaction": {
+    "questionTitle": "Moko ya kati, oyo ekokufwa sol ya biso ekosalelaka nini?",
+    "questionSubtitle": "Nkembo na yo ekokolisa serivisi ya biso.",
+    "yesResolved": "Eh, ekokufwa sol",
+    "noPersists": "Te, mpenza ekosala na kati",
+    "thankYouResolved": "Malembe! Mersi na nkembo na yo.",
+    "unresolvedSorry": "Bisusu tolakani na kati mpenza.",
+    "whatNotResolved": "Nini te ekokufwa sol?",
+    "whatNotResolvedPlaceholder": "Landa nini te ekosalelaka na kati...",
+    "additionalComments": "Lindenge ya mpoka",
+    "additionalCommentsPlaceholder": "Sangela nkembo ya mpoka...",
+    "submit": "Tinda esengelo",
+    "skip": "Katala",
+    "doneTitle": "Mersi na nkembo na yo!",
+    "doneResolvedDesc": "Bisusu tokokufwa na yo. Tofandi na kati!",
+    "doneUnresolvedDesc": "Équipe ya biso ekosangela yo na mpimpo.",
+    "close": "Funga"
+  },
+  "offline": {
+    "banner": "Yo oyo oyo te na ligne. Parti ya fonctionnalités ekokufwa te."
+  },
+  "notifLearning": {
+    "title": "Ressources ya Nsomi ya Mobimba",
+    "message": "Kolanda guide ya biso ya sika na impôts na immigration."
+  },
+  "housingForm": {
+    "requiredFieldsTitle": "Champs obligatoires",
+    "requiredFieldsMessage": "S'il te plait kolisa champ zonse obligatoires na ndenge ya kotinda.",
+    "notificationTitle": "Mokanda ya logement ekokweki",
+    "notificationMessage": "Equipe ya biso ekofanda makambo ya yo na mpimpo.",
+    "submitError": "Tinda ekolavaya. S'il te plait kobongisa likilini.",
+    "submittedTitle": "Mokanda etindami!",
+    "submittedDesc": "Mokanda ya appui ya logement ekokweki. Equipe ya biso ekofanda na yo na mpimpo.",
+    "responseTime": "Temps moyen ya réponse: 24-48 heures",
+    "specialistsAvailable": "Spécialistes ya logement ezali",
+    "backToHome": "Koya na maison",
+    "submitNewRequest": "Tinda mokanda ya sika",
+    "title": "Appui ya Logement",
+    "subtitle": "Bisusu ekosaidia na recherche ya logement, relocate na shelter, na orientation ya programmes ya logement ezali.",
+    "formTitle": "📋 Kolisa formulaire",
+    "requiredFieldsNote": "Champs na * ezali obligatoire",
+    "fullNameLabel": "Nom complet *",
+    "fullNamePlaceholder": "Nom na yo ya boni",
+    "emailLabel": "Email ya contact",
+    "emailPlaceholder": "email@exemple.com",
+    "phoneLabel": "Téléphone",
+    "phonePlaceholder": "(000) 000-0000",
+    "stateLabel": "État *",
+    "statePlaceholder": "ex: New York",
+    "cityLabel": "Ville *",
+    "cityPlaceholder": "ex: Brooklyn",
+    "currentSituationLabel": "Situation na kati *",
+    "selectSituation": "Yola situation na yo na kati",
+    "needTypeLabel": "Type ya besoin *",
+    "selectNeed": "Yola type ya aide ezalaka",
+    "additionalNotesLabel": "Notes supplémentaires",
+    "additionalNotesPlaceholder": "Landa situation na yo na ndenge ya mingi. Soka na combien ya membres ya famille, urgence, na makambo.",
+    "submitButton": "Tinda mokanda ya logement",
+    "privacyNote": "🔒 Informations na yo ezali ya secret na boni na biso tekele na aide ezalaka.",
+    "need_rental_search": "Recherche ya logement na location",
+    "need_shelter_move": "Relocate na shelter (Résidence yaÉtat)",
+    "need_housing_program": "Orientation ya programmes ya logement",
+    "need_tenant_rights": "Droits ya locataire",
+    "need_emergency": "Logement ya urgences",
+    "need_other": "Situation ya mpoka",
+    "situation_homeless": "Sans-abrigo / Na rue",
+    "situation_shelter": "Na shelter ya temps",
+    "situation_unstable": "Logement te na état ya boni / te na sécurité",
+    "situation_eviction": "Risque ya expulsion",
+    "situation_overcrowded": "Logement ya monde mingi",
+    "situation_temporary": "Séjour ya temps na famille/amis",
+    "situation_rental": "Location na kati — recherche alternatives",
+    "situation_other": "Situation ya mpoka"
+  },
+  "financeForm": {
+    "requiredFieldsTitle": "Champs obligatoires",
+    "requiredFieldsMessage": "S'il te plait yola type ya aide, état, na landa situation na yo.",
+    "insufficientDescriptionTitle": "Description te na quantité",
+    "insufficientDescriptionMessage": "S'il te plait tekele détails mingi na situation na yo (minimum 20 caractères).",
+    "notificationTitle": "Mokanda ya finance ekokweki",
+    "notificationMessage": "Equipe ya spécialistes ya finance ekofanda makambo ya yo na mpimpo.",
+    "submitError": "Tinda ekolavaya. S'il te plait kobongisa likilini.",
+    "submittedTitle": "Mokanda etindami!",
+    "submittedDesc": "Mokanda ya aide ya finance ekokweki. Spécialiste ekofanda na yo na mpimpo.",
+    "specialistsAvailable": "Spécialistes ya benefits na impôts ezali",
+    "responseTime": "Réponse na 24-48 heures ya travail",
+    "backToHome": "Koya na maison",
+    "submitNewRequest": "Tinda mokanda ya sika",
+    "title": "Aide ya Finance",
+    "subtitle": "Orientation na benefits ya finance, EBT, cartes ya aide yaÉtat, impôts, na déclaration fiscale.",
+    "formTitle": "💼 Formulaire ya demande",
+    "helpTypeLabel": "Type ya aide ezalaka *",
+    "selectHelpType": "Yola type ya aide",
+    "stateLabel": "État (USA) *",
+    "selectState": "Yola état",
+    "descriptionLabel": "Description ya situation *",
+    "descriptionPlaceholder": "Landa situation na yo ya finance na kati. Ex.: 'Nazali na besoin ya aide na SNAP. Nazali immigrant na visa ya travail na nazali na 3 gamins...'",
+    "characters": "caractères",
+    "minChars": "(minimum 20)",
+    "additionalInfoLabel": "Informations supplémentaires",
+    "additionalInfoPlaceholder": "Documents ezali, urgence, makambo ya mpoka...",
+    "submitButton": "Tinda mokanda ya finance",
+    "privacyNote": "🔒 Informations na yo ya finance ezali ya secret na boni na biso tekele.",
+    "type_ebt": "EBT / SNAP (Coupon ya alimentation)",
+    "type_ebt_desc": "Aide ya alimentation",
+    "type_state_benefits": "Benefits yaÉtat (Bien-être, Medicaid)",
+    "type_state_benefits_desc": "Programmes ya aide yaÉtat",
+    "type_tax_return": "Déclaration fiscale (Remboursement)",
+    "type_tax_return_desc": "Aide na dépôt na remboursement",
+    "type_financial_planning": "Planification ya finance",
+    "type_financial_planning_desc": "Organisation na planification",
+    "type_debt_help": "Gestion ya dettes",
+    "type_debt_help_desc": "Orientation na dettes na crédit",
+    "type_banking": "Ouverture ya compte bancaire",
+    "type_banking_desc": "Orientation bancaire na immigrants",
+    "type_itin": "ITIN (Numéro ya identification fiscale)",
+    "type_itin_desc": "Obtenir ITIN na non-citoyens",
+    "type_other": "Situation ya finance ya mpoka",
+    "type_other_desc": "Besoin ya finance ya mpoka",
+    "quickInfo_ebt": "Coupon ya alimentation",
+    "quickInfo_tax": "Remboursement ya impôts",
+    "quickInfo_benefits": "Aide yaÉtat",
+    "quickInfo_itin": "ID ya impôts",
+    "type_benefits": "Benefits"
+  },
+  "resetPassword": {
+    "linkInvalid": "Lien te na valeur ou ekopé. S'il te plait demander lien ya récupération ya sika.",
+    "invalidLink": "Lien te na valeur ou ekopé. S'il te plait demander lien ya récupération ya sika.",
+    "fillAllFields": "S'il te plait kolisa champ zonse.",
+    "passwordsMismatch": "Mots de passe te ekofanda na kati. S'il te plait kokonda.",
+    "passwordMin8": "Mot de passe ezali na 8 caractères na minimum.",
+    "minLengthError": "Mot de passe ezali na 8 caractères na minimum.",
+    "weakPasswordTitle": "Mot de passe ya nguya te",
+    "weakPasswordMessage": "S'il te plait yola mot de passe ya nguya mingi. Seuleta majuscule, minuscule, chiffres, na symboles.",
+    "resetFailed": "Reset ya mot de passe ekolavaya. Lien ekokufwa. Demander lien ya sika.",
+    "invalidLinkTitle": "Lien te na valeur",
+    "requestNewLink": "Demander lien ya sika",
+    "successTitle": "Mot de passe ezoresami!",
+    "successDesc": "Mot de passe na yo ekosalelami na boni. Kaka oyo naino toko kobenga na mot de passe ya sika.",
+    "successMessage": "Mot de passe na yo ekosalelami na boni. Kaka oyo naino toko kobenga na mot de passe ya sika.",
+    "loginButton": "Kobenga",
+    "title": "Mot de passe ya sika",
+    "newPasswordTitle": "Mot de passe ya sika",
+    "subtitle": "Lingisa mot de passe ya nguya na sécurité na compte na yo.",
+    "newPasswordSubtitle": "Lingisa mot de passe ya nguya na sécurité na compte na yo.",
+    "securityNote": "Kosebela 8 caractères na minimum na lettres, chiffres, na symboles.",
+    "passwordPlaceholder": "Minimum 8 caractères",
+    "newPasswordPlaceholder": "Minimum 8 caractères",
+    "newPasswordLabel": "Mot de passe ya sika",
+    "confirmPlaceholder": "Bongisa mot de passe ya sika",
+    "confirmPasswordPlaceholder": "Bongisa mot de passe ya sika",
+    "confirmPasswordLabel": "Bongisa mot de passe ya sika",
+    "passwordsMismatchError": "Mots de passe te ekofanda na kati",
+    "passwordsMismatchShort": "Mots de passe te ekofanda na kati",
+    "passwordsMatch": "✓ Mots de passe ekofanda na kati",
+    "verifyingLink": "Kokonda lien...",
+    "resetButton": "Reset mot de passe",
+    "submitButton": "Reset mot de passe",
+    "requestNewRecoveryLink": "Demander lien ya récupération ya sika",
+    "requestNewLinkBottom": "Demander lien ya récupération ya sika",
+    "weak": "Ya nguya te",
+    "strengthWeak": "Ya nguya te",
+    "fair": "Moyen",
+    "strengthFair": "Moyen",
+    "good": "Ya boni",
+    "strengthGood": "Ya boni",
+    "strong": "Ya nguya",
+    "strengthStrong": "Ya nguya"
+  },
+  "changePassword": {
+    "currentLabel": "Mot de passe na kati",
+    "currentPassword": "Mot de passe na kati",
+    "currentPlaceholder": "Kosebela mot de passe na kati",
+    "newLabel": "Mot de passe ya sika",
+    "newPassword": "Mot de passe ya sika",
+    "newPlaceholder": "Kosebela mot de passe ya sika",
+    "minChars": "Ezali na 6 caractères na minimum",
+    "minLength": "Ezali na 6 caractères na minimum",
+    "confirmLabel": "Bongisa mot de passe ya sika",
+    "confirmPassword": "Bongisa mot de passe ya sika",
+    "confirmPlaceholder": "Bongisa mot de passe ya sika"
+  },
+  "phoneInput": {
+    "placeholder": "Numéro ya téléphone",
+    "selectCountry": "Yola pays",
+    "searchCountry": "Kolanda pays..."
+  },
+  "screens": {
+    "login": "Kobenga",
+    "register": "Kobanda",
+    "phoneLogin": "Kobenga na téléphone",
+    "forgotPassword": "Sombi mot de passe",
+    "resetPassword": "Reset mot de passe",
+    "onboarding": "Bienvenue",
+    "terms": "Conditions na Confidentialité"
+  },
+  "adminTab": {
+    "label": "Admin"
   }
 }

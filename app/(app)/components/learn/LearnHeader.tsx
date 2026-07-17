@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
-import { GraduationCap, Search, X } from 'lucide-react-native';
+import { GraduationCap, Search, X, SlidersHorizontal } from 'lucide-react-native';
 import { useTheme, Theme, darkTheme } from '@/providers/ThemeProvider';
 
 interface LearnHeaderProps {
@@ -13,6 +13,8 @@ interface LearnHeaderProps {
   /** @deprecated Passar isDark como prop é opcional — o componente usa useTheme() internamente */
   isDark?: boolean;
   t: (key: string) => string;
+  onFilterPress?: () => void;
+  hasActiveFilters?: boolean;
 }
 
 export function LearnHeader({
@@ -21,6 +23,8 @@ export function LearnHeader({
   theme: themeProp,
   isDark: isDarkProp,
   t,
+  onFilterPress,
+  hasActiveFilters,
 }: LearnHeaderProps) {
   // Consumir o contexto directamente — evita crash quando a prop chega undefined
   // durante o primeiro render (race condition no mount do ThemeProvider)
@@ -61,8 +65,28 @@ export function LearnHeader({
             onChangeText={setSearchQuery}
             style={styles.searchInput}
           />
-          {searchQuery !== '' && (
-            <TouchableOpacity onPress={() => setSearchQuery('')}>
+          <TouchableOpacity
+            style={[
+              styles.filterButton,
+              hasActiveFilters && styles.filterButtonActive,
+            ]}
+            onPress={onFilterPress}
+          >
+            <SlidersHorizontal
+              size={20}
+              color={hasActiveFilters ? theme.accent : theme.textMuted}
+            />
+          </TouchableOpacity>
+          {(searchQuery !== '' || hasActiveFilters) && (
+            <TouchableOpacity
+              onPress={() => {
+                if (searchQuery) {
+                  setSearchQuery('');
+                } else {
+                  onFilterPress?.();
+                }
+              }}
+            >
               <X size={18} color={theme.textMuted} />
             </TouchableOpacity>
           )}
@@ -130,6 +154,16 @@ const createStyles = (theme: Theme, isDark: boolean) =>
       fontSize: 16,
       color: theme.text,
       fontWeight: '500',
+    },
+    filterButton: {
+      width: 36,
+      height: 32,
+      borderRadius: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    filterButtonActive: {
+      backgroundColor: theme.accent + '15',
     },
   });
 

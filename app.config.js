@@ -120,6 +120,7 @@ module.exports = {
         backgroundColor: '#ffffff',
       },
       package: 'com.kizolaprotect.app',
+      googleServicesFile: './google-services.json',
       intentFilters: [
         {
           action: 'VIEW',

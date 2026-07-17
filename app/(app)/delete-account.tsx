@@ -5,22 +5,24 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { ArrowLeft, AlertTriangle } from 'lucide-react-native';
 
 const DELETION_REASONS = [
-  { value: 'too_expensive', label: 'Too expensive' },
-  { value: 'missing_features', label: 'Missing features I need' },
-  { value: 'not_helpful', label: 'Service was not helpful' },
-  { value: 'privacy', label: 'Privacy concerns' },
-  { value: 'duplicate', label: 'Created duplicate account' },
-  { value: 'other', label: 'Other reason' },
+  { value: 'too_expensive' },
+  { value: 'missing_features' },
+  { value: 'not_helpful' },
+  { value: 'privacy' },
+  { value: 'duplicate' },
+  { value: 'other' },
 ];
 
 export default function DeleteAccount() {
   const router = useRouter();
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const { user, signOut, isDemoMode } = useAuth();
   const [confirmed, setConfirmed] = useState(false);
@@ -31,7 +33,7 @@ export default function DeleteAccount() {
 
   const handleDelete = async () => {
     if (!confirmed) {
-      setError('Please confirm that you want to delete your account.');
+      setError(t('profile.deleteAccount.confirmError'));
       return;
     }
     setLoading(true);
@@ -40,17 +42,16 @@ export default function DeleteAccount() {
     try {
       if (isDemoMode) {
         await signOut();
-        Alert.alert('Account Deleted', 'Your demo account has been removed.');
+        Alert.alert(t('profile.deleteAccount.alertDeletedTitle'), t('profile.deleteAccount.alertDeletedDemo'));
         router.replace('/login');
         return;
       }
 
-      // For real accounts, call Supabase Edge Function (uses SERVICE_ROLE to delete all data)
       const session = await supabase.auth.getSession();
       const accessToken = session.data.session?.access_token;
 
       if (!accessToken) {
-        throw new Error('No active session. Please log in again.');
+        throw new Error(t('profile.deleteAccount.noSession'));
       }
 
       const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
@@ -66,17 +67,17 @@ export default function DeleteAccount() {
 
       if (!response.ok) {
         const err = await response.json().catch(() => ({}));
-        throw new Error(err.error || 'Failed to delete account');
+        throw new Error(err.error || t('profile.deleteAccount.deleteFailed'));
       }
 
       await signOut();
       Alert.alert(
-        'Account Deleted',
-        'Your account and all associated data have been permanently deleted. We are sorry to see you go.',
-        [{ text: 'OK', onPress: () => router.replace('/login') }]
+        t('profile.deleteAccount.alertDeletedTitle'),
+        t('profile.deleteAccount.alertDeletedDesc'),
+        [{ text: t('profile.deleteAccount.alertOk'), onPress: () => router.replace('/login') }]
       );
     } catch (err: any) {
-      setError(err.message || 'An error occurred. Please try again later.');
+      setError(err.message || t('profile.deleteAccount.genericError'));
     } finally {
       setLoading(false);
     }
@@ -92,7 +93,7 @@ export default function DeleteAccount() {
         >
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Delete Account</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('profile.deleteAccount.title')}</Text>
         <View style={{ width: 24 }} />
       </View>
 
@@ -100,7 +101,7 @@ export default function DeleteAccount() {
         <View style={[styles.warningCard, { backgroundColor: theme.error + '15', borderColor: theme.error + '30' }]}>
           <AlertTriangle size={24} color={theme.error} />
           <Text style={[styles.warningText, { color: theme.textSecondary }]}>
-            This action is permanent and cannot be undone. All your data, including profile, documents, subscription, and request history, will be deleted immediately.
+            {t('profile.deleteAccount.warning')}
           </Text>
         </View>
 
@@ -110,7 +111,7 @@ export default function DeleteAccount() {
           </View>
         )}
 
-        <Text style={[styles.label, { color: theme.text }]}>Reason for deletion (optional)</Text>
+        <Text style={[styles.label, { color: theme.text }]}>{t('profile.deleteAccount.reasonLabel')}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.reasonsRow}>
           {DELETION_REASONS.map((r) => (
             <TouchableOpacity
@@ -124,21 +125,21 @@ export default function DeleteAccount() {
               ]}
               onPress={() => setReason(r.value)}
               accessibilityRole="button"
-              accessibilityLabel={r.label}
+              accessibilityLabel={t(`profile.deleteAccount.reasons.${r.value}`)}
             >
               <Text style={{ color: reason === r.value ? theme.primary : theme.textSecondary, fontSize: 13 }}>
-                {r.label}
+                {t(`profile.deleteAccount.reasons.${r.value}`)}
               </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
 
         <Text style={[styles.label, { color: theme.text }]}>
-          Type your password to confirm
+          {t('profile.deleteAccount.passwordLabel')}
         </Text>
         <TextInput
           style={[styles.input, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt, color: theme.text }]}
-          placeholder="Enter your password"
+          placeholder={t('profile.deleteAccount.passwordPlaceholder')}
           placeholderTextColor={theme.textMuted}
           value={password}
           onChangeText={setPassword}
@@ -169,7 +170,7 @@ export default function DeleteAccount() {
             {confirmed && <Text style={{ color: '#fff', fontSize: 14, fontWeight: '700' }}>✓</Text>}
           </View>
           <Text style={[styles.confirmLabel, { color: theme.textSecondary }]}>
-            I understand that deleting my account is permanent and all my data will be removed
+            {t('profile.deleteAccount.confirmLabel')}
           </Text>
         </TouchableOpacity>
 
@@ -184,7 +185,7 @@ export default function DeleteAccount() {
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.deleteButtonText}>Permanently Delete My Account</Text>
+            <Text style={styles.deleteButtonText}>{t('profile.deleteAccount.deleteButton')}</Text>
           )}
         </TouchableOpacity>
 
@@ -194,7 +195,7 @@ export default function DeleteAccount() {
           accessibilityRole="button"
           accessibilityLabel="Cancel and go back"
         >
-          <Text style={[styles.cancelText, { color: theme.primary }]}>Cancel — Keep My Account</Text>
+          <Text style={[styles.cancelText, { color: theme.primary }]}>{t('profile.deleteAccount.cancelButton')}</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

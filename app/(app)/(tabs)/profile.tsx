@@ -41,7 +41,7 @@ const DEMO_MODE_KEY = 'kizola_demo_user';
 
 export default function Profile() {
   const router = useRouter();
-  const { user, signOut, isDemoMode, updateAvatar } = useAuth();
+  const { user, setUser, signOut, isDemoMode, updateAvatar, fetchUserProfile } = useAuth();
   const { theme, isDark } = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const { t, i18n } = useTranslation();
@@ -107,7 +107,7 @@ export default function Profile() {
     try {
       const ref = user?.id ? String(user.id) : 'demo';
       const url = Linking.createURL('/', { queryParams: { ref } });
-      const message = `Conheça a Kizola Protect. Use o meu link: ${url}`;
+      const message = t('profile.shareMessage', { url });
 
       await Share.share({
         message,
@@ -115,25 +115,25 @@ export default function Profile() {
         title: 'Kizola Protect',
       });
     } catch (e: any) {
-      Alert.alert('Erro', e?.message || 'Não foi possível partilhar o link.');
+      Alert.alert(t('common.error'), e?.message || t('profile.shareError'));
     }
   }, [user?.id]);
 
   const handleLogout = () => {
     Alert.alert(
-      'Sign Out',
-      'Are you sure you want to sign out?',
+      t('profile.signOutTitle'),
+      t('profile.signOutConfirm'),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Sign Out',
+          text: t('profile.signOut'),
           style: 'destructive',
           onPress: async () => {
             try {
               await signOut();
               router.replace('/login');
             } catch (error) {
-              Alert.alert('Error', 'Failed to sign out');
+              Alert.alert(t('common.error'), t('profile.signOutFailed'));
             }
           },
         },
@@ -144,7 +144,7 @@ export default function Profile() {
   const handlePickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'Sorry, we need camera roll permissions to make this work!');
+      Alert.alert(t('profile.permissionDenied'), t('profile.permissionMessage'));
       return;
     }
 
@@ -160,9 +160,9 @@ export default function Profile() {
       try {
         const uri = result.assets[0].uri;
         await updateAvatar(uri);
-        Alert.alert('Success', 'Profile picture updated');
+        Alert.alert(t('common.success'), t('profile.avatarUpdated'));
       } catch (error: any) {
-        Alert.alert('Error', error.message || 'Failed to update avatar');
+        Alert.alert(t('common.error'), error.message || t('profile.avatarFailed'));
       } finally {
         setAvatarLoading(false);
       }
@@ -171,7 +171,7 @@ export default function Profile() {
 
   const handleUpdateProfile = async () => {
     if (!editName.trim() || !editEmail.trim()) {
-      Alert.alert('Error', 'Name and email are required');
+      Alert.alert(t('common.error'), t('profile.nameEmailRequired'));
       return;
     }
 
@@ -185,6 +185,7 @@ export default function Profile() {
           phone: editPhone.trim(),
         };
         await SecureStore.setItemAsync(DEMO_MODE_KEY, JSON.stringify(demoUser));
+        setUser(demoUser as any);
       } else if (isSupabaseConfigured()) {
         const { error } = await supabase
           .from('profiles')
@@ -196,12 +197,18 @@ export default function Profile() {
           .eq('id', user?.id);
 
         if (error) throw error;
+        setUser({
+          ...user!,
+          name: editName.trim(),
+          email: editEmail.trim(),
+          phone: editPhone.trim(),
+        } as any);
       }
 
-      Alert.alert('Success', 'Profile updated successfully');
+      Alert.alert(t('common.success'), t('profile.profileUpdated'));
       setEditModalVisible(false);
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Failed to update profile');
+      Alert.alert(t('common.error'), error.message || t('profile.profileUpdateFailed'));
     } finally {
       setLoading(false);
     }
@@ -209,31 +216,31 @@ export default function Profile() {
 
   const handleChangePassword = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
-      Alert.alert('Error', 'All fields are required');
+      Alert.alert(t('common.error'), t('profile.allFieldsRequired'));
       return;
     }
 
     if (newPassword.length < 6) {
-      Alert.alert('Error', 'New password must be at least 6 characters');
+      Alert.alert(t('common.error'), t('profile.passwordMinLength'));
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      Alert.alert('Error', 'New passwords do not match');
+      Alert.alert(t('common.error'), t('profile.passwordsDoNotMatch'));
       return;
     }
 
     setLoading(true);
     try {
       if (isDemoMode) {
-        Alert.alert('Success', 'Password updated successfully (Demo Mode)');
+        Alert.alert(t('common.success'), t('profile.passwordUpdated') + ' (Demo Mode)');
       } else if (isSupabaseConfigured()) {
         const { error } = await supabase.auth.updateUser({
           password: newPassword,
         });
 
         if (error) throw error;
-        Alert.alert('Success', 'Password updated successfully');
+        Alert.alert(t('common.success'), t('profile.passwordUpdated'));
       }
 
       setPasswordModalVisible(false);
@@ -241,7 +248,7 @@ export default function Profile() {
       setNewPassword('');
       setConfirmPassword('');
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Failed to change password');
+      Alert.alert(t('common.error'), error.message || t('profile.passwordUpdateFailed'));
     } finally {
       setLoading(false);
     }
@@ -250,8 +257,8 @@ export default function Profile() {
   const menuItems = [
     ...(user?.role === 'admin' ? [{
       icon: LayoutDashboard,
-      title: 'Admin Panel',
-      subtitle: 'System management and stats',
+      title: t('profile.adminPanel'),
+      subtitle: t('profile.adminPanelSubtitle'),
       onPress: () => router.push('/(app)/admin/dashboard'),
       color: theme.accent,
     }] : []),
@@ -333,8 +340,8 @@ export default function Profile() {
     },
     {
       icon: Trash2,
-      title: t('profile.deleteAccount') || 'Delete Account',
-      subtitle: t('profile.deleteAccountSubtitle') || 'Permanently remove your account and data',
+      title: t('profile.deleteAccount.title'),
+      subtitle: t('profile.deleteAccountSubtitle'),
       onPress: () => router.push('/(app)/delete-account'),
       color: theme.error,
     },
@@ -349,8 +356,15 @@ export default function Profile() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={{ flex: 1 }}>
       <StatusBar style={isDark ? 'light' : 'dark'} />
+      {/* Gradient background covering entire screen including status bar */}
+      <LinearGradient
+        colors={theme.headerGradient}
+        locations={[0, 0.35, 0.5]}
+        style={StyleSheet.absoluteFill}
+      />
+      <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
@@ -457,7 +471,8 @@ export default function Profile() {
           t={t}
         />
       </KeyboardAvoidingView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -465,7 +480,6 @@ const createStyles = (theme: Theme) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.background,
     },
     scrollContent: {
       flexGrow: 1,

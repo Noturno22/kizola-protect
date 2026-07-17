@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Upload, RefreshCw, Search, X, Filter, FolderOpen } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
@@ -88,8 +88,8 @@ export default function Documents() {
         const fileExt = name.split('.').pop()?.toLowerCase() || 'jpg';
         const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
         const filePath = `${user.id}/${fileName}`;
-        const fileContent = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
-        const decoded = Buffer.from(fileContent, 'base64');
+        const file = new File(uri);
+        const decoded = new Uint8Array(await file.arrayBuffer());
 
         const { error: uploadError } = await supabase.storage
           .from('documents')
@@ -191,9 +191,9 @@ export default function Documents() {
       if (!isDemoMode && isSupabaseConfigured() && doc.filePath && !fileUri) {
         const { data, error } = await supabase.storage.from('documents').download(doc.filePath);
         if (error) throw error;
-        const cacheDir = (FileSystem as any).cacheDirectory;
-        fileUri = `${cacheDir}${doc.name}`;
-        await FileSystem.writeAsStringAsync(fileUri, Buffer.from(await data.arrayBuffer()).toString('base64'), { encoding: FileSystem.EncodingType.Base64 });
+        const destFile = new File(Paths.cache, doc.name);
+        destFile.write(new Uint8Array(await data.arrayBuffer()));
+        fileUri = destFile.uri;
       }
       if (fileUri) {
         if (isSharingAvailable) await Sharing.shareAsync(fileUri, { mimeType: doc.type });
@@ -212,9 +212,9 @@ export default function Documents() {
       if (!isDemoMode && isSupabaseConfigured() && doc.filePath && !fileUri) {
         const { data, error } = await supabase.storage.from('documents').download(doc.filePath);
         if (error) throw error;
-        const cacheDir = (FileSystem as any).cacheDirectory;
-        fileUri = `${cacheDir}${doc.name}`;
-        await FileSystem.writeAsStringAsync(fileUri, Buffer.from(await data.arrayBuffer()).toString('base64'), { encoding: FileSystem.EncodingType.Base64 });
+        const destFile = new File(Paths.cache, doc.name);
+        destFile.write(new Uint8Array(await data.arrayBuffer()));
+        fileUri = destFile.uri;
       }
       if (fileUri) {
         if (isSharingAvailable) await Sharing.shareAsync(fileUri, { mimeType: doc.type });

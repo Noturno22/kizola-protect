@@ -23,6 +23,7 @@ import {
   MessageSquare,
   DollarSign
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
@@ -34,6 +35,7 @@ type FormatType = 'pdf' | 'excel';
 
 export default function AdminReports() {
   const { theme, isDark } = useTheme();
+  const { t } = useTranslation();
   const router = useRouter();
 
   const [reportType, setReportType] = useState<ReportType>('users');
@@ -120,7 +122,7 @@ export default function AdminReports() {
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(fileUri);
       } else {
-        Alert.alert('Sucesso', `Ficheiro gerado em: ${fileUri}`);
+        Alert.alert(t('admin.casesSuccessTitle'), `Ficheiro gerado em: ${fileUri}`);
       }
 
       // Log in audit log
@@ -135,7 +137,7 @@ export default function AdminReports() {
       }
 
     } catch (err: any) {
-      Alert.alert('Erro ao Gerar', err.message || 'Ocorreu um erro ao exportar o relatório.');
+      Alert.alert(t('admin.reportGenerateError'), err.message || t('admin.reportGenerateErrorMsg'));
     } finally {
       setGenerating(false);
     }
@@ -150,14 +152,14 @@ export default function AdminReports() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Exportação de Relatórios</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.reportExportTitle')}</Text>
         <View style={{ width: 44 }} />
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         
         {/* Step 1: Select Type */}
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>1. Selecione o Tipo de Relatório</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>{t('admin.reportStep1Title')}</Text>
         <View style={styles.optionsGrid}>
           <TouchableOpacity
             style={[styles.optionCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }, reportType === 'users' && styles.optionCardActive]}
@@ -166,8 +168,8 @@ export default function AdminReports() {
             <View style={[styles.iconBox, { backgroundColor: theme.accentBlue + '15' }]}>
               <Users size={24} color={theme.accentBlue || '#3B82F6'} />
             </View>
-            <Text style={[styles.optionTitle, { color: theme.text }]}>Utilizadores</Text>
-            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>Lista de membros, datas de adesão e status.</Text>
+            <Text style={[styles.optionTitle, { color: theme.text }]}>{t('admin.reportUsers')}</Text>
+            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>{t('admin.reportUsersDesc')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -177,8 +179,8 @@ export default function AdminReports() {
             <View style={[styles.iconBox, { backgroundColor: (theme.accentAmber || '#F59E0B') + '15' }]}>
               <MessageSquare size={24} color={theme.accentAmber || '#F59E0B'} />
             </View>
-            <Text style={[styles.optionTitle, { color: theme.text }]}>Casos de Suporte</Text>
-            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>Histórico de chamados de ajuda e resoluções.</Text>
+            <Text style={[styles.optionTitle, { color: theme.text }]}>{t('admin.reportCases')}</Text>
+            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>{t('admin.reportCasesDesc')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -188,20 +190,20 @@ export default function AdminReports() {
             <View style={[styles.iconBox, { backgroundColor: theme.accentPurple + '15' }]}>
               <DollarSign size={24} color={theme.accentPurple || '#8B5CF6'} />
             </View>
-            <Text style={[styles.optionTitle, { color: theme.text }]}>Financeiro</Text>
-            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>Status Stripe, assinaturas de planos, MRR/ARR.</Text>
+            <Text style={[styles.optionTitle, { color: theme.text }]}>{t('admin.reportFinance')}</Text>
+            <Text style={[styles.optionDesc, { color: theme.textMuted }]}>{t('admin.reportFinanceDesc')}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Step 2: Format */}
-        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16 }]}>2. Formato de Exportação</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16 }]}>{t('admin.reportStep2Title')}</Text>
         <View style={styles.formatRow}>
           <TouchableOpacity
             style={[styles.formatCard, { backgroundColor: theme.surface, borderColor: theme.cardBorder }, format === 'pdf' && styles.formatCardActive]}
             onPress={() => setFormat('pdf')}
           >
             <FileText size={20} color={format === 'pdf' ? theme.accent : theme.textSecondary} />
-            <Text style={[styles.formatText, { color: theme.text }]}>Documento (PDF/TXT)</Text>
+            <Text style={[styles.formatText, { color: theme.text }]}>{t('admin.reportFormatPDF')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -209,30 +211,30 @@ export default function AdminReports() {
             onPress={() => setFormat('excel')}
           >
             <Download size={20} color={format === 'excel' ? theme.accent : theme.textSecondary} />
-            <Text style={[styles.formatText, { color: theme.text }]}>Planilha (Excel/CSV)</Text>
+            <Text style={[styles.formatText, { color: theme.text }]}>{t('admin.reportFormatExcel')}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Step 3: Date range */}
-        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16 }]}>3. Período de Dados</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text, marginTop: 16 }]}>{t('admin.reportStep3Title')}</Text>
         <View style={styles.periodRow}>
           <TouchableOpacity
             style={[styles.periodButton, dateRange === '7d' && styles.periodButtonActive]}
             onPress={() => setDateRange('7d')}
           >
-            <Text style={[styles.periodText, { color: dateRange === '7d' ? '#FFF' : theme.textSecondary }]}>Últimos 7 dias</Text>
+            <Text style={[styles.periodText, { color: dateRange === '7d' ? '#FFF' : theme.textSecondary }]}>{t('admin.reportLast7Days')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.periodButton, dateRange === '30d' && styles.periodButtonActive]}
             onPress={() => setDateRange('30d')}
           >
-            <Text style={[styles.periodText, { color: dateRange === '30d' ? '#FFF' : theme.textSecondary }]}>Últimos 30 dias</Text>
+            <Text style={[styles.periodText, { color: dateRange === '30d' ? '#FFF' : theme.textSecondary }]}>{t('admin.reportLast30Days')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.periodButton, dateRange === 'all' && styles.periodButtonActive]}
             onPress={() => setDateRange('all')}
           >
-            <Text style={[styles.periodText, { color: dateRange === 'all' ? '#FFF' : theme.textSecondary }]}>Todo Histórico</Text>
+            <Text style={[styles.periodText, { color: dateRange === 'all' ? '#FFF' : theme.textSecondary }]}>{t('admin.auditAllHistory')}</Text>
           </TouchableOpacity>
         </View>
 
@@ -247,7 +249,7 @@ export default function AdminReports() {
           ) : (
             <>
               <Share2 size={20} color="#FFF" />
-              <Text style={styles.generateButtonText}>Exportar & Partilhar</Text>
+              <Text style={styles.generateButtonText}>{t('admin.reportExportShare')}</Text>
             </>
           )}
         </TouchableOpacity>

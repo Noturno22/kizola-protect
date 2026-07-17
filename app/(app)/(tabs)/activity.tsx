@@ -140,8 +140,15 @@ export default function Activity() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={{ flex: 1 }}>
       <StatusBar style={isDark ? "light" : "dark"} />
+      {/* Gradient background covering entire screen including status bar */}
+      <LinearGradient
+        colors={theme.headerGradient}
+        locations={[0, 0.35, 0.5]}
+        style={StyleSheet.absoluteFill}
+      />
+      <SafeAreaView style={styles.container}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={
@@ -350,14 +357,14 @@ export default function Activity() {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const createStyles = (theme: Theme) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.background,
   },
   scrollContent: {
     flexGrow: 1,

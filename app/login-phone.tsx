@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
@@ -19,12 +19,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Phone, Lock, ArrowRight, ShieldCheck } from 'lucide-react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import { BlurView } from 'expo-blur';
+import { useTranslation } from 'react-i18next';
 
 const LOGO_URL = './assets/images/icon.png';
 
 export default function LoginPhone() {
+  const { t } = useTranslation();
   const router = useRouter();
-  const { signInWithOtp, verifyOtp } = useAuth();
+  const { signInWithOtp, verifyOtp, signInDemo, isDemoMode, user } = useAuth();
   const { theme, isDark } = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -32,6 +35,12 @@ export default function LoginPhone() {
   const [token, setToken] = useState('');
   const [step, setStep] = useState<1 | 2>(1);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isDemoMode && user) {
+      router.replace('/dashboard');
+    }
+  }, [isDemoMode, user]);
 
   const normalizePhone = (raw: string) => {
     let cleaned = raw.replace(/[^\d+]/g, '').trim();
@@ -42,12 +51,12 @@ export default function LoginPhone() {
     const normalizedPhone = normalizePhone(phone);
 
     if (!normalizedPhone || normalizedPhone.length < 8) {
-      Alert.alert('Error', 'Please enter a valid phone number with country code (e.g. +1234567890)');
+      Alert.alert(t('auth.error'), t('auth.invalidPhone'));
       return;
     }
 
     if (!normalizedPhone.startsWith('+')) {
-      Alert.alert('Error', 'Please include the country code starting with + (e.g. +1)');
+      Alert.alert(t('auth.error'), t('auth.phoneCountryCodeRequired'));
       return;
     }
 
@@ -56,10 +65,10 @@ export default function LoginPhone() {
       if (signInWithOtp) {
         await signInWithOtp(normalizedPhone);
         setStep(2);
-        Alert.alert('Success', 'SMS sent successfully');
+        Alert.alert(t('auth.success') || 'Success', t('auth.smsSent'));
       }
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Could not send SMS');
+      Alert.alert(t('auth.error'), error.message || t('auth.couldNotSendSms'));
     } finally {
       setLoading(false);
     }
@@ -67,7 +76,7 @@ export default function LoginPhone() {
 
   const handleVerifyCode = async () => {
     if (!token || token.length < 6) {
-      Alert.alert('Error', 'Please enter the 6-digit code');
+      Alert.alert(t('auth.error'), t('auth.enterSixDigitCode'));
       return;
     }
 
@@ -78,8 +87,18 @@ export default function LoginPhone() {
         router.replace('/dashboard');
       }
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Invalid code');
+      Alert.alert(t('auth.error'), error.message || t('auth.invalidCode'));
     } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDemoMode = async () => {
+    setLoading(true);
+    try {
+      await signInDemo();
+    } catch (error: any) {
+      Alert.alert(t('auth.error'), error.message || t('auth.demoModeFailed'));
       setLoading(false);
     }
   };
@@ -98,7 +117,26 @@ export default function LoginPhone() {
           >
             <View style={styles.header}>
               <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-                <ArrowRight size={24} color={theme.isDark ? "#FFFFFF" : theme.text} style={{ transform: [{ rotate: '180deg' }] }} />
+                <BlurView
+                  intensity={40}
+                  tint="dark"
+                  style={{ width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center' }}
+                >
+                  <ArrowRight size={24} color="#FFFFFF" style={{ transform: [{ rotate: '180deg' }] }} />
+            </BlurView>
+
+            <TouchableOpacity
+              style={styles.demoButton}
+              onPress={handleDemoMode}
+              disabled={loading}
+              accessibilityRole="button"
+              accessibilityLabel={t('auth.demoModeA11y')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.demoButtonText}>
+                {t('auth.demoMode')}
+              </Text>
+            </TouchableOpacity>
               </TouchableOpacity>
             </View>
 
@@ -111,20 +149,29 @@ export default function LoginPhone() {
                 />
               </View>
               <Text style={styles.logoText}>Kizola Protect</Text>
-              <Text style={styles.tagline}>Phone Verification</Text>
+              <Text style={styles.tagline}>{t('auth.phoneVerification')}</Text>
             </View>
 
-            <View style={styles.formContainer}>
+            <BlurView
+              intensity={theme.isDark ? 30 : 50}
+              tint={theme.isDark ? 'dark' : 'light'}
+              style={[
+                styles.formContainer,
+                {
+                  borderColor: theme.isDark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.45)',
+                },
+              ]}
+            >
               {step === 1 ? (
                 <>
-                  <Text style={styles.title}>Sign in with Phone</Text>
-                  <Text style={styles.subtitle}>Enter your phone number to receive a secure code.</Text>
+                  <Text style={styles.title}>{t('auth.signInWithPhone')}</Text>
+                  <Text style={styles.subtitle}>{t('auth.enterPhoneSubtitle')}</Text>
 
-                  <View style={styles.inputContainer}>
+                  <View style={[styles.inputContainer, { backgroundColor: theme.isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.5)', borderColor: theme.isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.4)' }]}>
                     <Phone size={20} color={theme.textMuted} style={styles.inputIcon} />
                     <TextInput
                       style={styles.input}
-                      placeholder="e.g. +1 234 567 8900"
+                      placeholder={t('auth.phonePlaceholder')}
                       placeholderTextColor={theme.textMuted}
                       value={phone}
                       onChangeText={setPhone}
@@ -141,7 +188,7 @@ export default function LoginPhone() {
                       <ActivityIndicator color="#FFFFFF" />
                     ) : (
                       <>
-                        <Text style={styles.primaryButtonText}>Send Code</Text>
+                        <Text style={styles.primaryButtonText}>{t('auth.sendCode')}</Text>
                         <ArrowRight size={20} color="#FFFFFF" />
                       </>
                     )}
@@ -152,14 +199,14 @@ export default function LoginPhone() {
                   <View style={{ alignItems: 'center', marginBottom: 20 }}>
                     <ShieldCheck size={48} color={theme.primary} />
                   </View>
-                  <Text style={styles.title}>Verify Code</Text>
-                  <Text style={styles.subtitle}>Enter the 6-digit code sent to {phone}</Text>
+                  <Text style={styles.title}>{t('auth.verifyCode')}</Text>
+                  <Text style={styles.subtitle}>{t('auth.enterCodeSentTo', { phone })}</Text>
 
-                  <View style={styles.inputContainer}>
+                  <View style={[styles.inputContainer, { backgroundColor: theme.isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.5)', borderColor: theme.isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.4)' }]}>
                     <Lock size={20} color={theme.textMuted} style={styles.inputIcon} />
                     <TextInput
                       style={styles.input}
-                      placeholder="Enter 6-digit code"
+                      placeholder={t('auth.codePlaceholder')}
                       placeholderTextColor={theme.textMuted}
                       value={token}
                       onChangeText={setToken}
@@ -177,7 +224,7 @@ export default function LoginPhone() {
                       <ActivityIndicator color="#FFFFFF" />
                     ) : (
                       <>
-                        <Text style={styles.primaryButtonText}>Verify & Sign In</Text>
+                        <Text style={styles.primaryButtonText}>{t('auth.verifyAndSignIn')}</Text>
                         <ArrowRight size={20} color="#FFFFFF" />
                       </>
                     )}
@@ -188,11 +235,11 @@ export default function LoginPhone() {
                     onPress={() => setStep(1)}
                     disabled={loading}
                   >
-                    <Text style={styles.resendText}>Change phone number</Text>
+                    <Text style={styles.resendText}>{t('auth.changePhoneNumber')}</Text>
                   </TouchableOpacity>
                 </>
               )}
-            </View>
+            </BlurView>
           </ScrollView>
         </KeyboardAvoidingView>
       </LinearGradient>
@@ -208,17 +255,19 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   header: { marginBottom: 8 },
   backButton: {
     width: 40, height: 40, borderRadius: 20,
-    backgroundColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center', alignItems: 'center',
+    overflow: 'hidden',
   },
   logoSection: { alignItems: 'center', marginBottom: 24 },
   logoWrapper: {
     width: 72, height: 72, borderRadius: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255,255,255,0.15)',
     justifyContent: 'center', alignItems: 'center',
     shadowColor: '#000', shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.15, shadowRadius: 12, elevation: 8,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
   },
   logoImage: { width: 64, height: 64 },
   logoText: {
@@ -227,9 +276,9 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   },
   tagline: { fontSize: 14, color: 'rgba(255,255,255,0.8)' },
   formContainer: {
-    backgroundColor: theme.surface, borderRadius: 24, padding: 24,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1, shadowRadius: 12, elevation: 8,
+    borderRadius: 24, padding: 24,
+    borderWidth: 1,
+    overflow: 'hidden',
   },
   title: {
     fontSize: 24, fontWeight: '700', color: theme.text,
@@ -241,19 +290,30 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row', alignItems: 'center',
-    backgroundColor: theme.background, borderRadius: 12,
+    borderRadius: 14,
     marginBottom: 24, paddingHorizontal: 16,
-    borderWidth: 1, borderColor: theme.cardBorderAlt,
+    borderWidth: 1, height: 54,
   },
   inputIcon: { marginRight: 12 },
-  input: { flex: 1, height: 52, fontSize: 16, color: theme.text },
+  input: { flex: 1, height: '100%', fontSize: 16, color: theme.text },
   primaryButton: {
     backgroundColor: theme.primary, flexDirection: 'row',
     alignItems: 'center', justifyContent: 'center', gap: 8,
-    paddingVertical: 16, borderRadius: 12, marginBottom: 16,
+    paddingVertical: 17, borderRadius: 14, marginBottom: 16,
   },
   primaryButtonDisabled: { opacity: 0.7 },
-  primaryButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '600' },
+  primaryButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '700' },
   resendButton: { alignItems: 'center', paddingVertical: 8 },
   resendText: { color: theme.primary, fontSize: 14, fontWeight: '600' },
+  demoButton: {
+    alignItems: 'center',
+    paddingVertical: 14,
+    marginTop: 20,
+  },
+  demoButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: theme.primary,
+    textDecorationLine: 'underline',
+  },
 });

@@ -1,0 +1,230 @@
+const fs = require('fs');
+const path = require('path');
+const DIR = path.join(__dirname, '..', 'assets', 'translations');
+
+const KEYS = [
+  'notifWelcomeTitle', 'notifWelcomeMessage',
+  'notifCompleteProfileTitle', 'notifCompleteProfileMessage',
+  'notifPlanActivatedTitle', 'notifPlanActivatedMessage',
+  'notifNow', 'notifHoursAgo', 'notifYesterday',
+  'noNotifications', 'allCaughtUp',
+];
+
+const translations = {
+  en: {
+    notifWelcomeTitle: "Welcome to Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Your account was created successfully. Explore our benefits and protect your future.",
+    notifCompleteProfileTitle: "Complete your profile 📝",
+    notifCompleteProfileMessage: "Add your phone number and documents for identity verification.",
+    notifPlanActivatedTitle: "Plan Activated Successfully! ✅",
+    notifPlanActivatedMessage: "Your {{plan}} subscription has been confirmed. Enjoy all your benefits now.",
+    notifNow: "Now",
+    notifHoursAgo: "{{count}}h ago",
+    notifYesterday: "Yesterday",
+    noNotifications: "No notifications",
+    allCaughtUp: "You're all caught up!",
+  },
+  pt: {
+    notifWelcomeTitle: "Bem-vindo à Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Sua conta foi criada com sucesso. Explore nossos benefícios e proteja seu futuro.",
+    notifCompleteProfileTitle: "Complete seu perfil 📝",
+    notifCompleteProfileMessage: "Adicione seu número de telefone e documentos para verificação de identidade.",
+    notifPlanActivatedTitle: "Plano Ativado com Sucesso! ✅",
+    notifPlanActivatedMessage: "Sua assinatura do plano {{plan}} foi confirmada. Aproveite todos os seus benefícios agora mesmo.",
+    notifNow: "Agora",
+    notifHoursAgo: "{{count}}h atrás",
+    notifYesterday: "Ontem",
+    noNotifications: "Sem notificações",
+    allCaughtUp: "Está tudo ao dia!",
+  },
+  fr: {
+    notifWelcomeTitle: "Bienvenue sur Kizola Protect ! 🛡️",
+    notifWelcomeMessage: "Votre compte a été créé avec succès. Explorez nos avantages et protégez votre avenir.",
+    notifCompleteProfileTitle: "Complétez votre profil 📝",
+    notifCompleteProfileMessage: "Ajoutez votre numéro de téléphone et vos documents pour la vérification d'identité.",
+    notifPlanActivatedTitle: "Forfait activé avec succès ! ✅",
+    notifPlanActivatedMessage: "Votre abonnement au forfait {{plan}} a été confirmé. Profitez de tous vos avantages maintenant.",
+    notifNow: "Maintenant",
+    notifHoursAgo: "il y a {{count}}h",
+    notifYesterday: "Hier",
+    noNotifications: "Aucune notification",
+    allCaughtUp: "Tout est à jour !",
+  },
+  es: {
+    notifWelcomeTitle: "¡Bienvenido a Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Tu cuenta fue creada con éxito. Explora nuestros beneficios y protege tu futuro.",
+    notifCompleteProfileTitle: "Completa tu perfil 📝",
+    notifCompleteProfileMessage: "Agrega tu número de teléfono y documentos para verificación de identidad.",
+    notifPlanActivatedTitle: "¡Plan Activado con Éxito! ✅",
+    notifPlanActivatedMessage: "Tu suscripción al plan {{plan}} ha sido confirmada. Disfruta de todos tus beneficios ahora.",
+    notifNow: "Ahora",
+    notifHoursAgo: "hace {{count}}h",
+    notifYesterday: "Ayer",
+    noNotifications: "Sin notificaciones",
+    allCaughtUp: "¡Todo al día!",
+  },
+  'es-US': {
+    notifWelcomeTitle: "¡Bienvenido a Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Tu cuenta fue creada exitosamente. Explora nuestros beneficios y protege tu futuro.",
+    notifCompleteProfileTitle: "Completa tu perfil 📝",
+    notifCompleteProfileMessage: "Agrega tu número de teléfono y documentos para verificación de identidad.",
+    notifPlanActivatedTitle: "¡Plan Activado Exitosamente! ✅",
+    notifPlanActivatedMessage: "Tu suscripción al plan {{plan}} ha sido confirmada. Disfruta de todos tus beneficios ahora.",
+    notifNow: "Ahora",
+    notifHoursAgo: "hace {{count}}h",
+    notifYesterday: "Ayer",
+    noNotifications: "Sin notificaciones",
+    allCaughtUp: "¡Todo al día!",
+  },
+  zh: {
+    notifWelcomeTitle: "欢迎加入 Kizola Protect！🛡️",
+    notifWelcomeMessage: "您的账户已成功创建。探索我们的权益，保护您的未来。",
+    notifCompleteProfileTitle: "完善您的个人资料 📝",
+    notifCompleteProfileMessage: "添加您的电话号码和文件以进行身份验证。",
+    notifPlanActivatedTitle: "套餐激活成功！✅",
+    notifPlanActivatedMessage: "您的 {{plan}} 套餐订阅已确认。立即享受所有权益。",
+    notifNow: "刚刚",
+    notifHoursAgo: "{{count}}小时前",
+    notifYesterday: "昨天",
+    noNotifications: "暂无通知",
+    allCaughtUp: "所有通知已读！",
+  },
+  ja: {
+    notifWelcomeTitle: "Kizola Protectへようこそ！🛡️",
+    notifWelcomeMessage: "アカウントが正常に作成されました。特典を探索し、未来を守りましょう。",
+    notifCompleteProfileTitle: "プロフィールを完成させましょう 📝",
+    notifCompleteProfileMessage: "電話番号と身分証明書を追加して、本人確認を完了してください。",
+    notifPlanActivatedTitle: "プランが正常に有効になりました！✅",
+    notifPlanActivatedMessage: "{{plan}}プランのご購読が確認されました。今すぐすべての特典をお楽しみください。",
+    notifNow: "たった今",
+    notifHoursAgo: "{{count}}時間前",
+    notifYesterday: "昨日",
+    noNotifications: "通知はありません",
+    allCaughtUp: "すべて確認済み！",
+  },
+  ko: {
+    notifWelcomeTitle: "Kizola Protect에 오신 것을 환영합니다! 🛡️",
+    notifWelcomeMessage: "계정이 성공적으로 생성되었습니다. 혜택을 탐색하고 미래를 보호하세요.",
+    notifCompleteProfileTitle: "프로필을 완성하세요 📝",
+    notifCompleteProfileMessage: "전화번호와 신분증 파일을 추가하여 본인 인증을 완료하세요.",
+    notifPlanActivatedTitle: "플랜이 성공적으로 활성화되었습니다! ✅",
+    notifPlanActivatedMessage: "{{plan}} 플랜 구독이 확인되었습니다. 모든 혜택을 지금 바로 누리세요.",
+    notifNow: "방금",
+    notifHoursAgo: "{{count}}시간 전",
+    notifYesterday: "어제",
+    noNotifications: "알림이 없습니다",
+    allCaughtUp: "모두 확인했습니다!",
+  },
+  vi: {
+    notifWelcomeTitle: "Chào mừng đến với Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Tài khoản của bạn đã được tạo thành công. Khám phá các quyền lợi và bảo vệ tương lai của bạn.",
+    notifCompleteProfileTitle: "Hoàn thành hồ sơ của bạn 📝",
+    notifCompleteProfileMessage: "Thêm số điện thoại và giấy tờ để xác minh danh tính.",
+    notifPlanActivatedTitle: "Gói đã được kích hoạt thành công! ✅",
+    notifPlanActivatedMessage: "Gói đăng ký {{plan}} của bạn đã được xác nhận. Tận hưởng tất cả quyền lợi ngay bây giờ.",
+    notifNow: "Bây giờ",
+    notifHoursAgo: "{{count}}h trước",
+    notifYesterday: "Hôm qua",
+    noNotifications: "Không có thông báo",
+    allCaughtUp: "Đã xem hết!",
+  },
+  tl: {
+    notifWelcomeTitle: "Maligayang pagdating sa Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Matagumpay na nagawa ang iyong account. Tuklasin ang mga benepisyo at protektahan ang iyong kinabukasan.",
+    notifCompleteProfileTitle: "Kumpletuhin ang iyong profile 📝",
+    notifCompleteProfileMessage: "Idagdag ang iyong numero ng telepono at mga dokumento para sa pag-verify ng pagkakakilanlan.",
+    notifPlanActivatedTitle: "Matagumpay na Na-activate ang Plan! ✅",
+    notifPlanActivatedMessage: "Kumpirmado na ang iyong subscription sa plan na {{plan}}. Tamasahin ang lahat ng iyong benepisyo ngayon.",
+    notifNow: "Ngayon",
+    notifHoursAgo: "{{count}}h ang nakalipas",
+    notifYesterday: "Kahapon",
+    noNotifications: "Walang mga notipikasyon",
+    allCaughtUp: "Nabasa mo na lahat!",
+  },
+  ar: {
+    notifWelcomeTitle: "مرحباً بك في Kizola Protect! 🛡️",
+    notifWelcomeMessage: "تم إنشاء حسابك بنجاح. استكشف مزايانا واحمِ مستقبلك.",
+    notifCompleteProfileTitle: "أكمل ملفك الشخصي 📝",
+    notifCompleteProfileMessage: "أضف رقم هاتفك ووثائقك للتحقق من هويتك.",
+    notifPlanActivatedTitle: "تم تفعيل الخطة بنجاح! ✅",
+    notifPlanActivatedMessage: "تم تأكيد اشتراكك في الخطة {{plan}}. استمتع بجميع مزاياك الآن.",
+    notifNow: "الآن",
+    notifHoursAgo: "منذ {{count}} س",
+    notifYesterday: "أمس",
+    noNotifications: "لا توجد إشعارات",
+    allCaughtUp: "لقد قرأت كل شيء!",
+  },
+  ru: {
+    notifWelcomeTitle: "Добро пожаловать в Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Ваш аккаунт успешно создан. Изучите наши преимущества и защитите своё будущее.",
+    notifCompleteProfileTitle: "Заполните свой профиль 📝",
+    notifCompleteProfileMessage: "Добавьте номер телефона и документы для подтверждения личности.",
+    notifPlanActivatedTitle: "Тариф успешно активирован! ✅",
+    notifPlanActivatedMessage: "Ваша подписка на тариф {{plan}} подтверждена. Наслаждайтесь всеми преимуществами прямо сейчас.",
+    notifNow: "Сейчас",
+    notifHoursAgo: "{{count}} ч. назад",
+    notifYesterday: "Вчера",
+    noNotifications: "Нет уведомлений",
+    allCaughtUp: "Все прочитано!",
+  },
+  hi: {
+    notifWelcomeTitle: "Kizola Protect में आपका स्वागत है! 🛡️",
+    notifWelcomeMessage: "आपका खाता सफलतापूर्वक बनाया गया। हमारे लाभों का अन्वेषण करें और अपने भविष्य की रक्षा करें।",
+    notifCompleteProfileTitle: "अपनी प्रोफ़ाइल पूरी करें 📝",
+    notifCompleteProfileMessage: "पहचान सत्यापन के लिए अपना फ़ोन नंबर और दस्तावेज़ जोड़ें।",
+    notifPlanActivatedTitle: "प्लान सफलतापूर्वक सक्रिय! ✅",
+    notifPlanActivatedMessage: "आपकी {{plan}} प्लान सदस्यता की पुष्टि हो गई है। अभी सभी लाभों का आनंद लें।",
+    notifNow: "अभी",
+    notifHoursAgo: "{{count}} घंटे पहले",
+    notifYesterday: "कल",
+    noNotifications: "कोई सूचनाएँ नहीं",
+    allCaughtUp: "सब पढ़ लिया!",
+  },
+  bn: {
+    notifWelcomeTitle: "Kizola Protect-এ স্বাগতম! 🛡️",
+    notifWelcomeMessage: "আপনার অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে। আমাদের সুবিধা অন্বেষণ করুন এবং আপনার ভবিষ্যৎ রক্ষা করুন।",
+    notifCompleteProfileTitle: "আপনার প্রোফাইল সম্পূর্ণ করুন 📝",
+    notifCompleteProfileMessage: "পরিচয়যাচাইয়ের জন্য আপনার ফোন নম্বর এবং নথি যোগ করুন।",
+    notifPlanActivatedTitle: "প্লান সফলভাবে সক্রিয়! ✅",
+    notifPlanActivatedMessage: "আপনার {{plan}} প্লান সাবস্ক্রিপশন নিশ্চিত হয়েছে। এখনই সমস্ত সুবিধা উপভোগ করুন।",
+    notifNow: "এখন",
+    notifHoursAgo: "{{count}}ঃ আগে",
+    notifYesterday: "গতকাল",
+    noNotifications: "কোনো বিজ্ঞপ্তি নেই",
+    allCaughtUp: "সব পড়া হয়েছে!",
+  },
+  ln: {
+    notifWelcomeTitle: "Boyekani na Kizola Protect! 🛡️",
+    notifWelcomeMessage: "Kombo na yo ekoki kaka. Kanga makamshi na biso mpe suka bokosi na yo.",
+    notifCompleteProfileTitle: "Teka profil na yo malamu 📝",
+    notifCompleteProfileMessage: "Tambula nombo na likolo na yo mpe basiloko ya kokonda identity.",
+    notifPlanActivatedTitle: "Plan ekoki kaka! ✅",
+    notifPlanActivatedMessage: "Abonnement na yo ya plan {{plan}} ekoki kaka. Fanda makamshi na biso mpoka.",
+    notifNow: "Sekondi ndakatika",
+    notifHoursAgo: "saa {{count}} ezombe",
+    notifYesterday: "Lobi",
+    noNotifications: "Mpasi na makamshi",
+    allCaughtUp: "Nioso ekoki kosomaswa!",
+  },
+};
+
+for (const lang of Object.keys(translations)) {
+  const file = path.join(DIR, `${lang}.json`);
+  if (!fs.existsSync(file)) { console.error(`❌ ${lang}.json not found`); continue; }
+  const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const t = translations[lang];
+  let added = 0;
+  for (const key of KEYS) {
+    if (!data[key]) {
+      data[key] = t[key];
+      added++;
+    }
+  }
+  if (added > 0) {
+    fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n', 'utf8');
+    console.log(`✅ ${lang}.json — ${added} keys added`);
+  } else {
+    console.log(`⏭️  ${lang}.json — already has all keys`);
+  }
+}
+console.log('\nDone!');

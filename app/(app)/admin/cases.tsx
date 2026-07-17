@@ -190,11 +190,11 @@ export default function AdminCases() {
         console.warn('Failed to insert audit log:', logErr);
       }
 
-      Alert.alert('Sucesso', 'Estado do caso atualizado com sucesso.');
+      Alert.alert(t('admin.casesSuccessTitle'), t('admin.casesSuccessMessage'));
       setSelectedCase(null);
       fetchCases();
     } catch (err: any) {
-      Alert.alert('Erro', err.message || 'Erro ao atualizar o estado do caso.');
+      Alert.alert(t('admin.casesErrorTitle'), err.message || t('admin.casesErrorMessage'));
     } finally {
       setUpdatingStatus(false);
     }
@@ -214,15 +214,15 @@ export default function AdminCases() {
   const getStatusDetails = (status: string) => {
     const norm = status.toLowerCase();
     if (norm === 'completed' || norm === 'resolved') {
-      return { label: 'Concluído', color: theme.success, icon: CheckCircle2 };
+      return { label: t('admin.casesBtnComplete'), color: theme.success, icon: CheckCircle2 };
     }
     if (norm === 'in_progress') {
-      return { label: 'Em Progresso', color: theme.accent, icon: Clock };
+      return { label: t('admin.casesBtnInProgress'), color: theme.accent, icon: Clock };
     }
     if (norm === 'pending') {
-      return { label: 'Pendente', color: theme.warning, icon: AlertCircle };
+      return { label: t('admin.casesBtnPending'), color: theme.warning, icon: AlertCircle };
     }
-    return { label: 'Cancelado', color: theme.error, icon: AlertCircle };
+    return { label: t('admin.casesStatusResolved'), color: theme.error, icon: AlertCircle };
   };
 
   const filteredCases = useMemo(() => {
@@ -251,7 +251,7 @@ export default function AdminCases() {
   const renderCaseItem = ({ item }: { item: CaseItem }) => {
     const statusInfo = getStatusDetails(item.status);
     const StatusIcon = statusInfo.icon;
-    const typeLabel = item.case_type === 'support' ? 'Suporte' : item.case_type === 'housing' ? 'Habitação' : 'Finanças';
+    const typeLabel = item.case_type === 'support' ? t('admin.casesTabSupport') : item.case_type === 'housing' ? t('admin.casesTabHousing') : t('admin.casesTabFinance');
     const typeColor = item.case_type === 'support' ? '#3B82F6' : item.case_type === 'housing' ? '#F59E0B' : '#8B5CF6';
 
     return (
@@ -283,7 +283,7 @@ export default function AdminCases() {
           <View style={styles.userInfo}>
             <User size={14} color={theme.textMuted} />
             <Text style={[styles.userName, { color: theme.textSecondary }]}>
-              {item.nome || 'Membro Kizola'}
+              {item.nome || t('admin.casesMemberKizola')}
             </Text>
           </View>
           <View style={[styles.statusBadge, { backgroundColor: statusInfo.color + '15' }]}>
@@ -306,7 +306,7 @@ export default function AdminCases() {
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <ArrowLeft size={24} color={theme.text} />
         </TouchableOpacity>
-        <Text style={[styles.title, { color: theme.text }]}>Gestão de Casos</Text>
+        <Text style={[styles.title, { color: theme.text }]}>{t('admin.gestaoDeCasos')}</Text>
         <View style={{ width: 44 }} />
       </View>
 
@@ -315,7 +315,7 @@ export default function AdminCases() {
         <View style={[styles.searchWrapper, { backgroundColor: theme.surfaceElevated, borderColor: theme.cardBorder }]}>
           <Search size={20} color={theme.textMuted} />
           <TextInput
-            placeholder="Pesquisar por nome, email ou descrição..."
+            placeholder={t('admin.casesSearchPlaceholder')}
             placeholderTextColor={theme.textMuted}
             style={[styles.searchInput, { color: theme.text }]}
             value={search}
@@ -331,25 +331,25 @@ export default function AdminCases() {
             style={[styles.tabButton, selectedTab === 'all' && [styles.activeTabButton, { backgroundColor: theme.accent }]]}
             onPress={() => setSelectedTab('all')}
           >
-            <Text style={[styles.tabText, { color: selectedTab === 'all' ? '#FFF' : theme.textSecondary }]}>Todos</Text>
+            <Text style={[styles.tabText, { color: selectedTab === 'all' ? '#FFF' : theme.textSecondary }]}>{t('admin.casesTabAll')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.tabButton, selectedTab === 'support' && [styles.activeTabButton, { backgroundColor: theme.accent }]]}
             onPress={() => setSelectedTab('support')}
           >
-            <Text style={[styles.tabText, { color: selectedTab === 'support' ? '#FFF' : theme.textSecondary }]}>Suporte</Text>
+            <Text style={[styles.tabText, { color: selectedTab === 'support' ? '#FFF' : theme.textSecondary }]}>{t('admin.casesTabSupport')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.tabButton, selectedTab === 'housing' && [styles.activeTabButton, { backgroundColor: theme.accent }]]}
             onPress={() => setSelectedTab('housing')}
           >
-            <Text style={[styles.tabText, { color: selectedTab === 'housing' ? '#FFF' : theme.textSecondary }]}>Habitação</Text>
+            <Text style={[styles.tabText, { color: selectedTab === 'housing' ? '#FFF' : theme.textSecondary }]}>{t('admin.casesTabHousing')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.tabButton, selectedTab === 'finance' && [styles.activeTabButton, { backgroundColor: theme.accent }]]}
             onPress={() => setSelectedTab('finance')}
           >
-            <Text style={[styles.tabText, { color: selectedTab === 'finance' ? '#FFF' : theme.textSecondary }]}>Finanças</Text>
+            <Text style={[styles.tabText, { color: selectedTab === 'finance' ? '#FFF' : theme.textSecondary }]}>{t('admin.casesTabFinance')}</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -360,35 +360,35 @@ export default function AdminCases() {
           style={[styles.statusFilterBadge, statusFilter === 'all' && styles.statusFilterBadgeActive]}
           onPress={() => setStatusFilter('all')}
         >
-          <Text style={[styles.statusFilterText, statusFilter === 'all' && styles.statusFilterTextActive, { color: theme.textSecondary }]}>Todos Estados</Text>
+          <Text style={[styles.statusFilterText, statusFilter === 'all' && styles.statusFilterTextActive, { color: theme.textSecondary }]}>{t('admin.casesStatusAll')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.statusFilterBadge, statusFilter === 'pending' && { borderColor: theme.warning }]}
           onPress={() => setStatusFilter('pending')}
         >
           <View style={[styles.statusFilterDot, { backgroundColor: theme.warning }]} />
-          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>Pendente</Text>
+          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>{t('admin.casesStatusPending')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.statusFilterBadge, statusFilter === 'in_progress' && { borderColor: theme.accent }]}
           onPress={() => setStatusFilter('in_progress')}
         >
           <View style={[styles.statusFilterDot, { backgroundColor: theme.accent }]} />
-          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>Em progresso</Text>
+          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>{t('admin.casesStatusInProgress')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.statusFilterBadge, statusFilter === 'resolved' && { borderColor: theme.success }]}
           onPress={() => setStatusFilter('resolved')}
         >
           <View style={[styles.statusFilterDot, { backgroundColor: theme.success }]} />
-          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>Resolvido</Text>
+          <Text style={[styles.statusFilterText, { color: theme.textSecondary }]}>{t('admin.casesStatusResolved')}</Text>
         </TouchableOpacity>
       </View>
 
       {loading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={theme.accent} />
-          <Text style={[styles.loadingText, { color: theme.textSecondary }]}>A carregar casos...</Text>
+          <Text style={[styles.loadingText, { color: theme.textSecondary }]}>{t('admin.casesLoading')}</Text>
         </View>
       ) : (
         <FlatList
@@ -400,7 +400,7 @@ export default function AdminCases() {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <FileText size={64} color={theme.textMuted} />
-              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>Nenhum caso encontrado.</Text>
+              <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t('admin.casesEmpty')}</Text>
             </View>
           }
         />
@@ -442,24 +442,24 @@ export default function AdminCases() {
 
                   {/* Client Info Block */}
                   <View style={[styles.detailsBlock, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}>
-                    <Text style={[styles.blockTitle, { color: theme.text }]}>Dados do Cliente</Text>
+                    <Text style={[styles.blockTitle, { color: theme.text }]}>{t('admin.casesClientData')}</Text>
                     <View style={styles.detailRow}>
-                      <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Nome:</Text>
-                      <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.nome || 'Não fornecido'}</Text>
+                      <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.casesName')}</Text>
+                      <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.nome || t('admin.casesNotProvided')}</Text>
                     </View>
                     <View style={styles.detailRow}>
-                      <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Email:</Text>
-                      <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.email || 'Não fornecido'}</Text>
+                      <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.casesEmail')}</Text>
+                      <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.email || t('admin.casesNotProvided')}</Text>
                     </View>
                     {selectedCase.telefone && (
                       <View style={styles.detailRow}>
-                        <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Telefone:</Text>
+                        <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.casesPhone')}</Text>
                         <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.telefone}</Text>
                       </View>
                     )}
                     {selectedCase.estado && (
                       <View style={styles.detailRow}>
-                        <Text style={[styles.detailLabel, { color: theme.textMuted }]}>Localização:</Text>
+                        <Text style={[styles.detailLabel, { color: theme.textMuted }]}>{t('admin.casesLocation')}</Text>
                         <View style={styles.locationValue}>
                           <MapPin size={12} color={theme.textSecondary} />
                           <Text style={[styles.detailValue, { color: theme.text }]}>{selectedCase.cidade ? `${selectedCase.cidade}, ` : ''}{selectedCase.estado}</Text>
@@ -471,19 +471,19 @@ export default function AdminCases() {
                   {/* Situation / Description Block */}
                   {selectedCase.situacao_atual && (
                     <View style={[styles.detailsBlock, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}>
-                      <Text style={[styles.blockTitle, { color: theme.text }]}>Situação Atual</Text>
+                      <Text style={[styles.blockTitle, { color: theme.text }]}>{t('admin.casesCurrentSituation')}</Text>
                       <Text style={[styles.blockText, { color: theme.textSecondary }]}>{selectedCase.situacao_atual}</Text>
                     </View>
                   )}
 
                   <View style={[styles.detailsBlock, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}>
-                    <Text style={[styles.blockTitle, { color: theme.text }]}>Descrição / Observações</Text>
-                    <Text style={[styles.blockText, { color: theme.textSecondary }]}>{selectedCase.description || 'Sem observações adicionais.'}</Text>
+                    <Text style={[styles.blockTitle, { color: theme.text }]}>{t('admin.casesDescriptionNotes')}</Text>
+                    <Text style={[styles.blockText, { color: theme.textSecondary }]}>{selectedCase.description || t('admin.casesNoNotes')}</Text>
                   </View>
 
                   {/* Action Buttons to Change Status */}
                   <View style={styles.actionsContainer}>
-                    <Text style={[styles.blockTitle, { color: theme.text, marginBottom: 12 }]}>Atualizar Estado</Text>
+                    <Text style={[styles.blockTitle, { color: theme.text, marginBottom: 12 }]}>{t('admin.casesUpdateStatus')}</Text>
                     
                     <View style={styles.actionButtonsRow}>
                       <TouchableOpacity
@@ -491,7 +491,7 @@ export default function AdminCases() {
                         onPress={() => updateCaseStatus(selectedCase.id, selectedCase.case_type, 'pending')}
                         disabled={updatingStatus}
                       >
-                        <Text style={[styles.statusButtonText, { color: selectedCase.status === 'pending' ? '#FFF' : theme.warning }]}>Pendente</Text>
+                        <Text style={[styles.statusButtonText, { color: selectedCase.status === 'pending' ? '#FFF' : theme.warning }]}>{t('admin.casesBtnPending')}</Text>
                       </TouchableOpacity>
 
                       <TouchableOpacity
@@ -499,7 +499,7 @@ export default function AdminCases() {
                         onPress={() => updateCaseStatus(selectedCase.id, selectedCase.case_type, 'in_progress')}
                         disabled={updatingStatus}
                       >
-                        <Text style={[styles.statusButtonText, { color: selectedCase.status === 'in_progress' ? '#FFF' : theme.accent }]}>Em Progresso</Text>
+                        <Text style={[styles.statusButtonText, { color: selectedCase.status === 'in_progress' ? '#FFF' : theme.accent }]}>{t('admin.casesBtnInProgress')}</Text>
                       </TouchableOpacity>
 
                       <TouchableOpacity
@@ -507,7 +507,7 @@ export default function AdminCases() {
                         onPress={() => updateCaseStatus(selectedCase.id, selectedCase.case_type, 'resolved')}
                         disabled={updatingStatus}
                       >
-                        <Text style={[styles.statusButtonText, { color: (selectedCase.status === 'completed' || selectedCase.status === 'resolved') ? '#FFF' : theme.success }]}>Concluir</Text>
+                        <Text style={[styles.statusButtonText, { color: (selectedCase.status === 'completed' || selectedCase.status === 'resolved') ? '#FFF' : theme.success }]}>{t('admin.casesBtnComplete')}</Text>
                       </TouchableOpacity>
                     </View>
                   </View>

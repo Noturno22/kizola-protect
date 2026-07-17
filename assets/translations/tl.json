@@ -72,7 +72,47 @@
     "emailPlaceholder": "you@email.com",
     "forgotPasswordDesc": "Ilagay ang email na nauugnay sa iyong account. Magpapadala kami ng link para gumawa ng bagong password.",
     "loginFailed": "Nabigo ang Pag-login",
-    "invalidCredentials": "Hindi wastong email o password."
+    "invalidCredentials": "Hindi wastong email o password.",
+    "error": "Error",
+    "errorGoogle": "Error sa Google",
+    "errorApple": "Error sa Apple",
+    "loginInterrupted": "Naantala ang pag-login. Maaaring nasara ang app. Mangyaring subukan muli.",
+    "enterFullName": "Mangyaring ilagay ang iyong buong pangalan.",
+    "enterEmail": "Mangyaring ilagay ang iyong email.",
+    "enterPassword": "Mangyaring ilagay ang password.",
+    "invalidPhoneDigits": "Hindi valid na numero ng telepono (minimum 8 digit).",
+    "passwordsDoNotMatch": "Hindi tugma ang mga password.",
+    "passwordMin6": "Ang password ay dapat may hindi bababa sa 6 na karakter.",
+    "acceptTerms": "Mangyaring tanggapin ang mga tuntunin at kundisyon.",
+    "confirmEmailTitle": "Kumpirmahin ang iyong email",
+    "confirmEmailDesc": "Nagpadala kami ng kumpirmasyong link sa {{email}}. I-click ang link, pagkatapos ay mag-login para magpatuloy.",
+    "goToLogin": "Pumunta sa Login",
+    "alreadyRegistered": "Nakarehistro na ang email na ito. Subukang mag-login.",
+    "emailInvalid": "Hindi valid na email. Mangyaring suriin at subukan muli.",
+    "registrationError": "Error sa Pagpaparehistro",
+    "phoneVerification": "Pag-verify sa Telepono",
+    "signInWithPhone": "Mag-login gamit ang Telepono",
+    "enterPhoneSubtitle": "Ilagay ang iyong numero ng telepono para makatanggap ng secure code.",
+    "phonePlaceholder": "hal. +1 234 567 8900",
+    "sendCode": "Magpadala ng Code",
+    "verifyCode": "I-verify ang Code",
+    "enterCodeSentTo": "Ilagay ang 6-digit code na naipadala sa {{phone}}",
+    "codePlaceholder": "Ilagay ang 6-digit code",
+    "verifyAndSignIn": "I-verify at Mag-login",
+    "changePhoneNumber": "Palitan ang numero ng telepono",
+    "invalidPhone": "Mangyaring maglagay ng valid na numero ng telepono na may country code (hal. +1234567890)",
+    "phoneCountryCodeRequired": "Mangyaring isama ang country code na nagsisimula sa + (hal. +1)",
+    "smsSent": "Matagumpay na nais ang SMS",
+    "couldNotSendSms": "Hindi naipadala ang SMS",
+    "enterSixDigitCode": "Mangyaring ilagay ang 6-digit code",
+    "invalidCode": "Hindi valid na code",
+    "demoMode": "Demo Mode",
+    "demoModeA11y": "Pumasok sa demo mode",
+    "demoModeFailed": "Hindi nakapasok sa demo mode.",
+    "appleComingSoon": "Mag-login gamit ang Apple",
+    "appleComingSoonDesc": "Ang feature na ito ay kasalukuyang binubuo at malapit nang maging available. Ang Apple authentication ay nangangailangan ng Apple Developer account.",
+    "phoneComingSoon": "Mag-login gamit ang Telepono",
+    "phoneComingSoonDesc": "Ang feature na ito ay kasalukuyang binubuo. Ang SMS/OTP login ay magiging available sa buong bersyon."
   },
   "profile": {
     "title": "Aking Profile",
@@ -87,6 +127,16 @@
     "status": "Katayuan",
     "beneficiaries": "Mga Beneficiary",
     "add": "Idagdag",
+    "addBeneficiary": "Magdagdag ng Beneficiary",
+    "editBeneficiary": "I-edit ang Beneficiary",
+    "beneficiaryType": "Uri ng Beneficiary",
+    "son": "Anak na Lalaki",
+    "daughter": "Anak na Babae",
+    "spouse": "Asawa",
+    "fullName": "Buong Pangalan",
+    "namePlaceholder": "Ilagay ang buong pangalan",
+    "document": "Dokumento",
+    "documentPlaceholder": "Ilagay ang numero ng dokumento",
     "none": "Walang beneficiary",
     "noneSubtitle": "Magdagdag ng mga anak, asawa, o iba pang beneficiary.",
     "settings": "Mga Setting",
@@ -111,12 +161,40 @@
     "noActivePlan": "Walang aktibong plano",
     "benefitsCount": "Mga Benepisyo",
     "support247": "Suporta",
-    "protected100": "Protektado"
+    "protected100": "Protektado",
+    "deleteAccountSubtitle": "Ang pagbura ng iyong account ay permanente at hindi maaaring ibalik.",
+    "deleteAccount": {
+      "title": "Burahin ang Account",
+      "warning": "Ang aksyong ito ay hindi maibabalik. Lahat ng iyong datos ay permanenteng buburahin.",
+      "reasonLabel": "Dahilan ng pag-alis",
+      "reasons": {
+        "too_expensive": "Masyadong mahal",
+        "missing_features": "Kulang sa features",
+        "not_helpful": "Hindi nakatulong",
+        "privacy": "Mga alalahanin sa privacy",
+        "duplicate": "Duplicate na account",
+        "other": "Iba pa"
+      },
+      "passwordLabel": "Ilagay ang iyong password upang kumpirmahin",
+      "passwordPlaceholder": "Password",
+      "confirmLabel": "Naiintindihan ko ang mga kahihinatnan",
+      "deleteButton": "Burahin ang Aking Account",
+      "cancelButton": "Kanselahin",
+      "confirmError": "Mangyaring kumpirmahin at ilagay ang iyong password",
+      "alertDeletedTitle": "Account Naba na",
+      "alertDeletedDemo": "Ito ay isang demo account",
+      "alertDeletedDesc": "Ang iyong account ay nabura na. Ikaw ay ilo-logout.",
+      "alertOk": "OK",
+      "noSession": "Walang aktibong session na nahanap",
+      "deleteFailed": "Nabigo ang pagbura ng account",
+      "genericError": "May naganap na error"
+    }
   },
   "dashboard": {
     "welcome": "Kamusta",
     "welcomeBack": "Maligayang pagbabalik,",
     "protectionStatus": "Katayuan ng Proteksyon",
+    "planSuffix": "Plano",
     "protected": "Ikaw ay protektado",
     "notProtected": "Kailangan ng aksyon",
     "quickActions": "Mabilis na Aksyon",
@@ -267,7 +345,12 @@
         "description": "Mabawi ang access sa iyong digital na buhay. Tumutulong kaming ibalik ang mga naka-lock o na-hack na account para sa Uber, DoorDash, at iba pang mahahalagang service platform.",
         "category_name": "Digital"
       }
-    }
+    },
+    "newServices": "Mga Bagong Serbisyo",
+    "financeHelp": "Tulong Pananalapi",
+    "housingSupport": "Suporta sa Pabahay",
+    "housingSupportDesc": "Makakuha ng tulong sa paghahanap ng matatag na pabahay, pag-unawa sa mga karapatan ng nangungupahan, at pag-access sa mga mapagkukunan ng emergency shelter.",
+    "financeHelpDesc": "Mag-access sa tulong pananalapi para sa pagbabayad ng bills, suporta sa pagbabudget, at emergency economic aid."
   },
   "activity": {
     "title": "Aking Aktibidad",
@@ -315,31 +398,305 @@
     "helpDesc": "Ang aming support team ay maaaring magbigay ng gabay na naaayon sa iyong partikular na sitwasyon",
     "contactSupport": "Makipag-ugnayan sa Suporta",
     "helpTopic": "Kailangan ng tulong sa paksang ito?",
+    "popular": "Sikat",
+    "recommended": "Inirerekomenda",
     "articles": {
       "tax": {
-        "title": "Mga Pangunahing Kaalaman sa Paghahain ng Buwis",
-        "description": "Mahalagang gabay sa pag-unawa sa mga kinakailangan sa paghahain ng buwis, deadlines, at mga deduction na maaari mong maging kwalipikado.",
-        "content": "\n## Pag-unawa sa Paghahain ng Buwis\n\nAng paghahain ng iyong buwis ay hindi kailangang maging napakabigat. Narito ang kailangan mong malaman:\n\n### Mga Pangunahing Deadline\n- **Abril 15**: Standard filing deadline\n- **Oktubre 15**: Extended filing deadline\n- **Quarterly**: Tinatayang pagbabayad ng buwis (kung self-employed)\n\n### Mga Karaniwang Deduction\n1. Standard Deduction (pinakakaraniwan)\n2. Itemized Deductions\n   - Mga gastos medikal\n   - Buwis ng estado at lokal\n   - Interes sa mortgage\n   - Mga kontribusyon sa charity\n\n### Mga Dokumentong Kailangan Mo\n- W-2 forms mula sa mga employer\n- 1099 forms para sa ibang kita\n- Social Security numbers para sa mga dependent\n- Impormasyon ng bank account para sa direct deposit\n\n### Mga Libreng Opsyon sa Paghahain\n- IRS Free File (kita sa ilalim ng $73,000)\n- VITA program para sa mga kwalipikadong nagbabayad ng buwis\n- Military OneSource para sa mga miyembro ng serbisyo\n"
+        "1": {
+          "title": "Mga Batas Buwis sa Amerika",
+          "description": "Pangkalahatang-ideya ng sistema ng buwis para sa mga bagong dating sa US.",
+          "content": "## Ang Sistema ng Buwis\n\n### Mga Uri ng Buwis\n**Federal Income Tax:**\n- Mga antas mula 10% hanggang 37%\n- Nakadepende sa antas ng kita\n- Kinokolekta ng IRS (Internal Revenue Service)\n\n**State Income Tax:**\n- Hindi lahat ng estado may ganito\n- Mga antas ay nag-iiba bawat estado\n- California, New York: mataas\n- Texas, Florida: walang state income tax\n\n**FICA (Payroll Tax):**\n- Social Security: 6.2%\n- Medicare: 1.45%\n- Kabuuan: 7.65%\n\n### Kailangan Mong Gawin\n1. Mag-file ng buwis taun-taon (Abril 15)\n2. Magbayad ng quarterly estimated taxes (kung self-employed)\n3. Magtipon ng mga rekord\n4. Mag-file kahit mababa ang kita\n\n### Mga Dokumento\n- W-2 mula sa employer\n- 1099 para sa iba pang kita\n- Social Security Number o ITIN\n- Mga resibo ng bawas\n\n### Libreng Tulong\n- VITA (Volunteer Income Tax Assistance)\n- AARP Tax-Aide\n- Mga ahente ng buwis sa komunidad\n- Mga tool online ng IRS\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagfa-file kahit kailangan\n- Mali ang pagkakalkula ng bawas\n- Hindi nagrereport ng lahat ng kita\n- Nawawalang deadline"
+        },
+        "2": {
+          "title": "Mga Tax Credit at Deductions",
+          "description": "Mga paraan para mabawasan ang babayarang buwis at makakuha ng refund.",
+          "content": "## Tax Credits (Mas Mabuti!)\n\n### Earned Income Tax Credit (EITC)\n- Para sa mga manggagawa na may mababang kita\n- Hanggang $7,430 para sa 2024 (depende sa bilang ng anak)\n- Kailangan may valid SSN\n- Walang limitasyon sa kasalukuyang taon\n\n### Child Tax Credit\n- $2,000 bawat qualify na bata\n- Hanggang $1,700 refundable\n- Para sa mga bata 17 pababa\n\n### Child and Dependent Care Credit\n- Hanggang $3,000 para sa isang bata\n- Hanggang $6,000 para sa dalawa o higit pa\n- Para sa daycare habang nagtatrabaho\n\n### American Opportunity Credit\n- Hanggang $2,500 para sa kolehiyo\n- 40% refundable (hanggang $1,000)\n\n### Tax Deductions\n**Standard Deduction:**\n- Singles: $14,600\n- Married filing jointly: $29,200\n\n**Itemized Deductions:**\n- Interest sa mortgage\n- Mga donasyon sa charity\n- Mga gastos sa medikal\n\n### Mga Tip\n1. Mag-file kahit mababa ang kita para sa EITC\n2. I-save ang lahat ng resibo\n3. Gamitin ang libreng software ng buwis\n4. Magtanong tungkol sa lahat ng credit\n5. Mag-file nang maaga para sa mas mabilis na refund"
+        },
+        "3": {
+          "title": "Paano Mag-file ng Bwis",
+          "description": "Hakbang-hakbang na gabay sa pag-file ng buwis sa US.",
+          "content": "## Pag-file ng Bwis\n\n### Kailan Mag-file\n- Deadline: Abril 15\n- Maaaring ma-extend hanggang Oktubre 15\n- Mga quarterly estimated taxes: Abril 15, Hulyo 15, Oktubre 15, Enero 15\n\n### Mga Paraan ng Pag-file\n**Online:**\n- IRS Free File\n- TurboTax, H&R Block, TaxAct\n- Mga libreng VITA site\n\n**Mail:**\n- I-download mula sa IRS.gov\n- I-print at punan\n- I-send sa tamang address\n\n### Mga Hakbang\n1. Mangolekta ng lahat ng dokumento (W-2, 1099, resibo)\n2. Pumili ng paraan ng pag-file\n3. Punan ang form\n4. Kalkulahin ang buwis\n5. I-file online o i-mail\n6. Magbayad o maghintay ng refund\n\n### Mga Libreng Paraan\n- IRS Free File (kita hanggang $84,000)\n- VITA sites (mga bago sa US)\n- AARP Tax-Aide\n- Mga komunidad na nag-aalok ng libreng tulong\n\n### Pagbabayad ng Bwis\n- ACH transfer\n- Credit/debit card\n- Check\n- Mga plano ng pagbabayad kung hindi kayang bayaran lahat\n\n### Mga Pagkakamali na Iwasan\n- Mali ang paglalagay ng Social Security Number\n- Hindi sinasama ang lahat ng kita\n- Maling pagkalkula ng bawas\n- Hindi nagfa-file kahit kailangan"
+        },
+        "4": {
+          "title": "Kung Hindi Ka Kayang Bayaran ang Bwis",
+          "description": "Mga opsyon kapag hindi mo kayang bayaran ang buwis na utang mo.",
+          "content": "## Ano ang Gagawin\n\n### Mga Pagpipilian\n**1. Payment Plan:**\n- Short-term: hanggang 120 araw\n- Long-term: hanggang 6 na taon\n- Mababang interes\n\n**2. Offer in Compromise:**\n- Bawasan ang utang\n- Kung hindi mo kayang bayaran ang buong halaga\n- Kailangan ng matibay na dahilan\n\n**3. Currently Not Collectible:**\n- pansamantalang itigil ang pangongolekta\n- Kung hindi mo kayang bayaran ngayon\n- Maaaring magbago ang sitwasyon\n\n### Mga Hakbang\n1. Mag-file ng buwis kahit hindi kayang bayaran\n2. Makipag-ugnayan sa IRS\n3. Pumili ng plano ng pagbabayad\n4. Sumunod sa mga tuntunin ng plano\n5. Maghanap ng tulong mula sa VITA o tax professional\n\n### Mga Paraan ng Pagbabayad\n- Automatic debit mula sa bank account\n- Mga manu-manong pagbabayad\n- Mga plano ng pagbabayad sa online\n\n### Mga Tip\n1. Huwag hayaang lumaki ang utang\n2. Mag-file kahit hindi kayang bayaran\n3. Magtanong ng tulong sa VITA o tax professional\n4. Maghanap ng mga tax credit na maaaring kwalipikado\n5. I-save ang lahat ng dokumento\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagfa-file kahit hindi kayang bayaran\n- Hindi nakikipag-ugnayan sa IRS\n- Hindi sumusunod sa plano ng pagbabayad\n- Hindi naghahanap ng tulong"
+        },
+        "5": {
+          "title": "Mga Tax para sa Self-Employed",
+          "description": "Mga espesyal na patakaran para sa mga nagtatrabaho sa sarili.",
+          "content": "## Self-Employment Tax\n\n### Ano Ito\n- 15.3% ng kita (Social Security 12.4% + Medicare 2.9%)\n- Kailangan magbayad kung kumita ng $400 o higit pa\n- Kalahati ay maaaring ibawas sa buwis\n\n### Kailangan Mong Gawin\n1. Mag-file ng Schedule SE\n2. Magbayad ng quarterly estimated taxes\n3. Magtipon ng mga resibo ng gastos\n4. Mag-file ng Schedule C\n\n### Mga Bawas para sa Self-Employed\n- Mga gastos sa opisina\n- Mga kagamitan\n- Internet at telepono\n- Transportasyon\n- Mga premium ng insurance\n- Mga gastos sa bahay (home office)\n\n### Mga Quarterly Estimated Tax\n- Deadline: Abril 15, Hulyo 15, Oktubre 15, Enero 15\n- Gamitin ang Form 1040-ES\n- Magbayad online o sa mail\n\n### Mga Tip\n1. Magtipon ng 25-30% ng kita para sa buwis\n2. Mag-save ng mga resibo ng gastos\n3. Gumamit ng accounting software\n4. Magtanong ng tulong sa VITA o tax professional\n5. Mag-file nang maaga para sa mas mabilis na refund\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabayad ng quarterly estimated taxes\n- Hindi nagrereport ng lahat ng kita\n- Hindi nagbabayad ng self-employment tax\n- Nawawalang deadline"
+        }
       },
       "immigration": {
-        "title": "Pangkalahatang-ideya ng Katayuan sa Imigrasyon",
-        "description": "Alamin ang tungkol sa iba't ibang uri ng visa, green card process, at mga landas patungo sa citizenship.",
-        "content": "\n## Pag-unawa sa U.S. Immigration\n\n### Mga Karaniwang Kategorya ng Visa\n\n**Mga Trabaho Visa:**\n- H-1B: Mga specialty occupation\n- L-1: Intracompany transfers\n- O-1: Mga indibidwal na may pambihirang kakayahan\n\n**Batay sa Pamilya:**\n- Immediate relatives ng U.S. citizens\n- Family preference categories\n- Fiancé(e) visas (K-1)\n\n### Green Card (Permanent Residence)\n**Mga Landas:**\n1. Family sponsorship\n2. Employment-based\n3. Diversity lottery\n4. Refugee/asylee status\n\n### Proseso ng Citizenship\n**Mga Kinakailangan:**\n- 5 taon bilang permanent resident (3 taon kung kasal sa U.S. citizen)\n- Physical presence sa U.S.\n- Magandang moral character\n- Kasanayan sa wikang Ingles\n- Kaalaman sa civics\n\n### Mahahalagang Tip\n- Magtago ng mga kopya ng lahat ng dokumento\n- Iulat ang pagbabago ng address sa loob ng 10 araw\n- Panatilihin ang legal na katayuan sa lahat ng oras\n- Kumonsulta sa mga kwalipikadong immigration attorney para sa mga komplikadong kaso\n"
+        "1": {
+          "title": "Mga Uri ng Visa sa Amerika",
+          "description": "Pangkalahatang-ideya ng mga uri ng visa at pagkakaiba-iba ng bawat isa.",
+          "content": "## Mga Kategorya ng Visa\n\n### Mga Tourist Visa (B1/B2)\n- B1: Business\n- B2: Turismo, medikal, pamilya\n- Pananatili: hanggang 6 na buwan\n- Hindi nagbibigay ng karapatang magtrabaho\n\n### Mga Work Visa\n**H-1B:**\n- Para sa mga manggagawang may kasanayan\n- Kailangan ng degree\n- Employer-sponsored\n\n**L-1:**\n- Intercompany transferee\n- May karanasan sa pamamahala\n\n**O-1:**\n- Extraordinary ability\n- Natatanging kasanayan\n\n### Mga Family-Based Visa\n**Immediate Relatives:**\n- Asawa\n- Mga bata (wala pang 21)\n- Magulang ng US citizen\n\n**Family Preference:**\n- Mga kapatid\n- Mga anak (21 pataas)\n- Mga kamag-anak\n- May waiting period\n\n### Adjustment of Status\n- Mula sa US patungong Green Card\n- Para sa mga nasa US na may visa\n- Kailangan ng qualification\n\n### Mga Tip\n1. Matutong ang mga uri ng visa\n2. Maghanda ng mga dokumento nang maaga\n3. Magtanong sa abogado ng immigration\n4. I-save ang lahat ng dokumento\n5. Mag-file nang maaga"
+        },
+        "2": {
+          "title": "Pag-apply ng Green Card",
+          "description": "Proseso ng pag-apply para sa permanenteng paninirahan.",
+          "content": "## Mga Paraan para sa Green Card\n\n### Family-Based\n- Immediate relatives ng US citizen\n- Family preference categories\n- May waiting period (depende sa kategorya)\n\n### Employment-Based\n- EB-1: Extraordinary ability\n- EB-2: Advanced degree o exceptional ability\n- EB-3: Skilled workers\n- EB-4: Special immigrants\n- EB-5: Investors\n\n### Mga Hakbang\n1. Maghanda ng mga dokumento\n2. Mag-file ng petition\n3. Maghintay sa priority date\n4. Mag-interview sa embassy/consulate\n5. Makatanggap ng visa\n6. Mag-file para sa Green Card\n\n### Mga Dokumento\n- Valid passport\n- Birth certificate\n- Police clearance\n- Medical exam results\n- Mga dokumento ng pakikipag-ugnayan\n\n### Mga Tip\n1. Mag-file nang maaga\n2. Maghanda ng lahat ng dokumento\n3. Magtanong sa abogado ng immigration\n4. I-save ang lahat ng kopya\n5. Sumunod sa lahat ng instructions\n\n### Pagbabago ng Katayuan\n- Mula sa tourist patungong Green Card\n- Kailangan ng qualification\n- Maaaring may penalty"
+        },
+        "3": {
+          "title": "Pagkamamamayan ng Amerika",
+          "description": "Proseso ng naturalization at pagiging US citizen.",
+          "content": "## Mga Hakbang para sa Citizenship\n\n### Mga Kailangan\n1. Green Card holder (5 taon o 3 taon kung asawa ng citizen)\n2. Paninirahan sa US (30 buwan sa nakaraang 5 taon)\n3. Maganda ang moral character\n4. Nagsasalita ng Ingles\n5. Nakakaalam ng kasaysayan at pamamahala ng US\n\n### Proseso ng Aplikasyon\n1. I-submit ang Form N-400\n2. Magbayad ng filing fee\n3. Magbiometric (fingerprints)\n4. Mag-interview\n5. Sumailalim sa citizenship test\n6. Mag-oath of allegiance\n\n### Citizenship Test\n- English test: pagbasa, pagsulat, pagsasalita\n- Civics test: 10 tanong mula sa 100\n- Kailangan sumagot ng 6 sa 10 nang tama\n\n### Mga Dokumento\n- Valid passport\n- Green card\n- Tax returns\n- Mga dokumento ng paninirahan\n- Mga dokumento ng pakikipag-ugnayan\n\n### Mga Tip\n1. Maghanda nang maaga\n2. Mag-aral ng civics test\n3. Mag-practice ng English\n4. Magtanong ng tulong sa VITA o immigration attorney\n5. I-save ang lahat ng dokumento\n\n### Pagkatapos ng Citizenship\n- Makakatanggap ng Certificate of Citizenship\n- Maaaring mag-apply ng US passport\n- May karapatan na bumoto\n- Maaaring magdala ng US flag"
+        },
+        "4": {
+          "title": "DACA at Mga Programang Proteksyon",
+          "description": "Impormasyon tungkol sa Deferred Action for Childhood Arrivals.",
+          "content": "## Ano ang DACA?\n\n### Pangkalahatang-ideya\n- Deferred Action for Childhood Arrivals\n- Para sa mga dumating sa US nang bata pa\n- Hindi ito Green Card o citizenship\n- Kailangan i-renew tuwing 2 taon\n\n### Mga Kailangan\n1. Dumating sa US bago mag-16 taong gulang\n2. Nasa US mula Hunyo 15, 2007\n3. Wala pang 31 taong gulang noong Hunyo 15, 2012\n4. Nasa school o graduate\n5. Walang serious criminal record\n\n### Mga Benepisyo\n- Work permit\n- Social Security Number\n- Hindi makakadeport habang aktibo\n- Maaaring mag-trabaho nang legal\n\n### Proseso ng Aplikasyon\n1. Mangolekta ng mga dokumento\n2. I-submit ang Form I-821D\n3. Magbayad ng filing fee\n4. Magbiometric\n5. Maghintay ng approval\n\n### Mga Dokumento\n- Birth certificate\n- Passport\n- Mga dokumento ng paninirahan\n- Mga dokumento ng edukasyon\n- Mga dokumento ng pakikipag-ugnayan\n\n### Mga Pagbabago\n- Kasalukuyang administrasyon\n- Mga patakaran ay nagbabago\n- Magtanong ng tulong sa immigration attorney\n- Mag-update sa mga pagbabago"
+        },
+        "5": {
+          "title": "Suporta sa Immigration at Legal Aid",
+          "description": "Mga organisasyon na nagbibigay ng libreng o murang tulong sa immigration.",
+          "content": "## Libreng Legal Aid\n\n### Mga Organisasyon\n**National Immigration Law Center:**\n- Libreng legal na payo\n- Mga mapagkukunan online\n- Mga tool para sa immigration\n\n**American Immigration Lawyers Association:**\n- Mga abogado ng immigration\n- Mga mapagkukunan\n- Mga tool online\n\n### Mga Mapagkukunan\n**Online:**\n- USCIS.gov (opisyal na impormasyon)\n- Immigration forums\n- Mga tool ng immigration\n\n**Sa Komunidad:**\n- Libreng legal aid clinics\n- Mga organisasyon ng immigration\n- Mga simbahan at mosque\n\n### Mga Tip para sa Paghahanap ng Tulong\n1. Magtanong sa immigration attorney\n2. Maghanap ng libreng legal aid\n3. Maghanap ng mga organisasyon ng immigration\n4. Magtanong sa mga kaibigan at pamilya\n5. Maghanap ng mga mapagkukunan online\n\n### Mga Dapat Iwasan\n- Mga scam sa immigration\n- Mga hindi lisensyadong abogado\n- Mga hindi tiwala sa mga mapagkukunan\n- Mga hindi nag-iingat sa mga dokumento\n\n### Mga Hakbang kapag May Problema\n1. Maghanap ng tulong sa immigration attorney\n2. Maghanap ng libreng legal aid\n3. Magtanong sa mga organisasyon ng immigration\n4. Maghanda ng mga dokumento\n5. Maghanda para sa interview\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-file ng mga dokumento\n- Hindi nag-update sa mga pagbabago\n- Hindi nagtanong ng tulong\n- Hindi nag-iingat sa mga dokumento"
+        }
       },
       "housing": {
-        "title": "Mga Karapatan ng Nangungupahan at Pabahay",
-        "description": "Alamin ang iyong mga karapatan bilang nangungupahan, unawain ang mga kasunduan sa pag-upa, at matuto tungkol sa mga proteksyon sa pagpapalayas.",
-        "content": "\n## Iyong mga Karapatan bilang Nangungupahan\n\n### Bago Ka Umupha\n**Ano ang Maaaring Itanong ng mga Panginoong May-ari:**\n- Income verification\n- Credit check\n- Rental history\n- Mga referral\n\n**Ano ang Hindi Maaaring Itanong ng mga Panginoong May-ari:**\n- Lahi, relihiyon, national origin\n- Katayuan ng pamilya\n- Katayuan ng kapansanan\n\n### Mga Mahahalaga sa Kasunduan sa Pag-upa\n- Halaga ng upa at takdang petsa\n- Mga tuntunin sa security deposit\n- Mga responsibilidad sa maintenance\n- Mga patakaran sa alagang hayop\n- Mga patakaran sa subletting\n\n### Iyong mga Pangunahing Karapatan\n1. **Kakayahang Tirhan**: Ligtas at matitirhang kondisyon\n2. **Privacy**: 24-48 oras na abiso para sa pagpasok (maliban sa emergency)\n3. **Pag-aayos**: Napapanahong tugon sa mga request sa maintenance\n4. **Walang Paghihiganti**: Proteksyon para sa paggamit ng mga legal na karapatan\n\n### Mga Proteksyon sa Pagpapalayas\n**Kinakailangan ang Legal na Proseso:**\n1. Written notice\n2. Paghahain sa korte\n3. Pagkakataon sa pagdinig\n4. Pagpapalayas ng sheriff (kung iniutos)\n\n**Kasama sa Illegal na Pagpapalayas ang:**\n- Pagpapalit ng kandado\n- Pagputol ng utility\n- Panliligalig\n- Pag-alis ng ari-arian\n\n### Pagkuha ng Tulong\n- Lokal na tenant unions\n- Legal aid societies\n- Housing authorities\n- Suporta ng Kizola Protect\n"
+        "1": {
+          "title": "Paghahanap ng Matutuluyan",
+          "description": "Gabay sa paghahanap at pagrerenta ng apartment o bahay sa Amerika.",
+          "content": "## Mga Uri ng Paninirahan\n\n### Apartment\n- Renta (monthly)\n- Mga gastos: renta + utilities\n- Walang maintenance\n- Mga amenities: laundry, parking\n\n### House\n- Mas malaki\n- Mas mahal\n- May bakuran\n- Mas maraming privacy\n\n### Mga Kailangan\n1. Maghanda ng deposit (1-2 buwan ng renta)\n2. Proof of income (2-3 buwan ng payslip)\n3. Valid ID\n- Social Security Number o ITIN\n- Reference mula sa dating landlord\n\n### Proseso ng Pagrerenta\n1. Maghanap ng tamang lugar\n2. Mag-apply at mag-submit ng application\n3. Magbayad ng application fee\n4. Maghintay ng approval\n5. Mag-sign ng lease agreement\n6. Magbayad ng deposit at unang buwan\n\n### Mga Tip\n1. Maghanap nang maaga\n2. Mag-set ng budget\n3. Magbasa ng lease agreement\n4. Magtanong tungkol sa mga gastos\n5. Mag-photo ng kondisyon bago lumipat\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabasa ng lease agreement\n- Hindi nagse-set ng budget\n- Hindi nagtatanong tungkol sa mga gastos\n- Hindi nagpo-photo ng kondisyon"
+        },
+        "2": {
+          "title": "Pag-unawa sa Lease Agreement",
+          "description": "Mga mahahalagang bahagi ng kontrata sa pagrerenta.",
+          "content": "## Mga Bahagi ng Lease\n\n### Mga Detalye\n- Panahon ng lease\n- Renta at bayarin\n- Mga panuntunan\n- Mga karapatan at obligasyon\n\n### Mga Mahahalagang Bahagi\n**1. Panahon ng Lease:**\n- Start at end date\n- Renewal terms\n- Early termination\n\n**2. Renta at Bayarin:**\n- Buwanang renta\n- Due date\n- Late fees\n- Mga karagdagang bayarin\n\n**3. Mga Panuntunan:**\n- Pet policy\n- Noise policy\n- Guest policy\n- Maintenance\n\n**4. Mga Karapatan at Obligasyon:**\n- Landlord: magmaintain, magbigay ng notice\n- Tenant: magbayad on time, magmaintain\n\n### Mga Tip\n1. Basahin nang mabuti ang lease\n2. Magtanong ng mga tanong\n3. Mag-sign ng kopya\n4. I-save ang kopya\n5. Magtanong ng legal na payo kung may duda\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabasa ng lease\n- Hindi nagtatanong ng mga tanong\n- Hindi nag-save ng kopya\n- Hindi nagtatanong ng legal na payo"
+        },
+        "3": {
+          "title": "Karapatan ng Renter",
+          "description": "Mga legal na karapatan ng mga nagrerenta sa Amerika.",
+          "content": "## Mga Karapatan\n\n### Karapatan sa Ligtas na Paninirahan\n- Ligtas at malinis na bahay\n- Proper heating at cooling\n- Malinis na tubig\n- Ligtas na electrical at plumbing\n\n### Karapatan sa Privacy\n- Hindi maaaring pumasok ang landlord nang walang permission\n- 24-48 na oras na notice para sa inspection\n- Hindi maaaring mag-search\n\n### Karapatan laban sa Discrimination\n- Walang diskriminasyon sa lahi, gender, relihiyon\n- Walang retaliation para sa pagreklamo\n- Protected ang mga tenant\n\n### Mga Gobyerno\n- Local housing authority\n- HUD (Department of Housing)\n- Legal aid organizations\n- Tenant rights groups\n\n### Mga Tip\n1. Alamin ang mga karapatan\n2. Mag-document ng lahat ng problema\n3. Magtanong ng tulong sa legal aid\n4. Mag-file ng reklamo kung kinakailangan\n5. I-save ang lahat ng dokumento\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-alam ng mga karapatan\n- Hindi nag-document ng problema\n- Hindi nagtanong ng tulong\n- Hindi nag-file ng reklamo"
+        },
+        "4": {
+          "title": "Pag-budget para sa Housing",
+          "description": "Paano mag-set ng budget para sa tirahan at mga kaugnay na gastos.",
+          "content": "## Mga Gastos sa Housing\n\n### Mga Pangunahing Gastos\n- Renta\n- Utilities (kuryente, tubig, gas)\n- Internet at cable\n- Insurance\n- Maintenance\n\n### Mga Tip sa Budget\n**1. 30% Rule:**\n- Renta ay hindi dapat lumampas sa 30% ng kita\n- Kabilang ang utilities\n- Kabilang ang insurance\n\n**2. Mga Karagdagang Gastos:**\n- Security deposit\n- Application fee\n- Moving expenses\n- Furniture\n\n### Paano Mag-set ng Budget\n1. I-lista ang lahat ng gastos\n2. Maghanap ng tamang lugar\n3. Maghanap ng murang apartment\n4. Mag-set ng budget para sa lahat\n5. Mag-save para sa emergency\n\n### Mga Paraan para Makatipid\n- Maghanap ng roommate\n- Maghanap ng lugar na malapit sa work\n- Maghanap ng lugar na may included utilities\n- Maghanap ng lugar na may discount\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-set ng budget\n- Hindi naghanap ng murang apartment\n- Hindi naghanap ng roommate\n- Hindi nag-save para sa emergency\n\n### Mga Tip\n1. Maghanap ng lugar na angkop sa budget\n2. Magtanong tungkol sa mga gastos\n3. Mag-save para sa emergency\n4. Magtanong ng tulong sa financial advisor\n5. Mag-update ng budget"
+        },
+        "5": {
+          "title": "Paglilipat ng Bahay at Unpacking",
+          "description": "Mga tip para sa maayos na paglilipat at pag-settle sa bagong tirahan.",
+          "content": "## Paglilipat ng Bahay\n\n### Pagpaplano\n- Mag-set ng date ng paglipat\n- Maghanap ng movers o mag-rent ng truck\n- Maghanda ng packing materials\n- Mag-organize ng mga gamit\n\n### Packing Tips\n1. Mag-label ng bawat box\n2. Mag-start sa mga gamit na hindi madalas ginagamit\n3. Mag-wrap ng mga fragile items\n4. Mag-save ng importanteng dokumento\n5. Mag-set ng essentials box\n\n### Paglilipat\n- Mag-start nang maaga\n- Mag-check ng lahat ng gamit\n- Mag-sign ng lease agreement\n- Magbayad ng deposit\n- Mag-set ng utilities\n\n### Pag-unpack\n1. Mag-start sa mga essential (kitchen, bedroom)\n2. Mag-set ng bed at banyo\n3. Mag-unpack ng mga gamit sa kusina\n4. Mag-set ng mga gamit sa sala\n5. Mag-unpack ng mga natitirang gamit\n\n### Pag-settle sa Bagong Bahay\n- Mag-explore ng neighborhood\n- Maghanap ng mga nearby na tindahan\n- Mag-set ng mail forwarding\n- Mag-register sa voter registration\n- Mag-update ng address sa lahat\n\n### Mga Tip\n1. Mag-start nang maaga\n2. Mag-label ng bawat box\n3. Mag-set ng essentials box\n4. Mag-check ng lahat ng gamit\n5. Mag-explore ng neighborhood\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-label ng box\n- Hindi nag-set ng essentials box\n- Hindi nag-check ng gamit\n- Hindi nag-explore ng neighborhood"
+        }
       },
       "legal": {
-        "title": "Gabay sa Legal na Kamalayan",
-        "description": "Pag-unawa kung kailan mo kailangan ng legal na tulong at kung paano epektibong makipagtulungan sa mga abogado.",
-        "content": "\n## Kailan Mo Kailangan ng Abogado?\n\n### Mga Sitwasyong Nangangailangan ng Legal na Tulong\n**Mga Bagay na Kriminal:**\n- Anumang kasong kriminal\n- Mga pag-aresto at pagsisiyasat\n- Mga paglabag sa trapiko na may malubhang kahihinatnan\n\n**Mga Bagay na Sibil:**\n- Personal injury claims\n- Mga hindi pagkakaunawaan sa kontrata\n- Diskriminasyon sa trabaho\n- Family law (diborsyo, pag-iingat)\n- Mga isyu sa imigrasyon\n- Mga hindi pagkakaunawaan sa pabahay\n\n### Pakikipagtulungan sa mga Abogado\n**Paunang Konsultasyon:**\n- Dalhin ang lahat ng kaugnay na dokumento\n- Maghanda ng timeline ng mga pangyayari\n- Isulat ang iyong mga tanong\n- Maging tapat tungkol sa lahat ng katotohanan\n\n**Pag-unawa sa mga Bayarin:**\n- Orasang rate\n- Flat fees\n- Contingency fees (personal injury)\n- Retainer\n\n### Libre at Murang Legal na Tulong\n- Legal Aid societies\n- Pro bono programs\n- Law school clinics\n- Court self-help centers\n- Bar association referrals\n"
+        "1": {
+          "title": "Paghahanap ng Abogado",
+          "description": "Paano makahanap at makipagtulungan sa isang abogado sa Amerika.",
+          "content": "## Kailangan Mo ng Abogado\n\n### Mga Sitwasyon\n- Immigration\n- Trabaho\n- Pamilya\n- Kriminal\n- sibil\n\n### Paraan ng Paghanap\n**Referral:**\n- Mga kaibigan at pamilya\n- Mga organisasyon ng komunidad\n- Mga referral ng abogado\n\n**Online:**\n- Martindale-Hubbell\n- Avvo\n- Legal directories\n\n**Libreng tulong:**\n- Legal aid societies\n- Pro bono programs\n- Law school clinics\n\n### Mga Tanong na Itanong\n1. Ano ang iyong karanasan sa kasong ganito?\n2. Magkano ang iyong bayad?\n3. Sino ang gagawa ng kaso ko?\n4. Gaano katagal ang proseso?\n5. Ano ang mga posibleng resulta?\n\n### Mga Bayad\n**Hourly rate:** $150-$500+ bawat oras\n**Flat fee:** $1,000-$10,000+ depende sa kaso\n**Contingency:** 30-40% ng nanalo\n\n### Mga Tip\n1. Maghanap ng abogado na may kasanayan sa iyong kaso\n2. Magtanong ng mga reference\n3. Basahin ang engagement letter\n4. I-save ang lahat ng komunikasyon\n5. Magtanong ng update regular"
+        },
+        "2": {
+          "title": "Legal na Tulong at Pro Bono",
+          "description": "Mga opsyon para sa libreng o murang tulong sa batas.",
+          "content": "## Libreng Legal na Tulong\n\n### Legal Aid Societies\n- Libreng legal na tulong para sa mababang kita\n- Mga kaso: housing, family, immigration\n- Kailangan mag-qualify sa income\n\n### Pro Bono Programs\n- Mga abogado na nagbibigay ng libreng oras\n- Mga kaso: immigration, employment\n- Mga organisasyon: ACLU, NILC\n\n### Mga Mapagkukunan\n**Federal:**\n- Legal Services Corporation\n- Department of Justice\n\n**State:**\n- State bar associations\n- Legal aid organizations\n\n**Local:**\n- Mga abogado sa komunidad\n- Law school clinics\n- Mga simbahan at mosque\n\n### Mga Kwalipikado\n- Mababang kita\n- Mga kaso ng immigration\n- Mga kaso ng pamilya\n- Mga kaso ng housing\n\n### Paano Mag-apply\n1. Maghanap ng legal aid organization\n2. Mag-fill ng application\n3. Magbigay ng income documentation\n4. Maghintay ng approval\n5. Mag-set ng appointment\n\n### Mga Tip\n1. Maghanap nang maaga\n2. Maghanda ng mga dokumento\n3. Magtanong tungkol sa pro bono\n4. Magtanong tungkol sa mga pagpipilian\n5. Magtanong ng update"
+        },
+        "3": {
+          "title": "Pag-unawa sa mga Kontrata",
+          "description": "Paano basahin at unawain ang mga legal na dokumento.",
+          "content": "## Mga Bahagi ng Kontrata\n\n### Mga Bahagi\n1. Pangalan at adres ng mga partido\n2. Mga tuntunin at kundisyon\n3. Mga obligasyon ng bawat isa\n4. Mga kundisyon ng pagwawakas\n5. Mga paraan ng pagresolba ng mga alitan\n\n### Paano Basahin\n1. Basahin nang buo muna\n2. Magtanong ng mga tanong\n3. Maghanap ng mga kundisyon\n4. Mag-check ng mga deadline\n5. I-save ang kopya\n\n### Mga Tip\n1. Huwag pumirma hanggang hindi naiintindihan\n2. Magtanong ng tulong sa abogado\n3. I-save ang lahat ng kopya\n4. Magtanong tungkol sa mga kundisyon\n5. Mag-check ng mga pagbabago\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabasa ng kontrata\n- Hindi nagtatanong ng mga tanong\n- Hindi nagse-save ng kopya\n- Hindi nagtatanong ng tulong\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabasa ng kontrata\n- Hindi nagtatanong ng mga tanong\n- Hindi nagse-save ng kopya\n- Hindi nagtatanong ng tulong"
+        },
+        "4": {
+          "title": "Mga Karapatan sa Trabaho",
+          "description": "Mga legal na karapatan ng mga manggagawa sa Amerika.",
+          "content": "## Mga Karapatan\n\n### Karapatan sa Ligtas na Lugar ng Trabaho\n- Ligtas na kapaligiran\n- Walang harassment\n- Walang diskriminasyon\n\n### Karapatan sa Makatarungang Bayad\n- Minimum wage\n- Overtime pay\n- Walang wage theft\n\n### Karapatan sa Privacy\n- Walang illegal na search\n- Walang surveillance nang walang permission\n- Protected ang mga dokumento\n\n### Mga Paraan ng Pagreklamo\n- HR department\n- EEOC\n- Department of Labor\n- Mga abogado\n\n### Mga Tip\n1. Alamin ang mga karapatan\n2. Mag-document ng lahat ng problema\n3. Magtanong ng tulong sa HR\n4. Magtanong ng tulong sa abogado\n5. I-save ang lahat ng dokumento\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-alam ng mga karapatan\n- Hindi nag-document ng problema\n- Hindi nagtanong ng tulong\n- Hindi nag-file ng reklamo"
+        },
+        "5": {
+          "title": "Mga Batas sa Diskriminasyon",
+          "description": "Proteksyon laban sa diskriminasyon sa trabaho at pampublikong lugar.",
+          "content": "## Mga Uri ng Diskriminasyon\n\n### Diskriminasyon sa Trabaho\n- Lahi at etnisidad\n- Kasarian at kasarian\n- Relihiyon\n- Edad\n- Kapansanan\n- Status ng immigration\n\n### Diskriminasyon sa Pampublikong Lugar\n- Mga pampublikong serbisyo\n- Mga tindahan at restaurant\n- Mga paaralan\n- Mga ospital\n\n### Mga Batas\n- Title VII of the Civil Rights Act\n- Americans with Disabilities Act\n- Age Discrimination in Employment Act\n- Equal Pay Act\n\n### Paano Magreklamo\n1. Mag-document ng insidente\n2. Mag-file sa EEOC\n3. Maghanap ng abogado\n4. Maghintay ng resulta\n5. Mag-file ng kaso kung kinakailangan\n\n### Mga Tip\n1. Mag-document ng lahat\n2. Magtanong ng tulong sa abogado\n3. Mag-file nang maaga\n4. I-save ang lahat ng dokumento\n5. Magtanong ng update\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-document ng problema\n- Hindi nagtanong ng tulong\n- Hindi nag-file ng reklamo\n- Hindi nag-iingat sa mga dokumento"
+        }
       },
       "career": {
-        "title": "Pagbuo ng Resume at Paghahanap ng Trabaho",
-        "description": "Gumawa ng nakakahimok na resume, magtagumpay sa mga interbyu, at epektibong mag-navigate sa modernong merkado ng trabaho.",
-        "content": "\n## Pagbuo ng Iyong Propesyonal na Profile\n\n### Mga Mahahalaga sa Resume\n**Format:**\n- Isang pahina (maagang karera)\n- Dalawang pahina (may karanasan)\n- Malinis at nababasang font\n- Consistent na formatting\n\n**Mga Seksyon na Dapat Isama:**\n1. Contact Information\n2. Professional Summary\n3. Work Experience\n4. Edukasyon\n5. Mga Kasanayan\n6. Mga Sertipikasyon (kung nauugnay)\n\n### Pagsulat ng Mabisang Bullet Points\n**Gamitin ang STAR Method:**\n- Sitwasyon (Situation)\n- Gawain (Task)\n- Aksyon (Action)\n- Resulta (Result)\n\n**Halimbawa:**\n\"Pinamahalaan ang team ng 5 (Sitwasyon) upang makumpleto ang proyekto nang 2 linggo nang maaga (Gawain) sa pamamagitan ng pagpapatupad ng agile workflows (Aksyon), na nagresulta ng $50K na pagtitipid sa gastos (Resulta)\"\n\n### Paghahanda sa Interbyu\n**Mga Karaniwang Tanong:**\n- \"Sabihin mo sa akin ang tungkol sa iyong sarili\"\n- \"Bakit mo gusto ang posisyong ito?\"\n- \"Ano ang iyong mga kalakasan/kahinaan?\"\n- \"Ilarawan ang isang hamon na iyong nalampasan\"\n\n**Mga Tanong na Itatanong:**\n- Araw-araw na responsibilidad\n- Istraktura ng team\n- Mga oportunidad sa paglago\n- Kultura ng kumpanya\n\n### Mga Estratehiya sa Paghahanap ng Trabaho\n1. **Networking**: 70% ng mga trabaho ay natatagpuan sa pamamagitan ng mga koneksyon\n2. **LinkedIn**: I-optimize ang profile, makipag-ugnayan sa content\n3. **Job Boards**: Indeed, Glassdoor, industry-specific sites\n4. **Direct Applications**: Company career pages\n5. **Recruiters**: Mga espesyalisadong ahensya\n\n### Follow-up\n- Thank you email sa loob ng 24 oras\n- Status check pagkatapos ng 1-2 linggo\n- Manatiling propesyonal at matiyaga\n"
+        "1": {
+          "title": "Pagsusulat ng Resume",
+          "description": "Gabay sa paggawa ng epektibong resume para sa mga employer sa Amerika.",
+          "content": "## Mga Bahagi ng Resume\n\n### Mga Bahagi\n1. Contact information\n2. Objective o summary\n3. Work experience\n4. Education\n5. Skills\n6. References\n\n### Mga Format\n**Chronological:**\n- Pinakakaraniwan\n- Pinapakita ang progression\n- Para sa may karanasan\n\n**Functional:**\n- Fokus sa skills\n- Para sa career changers\n- Para sa may gaps\n\n### Mga Tip\n1. Gawing 1-2 pages lang\n2. Gumamit ng action verbs\n3. I-quantify ang mga resulta\n4. I-customize para sa bawat job\n5. I-check ang spelling at grammar\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-customize\n- Masyadong mahaba\n- Mali ang spelling\n- Hindi nag-iinclude ng contact info\n\n### Mga Tip para sa International Applicants\n1. I-convert ang education sa US equivalent\n2. I-highlight ang language skills\n3. I-explain ang work authorization\n4. I-include ang volunteer work\n5. I-customize para sa bawat job"
+        },
+        "2": {
+          "title": "Paghahanap ng Trabaho",
+          "description": "Mga estratehiya at mapagkukunan para makahanap ng trabaho sa Amerika.",
+          "content": "## Mga Paraan ng Paghahanap\n\n### Online\n- Indeed.com\n- LinkedIn.com\n- Glassdoor.com\n- Company websites\n\n### Networking\n- Mga kaibigan at pamilya\n- Mga dating katrabaho\n- Mga event sa industry\n- Mga online group\n\n### Staffing Agencies\n- Temporary work\n- Direct hire\n- Contract work\n\n### Job Fairs\n- Mga career fair\n- Mga industry event\n- Mga job fair sa komunidad\n\n### Mga Tip\n1. Mag-apply sa maraming lugar\n2. I-customize ang resume para sa bawat job\n3. Mag-follow up sa mga application\n4. Mag-network nang regular\n5. Mag-practice ng interview\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-customize ng resume\n- Hindi nag-follow up\n- Hindi nag-network\n- Hindi nag-practice ng interview\n\n### Mga Tip para sa International Applicants\n1. I-explain ang work authorization\n2. I-highlight ang transferable skills\n3. I-convert ang education sa US equivalent\n4. I-include ang volunteer work\n5. I-customize para sa bawat job"
+        },
+        "3": {
+          "title": "Interview Skills",
+          "description": "Mga tip para sa matagumpay na job interview sa Amerika.",
+          "content": "## Bago ang Interview\n\n### Paghahanda\n1. Mag-research sa kompanya\n2. Mag-practice ng mga common na tanong\n3. Maghanda ng mga tanong para sa interviewer\n4. Mag-prepare ng outfit\n5. Mag-plan ng route\n\n### Mga Common na Tanong\n- Tell me about yourself\n- Why do you want this job?\n- What are your strengths?\n- What are your weaknesses?\n- Where do you see yourself in 5 years?\n\n### Mga Tip\n1. Maging on time\n2. Magdala ng resume copies\n3. Mag-smile at mag-handshake\n4. Maging confident\n5. Mag-thank you email pagkatapos\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-research sa kompanya\n- Hindi nag-practice\n- Hindi nagdala ng resume\n- Hindi nag-thank you\n\n### Mga Tip para sa International Applicants\n1. I-explain ang work authorization\n2. I-highlight ang language skills\n3. I-explain ang cultural experience\n4. Maging confident sa English\n5. Mag-thank you email pagkatapos"
+        },
+        "4": {
+          "title": "Karapatan ng Manggagawa",
+          "description": "Mga legal na karapatan ng mga manggagawa sa Amerika.",
+          "content": "## Mga Karapatan\n\n### Karapatan sa Ligtas na Lugar ng Trabaho\n- Ligtas na kapaligiran\n- Walang harassment\n- Walang diskriminasyon\n\n### Karapatan sa Makatarungang Bayad\n- Minimum wage\n- Overtime pay\n- Walang wage theft\n\n### Karapatan sa Privacy\n- Walang illegal na search\n- Walang surveillance nang walang permission\n- Protected ang mga dokumento\n\n### Mga Paraan ng Pagreklamo\n- HR department\n- EEOC\n- Department of Labor\n- Mga abogado\n\n### Mga Tip\n1. Alamin ang mga karapatan\n2. Mag-document ng lahat ng problema\n3. Magtanong ng tulong sa HR\n4. Magtanong ng tulong sa abogado\n5. I-save ang lahat ng dokumento\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-alam ng mga karapatan\n- Hindi nag-document ng problema\n- Hindi nagtanong ng tulong\n- Hindi nag-file ng reklamo"
+        },
+        "5": {
+          "title": "Paggawa ng Network sa Trabaho",
+          "description": "Mga estratehiya para makabuo ng mga propesyonal na relasyon.",
+          "content": "## Bakit Mahalaga ang Networking\n\n### Mga Benepisyo\n- Makahanap ng trabaho\n- Matuto ng mga bagong kasanayan\n- Makakuha ng mga bagong ideya\n- Makabuo ng mga relasyon\n\n### Mga Paraan ng Networking\n**Online:**\n- LinkedIn\n- Mga online group\n- Mga forum sa industry\n\n**Offline:**\n- Mga event sa industry\n- Mga conference\n- Mga meetup\n- Mga volunteer event\n\n### Mga Tip\n1. Maging tunay at totoo\n2. Magbigay ng value bago humingi\n3. Mag-follow up sa mga contact\n4. Mag-maintain ng mga relasyon\n5. Mag-network nang regular\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-follow up\n- Hindi nagbigay ng value\n- Hindi nag-network nang regular\n- Hindi nag-maintain ng mga relasyon\n\n### Mga Tip para sa International Applicants\n1. I-highlight ang cultural experience\n2. I-join ang mga international professional group\n3. I-attend ang mga event sa industry\n4. I-follow up sa mga contact\n5. I-maintain ang mga relasyon"
+        }
+      },
+      "health": {
+        "1": {
+          "title": "Mga Health Insurance Plan",
+          "description": "Pangkalahatang-ideya ng mga uri ng health insurance sa Amerika.",
+          "content": "## Mga Uri ng Health Insurance\n\n### Employer-Sponsored\n- Pinakakaraniwan sa US\n- Bahagi ng bayad ng employer\n- May HMO, PPO, EPO options\n\n### Marketplace (ACA)\n- HealthCare.gov\n- Mga subsidies para sa mababang kita\n- Open enrollment: Nobyembre 1 - Enero 15\n\n### Medicaid\n- Para sa mababang kita\n- Libreng coverage\n- Available sa karamihan ng estado\n\n### Medicare\n- Para sa 65+ o may kapansanan\n- Part A: Hospital\n- Part B: Outpatient\n- Part D: Prescription drugs\n\n### Mga Tip\n1. I-compare ang mga plan\n2. I-check ang network ng doctors\n3. I-check ang mga gastos\n4. I-check ang coverage\n5. Magtanong ng tulong sa insurance broker"
+        },
+        "2": {
+          "title": "Paghahanap ng Doctor at Ospital",
+          "description": "Paano makahanap ng healthcare provider sa iyong network.",
+          "content": "## Mga Paraan ng Paghahanap\n\n### Sa Iyong Network\n- Tawagan ang insurance company\n- I-check ang website ng insurance\n- Magtanong sa primary care doctor\n\n### Mga Uri ng Doctor\n**Primary Care Physician (PCP):**\n- Unang tawagan para sa sakit\n- Maaaring mag-refer sa specialist\n\n**Specialist:**\n- Cardiologist\n- Dermatologist\n- Orthopedist\n- At marami pa\n\n### Mga Tip\n1. I-check ang network bago magpa-appointment\n2. I-verify ang credentials ng doctor\n3. Magtanong ng referral kung kinakailangan\n4. I-check ang availability ng doctor\n5. Magtanong tungkol sa mga gastos\n\n### Emergency\n- Pumunta sa ER kung life-threatening\n- I-call 911 para sa emergency\n- Hindi kailangan ng referral para sa emergency\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-check ng network\n- Hindi nagtanong ng referral\n- Hindi nag-check ng credentials\n- Hindi nagtanong ng gastos"
+        },
+        "3": {
+          "title": "Mga Emergency na Medikal",
+          "description": "Kailan pumunta sa emergency room at paano magbayad.",
+          "content": "## Kailan Pumunta sa ER\n\n### Mga Emergency\n- Hirap sa paghinga\n- matinding pananakit ng dibdib\n- Pagdurugo nang hindi tumitigil\n- Pagkawala ng malay\n- Matinding pinsala\n- Allergic reaction\n\n### Hindi Emergency\n- Trangkaso\n- Bahagyang lagnat\n- Banayad na sakit ng ulo\n- Mga hindi pang-emergency na kondisyon\n\n### Mga Gastos\n- ER visit: $1,000-$3,000+\n- Ambulance: $500-$2,000+\n- Maaaring magkaroon ng surprise billing\n\n### Mga Tip\n1. Pumunta sa ER kung life-threatening\n2. I-call 911 para sa emergency\n3. Magtanong tungkol sa gastos\n4. I-save ang lahat ng dokumento\n5. Mag-file ng insurance claim\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-check ng network\n- Hindi nagtanong ng gastos\n- Hindi nag-save ng dokumento\n- Hindi nag-file ng claim"
+        },
+        "4": {
+          "title": "Prescription Drugs",
+          "description": "Pag-unawa sa mga prescription drug at pagtitipid sa gastos.",
+          "content": "## Mga Uri ng Prescription\n\n### Generic vs Brand-Name\n- Generic: Mas mura, parehong ingredients\n- Brand-name: Mas mahal, may patent\n\n### Mga Paraan para Makatipid\n- Gumamit ng generic drugs\n- Maghanap ng discount programs\n- Gamitin ang mail-order pharmacy\n- Magtanong ng discount card\n\n### Mga Pharmacy\n- CVS, Walgreens, Rite Aid\n- Walmart pharmacy\n- Target pharmacy\n- Online pharmacy\n\n### Mga Tip\n1. Magtanong ng generic option\n2. I-compare ang mga pharmacy\n3. Gamitin ang discount programs\n4. I-check ang insurance coverage\n5. I-save ang mga resibo\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagtanong ng generic\n- Hindi nag-compare ng pharmacy\n- Hindi nag-check ng insurance\n- Hindi nag-save ng resibo"
+        },
+        "5": {
+          "title": "Mental Health at Well-being",
+          "description": "Mga mapagkukunan para sa mental health at emotional well-being.",
+          "content": "## Mental Health\n\n### Mga Karaniwang Isyu\n- Anxiety\n- Depression\n- Stress\n- Trauma\n\n### Mga Mapagkukunan\n**Crisis Lines:**\n- 988 Suicide & Crisis Lifeline\n- Crisis Text Line: Text HOME sa 741741\n- SAMHSA Helpline: 1-800-662-4357\n\n**Therapy:**\n- Individual therapy\n- Group therapy\n- Family therapy\n- Online therapy\n\n### Mga Tip\n1. Maghanap ng therapist na culturally competent\n2. Magtanong tungkol sa language services\n3. I-check ang insurance coverage\n4. Magtanong ng referral sa PCP\n5. Maghanap ng support group\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi naghanap ng tulong\n- Hindi nagtanong ng language services\n- Hindi nag-check ng insurance\n- Hindi nagtanong ng referral\n\n### Mga Tip para sa Immigrants\n1. Maghanap ng culturally competent na provider\n2. Magtanong ng language services\n3. Maghanap ng support group sa iyong wika\n4. Magtanong ng tulong sa immigration attorney\n5. Magtanong ng tulong sa community organization"
+        }
+      },
+      "finance": {
+        "1": {
+          "title": "Pagbubukas ng Bank Account",
+          "description": "Gabay sa pagbubukas ng checking o savings account sa Amerika.",
+          "content": "## Bakit Kailangan ng Bank Account\n\n### Mga Benepisyo\n- Ligtas na lugar para sa pera\n- Direct deposit ng sahod\n- Online banking\n- Debit card\n\n### Mga Uri ng Account\n**Checking Account:**\n- Para sa pang-araw-araw na transaksyon\n- May debit card\n- Maaaring mag-overdraft\n\n**Savings Account:**\n- Para sa savings\n- May interest\n- Limit sa withdrawals (6/buwan)\n\n### Mga Dokumento\n- Valid ID (passport, driver's license)\n- Social Security Number o ITIN\n- Proof of address\n- Initial deposit\n\n### Mga Hakbang\n1. Pumili ng bank o credit union\n2. Magdala ng mga dokumento\n3. Mag-fill ng application\n4. Mag-deposit ng initial amount\n5. Mag-set ng online banking\n\n### Mga Tip\n1. I-compare ang mga bank\n2. I-check ang mga fee\n3. I-check ang ATM network\n4. I-check ang online banking features\n5. Magtanong tungkol sa mga bonus\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-compare ng bank\n- Hindi nag-check ng fee\n- Hindi nag-set ng online banking\n- Hindi nag-check ng ATM network"
+        },
+        "2": {
+          "title": "Pag-unawa sa Credit Score",
+          "description": "Paano gumagana ang credit score at kung paano ito mapapabuti.",
+          "content": "## Ano ang Credit Score\n\n### Mga Antas\n- 800+: Excellent\n- 740-799: Very Good\n- 670-739: Good\n- 580-669: Fair\n- Below 580: Poor\n\n### Mga Salik\n**Payment History (35%):**\n- Bayad on time\n- Late payments\n- Collections\n\n**Credit Utilization (30%):**\n- Amount ng credit na ginamit vs available\n- Below 30% ang recommended\n\n**Length of Credit History (15%):**\n- Gaano katagal ang mga account\n- Mas matagal = mas maganda\n\n**Credit Mix (10%):**\n- Iba't ibang uri ng credit\n- Credit cards, loans, mortgage\n\n**New Credit (10%):**\n- Mga bagong application\n- Mga inquiry\n\n### Paano Mapabuti\n1. Magbayad on time\n2. Bawasan ang utilization\n3. Huwag mag-close ng mga lumang account\n4. Mag-check ng credit report regularly\n5. I-dispute ang mga error\n\n### Mga Tip\n1. Mag-check ng credit report libre (annualcreditreport.com)\n2. Mag-set ng payment reminders\n3. I-keep ang mga lumang account\n4. I-limit ang mga bagong application\n5. Magtanong ng tulong sa credit counselor"
+        },
+        "3": {
+          "title": "Pagse-set ng Budget at Savings",
+          "description": "Paano mag-set ng budget at mag-save para sa hinaharap.",
+          "content": "## Ang Budget\n\n### Ang 50/30/20 Rule\n**50% Needs:**\n- Housing\n- Utilities\n- Groceries\n- Transportation\n- Insurance\n\n**30% Wants:**\n- Entertainment\n- Dining out\n- Shopping\n- Subscriptions\n\n**20% Savings:**\n- Emergency fund\n- Retirement\n- Debt payments\n- Investments\n\n### Mga Tip sa Budget\n1. I-track ang lahat ng gastos\n2. I-set ang mga spending limits\n3. I-check ang budget regularly\n4. I-adjust ang budget kapag kinakailangan\n5. I-save para sa emergency\n\n### Emergency Fund\n- Target: 3-6 months ng living expenses\n- I-save sa high-yield savings account\n- I-set ng auto-transfer\n\n### Mga Paraan para Makatipid\n- I-cancel ang mga hindi nagagamit na subscription\n- Magluto sa bahay\n- Maghanap ng mga deal at coupons\n- I-compare ang mga presyo\n- Maghanap ng mga libreng activity\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagse-set ng budget\n- Hindi nagse-save para sa emergency\n- Hindi nag-track ng gastos\n- Hindi nag-check ng budget regularly"
+        },
+        "4": {
+          "title": "Pagpapadala ng Pera sa Pilipinas",
+          "description": "Mga paraan para magpadala ng pera sa pamilya sa labas ng US.",
+          "content": "## Mga Paraan ng Pagpapadala\n\n### Online Services\n- Wise (TransferWise)\n- Remitly\n- Xoom\n- WorldRemit\n\n### Banks\n- International wire transfer\n- Mas mahal\n- Mas mabagal\n\n### Mga Remittance Center\n- Western Union\n- MoneyGram\n- Mga lokal na remittance center\n\n### Mga Tip\n1. I-compare ang mga fee\n2. I-compare ang exchange rates\n3. I-check ang speed ng transfer\n4. I-check ang mga limit\n5. I-save ang mga receipt\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-compare ng fee\n- Hindi nag-check ng exchange rate\n- Hindi nag-check ng speed\n- Hindi nag-save ng receipt\n\n### Mga Tip para sa Regular na Padala\n1. Mag-set ng auto-transfer\n2. I-check ang exchange rate regularly\n3. Magtanong ng bulk discount\n4. I-save ang mga receipt\n5. I-check ang mga limit"
+        },
+        "5": {
+          "title": "Pag-manage ng Utang at Credit Cards",
+          "description": "Mga estratehiya para sa pagbabayad ng utang at paggamit ng credit card.",
+          "content": "## Mga Uri ng Utang\n\n### Good Debt\n- Mortgage (builds equity)\n- Student loans (increases earning)\n- Business loan (generates income)\n\n### Bad Debt\n- Credit card debt (high interest)\n- Payday loans (predatory)\n- Cash advances (high fees)\n\n### Mga Estratehiya sa Pagbabayad\n**Debt Avalanche:**\n- Bayaran ang may pinakamataas na interest muna\n- Mas tipid sa interest\n\n**Debt Snowball:**\n- Bayaran ang pinakamaliit muna\n- Mas mabilis ang progress\n\n### Credit Card Tips\n1. Magbayad ng buo buwan-buwan\n2. I-keep ang utilization below 30%\n3. Huwag mag-close ng mga lumang card\n4. I-check ang credit report regularly\n5. I-dispute ang mga error\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbabayad ng buo\n- Masyadong mataas ang utilization\n- Hindi nag-check ng credit report\n- Hindi nag-dispute ng error\n\n### Mga Tip\n1. Mag-set ng payment plan\n2. I-automate ang mga bayarin\n3. I-check ang credit report regularly\n4. Magtanong ng tulong sa credit counselor\n5. I-save para sa emergency"
+        }
+      },
+      "education": {
+        "1": {
+          "title": "Mga Klase sa Ingles (ESL)",
+          "description": "Maghanap ng libre o murang klase sa Ingles para pagbutihin ang wika.",
+          "content": "## Bakit Mag-aral ng Ingles\n\n### Mga Benepisyo\n- Mas magandang oportunidad sa trabaho\n- Mas madaling makakuha ng serbisyo\n- Mas madaling makisama sa komunidad\n- Mas magandang oportunidad sa edukasyon\n\n### Mga Uri ng Programa\n**Community College:**\n- Libre o murang klase\n- May iba't ibang antas\n- May flexible schedule\n\n**Library Programs:**\n- Libreng klase\n- May tutor\n- May practice sessions\n\n**Online:**\n- Khan Academy\n- Duolingo\n- Coursera\n- YouTube tutorials\n\n### Mga Antas\n- Beginner\n- Intermediate\n- Advanced\n- Academic English\n\n### Mga Tip\n1. Maghanap ng malapit na klase\n2. I-check ang schedule\n3. Magdala ng notebook\n4. Mag-practice araw-araw\n5. Makipag-usap sa mga kaklase\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-practice\n- Hindi nagdala ng notebook\n- Hindi nakikipag-usap sa mga kaklase\n- Hindi nag-check ng schedule"
+        },
+        "2": {
+          "title": "Pagkuha ng High School Diploma (GED)",
+          "description": "Proseso ng pagkuha ng GED o high school equivalency diploma.",
+          "content": "## Ano ang GED\n\n### Pangkalahatang-ideya\n- General Educational Development\n- Katumbas ng high school diploma\n- Tinatanggap sa mga kolehiyo at employer\n\n### Mga Kailangan\n1. Age requirement (usually 18+)\n2. Hindi enrolled sa high school\n3. Hindi pa graduate ng high school\n\n### Mga Subjek\n1. Math\n2. Science\n3. Social Studies\n4. Language Arts (English)\n\n### Paghahanda\n**Online:**\n- GED.com official prep\n- Khan Academy\n- Local library resources\n\n**In-Person:**\n- GED prep classes\n- Adult education programs\n- Tutoring\n\n### Test Fee\n- Around $30 per subject\n- Around $120 total\n- Varies by state\n\n### Pagkatapos ng Test\n1. Makakatanggap ng diploma\n2. Maaaring mag-apply sa kolehiyo\n3. Mas magandang oportunidad sa trabaho\n4. Maaaring magpatuloy sa edukasyon\n\n### Mga Tip\n1. Mag-practice nang regular\n2. I-check ang schedule ng test\n3. Magdala ng valid ID\n4. I-save ang results\n5. Magtanong ng tulong sa prep class"
+        },
+        "3": {
+          "title": "Oportunidad sa Kolehiyo at Scholarship",
+          "description": "Mga paraan para makapag-aral sa kolehiyo at makakuha ng scholarship.",
+          "content": "## Mga Uri ng Kolehiyo\n\n### Community College\n- 2-year program\n- Mas mura\n- Maaaring mag-transfer sa 4-year university\n\n### 4-Year University\n- Bachelor's degree\n- Mas mahal\n- Mas maraming resources\n\n### Mga Paraan para Makapag-aral\n**Financial Aid:**\n- FAFSA (Free Application for Federal Student Aid)\n- Pell Grant\n- State grants\n- School grants\n\n**Scholarships:**\n- Merit-based\n- Need-based\n- Athletic\n- Cultural/ethnic\n\n### Mga Kailangan\n1. High school diploma o GED\n2. Test scores (SAT o ACT)\n3. Transcripts\n4. Letters of recommendation\n5. Personal statement\n\n### Para sa DACA Students\n- Maaaring mag-apply sa kolehiyo\n- May financial aid options\n- May mga scholarship para sa DACA\n\n### Mga Tip\n1. Mag-apply nang maaga\n2. Maghanap ng maraming scholarship\n3. I-check ang deadline\n4. I-customize ang essay\n5. Magtanong ng tulong sa counselor\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-apply nang maaga\n- Hindi naghanap ng scholarship\n- Hindi nag-check ng deadline\n- Hindi nag-customize ng essay"
+        },
+        "4": {
+          "title": "Online Learning at Skills Development",
+          "description": "Mga platform para matuto ng bagong skills online.",
+          "content": "## Mga Online Learning Platform\n\n### Libre\n- Khan Academy\n- Coursera (audit mode)\n- edX (audit mode)\n- freeCodeCamp\n\n### May Bayad\n- Udemy\n- LinkedIn Learning\n- Skillshare\n- Pluralsight\n\n### Mga Popular na Skills\n**Technology:**\n- Coding (Python, JavaScript)\n- Web development\n- Data analysis\n- IT support\n\n**Business:**\n- Project management\n- Digital marketing\n- Data analysis\n- Leadership\n\n**Language:**\n- Business English\n- Spanish\n- Mandarin\n\n### Mga Tip\n1. Pumili ng platform na angkop sa iyo\n2. Mag-set ng schedule\n3. Mag-complete ng exercises\n4. Mag-take ng notes\n5. Mag-practice regularly\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-set ng schedule\n- Hindi nag-complete ng exercises\n- Hindi nag-take ng notes\n- Hindi nag-practice regularly"
+        },
+        "5": {
+          "title": "Vocational at Trade Schools",
+          "description": "Mga programa para sa hands-on na training at career.",
+          "content": "## Ano ang Trade School\n\n### Pangkalahatang-ideya\n- Short-term, focused training\n- Hands-on learning\n- Certificate o Associate degree\n- Usually 6 months to 2 years\n\n### Mga Popular na Trades\n**Healthcare:**\n- Medical assistant\n- Dental assistant\n- Pharmacy technician\n- Nursing assistant\n\n**Skilled Trades:**\n- Electrician\n- Plumber\n- HVAC technician\n- Welder\n\n**Technology:**\n- IT support\n- Web development\n- Data analytics\n\n### Mga Kailangan\n1. High school diploma o GED\n2. Application form\n3. Test scores (some programs)\n4. Interview\n\n### Mga Benepisyo\n- Mabilis na training\n- Hands-on experience\n- High job placement rate\n- Maaaring mag-start agad sa trabaho\n\n### Mga Tip\n1. I-check ang accreditation\n2. I-check ang job placement rate\n3. I-check ang cost\n4. I-check ang schedule\n5. I-check ang location\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-check ng accreditation\n- Hindi nag-check ng job placement rate\n- Hindi nag-check ng cost\n- Hindi nag-check ng schedule"
+        }
+      },
+      "safety": {
+        "1": {
+          "title": "Pag-iwas sa Scams",
+          "description": "Paano makilala at maiwasan ang mga scam na tumatarget sa immigrants.",
+          "content": "## Mga Uri ng Scam\n\n### Immigration Scams\n- Mga pekeng immigration lawyer\n- Mga pekeng dokumento\n- Mga pekeng appointment\n- Mga pekeng phone call mula sa ICE\n\n### Financial Scams\n- Phishing emails\n- Identity theft\n- Credit card scams\n- Loan scams\n\n### Mga Senyales ng Scam\n1. Masyadong maganda para maging totoo\n2. Pinipilit kang gumawa ng desisyon agad\n3. Hinihingian ka ng personal na impormasyon\n4. Nagbabanta sa iyo\n5. Hindi nagbibigay ng written contract\n\n### Mga Paraan para Iwasan\n1. I-check ang credentials ng professional\n2. Magtanong ng reference\n3. Basahin ang contract bago pumirma\n4. Huwag magbigay ng personal na impormasyon sa hindi kilala\n5. Magtanong ng tulong sa trusted na tao\n\n### Kapag Na-Scam\n1. I-report sa FTC (ftc.gov/complaint)\n2. I-report sa local police\n3. I-contact ang bank\n4. Maghanap ng legal aid\n5. I-save ang lahat ng evidence"
+        },
+        "2": {
+          "title": "Suporta para sa Domestic Violence",
+          "description": "Mga mapagkukunan para sa mga biktima ng domestic violence.",
+          "content": "## Ano ang Domestic Violence\n\n### Mga Uri\n- Physical abuse\n- Emotional abuse\n- Sexual abuse\n- Financial abuse\n- Stalking\n\n### Mga Senyales\n- Controlling behavior\n- Isolation mula sa pamilya at kaibigan\n- Financial control\n- Threats\n- Physical harm\n\n### Mga Mapagkukunan\n**Hotlines:**\n- National Domestic Violence Hotline: 1-800-799-7233\n- Text: START sa 88788\n- Online: thehotline.org\n\n**Shelters:**\n- Temporary safe housing\n- 24/7 support\n- Legal assistance\n\n### Para sa Immigrants\n- Hindi ka ma-deport dahil sa pag-reklamo\n- May mga legal na proteksyon\n- Maaaring mag-apply ng U visa o T visa\n- Libreng legal aid available\n\n### Mga Hakbang\n1. Maghanap ng ligtas na lugar\n2. Tawagan ang hotline\n3. Maghanap ng legal aid\n4. Mag-file ng restraining order\n5. Maghanap ng support group\n\n### Mga Tip\n1. Maghanda ng go-bag\n2. Mag-save ng importanteng dokumento\n3. Magtanong ng tulong sa trusted na tao\n4. Maghanap ng ligtas na lugar\n5. Maghanap ng support group"
+        },
+        "3": {
+          "title": "Mga Karapatan Mo sa ICE",
+          "description": "Mga karapatan kapag nakikipag-ugnayan sa immigration officers.",
+          "content": "## Mga Karapatan\n\n### Kung Tinatawagan Ka sa Pinto\n1. Hindi mo kailangang buksan ang pinto\n2. Magtanong kung sino sila\n3. Magtanong kung may warrant sila\n4. Hindi mo kailangang magsalita\n\n### Kung Hinuhuli Ka\n1. Manatiling calm\n2. Sabihin mo na gusto mong mag-remain silent\n3. Magtanong ng lawyer\n4. Huwag pumirma ng kahit ano\n5. Huwag magbigay ng pekeng dokumento\n\n### Kung Hinahanap Ka\n1. Magtanong kung bakit\n2. Magtanong kung may warrant sila\n3. Magtanong ng lawyer\n4. Huwag magbigay ng impormasyon\n\n### Mga Hakbang\n1. Maghanda ng emergency plan\n2. Maghanda ng importanteng dokumento\n3. Magtanong ng legal aid\n4. Magtanong ng tulong sa community organization\n5. Maghanda ng contact list\n\n### Mga Tip\n1. Manatiling calm\n2. Magtanong ng lawyer\n3. Huwag magbigay ng impormasyon\n4. Magtanong ng tulong sa community organization\n5. Maghanda ng emergency plan"
+        },
+        "4": {
+          "title": "Family Emergency Planning",
+          "description": "Paggawa ng plan para sa emergency ng pamilya.",
+          "content": "## Bakit Kailangan ng Plan\n\n### Mga Uri ng Emergency\n- Natural disasters\n- Medical emergencies\n- Immigration issues\n- Financial crisis\n- Family separation\n\n### Mga Bahagi ng Plan\n**1. Contact Information:**\n- Emergency contacts\n- Family members\n- Lawyer\n- Doctor\n\n**2. Important Documents:**\n- Passports\n- Birth certificates\n- Immigration documents\n- Medical records\n- Insurance documents\n\n**3. Financial Preparation:**\n- Emergency fund\n- Cash on hand\n- Important account numbers\n\n### Mga Hakbang\n1. Gumawa ng contact list\n2. Maghanda ng go-bag\n3. Mag-save ng documents sa secure na lugar\n4. Mag-set ng emergency fund\n5. Mag-practice ng plan\n\n### Para sa Immigrants\n1. Maghanda ng immigration documents\n2. Magtanong ng legal aid\n3. Maghanda ng emergency plan\n4. Magtanong ng tulong sa community organization\n5. Maghanda ng contact list\n\n### Mga Tip\n1. I-check ang plan regularly\n2. I-update ang contact information\n3. I-save ang documents sa secure na lugar\n4. I-practice ang plan\n5. I-share ang plan sa pamilya"
+        },
+        "5": {
+          "title": "Online Safety at Privacy",
+          "description": "Paano protektahan ang sarili online.",
+          "content": "## Mga Banta Online\n\n### Mga Uri ng Banta\n- Phishing\n- Identity theft\n- Scams\n- Cyberbullying\n- Privacy invasion\n\n### Mga Paraan ng Proteksyon\n**Passwords:**\n- Gumamit ng malakas na password\n- Iba't ibang password sa bawat account\n- Gumamit ng password manager\n- I-enable ang two-factor authentication\n\n**Email:**\n- Huwag mag-click sa suspicious links\n- I-check ang sender\n- Huwag mag-download ng suspicious attachments\n- I-delete ang spam\n\n**Social Media:**\n- I-set ang privacy settings\n- Huwag mag-share ng personal na impormasyon\n- I-check ang mga friend request\n- I-monitor ang activity\n\n### Mga Tips\n1. Gumamit ng VPN sa public WiFi\n2. I-check ang website security (https)\n3. I-update ang software regularly\n4. I-backup ang data\n5. I-monitor ang accounts\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-set ng privacy settings\n- Hindi nag-use ng strong password\n- Hindi nag-check ng website security\n- Hindi nag-update ng software"
+        }
+      },
+      "community": {
+        "1": {
+          "title": "Community Organizations at Ethnic Associations",
+          "description": "Pagkonekta sa mga organisasyong makakatulong sa pag-adjust.",
+          "content": "## Bakit Kailangan ng Community\n\n### Mga Benepisyo\n- Social support\n- Cultural connection\n- Practical help\n- Emotional support\n\n### Mga Uri ng Organisasyon\n**Ethnic Associations:**\n- Based sa nationalidad\n- Cultural activities\n- Language support\n\n**Immigration Organizations:**\n- Legal help\n- Integration programs\n- Language classes\n\n**Religious Organizations:**\n- Spiritual support\n- Community programs\n- Social activities\n\n### Paano Maghanap\n1. Magtanong sa mga kaibigan\n2. Maghanap online\n3. Magtanong sa library\n4. Magtanong sa church o mosque\n5. Magtanong sa school\n\n### Mga Aktibidad\n- Cultural events\n- Language exchange\n- Job fairs\n- Legal clinics\n- Social gatherings\n\n### Mga Tip\n1. Sumali sa mga event\n2. Magvolunteer\n3. Magtanong ng tulong\n4. Magbahagi ng karanasan\n5. Mag-network\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi sumali sa mga event\n- Hindi nagvolunteer\n- Hindi nagtanong ng tulong\n- Hindi nag-network"
+        },
+        "2": {
+          "title": "Pag-unawa sa American Culture",
+          "description": "Mga tip para makisama sa American culture.",
+          "content": "## Mga Pangunahing Values\n\n### Individualism\n- Personal freedom\n- Self-reliance\n- Personal achievement\n\n### Equality\n- Equal opportunities\n- Anti-discrimination\n- Respect sa lahat\n\n### Direct Communication\n- Straightforward\n- Honest\n- Clear\n\n### Time Consciousness\n- Punctuality\n- Deadlines\n- Schedules\n\n### Mga Tip\n1. Maging respectful sa iba't ibang kultura\n2. Maging direct sa communication\n3. Maging on time\n4. Maging independent\n5. Maging open-minded\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagiging respectful\n- Hindi nagiging direct\n- Hindi nagiging on time\n- Hindi nagiging independent"
+        },
+        "3": {
+          "title": "Translation at Interpretation Services",
+          "description": "Paano makahanap ng translation at interpretation services.",
+          "content": "## Mga Uri ng Serbisyo\n\n### Interpretation (Spoken)\n- Medical interpretation\n- Legal interpretation\n- Community interpretation\n\n### Translation (Written)\n- Document translation\n- Certified translation\n- Notarized translation\n\n### Saan Makakahanap\n**Hospitals:**\n- Libreng interpretation services\n- May mga language line\n\n**Schools:**\n- Libreng translation\n- May mga interpreter\n\n**Government:**\n- Libreng serbisyo\n- May mga language access\n\n**Community Organizations:**\n- Libreng serbisyo\n- May mga volunteer\n\n### Mga Tip\n1. Magtanong ng interpreter bago ang appointment\n2. I-check ang accuracy ng translation\n3. I-save ang translated documents\n4. Magtanong ng certified translation para sa legal documents\n5. Magtanong ng tulong sa community organization\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagtanong ng interpreter\n- Hindi nag-check ng accuracy\n- Hindi nag-save ng translated documents\n- Hindi nagtanong ng certified translation"
+        },
+        "4": {
+          "title": "Building Your Support Network",
+          "description": "Paano makabuo ng network ng tao na makakatulong.",
+          "content": "## Bakit Kailangan ng Network\n\n### Mga Benepisyo\n- Emotional support\n- Practical help\n- Information sharing\n- Career opportunities\n\n### Paano Mag-build\n**Workplace:**\n- Maging friendly sa mga katrabaho\n- Sumali sa mga work events\n- Magvolunteer sa mga project\n\n**Community:**\n- Sumali sa mga organization\n- Magvolunteer\n- Magtanong ng tulong\n\n**Online:**\n- Join online groups\n- Social media\n- Professional networks\n\n### Mga Tip\n1. Maging authentic\n2. Magbigay bago humingi\n3. Mag-follow up regularly\n4. Mag-share ng information\n5. Mag-network consistently\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nagbigay bago humingi\n- Hindi nag-follow up\n- Hindi nag-share ng information\n- Hindi nag-network consistently"
+        },
+        "5": {
+          "title": "Volunteering sa Komunidad",
+          "description": "Mga oportunidad para magvolunteer at tumulong sa komunidad.",
+          "content": "## Bakit Mag-volunteer\n\n### Mga Benepisyo\n- Meet new people\n- Learn new skills\n- Give back to community\n- Improve mental health\n\n### Mga Uri ng Volunteer Work\n**Direct Service:**\n- Food banks\n- Homeless shelters\n- Hospitals\n\n**Advocacy:**\n- Immigration reform\n- Environmental protection\n- Social justice\n\n**Administrative:**\n- Office work\n- Event planning\n- Fundraising\n\n### Saan Maghanap\n- VolunteerMatch.org\n- Idealist.org\n- Local nonprofit organizations\n- Religious organizations\n\n### Mga Tip\n1. Pumili ng passion project\n2. Mag-commit sa regular na schedule\n3. Mag-learn ng new skills\n4. Mag-network sa kapwa volunteer\n5. Mag-share ng experience\n\n### Mga Pagkakamali na Dapat Iwasan\n- Hindi nag-commit sa schedule\n- Hindi nag-learn ng new skills\n- Hindi nag-network sa kapwa volunteer\n- Hindi nag-share ng experience"
+        }
+      },
+      "work": {
+        "1": {
+          "title": "Paggawa ng Resume at Cover Letter",
+          "description": "Gabay sa paggawa ng epektibong resume at cover letter.",
+          "content": "## Resume\n\n### Mga Bahagi\n1. Contact information\n2. Objective o summary\n3. Work experience\n4. Education\n5. Skills\n\n### Mga Format\n**Chronological:**\n- Most common\n- Shows progression\n- For experienced workers\n\n**Functional:**\n- Skills-based\n- For career changers\n- For those with gaps\n\n### Tips\n1. Keep it 1-2 pages\n2. Use action verbs\n3. Quantify achievements\n4. Customize for each job\n5. Proofread carefully\n\n## Cover Letter\n\n### Mga Bahagi\n1. Introduction\n2. Why you want this job\n3. Why you're qualified\n4. What you can contribute\n5. Closing\n\n### Tips\n1. Address to specific person\n2. Show enthusiasm\n3. Be specific about qualifications\n4. Keep it concise\n5. Proofread carefully\n\n### Mga Pagkakamali na Dapat Iwasan\n- Generic cover letter\n- Too long\n- Spelling errors\n- No quantified achievements"
+        },
+        "2": {
+          "title": "Job Search Strategies",
+          "description": "Mga paraan para makahanap ng trabaho sa Amerika.",
+          "content": "## Online Job Search\n\n### Mga Website\n- Indeed.com\n- LinkedIn.com\n- Glassdoor.com\n- ZipRecruiter\n\n### Mga Tips\n1. Set up job alerts\n2. Apply to multiple positions\n3. Customize resume for each job\n4. Follow up on applications\n5. Network with professionals\n\n## Networking\n\n### Mga Paraan\n- Professional associations\n- Industry events\n- Alumni networks\n- Online communities\n\n### Mga Tips\n1. Be genuine\n2. Give before you ask\n3. Follow up consistently\n4. Maintain relationships\n5. Network regularly\n\n## Job Fairs\n\n### Mga Preparation\n1. Bring copies of resume\n2. Dress professionally\n3. Prepare elevator pitch\n4. Research companies\n5. Follow up after event\n\n### Mga Pagkakamali na Dapat Iwasan\n- Not preparing\n- Not following up\n- Not networking\n- Not customizing resume"
+        },
+        "3": {
+          "title": "Interview Preparation",
+          "description": "Mga tip para sa successful na job interview.",
+          "content": "## Bago ang Interview\n\n### Paghahanda\n1. Research the company\n2. Practice common questions\n3. Prepare questions for interviewer\n4. Plan your outfit\n5. Plan your route\n\n### Mga Common na Tanong\n- Tell me about yourself\n- Why do you want this job?\n- What are your strengths?\n- What are your weaknesses?\n- Where do you see yourself in 5 years?\n\n### Mga Tip\n1. Arrive 10-15 minutes early\n2. Bring copies of resume\n3. Make eye contact\n4. Be confident\n5. Send thank you email\n\n### Mga Pagkakamali na Dapat Iwasan\n- Not researching company\n- Not practicing\n- Not bringing resume\n- Not sending thank you\n\n### Para sa Immigrants\n1. Explain work authorization clearly\n2. Highlight language skills\n3. Emphasize cultural experience\n4. Be confident in English\n5. Ask about diversity initiatives"
+        },
+        "4": {
+          "title": "Worker Rights",
+          "description": "Mga karapatan ng mga manggagawa sa Amerika.",
+          "content": "## Mga Karapatan\n\n### Safe Working Conditions\n- Safe environment\n- Proper training\n- Safety equipment\n- No harassment\n\n### Fair Wages\n- Minimum wage\n- Overtime pay\n- Equal pay\n- No wage theft\n\n### Anti-Discrimination\n- No discrimination based on race, gender, religion, age, disability\n- No retaliation for complaints\n- Protected classes\n\n### Privacy\n- No illegal search\n- No surveillance without consent\n- Protected personal information\n\n### Paano Magreklamo\n1. Document everything\n2. Report to HR\n3. File EEOC complaint\n4. Contact Department of Labor\n5. Seek legal help\n\n### Mga Tip\n1. Know your rights\n2. Document everything\n3. Report violations\n4. Seek legal help\n5. Join worker organizations\n\n### Mga Pagkakamali na Dapat Iwasan\n- Not knowing rights\n- Not documenting\n- Not reporting\n- Not seeking help"
+        },
+        "5": {
+          "title": "Professional Networking",
+          "description": "Paano mag-build ng professional network.",
+          "content": "## Bakit Kailangan ng Network\n\n### Mga Benepisyo\n- Job opportunities\n- Industry insights\n- Mentorship\n- Professional growth\n\n### Online Networking\n**LinkedIn:**\n- Professional profile\n- Connect with professionals\n- Join industry groups\n- Share content\n\n**Other Platforms:**\n- Twitter\n- Industry forums\n- Online communities\n\n### Offline Networking\n- Industry events\n- Conferences\n- Meetups\n- Professional associations\n\n### Mga Tips\n1. Be genuine and authentic\n2. Give before you ask\n3. Follow up consistently\n4. Maintain relationships\n5. Network regularly\n\n### Mga Pagkakamali na Dapat Iwasan\n- Not following up\n- Not giving value\n- Not networking regularly\n- Not maintaining relationships\n\n### Para sa Immigrants\n1. Join immigrant professional groups\n2. Attend cultural events\n3. Volunteer in community\n4. Build relationships gradually\n5. Share your unique perspective"
+        }
       }
     }
   },
@@ -391,7 +748,9 @@
     "aiResponseDefault": "Kawili-wili! Para sa mga partikular na detalye, inirerekumenda kong makipag-usap sa isa sa aming mga consultant sa pamamagitan ng WhatsApp o magbukas ng support ticket.",
     "ticketTab": "Ticket",
     "aiTab": "AI Chat",
-    "typeMessage": "I-type ang iyong tanong..."
+    "typeMessage": "I-type ang iyong tanong...",
+    "aiAssistant": "AI Assistant",
+    "online": "Online"
   },
   "plans": {
     "title": "Mga Membership Plan",
@@ -401,6 +760,8 @@
     "selectPlan": "Pumili ng Plano",
     "whatsIncluded": "Ano ang kasama:",
     "note": "Ang lahat ng plano ay may kasamang core protection services. Maaari kang mag-upgrade o magkansela anumang oras.",
+    "premiumMember": "Premium Member",
+    "premiumNote": "May kumpletong access ka sa lahat ng premium na feature. Salamat sa pagiging mahalagang miyembro!",
     "month": "/buwan",
     "alreadySubscribed": "Naka-subscribe ka na sa planong ito",
     "subscribeSuccess": "Matagumpay kang naka-subscribe sa {{plan}} plan.",
@@ -470,7 +831,24 @@
     "processing": "Pinoproseso ang pagbabayad...",
     "success": "Matagumpay ang pagbabayad!",
     "failed": "Nabigo ang pagbabayad",
-    "secureNote": "Ang iyong impormasyon sa pagbabayad ay naka-encrypt at secure."
+    "secureNote": "Ang iyong impormasyon sa pagbabayad ay naka-encrypt at secure.",
+    "finalizePurchase": "Tapusin ang Pagbili",
+    "planLabel": "Plan",
+    "monthlySubscription": "Buwanang subscription",
+    "includedInPlan": "Kasama sa plan na ito",
+    "moreBenefits": "+{{count}} pang mga benepisyo",
+    "showLess": "Magpakakaunti",
+    "securePayment": "Secure na Pagbabayad",
+    "stripeSecurityNote": "Ang iyong pagbabayad ay dadaan nang ligtas sa Stripe. Hindi namin iniimbak ang mga detalye ng iyong card.",
+    "iapSecurityNote": "Ang pagbabayad ay dadaan nang ligtas sa app store ng iyong device. Hindi namin iniimbak ang iyong impormasyon sa pagbabayad.",
+    "payAmount": "Bayaran ang ${{price}}",
+    "subscribe": "Mag-subscribe",
+    "noPaymentRequired": "Walang kailangang bayaran para sa Libreng plan.",
+    "viewPlans": "Tingnan ang mga Plan",
+    "demoModeSuccess": "Demo Mode: Matagumpay na na-activate ang plan na {{plan}}!",
+    "demoModeFailed": "Nabigo ang pag-activate ng plan sa demo mode",
+    "redirectingToPayment": "Ni-redirect sa Stripe payment page...",
+    "planActivated": "Matagumpay na na-activate ang plan na {{plan}}!"
   },
   "planDetails": {
     "title": "Aking Plano",
@@ -560,5 +938,314 @@
     "noSupportRequests": "Walang support request",
     "priority": "Prayoridad",
     "status": "Katayuan"
+  },
+  "onboarding": {
+    "slide1Title": "Lahat Protektado",
+    "slide1Subtitle": "Aktibong seguridad ng pamilya",
+    "slide2Title": "Real-time na Pagmamanman",
+    "slide2Subtitle": "Live na status",
+    "slide3Title": "Mga Premium na Benepisyo",
+    "slide3Subtitle": "Buong access na naka-unlock",
+    "slide4Title": "24/7 na Suporta",
+    "slide4Subtitle": "Laging available"
+  },
+  "terms": {
+    "title": "Mga Tuntunin ng Serbisyo",
+    "lastUpdated": "Huling Na-update: Hulyo 4, 2026",
+    "welcome": "Maligayang pagdating sa Kizola Protect. Sa pamamagitan ng paggamit ng aming mobile application at mga serbisyo, sumasang-ayon ka sa mga Tuntuning ito ng Serbisyo. Mangyaring basahin ang mga ito nang mabuti.",
+    "section1Title": "1. Pagtanggap sa mga Tuntunin",
+    "section1Body": "Sa pamamagitan ng paggawa ng account, pag-access, o paggamit ng Kizola Protect (\"ang Serbisyo\"), sumasang-ayon kang masunod sa mga Tuntuning ito ng Serbisyo. Kung hindi ka sumasang-ayon, huwag gamitin ang Serbisyo. Maaari naming baguhin ang mga tuntuning ito anumang oras, at ang patuloy na paggamit ay nangangahulugan ng pagtanggap sa mga na-update na tuntunin.",
+    "section2Title": "2. Pagpaparehistro ng Account",
+    "section2Body": "Dapat ay 18 taong gulang pataas ka para magamit ang Serbisyong ito. Sumasang-ayon kang magbigay ng tumpak, kasalukuyang, at kumpletong impormasyon sa panahon ng pagpaparehistro at i-update ang nasabing impormasyon kung kinakailangan. Ikaw ang responsable sa pagpapanatili ng pagiging kompidensyal ng iyong mga kredensyal ng account at sa lahat ng aktibidad sa ilalim ng iyong account.",
+    "section3Title": "3. Suskrisyon at Pagbabayad",
+    "section3Body": "Ang ilang mga tampok ay nangangailangan ng bayad na suskrisyon. Ang mga bayarin sa suskrisyon ay sinisingil buwanang sa advance at hindi maaaring ibalik maliban kung malinaw na sinabi. Naglalaan kami ng karapatan na baguhin ang aming mga bayarin na may 30 araw na abiso. Ang pagkansela ay may bisa sa katapusan ng kasalukuyang panahon ng pagbabayad.",
+    "section4Title": "4. Paglalarawan ng mga Serbisyo",
+    "section4Body": "Nagbibigay ang Kizola Protect ng impormasyon, mapagkukunan, at koneksyon sa mga propesyonal na serbisyo kabilang ang gabay sa batas, tulong sa imigrasyon, suporta sa paghahanda ng buwis, mapagkukunan sa pabahay, at nilalaman sa edukasyon. Hindi kami direktang nagbibigay ng legal na payo. Ang aming platform ay nag-uugnay sa iyo sa mga propesyonal ng third-party na malaya na responsable para sa mga serbisyong ibinibigay nila.",
+    "section5Title": "5. Pag-uugali ng Gumagamit",
+    "section5Intro": "Sumasang-ayon kang huwag:",
+    "section5Bullet1": "Gamitin ang Serbisyo para sa anumang ilegal na layunin",
+    "section5Bullet2": "Magpanggap bilang sinumang tao o entidad",
+    "section5Bullet3": "Gambalain o sirain ang Serbisyo",
+    "section5Bullet4": "Subukang makakuha ng hindi awtorisadong access sa aming mga sistema",
+    "section5Bullet5": "Mag-upload ng masamang code o nilalaman",
+    "section5Bullet6": "Abusuhin ang suporta sistema o sindakin ang aming koponan",
+    "section5Bullet7": "Gamitin ang Serbisyo para lumabag sa anumang naaangkop na batas o regulasyon",
+    "section6Title": "6. Mga Karapatan sa Intelektwal na Pag-aari",
+    "section6Body": "Ang Serbisyo at ang orihinal na nilalaman, mga tampok, at pag-andar ay pag-aari ng Kizola Protect at protektado ng mga batas sa copyright, trademark, at iba pang batas sa intelektwal na pag-aari sa internasyonal. Hindi mo maaaring baguhin, paramihin, ipamahagi, o lumikha ng mga gawaing derivative nang walang aming malinaw na pahintulot na nakasulat.",
+    "section7Title": "7. Limitasyon ng Pananagutan",
+    "section7Body": "Ang Kizola Protect ay hindi mananagutan para sa anumang hindi tuwiran, incidental, espesyal, kONSEKWENT, o parusang pinsala na nagmumula sa iyong paggamit ng Serbisyo. Ang Serbisyo ay ibinibigay sa isang \"AS IS\" at \"AS AVAILABLE\" na batayan nang walang anumang garantiya, maging hayag o ipinahiwatig.",
+    "section8Title": "8. Mga Serbisyo ng Third-Party",
+    "section8Body": "Maaaring mag-link o mag-integrate ang aming platform sa mga serbisyo ng third-party. Hindi kami responsable para sa nilalaman, mga gawain sa privacy, o mga aksyon ng anumang serbisyo ng third-party. Ang iyong mga pakikipag-ugnayan sa mga tagapagtustos ng third-party ay kinokontrol ng kanilang mga tuntunin at patakaran.",
+    "section9Title": "9. Pagwawakas",
+    "section9Body": "Naglalaan kami ng karapatan na i-suspend o wakasan ang iyong account anumang oras para sa paglabag sa mga tuntuning ito, mapanlinlang na aktibidad, o pag-uugali na maaaring makapinsala sa ibang mga gumagamit o sa Serbisyo. Maaari mong kanselahin ang iyong account anumang oras sa pamamagitan ng pakikipag-ugnayan sa aming koponan ng suporta.",
+    "section10Title": "10. Nangungunang Batas",
+    "section10Body": "Ang mga Tuntuning ito ay kinokontrol at binibigyang-kahulugan alinsunod sa mga batas ng Estado ng Florida, Estados Unidos, nang walang pagtingin sa mga probisyon nito tungkol sa salungatan ng batas. Ang anumang mga hidwaan na nagmumula sa mga tuntuning ito ay malulutas sa mga korte ng Miami-Dade County, Florida.",
+    "section11Title": "11. Makipag-ugnayan",
+    "section11Intro": "Para sa mga tanong tungkol sa mga Tuntuning ito, mangyaring makipag-ugnayan sa amin:",
+    "section11Email": "Email: support@kizolaprotect.com",
+    "section11Address": "Address: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section11Phone": "Telepono: +1 (929) 609-7035"
+  },
+  "privacy": {
+    "title": "Patakaran sa Privacy",
+    "lastUpdated": "Huling Na-update: Hulyo 4, 2026",
+    "welcome": "Ang Kizola Protect (\"kami,\" \"aming,\" o \"amin\") ay nakatuon sa pagprotekta ng iyong privacy. Ang Patakaran sa Privacy na ito ay nagpapaliwanag kung paano namin kinokolekta, ginagamit, inilalantad, at pinoprotektahan ang iyong impormasyon kapag ginagamit mo ang aming mobile application at mga serbisyo.",
+    "section1Title": "1. Impormasyon na Kinokolekta Namin",
+    "section1Intro": "Kinokolekta namin ang impormasyon na direktang ibinigay mo sa amin, kabilang ang:",
+    "section1Bullet1": "Personal na impormasyon sa pagkakakilanlan (pangalan, email address, numero ng telepono)",
+    "section1Bullet2": "Mga kredensyal ng account (password, data ng authentication)",
+    "section1Bullet3": "Impormasyon sa profile (avatar, mga kagustuhan, mga setting ng wika)",
+    "section1Bullet4": "Impormasyon sa pagbabayad (pinoproseso nang ligtas sa pamamagitan ng mga third-party na processor ng pagbabayad)",
+    "section1Bullet5": "Mga dokumentong i-upload mo para sa layuning pag-verify at suporta",
+    "section1Bullet6": "Mga komunikasyong ipinadala mo sa amin (mga kahilingan sa suporta, mga mensahe)",
+    "section2Title": "2. Paano Namin Ginagamit ang Iyong Impormasyon",
+    "section2Intro": "Ginagamit namin ang impormasyong kinokolekta namin para sa:",
+    "section2Bullet1": "Lumikha at mapanatili ang iyong account",
+    "section2Bullet2": "Magbigay, magpatakbo, at paunlarin ang aming mga serbisyo",
+    "section2Bullet3": "Iproseso ang mga transaksyon at magpadala ng may kaugnay na impormasyon",
+    "section2Bullet4": "Magpadala ng mga abiso sa teknikal, mga update, mga babala sa seguridad, at mga mensahe ng suporta",
+    "section2Bullet5": "Tugunan ang iyong mga puna, tanong, at mga kahilingan",
+    "section2Bullet6": "Subaybayan at suriin ang mga uso at kagustuhan sa paggamit",
+    "section2Bullet7": "Tuklasin, pigilan, at tugunan ang panlilinlang, pang-aabuso, o mga isyu sa seguridad",
+    "section2Bullet8": "Sumunod sa mga obligasyong legal",
+    "section3Title": "3. Pagbabahagi ng Impormasyon",
+    "section3Intro": "Hindi namin ibinebenta ang iyong personal na impormasyon. Maaari naming ibahagi ang iyong impormasyon sa:",
+    "section3Bullet1": "Mga tagapagtustos ng serbisyo na tumutulong sa aming patakbo ng platform (hosting, analytics, pagproseso ng pagbabayad)",
+    "section3Bullet2": "Mga propesyonal na kasosyo (abogado, mga espesyalista sa imigrasyon, mga tagapayo sa buwis) kapag hinihiling mo ang kanilang mga serbisyo",
+    "section3Bullet3": "Mga tagapagpatupad ng batas o proseso ng batas kapang kinakailangan ng batas",
+    "section3Bullet4": "Mga third-party na may malinaw na pahintulot mo",
+    "section4Title": "4. Seguridad ng Datos",
+    "section4Body": "Nagpapatupad kami ng mga pamantayong seguridad sa industriya kabilang ang encryption sa pananatili at sa transmisyon, secure na imbakan ng mga token ng authentication, at regular na mga audit sa seguridad. Gayunpaman, walang paraan ng elektronikong imbakan ang 100% ligtas, at hindi namin masisiguro ang ganap na seguridad.",
+    "section5Title": "5. Iyong mga Karapatan",
+    "section5Intro": "Depende sa iyong jurisdiksyon, maaaring mayroon kang karapatan na:",
+    "section5Bullet1": "I-access ang personal na impormasyon na hawak namin tungkol sa iyo",
+    "section5Bullet2": "Humiling ng pagwawasto ng hindi tumpak na impormasyon",
+    "section5Bullet3": "Humiling ng pagbura ng iyong impormasyon (tingnan ang aming seksyon ng CCPA compliance)",
+    "section5Bullet4": "Mag-opt out sa ilang mga aktibidad ng pagproseso ng datos",
+    "section5Bullet5": "Bawiin ang pahintulot anumang oras",
+    "section5Bullet6": "Tanggapin ang kopya ng iyong datos sa isang portable na format",
+    "section6Title": "6. CCPA Notice ( mga Residente ng California)",
+    "section6Body": "Kung ikaw ay isang residente ng California, ang California Consumer Privacy Act (CCPA) ay nagbibigay sa iyo ng mga partikular na karapatan tungkol sa iyong personal na impormasyon. Mayroon kang karapatan na humiling ng pagbubunyag ng aming mga kasanayan sa pagkolekta ng datos, humiling ng pagbura ng iyong personal na impormasyon, at mag-opt out ng pagbebenta ng iyong personal na impormasyon. Hindi namin ibinebenta ang iyong personal na impormasyon. Para magamit ang iyong mga karapatan, makipag-ugnayan sa amin sa privacy@kizolaprotect.com o gamitin ang opsyong \"Burahin ang Aking Datos\" sa mga setting ng iyong profile.",
+    "section7Title": "7. Pag-iingat ng Datos",
+    "section7Body": "Pinapanatili namin ang iyong personal na impormasyon sa loob ng panahon na aktibo ang iyong account o hangga't kinakailangan para magbigay sa iyo ng mga serbisyo. Ire-retain at gagamitin namin ang iyong impormasyon kung kinakailangan para sumunod sa aming mga obligasyong legal, malutas ang mga hidwaan, at ipatupad ang aming mga kasunduan.",
+    "section8Title": "8. Privacy ng mga Bata",
+    "section8Body": "Ang aming mga serbisyo ay hindi nakadirekta sa mga indibidwal na wala pang 13 taong gulang. Hindi sinasadyang kinokolekta namin ang personal na impormasyon mula sa mga bata. Kung malalaman namin na isang bata ang nagbigay sa amin ng personal na impormasyon, kukuha kami ng mga hakbang para burahin ang nasabing impormasyon.",
+    "section9Title": "9. mga Pagbabago sa Patakarang Ito",
+    "section9Body": "Maaari naming i-update ang Patakarang Privacy na ito paminsan-minsan. Ipapaalam namin sa iyo ang anumang mga pagbabago sa pamamagitan ng pagpo-post ng bagong patakaran sa pahinang ito at pag-update ng petsa ng \"Huling Na-update.\" Inirerekomenda na suriin mo ang patakarang ito nang regular para sa anumang mga pagbabago.",
+    "section10Title": "10. Makipag-ugnayan sa Amin",
+    "section10Intro": "Kung mayroon kang mga tanong tungkol sa Patakarang Privacy na ito, mangyaring makipag-ugnayan sa amin:",
+    "section10Email": "Email: privacy@kizolaprotect.com",
+    "section10Address": "Address: 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section10Phone": "Telepono: +1 (929) 609-7035"
+  },
+  "notifWelcomeTitle": "Maligayang pagdating sa Kizola Protect! 🛡️",
+  "notifWelcomeMessage": "Matagumpay na nagawa ang iyong account. Tuklasin ang mga benepisyo at protektahan ang iyong kinabukasan.",
+  "notifCompleteProfileTitle": "Kumpletuhin ang iyong profile 📝",
+  "notifCompleteProfileMessage": "Idagdag ang iyong numero ng telepono at mga dokumento para sa pag-verify ng pagkakakilanlan.",
+  "notifPlanActivatedTitle": "Matagumpay na Na-activate ang Plan! ✅",
+  "notifPlanActivatedMessage": "Kumpirmado na ang iyong subscription sa plan na {{plan}}. Tamasahin ang lahat ng iyong benepisyo ngayon.",
+  "notifNow": "Ngayon",
+  "notifHoursAgo": "{{count}}h ang nakalipas",
+  "notifYesterday": "Kahapon",
+  "noNotifications": "Walang mga notipikasyon",
+  "allCaughtUp": "Nabasa mo na lahat!",
+  "satisfaction": {
+    "questionTitle": "Mahal na kustomer, nagawa ho ba nating malutas ang inyong sitwasyon?",
+    "questionSubtitle": "Ang inyong feedback ay nakakatulong sa amin na pagbutihin ang aming serbisyo.",
+    "yesResolved": "Oo, nalutas na",
+    "noPersists": "Hindi, nagpapatuloy pa rin ang problema",
+    "thankYouResolved": "Maganda! Salamat sa inyong feedback.",
+    "unresolvedSorry": "Paumanhin na nagpapatuloy pa rin ang problema.",
+    "whatNotResolved": "Ano ang hindi pa nalutas?",
+    "whatNotResolvedPlaceholder": "Ilarawan ang hindi pa nalutas...",
+    "additionalComments": "Karagdagang komento",
+    "additionalCommentsPlaceholder": "Ibahagi ang anumang ibang komento...",
+    "submit": "Isumite ang Pagtatasa",
+    "skip": "Laktawan",
+    "doneTitle": "Salamat sa inyong feedback!",
+    "doneResolvedDesc": "Masaya kaming nakatulong. Hanggang sa muli!",
+    "doneUnresolvedDesc": "Susundan ng aming koponan ang inyong kaso sa lalong madaling panahon.",
+    "close": "Isara"
+  },
+  "offline": {
+    "banner": "Kayo ay offline. Maaaring hindi available ang ilang mga tampok."
+  },
+  "notifLearning": {
+    "title": "Mga Bagong Mapagkukunan sa Pag-aaral",
+    "message": "Tingnan ang aming mga bagong gabay sa pag-file ng buwis at imigrasyon."
+  },
+  "housingForm": {
+    "requiredFieldsTitle": "Mga Kailangang Punan",
+    "requiredFieldsMessage": "Mangyaring punan ang lahat ng kailangang punan bago magsumite.",
+    "notificationTitle": "Natanggap ang Kahilingan sa Pabahay",
+    "notificationMessage": "Susuriin ng aming koponan ang inyong kahilingan at makikipag-ugnayan sa lalong madaling panahon.",
+    "submitError": "Nabigo ang pagsumite. Mangyaring subukan muli.",
+    "submittedTitle": "Naisumite na ang Kahilingan!",
+    "submittedDesc": "Natanggap ang inyong kahilingan sa suporta sa pabahay. Susuriin ito ng aming koponan at makikipag-ugnayan sa lalong madaling panahon.",
+    "responseTime": "Average na oras ng pagtugon: 24-48 na oras",
+    "specialistsAvailable": "May mga dalubhasa sa pabahay na available",
+    "backToHome": "Bumalik sa Home",
+    "submitNewRequest": "Magsumite ng Bagong Kahilingan",
+    "title": "Suporta sa Pabahay",
+    "subtitle": "Tumutulong kami sa paghahanap ng pabahay, paglipat sa shelter, at gabay sa mga available na programa ng pabahay.",
+    "formTitle": "📋 Punan ang Form",
+    "requiredFieldsNote": "Ang mga field na may * ay kailangang punan",
+    "fullNameLabel": "Buong Pangalan *",
+    "fullNamePlaceholder": "Ang inyong buong pangalan",
+    "emailLabel": "Email para sa Pakikipag-ugnayan",
+    "emailPlaceholder": "email@halimbawa.com",
+    "phoneLabel": "Telepono",
+    "phonePlaceholder": "(000) 000-0000",
+    "stateLabel": "Estado *",
+    "statePlaceholder": "hal: New York",
+    "cityLabel": "Lungsod *",
+    "cityPlaceholder": "hal: Brooklyn",
+    "currentSituationLabel": "Kasalukuyang Sitwasyon *",
+    "selectSituation": "Piliin ang inyong kasalukuyang sitwasyon",
+    "needTypeLabel": "Uri ng Pangangailangan *",
+    "selectNeed": "Piliin ang uri ng tulong na kailangan",
+    "additionalNotesLabel": "Karagdagang Tala",
+    "additionalNotesPlaceholder": "Ilarawan ang inyong sitwasyon nang mas detalyado. Isama ang mahahalagang impormasyon tulad ng bilang ng miyembro ng sambahayan, pagiging urgent, atbp.",
+    "submitButton": "Isumite ang Kahilingan sa Pabahay",
+    "privacyNote": "🔒 Ang inyong impormasyon ay itinuturing na pribado at ginagamit lamang para ibigay ang hinihinging suporta.",
+    "need_rental_search": "Paghahanap ng pabahay para sa upa",
+    "need_shelter_move": "Paglipat sa Shelter (Residency ng Estado)",
+    "need_housing_program": "Gabay sa mga programa ng pabahay",
+    "need_tenant_rights": "Mga Karapatan ng Nangungupa",
+    "need_emergency": "Emergency na pabahay",
+    "need_other": "Iba pang sitwasyon",
+    "situation_homeless": "Walang tirahan / Nasa kalye",
+    "situation_shelter": "Sa pansamantalang shelter",
+    "situation_unstable": "Hindi matatag / hindi ligtas na pabahay",
+    "situation_eviction": "Panganib na paalisin",
+    "situation_overcrowded": "Sobra sa dami ng tao sa pabahay",
+    "situation_temporary": "Pansamantalang pamamalagi sa pamilya/mga kaibigan",
+    "situation_rental": "Kasalukuyang umaupa — naghahanap ng alternatibo",
+    "situation_other": "Iba pang sitwasyon"
+  },
+  "financeForm": {
+    "requiredFieldsTitle": "Mga Kailangang Punan",
+    "requiredFieldsMessage": "Mangyaring piliin ang uri ng tulong, estado, at ilarawan ang inyong sitwasyon.",
+    "insufficientDescriptionTitle": "Hindi Sapat na Paglalarawan",
+    "insufficientDescriptionMessage": "Mangyaring magbigay ng mas maraming detalye tungkol sa inyong sitwasyon (minimum na 20 karakter).",
+    "notificationTitle": "Natanggap ang Kahilingan sa Pananalapi",
+    "notificationMessage": "Susuriin ng aming koponan ng mga dalubhasa sa pananalapi ang inyong kaso sa lalong madaling panahon.",
+    "submitError": "Nabigo ang pagsumite. Mangyaring subukan muli.",
+    "submittedTitle": "Naisumite na ang Kahilingan!",
+    "submittedDesc": "Natanggap ang inyong kahilingan sa tulong sa pananalapi. Susuriin ito ng isang dalubhasa at makikipag-ugnayan sa lalong madaling panahon.",
+    "specialistsAvailable": "May mga dalubhasa sa mga benepisyo at buwis na available",
+    "responseTime": "Tugon sa loob ng 24-48 na oras ng trabaho",
+    "backToHome": "Bumalik sa Home",
+    "submitNewRequest": "Magsumite ng Bagong Kahilingan",
+    "title": "Tulong sa Pananalapi",
+    "subtitle": "Gabay sa mga benepisyo sa pananalapi, EBT, mga kard ng tulong ng estado, buwis, at Tax Return.",
+    "formTitle": "💼 Form ng Kahilingan",
+    "helpTypeLabel": "Uri ng Tulong na Kailangan *",
+    "selectHelpType": "Piliin ang uri ng tulong",
+    "stateLabel": "Estado (USA) *",
+    "selectState": "Piliin ang estado",
+    "descriptionLabel": "Paglalarawan ng Sitwasyon *",
+    "descriptionPlaceholder": "Ilarawan ang inyong kasalukuyang sitwasyon sa pananalapi. Hal: 'Kailangan ko ng tulong para mag-apply ng SNAP. Ako ay imigrante na may work visa at may 3 anak...'",
+    "characters": "karakter",
+    "minChars": "(minimum 20)",
+    "additionalInfoLabel": "Karagdagang Impormasyon",
+    "additionalInfoPlaceholder": "Mga available na dokumento, pagiging urgent, iba pang mahahalagang impormasyon...",
+    "submitButton": "Isumite ang Kahilingan sa Pananalapi",
+    "privacyNote": "🔒 Ang inyong impormasyon sa pananalapi ay itinuturing na pribado.",
+    "type_ebt": "EBT / SNAP (Food Voucher)",
+    "type_ebt_desc": "Tulong sa pagkain",
+    "type_state_benefits": "Mga Benepisyo ng Estado (Welfare, Medicaid)",
+    "type_state_benefits_desc": "Mga programa ng tulong ng estado",
+    "type_tax_return": "Tax Return (Pagbabalik ng Buwis)",
+    "type_tax_return_desc": "Tulong sa pag-file at pagbabalik",
+    "type_financial_planning": "Pagpaplano sa Pananalapi",
+    "type_financial_planning_desc": "Organisasyon at pagpaplano",
+    "type_debt_help": "Pamamahala ng Utang",
+    "type_debt_help_desc": "Gabay sa mga utang at kredito",
+    "type_banking": "Pagbubukas ng Bank Account",
+    "type_banking_desc": "Gabay sa bangko para sa mga imigrante",
+    "type_itin": "ITIN (Tax Identification Number)",
+    "type_itin_desc": "Pagkuha ng ITIN para sa mga hindi mamamayan",
+    "type_other": "Iba pang Sitwasyon sa Pananalapi",
+    "type_other_desc": "Iba pang pangangailangan sa pananalapi",
+    "quickInfo_ebt": "Food Voucher",
+    "quickInfo_tax": "Pagbabalik ng Buwis",
+    "quickInfo_benefits": "Tulong ng Estado",
+    "quickInfo_itin": "Tax ID",
+    "type_benefits": "Mga Benepisyo"
+  },
+  "resetPassword": {
+    "linkInvalid": "Hindi wasto o nag-expire na ang link. Mangyaring humiling ng bagong link sa pagbawi.",
+    "invalidLink": "Hindi wasto o nag-expire na ang link. Mangyaring humiling ng bagong link sa pagbawi.",
+    "fillAllFields": "Mangyaring punan ang lahat ng field.",
+    "passwordsMismatch": "Hindi tugma ang mga password. Mangyaring tingnan.",
+    "passwordMin8": "Ang password ay dapat may humigit-kumulang 8 na karakter.",
+    "minLengthError": "Ang password ay dapat may humigit-kumulang 8 na karakter.",
+    "weakPasswordTitle": "Mahina ang Password",
+    "weakPasswordMessage": "Mangyaring pumili ng mas malakas na password. Gumamit ng malaki at maliit na letra, mga numero, at mga simbolo.",
+    "resetFailed": "Nabigo ang pag-reset ng password. Maaaring nag-expire na ang link. Humiling ng bagong link.",
+    "invalidLinkTitle": "Hindi Wastong Link",
+    "requestNewLink": "Humiling ng Bagong Link",
+    "successTitle": "Na-reset na ang Password!",
+    "successDesc": "Matagumpay na nabago ang inyong password. Maaari na kayong mag-login gamit ang bagong password.",
+    "successMessage": "Matagumpay na nabago ang inyong password. Maaari na kayong mag-login gamit ang bagong password.",
+    "loginButton": "Mag-login",
+    "title": "Bagong Password",
+    "newPasswordTitle": "Bagong Password",
+    "subtitle": "Lumikha ng malakas at ligtas na password para protektahan ang inyong account.",
+    "newPasswordSubtitle": "Lumikha ng malakas at ligtas na password para protektahan ang inyong account.",
+    "securityNote": "Gumamit ng humigit-kumulang 8 na karakter kasama ang mga letra, numero, at mga simbolo.",
+    "passwordPlaceholder": "Minimum na 8 na karakter",
+    "newPasswordPlaceholder": "Minimum na 8 na karakter",
+    "newPasswordLabel": "Bagong Password",
+    "confirmPlaceholder": "Ulitin ang bagong password",
+    "confirmPasswordPlaceholder": "Ulitin ang bagong password",
+    "confirmPasswordLabel": "Kumpirmahin ang Bagong Password",
+    "passwordsMismatchError": "Hindi tugma ang mga password",
+    "passwordsMismatchShort": "Hindi tugma ang mga password",
+    "passwordsMatch": "✓ Tugma ang mga password",
+    "verifyingLink": "Tinitingnan ang link...",
+    "resetButton": "I-reset ang Password",
+    "submitButton": "I-reset ang Password",
+    "requestNewRecoveryLink": "Humiling ng bagong link sa pagbawi",
+    "requestNewLinkBottom": "Humiling ng bagong link sa pagbawi",
+    "weak": "Mahina",
+    "strengthWeak": "Mahina",
+    "fair": "Katanggap-tanggap",
+    "strengthFair": "Katanggap-tanggap",
+    "good": "Mabuti",
+    "strengthGood": "Mabuti",
+    "strong": "Malakas",
+    "strengthStrong": "Malakas"
+  },
+  "changePassword": {
+    "currentLabel": "Kasalukuyang Password",
+    "currentPassword": "Kasalukuyang Password",
+    "currentPlaceholder": "Ilagay ang kasalukuyang password",
+    "newLabel": "Bagong Password",
+    "newPassword": "Bagong Password",
+    "newPlaceholder": "Ilagay ang bagong password",
+    "minChars": "Dapat may humigit-kumulang 6 na karakter",
+    "minLength": "Dapat may humigit-kumulang 6 na karakter",
+    "confirmLabel": "Kumpirmahin ang Bagong Password",
+    "confirmPassword": "Kumpirmahin ang Bagong Password",
+    "confirmPlaceholder": "Kumpirmahin ang bagong password"
+  },
+  "phoneInput": {
+    "placeholder": "Numero ng telepono",
+    "selectCountry": "Pumili ng Bansa",
+    "searchCountry": "Maghanap ng bansa..."
+  },
+  "screens": {
+    "login": "Mag-login",
+    "register": "Magrehistro",
+    "phoneLogin": "Login sa Telepono",
+    "forgotPassword": "Nakalimutan ang Password",
+    "resetPassword": "I-reset ang Password",
+    "onboarding": "Maligayang Pagdating",
+    "terms": "Mga Tuntunin at Pagkapribado"
+  },
+  "adminTab": {
+    "label": "Admin"
   }
 }

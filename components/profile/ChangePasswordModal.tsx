@@ -62,14 +62,14 @@ export default function ChangePasswordModal({
 
             <ScrollView contentContainerStyle={styles.modalBody}>
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Current Password</Text>
+                <Text style={styles.inputLabel}>{t('changePassword.currentPassword')}</Text>
                 <View style={styles.inputWrapper}>
                   <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={styles.input}
                     value={currentPassword}
                     onChangeText={onChangeCurrent}
-                    placeholder="Enter current password"
+                    placeholder={t('changePassword.currentPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     secureTextEntry
                     accessibilityLabel="Current Password"
@@ -79,32 +79,32 @@ export default function ChangePasswordModal({
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>New Password</Text>
+                <Text style={styles.inputLabel}>{t('changePassword.newPassword')}</Text>
                 <View style={styles.inputWrapper}>
                   <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={styles.input}
                     value={newPassword}
                     onChangeText={onChangeNew}
-                    placeholder="Enter new password"
+                    placeholder={t('changePassword.newPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     secureTextEntry
                     accessibilityLabel="New Password"
                     accessibilityRole="none"
                   />
                 </View>
-                <Text style={styles.passwordHint}>Must be at least 6 characters</Text>
+                <Text style={styles.passwordHint}>{t('changePassword.minLength')}</Text>
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Confirm New Password</Text>
+                <Text style={styles.inputLabel}>{t('changePassword.confirmPassword')}</Text>
                 <View style={styles.inputWrapper}>
                   <Lock size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
                     style={styles.input}
                     value={confirmPassword}
                     onChangeText={onChangeConfirm}
-                    placeholder="Confirm new password"
+                    placeholder={t('changePassword.confirmPlaceholder')}
                     placeholderTextColor={theme.textMuted}
                     secureTextEntry
                     accessibilityLabel="Confirm New Password"

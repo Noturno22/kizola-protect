@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Sparkles, Clock, ChevronRight } from 'lucide-react-native';
 import { LearningArticle } from '@/lib/supabase';
@@ -30,8 +30,15 @@ export function FeaturedArticleCard({
         onPress={onPress}
         activeOpacity={0.9}
       >
+        {featuredArticle.coverImage && (
+          <Image
+            source={{ uri: featuredArticle.coverImage }}
+            style={styles.heroImage}
+            resizeMode="cover"
+          />
+        )}
         <LinearGradient
-          colors={[theme.accent + '20', theme.accentBlue + '10']}
+          colors={['rgba(0,0,0,0.6)', 'rgba(0,0,0,0.3)']}
           style={styles.featuredGradient}
         />
         <View style={styles.featuredBadge}>
@@ -40,22 +47,22 @@ export function FeaturedArticleCard({
             {t('learn.dailyTip') || 'Dica do Dia'}
           </Text>
         </View>
-        <Text style={styles.featuredTitle}>{t(featuredArticle.title)}</Text>
-        <Text style={styles.featuredDesc} numberOfLines={2}>
+        <Text style={[styles.featuredTitle, { color: '#FFFFFF' }]}>{t(featuredArticle.title)}</Text>
+        <Text style={[styles.featuredDesc, { color: 'rgba(255,255,255,0.85)' }]} numberOfLines={2}>
           {t(featuredArticle.description)}
         </Text>
         <View style={styles.featuredFooter}>
           <View style={styles.readTime}>
-            <Clock size={14} color={theme.textSecondary} />
-            <Text style={styles.readTimeText}>
+            <Clock size={14} color="rgba(255,255,255,0.7)" />
+            <Text style={[styles.readTimeText, { color: 'rgba(255,255,255,0.8)' }]}>
               {featuredArticle.readTime} min
             </Text>
           </View>
           <View style={styles.featuredAction}>
-            <Text style={styles.featuredActionText}>
+            <Text style={[styles.featuredActionText, { color: '#FFFFFF' }]}>
               {t('learn.readNow') || 'Ler agora'}
             </Text>
-            <ChevronRight size={16} color={theme.accent} />
+            <ChevronRight size={16} color="#FFFFFF" />
           </View>
         </View>
       </TouchableOpacity>
@@ -83,6 +90,15 @@ const createStyles = (theme: Theme) =>
       borderColor: theme.cardBorderAlt,
       backgroundColor: theme.surface,
       marginTop: 16,
+    },
+    heroImage: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: 200,
+      borderTopLeftRadius: 24,
+      borderTopRightRadius: 24,
     },
     featuredGradient: {
       position: 'absolute',
@@ -130,7 +146,7 @@ const createStyles = (theme: Theme) =>
       flexDirection: 'row',
       alignItems: 'center',
       gap: 6,
-      backgroundColor: theme.background,
+      backgroundColor: 'rgba(255,255,255,0.15)',
       paddingHorizontal: 10,
       paddingVertical: 6,
       borderRadius: 8,
@@ -138,7 +154,7 @@ const createStyles = (theme: Theme) =>
     readTimeText: {
       fontSize: 13,
       fontWeight: '600',
-      color: theme.textSecondary,
+      color: 'rgba(255,255,255,0.8)',
     },
     featuredAction: {
       flexDirection: 'row',

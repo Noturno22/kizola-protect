@@ -72,7 +72,47 @@
     "emailPlaceholder": "vous@email.com",
     "forgotPasswordDesc": "Entrez l'email associé à votre compte. Nous enverrons un lien pour créer un nouveau mot de passe.",
     "loginFailed": "Échec de la Connexion",
-    "invalidCredentials": "Email ou mot de passe invalide."
+    "invalidCredentials": "Email ou mot de passe invalide.",
+    "error": "Erreur",
+    "errorGoogle": "Erreur Google",
+    "errorApple": "Erreur Apple",
+    "loginInterrupted": "La connexion a été interrompue. L'application a peut-être été fermée. Veuillez réessayer.",
+    "enterFullName": "Veuillez entrer votre nom complet.",
+    "enterEmail": "Veuillez entrer votre adresse e-mail.",
+    "enterPassword": "Veuillez entrer un mot de passe.",
+    "invalidPhoneDigits": "Numéro de téléphone invalide (minimum 8 chiffres).",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+    "passwordMin6": "Le mot de passe doit contenir au moins 6 caractères.",
+    "acceptTerms": "Veuillez accepter les conditions d'utilisation.",
+    "confirmEmailTitle": "Confirmez votre e-mail",
+    "confirmEmailDesc": "Nous avons envoyé un lien de confirmation à {{email}}. Cliquez sur le lien, puis connectez-vous pour continuer.",
+    "goToLogin": "Aller à la Connexion",
+    "alreadyRegistered": "Cet e-mail est déjà enregistré. Essayez de vous connecter.",
+    "emailInvalid": "E-mail invalide. Veuillez vérifier et réessayer.",
+    "registrationError": "Erreur d'Inscription",
+    "phoneVerification": "Vérification par Téléphone",
+    "signInWithPhone": "Se Connecter avec Téléphone",
+    "enterPhoneSubtitle": "Entrez votre numéro de téléphone pour recevoir un code sécurisé.",
+    "phonePlaceholder": "ex. +1 234 567 8900",
+    "sendCode": "Envoyer le Code",
+    "verifyCode": "Vérifier le Code",
+    "enterCodeSentTo": "Entrez le code à 6 chiffres envoyé à {{phone}}",
+    "codePlaceholder": "Entrez le code à 6 chiffres",
+    "verifyAndSignIn": "Vérifier et Se Connecter",
+    "changePhoneNumber": "Changer le numéro de téléphone",
+    "invalidPhone": "Veuillez entrer un numéro de téléphone valide avec indicatif pays (ex. +1234567890)",
+    "phoneCountryCodeRequired": "Veuillez inclure l'indicatif pays en commençant par + (ex. +1)",
+    "smsSent": "SMS envoyé avec succès",
+    "couldNotSendSms": "Impossible d'envoyer le SMS",
+    "enterSixDigitCode": "Veuillez entrer le code à 6 chiffres",
+    "invalidCode": "Code invalide",
+    "demoMode": "Mode Démonstration",
+    "demoModeA11y": "Entrer en mode démonstration",
+    "demoModeFailed": "Impossible d'entrer en mode démonstration.",
+    "appleComingSoon": "Se Connecter avec Apple",
+    "appleComingSoonDesc": "Cette fonctionnalité est en développement et sera bientôt disponible. L'authentification Apple nécessite un compte développeur Apple.",
+    "phoneComingSoon": "Se Connecter avec Téléphone",
+    "phoneComingSoonDesc": "Cette fonctionnalité est en développement. La connexion par SMS/OTP sera disponible dans la version complète."
   },
   "profile": {
     "title": "Mon Profil",
@@ -87,6 +127,16 @@
     "status": "Statut",
     "beneficiaries": "Bénéficiaires",
     "add": "Ajouter",
+    "addBeneficiary": "Ajouter un Bénéficiaire",
+    "editBeneficiary": "Modifier le Bénéficiaire",
+    "beneficiaryType": "Type de Bénéficiaire",
+    "son": "Fils",
+    "daughter": "Fille",
+    "spouse": "Conjoint",
+    "fullName": "Nom Complet",
+    "namePlaceholder": "Entrer le nom complet",
+    "document": "Document",
+    "documentPlaceholder": "Entrer le numéro du document",
     "none": "Aucun bénéficiaire",
     "noneSubtitle": "Ajoutez des enfants, un conjoint ou d'autres bénéficiaires.",
     "settings": "Paramètres",
@@ -111,12 +161,40 @@
     "noActivePlan": "Aucun forfait actif",
     "benefitsCount": "Avantages",
     "support247": "Support",
-    "protected100": "Protégé"
+    "protected100": "Protégé",
+    "deleteAccountSubtitle": "La suppression de votre compte est permanente et ne peut pas être annulée.",
+    "deleteAccount": {
+      "title": "Supprimer le compte",
+      "warning": "Cette action est irréversible. Toutes vos données seront définitivement supprimées.",
+      "reasonLabel": "Raison du départ",
+      "reasons": {
+        "too_expensive": "Trop cher",
+        "missing_features": "Fonctionnalités manquantes",
+        "not_helpful": "Pas utile",
+        "privacy": "Préoccupations de confidentialité",
+        "duplicate": "Compte en double",
+        "other": "Autre"
+      },
+      "passwordLabel": "Entrez votre mot de passe pour confirmer",
+      "passwordPlaceholder": "Mot de passe",
+      "confirmLabel": "Je comprends les conséquences",
+      "deleteButton": "Supprimer mon compte",
+      "cancelButton": "Annuler",
+      "confirmError": "Veuillez confirmer et entrer votre mot de passe",
+      "alertDeletedTitle": "Compte supprimé",
+      "alertDeletedDemo": "Ceci est un compte de démonstration",
+      "alertDeletedDesc": "Votre compte a été supprimé. Vous serez déconnecté.",
+      "alertOk": "OK",
+      "noSession": "Aucune session active trouvée",
+      "deleteFailed": "Échec de la suppression du compte",
+      "genericError": "Une erreur s'est produite"
+    }
   },
   "dashboard": {
     "welcome": "Bonjour",
     "welcomeBack": "Bon retour,",
     "protectionStatus": "Statut de Protection",
+    "planSuffix": "Forfait",
     "protected": "Vous êtes protégé",
     "notProtected": "Action requise",
     "quickActions": "Actions Rapides",
@@ -267,7 +345,12 @@
         "description": "Retrouvez l'accès à votre vie numérique. Nous vous aidons à récupérer des comptes bloqués ou piratés pour Uber, DoorDash et d'autres plateformes de services essentiels.",
         "category_name": "Numérique"
       }
-    }
+    },
+    "newServices": "Nouveaux Services",
+    "financeHelp": "Aide Financière",
+    "housingSupport": "Soutien au Logement",
+    "housingSupportDesc": "Obtenez de l'aide pour trouver un logement stable, comprendre les droits des locataires et accéder aux ressources d'hébergement d'urgence.",
+    "financeHelpDesc": "Accédez à une assistance financière pour les paiements de factures, le soutien budgétaire et l'aide économique d'urgence."
   },
   "activity": {
     "title": "Mon Activité",
@@ -315,31 +398,305 @@
     "helpDesc": "Notre équipe de support peut fournir des conseils adaptés à votre situation",
     "contactSupport": "Contacter le Support",
     "helpTopic": "Besoin d'aide avec ce sujet ?",
+    "popular": "Populaire",
+    "recommended": "Recommandés",
     "articles": {
       "tax": {
-        "title": "Bases de la Déclaration d'Impôts",
-        "description": "Guide essentiel pour comprendre les exigences en matière de déclaration de revenus, les délais et les déductions auxquels vous pourriez avoir droit.",
-        "content": "\n## Comprendre la Déclaration de Revenus\n\nDéclarer vos impôts ne doit pas être accablant. Voici ce que vous devez savoir :\n\n### Délais Clés\n- **15 avril** : Date limite de dépôt standard\n- **15 octobre** : Date limite de dépôt prolongée\n- **Trimestriel** : Paiements d'impôts estimés (si vous êtes travailleur indépendant)\n\n### Déductions Communes\n1. Déduction forfaitaire (la plus courante)\n2. Déductions détaillées\n   - Frais médicaux\n   - Impôts nationaux et locaux\n   - Intérêts hypothécaires\n   - Contributions caritatives\n\n### Documents Dont Vous Aurez Besoin\n- Formulaires W-2 des employeurs\n- Formulaires 1099 pour d'autres revenus\n- Numéros de sécurité sociale pour les personnes à charge\n- Informations sur le compte bancaire pour le dépôt direct\n\n### Options de Dépôt Gratuit\n- IRS Free File (revenus inférieurs à 73 000 $)\n- Programme VITA pour les contribuables qualifiés\n- Military OneSource pour les membres des services\n"
+        "1": {
+          "title": "Bases de la Déclaration d'Impôts",
+          "description": "Guide essentiel pour comprendre les exigences de déclaration, les délais et les déductions.",
+          "content": "\n## Comprendre la Déclaration de Revenus\n\nDéclarer vos impôts ne doit pas être accablant. Voici ce que vous devez savoir :\n\n### Délais Clés\n- **15 avril** : Date limite de dépôt standard\n- **15 octobre** : Date limite de dépôt prolongée\n- **Trimestriel** : Paiements d'impôts estimés (si travailleur indépendant)\n\n### Déductions Communes\n1. Déduction forfaitaire (la plus courante)\n2. Déductions détaillées\n   - Frais médicaux\n   - Impôts nationaux et locaux\n   - Intérêts hypothécaires\n   - Contributions caritatives\n\n### Documents Nécessaires\n- Formulaires W-2 des employeurs\n- Formulaires 1099 pour d'autres revenus\n- Numéros de sécurité sociale pour les personnes à charge\n- Informations de compte bancaire pour le dépôt direct\n\n### Options de Dépôt Gratuit\n- IRS Free File (revenus inférieurs à 73 000 $)\n- Programme VITA pour les contribuables qualifiés\n- Military OneSource pour les membres des services\n"
+        },
+        "2": {
+          "title": "Maximiser Vos Déductions Fiscales",
+          "description": "Découvrez les déductions et crédits courants qui peuvent réduire significativement votre facture fiscale.",
+          "content": "\n## Comprendre Déductions vs Crédits\n\n**Déductions** réduisent votre revenu imposable.\n**Crédits** réduisent votre facture fiscale directement (plus précieux).\n\n### Déductions Détaillées Courantes\n1. **Frais Médicaux** : Seulement les frais dépassant 7,5 % du RGA\n2. **Impôts Nationaux et Locaux (SALT)** : Jusqu'à 10 000 $\n3. **Intérêts Hypothécaires** : Sur prêts jusqu'à 750 000 $\n4. **Contributions Caritatives** : Dons en espèces et non monétaires\n5. **Intérêts de Prêts Étudiants** : Jusqu'à 2 500 $\n\n### Crédits Fiscaux Précieux\n- **Crédit d'Impôt sur le Revenu du Travail (EITC)** : Jusqu'à 7 430 $ pour les familles\n- **Crédit d'Impôt pour Enfants** : 2 000 $ par enfant éligible\n- **Crédit d'Opportunité Américain** : Jusqu'à 2 500 $ pour l'éducation\n- **Crédit d'Apprentissage à Vie** : Jusqu'à 2 000 $ pour l'éducation\n\n### Erreurs Courantes à Éviter\n- Oublier de déclarer tous les revenus\n- Manquer les paiements d'impôts estimés\n- Ne pas garder reçus et registres\n- Déclarer en retard sans extension\n\n### Quand Consulter un Professionnel\n- Revenus de travail indépendant\n- Multiples sources de revenus\n- Changements de vie majeurs (mariage, achat immobilier)\n- Revenus d'investissement complexes\n"
+        },
+        "3": {
+          "title": "Travail Indépendant et Impôts 1099",
+          "description": "Comprendre les obligations fiscales lorsque vous travaillez à votre compte ou comme contractant indépendant.",
+          "content": "\n## Bases de l'Impôt sur le Travail Indépendant\n\n### Qui est Travailleur Indépendant ?\n- Freelances et contractants indépendants\n- Travailleurs de l'économie de plateforme (Uber, DoorDash, etc.)\n- Petits propriétaires d'entreprise\n- Travailleurs de compléments de revenu\n\n### Obligations Fiscales Clés\n1. **Impôt sur le Travail Indépendant** : 15,3 % (Sécurité Sociale 12,4 % + Medicare 2,9 %)\n2. **Impôt sur le Revenu** : Basé sur votre tranche d'imposition\n3. **Impôts Estimés Trimestriels** : Échéance le 15 avril, 15 juin, 15 septembre, 15 janvier\n\n### Déductions des Frais Professionnels\n**Déductions Courantes :**\n- Bureau à domicile (espace dédié)\n- Internet et téléphone (pourcentage professionnel)\n- Kilométrage véhicule (usage professionnel)\n- Fournitures et équipement de bureau\n- Développement professionnel\n- Primes d'assurance maladie\n\n### Mettre de Côté de l'Argent\n**Recommandé** : Économisez 25-30 % du revenu net pour les impôts\n**Méthode** : Ouvrez un compte d'épargne séparé pour les paiements fiscaux\n\n### Exigences de Déclaration\n- **Schedule C** : Déclarer les revenus et frais professionnels\n- **Schedule SE** : Calculer l'impôt sur le travail indépendant\n- **Formulaire 1040-ES** : Effectuer les paiements estimés trimestriels\n\n### Conseils pour Réussir\n- Enregistrez tous les revenus et frais dès le premier jour\n- Utilisez un logiciel de comptabilité (QuickBooks, Wave)\n- Séparez les finances professionnelles et personnelles\n- Mettez en place un plan de retraite (SEP-IRA, Solo 401k)\n"
+        },
+        "4": {
+          "title": "Obtenir Votre Remboursement d'Impôts Plus Rapidement",
+          "description": "Conseils pour déclarer avec précision et recevoir votre remboursement le plus rapidement possible.",
+          "content": "\n## Comment Accélérer Votre Remboursement\n\n### Déclarez Électroniquement\n- Le dépôt électronique est plus rapide que le papier\n- Les remboursements par dépôt direct arrivent en 21 jours ou moins\n- Les chèques prennent 6-8 semaines\n\n### Utilisez le Dépôt Direct\n- Fournissez vos numéros de routing et de compte bancaire\n- Séparez le remboursement entre plusieurs comptes\n- Évitez les chèques perdus ou volés\n\n### Déclarez Tôt\n- L'IRS ouvre la déclaration fin janvier\n- Les premiers déclarants reçoivent les remboursements en premier\n- Évitez les erreurs de dernière minute\n\n### Vérifiez Votre Déclaration Attentivement\n- Vérifiez les numéros de Sécurité Sociale\n- Revérifiez les calculs mathématiques\n- Assurez-vous que les noms correspondent aux cartes de Sécurité Sociale\n- Vérifiez les numéros de compte bancaire\n\n### Suivez Votre Remboursement\n- Utilisez l'outil Où Est Mon Remboursement de l'IRS\n- Téléchargez l'application mobile IRS2Go\n- Disponible 24 heures après le dépôt électronique\n\n### Retards Courants de Remboursement\n- Informations incomplètes ou inexactes\n- Vérification d'identité requise\n- Déclarations modifiées prennent plus de temps\n- Demandes de Crédit d'Impôt sur le Revenu du Travail\n\n### Que Faire avec Votre Remboursement\n1. Payez les dettes à taux élevé\n2. Constituez un fonds d'urgence (3-6 mois de dépenses)\n3. Investissez dans des comptes de retraite\n4. Économisez pour les achats majeurs\n"
+        },
+        "5": {
+          "title": "Impôts Nationaux et Locaux sur le Revenu",
+          "description": "Comprendre comment les impôts nationaux et locaux affectent votre situation fiscale globale.",
+          "content": "\n## Bases de l'Impôt National\n\n### États sans Impôt sur le Revenu\n- Alaska, Floride, Nevada\n- New Hampshire, Dakota du Sud\n- Tennessee, Texas, Washington, Wyoming\n\n### États avec Impôt Plat\n- Colorado, Illinois, Indiana\n- Massachusetts, Michigan, Pennsylvanie\n\n### États avec Impôt Progressif\nLa plupart des États ont des tranches d'imposition similaires au système fédéral.\n\n### Exigences de Déclaration\n- Déclarez dans chaque État où vous avez gagné des revenus\n- Résidents de partie d'année : impôt au prorata\n- Non-résidents : uniquement les revenus gagnés dans cet État\n\n### Déduction SALT\n- La déduction d'impôts nationaux et locaux est plafonnée à 10 000 $\n- Comprend les impôts sur le revenu, la propriété et la vente\n- Choisissez entre la déduction d'impôt sur le revenu ou la vente\n\n### Crédits Fiscaux Nationaux Courants\n- Crédits d'impôt foncier\n- Crédits pour locataires\n- Crédits d'impôt sur le revenu du travail (spécifiques à l'État)\n- Crédits pour enfants et personnes à charge\n\n### Déclaration Multi-États\n**Situation** : Vous travaillez dans un État, vivez dans un autre\n- Généralement imposé dans l'État de travail\n- Peut recevoir un crédit dans votre État de résidence\n- Accords de réciprocité entre certains États\n\n### Conseils\n- Vérifiez les délais fiscaux de votre État (peuvent différer du fédéral)\n- Conservez les registres des revenus gagnés dans chaque État\n- Envisagez de consulter un professionnel des impôts pour les situations multi-États\n"
+        }
       },
       "immigration": {
-        "title": "Aperçu du Statut d'Immigration",
-        "description": "Découvrez les différents types de visas, les processus de carte verte et les voies vers la citoyenneté.",
-        "content": "\n## Comprendre l'Immigration aux États-Unis\n\n### Catégories de Visas Communes\n\n**Visas de Travail :**\n- H-1B : Professions spécialisées\n- L-1 : Transferts intra-entreprise\n- O-1 : Individus aux capacités extraordinaires\n\n**Basé sur la Famille :**\n- Parents immédiats de citoyens américains\n- Catégories de préférence familiale\n- Visas de fiancé(e) (K-1)\n\n### Carte Verte (Résidence Permanente)\n**Voies :**\n1. Parrainage familial\n2. Basé sur l'emploi\n3. Loterie de la diversité\n4. Statut de réfugié/asile\n\n### Processus de Citoyenneté\n**Exigences :**\n- 5 ans en tant que résident permanent (3 ans si marié à un citoyen américain)\n- Présence physique aux États-Unis\n- Bonne moralité\n- Maîtrise de la langue anglaise\n- Connaissances civiques\n\n### Conseils Importants\n- Conservez des copies de tous les documents\n- Signalez les changements d'adresse sous 10 jours\n- Maintenez un statut valide en tout temps\n- Consultez des avocats spécialisés en immigration pour les cas complexes\n"
+        "1": {
+          "title": "Comprendre les Types de Visa",
+          "description": "Aperçu des catégories de visa courantes et de leurs exigences pour entrer aux États-Unis.",
+          "content": "\n## Catégories de Visa Courantes\n\n### Visas de Non-Immigrant (Temporaires)\n**Visas de Travail :**\n- H-1B : Professions spécialisées (nécessite un diplôme universitaire)\n- L-1 : Transferts intra-entreprise\n- O-1 : Capacité extraordinaire dans les arts, les sciences, les affaires\n- TN : Professionnels de l'ALÉNA (Canada, Mexique)\n\n**Visas Étudiants :**\n- F-1 : Étudiants académiques\n- M-1 : Étudiants professionnels\n- J-1 : Visiteurs d'échange\n\n### Visas Basés sur la Famille\n**Parents Immédiats :**\n- Époux de citoyens américains\n- Enfants non mariés de moins de 21 ans\n- Parents de citoyens américains (21+)\n\n**Préférence Familiale :**\n- Enfants adultes et frères et sœurs de citoyens américains\n- Époux et enfants de résidents permanents\n\n### Tourisme et Affaires\n- B-1 : Visiteurs d'affaires\n- B-2 : Tourisme et vacances\n- Programme d'Exemption de Visa (ESTA) : 90 jours pour certains pays\n\n### Notes Importantes\n- Le visa ne garantit pas l'entrée (le CBP prend la décision finale)\n- Maintenez un statut valide en tout temps\n- Signalez les changements d'adresse sous 10 jours\n- Consultez un avocat en immigration pour les situations complexes\n"
+        },
+        "2": {
+          "title": "Processus de Demande de Carte Verte",
+          "description": "Guide étape par étape pour obtenir la résidence permanente aux États-Unis.",
+          "content": "\n## Qu'est-ce qu'une Carte Verte ?\n\nUne Carte Verte accorde le statut de résidence permanente, vous permettant de vivre et travailler aux États-Unis de façon permanente.\n\n### Voies vers une Carte Verte\n\n**1. Parrainage Familial**\n- Parents immédiats de citoyens américains (le plus rapide)\n- Catégories de préférence familiale (délais d'attente possibles)\n\n**2. Basé sur l'Emploi**\n- EB-1 : Travailleurs prioritaires\n- EB-2 : Professionnels avec diplôme avancé\n- EB-3 : Travailleurs qualifiés\n- EB-4 : Immigrants spéciaux\n- EB-5 : Investisseurs (investissement de 1,05 M$+)\n\n**3. Loterie de la Diversité**\n- 50 000 visas par an\n- Pays avec faibles taux d'immigration éligibles\n- Candidature d'octobre à novembre chaque année\n\n**4. Statut de Réfugié/Asylé**\n- Demande après 1 an de statut\n- Doit respecter les exigences de présence physique\n\n### Étapes de la Demande\n1. Déterminez votre catégorie d'éligibilité\n2. Déposez la pétition (I-130, I-140, ou Loterie DV)\n3. Attendez la date de priorité (si applicable)\n4. Déposez l'ajustement de statut ou le traitement consulaire\n5. Passez le rendez-vous biométrique\n6. Passez l'entretien\n7. Recevez la décision\n\n### Conseils pour Réussir\n- Conservez des copies de tous les documents\n- Répondez rapidement à toutes les demandes du USCIS\n- Maintenez un statut d'immigration valide\n- Travaillez avec un avocat en immigration qualifié\n"
+        },
+        "3": {
+          "title": "La Voie vers la Citoyenneté Américaine",
+          "description": "Comprendre le processus de naturalisation et les conditions pour devenir citoyen américain.",
+          "content": "\n## Conditions d'Éligibilité\n\n### Conditions de Base\n- Avoir au moins 18 ans\n- Être résident permanent depuis 5 ans (3 ans si marié à un citoyen américain)\n- Justifier d'une résidence continue aux États-Unis\n- Justifier d'une présence physique aux États-Unis\n- Être de bonne moralité\n- Réussir les tests d'anglais et d'éducation civique\n\n### Processus de Naturalisation\n1. **Déposer la Demande** : Formulaire N-400\n2. **Rendez-vous Biométrique** : Empreintes et photo\n3. **Entretien** : Sous serment avec un agent du USCIS\n4. **Test d'Éducation Civique** : 100 questions possibles, 10 posées, 6 bonnes nécessaires\n5. **Test d'Anglais** : Lecture, écriture, expression orale\n6. **Cérémonie du Serment d'Allégeance**\n\n### Documents Nécessaires\n- Carte Verte\n- Photos format passeport\n- Documents de voyage\n- Déclarations de revenus\n- Enregistrement au Service Sélectif (si applicable)\n\n### Traitement Accéléré\n- Membres des forces armées\n- Époux de citoyens américains vivant à l'étranger\n- Certains employés gouvernementaux\n\n### Avantages de la Citoyenneté\n- Voter aux élections fédérales\n- Passeport américain pour les voyages internationaux\n- Plus de soucis de statut d'immigration\n- Parrainer plus de membres de la famille\n- Opportunités d'emploi fédéral\n\n### Conseils pour le Test d'Éducation Civique\n- Étudiez les 100 questions officielles\n- Entraînez-vous avec les ressources officielles du USCIS\n- Passez des tests d'entraînement\n- Concentrez-vous sur les questions spécifiques à votre État\n"
+        },
+        "4": {
+          "title": "DACA : Ce que les Dreamers Doivent Savoir",
+          "description": "Comprendre le programme d'Action Différée pour les Arrivées dans l'Enfance et son statut actuel.",
+          "content": "\n## Qu'est-ce que DACA ?\n\nDACA fournit une protection temporaire contre la déportation et une autorisation de travail pour les immigrants éligibles qui sont arrivés aux États-Unis enfants.\n\n### Conditions d'Éligibilité\n- Être arrivé aux États-Unis avant l'âge de 16 ans\n- Résider continuellement aux États-Unis depuis le 15 juin 2007\n- Avoir moins de 31 ans le 15 juin 2012\n- Être scolarisé, avoir un diplôme ou un GED\n- N'avoir été condamné pour aucun crime grave ou infraction significative\n\n### Statut Actuel (Important)\n- **Nouvelles demandes** : Actuellement non acceptées\n- **Renouvellements** : Traités pour les bénéficiaires actuels de DACA\n- **Permis de travail** : Valides 2 ans, puis renouvellement nécessaire\n- **Défis juridiques** : Les tribunaux ont rendu diverses décisions\n\n### Ce que DACA Fournit\n- Protection contre la déportation\n- Document d'autorisation d'emploi (EAD)\n- Numéro de Sécurité Sociale\n- Éligibilité au permis de conduire étatique\n\n### Ce que DACA NE Fournit PAS\n- Voie vers la citoyenneté\n- Aide financière fédérale pour les études supérieures\n- Voyages à l'étranger (Avance de Parole limitée)\n\n### Étapes à Suivre\n1. **Consultez un avocat en immigration** sur les options actuelles\n2. **Renouvelez à temps** si vous êtes bénéficiaire actuel de DACA\n3. **Conservez des copies** de tous les documents DACA\n4. **Explorez d'autres options d'immigration** (famille, emploi)\n5. **Restez informé** des changements de politique\n\n### Ressources Supplémentaires\n- United We Dream\n- National Immigration Law Center\n- Organisations locales d'aide juridique aux immigrants\n"
+        },
+        "5": {
+          "title": "Permis de Travail et Autorisation d'Emploi",
+          "description": "Comment obtenir et maintenir l'autorisation de travail aux États-Unis.",
+          "content": "\n## Types d'Autorisation de Travail\n\n### Document d'Autorisation d'Emploi (EAD)\n**Qui en a Besoin :**\n- Bénéficiaires de DACA\n- Demandeurs d'asile\n- Demandeurs d'ajustement de statut\n- Détenteurs de TPS\n- Détenteurs de visa étudiant (OPT/CPT)\n\n### Comment Demander un EAD\n1. Déposez le Formulaire I-765 auprès du USCIS\n2. Incluez les documents de soutien requis\n3. Payez les frais de dépôt (actuellement 410 $)\n4. Passez le rendez-vous biométrique\n5. Attendez l'approbation (2-5 mois typiquement)\n\n### Maintenir l'Autorisation de Travail\n- Renouvelez avant l'expiration (déposez 6 mois à l'avance)\n- Signalez les changements d'adresse au USCIS\n- Conservez des copies de tous les documents\n- Connaissez votre catégorie et vos dates d'expiration\n\n### Exigences de l'Employeur\n- Vérifier l'éligibilité au travail (Formulaire I-9)\n- Ne peut pas discriminer sur la base du statut d'immigration\n- Doit accepter un EAD ou visa de travail valide\n- Ne peut pas exiger de documents spécifiques\n\n### Problèmes Courants\n- Retards de traitement (déposez tôt)\n- Demande de Preuve (répondez rapidement)\n- Refus (consultez immédiatement un avocat)\n- Changements de statut affectant l'éligibilité\n\n### Conseils\n- Notez les dates d'expiration dans votre calendrier\n- Configurez des rappels 6 mois avant le renouvellement\n- Gardez les contacts d'urgence d'avocats en immigration\n- Documentez toute autorisation de travail\n"
+        }
       },
       "housing": {
-        "title": "Droits des Locataires et Logement",
-        "description": "Connaissez vos droits en tant que locataire, comprenez les contrats de bail et informez-vous sur les protections contre l'expulsion.",
-        "content": "\n## Vos Droits en tant que Locataire\n\n### Avant de Louer\n**Ce que les Propriétaires Peuvent Demander :**\n- Vérification des revenus\n- Vérification de solvabilité\n- Historique de location\n- Références\n\n**Ce que les Propriétaires NE Peuvent PAS Demander :**\n- Race, religion, origine nationale\n- Situation familiale\n- État de handicap\n\n### Essentiels du Contrat de Bail\n- Montant du loyer et date d'échéance\n- Conditions du dépôt de garantie\n- Responsabilités d'entretien\n- Politiques concernant les animaux de compagnie\n- Règles de sous-location\n\n### Vos Droits Fondamentaux\n1. **Habitabilité** : Conditions sûres et habitables\n2. **Vie Privée** : Préavis de 24 à 48 heures pour l'entrée (sauf urgence)\n3. **Réparations** : Réponse rapide aux demandes d'entretien\n4. **Pas de Représailles** : Protection pour l'exercice des droits légaux\n\n### Protections contre l'Expulsion\n**Processus Légal Requis :**\n1. Avis écrit\n2. Dépôt au tribunal\n3. Possibilité d'audience\n4. Expulsion par le shérif (si ordonnée)\n\n**Les Expulsions Illégales Comprennent :**\n- Changement de serrures\n- Coupure des services publics\n- Harcèlement\n- Retrait de biens\n\n### Obtenir de l'Aide\n- Syndicats de locataires locaux\n- Sociétés d'aide juridique\n- Autorités du logement\n- Support Kizola Protect\n"
+        "1": {
+          "title": "Droits et Protections des Locataires",
+          "description": "Connaissez vos droits légaux en tant que locataire aux États-Unis.",
+          "content": "\n## Vos Droits en tant que Locataire\n\n### Avant de Louer\n**Ce que les Propriétaires Peuvent Demander :**\n- Vérification des revenus (généralement 3x le loyer)\n- Vérification de solvabilité\n- Historique de location\n- Références\n\n**Ce que les Propriétaires NE Peuvent PAS Demander :**\n- Race, religion, origine nationale\n- Situation familiale\n- État de handicap\n- Statut d'immigration (dans la plupart des États)\n\n### Vos Droits Fondamentaux\n1. **Habitabilité** : Conditions sûres et habitables\n2. **Vie Privée** : Préavis de 24-48 heures pour l'entrée (sauf urgence)\n3. **Réparations** : Réponse rapide aux demandes d'entretien\n4. **Pas de Représailles** : Protection pour l'exercice des droits légaux\n5. **Non-Discrimination** : Protections de la Loi sur le Logement Équitable\n\n### Dépôts de Garantie\n- Le montant maximum varie selon l'État (généralement 1-2 mois de loyer)\n- Doit être restitué dans les 14-30 jours après le départ\n- Un état détaillé des déductions est requis\n- Peut être utilisé pour le loyer impayé ou les dommages au-delà de l'usure normale\n\n### Obtenir de l'Aide\n- Syndicats de locataires locaux\n- Sociétés d'aide juridique\n- Autorités du logement\n- Support Kizola Protect\n"
+        },
+        "2": {
+          "title": "Comprendre Votre Contrat de Bail",
+          "description": "Termes et clauses clés à vérifier avant de signer un contrat de location.",
+          "content": "\n## Termes Essentiels du Bail\n\n### Termes Financiers\n- **Montant du loyer et date d'échéance**\n- **Pénalités de retard et période de grâce**\n- **Montant et conditions du dépôt de garantie**\n- **Responsabilités des charges** (qui paie quoi)\n\n### Clauses Importantes\n**1. Durée du Bail**\n- Mois par mois vs. terme fixe\n- Frais de résiliation anticipée\n- Conditions de renouvellement\n\n**2. Responsabilités d'Entretien**\n- Ce que gère le propriétaire vs. le locataire\n- Procédures de réparation d'urgence\n- Comment soumettre des demandes d'entretien\n\n**3. Politiques Concernant les Animaux**\n- Dépôts et frais mensuels pour animaux\n- Restrictions de race/taille\n- Exceptions pour animaux d'assistance\n\n**4. Règles de Sous-Location**\n- Si la sous-location est autorisée\n- Processus d'approbation\n- Responsabilité pour les dommages\n\n### Signes d'Alerte à Surveiller\n- Droits d'entrée déraisonnables\n- Pénalités de retard excessives\n- Renonciation aux droits d'habitabilité\n- Renouvellement automatique sans préavis\n\n### Avant de Signer\n1. Faites un état des lieux et documentez l'état\n2. Prenez des photos de tout dommage existant\n3. Tout par écrit\n4. Conservez une copie du bail signé\n5. Comprenez tous les frais et pénalités\n"
+        },
+        "3": {
+          "title": "Processus d'Expulsion et Protections",
+          "description": "Que faire si vous recevez un avis d'expulsion et comment vous protéger.",
+          "content": "\n## Comprendre l'Expulsion\n\n### Processus Légal Requis\n1. **Avis Écrit** (varie selon l'État)\n   - Avis de payer ou partir\n   - Avis de corriger ou partir\n   - Avis de partir sans condition\n\n2. **Dépôt Judiciaire**\n   - Le propriétaire dépose une action de détention illégale\n   - Vous recevez une citation et une plainte\n\n3. **Audience Judiciaire**\n   - Présentez votre défense\n   - Apportez toutes les preuves et documents\n\n4. **Jugement et Exécution**\n   - Si vous perdez, le shérif exécute l'expulsion\n\n### Vos Droits Pendant l'Expulsion\n- Droit de recevoir un avis adéquat\n- Droit à une audience judiciaire\n- Droit de présenter une défense\n- Droit d'appel (dans la plupart des cas)\n\n### Défenses Courantes\n- Avis inadéquat\n- Représailles pour avoir demandé des réparations\n- Discrimination\n- Non-respect de l'habitabilité\n- Résiliation du bail par le propriétaire\n\n### Expulsions Illégales\n**Le Propriétaire NE Peut PAS :**\n- Vous enfermer à clé\n- Couper les services publics\n- Enlever vos biens\n- Vous harceler ou menacer\n\n### Obtenir de l'Aide\n- Organisations d'aide juridique\n- Organisations de droits des locataires\n- Centres d'auto-assistance des tribunaux\n- Documentez tout"
+        },
+        "4": {
+          "title": "Dépôts de Garantie et Déménagement",
+          "description": "Comment protéger votre dépôt de garantie lorsque vous déménagez d'une location.",
+          "content": "\n## Avant de Déménager\n\n### Documentez Tout\n- Prenez des photos/vidéo de tout l'appartement\n- Notez les dommages existants sur la liste d'entrée\n- Faites reconnaître l'état par le propriétaire\n- Conservez toute la documentation en lieu sûr\n\n### Bases du Dépôt de Garantie\n- Le montant maximum varie selon l'État\n- Le propriétaire doit le garder sur un compte séparé (certains États)\n- Ne peut pas être utilisé pour l'usure normale\n\n### Lorsque Vous Déménagez\n**1. Donnez un Avis Adéquat**\n- Vérifiez le bail pour la période de préavis requise\n- Généralement 30 jours pour un bail mensuel\n- Mettez l'avis par écrit\n\n**2. Nettoyez Exhaustivement**\n- Nettoyez profondément tous les appareils\n- Rebouchez les petits trous dans les murs\n- Nettoyez les tapis (professionnel si nécessaire)\n- Enlevez tous les effets personnels\n\n**3. État des Lieux Final**\n- Faites un état des lieux avec le propriétaire\n- Documentez l'état ensemble\n- Obtenez une reconnaissance écrite\n\n### Récupérer Votre Dépôt\n- Le propriétaire a généralement 14-30 jours\n- Doit fournir un état détaillé des déductions\n- Peut déduire pour loyer impayé ou dommages\n- Ne peut pas déduire pour usure normale\n\n### Si le Propriétaire Retient Indûment\n1. Envoyez une lettre de mise en demeure\n2. Contactez l'autorité du logement local\n3. Tribunal de petites créances (limites varient selon l'État)\n4. Documentez tout"
+        },
+        "5": {
+          "title": "Logement Équitable et Anti-Discrimination",
+          "description": "Comprendre votre protection contre la discrimination dans le logement aux États-Unis.",
+          "content": "\n## Protections de la Loi sur le Logement Équitable\n\n### Classes Protégées\nLa loi fédérale interdit la discrimination fondée sur :\n- Race\n- Couleur\n- Origine nationale\n- Religion\n- Sexe\n- Situation familiale\n- Handicap\n\n### Protections Étatiques Supplémentaires\nDe nombreux États ajoutent des protections pour :\n- Orientation sexuelle\n- Identité de genre\n- Âge\n- État matrimonial\n- Source de revenus\n\n### Ce que les Propriétaires NE Peuvent PAS Faire\n**Pendant la Demande :**\n- Refuser de louer sur la base d'une classe protégée\n- Fixer des termes ou conditions différents\n- Exiger des dépôts différents\n- Orienter vers des quartiers différents\n\n**Pendant la Location :**\n- Refuser des aménagements raisonnables\n- Harceler ou intimider\n- Prendre des représailles pour des plaintes\n- Refuser des réparations nécessaires\n\n### Aménagements Raisonnables\n**Pour les Handicaps :**\n- Autoriser les animaux d'assistance/de soutien émotionnel\n- Effectuer des modifications physiques\n- Autoriser un stationnement accessible\n\n### Comment Signaler la Discrimination\n1. Documentez tous les incidents\n2. Déposez une plainte auprès du HUD (1-800-669-9777)\n3. Contactez l'agence locale du logement équitable\n4. Consultez un avocat\n\n### Ressources\n- Logement Équitable du HUD : www.hud.gov/fairhousing\n- Alliance Nationale du Logement Équitable\n- Organisations locales d'aide juridique"
+        }
       },
       "legal": {
-        "title": "Guide de Sensibilisation Juridique",
-        "description": "Comprendre quand vous avez besoin d'une aide juridique et comment travailler efficacement avec des avocats.",
-        "content": "\n## Quand Avez-vous Besoin d'un Avocat ?\n\n### Situations Nécessitant une Aide Juridique\n**Affaires Pénales :**\n- Toute accusation criminelle\n- Arrestations et enquêtes\n- Infractions au code de la route avec des conséquences graves\n\n**Affaires Civiles :**\n- Demandes de dommages-intérêts pour préjudice corporel\n- Litiges contractuels\n- Discrimination au travail\n- Droit de la famille (divorce, garde)\n- Problèmes d'immigration\n- Litiges liés au logement\n\n### Travailler avec des Avocats\n**Consultation Initiale :**\n- Apportez tous les documents pertinents\n- Préparez une chronologie des événements\n- Notez vos questions\n- Soyez honnête sur tous les faits\n\n**Comprendre les Honoraires :**\n- Tarifs horaires\n- Forfaits\n- Honoraires de résultat (préjudice corporel)\n- Provisions\n\n### Aide Juridique Gratuite ou à Bas Prix\n- Sociétés d'aide juridique\n- Programmes pro bono\n- Cliniques des facultés de droit\n- Centres d'auto-assistance des tribunaux\n- Recommandations des barreaux\n"
+        "1": {
+          "title": "Quand Consulter un Avocat",
+          "description": "Comprendre quand vous avez besoin d'aide juridique et comment trouver une représentation abordable.",
+          "content": "\n## Quand Avez-vous Besoin d'un Avocat ?\n\n### Situations Nécessitant une Aide Juridique\n**Affaires Pénales :**\n- Toute accusation criminelle\n- Arrestations et enquêtes\n- Infractions au code de la route avec des conséquences graves\n\n**Affaires Civiles :**\n- Demandes de dommages-intérêts pour préjudice corporel\n- Litiges contractuels\n- Discrimination au travail\n- Droit de la famille (divorce, garde)\n- Problèmes d'immigration\n- Litiges liés au logement\n\n### Travailler avec des Avocats\n**Consultation Initiale :**\n- Beaucoup offrent des consultations gratuites\n- Apportez tous les documents pertinents\n- Préparez une chronologie des événements\n- Notez vos questions\n\n**Comprendre les Honoraires :**\n- Tarifs horaires (150 $-500 $+)\n- Forfaits pour services spécifiques\n- Honoraires de résultat (préjudice corporel)\n- Provisions (paiement anticipé)\n\n### Aide Juridique Gratuite ou à Bas Prix\n- Sociétés d'Aide Juridique\n- Programmes pro bono\n- Cliniques des facultés de droit\n- Centres d'auto-assistance des tribunaux\n- Recommandations des barreaux\n\n### Conseils\n- N'attendez pas pour chercher une aide juridique\n- Documentez tout par écrit\n- Conservez des copies de toute correspondance\n- Demandez des plans de paiement"
+        },
+        "2": {
+          "title": "Ressources d'Aide Juridique Gratuite",
+          "description": "Trouver une aide juridique gratuite ou à bas prix dans votre communauté.",
+          "content": "\n## Aide Juridique Gratuite Disponible\n\n### Organisations d'Aide Juridique\n**Ce qu'elles Offrent :**\n- Représentation juridique gratuite\n- Conseils et consultations\n- Aide pour les formalités\n- Représentation en justice\n\n**Qui est Éligible :**\n- Personnes à faibles revenus\n- Problèmes juridiques spécifiques (logement, famille, immigration)\n- Varie selon l'organisation\n\n### Programmes Pro Bono\n- Avocats bénévoles qui donnent de leur temps\n- Via les barreaux locaux\n- Limités à certains types d'affaires\n\n### Cliniques des Facultés de Droit\n- Étudiants en droit supervisés\n- Services juridiques gratuits\n- Expérience d'apprentissage pour les étudiants\n\n### Centres d'Auto-Assistance des Tribunaux\n- Aide pour les formalités\n- Explication des procédures juridiques\n- Disponibles dans la plupart des tribunaux\n\n### Comment Trouver de l'Aide\n1. **Société d'Aide Juridique** : Appelez le bureau local\n2. **Barreau** : Service de recommandation\n3. **Tribunaux** : Information du centre d'auto-assistance\n4. **En ligne** : www.lsc.gov pour la Corporation de Services Juridiques\n5. **Organisations Communautaires** : Églises, associations sans but lucratif\n\n### Conseils pour Travailler avec l'Aide Juridique Gratuite\n- Demandez tôt (listes d'attente longues)\n- Soyez organisé avec vos documents\n- Faites des suivis régulièrement\n- Soyez honnête sur votre situation\n"
+        },
+        "3": {
+          "title": "Connaissez Vos Droits avec la Police",
+          "description": "Comprendre vos droits constitutionnels lors de rencontres avec les forces de l'ordre.",
+          "content": "\n## Vos Droits Constitutionnels\n\n### Lors d'un Contrôle de Circulation\n- Restez calme et poli\n- Vous avez le droit de garder le silence\n- Fournissez permis, registration, assurance\n- Vous pouvez refuser de consentir à une fouille\n- Demandez si vous êtes libre de partir\n\n### Si Vous Êtes Arrêté dans la Rue\n- Vous n'avez pas à répondre aux questions\n- Vous pouvez demander « Suis-je détenu ? »\n- Vous avez le droit de partir (si vous n'êtes pas détenu)\n- Ne résistez pas à l'arrestation, même si elle est illégale\n\n### Vos Droits\n1. **Droit de Garder le Silence** : Ne répondez pas au-delà de l'identification\n2. **Droit à un Avocat** : Demandez-en un avant l'interrogatoire\n3. **Droit de Refuser les Fouilles** : Ne consentez pas aux fouilles\n4. **Droit d'Effectuer un Appel Téléphonique** : Après l'arrestation\n\n### Si l'ICE Vient à Votre Porte\n- Vous n'avez pas à ouvrir la porte\n- Demandez un mandat signé par un juge\n- Vous avez le droit de garder le silence\n- Ne signez aucun document sans avocat\n\n### Que Faire\n- Restez calme et ne discutez pas\n- Ne résistez pas, même si vos droits sont violés\n- Déposez une plainte ultérieurement si vous êtes maltraité\n- Documentez tout ce dont vous vous souvenez\n\n### Important\n- Ces droits s'appliquent à tous, quel que soit le statut d'immigration\n- Ne portez pas de faux documents\n- Connaissez vos contacts d'urgence\n"
+        },
+        "4": {
+          "title": "Contraventions et Infractions Routières",
+          "description": "Comment gérer les avis de contravention et protéger votre dossier de conduite.",
+          "content": "\n## Comprendre les Contraventions Routières\n\n### Quand Vous Recevez une Contravention\n1. **Ne l'ignorez pas** - les délais sont stricts\n2. **Lisez attentivement** - comprenez l'infraction\n3. **Notez vos options** - payer, contester ou aller à l'école de conduite\n\n### Vos Options\n**Option 1 : Payer l'Amende**\n- Admet la faute\n- Points sur votre dossier\n- Les primes d'assurance peuvent augmenter\n\n**Option 2 : Contester la Contravention**\n- Demandez une audience au tribunal\n- Présentez votre défense\n- Réduction ou annulation possible\n\n**Option 3 : École de Conduite**\n- Peut empêcher les points sur le dossier\n- Disponible pour les infractions mineures\n- Généralement option unique\n\n### Défenses Courantes\n- Signalisation inadéquate\n- Dysfonctionnement radar/lidar\n- Situation d'urgence\n- Informations incorrectes sur la contravention\n\n### Impact sur l'Immigration\n- Certaines infractions affectent le statut d'immigration\n- Le conduite en état d'ivresse peut avoir des conséquences graves\n- Plusieurs contraventions peuvent montrer « un manque de bonne moralité »\n\n### Conseils\n- Prenez des photos de l'emplacement\n- Notez la météo et les conditions routières\n- Rassemblez les témoignages\n- Envisagez de consulter un avocat pour les infractions graves\n"
+        },
+        "5": {
+          "title": "Comprendre les Droits du Travail de Base",
+          "description": "Vos droits et protections sur le lieu de travail selon les lois fédérales et étatiques.",
+          "content": "\n## Droits sur le Lieu de Travail\n\n### Protections Fédérales\n**Loi sur les Normes de Travail Équitables (FLSA) :**\n- Salaire minimum (7,25 $ fédéral, plus élevé dans de nombreux États)\n- Paiement des heures supplémentaires (1,5x pour plus de 40 heures/semaine)\n- Restrictions sur le travail des enfants\n\n**Lois Anti-Discrimination :**\n- Titre VII : Race, couleur, religion, sexe, origine nationale\n- ADA : Discrimination liée au handicap\n- ADEA : Discrimination liée à l'âge (40+)\n- Loi sur l'Égalité de Rémunération : Équité salariale entre les sexes\n\n### Vos Droits\n1. **Droit au Salaire Minimum** : Vérifiez les lois étatiques pour des taux plus élevés\n2. **Droit aux Heures Supplémentaires** : Sauf exemption\n3. **Droit à un Lieu de Travail Sûr** : Protections de l'OSHA\n4. **Droit à la Non-Discrimination** : Déposez des plaintes si nécessaire\n5. **Droit à l'Organisation** : Former ou adhérer à des syndicats\n\n### Obligations de l'Employeur\n- Fournir des conditions de travail sûres\n- Payer les salaires à temps\n- Maintenir des registres précis\n- Afficher les avis obligatoires sur le lieu de travail\n- Fournir des aménagements raisonnables\n\n### Si Vos Droits Sont Violés\n1. Documentez tout\n2. Déposez une plainte interne\n3. Contactez l'EEOC (discrimination)\n4. Contactez le Département du Travail (salaires)\n5. Consultez un avocat du travail\n\n### Conseils pour les Immigrants\n- Conservez des copies de tous les documents de travail\n- Connaissez votre statut d'autorisation de travail\n- Signalez les infractions en toute sécurité\n- Comprenez les protections contre les représailles\n"
+        }
       },
       "career": {
-        "title": "Rédaction de CV et Recherche d'Emploi",
-        "description": "Créez un CV percutant, réussissez vos entretiens et naviguez efficacement sur le marché du travail moderne.",
-        "content": "\n## Construire Votre Profil Professionnel\n\n### Essentiels du CV\n**Format :**\n- Une page (début de carrière)\n- Deux pages (expérimenté)\n- Police propre et lisible\n- Mise en forme cohérente\n\n**Sections à Inclure :**\n1. Coordonnées\n2. Résumé Professionnel\n3. Expérience Professionnelle\n4. Éducation\n5. Compétences\n6. Certifications (si pertinent)\n\n### Rédiger des Points d'Impact\n**Utilisez la Méthode STAR :**\n- Situation\n- Tâche\n- Action\n- Résultat\n\n**Exemple :**\n\"Géré une équipe de 5 (Situation) pour terminer le projet 2 semaines en avance (Tâche) en mettant en œuvre des flux de travail agiles (Action), ce qui a entraîné des économies de 50 000 $ (Résultat)\"\n\n### Préparation à l'Entretien\n**Questions Courantes :**\n- \"Parlez-moi de vous\"\n- \"Pourquoi voulez-vous ce poste ?\"\n- \"Quels sont vos points forts/faibles ?\"\n- \"Décrivez un défi que vous avez surmonté\"\n\n**Questions à Poser :**\n- Responsabilités quotidiennes\n- Structure de l'équipe\n- Opportunités de croissance\n- Culture d'entreprise\n\n### Stratégies de Recherche d'Emploi\n1. **Réseautage** : 70 % des emplois trouvés par les relations\n2. **LinkedIn** : Optimisez votre profil, engagez-vous avec le contenu\n3. **Sites d'Emploi** : Indeed, Glassdoor, sites spécialisés\n4. **Candidatures Directes** : Pages carrière des entreprises\n5. **Recruteurs** : Agences spécialisées\n\n### Suivi\n- E-mail de remerciement sous 24 heures\n- Vérification du statut après 1-2 semaines\n- Restez professionnel et persistant\n"
+        "1": {
+          "title": "Construire un CV Solide",
+          "description": "Créez un CV professionnel qui vous démarque auprès des employeurs.",
+          "content": "\n## Essentiels du CV\n\n### Lignes Directrices de Format\n- Une page (début de carrière)\n- Deux pages (professionnels expérimentés)\n- Police propre et lisible (Arial, Calibri)\n- Mise en forme cohérente\n\n### Sections à Inclure\n1. **Coordonnées** : Nom, téléphone, email, LinkedIn\n2. **Résumé Professionnel** : 2-3 phrases mettant en avant les qualifications clés\n3. **Expérience Professionnelle** : La plus récente en premier\n4. **Éducation** : Diplômes, certifications\n5. **Compétences** : Techniques et comportementales\n\n### Rédiger des Points d'Impact\n**Utilisez la Méthode STAR :**\n- Situation : Contexte du travail\n- Tâche : Votre responsabilité\n- Action : Ce que vous avez fait\n- Résultat : Résultat obtenu\n\n**Exemple :**\n\"Géré une équipe de 5 (S) pour terminer le projet 2 semaines en avance (T) en implémentant des flux de travail agiles (A), résultant en des économies de 50 000 $ (R)\"\n\n### Conseils pour les Immigrants\n- Traduisez les diplômes étrangers de manière appropriée\n- Mettez en avant les compétences transférables\n- Incluez les compétences linguistiques\n- Utilisez le format de CV américain (pas de photo, pas d'âge)\n\n### Erreurs Courantes\n- Fautes d'orthograpde et de grammaire\n- Objectifs généraux\n- Lister les tâches au lieu des réalisations\n- Inclure des informations non pertinentes\n"
+        },
+        "2": {
+          "title": "Réussir Votre Entretien d'Embauche",
+          "description": "Préparez-vous et réussissez vos entretiens pour décrocher le poste de vos rêves.",
+          "content": "\n## Préparation à l'Entretien\n\n### Avant l'Entretien\n**Recherchez l'Entreprise :**\n- Mission et valeurs\n- Produits ou services\n- Actualités et réalisations récentes\n- Culture d'entreprise\n\n**Préparez Vos Réponses :**\n- « Parlez-moi de vous »\n- « Pourquoi voulez-vous ce poste ? »\n- « Quels sont vos points forts/faibles ? »\n- « Décrivez un défi que vous avez surmonté »\n\n### Pendant l'Entretien\n**Langage Corporel :**\n- Poignée de main ferme\n- Maintenez le contact visuel\n- Asseyez-vous droit\n- Souriez naturellement\n\n**Communication :**\n- Répondez aux questions avec concision\n- Fournissez des exemples spécifiques\n- Posez des questions pertinentes\n- Montrez de l'enthousiasme\n\n### Questions à Poser\n- Responsabilités quotidiennes\n- Structure de l'équipe\n- Opportunités de croissance\n- Culture de l'entreprise\n\n### Après l'Entretien\n1. Envoyez un email de remerciement sous 24 heures\n2. Faites un suivi après 1-2 semaines sans réponse\n3. Continuez vos recherches d'emploi\n4. Apprenez de chaque entretien\n\n### Conseils pour les Immigrants\n- Entraînez-vous à la prononciation anglaise si nécessaire\n- Soyez prêt à discuter de votre autorisation de travail\n- Mettez en avant l'expérience internationale comme atout\n- Ne vous excusez pas pour votre accent - soyez confiant\n"
+        },
+        "3": {
+          "title": "Réseautage pour la Réussite Professionnelle",
+          "description": "Construisez des relations professionnelles qui ouvrent les portes à de nouvelles opportunités.",
+          "content": "\n## Pourquoi Réseauter ?\n\n### Les Chiffres\n- 70-80 % des emplois sont trouvés via le réseautage\n- Les recommandations sont embauchées 55 % plus vite\n- Les employés avec un réseau gagnent plus avec le temps\n\n### Types de Réseautage\n**1. Événements en Présentiel :**\n- Conférences de l'industrie\n- Rencontres professionnelles\n- Événements de chambre de commerce\n- Rassemblements communautaires\n\n**2. Réseautage en Ligne :**\n- Connexions LinkedIn\n- Forums professionnels\n- Réseaux d'anciens élèves\n- Groupes de l'industrie\n\n### Comment Réseauter Efficacement\n**Faites :**\n- Soyez authentique et curieux des autres\n- Offrez de l'aide avant de demander\n- Faites un suivi après avoir rencontré quelqu'un\n- Participez régulièrement aux événements\n\n**Ne Faites Pas :**\n- Être trop agressif ou insistant\n- Contacter les gens seulement quand vous avez besoin de quelque chose\n- Oublier de faire un suivi\n- Brûler les ponts\n\n### Construire Votre Réseau\n1. Commencez par les gens que vous connaissez\n2. Adhérez à des associations professionnelles\n3. Faites du bénévolat dans votre industrie\n4. Participez aux événements d'anciens élèves\n5. Utilisez LinkedIn stratégiquement\n\n### Conseils pour les Immigrants\n- Adhérez à des organisations culturelles et professionnelles\n- Participez aux rencontres spécifiques à votre industrie\n- Connectez-vous avec d'autres dans votre domaine\n- Construisez des relations avant d'en avoir besoin\n"
+        },
+        "4": {
+          "title": "Optimisation de Profil LinkedIn",
+          "description": "Créez une présence sur LinkedIn qui attire les recruteurs et les opportunités.",
+          "content": "\n## Pourquoi LinkedIn est Important\n\n### La Plateforme\n- 900+ millions de professionnels dans le monde\n- Plateforme de recrutement n°1\n- 87 % des recruteurs utilisent LinkedIn\n\n### Essentiels du Profil\n**1. Photo Professionnelle**\n- Photo de profil, tenue professionnelle\n- Expression amicale\n- Bon éclairage, arrière-plan simple\n\n**2. Titre**\n- Plus que le simple intitulé du poste\n- Incluez les compétences clés et la proposition de valeur\n- Utilisez les mots-clés que recherchent les recruteurs\n\n**3. Résumé**\n- 3-5 paragraphes sur votre expérience\n- Mettez en avant les réalisations et compétences\n- Incluez un appel à l'action\n\n**4. Expérience**\n- Concentrez-vous sur les réalisations, pas les tâches\n- Utilisez des métriques et des chiffres\n- Incluez les mots-clés pertinents\n\n### Construire Votre Présence\n- Connectez-vous avec des collègues et camarades de classe\n- Partagez du contenu pertinent de l'industrie\n- Interagissez avec les publications des autres\n- Rejoignez des groupes pertinents\n\n### Conseils pour les Immigrants\n- Listez les compétences multilingues de manière proéminente\n- Mettez en avant l'expérience internationale\n- Connectez-vous avec des groupes professionnels de la diaspora\n- Interagissez avec le contenu de votre industrie\n\n### Erreurs Courantes\n- Profil incomplet\n- Pas de photo de profil\n- Réseautage passif (pas d'interaction)\n- Se connecter sans personnaliser les messages\n"
+        },
+        "5": {
+          "title": "Réaliser un Changement de Carrière",
+          "description": "Transitionnez avec succès vers un nouveau parcours professionnel ou une nouvelle industrie.",
+          "content": "\n## Planifier Votre Transition\n\n### Auto-Évaluation\n**Demandez-vous :**\n- Quelles sont mes compétences transférables ?\n- Qu'est-ce qui me passionne ?\n- Quelles sont mes besoins financiers ?\n- Quel est mon calendrier ?\n\n### Compétences Transférables\n**Compétences Universelles :**\n- Communication\n- Résolution de problèmes\n- Leadership\n- Gestion de projets\n- Service à la clientèle\n\n### Développer de Nouvelles Compétences\n**Options :**\n- Cours en ligne (Coursera, LinkedIn Learning)\n- Programmes de collèges communautaires\n- Certifications professionnelles\n- Bénévolat\n- Projets freelance\n\n### Stratégie de Recherche d'Emploi\n1. **Recherche** : Comprenez les exigences de la nouvelle industrie\n2. **Réseautage** : Connectez-vous avec les gens du domaine visé\n3. **Montée en Compétences** : Obtenez les certifications ou formations nécessaires\n4. **Repositionnement** : Mettez à jour votre CV et LinkedIn pour la nouvelle direction\n5. **Candidature** visez les postes d'entrée ou de transition\n\n### Planification Financière\n- Économisez 6-12 mois de dépenses\n- Envisagez une transition à temps partiel\n- Négociez le salaire basé sur les compétences transférables\n\n### Conseils pour les Immigrants\n- Tirez parti de l'expérience internationale\n- Mettez en avant les compétences linguistiques et culturelles\n- Envisagez des postes nécessitant des compétences bilingues\n- Explorez les entreprises avec des initiatives de diversité\n\n### Calendrier\n- Changement de carrière typique : 6-18 mois\n- Soyez patient et persistant\n- Célébrez les petites victoires en chemin\n"
+        }
+      },
+      "health": {
+        "1": {
+          "title": "Comprendre l'Assurance Maladie",
+          "description": "Naviguer le système d'assurance maladie américain et choisir le bon plan.",
+          "content": "\n## Bases de l'Assurance Maladie\n\n### Types de Couverture\n**Patronale :**\n- Type le plus courant\n- L'employeur paie une partie de la prime\n- Diverses options de plan (HMO, PPO, EPO)\n\n**Marché (ACA) :**\n- Inscription ouverte : 1 nov - 15 janv\n- Inscription spéciale : Événements de vie\n- Subventions basées sur les revenus\n\n**Programmes Gouvernementaux :**\n- Medicare (65+ ou handicapés)\n- Medicaid (faibles revenus)\n- CHIP (enfants)\n\n### Termes Clés\n- **Prime** : Paiement mensuel\n- ** franchise** : Montant que vous payez avant que l'assurance ne prenne en charge\n- **Co-paiement** : Montant fixe par visite\n- **Co-assurance** : Pourcentage que vous payez après la franchise\n- **Maximum de débours** : Ce que vous payez le plus en une année\n\n### Choisir un Plan\n1. Comparez les primes mensuelles vs. les coûts de débours\n2. Vérifiez si vos médecins sont dans le réseau\n3. Considérez vos besoins de santé\n4. Vérifiez la couverture des médicaments sur ordonnance\n\n### Important pour les Immigrants\n- Certains programs ont des délais d'attente\n- Les soins d'urgence ne peuvent pas être refusés\n- Vérifiez l'éligibilité Medicaid de votre État\n- Le marché ne demande pas le statut d'immigration\n\n### Conseils\n- Ne sautez pas les soins préventifs\n- Comprenez votre couverture avant de chercher des soins\n- Conservez des copies de tous les dossiers médicaux"
+        },
+        "2": {
+          "title": "Medicaid et Couverture à Faibles Revenus",
+          "description": "Comprendre l'éligibilité et les avantages des programmes gouvernementaux de santé.",
+          "content": "\n## Qu'est-ce que Medicaid ?\n\n### Éligibilité\n**Qui est Éligible :**\n- Personnes et familles à faibles revenus\n- Femmes enceintes\n- Enfants\n- Personnes en situation de handicap\n- Personnes âgées (65+)\n\n**Limites de Revenus :**\n- Varie selon l'État\n- 138 % du seuil de pauvreté fédéral (dans les États d'expansion)\n- Vérifiez les exigences spécifiques de votre État\n\n### Comment Postuler\n1. Visitez Healthcare.gov ou le site de votre État\n2. Remplissez la demande en ligne\n3. Fournissez les justificatifs de revenus\n4. Attendez la décision (généralement 30-45 jours)\n\n### Ce que Medicaid Couvre\n- Visites chez le médecin\n- Hospitalisations\n- Médicaments sur ordonnance\n- Services de santé mentale\n- Dentaire et visuel (certains États)\n- Services de laboratoire et radiologie\n\n### CHIP (Assurance Maladie des Enfants)\n- Pour les familles qui gagnent trop pour Medicaid\n- Couvre les enfants de moins de 19 ans\n- À faible coût ou gratuit\n\n### Conseils pour les Immigrants\n- Medicaid d'urgence disponible quel que soit le statut\n- Certains États couvrent les enfants sans papiers\n- Vérifiez les programmes spécifiques à l'État\n- N'ayez pas peur de postuler\n\n### Ressources\n- Healthcare.gov : 1-800-318-2596\n- Bureaux étatiques Medicaid\n- Centres de santé communautaires\n"
+        },
+        "3": {
+          "title": "Urgences et Soins d'Urgence",
+          "description": "Quand utiliser les services d'urgence et comment gérer les urgences médicales.",
+          "content": "\n## Quand Utiliser les Services d'Urgence\n\n### Service des Urgences (ER)\n**Allez aux ER Pour :**\n- Douleur thoracique ou difficultés respiratoires\n- Saignements abondants\n- Symptômes d'AVC\n- Blessures graves\n- Réactions allergiques\n- Complications de grossesse\n\n### Soins d'Urgence\n**Utilisez les Soins d'Urgence Pour :**\n- Blessures mineures\n- Maladies (grippe, rhume, infections)\n- Brûlures mineures\n- Entorses et foulures\n- Quand les soins primaires ne sont pas disponibles\n\n### Droits de Traitement d'Urgence\n**Loi EMTALA :**\n- Les hôpitaux doivent traiter les urgences\n- Ne peuvent pas refuser en raison de l'incapacité de payer\n- Stabiliser avant la sortie\n- S'applique à tous, quel que soit le statut\n\n### À Quoi S'Attendre\n**Visite aux ER :**\n- Triage basé sur la gravité\n- Peut attendre si ce n'est pas une menace de vie\n- Traitement avant la facturation\n\n**Coûts :**\n- Les visites aux ER sont coûteuses (1 000 $+)\n- Les soins d'urgence sont moins chers (100 $-300 $)\n- Les soins primaires sont les plus abordables\n\n### Avant une Urgence\n1. Connaissez les hôpitaux et centres d'urgence les plus proches\n2. Gardez les contacts d'urgence accessibles\n3. Ayez les informations d'assurance prêtes\n4. Connaissez vos antécédents médicaux\n\n### Conseils pour les Immigrants\n- Les soins d'urgence ne peuvent pas être refusés\n- Vous recevrez une facture quel que soit le statut\n- Demandez des programmes d'aide financière\n- Envisagez les soins d'urgence pour les non-urgences\n"
+        },
+        "4": {
+          "title": "Ressources de Santé Mentale",
+          "description": "Trouver un soutien en santé mentale et des services de conseil dans votre communauté.",
+          "content": "\n## Pourquoi la Santé Mentale est Importante\n\n### Défis Courants\n- Stress du processus d'immigration\n- Choc culturel et adaptation\n- Isolement et solitude\n- Séparation familiale\n- Discrimination et préjugés\n\n### Types de Professionnels de Santé Mentale\n**Psychiatre** : Médecin, peut prescrire des médicaments\n**Psychologue** : Thérapie et tests, pas de médicaments\n**Conseiller Agréé (LPC)** : Thérapie et conseil\n**Travailleur Social (LCSW)** : Thérapie et gestion de cas\n\n### Trouver de l'Aide\n**Options Gratuites/À Bas Coût :**\n- Centres de santé mentale communautaires\n- Cliniques de formation universitaire\n- Thérapeutes à barème mobile\n- Plateformes de thérapie en ligne\n\n**Ressources de Crise :**\n- Ligne Nationale de Prévention du Suicide : 988\n- Ligne de Texte de Crise : Envoyez HOME au 741741\n- Services d'urgence locaux : 911\n\n### Approches Thérapeutiques\n- Thérapie Cognitivo-Comportementale (TCC)\n- Thérapie de Parole\n- Thérapie de Groupe\n- Thérapie Familiale\n\n### Conseils pour les Immigrants\n- Cherchez des thérapeutes compétents culturellement\n- Beaucoup offrent des services en plusieurs langues\n- La thérapie en ligne peut être plus accessible\n- N'attendez pas la crise pour chercher de l'aide\n\n### Ressources\n- Ligne d'Aide SAMHSA : 1-800-662-4357\n- Moteur de recherche de thérapeutes Psychology Today\n- Organisations communautaires locales"
+        },
+        "5": {
+          "title": "Trouver un Médecin de Première Ligne",
+          "description": "Comment choisir et établir une relation avec un médecin de première ligne.",
+          "content": "\n## Pourquoi les Soins de Première Ligne sont Importants\n\n### Avantages\n- Relation continue avec le médecin\n- Soins préventifs et dépistages\n- Coordination des soins spécialisés\n- Gestion des maladies chroniques\n- Coûts de santé globaux plus faibles\n\n### Types de Soins de Première Ligne\n**Médecine Familiale** : Tous les âges\n**Médecine Interne** : Adultes\n**Pédiatrie** : Enfants\n**OB/GYN** : Santé féminine\n\n### Comment Trouver un Médecin\n**1. Vérifiez le Réseau d'Assurance**\n- Utilisez le répertoire du fournisseur d'assurance\n- Appelez l'assurance pour la liste des médecins en réseau\n- Vérifiez qu'ils acceptent de nouveaux patients\n\n**2. Recherchez les Crédentials**\n- Certifié par le conseil\n- Affiliations hospitalières\n- Avis des patients\n\n**3. Considérez la Logistique**\n- Emplacement et horaires\n- Langue parlée\n- Disponibilité des rendez-vous\n\n### Que Apporter à la Première Visite\n- Carte d'assurance\n- Pièce d'identité avec photo\n- Liste des médicaments actuels\n- Dossier médical\n- Questions que vous souhaitez poser\n\n### Construire la Relation\n- Soyez honnête sur votre santé\n- Posez des questions quand vous ne comprenez pas\n- Faites le suivi des recommandations\n- Maintenez des rendez-vous réguliers\n\n### Conseils pour les Immigrants\n- Cherchez des médecins sensibles culturellement\n- Beaucoup de centres de santé communautaires servent des populations diverses\n- Services d'interprète disponibles dans la plupart des hôpitaux\n- Ne laissez pas les barrières linguistiques empêcher les soins"
+        }
+      },
+      "finance": {
+        "1": {
+          "title": "Ouvrir un Compte Bancaire",
+          "description": "Guide étape par étape pour ouvrir un compte courant ou d'épargne aux États-Unis.",
+          "content": "\n## Pourquoi Avoir un Compte Bancaire\n\n### Avantages\n- Endroit sûr pour garder l'argent\n- Dépôt direct pour les chèques de paie\n- Paiement de factures et banque en ligne\n- Construire un historique bancaire\n\n### Types de Comptes\n**Compte Courant :**\n- Pour les transactions quotidiennes\n- Accès par carte de débit\n- Frais mensuels possibles\n\n**Compte d'Épargne :**\n- Gagnez des intérêts sur les dépôts\n- Transactions limitées\n- Idéal pour un fonds d'urgence\n\n### Ce qu'il Faut pour Ouvrir un Compte\n**Documents :**\n- Pièce d'identité officielle (passeport, carte d'identité)\n- Carte de Sécurité Sociale ou ITIN\n- Justificatif de domicile (facture, bail)\n- Dépôt initial (varie selon la banque)\n\n### Choisir une Banque\n**Banques Traditionnelles :**\n- Service en personne\n- Plus de guichets automatiques\n- Frais plus élevés possibles\n\n**Banques en Ligne :**\n- Frais réduits ou nuls\n- Taux d'intérêt plus élevés\n- Pas de service en personne\n\n**Coopératives de Crédit :**\n- Propriété des membres\n- Frais plus bas\n- Service personnalisé\n\n### Conseils pour les Immigrants\n- ITIN accepté dans de nombreuses banques\n- Commencez par un compte de base\n- Construisez la relation avec le temps\n- Demandez des programmes adaptés aux immigrants\n\n### Ressources\n- MyBankTracker.com : Comparez les banques\n- NerdWallet.com : Avis sur les banques\n"
+        },
+        "2": {
+          "title": "Construire et Comprendre le Crédit",
+          "description": "Comment fonctionnent les scores de crédit et stratégies pour construire un bon historique de crédit.",
+          "content": "\n## Qu'est-ce qu'un Score de Crédit ?\n\n### Plages de Scores\n- 800+ : Exceptionnel\n- 740-799 : Très Bon\n- 670-739 : Bon\n- 580-669 : Moyen\n- Moins de 580 : Mauvais\n\n### Ce qui Affecte Votre Score\n**Historique de Paiement (35 %) :**\n- Paiements à temps\n- Paiements en retard\n- Impayés\n\n**Utilisation du Crédit (30 %) :**\n- Montant dû vs. limite de crédit\n- Maintenez en dessous de 30 % (idéalement 10 %)\n\n**Ancienneté du Crédit (15 %) :**\n- Âge du compte le plus ancien\n- Âge du compte le plus récent\n\n**Mix de Crédit (10 %) :**\n- Différents types de crédit\n- Cartes de crédit, prêts, hypothèque\n\n**Nouveau Crédit (10 %) :**\n- Demandes récentes\n- Interrogations dures\n\n### Comment Construire du Crédit\n1. **Carte de Crédit Sécurisée** : Le dépôt devient votre limite\n2. **Prêt Constructeur de Crédit** : Construisez un historique de paiement\n3. **Utilisateur Autorisé** : Sur le compte d'un membre de la famille\n4. **Cartes de Magasin** : Plus faciles à obtenir\n\n### Conseils pour les Immigrants\n- Commencez par une carte de crédit sécurisée\n- Payez en totalité chaque mois\n- Vérifiez votre rapport de crédit annuellement (gratuit sur AnnualCreditReport.com)\n- Ne demandez pas plusieurs cartes en même temps\n\n### Ressources\n- AnnualCreditReport.com : Rapports de crédit gratuits\n- Credit Karma : Suivi de crédit gratuit\n"
+        },
+        "3": {
+          "title": "Budget et Épargne",
+          "description": "Créez un budget qui fonctionne et constituez une épargne pour votre avenir.",
+          "content": "\n## Pourquoi Faire un Budget ?\n\n### Avantages\n- Contrôlez votre argent\n- Préparez-vous aux urgences\n- Atteignez vos objectifs financiers\n- Réduisez le stress lié à l'argent\n\n### La Règle 50/30/20\n**50 % Besoins :**\n- Logement\n- Alimentation\n- Transport\n- Assurance\n- Paiements minimaux de dettes\n\n**30 % Envies :**\n- Divertissement\n- Restaurant\n- Loisirs\n- Shopping\n\n**20 % Épargne/Dettes :**\n- Fonds d'urgence\n- Paiements supplémentaires de dettes\n- Épargne retraite\n\n### Constituer un Fonds d'Urgence\n**Objectif** : 3-6 mois de dépenses\n**Comment Commencer :**\n1. Ouvrez un compte d'épargne\n2. Automatisez les virements\n3. Commencez petit, augmentez avec le temps\n4. Gardez séparé du compte courant\n\n### Stratégies d'Épargne\n- Suivez chaque dépense\n- Utilisez des enveloppes d'espèces par catégorie\n- Coupez les abonnements inutiles\n- Cuisinez plus à la maison\n- Faites vos courses avec des listes\n\n### Conseils pour les Immigrants\n- Commencez à épargner même de petits montants\n- Envoyez l'argent à l'étranger judicieusement\n- Construisez du crédit américain tout en épargnant\n- Planifiez pour les urgences\n\n### Outils\n- Mint : Suivi de budget\n- YNAB : Application de budget\n- Les tableurs simples fonctionnent aussi\n"
+        },
+        "4": {
+          "title": "Envoyer de l'Argent à l'Étranger",
+          "description": "Comprendre les options de transfert et trouver les meilleurs taux pour les transferts internationaux.",
+          "content": "\n## Options de Transfert\n\n### Types de Services\n**Banques :**\n- Virements bancaires\n- Frais plus élevés (25 $-50 $)\n- Sécurisés mais lents\n\n**Services de Transfert d'Argent :**\n- Western Union, MoneyGram\n- Retrait d'espèces disponible\n- Frais modérés\n\n**Services en Ligne :**\n- Remitly, WorldRemit\n- Frais plus bas\n- Livraison plus rapide\n\n**Applications Mobiles :**\n- PayPal, Venmo (pays limités)\n- Frais bas\n- Pratique\n\n### Comparer les Coûts\n**Frais :**\n- Forfait vs. pourcentage\n- Frais cachés dans le taux de change\n- Comparez le coût total, pas seulement les frais\n\n**Taux de Change :**\n- Vérifiez le taux intermédiaire\n- La marge varie selon le service\n- Les taux changent constamment\n\n### Conseils pour Économiser\n1. Comparez plusieurs services\n2. Envoyez des montants plus importants moins fréquemment\n3. Évitez le retrait d'espèques (frais plus élevés)\n4. Utilisez les services en ligne quand possible\n5. Effectuez les transferts quand les taux sont favorables\n\n### Conseils de Sécurité\n- Utilisez des transféreurs d'argent agréés\n- Conservez les reçus de transfert\n- Vérifiez les informations du destinataire\n- Méfiez-vous des arnaques\n\n### Services Populaires\n- Remitly : Bon pour les Philippines, Inde, Mexique\n- WorldRemit : De nombreux pays\n- Wise : Meilleurs taux de change\n- Western Union : Plus grande disponibilité\n"
+        },
+        "5": {
+          "title": "Gérer les Dettes et Cartes de Crédit",
+          "description": "Stratégies pour rembourser les dettes et utiliser les cartes de crédit de manière responsable.",
+          "content": "\n## Comprendre les Dettes\n\n### Types de Dettes\n**Bonnes Dettes :**\n- Hypothèque (construit un patrimoine)\n- Prêts étudiants (augmente le potentiel de revenus)\n- Prêts commerciaux (génère des revenus)\n\n**Mauvaises Dettes :**\n- Cartes de crédit à taux élevé\n- Prêts sur salaire\n- Prêts auto (actif déprécié)\n\n### Stratégies de Remboursement\n**1. Méthode Avalanche :**\n- Payez d'abord le taux le plus élevé\n- Économisez le plus d'argent\n- Remboursement plus rapide\n\n**2. Méthode Boule de Neige :**\n- Payez d'abord le solde le plus petit\n- Victoires rapides motivent\n- Bon pour la motivation\n\n### Meilleures Pratiques avec les Cartes de Crédit\n**Faites :**\n- Payez en totalité chaque mois\n- Maintenez l'utilisation en dessous de 30 %\n- Utilisez les récompenses judicieusement\n- Surveillez les relevés\n\n**Ne Faites Pas :**\n- Maximisez les cartes\n- Payez seulement le minimum\n- Maintenez des soldes élevés\n- Demandez plusieurs cartes en même temps\n\n### Si Vous Êtes en Difficulté\n1. Contactez la société de carte de crédit\n2. Demandez un taux d'intérêt plus bas\n3. Envisagez un transfert de solde\n4. Cherchez un conseil en crédit sans but lucratif\n5. Évitez la faillite si possible\n\n### Conseils pour les Immigrants\n- Commencez avec une seule carte\n- Payez en totalité pour construire du crédit\n- Évitez les dettes à taux élevé\n- Constituez d'abord un fonds d'urgence\n\n### Ressources\n- Fondation Nationale pour le Conseil en Crédit\n- Debt.org : Information gratuite\n"
+        }
+      },
+      "education": {
+        "1": {
+          "title": "Cours d'Anglais (ESL)",
+          "description": "Trouver des cours d'anglais gratuits et à bas prix pour améliorer vos compétences linguistiques.",
+          "content": "\n## Pourquoi Apprendre l'Anglais ?\n\n### Avantages\n- Meilleures opportunités professionnelles\n- Accès aux services\n- Intégration sociale\n- Avancement éducatif\n\n### Types de Programmes ESL\n**Programmes Gratuits :**\n- Collèges communautaires\n- Bibliothèques publiques\n- Organisations communautaires\n- Groupes de bénévoles\n\n**Programmes à Bas Prix :**\n- Écoles de langue privées\n- Cours en ligne\n- Formation professionnelle\n\n### Comment Trouver des Cours\n1. **Collèges communautaires** : Ont souvent des programmes ESL gratuits\n2. **Bibliothèques publiques** : Cours et ressources gratuits\n3. **Organisations communautaires** : Églises, associations\n4. **En ligne** : Duolingo, Coursera, YouTube\n\n### Niveaux du Programme\n- Débutant (communication de base)\n- Intermédiaire (anglais professionnel)\n- Avancé (académique/professionnel)\n\n### Conseils pour Réussir\n- Pratiquez quotidiennement, même 15 minutes\n- Regardez des émissions en anglais\n- Lisez des livres simples ou des actualités\n- Rejoignez des groupes de conversation\n- N'ayez pas peur de faire des erreurs\n\n### Ressources\n- USAHello.org : Trouvez des cours près de chez vous\n- LiteracyDirectory.org\n- Éducation pour adultes du district scolaire local\n- Groupes Facebook pour l'échange de langues\n"
+        },
+        "2": {
+          "title": "Obtenir Votre GED/Équivalent du Lycée",
+          "description": "Étapes pour obtenir un diplôme équivalent du lycée aux États-Unis.",
+          "content": "\n## Qu'est-ce qu'un GED ?\n\n### Aperçu\n- Tests de Développement Éducatif Général\n- Équivalent au diplôme du lycée\n- Accepté par les universités et les employeurs\n\n### Éligibilité\n- Généralement 18 ans et plus\n- Ne pas être inscrit actuellement au lycée\n- Certains États autorisent les mineurs sous conditions\n\n### Sujets du Test\n1. **Raisonnement Mathématique**\n   - Arithmétique, algèbre, géométrie\n   - Calculatrice autorisée\n\n2. **Raisonnement à Travers les Arts du Langage**\n   - Compréhension de lecture\n   - Compétences rédactionnelles\n\n3. **Sciences**\n   - Sciences de la vie\n   - Sciences physiques\n   - Sciences de la Terre\n\n4. **Études Sociales**\n   - Histoire\n   - Gouvernement\n   - Économie\n   - Géographie\n\n### Comment Se Préparer\n- Cours de préparation gratuits dans les collèges communautaires\n- Tests pratiques en ligne\n- Guides d'étude et livres\n- Khan Academy (gratuit)\n\n### Passer le Test\n- Trouvez un centre de test sur GED.com\n- Planifiez votre test\n- Apportez une pièce d'identité valide\n- Payez les frais de test (30 $-40 $ par matière)\n\n### Après la Réussite\n- Demandez une transcription officielle\n- Utilisez-la pour les candidatures universitaires\n- Ajoutez-la à votre CV\n- Continuez votre éducation\n\n### Conseils pour les Immigrants\n- Les cours ESL peuvent aider à se préparer\n- Beaucoup de programmes offrent un soutien bilingue\n- Passez des tests pratiques d'abord\n- Ne vous précipitez pas - préparez-vous correctement\n"
+        },
+        "3": {
+          "title": "Opportunités Universitaires et Bourses",
+          "description": "Trouver une aide financière et des opportunités éducatives pour les immigrants.",
+          "content": "\n## Options Universitaires\n\n### Types d'Institutions\n**Collèges Communautaires :**\n- Programmes de 2 ans\n- Coûts plus bas\n- Transfert vers des universités de 4 ans\n\n**Universités de 4 Ans :**\n- Diplômes de licence\n- Plus de ressources\n- Coûts plus élevés\n\n**Écoles Professionnelles :**\n- Formation en compétences spécifiques\n- Programmes plus courts\n- Axés sur l'emploi\n\n### Options d'Aide Financière\n**Subventions (Argent Gratuit) :**\n- Bourse Pell (fédérale)\n- Subventions étatiques\n- Subventions institutionnelles\n\n**Bourses :**\n- Basées sur le mérite\n- Basées sur les besoins\n- Spécifiques à des organisations\n\n**Prêts :**\n- Prêts étudiants fédéraux\n- Prêts privés (dernier recours)\n\n### Étudiants DACA\n- Éligibles à la frais de scolarité étatique (certains États)\n- Peuvent être éligibles à l'aide financière étatique\n- Bourses privées disponibles\n- Vérifiez les règles spécifiques à l'État\n\n### Ressources de Bourses\n1. Fastweb.com : Recherche de bourses\n2. Scholarships.com\n3. Organisations communautaires locales\n4. Associations culturelles\n5. Employeurs (remboursement des frais de scolarité)\n\n### Conseils pour les Immigrants\n- Renseignez-vous sur les politiques étatiques concernant les frais de scolarité des immigrants\n- Postulez à plusieurs bourses\n- Envisagez d'abord le collège communautaire\n- Ne supposez pas que vous ne pouvez pas vous le permettre\n"
+        },
+        "4": {
+          "title": "Apprentissage en Ligne et Développement de Compétences",
+          "description": "Utilisez les plateformes en ligne pour acquérir de nouvelles compétences et progresser dans votre carrière.",
+          "content": "\n## Avantages de l'Apprentissage en Ligne\n\n### Pourquoi en Ligne ?\n- Apprenez à votre rythme\n- Horaires flexibles\n- Souvent gratuit ou à bas prix\n- Pas besoin de se déplacer\n\n### Plateformes Populaires\n**Options Gratuites :**\n- Khan Academy : Matières académiques\n- Coursera : Cours universitaires (audit gratuit)\n- edX : Cours de Harvard, MIT\n- YouTube : Tutoriels et comment faire\n\n**Options Payantes :**\n- Udemy : Cours abordables\n- LinkedIn Learning : Compétences professionnelles\n- Skillshare : Compétences créatives\n- Pluralsight : Compétences techniques\n\n### Compétences Recherchées\n**Technologie :**\n- Compétences informatiques de base\n- Microsoft Office\n- Saisie de données\n- Gestion des réseaux sociaux\n\n**Santé :**\n- RSC/Secourisme\n- Terminologie médicale\n- Soins de base aux patients\n\n**Affaires :**\n- Service à la clientèle\n- Gestion de projets\n- Notions de comptabilité\n\n### Obtenir une Certification\n- De nombreuses certifications disponibles en ligne\n- Titres reconnus par l'industrie\n- Renforcez votre CV\n\n### Conseils pour Réussir\n- Fixez-vous des objectifs d'apprentissage spécifiques\n- Créez un emploi du temps\n- Prenez des notes et pratiquez\n- Appliquez ce que vous apprenez\n- Mettez les certifications sur votre CV\n\n### Ressources\n- Bibliothèque locale : Accès gratuit aux plateformes d'apprentissage\n- Collèges communautaires : Cours abordables\n- Centres de développement de la main-d'œuvre\n"
+        },
+        "5": {
+          "title": "Écoles Professionnelles et Formation Qualifiante",
+          "description": "Suivre une formation pratique pour des emplois qualifiés bien rémunérés.",
+          "content": "\n## Qu'est-ce que les Écoles Professionnelles ?\n\n### Aperçu\n- Formation à court terme, axée sur l'emploi\n- Apprentissage pratique\n- Certificats ou diplômes\n- Généralement 6 mois à 2 ans\n\n### Métiers Populaires\n**Santé :**\n- Assistant Médical\n- Hygiéniste Dentaire\n- Infirmier(ère) (LPN)\n\n**Technologie :**\n- Électricien\n- Technicien CVC\n- Plombier\n\n**Autres :**\n- Soudure\n- Technologie Automobile\n- Cosmétologie\n\n### Avantages\n- Plus rapide que l'université traditionnelle\n- Coûts plus bas\n- Forte demande de travailleurs qualifiés\n- Bons salaires\n\n### Coûts et Aide Financière\n- Frais de scolarité : 3 000 $-30 000 $\n- Aide financière disponible\n- Bourses spécifiques aux métiers\n- Certaines prises en charge par les employeurs\n\n### Trouver des Programmes\n1. Vérifiez les collèges communautaires locaux\n2. Renseignez-vous sur les écoles professionnelles\n3. Vérifiez l'accréditation\n4. Vérifiez les taux d'insertion professionnelle\n5. Parlez aux diplômés\n\n### Opportunités Professionnelles\n- Électricien : 60 000 $+/an\n- Plombier : 55 000 $+/an\n- Technicien CVC : 50 000 $+/an\n- Soudeur : 45 000 $+/an\n\n### Conseils pour les Immigrants\n- Les compétences professionnelles sont transférables\n- Programmes d'apprentissage disponibles\n- Commencez à gagner tout en apprenant\n- Créez votre propre entreprise\n"
+        }
+      },
+      "safety": {
+        "1": {
+          "title": "Vous Protéger des Arnaques",
+          "description": "Reconnaître et éviter les arnaques courantes ciblant les immigrants.",
+          "content": "\n## Arnaques Courantes Ciblant les Immigrants\n\n### Arnaques d'Immigration\n**Faux Avocats en Immigration :**\n- Notaires se faisant passer pour des avocats\n- Garantissant l'approbation des visas\n- Facturant pour des formulaires gouvernementaux gratuits\n\n**Impersonnateurs de l'ICE :**\n- Appelant en prétendant être l'ICE\n- Menaçant de déportation\n- Exigeant un paiement immédiat\n\n### Arnaques Financières\n**Arnaques de Transfert :**\n- Urgences fictives nécessistant des virements\n- Arnaques sentimentales demandant de l'argent\n- Schémas d'investissement promettant des rendements élevés\n\n**Arnaques par Téléphone/Email :**\n- Impersonnateurs de l'IRS\n- Alertes de fraude bancaire\n- Arnaques de support technique\n\n### Comment Vous Protéger\n1. **Vérifiez l'identité** : Ne donnez jamais d'informations personnelles à des appelants non sollicités\n2. **Renseignez-vous** : Vérifiez les avocats via le barreau de l'État\n3. **Ne payez jamais** : Les agences gouvernementales n'exigent pas de paiement immédiat\n4. **Remettez en question les garanties** : Personne ne peut garantir l'approbation d'un visa\n\n### Signes d'Alerte\n- Urgence ou menaces\n- Demandes de virements\n- Demandes de mots de passe ou codes PIN\n- Offres trop belles pour être vraies\n\n### Si Vous Êtes Arnaqué\n1. Arrêtez toute communication\n2. Signalez à la FTC : ReportFraud.ftc.gov\n3. Signalez à la police locale\n4. Contactez votre banque si de l'argent a été envoyé\n5. Prévenez les autres dans votre communauté\n\n### Ressources\n- FTC : 1-877-382-4357\n- Ligne non urgente de la police locale\n"
+        },
+        "2": {
+          "title": "Ressources de Violence Domestique",
+          "description": "Soutien et ressources pour les personnes victimes de violence domestique.",
+          "content": "\n## Qu'est-ce que la Violence Domestique ?\n\n### Définition\n- Violences physiques, émotionnelles ou sexuelles\n- Contrôle économique\n- Menaces sur le statut d'immigration\n- Isolement du soutien\n\n### Signes d'Alerte\n- Jalousie extrême\n- Comportement de contrôle\n- Isolement des amis/famille\n- Menaces ou intimidation\n- Contrôle financier\n- Menaces sur le statut d'immigration\n\n### Vos Droits\n- Vous avez le droit d'être en sécurité\n- Vous pouvez quitter une relation violente\n- Votre statut d'immigration est protégé\n- Vous pouvez obtenir de l'aide quel que soit votre statut\n\n### Planification de la Sécurité\n1. Gardez les documents importants prêts\n2. Ayez des contacts d'urgence\n3. Savoir où aller\n4. Gardez du cash et téléphone chargé\n5. Planifiez la route d'évasion\n\n### Ressources\n**Ligne Nationale contre la Violence Domestique :**\n- 1-800-799-7233\n- Textez START au 88788\n- Disponible 24/7, multilingue\n\n**Protections d'Immigration :**\n- Protections VAWA pour les immigrants\n- Visa U pour les victimes de crimes\n- Visa T pour les victimes de traite\n\n### Obtenir de l'Aide\n1. Appelez la ligne pour la planification de la sécurité\n2. Contactez un hébergement d'urgence local\n3. Consultez un avocat en immigration\n4. Obtenez une ordonnance de protection\n5. Constituez un réseau de soutien\n\n### Souvenez-vous\n- Ce n'est pas votre faute\n- Vous méritez mieux\n- De l'aide est disponible\n- Vous n'êtes pas seul(e)\n"
+        },
+        "3": {
+          "title": "Connaissez Vos Droits en Cas de Rencontre avec l'ICE",
+          "description": "Comprendre vos droits constitutionnels si les autorités d'immigration vous approchent.",
+          "content": "\n## Vos Droits\n\n### À Votre Porte\n- Vous n'avez pas à ouvrir la porte\n- Demandez un mandat signé par un juge\n- Le mandat de l'ICE (Formulaire I-200) n'est pas suffisant\n- Vous avez le droit de garder le silence\n\n### Dans la Rue\n- Vous n'avez pas à répondre aux questions\n- Vous pouvez garder le silence\n- Vous pouvez demander si vous êtes libre de partir\n- Ne courez pas et ne résistez pas\n\n### Au Travail\n- L'ICE a besoin d'un mandat judiciaire pour entrer dans les zones non publiques\n- Vous pouvez garder le silence\n- Ne signez aucun document\n\n### Si Vous Êtes Detenu\n1. Restez calme\n2. Demandez un avocat\n3. Ne signez rien\n4. Ne répondez à aucune question sans avocat\n5. Numéro de droits : 1-844-363-1423\n\n### Les Droits S'Appliquent à Tous\n- Quel que soit le statut d'immigration\n- Les citoyens américains ont aussi ces droits\n- Ne portez pas de faux documents\n- Connaissez vos contacts d'urgence\n\n### Plan d'Urgence\n1. Désignez un contact d'urgence\n2. Mémorisez le numéro de votre avocat\n3. Gardez les documents en lieu sûr\n4. Savoir où aller pour obtenir de l'aide\n5. Entraînez-vous à vos droits\n\n### Ressources\n- National Immigration Law Center\n- ACLU : aclu.org\n- United We Dream\n- Avocats en immigration locaux\n"
+        },
+        "4": {
+          "title": "Préparation aux Urgences pour les Familles",
+          "description": "Créez un plan d'urgence familial et préparez-vous aux situations inattendues.",
+          "content": "\n## Pourquoi Se Préparer ?\n\n### Urgences Courantes\n- Catastres naturelles\n- Urgences médicales\n- Contrôle d'immigration\n- Crises financières\n- Séparation familiale\n\n### Plan d'Urgence Familial\n**1. Plan de Communication :**\n- Désignez un contact hors de la ville\n- Établissez des points de rencontre\n- Tenez les contacts d'urgence à jour\n- Entraînez-vous aux simulations d'urgence\n\n**2. Documents Importants :**\n- Gardez des copies en lieu sûr\n- Stockage numérique (sauvegarde cloud)\n- Incluez identité, assurances, documents juridiques\n- Ayez des versions en anglais et dans votre langue maternelle\n\n**3. Kit d'Urgence :**\n- Eau (1 gallon par personne par jour)\n- Aliments non périssables\n- Médicaments\n- Trousse de premiers secours\n- Lampe de poche et piles\n- Espèces en petits billets\n- Chargeur de téléphone\n\n### Préparation Spécifique à l'Immigration\n- Connaissez vos droits\n- Mémorisez le numéro de votre avocat\n- Tenez les documents organisés\n- Désignez des contacts d'urgence\n- Planifiez la garde des enfants\n\n### Préparation Financière d'Urgence\n- Constituez un fonds d'urgence\n- Connaissez les programmes d'aide gouvernementale\n- Ayez des sources de revenus de remplacement\n- Gardez les documents financiers importants prêts\n\n### Conseils\n- Revoyez et mettez à jour le plan régulièrement\n- Entraînez-vous avec les membres de la famille\n- Gardez le plan accessible\n- Ne paniquez pas - la préparation réduit le stress\n\n### Ressources\n- Ready.gov : Préparation fédérale aux urgences\n- Croix-Rouge locale\n- Équipes de réponse communautaire aux urgences\n"
+        },
+        "5": {
+          "title": "Sécurité en Ligne et Vie Privée",
+          "description": "Protégez vos informations personnelles et restez en sécurité en ligne.",
+          "content": "\n## Pourquoi la Sécurité en Ligne est Importante\n\n### Menaces Courantes\n- Vol d'identité\n- Arnaques de phishing\n- Arnaques sentimentales\n- Fraude financière\n- Invasion de la vie privée\n\n### Protégez Vos Informations\n**Mots de passe :**\n- Utilisez des mots de passe robustes et uniques\n- Utilisez un gestionnaire de mots de passe\n- Activez l'authentification à deux facteurs\n\n**Informations Personnelles :**\n- Ne partagez pas sur les réseaux sociaux\n- Méfiez-vous du Wi-Fi public\n- Utilisez des sites web sécurisés (https://)\n\n### Reconnaître les Arnaques\n**Signes d'Alerte :**\n- Contact non sollicité\n- Urgence ou menaces\n- Demande d'argent\n- Trop beau pour être vrai\n- Fautes d'orthograpde/grammaire\n\n### Sécurité sur les Réseaux Sociaux\n- Vérifiez les paramètres de confidentialité\n- N'acceptez pas les demandes d'amis de inconnus\n- Méfiez-vous de ce que vous publiez\n- Ne partagez pas votre position en temps réel\n\n### Sécurité Financière\n- Utilisez des méthodes de paiement sécurisées\n- Vérifiez les relevés bancaires\n- Configurez des alertes de compte\n- Utilisez des numéros de carte de crédit virtuels\n\n### Si Vos Données Sont Compromises\n1. Changez les mots de passe immédiatement\n2. Contactez la banque/cartes de crédit\n3. Activez une alerte de fraude\n4. Signalez à la FTC\n5. Surveillez les rapports de crédit\n\n### Conseils pour les Immigrants\n- Méfiez-vous particulièrement des arnaques d'immigration\n- Ne payez pas pour des formulaires gouvernementaux gratuits\n- Vérifiez toute communication officielle\n- Utilisez des messages chiffrés quand c'est possible\n\n### Ressources\n- IdentityTheft.gov\n- HaveIBeenPwned.com : Vérifier les fuites de données\n- Consumer.ftc.gov\n"
+        }
+      },
+      "community": {
+        "1": {
+          "title": "S'Adapter à la Culture Américaine",
+          "description": "Comprendre les normes culturelles et conseils pour une intégration réussie.",
+          "content": "\n## Comprendre la Culture Américaine\n\n### Style de Communication\n**Communication Directe :**\n- Les Américains tendent à être directs\n- Ils disent ce qu'ils pensent\n- Les conversations informelles sont courantes\n- « Comment allez-vous ? » est une salutation, pas une question\n\n### Normes Sociales\n**Espace Personnel :**\n- Distance d'un bras\n- Ne vous approchez pas trop\n- Respectez les limites physiques\n\n**Ponctualité :**\n- Arrivez à l'heure aux rendez-vous\n- 5-10 minutes en avance c'est bien\n- Arriver en retard est considéré comme irrespectueux\n\n### Culture du Travail\n- Tenue professionnelle\n- Poignée de main en vous rencontrant\n- Maintenez le contact visuel\n- « Oui » signifie oui, « peut-être » signifie non\n\n### Conseils pour Réussir\n1. Observez et apprenez des autres\n2. Posez des questions quand vous n'êtes pas sûr\n3. N'ayez pas peur de faire des erreurs\n4. Soyez ouvert aux nouvelles expériences\n5. Trouvez des mentors culturels\n\n### Défis Courants\n- Barrières linguistiques\n- Coutumes sociales différentes\n- Nourriture et habitudes quotidiennes\n- Adaptation au climat\n\n### Adoptez Votre Culture\n- Partagez vos traditions\n- Trouvez des communautés culturelles\n- Enseignez aux autres sur votre culture\n- Célébrez votre héritage\n\n### Ressources\n- Centres communautaires\n- Organisations culturelles\n- Bibliothèques\n- Centres d'accueil pour immigrants\n"
+        },
+        "2": {
+          "title": "Construire un Réseau Social",
+          "description": "Faire des amis et des connexions dans votre nouvelle communauté.",
+          "content": "\n## Pourquoi les Connexions Sociales Sont Importantes\n\n### Avantages\n- Soutien émotionnel\n- Aide pratique\n- Opportunités de carrière\n- Apprentissage culturel\n- Moins d'isolement\n\n### Moyens de Rencontrer du Monde\n**En Présentiel :**\n- Centres communautaires\n- Organisations religieuses\n- Groupes de bénévoles\n- Ligues sportives\n- Cours et ateliers\n\n**En Ligne :**\n- Meetup.com\n- Groupes Facebook\n- Application Nextdoor\n- Bumble BFF (mode amis)\n\n### Construire des Relations\n**Soyez Proactif :**\n- Présentez-vous\n- Acceptez les invitations\n- Organisez de petits rassemblements\n- Faites des suivis\n\n**Soyez Authentique :**\n- Montrez de l'intérêt pour les autres\n- Posez des questions\n- Écoutez activement\n- Parlez de vous\n\n### Surmonter les Défis\n- Barrières linguistiques\n- Différences culturelles\n- Contraintes de temps\n- Timidité\n\n### Conseils pour les Immigrants\n- Adhérez à des organisations culturelles\n- Participez aux événements communautaires\n- Faites du bénévolat pour des causes qui vous tiennent à cœur\n- Soyez patient - les amitiés prennent du temps\n\n### Trouver Votre Communauté\n1. Explorez les événements locaux\n2. Rejoignez des groupes d'intérêt\n3. Participez aux services religieux\n4. Participez aux activités de quartier\n5. Connectez-vous avec d'autres immigrants\n\n### Ressources\n- Calendriers communautaires\n- Journaux locaux\n- Tableaux d'affichage des bibliothèques\n- Départements municipaux des loisirs\n"
+        },
+        "3": {
+          "title": "Échange et Pratique de Langues",
+          "description": "Trouver des opportunités pour pratiquer l'anglais et partager votre langue maternelle.",
+          "content": "\n## Avantages de l'Échange Linguistique\n\n### Pour Vous\n- Pratiquer la conversation en anglais\n- Apprendre le contexte culturel\n- Construire la confiance\n- Rencontrer du monde nouveau\n\n### Pour Votre Partenaire\n- Pratiquer votre langue maternelle\n- Apprendre sur votre culture\n- Construire des amitiés internationales\n\n### Trouver des Partenaires\n**En Présentiel :**\n- Centres communautaires\n- Bibliothèques\n- Cafés\n- Écoles de langues\n\n**En Ligne :**\n- Application Tandem\n- HelloTalk\n- ConversationExchange.com\n- Groupes de langues Meetup\n\n### Structurer les Séances\n**Format :**\n- 30 minutes par langue\n- Alternez les langues\n- Définissez des thèmes de conversation\n- Corrigez-vous doucement\n\n**Thèmes :**\n- Vie quotidienne\n- Travail et carrière\n- Culture et traditions\n- Actualités\n- Loisirs et intérêts\n\n### Conseils pour Réussir\n- Soyez patient avec vous-même\n- Faites des erreurs et apprenez-en\n- Pratiquez régulièrement\n- Concentrez-vous sur la communication, pas la perfection\n\n### Créer un Groupe\n1. Trouvez des participants intéressés\n2. Choisissez un horaire régulier\n3. Établissez des règles de base\n4. Faites tourner les animateurs\n5. Amusez-vous !\n\n### Ressources\n- Meetup.com : Groupes de langues\n- Facebook : Échange de langues local\n- Bibliothèques : Cercles de conversation\n"
+        },
+        "4": {
+          "title": "Trouver des Communautés de Foi",
+          "description": "Connectez-vous avec des communautés religieuses et spirituelles dans votre région.",
+          "content": "\n## Avantages des Communautés de Foi\n\n### Ce qu'Elles Offrent\n- Soutien spirituel\n- Connexions sociales\n- Ressources communautaires\n- Affinités culturelles\n- Soutien émotionnel\n\n### Trouver Votre Communauté\n**Types d'Organisations :**\n- Églises\n- Mosquées\n- Temples\n- Synagogues\n- Autres centres spirituels\n\n### Comment Trouver\n1. Recherchez en ligne votre communauté de foi\n2. Demandez aux voisins et collègues\n3. Vérifiez les panneaux d'affichage communautaires\n4. Visitez les centres culturels locaux\n5. Demandez aux bibliothèques\n\n### À Quoi S'Attendre\n- Ambiance accueillante\n- Programmes culturels\n- Soutien linguistique\n- Événements sociaux\n- Ressources communautaires\n\n### S'Impliquer\n- Participez aux services\n- Rejoignez des groupes d'étude\n- Faites du bénévolat pour des événements\n- Participez aux activités sociales\n- Connectez-vous avec les leaders communautaires\n\n### Conseils pour les Immigrants\n- De nombreuses communautés ont des programmes de soutien aux immigrants\n- Cherchez des services multilingues\n- Partagez vos traditions culturelles\n- Construisez des relations progressivement\n\n### Ressources Communautaires\n- Banques alimentaires\n- Collectes de vêtements\n- Aide à la recherche d'emploi\n- Cours ESL\n- Références d'aide juridique\n\n### Souvenez-vous\n- Vous n'êtes pas seul(e)\n- De nombreuses communautés accueillent les immigrants\n- Trouvez où vous vous sentez à l'aise\n- Prenez le temps d'explorer les options\n"
+        },
+        "5": {
+          "title": "Bénévolat et Contribuer",
+          "description": "Trouver des moyens significatifs de contribuer à votre nouvelle communauté.",
+          "content": "\n## Pourquoi Faire du Bénévolat ?\n\n### Avantages\n- Renforcez votre CV\n- Apprenez de nouvelles compétences\n- Rencontrez du monde\n- Contribuez à la communauté\n- Vous vous sentez connecté(e)\n\n### Trouver des Opportunités\n**Types :**\n- Service communautaire\n- Projets environnementaux\n- Soutien éducatif\n- Aide aux soins de santé\n- Réponse aux urgences\n\n**Lieux :**\n- Organisations sans but lucratif\n- Écoles et bibliothèques\n- Hôpitaux et cliniques\n- Organisations religieuses\n- Programmes gouvernementaux\n\n### Commencer\n1. Identifiez vos intérêts\n2. Renseignez-vous sur les organisations locales\n3. Contactez les coordinateurs de bénévoles\n4. Commencez par des engagements courts\n5. Développez à partir de là\n\n### Compétences à Partager\n- Compétences linguistiques\n- Expertise professionnelle\n- Connaissances culturelles\n- Compétences pédagogiques\n- Compétences techniques\n\n### Conseils pour les Immigrants\n- Partagez vos connaissances culturelles\n- Aidez d'autres immigrants\n- Construisez des connexions professionnelles\n- Pratiquez l'anglais dans des situations réelles\n\n### Faire la Différence\n- Commencez petit, pensez grand\n- Soyez régulier et fiable\n- Documentez votre expérience\n- Partagez votre histoire\n\n### Ressources\n- VolunteerMatch.org\n- Idealist.org\n- Points of Light\n- United Way local\n- Centres communautaires\n\n### Souvenez-vous\n- Chaque contribution compte\n- Votre perspective unique est précieuse\n- Construire la communauté profite à tous\n"
+        }
+      },
+      "work": {
+        "1": {
+          "title": "Comprendre l'Économie de Plateforme",
+          "description": "Naviguer le travail freelance, les VTC et les opportunités de contractant indépendant.",
+          "content": "\n## Qu'est-ce que l'Économie de Plateforme ?\n\n### Emplois de Plateforme Courants\n**VTC :**\n- Uber\n- Lyft\n- Via\n\n**Livraisons :**\n- DoorDash\n- Uber Eats\n- Grubhub\n- Instacart\n\n**Freelance :**\n- Rédaction\n- Design graphique\n- Programmation\n- Assistance virtuelle\n\n### Avantages et Inconvénients\n**Avantages :**\n- Horaires flexibles\n- Travaillez quand vous voulez\n- Pas de patron\n- Démarrage rapide\n\n**Inconvénients :**\n- Pas d'avantages\n- Impôts sur le travail indépendant\n- Instabilité des revenus\n- Pas de protections salariales\n\n### Commencer\n1. Choisissez votre plateforme\n2. Configurez les comptes\n3. Comprenez les obligations fiscales\n4. Enregistrez les revenus et dépenses\n5. Construisez votre réputation\n\n### Obligations Fiscales\n- Impôt sur le travail indépendant (15,3 %)\n- Impôts estimés trimestriels\n- Enregistrez toutes les dépenses\n- Tenez des registres détaillés\n\n### Conseils pour Réussir\n- Offrez un excellent service\n- Construisez des avis positifs\n- Gérez votre temps judicieusement\n- Économisez pour les impôts\n- Ayez des sources de revenus de remplacement\n\n### Ressources\n- IRS.gov : Info impôts travail indépendant\n- QuickBooks Self-Employed\n- Stride Health : Assurance pour travailleurs de plateforme\n"
+        },
+        "2": {
+          "title": "Connaissez Vos Droits du Travail",
+          "description": "Comprendre les lois sur les salaires, la sécurité au travail et les protections des employés.",
+          "content": "\n## Lois du Travail Fédérales\n\n### Salaire Minimum\n- Fédéral : 7,25 $/heure\n- État : Peut être plus élevé\n- Vérifiez le salaire minimum de votre État\n\n### Paiement des Heures Supplémentaires\n- 1,5x le tarif normal\n- Pour les heures dépassant 40/semaine\n- Certains employés sont exemptés\n\n### Sécurité au Travail (OSHA)\n- Conditions de travail sûres\n- Formation et équipement\n- Signalez les dangers\n- Pas de représailles\n\n### Anti-Discrimination\n- Vous ne pouvez pas être traité différemment\n- Sur la base de la race, du sexe, de la religion\n- Origine nationale, âge, handicap\n- Déposez des plaintes auprès de l'EEOC\n\n### Vos Droits\n1. **Droit au Salaire Minimum** : Vérifiez les lois étatiques\n2. **Droit aux Heures Supplémentaires** : Sauf exemption\n3. **Droit à un Lieu de Travail Sûr** : Signalez les dangers\n4. **Droit à la Non-Discrimination** : Déposez des plaintes\n5. **Droit à l'Organisation** : Rejoignez des syndicats\n\n### Si Vos Droits Sont Violés\n1. Documentez tout\n2. Signalez au superviseur\n3. Contactez le Département du Travail\n4. Déposez une plainte EEOC\n5. Consultez un avocat du travail\n\n### Conseils pour les Immigrants\n- Conservez des copies de tous les documents de travail\n- Connaissez votre statut d'autorisation de travail\n- Signalez les infractions en toute sécurité\n- Comprenez les protections contre les représailles\n\n### Ressources\n- Département du Travail : 1-866-487-2365\n- OSHA : 1-800-321-6742\n- EEOC : 1-800-669-4000\n"
+        },
+        "3": {
+          "title": "Se Remettre du Vol de Salaire",
+          "description": "Que faire si votre employeur vous doit des salaires ou viole les lois du travail.",
+          "content": "\n## Qu'est-ce que le Vol de Salaire ?\n\n### Formes Courantes\n- Non-paiement du salaire minimum\n- Non-paiement des heures supplémentaires\n- Vol de pourboires\n- Déductions non autorisées\n- Non-paiement pour toutes les heures travaillées\n\n### Vos Droits\n- Droit au salaire minimum\n- Droit au paiement des heures supplémentaires\n- Droit à des bulletins de paie exacts\n- Droit de déposer des plaintes\n\n### Étapes à Suivre\n**1. Documentez Tout**\n- Conservez les bulletins de paie\n- Enregistrez les heures travaillées\n- Gardez les dossiers d'emploi\n- Notez les infractions\n\n**2. Parlez à Votre Employeur**\n- Abordez le problème directement\n- Mettez par écrit\n- Conservez des copies de la communication\n\n**3. Déposez une Plainte**\n- Département du Travail\n- Département du Travail de l'État\n- Centres de travailleurs locaux\n\n**4. Action Juridique**\n- Consultez un avocat du travail\n- Rejoignez une action collective si disponible\n- Tribunal de petites créances\n\n### Options de Récupération\n- Salaires dus\n- Dommages-intérêts (double salaire)\n- Honoraires d'avocat\n- Pénalités contre l'employeur\n\n### Conseils pour les Immigrants\n- La documentation est cruciale\n- N'ayez pas peur de parler\n- De nombreuses organisations aident les immigrants\n- Vous ne perdrez pas votre statut d'immigration en signalant\n\n### Ressources\n- Division des Salaires et Heures du Département du Travail\n- Projet National de Loi du Travail\n- Centres de travailleurs locaux\n- Organisations d'aide juridique\n"
+        },
+        "4": {
+          "title": "Comprendre les Droits Syndicaux",
+          "description": "Comment fonctionnent les syndicats et vos droits à vous organiser au travail.",
+          "content": "\n## Qu'est-ce que les Syndicats ?\n\n### Objectif\n- Représenter les intérêts des travailleurs\n- Négocier de meilleurs salaires et avantages\n- Fournir une protection de l'emploi\n- Plaider pour des conditions de travail sûres\n\n### Vos Droits à Vous Organiser\n**Loi Nationale sur les Relations de Travail :**\n- Droit de former un syndicat\n- Droit de rejoindre un syndicat\n- Droit de s'abstenir de l'activité syndicale\n- Protection contre les représailles\n\n### Comment Fonctionnent les Syndicats\n1. Les travailleurs s'organisent\n2. Votent pour syndiquer (élection NLRB)\n3. Le syndicat négocie le contrat\n4. La direction accepte les termes\n5. Le contrat régit le lieu de travail\n\n### Avantages Syndicaux\n- Salaires plus élevés (en moyenne 10-20 % de plus)\n- Meilleurs avantages\n- Sécurité de l'emploi\n- Procédures de plaintes\n- Sécurité au travail\n\n### Trouver un Syndicat\n**Contactez :**\n- AFL-CIO : aflcio.org\n- Change to Win : changetowin.org\n- Syndicats spécifiques à l'industrie\n\n### Si Vous Voulez Vous Organiser\n1. Parlez aux collègues\n2. Contactez un syndicat existant\n3. Connaissez vos droits\n4. Construisez du soutien\n5. Demandez une élection\n\n### Conseils pour les Immigrants\n- Les syndicats protègent tous les travailleurs\n- Les barrières linguistiques peuvent être surmontées\n- Rejoignez des comités culturels\n- Construisez la solidarité avec les collègues\n\n### Ressources\n- National Labor Relations Board (NLRB)\n- Département du Travail\n- Salles syndicales locales\n- Centres de travailleurs\n"
+        },
+        "5": {
+          "title": "Autorisation de Travail et Visas",
+          "description": "Comprendre les différentes catégories de visa de travail et maintenir l'autorisation.",
+          "content": "\n## Types de Visas de Travail\n\n### Visas de Travail Temporaires\n**H-1B :** Professions spécialisées\n- Nécessite un diplôme universitaire\n- Parrainage de l'employeur\n- Plafond annuel de 65 000\n\n**L-1 :** Transferts intra-entreprise\n- Niveau cadre/exécutif\n- Connaissances spécialisées\n- L'entreprise doit être liée\n\n**O-1 :** Capacité extraordinaire\n- Arts, sciences, affaires\n- Excellence démontrée\n\n**TN :** Professionnels de l'ALÉNA\n- Canada et Mexique\n- Professions spécifiques\n\n### Visas Étudiants avec Travail\n**F-1 OPT :**\n- 12 mois après l'obtention du diplôme\n- Prolongation STEM disponible\n- Doit être lié à la spécialité\n\n**CPT :**\n- Pendant les études\n- Requis pour certains programmes\n- Rémunéré ou bénévole\n\n### Maintenir le Statut\n1. Gardez le visa valide\n2. Signalez les changements d'adresse\n3. Maintenez l'autorisation de travail\n4. Connaissez vos dates d'expiration\n5. Consultez un avocat pour les changements\n\n### Problèmes Courants\n- Expiration du visa\n- Violations de statut\n- Lacunes d'emploi\n- Changements de statut\n\n### Conseils\n- Conservez des copies de tous les documents\n- Notez les dates d'expiration\n- Ne travaillez pas sans autorisation\n- Consultez un avocat avant de changer de statut\n\n### Ressources\n- USCIS.gov\n- Département d'État\n- Avocats en immigration\n- Organisations de droits du travail\n"
+        }
       }
     }
   },
@@ -388,7 +745,9 @@
     "aiResponseDefault": "Intéressant ! Pour des détails spécifiques, je vous recommande de parler à l'un de nos consultants via WhatsApp ou d'ouvrir un ticket de support.",
     "ticketTab": "Ticket",
     "aiTab": "Chat IA",
-    "typeMessage": "Tapez votre question..."
+    "typeMessage": "Tapez votre question...",
+    "aiAssistant": "Assistant IA",
+    "online": "En ligne"
   },
   "plans": {
     "title": "Forfaits d'Adhésion",
@@ -398,6 +757,8 @@
     "selectPlan": "Sélectionner le forfait",
     "whatsIncluded": "Ce qui est inclus :",
     "note": "Tous les forfaits incluent nos services de protection de base. Vous pouvez mettre à niveau ou annuler à tout moment.",
+    "premiumMember": "Membre Premium",
+    "premiumNote": "Vous avez un accès complet à toutes les fonctionnalités premium. Merci d'être un membre précieux !",
     "month": "/mois",
     "alreadySubscribed": "Vous êtes déjà abonné à ce forfait",
     "subscribeSuccess": "Vous vous êtes abonné avec succès au forfait {{plan}}.",
@@ -464,7 +825,24 @@
     "processing": "Traitement du paiement...",
     "success": "Paiement réussi !",
     "failed": "Paiement échoué",
-    "secureNote": "Vos informations de paiement sont cryptées et sécurisées."
+    "secureNote": "Vos informations de paiement sont cryptées et sécurisées.",
+    "finalizePurchase": "Finaliser l'achat",
+    "planLabel": "Forfait",
+    "monthlySubscription": "Abonnement mensuel",
+    "includedInPlan": "Inclus dans ce forfait",
+    "moreBenefits": "+{{count}} avantages supplémentaires",
+    "showLess": "Afficher moins",
+    "securePayment": "Paiement sécurisé",
+    "stripeSecurityNote": "Votre paiement est traité de manière sécurisée via Stripe. Nous ne stockons jamais vos informations de carte.",
+    "iapSecurityNote": "Le paiement est traité de manière sécurisée via la boutique d'applications de votre appareil. Nous ne stockons jamais vos informations de paiement.",
+    "payAmount": "Payer ${{price}}",
+    "subscribe": "S'abonner",
+    "noPaymentRequired": "Aucun paiement requis pour le forfait gratuit.",
+    "viewPlans": "Voir les forfaits",
+    "demoModeSuccess": "Mode démo : Forfait {{plan}} activé avec succès !",
+    "demoModeFailed": "Échec de l'activation du forfait en mode démo",
+    "redirectingToPayment": "Redirection vers la page de paiement Stripe...",
+    "planActivated": "Forfait {{plan}} activé avec succès !"
   },
   "planDetails": {
     "title": "Mon Forfait",
@@ -554,5 +932,314 @@
     "noSupportRequests": "Aucune demande de support",
     "priority": "Priorité",
     "status": "Statut"
+  },
+  "onboarding": {
+    "slide1Title": "Tout Protégé",
+    "slide1Subtitle": "Sécurité familiale active",
+    "slide2Title": "Surveillance en Temps Réel",
+    "slide2Subtitle": "Statut en direct",
+    "slide3Title": "Avantages Premium",
+    "slide3Subtitle": "Accès total débloqué",
+    "slide4Title": "Assistance 24/7",
+    "slide4Subtitle": "Toujours disponible"
+  },
+  "terms": {
+    "title": "Conditions Générales de Service",
+    "lastUpdated": "Dernière mise à jour : 4 juillet 2026",
+    "welcome": "Bienvenue sur Kizola Protect. En utilisant notre application mobile et nos services, vous acceptez les présentes conditions générales de service. Veuillez les lire attentivement.",
+    "section1Title": "1. Acceptation des conditions",
+    "section1Body": "En créant un compte, en y accédant ou en utilisant Kizola Protect (« Service »), vous acceptez d'être lié par les présentes conditions générales de service. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Service. Nous nous réservons le droit de modifier ces conditions à tout moment, et l'utilisation continue du Service après de telles modifications constitue votre acceptation des conditions modifiées.",
+    "section2Title": "2. Inscription au compte",
+    "section2Body": "Vous devez avoir au moins 18 ans pour utiliser le Service. Vous acceptez de fournir des informations exactes et à jour lors de l'inscription et de les mettre à jour si nécessaire. Vous êtes responsable de la confidentialité de vos identifiants de compte et de toutes les activités qui se produisent sous votre compte.",
+    "section3Title": "3. Abonnement et facturation",
+    "section3Body": "Certaines fonctionnalités nécessitent un abonnement payant. Les frais d'abonnement sont facturés à l'avance mensuellement et ne sont pas remboursables sauf indication contraire. Nous nous réservons le droit de modifier nos tarifs avec un préavis de 30 jours. L'annulation prend effet à la fin de la période de facturation en cours.",
+    "section4Title": "4. Description du service",
+    "section4Body": "Kizola Protect fournit des informations, des ressources et des connexions à des services professionnels tels que les conseils juridiques, l'assistance aux immigrés, la préparation fiscale, les ressources de logement et le contenu éducatif. Nous ne fournissons pas de conseils juridiques directs. Notre plateforme vous connecte avec des professionnels indépendants qui assument la responsabilité de leurs services respectifs.",
+    "section5Title": "5. Comportement des utilisateurs",
+    "section5Intro": "Vous acceptez de ne pas :",
+    "section5Bullet1": "Utiliser le Service à des fins illégales",
+    "section5Bullet2": "Usurper l'identité d'une personne ou d'une entité",
+    "section5Bullet3": "Interférer ou perturber le Service",
+    "section5Bullet4": "Tenter d'accéder au système de manière non autorisée",
+    "section5Bullet5": "Télécharger du code malveillant ou du contenu nuisible",
+    "section5Bullet6": "Abuser du système de support et harceler l'équipe",
+    "section5Bullet7": "Utiliser le Service en violation des lois ou réglementations applicables",
+    "section6Title": "6. Propriété intellectuelle",
+    "section6Body": "Le Service et son contenu original, ses fonctionnalités et ses caractéristiques sont la propriété de Kizola Protect et sont protégés par les lois internationales sur les droits d'auteur, les marques de commerce et autres lois sur la propriété intellectuelle. Vous ne pouvez pas modifier, reproduire, distribuer ou créer des œuvres dérivées sans notre consentement écrit explicite.",
+    "section7Title": "7. Limitation de responsabilité",
+    "section7Body": "En aucun cas, Kizola Protect ne sera responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de l'utilisation du Service. Le Service est fourni « tel quel » et « selon disponibilité », sans garantie d'aucune sorte, expresse ou implicite.",
+    "section8Title": "8. Services tiers",
+    "section8Body": "Notre plateforme peut contenir des liens ou des intégrations vers des services tiers. Nous ne sommes pas responsables du contenu, des pratiques en matière de confidentialité ou des activités des services tiers. Vos interactions avec les fournisseurs tiers sont soumises à leurs propres conditions et politiques.",
+    "section9Title": "9. Résiliation",
+    "section9Body": "Nous nous réservons le droit de suspendre ou de résilier votre compte à tout moment pour violation de ces conditions, fraude ou toute autre activité susceptible de nuire aux autres utilisateurs ou au Service. Vous pouvez annuler votre compte à tout moment en contactant l'équipe de support.",
+    "section10Title": "10. Droit applicable",
+    "section10Body": "Les présentes conditions sont régies et interprétées conformément aux lois de l'État de Floride, aux États-Unis, sans égard aux principes de conflit de lois. Tout litige découlant de ces conditions sera soumis à la juridiction des tribunaux du comté de Miami-Dade, Floride.",
+    "section11Title": "11. Contact",
+    "section11Intro": "Pour toute question concernant les présentes conditions, veuillez nous contacter :",
+    "section11Email": "Email : support@kizolaprotect.com",
+    "section11Address": "Adresse : 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section11Phone": "Téléphone : +1 (929) 609-7035"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : 4 juillet 2026",
+    "welcome": "Chez Kizola Protect (« nous », « notre », « nos »), la protection de votre vie privée est notre priorité. Cette politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre application mobile et nos services.",
+    "section1Title": "1. Informations que nous collectons",
+    "section1Intro": "Nous collectons les informations que vous nous fournissez directement. Cela inclut :",
+    "section1Bullet1": "Informations d'identification personnelle (nom, adresse e-mail, numéro de téléphone)",
+    "section1Bullet2": "Identifiants de compte (mot de passe, données d'authentification)",
+    "section1Bullet3": "Informations de profil (photo de profil, préférences, paramètres de langue)",
+    "section1Bullet4": "Informations de paiement (traitées de manière sécurisée via des processeurs de paiement tiers)",
+    "section1Bullet5": "Documents téléchargés à des fins de vérification et de support",
+    "section1Bullet6": "Communications que vous nous envoyez (demandes de support, messages)",
+    "section2Title": "2. Utilisation de vos informations",
+    "section2Intro": "Nous utilisons les informations collectées aux fins suivantes :",
+    "section2Bullet1": "Créer et gérer votre compte",
+    "section2Bullet2": "Fournir, exploiter et améliorer nos services",
+    "section2Bullet3": "Traiter les transactions et envoyer des informations connexes",
+    "section2Bullet4": "Envoyer des notifications techniques, des mises à jour, des alertes de sécurité et des messages de support",
+    "section2Bullet5": "Répondre à vos commentaires, questions et demandes",
+    "section2Bullet6": "Surveiller et analyser les tendances d'utilisation et les préférences",
+    "section2Bullet7": "Détecter, prévenir et répondre aux usages abusifs, aux activités frauduleuses et aux problèmes de sécurité",
+    "section2Bullet8": "Respecter nos obligations légales",
+    "section3Title": "3. Partage de vos informations",
+    "section3Intro": "Nous ne vendons pas vos informations personnelles. Nous pouvons partager vos informations avec :",
+    "section3Bullet1": "Les prestataires de services qui aident à exploiter notre plateforme (hébergement, analytiques, traitement des paiements)",
+    "section3Bullet2": "Les partenaires professionnels si vous demandez un service (avocats, spécialistes de l'immigration, comptables)",
+    "section3Bullet3": "Les autorités compétentes ou dans le cadre de procédures juridiques lorsque la loi l'exige",
+    "section3Bullet4": "Des tiers avec votre consentement explicite",
+    "section4Title": "4. Sécurité des données",
+    "section4Body": "Nous mettons en œuvre des mesures de sécurité standard dans l'industrie, notamment le chiffrement au repos et en transit, le stockage sécurisé des jetons d'authentification et des audits de sécurité réguliers. Cependant, aucune méthode de stockage électronique n'est totalement sécurisée, et nous ne pouvons garantir une sécurité absolue.",
+    "section5Title": "5. Vos droits",
+    "section5Intro": "Selon votre juridiction, vous pouvez avoir les droits suivants :",
+    "section5Bullet1": "Accéder aux informations personnelles que nous détenons sur vous",
+    "section5Bullet2": "Demander la correction des informations inexactes",
+    "section5Bullet3": "Demander la suppression de vos informations (consultez la section conformité au CCPA)",
+    "section5Bullet4": "Vous opposer à certains traitements de données",
+    "section5Bullet5": "Retirer votre consentement à tout moment",
+    "section5Bullet6": "Recevoir une copie de vos données dans un format portable",
+    "section6Title": "6. Avis CCPA (résidents de Californie)",
+    "section6Body": "Si vous êtes résident de Californie, le California Consumer Privacy Act (CCPA) vous confère des droits spécifiques concernant vos informations personnelles. Vous avez le droit de demander la divulgation de nos pratiques de collecte de données, la suppression de vos informations personnelles et l'opt-out de la vente de vos informations personnelles. Nous ne vendons pas vos informations personnelles. Pour exercer vos droits, contactez-nous à privacy@kizolaprotect.com ou utilisez l'option « Supprimer mes données » dans les paramètres de votre profil.",
+    "section7Title": "7. Conservation des données",
+    "section7Body": "Nous conservons vos informations personnelles aussi longtemps que votre compte est actif ou que nécessaire pour fournir nos services. Nous conservons et utilisons vos informations dans la mesure nécessaire pour respecter nos obligations légales, résoudre les litiges et faire respecter nos accords.",
+    "section8Title": "8. Confidentialité des enfants",
+    "section8Body": "Nos services ne s'adressent pas aux personnes de moins de 13 ans. Nous ne collectons pas délibérément d'informations personnelles auprès des enfants. Si nous apprenons que nous avons collecté des informations personnelles d'un enfant, nous prendrons des mesures pour supprimer ces informations.",
+    "section9Title": "9. Modifications de cette politique",
+    "section9Body": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons des modifications en publiant la nouvelle politique sur cette page et en mettant à jour la date de « Dernière mise à jour ». Veuillez consulter régulièrement cette politique pour rester informé.",
+    "section10Title": "10. Nous contacter",
+    "section10Intro": "Pour toute question concernant cette politique de confidentialité, veuillez nous contacter :",
+    "section10Email": "Email : privacy@kizolaprotect.com",
+    "section10Address": "Adresse : 1401 Brickell Ave, Suite 600, Miami, FL 33131",
+    "section10Phone": "Téléphone : +1 (929) 609-7035"
+  },
+  "notifWelcomeTitle": "Bienvenue sur Kizola Protect ! 🛡️",
+  "notifWelcomeMessage": "Votre compte a été créé avec succès. Explorez nos avantages et protégez votre avenir.",
+  "notifCompleteProfileTitle": "Complétez votre profil 📝",
+  "notifCompleteProfileMessage": "Ajoutez votre numéro de téléphone et vos documents pour la vérification d'identité.",
+  "notifPlanActivatedTitle": "Forfait activé avec succès ! ✅",
+  "notifPlanActivatedMessage": "Votre abonnement au forfait {{plan}} a été confirmé. Profitez de tous vos avantages maintenant.",
+  "notifNow": "Maintenant",
+  "notifHoursAgo": "il y a {{count}}h",
+  "notifYesterday": "Hier",
+  "noNotifications": "Aucune notification",
+  "allCaughtUp": "Tout est à jour !",
+  "satisfaction": {
+    "questionTitle": "Cher(e) client(e), avons-nous pu résoudre votre situation?",
+    "questionSubtitle": "Votre avis nous aide à améliorer notre service.",
+    "yesResolved": "Oui, c'est résolu",
+    "noPersists": "Non, le problème persiste",
+    "thankYouResolved": "Super ! Merci pour vos commentaires.",
+    "unresolvedSorry": "Nous sommes désolés que le problème persiste.",
+    "whatNotResolved": "Qu'est-ce qui n'a pas été résolu?",
+    "whatNotResolvedPlaceholder": "Décrivez ce qui n'a pas encore été résolu...",
+    "additionalComments": "Commentaires supplémentaires",
+    "additionalCommentsPlaceholder": "Partagez tout autre commentaire...",
+    "submit": "Soumettre l'évaluation",
+    "skip": "Passer",
+    "doneTitle": "Merci pour vos commentaires !",
+    "doneResolvedDesc": "Nous sommes ravis avoir pu vous aider. À bientôt !",
+    "doneUnresolvedDesc": "Notre équipe suivra votre cas prochainement.",
+    "close": "Fermer"
+  },
+  "offline": {
+    "banner": "Vous êtes hors ligne. Certaines fonctionnalités peuvent être indisponibles."
+  },
+  "notifLearning": {
+    "title": "Nouvelles Ressources d'Apprentissage",
+    "message": "Découvrez nos nouveaux guides sur la déclaration fiscale et l'immigration."
+  },
+  "housingForm": {
+    "requiredFieldsTitle": "Champs Obligatoires",
+    "requiredFieldsMessage": "Veuillez remplir tous les champs obligatoires avant de soumettre.",
+    "notificationTitle": "Demande de Logement Reçue",
+    "notificationMessage": "Notre équipe examinera votre demande et vous contactera bientôt.",
+    "submitError": "Échec de la soumission. Veuillez réessayer.",
+    "submittedTitle": "Demande Soumise !",
+    "submittedDesc": "Votre demande de soutien au logement a été reçue. Notre équipe l'examinera et vous contactera bientôt.",
+    "responseTime": "Temps de réponse moyen : 24-48 heures",
+    "specialistsAvailable": "Spécialistes du logement disponibles",
+    "backToHome": "Retour à l'Accueil",
+    "submitNewRequest": "Nouvelle Demande",
+    "title": "Soutien au Logement",
+    "subtitle": "Nous aidons à la recherche de logement, au déménagement en shelter et à l'orientation vers les programmes de logement disponibles.",
+    "formTitle": "📋 Remplir le Formulaire",
+    "requiredFieldsNote": "Les champs marqués d'un * sont obligatoires",
+    "fullNameLabel": "Nom Complet *",
+    "fullNamePlaceholder": "Votre nom complet",
+    "emailLabel": "Email de Contact",
+    "emailPlaceholder": "email@exemple.com",
+    "phoneLabel": "Téléphone",
+    "phonePlaceholder": "(000) 000-0000",
+    "stateLabel": "État *",
+    "statePlaceholder": "ex : New York",
+    "cityLabel": "Ville *",
+    "cityPlaceholder": "ex : Brooklyn",
+    "currentSituationLabel": "Situation Actuelle *",
+    "selectSituation": "Sélectionnez votre situation actuelle",
+    "needTypeLabel": "Type de Besoin *",
+    "selectNeed": "Sélectionnez le type d'aide nécessaire",
+    "additionalNotesLabel": "Notes Supplémentaires",
+    "additionalNotesPlaceholder": "Décrivez votre situation plus en détail. Incluez des informations pertinentes telles que le nombre de membres du foyer, l'urgence, etc.",
+    "submitButton": "Soumettre la Demande de Logement",
+    "privacyNote": "🔒 Vos informations sont traitées avec une confidentialité totale et utilisées uniquement pour fournir le soutien demandé.",
+    "need_rental_search": "Recherche de logement locatif",
+    "need_shelter_move": "Déménagement en Shelter (Résidence État)",
+    "need_housing_program": "Orientation vers les programmes de logement",
+    "need_tenant_rights": "Droits des locataires",
+    "need_emergency": "Logement d'urgence",
+    "need_other": "Autre situation",
+    "situation_homeless": "Sans-abri / Dans la rue",
+    "situation_shelter": "En shelter temporaire",
+    "situation_unstable": "Logement instable / insécurisé",
+    "situation_eviction": "Risque d'expulsion",
+    "situation_overcrowded": "Logement surpeuplé",
+    "situation_temporary": "Séjour temporaire chez la famille/amis",
+    "situation_rental": "Location actuelle — recherche d'alternatives",
+    "situation_other": "Autre situation"
+  },
+  "financeForm": {
+    "requiredFieldsTitle": "Champs Obligatoires",
+    "requiredFieldsMessage": "Veuillez sélectionner le type d'aide, l'état et décrire votre situation.",
+    "insufficientDescriptionTitle": "Description Insuffisante",
+    "insufficientDescriptionMessage": "Veuillez fournir plus de détails sur votre situation (minimum 20 caractères).",
+    "notificationTitle": "Demande Financière Reçue",
+    "notificationMessage": "Notre équipe d'experts financiers examinera votre cas bientôt.",
+    "submitError": "Échec de la soumission. Veuillez réessayer.",
+    "submittedTitle": "Demande Envoyée !",
+    "submittedDesc": "Votre demande d'aide financière a été reçue. Un expert l'examinera et vous contactera bientôt.",
+    "specialistsAvailable": "Spécialistes en avantages fiscaux disponibles",
+    "responseTime": "Réponse en 24-48 heures ouvrables",
+    "backToHome": "Retour à l'Accueil",
+    "submitNewRequest": "Nouvelle Demande",
+    "title": "Aide Financière",
+    "subtitle": "Orientation sur les avantages financiers, EBT, cartes d'aide étatique, impôts et Déclaration de Revenus.",
+    "formTitle": "💼 Formulaire de Demande",
+    "helpTypeLabel": "Type d'Aide Nécessaire *",
+    "selectHelpType": "Sélectionnez le type d'aide",
+    "stateLabel": "État (États-Unis) *",
+    "selectState": "Sélectionnez l'état",
+    "descriptionLabel": "Description de la Situation *",
+    "descriptionPlaceholder": "Décrivez votre situation financière actuelle. Ex. : 'J'ai besoin d'aide pour postuler au SNAP. Je suis immigrant avec un visa de travail et j'ai 3 enfants...'",
+    "characters": "caractères",
+    "minChars": "(min 20)",
+    "additionalInfoLabel": "Informations Supplémentaires",
+    "additionalInfoPlaceholder": "Documents disponibles, urgence, autres informations pertinentes...",
+    "submitButton": "Soumettre la Demande Financière",
+    "privacyNote": "🔒 Vos informations financières sont traitées avec une confidentialité totale.",
+    "type_ebt": "EBT / SNAP (Bon Alimentaire)",
+    "type_ebt_desc": "Aide alimentaire",
+    "type_state_benefits": "Avantages Étatiques (Bien-être, Medicaid)",
+    "type_state_benefits_desc": "Programmes d'aide étatique",
+    "type_tax_return": "Déclaration de Revenus (Remboursement)",
+    "type_tax_return_desc": "Aide pour le dépôt et le remboursement",
+    "type_financial_planning": "Planification Financière",
+    "type_financial_planning_desc": "Organisation et planification",
+    "type_debt_help": "Gestion des Dettes",
+    "type_debt_help_desc": "Orientation sur les dettes et le crédit",
+    "type_banking": "Overture de Compte Bancaire",
+    "type_banking_desc": "Orientation bancaire pour les immigrants",
+    "type_itin": "ITIN (Numéro d'Identification Fiscale)",
+    "type_itin_desc": "Obtention de l'ITIN pour les non-citoyens",
+    "type_other": "Autre Situation Financière",
+    "type_other_desc": "Autres besoins financiers",
+    "quickInfo_ebt": "Bon Alimentaire",
+    "quickInfo_tax": "Remboursement d'Impôt",
+    "quickInfo_benefits": "Aide Étatique",
+    "quickInfo_itin": "ID Fiscale",
+    "type_benefits": "Avantages"
+  },
+  "resetPassword": {
+    "linkInvalid": "Lien invalide ou expiré. Veuillez demander un nouveau lien de récupération.",
+    "invalidLink": "Lien invalide ou expiré. Veuillez demander un nouveau lien de récupération.",
+    "fillAllFields": "Veuillez remplir tous les champs.",
+    "passwordsMismatch": "Les mots de passe ne correspondent pas. Veuillez vérifier.",
+    "passwordMin8": "Le mot de passe doit contenir au moins 8 caractères.",
+    "minLengthError": "Le mot de passe doit contenir au moins 8 caractères.",
+    "weakPasswordTitle": "Mot de Passe Faible",
+    "weakPasswordMessage": "Veuillez choisir un mot de passe plus robuste. Utilisez des majuscules, minuscules, chiffres et symboles.",
+    "resetFailed": "Échec de la réinitialisation du mot de passe. Le lien a peut-être expiré. Demandez un nouveau lien.",
+    "invalidLinkTitle": "Lien Invalide",
+    "requestNewLink": "Demander un Nouveau Lien",
+    "successTitle": "Mot de Passe Réinitialisé !",
+    "successDesc": "Votre mot de passe a été modifié avec succès. Vous pouvez maintenant vous connecter avec le nouveau mot de passe.",
+    "successMessage": "Votre mot de passe a été modifié avec succès. Vous pouvez maintenant vous connecter avec le nouveau mot de passe.",
+    "loginButton": "Se Connecter",
+    "title": "Nouveau Mot de Passe",
+    "newPasswordTitle": "Nouveau Mot de Passe",
+    "subtitle": "Créez un mot de passe robuste et sécurisé pour protéger votre compte.",
+    "newPasswordSubtitle": "Créez un mot de passe robuste et sécurisé pour protéger votre compte.",
+    "securityNote": "Utilisez au moins 8 caractères avec des lettres, des chiffres et des symboles.",
+    "passwordPlaceholder": "Minimum 8 caractères",
+    "newPasswordPlaceholder": "Minimum 8 caractères",
+    "newPasswordLabel": "Nouveau Mot de Passe",
+    "confirmPlaceholder": "Répétez le nouveau mot de passe",
+    "confirmPasswordPlaceholder": "Répétez le nouveau mot de passe",
+    "confirmPasswordLabel": "Confirmer le Nouveau Mot de Passe",
+    "passwordsMismatchError": "Les mots de passe ne correspondent pas",
+    "passwordsMismatchShort": "Les mots de passe ne correspondent pas",
+    "passwordsMatch": "✓ Mots de passe correspondent",
+    "verifyingLink": "Vérification du lien...",
+    "resetButton": "Réinitialiser le Mot de Passe",
+    "submitButton": "Réinitialiser le Mot de Passe",
+    "requestNewRecoveryLink": "Demander un nouveau lien de récupération",
+    "requestNewLinkBottom": "Demander un nouveau lien de récupération",
+    "weak": "Faible",
+    "strengthWeak": "Faible",
+    "fair": "Passable",
+    "strengthFair": "Passable",
+    "good": "Bon",
+    "strengthGood": "Bon",
+    "strong": "Fort",
+    "strengthStrong": "Fort"
+  },
+  "changePassword": {
+    "currentLabel": "Mot de Passe Actuel",
+    "currentPassword": "Mot de Passe Actuel",
+    "currentPlaceholder": "Entrez le mot de passe actuel",
+    "newLabel": "Nouveau Mot de Passe",
+    "newPassword": "Nouveau Mot de Passe",
+    "newPlaceholder": "Entrez le nouveau mot de passe",
+    "minChars": "Doit contenir au moins 6 caractères",
+    "minLength": "Doit contenir au moins 6 caractères",
+    "confirmLabel": "Confirmer le Nouveau Mot de Passe",
+    "confirmPassword": "Confirmer le Nouveau Mot de Passe",
+    "confirmPlaceholder": "Confirmez le nouveau mot de passe"
+  },
+  "phoneInput": {
+    "placeholder": "Numéro de téléphone",
+    "selectCountry": "Sélectionner le Pays",
+    "searchCountry": "Rechercher un pays…"
+  },
+  "screens": {
+    "login": "Connexion",
+    "register": "Inscription",
+    "phoneLogin": "Téléphone",
+    "forgotPassword": "Mot de Passe Oublié",
+    "resetPassword": "Réinitialiser le Mot de Passe",
+    "onboarding": "Bienvenue",
+    "terms": "Conditions et Confidentialité"
+  },
+  "adminTab": {
+    "label": "Admin"
   }
 }

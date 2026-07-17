@@ -37,9 +37,9 @@ export default function ChatSection({
       <View style={styles.chatHeader}>
         <View style={styles.aiBadge}>
           <Sparkles size={14} color="#FFFFFF" />
-          <Text style={styles.aiBadgeText}>AI Assistant</Text>
+          <Text style={styles.aiBadgeText}>{t('support.aiAssistant')}</Text>
         </View>
-        <Text style={styles.chatStatus}>Online</Text>
+        <Text style={styles.chatStatus}>{t('support.online')}</Text>
       </View>
 
       <View style={styles.chatMessagesList}>
