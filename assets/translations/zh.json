@@ -776,7 +776,8 @@
     "aiTab": "AI聊天",
     "typeMessage": "输入您的问题...",
     "aiAssistant": "AI 助手",
-    "online": "在线"
+    "online": "在线",
+    "aiError": "抱歉，联系助手时出错。请重试或通过 WhatsApp (+1 929 609-7035) 联系我们。"
   },
   "plans": {
     "title": "会员计划",

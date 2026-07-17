@@ -776,7 +776,8 @@
     "aiTab": "AI Chat",
     "typeMessage": "Sila koya mando...",
     "aiAssistant": "Mokonzi ya AI",
-    "online": "Na online"
+    "online": "Na online",
+    "aiError": "Soki moko, error ekoki na kosanga assistant. Svp koboya moko po, to contact na WhatsApp (+1 929 609-7035)."
   },
   "plans": {
     "title": "Plan ya Abonnement",

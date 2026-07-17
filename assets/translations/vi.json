@@ -776,7 +776,8 @@
     "aiTab": "Trò chuyện AI",
     "typeMessage": "Nhập câu hỏi của bạn...",
     "aiAssistant": "Trợ lý AI",
-    "online": "Trực tuyến"
+    "online": "Trực tuyến",
+    "aiError": "Xin lỗi, đã xảy ra lỗi khi liên hệ với trợ lý. Vui lòng thử lại hoặc liên hệ với chúng tôi qua WhatsApp (+1 929 609-7035)."
   },
   "plans": {
     "title": "Gói Thành viên",

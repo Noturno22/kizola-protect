@@ -773,7 +773,8 @@
     "aiTab": "Chat IA",
     "typeMessage": "Tapez votre question...",
     "aiAssistant": "Assistant IA",
-    "online": "En ligne"
+    "online": "En ligne",
+    "aiError": "Désolé, une erreur s'est produite lors de la connexion à l'assistant. Veuillez réessayer ou nous contacter via WhatsApp (+1 929 609-7035)."
   },
   "plans": {
     "title": "Forfaits d'Adhésion",

@@ -776,7 +776,8 @@
     "aiTab": "Chat IA",
     "typeMessage": "Escreva sua dúvida...",
     "aiAssistant": "Assistente IA",
-    "online": "Online"
+    "online": "Online",
+    "aiError": "Desculpa, ocorreu um erro ao contactar o assistente. Por favor, tenta novamente ou contacta-nos pelo WhatsApp (+1 929 609-7035)."
   },
   "plans": {
     "title": "Planos de Assinatura",

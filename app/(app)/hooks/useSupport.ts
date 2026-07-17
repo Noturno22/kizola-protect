@@ -7,6 +7,7 @@ import { supabase, isSupabaseConfigured, PRIORITY_OPTIONS } from '@/lib/supabase
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
+import i18n from '@/lib/i18n';
 import { sendMessage } from '@/services/ai/groq';
 import {
   MessageCircle,
@@ -46,7 +47,7 @@ export function useSupport() {
   const [submitted, setSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState<'form' | 'chat'>('form');
   const [chatMessages, setChatMessages] = useState<{ id: string; text: string; sender: 'user' | 'ai'; timestamp: Date }[]>([
-    { id: '1', text: t('support.aiWelcome') || 'Olá! Sou o assistente virtual da Kizola. Como posso ajudar hoje?', sender: 'ai', timestamp: new Date() },
+    { id: '1', text: t('support.aiWelcome'), sender: 'ai', timestamp: new Date() },
   ]);
   const [chatInput, setChatInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -146,7 +147,7 @@ export function useSupport() {
           text: m.text,
         }));
 
-      const responseText = await sendMessage(groqMessages);
+      const responseText = await sendMessage(groqMessages, i18n.language);
       const aiMsg = {
         id: (Date.now() + 1).toString(),
         text: responseText,
@@ -157,7 +158,7 @@ export function useSupport() {
     } catch {
       const fallbackMsg = {
         id: (Date.now() + 1).toString(),
-        text: 'Desculpa, ocorreu um erro ao contactar o assistente. Por favor, tenta novamente ou contacta-nos pelo WhatsApp (+1 929 609-7035).',
+        text: t('support.aiError'),
         sender: 'ai' as const,
         timestamp: new Date(),
       };

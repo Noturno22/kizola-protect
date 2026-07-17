@@ -776,7 +776,8 @@
     "aiTab": "AI Chat",
     "typeMessage": "I-type ang iyong tanong...",
     "aiAssistant": "AI Assistant",
-    "online": "Online"
+    "online": "Online",
+    "aiError": "Paumanhin, nagkaroon ng error sa pakikipag-ugnayan sa assistant. Mangyaring subukan muli o makipag-ugnayan sa amin sa WhatsApp (+1 929 609-7035)."
   },
   "plans": {
     "title": "Mga Membership Plan",
