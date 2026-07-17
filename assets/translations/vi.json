@@ -188,7 +188,10 @@
       "noSession": "Không tìm thấy phiên hoạt động",
       "deleteFailed": "Xóa tài khoản thất bại",
       "genericError": "Đã xảy ra lỗi"
-    }
+    },
+    "other": "Khác",
+    "adminPanel": "Bảng Quản Trị",
+    "adminPanelSubtitle": "Quản lý người dùng và nền tảng"
   },
   "dashboard": {
     "welcome": "Xin chào",

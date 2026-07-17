@@ -133,6 +133,7 @@
     "son": "Son",
     "daughter": "Daughter",
     "spouse": "Spouse",
+    "other": "Other",
     "fullName": "Full Name",
     "namePlaceholder": "Enter full name",
     "document": "Document",
@@ -163,6 +164,8 @@
     "support247": "Support",
     "protected100": "Protected",
     "deleteAccountSubtitle": "Deleting your account is permanent and cannot be undone.",
+    "adminPanel": "Admin Panel",
+    "adminPanelSubtitle": "Manage users and platform",
     "deleteAccount": {
       "title": "Delete Account",
       "warning": "This action is irreversible. All your data will be permanently deleted.",
@@ -426,6 +429,7 @@
     "helpTopic": "Need help with this topic?",
     "popular": "Popular",
     "recommended": "Recommended",
+    "saved": "Saved",
     "articles": {
       "tax": {
         "1": {

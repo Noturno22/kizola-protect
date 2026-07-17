@@ -188,7 +188,10 @@
       "noSession": "Walang aktibong session na nahanap",
       "deleteFailed": "Nabigo ang pagbura ng account",
       "genericError": "May naganap na error"
-    }
+    },
+    "other": "Iba pa",
+    "adminPanel": "Admin Panel",
+    "adminPanelSubtitle": "Pamahalaan ang mga user at platform"
   },
   "dashboard": {
     "welcome": "Kamusta",

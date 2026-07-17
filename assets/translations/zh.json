@@ -188,7 +188,10 @@
       "noSession": "未找到活跃会话",
       "deleteFailed": "删除账户失败",
       "genericError": "发生错误"
-    }
+    },
+    "other": "其他",
+    "adminPanel": "管理面板",
+    "adminPanelSubtitle": "管理用户和平台"
   },
   "dashboard": {
     "welcome": "你好",

@@ -188,7 +188,10 @@
       "noSession": "Aucune session active trouvée",
       "deleteFailed": "Échec de la suppression du compte",
       "genericError": "Une erreur s'est produite"
-    }
+    },
+    "other": "Autre",
+    "adminPanel": "Panneau Admin",
+    "adminPanelSubtitle": "Gérer les utilisateurs et la plateforme"
   },
   "dashboard": {
     "welcome": "Bonjour",

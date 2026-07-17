@@ -188,7 +188,10 @@
       "noSession": "No se encontró sesión activa",
       "deleteFailed": "Error al eliminar la cuenta",
       "genericError": "Ocurrió un error"
-    }
+    },
+    "other": "Otro",
+    "adminPanel": "Panel Admin",
+    "adminPanelSubtitle": "Administrar usuarios y plataforma"
   },
   "dashboard": {
     "welcome": "Hola",

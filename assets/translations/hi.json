@@ -188,7 +188,10 @@
       "noSession": "कोई सक्रिय सत्र नहीं मिला",
       "deleteFailed": "खाता हटाने में विफल",
       "genericError": "एक त्रुटि हुई"
-    }
+    },
+    "other": "अन्य",
+    "adminPanel": "एडमिन पैनल",
+    "adminPanelSubtitle": "उपयोगकर्ताओं और प्लेटफ़ॉर्म का प्रबंधन करें"
   },
   "dashboard": {
     "welcome": "नमस्ते",

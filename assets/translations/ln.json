@@ -188,7 +188,10 @@
       "noSession": "Aucune session active trouvée",
       "deleteFailed": "Échec de la suppression du compte",
       "genericError": "Une erreur s'est produite"
-    }
+    },
+    "other": "Ya sikoyo",
+    "adminPanel": "Panélli ya Admin",
+    "adminPanelSubtitle": "Kotindaka ba users na plateforme"
   },
   "dashboard": {
     "welcome": "Moni",

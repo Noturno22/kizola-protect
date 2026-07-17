@@ -188,7 +188,10 @@
       "noSession": "アクティブなセッションが見つかりません",
       "deleteFailed": "アカウントの削除に失敗しました",
       "genericError": "エラーが発生しました"
-    }
+    },
+    "other": "その他",
+    "adminPanel": "管理パネル",
+    "adminPanelSubtitle": "ユーザーとプラットフォームの管理"
   },
   "dashboard": {
     "welcome": "こんにちは",

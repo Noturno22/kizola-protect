@@ -161,7 +161,10 @@
     "noActivePlan": "활성 플랜 없음",
     "benefitsCount": "혜택",
     "support247": "지원",
-    "protected100": "보호됨"
+    "protected100": "보호됨",
+    "other": "기타",
+    "adminPanel": "관리 패널",
+    "adminPanelSubtitle": "사용자 및 플랫폼 관리"
   },
   "dashboard": {
     "welcome": "안녕하세요",
