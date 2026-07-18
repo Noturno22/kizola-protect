@@ -31,6 +31,8 @@ import {
   DollarSign
 } from 'lucide-react-native';
 import { AdminStatCard } from '@/components/AdminStatCard';
+import { NotificationsModal } from '@/components/dashboard';
+import { useNotifications } from '@/providers/NotificationProvider';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import {
@@ -71,6 +73,8 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const { unreadCount } = useNotifications();
 
   const fetchData = useCallback(async () => {
     try {
@@ -149,8 +153,16 @@ function AdminDashboard() {
             <Text style={[styles.name, { color: theme.text }]}>{t('admin.dashboard')}</Text>
           </View>
           <View style={styles.headerActions}>
-            <TouchableOpacity style={[styles.iconButton, { backgroundColor: theme.surfaceElevated }]}>
+            <TouchableOpacity
+              onPress={() => setShowNotifications(true)}
+              style={[styles.iconButton, { backgroundColor: theme.surfaceElevated }]}
+            >
               <Bell size={20} color={theme.text} />
+              {unreadCount > 0 && (
+                <View style={{ position: 'absolute', top: 6, right: 6, width: 18, height: 18, borderRadius: 9, backgroundColor: theme.error, justifyContent: 'center', alignItems: 'center' }}>
+                  <Text style={{ fontSize: 10, fontWeight: '800', color: '#FFF' }}>{unreadCount > 9 ? '9+' : unreadCount}</Text>
+                </View>
+              )}
             </TouchableOpacity>
             <TouchableOpacity 
               onPress={() => signOut()}
@@ -526,6 +538,8 @@ function AdminDashboard() {
 
         <View style={{ height: 40 }} />
       </ScrollView>
+
+      <NotificationsModal visible={showNotifications} onClose={() => setShowNotifications(false)} />
     </SafeAreaView>
   );
 }
