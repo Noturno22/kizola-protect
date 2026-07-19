@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Enregistrer",
     "cancel": "Annuler",
@@ -27,7 +27,7 @@
     "read": "Lu",
     "contact": "Contact",
     "notApplicable": "Non applicable",
-    "noPlan": "Sans Forfait"
+    "noPlan": "Forfait Gratuit"
   },
   "auth": {
     "welcome": "Bon retour",
@@ -161,6 +161,9 @@
     "noActivePlan": "Aucun forfait actif",
     "benefitsCount": "Avantages",
     "support247": "Support",
+    "nationality": "Nationalité",
+    "selectNationality": "Sélectionnez votre nationalité",
+    "searchCountry": "Rechercher un pays...",
     "protected100": "Protégé",
     "deleteAccountSubtitle": "La suppression de votre compte est permanente et ne peut pas être annulée.",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "Satisfaction",
     "planUsage": "Utilisation du forfait",
     "nextBilling": "Prochaine facturation :",
-    "sort": "Trier :"
+    "sort": "Trier :",
+    "motto": "Protéger votre parcours \u00B7 Vos droits, notre mission \u00B7 Plus forts ensemble \u00B7 Autonomiser les communautés \u00B7 "
   },
   "benefits": {
     "title": "Vos Avantages",
@@ -346,8 +350,13 @@
       },
       "recovery": {
         "title": "Récupération de Compte",
-        "description": "Retrouvez l'accès à votre vie numérique. Nous vous aidons à récupérer des comptes bloqués ou piratés pour Uber, DoorDash et d'autres plateformes de services essentiels.",
+        "description": "Récupérez l'accès à votre vie numérique. Nous aidons à récupérer les comptes verrouillés ou piratés d'Uber, DoorDash et d'autres plateformes essentielles.",
         "category_name": "Numérique"
+      },
+      "translation": {
+        "title": "Traduction et Certification de Documents",
+        "description": "Traduction et certification professionnelles de tout document d'immigration de toute langue vers l'anglais. Traductions certifiées acceptées par l'USCIS, les tribunaux et les agences gouvernementales.",
+        "category_name": "Immigration"
       }
     },
     "newServices": "Nouveaux Services",
@@ -1113,6 +1122,9 @@
     "title": "Soutien au Logement",
     "subtitle": "Nous aidons à la recherche de logement, au déménagement en shelter et à l'orientation vers les programmes de logement disponibles.",
     "formTitle": "📋 Remplir le Formulaire",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "Les champs marqués d'un * sont obligatoires",
     "fullNameLabel": "Nom Complet *",
     "fullNamePlaceholder": "Votre nom complet",
@@ -1164,6 +1176,9 @@
     "title": "Aide Financière",
     "subtitle": "Orientation sur les avantages financiers, EBT, cartes d'aide étatique, impôts et Déclaration de Revenus.",
     "formTitle": "💼 Formulaire de Demande",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "Type d'Aide Nécessaire *",
     "selectHelpType": "Sélectionnez le type d'aide",
     "stateLabel": "État (États-Unis) *",
@@ -1273,3 +1288,5 @@
     "label": "Admin"
   }
 }
+
+

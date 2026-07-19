@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "保存",
     "cancel": "キャンセル",
@@ -27,7 +27,7 @@
     "read": "読む",
     "contact": "お問い合わせ",
     "notApplicable": "該当なし",
-    "noPlan": "プランなし"
+    "noPlan": "無料プラン"
   },
   "auth": {
     "welcome": "おかえりなさい",
@@ -161,6 +161,9 @@
     "noActivePlan": "アクティブなプランなし",
     "benefitsCount": "特典",
     "support247": "サポート",
+    "nationality": "国籍",
+    "selectNationality": "国籍を選択",
+    "searchCountry": "国を検索...",
     "protected100": "保護済み",
     "deleteAccountSubtitle": "アカウントの削除は永久的で取り消すことはできません。",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "満足度",
     "planUsage": "プラン使用状況",
     "nextBilling": "次回請求日：",
-    "sort": "並べ替え:"
+    "sort": "並べ替え:",
+    "motto": "あなたの旅を守る \u00B7 あなたの権利、私たちの使命 \u00B7 一緒に強くなる \u00B7 コミュニティを力づける \u00B7 "
   },
   "benefits": {
     "title": "特典",
@@ -346,8 +350,13 @@
       },
       "recovery": {
         "title": "アカウント復旧",
-        "description": "デジタルライフへのアクセスを回復します。Uber、DoorDash、その他の重要なサービスプラットフォームのロックされたアカウントやハッキングされたアカウントの復旧を支援します。",
+        "description": "デジタルライフへのアクセスを回復します。Uber、DoorDash、その他の重要なサービスプラットフォームでロックされた或いはハッキングされたアカウントの復旧をお手伝いします。",
         "category_name": "デジタル"
+      },
+      "translation": {
+        "title": "書類の翻訳と認証",
+        "description": "あらゆる移民書類をあらゆる言語から英語へ professionally 翻訳・認証。USCIS、裁判所、政府機関が認める認証翻訳。",
+        "category_name": "移民"
       }
     },
     "newServices": "新しいサービス",
@@ -1119,6 +1128,9 @@
     "title": "住宅サポート",
     "subtitle": "住宅の探し方、シェルターへの引越し、利用可能な住宅プログラムのガイダンスをお手伝いします。",
     "formTitle": "📋 フォームの入力",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "* は必須項目です",
     "fullNameLabel": "氏名 *",
     "fullNamePreference": "お名前を入力",
@@ -1170,6 +1182,9 @@
     "title": "財務支援",
     "subtitle": "財務給付、EBT、州支援カード、税金、確定申告に関するガイダンス。",
     "formTitle": "💼 申請フォーム",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "必要な支援の種類 *",
     "selectHelpType": "支援の種類を選択",
     "stateLabel": "州（米国） *",
@@ -1279,3 +1294,5 @@
     "label": "管理"
   }
 }
+
+

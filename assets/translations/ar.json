@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "حفظ",
     "cancel": "إلغاء",
@@ -27,7 +27,7 @@
     "read": "قراءة",
     "contact": "اتصال",
     "notApplicable": "غير قابل للتطبيق",
-    "noPlan": "لا توجد خطة"
+    "noPlan": "خطة مجانية"
   },
   "auth": {
     "welcome": "مرحباً بعودتك",
@@ -161,6 +161,9 @@
     "noActivePlan": "لا توجد خطة نشطة",
     "benefitsCount": "المزايا",
     "support247": "الدعم",
+    "nationality": "الجنسية",
+    "selectNationality": "اختر جنسيتك",
+    "searchCountry": "البحث عن بلد...",
     "protected100": "محمي",
     "deleteAccountSubtitle": "حذف حسابك هو إجراء دائم ولا يمكن التراجع عنه.",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "الرضا",
     "planUsage": "استخدام الخطة",
     "nextBilling": "الفاتورة القادمة:",
-    "sort": "ترتيب:"
+    "sort": "ترتيب:",
+    "motto": "نحمي رحلتك \u00B7 حقوقك، مهمتنا \u00B7 أقوى معاً \u00B7 تمكين المجتمعات \u00B7 "
   },
   "benefits": {
     "title": "مزاياك",
@@ -345,9 +349,14 @@
         "category_name": "طوارئ"
       },
       "recovery": {
-        "title": "استعادة الحساب",
-        "description": "استعد الوصول إلى حياتك الرقمية. نساعد في استعادة الحسابات المقفلة أو المخترقة لـ Uber وDoorDash ومنصات الخدمات الأساسية الأخرى.",
+        "title": "استرداد الحساب",
+        "description": "استعد الوصول إلى حياتك الرقمية. نساعد في استرداد الحسابات المقفلة أو المخترقة على Uber وDoorDash والمنصات الأساسية الأخرى.",
         "category_name": "رقمي"
+      },
+      "translation": {
+        "title": "ترجمة وتوثيق المستندات",
+        "description": "ترجمة وتوثيق احترافي لأي مستند هجرة من أي لغة إلى الإنجليزية. ترجمات معتمدة مقبولة من USCIS والمحاكم والوكالات الحكومية.",
+        "category_name": "الهجرة"
       }
     },
     "newServices": "خدمات جديدة",
@@ -1119,6 +1128,9 @@
     "title": "دعم السكن",
     "subtitle": "نساعد في العثور على سكن والانتقال إلى ملاجئ وإرشاد برامج السكن المتاحة.",
     "formTitle": "📋 ملء النموذج",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "الحقول ال * مطلوبة",
     "fullNameLabel": "الاسم الكامل *",
     "fullNamePlaceholder": "اسمك الكامل",
@@ -1170,6 +1182,9 @@
     "title": "مساعدة مالية",
     "subtitle": "إرشاد حول المزايا المالية وEBT وبطاقات المساعدة الحكومية والضرائب والإقرار الضريبي.",
     "formTitle": "💼 نموذج الطلب",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "نوع المساعدة المطلوبة *",
     "selectHelpType": "اختر نوع المساعدة",
     "stateLabel": "الولاية (أمريكا) *",
@@ -1279,3 +1294,5 @@
     "label": "الإدارة"
   }
 }
+
+

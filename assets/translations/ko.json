@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "저장",
     "cancel": "취소",
@@ -27,7 +27,7 @@
     "read": "읽기",
     "contact": "연락처",
     "notApplicable": "해당 없음",
-    "noPlan": "플랜 없음"
+    "noPlan": "무료 플랜"
   },
   "auth": {
     "welcome": "돌아오신 것을 환영합니다",
@@ -161,6 +161,9 @@
     "noActivePlan": "활성 플랜 없음",
     "benefitsCount": "혜택",
     "support247": "지원",
+    "nationality": "국적",
+    "selectNationality": "국적 선택",
+    "searchCountry": "국가 검색...",
     "protected100": "보호됨",
     "other": "기타",
     "adminPanel": "관리 패널",
@@ -201,7 +204,8 @@
     "statsSatisfaction": "만족도",
     "planUsage": "플랜 사용량",
     "nextBilling": "다음 결제:",
-    "sort": "정렬:"
+    "sort": "정렬:",
+    "motto": "당신의 여정을 보호합니다 \u00B7 당신의 권리, 우리의 사명 \u00B7 함께 더 강합니다 \u00B7 공동체를 강화합니다 \u00B7 "
   },
   "benefits": {
     "title": "내 혜택",
@@ -319,8 +323,13 @@
       },
       "recovery": {
         "title": "계정 복구",
-        "description": "디지털 생활에 다시 접속하세요. Uber, DoorDash 및 기타 필수 서비스 플랫폼의 잠기거나 해킹된 계정 복구를 도와드립니다.",
+        "description": "디지털 생활에 대한 접근을 회복하세요. Uber, DoorDash 및 기타 필수 서비스 플랫폼에서 잠긴 해킹당한 계정 복구를 도와드립니다.",
         "category_name": "디지털"
+      },
+      "translation": {
+        "title": "서류 번역 및 인증",
+        "description": "어떤 언어의 이민 서류든 영어로 전문 번역 및 인증. USCIS, 법원 및 정부 기관에서 인정하는 인증 번역.",
+        "category_name": "이민"
       }
     },
     "newServices": "새로운 서비스",
@@ -1082,6 +1091,9 @@
     "title": "주택 지원",
     "subtitle": "주택 찾기, 쉼터 이전, 이용 가능한 주택 프로그램 안내를 도와드립니다.",
     "formTitle": "📋 양식 작성",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "* 표시는 필수 항목",
     "fullNameLabel": "성명 *",
     "fullNamePlaceholder": "성명을 입력하세요",
@@ -1133,6 +1145,9 @@
     "title": "재정 지원",
     "subtitle": "재정 혜택, EBT, 주정부 지원 카드, 세금 및 세금 신고에 대한 안내.",
     "formTitle": "💼 신청 양식",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "필요한 도움 유형 *",
     "selectHelpType": "도움 유형 선택",
     "stateLabel": "주 (미국) *",
@@ -1252,3 +1267,5 @@
     "slide4Subtitle": "항상 이용 가능"
   }
 }
+
+

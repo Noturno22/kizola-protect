@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Bika",
     "cancel": "Lekisa",
@@ -27,7 +27,7 @@
     "read": "Tanga",
     "contact": "Kokonaka",
     "notApplicable": "Nazalaka",
-    "noPlan": "Nazalaka"
+    "noPlan": "Plano eyé na ngai moko"
   },
   "auth": {
     "welcome": "Moni",
@@ -161,6 +161,9 @@
     "noActivePlan": "Nazalaka",
     "benefitsCount": "Mpacho",
     "support247": "Bikisi",
+    "nationality": "Nationalité",
+    "selectNationality": "Sélectionnez votre nationalité",
+    "searchCountry": "Rechercher un pays...",
     "protected100": "Nakokende",
     "deleteAccountSubtitle": "La suppression de votre compte est permanente et ne peut pas être annulée.",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "Mpono",
     "planUsage": "Plan ya Ngai",
     "nextBilling": "Libikolo:",
-    "sort": "Telesa:"
+    "sort": "Telesa:",
+    "motto": "Kobikisa ndambu ya nini \u00B7 Mayi na ngai, mission na bino \u00B7 Tedisana na kote moko \u00B7 Kotesa communautés \u00B7 "
   },
   "benefits": {
     "title": "Mpacho ya Ngai",
@@ -345,9 +349,14 @@
         "category_name": "Mpasi"
       },
       "recovery": {
-        "title": "Kokanisa Compte",
-        "description": "Kokanisa compte na ngai",
-        "category_name": "Digital"
+        "title": "Kozwaka Compte",
+        "description": "Zwaka na ndako ya digital. Tedisana na kozwaka compte ezali na Lock to po na Uber, DoorDash na platengi mingi ya sevice ezali importanti.",
+        "category_name": "Ya Digital"
+      },
+      "translation": {
+        "title": "Kolanda na Kebatisa Document",
+        "description": "Kolanda na kebatisa ya professionnel ya document ya immigration moko te na langi moko na Englisi. Kolanda ya kebatisa ezali na motindo na USCIS, tribinal na agansi ya governement.",
+        "category_name": "Immigration"
       }
     },
     "newServices": "Sevisi Eswa",
@@ -1119,6 +1128,9 @@
     "title": "Appui ya Logement",
     "subtitle": "Bisusu ekosaidia na recherche ya logement, relocate na shelter, na orientation ya programmes ya logement ezali.",
     "formTitle": "📋 Kolisa formulaire",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "Champs na * ezali obligatoire",
     "fullNameLabel": "Nom complet *",
     "fullNamePlaceholder": "Nom na yo ya boni",
@@ -1170,6 +1182,9 @@
     "title": "Aide ya Finance",
     "subtitle": "Orientation na benefits ya finance, EBT, cartes ya aide yaÉtat, impôts, na déclaration fiscale.",
     "formTitle": "💼 Formulaire ya demande",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "Type ya aide ezalaka *",
     "selectHelpType": "Yola type ya aide",
     "stateLabel": "État (USA) *",
@@ -1279,3 +1294,5 @@
     "label": "Admin"
   }
 }
+
+

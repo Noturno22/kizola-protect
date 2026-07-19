@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "保存",
     "cancel": "取消",
@@ -27,7 +27,7 @@
     "read": "阅读",
     "contact": "联系",
     "notApplicable": "不适用",
-    "noPlan": "无计划"
+    "noPlan": "免费计划"
   },
   "auth": {
     "welcome": "欢迎回来",
@@ -161,6 +161,9 @@
     "noActivePlan": "无活跃计划",
     "benefitsCount": "福利",
     "support247": "支持",
+    "nationality": "国籍",
+    "selectNationality": "请选择您的国籍",
+    "searchCountry": "搜索国家...",
     "protected100": "已保护",
     "deleteAccountSubtitle": "删除账户是永久性的，无法撤销。",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "满意度",
     "planUsage": "计划使用情况",
     "nextBilling": "下次付款：",
-    "sort": "排序:"
+    "sort": "排序:",
+    "motto": "守护您的旅程 \u00B7 您的权利，我们的使命 \u00B7 团结更强大 \u00B7 赋能社区 \u00B7 "
   },
   "benefits": {
     "title": "您的福利",
@@ -346,8 +350,13 @@
       },
       "recovery": {
         "title": "账户恢复",
-        "description": "重新访问您的数字生活。我们帮助恢复被锁定或 hacked 的Uber、DoorDash和其他重要服务平台账户。",
+        "description": "恢复您对数字生活的访问。我们帮助恢复Uber、DoorDash和其他重要服务平台上被锁定或被入侵的账户。",
         "category_name": "数字"
+      },
+      "translation": {
+        "title": "文件翻译与认证",
+        "description": "专业翻译和认证任何移民文件，任何语言翻译为英语。经认证的翻译被USCIS、法院和政府机构接受。",
+        "category_name": "移民"
       }
     },
     "newServices": "新服务",
@@ -1119,6 +1128,9 @@
     "title": "住房支持",
     "subtitle": "我们帮助寻找住房、搬迁到庇护所，以及提供可用住房项目的指导。",
     "formTitle": "📋 填写表格",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "标有 * 的字段为必填",
     "fullNameLabel": "全名 *",
     "fullNamePlaceholder": "您的全名",
@@ -1170,6 +1182,9 @@
     "title": "财务帮助",
     "subtitle": "关于财务福利、EBT、州援助卡、税务和报税的指导。",
     "formTitle": "💼 申请表格",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "需要的帮助类型 *",
     "selectHelpType": "选择帮助类型",
     "stateLabel": "州（美国） *",
@@ -1279,3 +1294,5 @@
     "label": "管理"
   }
 }
+
+

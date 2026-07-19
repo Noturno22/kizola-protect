@@ -27,7 +27,7 @@
     "read": "Read",
     "contact": "Contact",
     "notApplicable": "N/A",
-    "noPlan": "No Plan"
+    "noPlan": "Free Plan"
   },
   "auth": {
     "welcome": "Welcome Back",
@@ -135,6 +135,8 @@
     "spouse": "Spouse",
     "other": "Other",
     "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Phone Number (Optional)",
     "namePlaceholder": "Enter full name",
     "document": "Document",
     "documentPlaceholder": "Enter document number",
@@ -148,6 +150,22 @@
     "editProfile": "Edit Profile",
     "changePassword": "Change Password",
     "signOut": "Sign Out",
+    "signOutTitle": "Sign Out",
+    "signOutConfirm": "Are you sure you want to sign out of your account?",
+    "signOutFailed": "Failed to sign out. Please try again.",
+    "shareMessage": "Protect yourself with Kizola Protect! Use my code: {{url}}",
+    "shareError": "Could not share",
+    "avatarUpdated": "Profile photo updated",
+    "avatarFailed": "Failed to update photo",
+    "nameEmailRequired": "Name and email are required",
+    "profileUpdated": "Profile updated successfully",
+    "profileUpdateFailed": "Failed to update profile",
+    "allFieldsRequired": "All fields are required",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "passwordUpdated": "Password updated successfully",
+    "passwordUpdateFailed": "Failed to update password",
+    "permissionDenied": "Permission denied",
+    "permissionMessage": "Gallery access is required to choose a photo.",
     "language": "Language",
     "changeLanguage": "Change Language",
     "selectLanguage": "Select Language",
@@ -162,6 +180,9 @@
     "noActivePlan": "No active plan",
     "benefitsCount": "Benefits",
     "support247": "Support",
+    "nationality": "Nationality",
+    "selectNationality": "Select your nationality",
+    "searchCountry": "Search country...",
     "protected100": "Protected",
     "deleteAccountSubtitle": "Deleting your account is permanent and cannot be undone.",
     "adminPanel": "Admin Panel",
@@ -228,7 +249,8 @@
     "statsSatisfaction": "Satisfaction",
     "planUsage": "Plan usage",
     "nextBilling": "Next billing:",
-    "sort": "Sort:"
+    "sort": "Sort:",
+    "motto": "Protecting your journey \u00B7 Your rights, our mission \u00B7 Stronger together \u00B7 Empowering communities \u00B7 "
   },
   "benefits": {
     "title": "Your Benefits",
@@ -276,9 +298,9 @@
         "title": "Housing Support",
         "description": "Find stable housing and understand your rights as a tenant. Access resources for rental assistance, shelter, and affordable housing programs.",
         "features": [
-          "Rental application help",
-          "Tenant rights guidance",
-          "Affordable housing resources",
+          "Voucher-friendly rental search",
+          "Section 8 & Housing Choice Voucher guidance",
+          "Tenant rights & landlord relations",
           "Emergency shelter access"
         ]
       },
@@ -331,7 +353,7 @@
       },
       "housing": {
         "title": "Housing Support",
-        "description": "Find housing solutions and understand your tenant rights. Get assistance with rental applications, shelter resources, and guidance on affordable housing programs.",
+        "description": "Find housing solutions including voucher-friendly rentals. Get help with Section 8 Housing Choice Voucher applications, tenant rights, shelter resources, and affordable housing programs.",
         "category_name": "Housing"
       },
       "education": {
@@ -353,6 +375,11 @@
         "title": "Account Recovery",
         "description": "Regain access to your digital life. We help recover locked or hacked accounts for Uber, DoorDash, and other essential service platforms.",
         "category_name": "Digital"
+      },
+      "translation": {
+        "title": "Document Translation & Certification",
+        "description": "Professional translation and certification of any immigration document from any language to English. Certified translations accepted by USCIS, courts, and government agencies.",
+        "category_name": "Immigration"
       }
     }
   },
@@ -1226,7 +1253,14 @@
     "close": "Close"
   },
   "offline": {
-    "banner": "You are offline. Some features may be unavailable."
+    "banner": "You are offline — cached data is shown",
+    "queuedTitle": "Queued",
+    "queuedMessage": "Your request will be sent when you're back online",
+    "syncComplete": "Sync complete",
+    "syncFailed": "Some requests failed to sync",
+    "savedDocs": "Saved Documents",
+    "emergencyContacts": "Emergency Contacts",
+    "noCachedData": "No cached data available offline"
   },
   "notifLearning": {
     "title": "New Learning Resources",
@@ -1245,7 +1279,7 @@
     "backToHome": "Back to Home",
     "submitNewRequest": "Submit New Request",
     "title": "Housing Support",
-    "subtitle": "We help with finding housing, moving to Shelter, and guidance on available housing programs.",
+    "subtitle": "We help with finding voucher-friendly housing, Section 8 applications, Shelter placement, and guidance on available housing programs.",
     "formTitle": "📋 Fill Out the Form",
     "requiredFieldsNote": "Fields marked with * are required",
     "fullNameLabel": "Full Name *",
@@ -1265,6 +1299,8 @@
     "submitButton": "Submit Housing Request",
     "privacyNote": "🔒 Your information is treated with full confidentiality and used only to provide the requested support.",
     "need_rental_search": "Rental housing search",
+    "need_voucher_housing": "Voucher-friendly housing search",
+    "need_section8": "Section 8 / Housing Choice Voucher help",
     "need_shelter_move": "Move to Shelter (State Residence)",
     "need_housing_program": "Guidance on housing programs",
     "need_tenant_rights": "Tenant rights",
@@ -1277,6 +1313,8 @@
     "situation_overcrowded": "Overcrowded housing",
     "situation_temporary": "Temporary stay with family/friends",
     "situation_rental": "Current rental — looking for alternatives",
+    "situation_voucher_waitlist": "On Section 8 voucher waitlist",
+    "situation_voucher_active": "Have active voucher — need housing",
     "situation_other": "Other situation"
   },
   "financeForm": {
@@ -1295,7 +1333,10 @@
     "submitNewRequest": "Submit New Request",
     "title": "Financial Help",
     "subtitle": "Guidance on financial benefits, EBT, state aid cards, taxes, and Tax Return.",
-    "formTitle": "💼 Request Form",
+    "formTitle": "Request Form",
+    "formSubtitle": "Fill out the form below and our specialists will contact you.",
+    "whatWeHelpWith": "What We Help With",
+    "freeAssistance": "Free Assistance",
     "helpTypeLabel": "Type of Help Needed *",
     "selectHelpType": "Select the type of help",
     "stateLabel": "State (USA) *",

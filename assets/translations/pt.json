@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Salvar",
     "cancel": "Cancelar",
@@ -27,7 +27,7 @@
     "read": "Lido",
     "contact": "Contacto",
     "notApplicable": "Não aplicável",
-    "noPlan": "Sem Plano"
+    "noPlan": "Plano Grátis"
   },
   "auth": {
     "welcome": "Bem-vindo de volta",
@@ -134,6 +134,8 @@
     "daughter": "Filha",
     "spouse": "Cônjuge",
     "fullName": "Nome Completo",
+    "emailAddress": "Endereço de Email",
+    "phoneNumber": "Número de Telefone (Opcional)",
     "namePlaceholder": "Insira o nome completo",
     "document": "Documento",
     "documentPlaceholder": "Insira o número do documento",
@@ -147,6 +149,22 @@
     "editProfile": "Editar Perfil",
     "changePassword": "Alterar Senha",
     "signOut": "Sair",
+    "signOutTitle": "Sair da Conta",
+    "signOutConfirm": "Tem certeza que deseja sair da sua conta?",
+    "signOutFailed": "Falha ao sair. Tente novamente.",
+    "shareMessage": "Proteja-se com Kizola Protect! Use o meu código: {{url}}",
+    "shareError": "Não foi possível partilhar",
+    "avatarUpdated": "Foto de perfil atualizada",
+    "avatarFailed": "Falha ao atualizar foto",
+    "nameEmailRequired": "Nome e email são obrigatórios",
+    "profileUpdated": "Perfil atualizado com sucesso",
+    "profileUpdateFailed": "Falha ao atualizar perfil",
+    "allFieldsRequired": "Todos os campos são obrigatórios",
+    "passwordMinLength": "A senha deve ter pelo menos 6 caracteres",
+    "passwordUpdated": "Senha atualizada com sucesso",
+    "passwordUpdateFailed": "Falha ao atualizar senha",
+    "permissionDenied": "Permissão negada",
+    "permissionMessage": "É necessário acesso à galeria para escolher uma foto.",
     "language": "Idioma",
     "changeLanguage": "Alterar Idioma",
     "selectLanguage": "Selecione o Idioma",
@@ -161,6 +179,9 @@
     "noActivePlan": "Sem plano ativo",
     "benefitsCount": "Benefícios",
     "support247": "Suporte",
+    "nationality": "Nacionalidade",
+    "selectNationality": "Selecione a sua nacionalidade",
+    "searchCountry": "Pesquisar país...",
     "protected100": "Protegido",
     "deleteAccountSubtitle": "Apagar a sua conta é permanente e não pode ser desfeito.",
     "deleteAccount": {
@@ -228,7 +249,8 @@
     "statsSatisfaction": "Satisfação",
     "planUsage": "Uso do plano",
     "nextBilling": "Próxima cobrança:",
-    "sort": "Ordenar:"
+    "sort": "Ordenar:",
+    "motto": "Protegendo a sua jornada \u00B7 Os seus direitos, a nossa missão \u00B7 Mais fortes juntos \u00B7 Fortalecendo comunidades \u00B7 "
   },
   "benefits": {
     "title": "Os Seus Benefícios",
@@ -276,9 +298,9 @@
         "title": "Apoio à Habitação",
         "description": "Encontre habitação estável e compreenda os seus direitos como inquilino. Aceda a recursos para assistência no arrendamento, abrigo e programas de habitação acessível.",
         "features": [
-          "Ajuda na candidatura ao arrendamento",
-          "Orientação sobre direitos do inquilino",
-          "Recursos de habitação acessível",
+          "Procura de arrendamento voucher friendly",
+          "Orientação sobre Section 8 e Housing Choice Voucher",
+          "Direitos do inquilino e relações com senhorios",
           "Acesso a abrigo de emergência"
         ]
       },
@@ -331,7 +353,7 @@
       },
       "housing": {
         "title": "Apoio à Habitação",
-        "description": "Encontre soluções de habitação e compreenda os seus direitos de inquilino. Obtenha assistência com candidaturas ao arrendamento, recursos de abrigo e orientação sobre programas de habitação acessível.",
+        "description": "Encontre soluções habitacionais incluindo arrendamento voucher friendly. Obtenha ajuda com candidaturas ao Section 8 Housing Choice Voucher, direitos do inquilino, recursos de abrigo e programas de habitação acessível.",
         "category_name": "Habitação"
       },
       "education": {
@@ -350,9 +372,14 @@
         "category_name": "Emergência"
       },
       "recovery": {
-        "title": "Recuperação de Contas",
-        "description": "Recupere o acesso à sua vida digital. Ajudamos a recuperar contas bloqueadas ou pirateadas da Uber, DoorDash e outras plataformas de serviços essenciais.",
+        "title": "Recuperação de Conta",
+        "description": "Recupere o acesso à sua vida digital. Ajudamos a recuperar contas bloqueadas ou violadas da Uber, DoorDash e outras plataformas essenciais.",
         "category_name": "Digital"
+      },
+      "translation": {
+        "title": "Tradução e Certificação de Documentos",
+        "description": "Tradução e certificação profissional de qualquer documento de imigração de qualquer idioma para inglês. Traduções certificadas aceites pela USCIS, tribunais e agências governamentais.",
+        "category_name": "Imigração"
       }
     }
   },
@@ -1223,7 +1250,14 @@
     "close": "Fechar"
   },
   "offline": {
-    "banner": "Está offline. Algumas funcionalidades podem estar indisponíveis."
+    "banner": "Está offline — dados em cache estão sendo exibidos",
+    "queuedTitle": "Na fila",
+    "queuedMessage": "Seu pedido será enviado quando estiver online",
+    "syncComplete": "Sincronização concluída",
+    "syncFailed": "Alguns pedidos falharam ao sincronizar",
+    "savedDocs": "Documentos Salvos",
+    "emergencyContacts": "Contatos de Emergência",
+    "noCachedData": "Nenhum dado em cache disponível offline"
   },
   "notifLearning": {
     "title": "Novos Recursos de Aprendizagem",
@@ -1242,8 +1276,11 @@
     "backToHome": "Voltar ao Início",
     "submitNewRequest": "Submeter Novo Pedido",
     "title": "Apoio Habitacional",
-    "subtitle": "Ajudamos com a procura de habitação, mudança para abrigo e orientação sobre programas habitacionais disponíveis.",
+    "subtitle": "Ajudamos com a procura de habitação voucher friendly, candidaturas ao Section 8, colocações em abrigo e orientação sobre programas habitacionais disponíveis.",
     "formTitle": "📋 Preencher o Formulário",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "Campos marcados com * são obrigatórios",
     "fullNameLabel": "Nome Completo *",
     "fullNamePlaceholder": "O seu nome completo",
@@ -1264,6 +1301,8 @@
     "submitButton": "Submeter Pedido de Habitação",
     "privacyNote": "🔒 A sua informação é tratada com total confidencialidade e utilizada apenas para fornecer o apoio solicitado.",
     "need_rental_search": "Procura de habitação para arrendamento",
+    "need_voucher_housing": "Procura de habitação voucher friendly",
+    "need_section8": "Ajuda com Section 8 / Housing Choice Voucher",
     "need_shelter_move": "Mudança para Abrigo (Residência Estadual)",
     "need_housing_program": "Orientação sobre programas habitacionais",
     "need_tenant_rights": "Direitos do inquilino",
@@ -1276,6 +1315,8 @@
     "situation_overcrowded": "Habitação superlotada",
     "situation_temporary": "Estadia temporária com familiares/amigos",
     "situation_rental": "Arrendamento atual — a procura de alternativas",
+    "situation_voucher_waitlist": "Em lista de espera do voucher Section 8",
+    "situation_voucher_active": "Tenho voucher ativo — preciso de habitação",
     "situation_other": "Outra situação"
   },
   "financeForm": {
@@ -1295,6 +1336,9 @@
     "title": "Ajuda Financeira",
     "subtitle": "Orientação sobre benefícios financeiros, EBT, cartões de auxílio estadual, impostos e Declaração de Imposto.",
     "formTitle": "💼 Formulário de Pedido",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "Tipo de Ajuda Necessária *",
     "selectHelpType": "Selecione o tipo de ajuda",
     "stateLabel": "Estado (EUA) *",
@@ -1404,3 +1448,4 @@
     "label": "Admin"
   }
 }
+

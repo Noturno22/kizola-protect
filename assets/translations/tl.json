@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "I-save",
     "cancel": "Kanselahin",
@@ -27,7 +27,7 @@
     "read": "Basahin",
     "contact": "Makipag-ugnayan",
     "notApplicable": "Hindi Naaangkop",
-    "noPlan": "Walang Plano"
+    "noPlan": "Libreng Plano"
   },
   "auth": {
     "welcome": "Maligayang Pagbabalik",
@@ -161,6 +161,9 @@
     "noActivePlan": "Walang aktibong plano",
     "benefitsCount": "Mga Benepisyo",
     "support247": "Suporta",
+    "nationality": "Nasyonalidad",
+    "selectNationality": "Piliin ang iyong nasyonalidad",
+    "searchCountry": "Maghanap ng bansa...",
     "protected100": "Protektado",
     "deleteAccountSubtitle": "Ang pagbura ng iyong account ay permanente at hindi maaaring ibalik.",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "Kasiyahan",
     "planUsage": "Paggamit ng plano",
     "nextBilling": "Susunod na pagsingil:",
-    "sort": "Ayusin:"
+    "sort": "Ayusin:",
+    "motto": "Pinoprotektahan ang iyong paglalakbay \u00B7 Ang iyong mga karapatan, aming misyon \u00B7 Mas matibay magkasama \u00B7 Pinapalakas ang mga komunidad \u00B7 "
   },
   "benefits": {
     "title": "Iyong Mga Benepisyo",
@@ -346,8 +350,13 @@
       },
       "recovery": {
         "title": "Pagbawi ng Account",
-        "description": "Mabawi ang access sa iyong digital na buhay. Tumutulong kaming ibalik ang mga naka-lock o na-hack na account para sa Uber, DoorDash, at iba pang mahahalagang service platform.",
+        "description": "Mabawi ang access sa iyong digital na buhay. Tinutulungan naming mabawi ang mga naka-lock o na-hack na account sa Uber, DoorDash, at iba pang mahahalagang service platform.",
         "category_name": "Digital"
+      },
+      "translation": {
+        "title": "Pagsasalin at Pagpapatunay ng Dokumento",
+        "description": "Propesyonal na pagsasalin at pagpapatunay ng kahit anong dokumento para sa imigrasyon mula sa kahit anong wika patungong Ingles. Mga na-certify na pagsasalin na tinatanggap ng USCIS, mga korte, at mga ahensya ng gobyerno.",
+        "category_name": "Imigrasyon"
       }
     },
     "newServices": "Mga Bagong Serbisyo",
@@ -1119,6 +1128,9 @@
     "title": "Suporta sa Pabahay",
     "subtitle": "Tumutulong kami sa paghahanap ng pabahay, paglipat sa shelter, at gabay sa mga available na programa ng pabahay.",
     "formTitle": "📋 Punan ang Form",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "Ang mga field na may * ay kailangang punan",
     "fullNameLabel": "Buong Pangalan *",
     "fullNamePlaceholder": "Ang inyong buong pangalan",
@@ -1170,6 +1182,9 @@
     "title": "Tulong sa Pananalapi",
     "subtitle": "Gabay sa mga benepisyo sa pananalapi, EBT, mga kard ng tulong ng estado, buwis, at Tax Return.",
     "formTitle": "💼 Form ng Kahilingan",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "Uri ng Tulong na Kailangan *",
     "selectHelpType": "Piliin ang uri ng tulong",
     "stateLabel": "Estado (USA) *",
@@ -1279,3 +1294,5 @@
     "label": "Admin"
   }
 }
+
+

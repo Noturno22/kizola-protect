@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Lưu",
     "cancel": "Hủy",
@@ -27,7 +27,7 @@
     "read": "Đọc",
     "contact": "Liên hệ",
     "notApplicable": "Không áp dụng",
-    "noPlan": "Không có gói"
+    "noPlan": "Gói Miễn Phí"
   },
   "auth": {
     "welcome": "Chào mừng trở lại",
@@ -161,6 +161,9 @@
     "noActivePlan": "Không có gói hoạt động",
     "benefitsCount": "Quyền lợi",
     "support247": "Hỗ trợ",
+    "nationality": "Quốc tịch",
+    "selectNationality": "Chọn quốc tịch của bạn",
+    "searchCountry": "Tìm kiếm quốc gia...",
     "protected100": "Đã bảo vệ",
     "deleteAccountSubtitle": "Xóa tài khoản là vĩnh viễn và không thể hoàn tác.",
     "deleteAccount": {
@@ -228,7 +231,8 @@
     "statsSatisfaction": "Hài lòng",
     "planUsage": "Sử dụng gói",
     "nextBilling": "Thanh toán tiếp theo:",
-    "sort": "Sắp xếp:"
+    "sort": "Sắp xếp:",
+    "motto": "Bảo vệ hành trình của bạn \u00B7 Quyền lợi của bạn, sứ mệnh của chúng tôi \u00B7 Mạnh mẽ hơn cùng nhau \u00B7 Trao quyền cộng đồng \u00B7 "
   },
   "benefits": {
     "title": "Quyền lợi của Bạn",
@@ -345,9 +349,14 @@
         "category_name": "Khẩn cấp"
       },
       "recovery": {
-        "title": "Khôi phục Tài khoản",
-        "description": "Lấy lại quyền truy cập vào cuộc sống kỹ thuật số của bạn. Chúng tôi giúp khôi phục tài khoản bị khóa hoặc bị hack cho Uber, DoorDash và các nền tảng dịch vụ thiết yếu khác.",
+        "title": "Khôi Phục Tài Khoản",
+        "description": "Khôi phục quyền truy cập vào cuộc sống kỹ thuật số của bạn. Chúng tôi giúp khôi phục các tài khoản bị khóa hoặc bị hack trên Uber, DoorDash và các nền tảng dịch vụ thiết yếu khác.",
         "category_name": "Kỹ thuật số"
+      },
+      "translation": {
+        "title": "Dịch Thuật và Chứng Nhận Tài Liệu",
+        "description": "Dịch thuật và chứng nhận chuyên nghiệp bất kỳ tài liệu nhập cư nào từ bất kỳ ngôn ngữ nào sang tiếng Anh. Bản dịch có chứng nhận được chấp nhận bởi USCIS, tòa án và các cơ quan chính phủ.",
+        "category_name": "Nhập cư"
       }
     },
     "newServices": "Dịch Vụ Mới",
@@ -1119,6 +1128,9 @@
     "title": "Hỗ trợ nhà ở",
     "subtitle": "Chúng tôi giúp tìm nhà, chuyển đến nơi ở tạm thời, và hướng dẫn các chương trình nhà ở có sẵn.",
     "formTitle": "📋 Điền biểu mẫu",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "requiredFieldsNote": "Các trường đánh dấu * là bắt buộc",
     "fullNameLabel": "Họ và tên *",
     "fullNamePlaceholder": "Họ và tên của bạn",
@@ -1170,6 +1182,9 @@
     "title": "Hỗ trợ tài chính",
     "subtitle": "Hướng dẫn về phúc lợi tài chính, EBT, thẻ hỗ trợ tiểu bang, thuế và Khai báo thuế.",
     "formTitle": "💼 Biểu mẫu đăng ký",
+    "formSubtitle": "",
+    "whatWeHelpWith": "",
+    "freeAssistance": "",
     "helpTypeLabel": "Loại hỗ trợ cần thiết *",
     "selectHelpType": "Chọn loại hỗ trợ",
     "stateLabel": "Tiểu bang (Mỹ) *",
@@ -1279,3 +1294,5 @@
     "label": "Quản trị"
   }
 }
+
+
