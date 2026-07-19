@@ -1,1 +1,0 @@
-Após o splash, aprece uma a tela de processamento com um spiner girando que  demorou bastante para desaparecer, porque precisamos desta tela? podemos deixar a tela de  o splash demoarar até terminar o processamento, e o mesmo processamente também deve ser rapido e no login não apresentes estas label par o usuario : auth.demo.Mode 
