@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   View, 
   Text, 
@@ -24,9 +24,29 @@ import {
 } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
 
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
+
 function AdminSupport() {
   const { theme, isDark } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = useMemo(() => mapToLocale(i18n.language), [i18n.language]);
   const [requests, setRequests] = useState<SupportRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -83,7 +103,7 @@ function AdminSupport() {
             </Text>
           </View>
           <Text style={[styles.dateText, { color: theme.textMuted }]}>
-            {new Date(item.created_at).toLocaleDateString()}
+            {new Date(item.created_at).toLocaleDateString(locale)}
           </Text>
         </View>
 

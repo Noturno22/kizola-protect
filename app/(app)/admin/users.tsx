@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   View, 
   Text, 
@@ -14,6 +14,25 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useTranslation } from 'react-i18next';
+
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
 import { supabase, type User } from '@/lib/supabase';
 import { 
   Search, 
@@ -30,7 +49,8 @@ import { useRouter } from 'expo-router';
 
 function AdminUsers() {
   const { theme, isDark } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = useMemo(() => mapToLocale(i18n.language), [i18n.language]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -93,12 +113,12 @@ function AdminUsers() {
         <View style={styles.userStats}>
           <View style={styles.statItem}>
             <Shield size={14} color={theme.textMuted} />
-            <Text style={[styles.statText, { color: theme.textSecondary }]}>{item.plan || 'none'}</Text>
+            <Text style={[styles.statText, { color: theme.textSecondary }]}>{t(`plans.${item.plan || 'none'}`)}</Text>
           </View>
           <View style={styles.statItem}>
             <Calendar size={14} color={theme.textMuted} />
             <Text style={[styles.statText, { color: theme.textSecondary }]}>
-              {new Date(item.created_at).toLocaleDateString()}
+              {new Date(item.created_at).toLocaleDateString(locale)}
             </Text>
           </View>
           <View style={[styles.statusBadge, { 
@@ -109,7 +129,7 @@ function AdminUsers() {
             }]} />
             <Text style={[styles.statusText, { 
               color: item.status === 'active' ? theme.success : theme.error 
-            }]}>{item.status}</Text>
+            }]}>{t(item.status === 'active' ? 'common.active' : 'common.inactive')}</Text>
           </View>
         </View>
       </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { 
   View, 
   Text, 
@@ -14,6 +14,25 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { useTranslation } from 'react-i18next';
+
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
 import { 
   Users, 
   ShieldCheck, 
@@ -60,8 +79,9 @@ const { width } = Dimensions.get('window');
 function AdminDashboard() {
   const { theme, isDark } = useTheme();
   const { user, signOut } = useAuth();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
+  const locale = useMemo(() => mapToLocale(i18n.language), [i18n.language]);
 
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [revenueData, setRevenueData] = useState<RevenueDataPoint[]>([]);
@@ -329,17 +349,17 @@ function AdminDashboard() {
               <Text style={[styles.breakdownTitle, { color: theme.text }]}>{t('admin.porCategoria')}</Text>
               <View style={styles.breakdownRow}>
                 <View style={styles.breakdownItem}>
-                  <Text style={[styles.breakdownItemLabel, { color: '#3B82F6' }]}>Suporte</Text>
+                  <Text style={[styles.breakdownItemLabel, { color: '#3B82F6' }]}>{t('admin.casesTabSupport')}</Text>
                   <Text style={[styles.breakdownItemValue, { color: theme.text }]}>{satisfactionData.ratingsByType.support.rate}%</Text>
                   <Text style={[styles.breakdownItemCount, { color: theme.textSecondary }]}>{satisfactionData.ratingsByType.support.resolved}/{satisfactionData.ratingsByType.support.total}</Text>
                 </View>
                 <View style={styles.breakdownItem}>
-                  <Text style={[styles.breakdownItemLabel, { color: '#F59E0B' }]}>Habitação</Text>
+                  <Text style={[styles.breakdownItemLabel, { color: '#F59E0B' }]}>{t('admin.casesTabHousing')}</Text>
                   <Text style={[styles.breakdownItemValue, { color: theme.text }]}>{satisfactionData.ratingsByType.housing.rate}%</Text>
                   <Text style={[styles.breakdownItemCount, { color: theme.textSecondary }]}>{satisfactionData.ratingsByType.housing.resolved}/{satisfactionData.ratingsByType.housing.total}</Text>
                 </View>
                 <View style={styles.breakdownItem}>
-                  <Text style={[styles.breakdownItemLabel, { color: '#8B5CF6' }]}>Finanças</Text>
+                  <Text style={[styles.breakdownItemLabel, { color: '#8B5CF6' }]}>{t('admin.casesTabFinance')}</Text>
                   <Text style={[styles.breakdownItemValue, { color: theme.text }]}>{satisfactionData.ratingsByType.finance.rate}%</Text>
                   <Text style={[styles.breakdownItemCount, { color: theme.textSecondary }]}>{satisfactionData.ratingsByType.finance.resolved}/{satisfactionData.ratingsByType.finance.total}</Text>
                 </View>
@@ -365,17 +385,17 @@ function AdminDashboard() {
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: '#10B981' }]}>{benefitsData.requestsByCategory.support}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Suporte</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.casesTabSupport')}</Text>
               </View>
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: '#F59E0B' }]}>{benefitsData.requestsByCategory.housing}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Habitação</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.casesTabHousing')}</Text>
               </View>
               <View style={styles.satisfactionStatDivider} />
               <View style={styles.satisfactionStatItem}>
                 <Text style={[styles.satisfactionStatValue, { color: '#8B5CF6' }]}>{benefitsData.requestsByCategory.finance}</Text>
-                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>Finanças</Text>
+                <Text style={[styles.satisfactionStatLabel, { color: theme.textSecondary }]}>{t('admin.casesTabFinance')}</Text>
               </View>
             </View>
             <View style={styles.satisfactionBreakdown}>

@@ -13,6 +13,25 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useTranslation } from 'react-i18next';
+
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
 import { supabase } from '@/lib/supabase';
 import {
   ArrowLeft,
@@ -43,7 +62,8 @@ interface SubscriptionItem {
 
 export default function AdminFinance() {
   const { theme, isDark } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = useMemo(() => mapToLocale(i18n.language), [i18n.language]);
   const router = useRouter();
 
   const [subscriptions, setSubscriptions] = useState<SubscriptionItem[]>([]);
@@ -145,7 +165,7 @@ export default function AdminFinance() {
           <View style={styles.dateInfo}>
             <Calendar size={12} color={theme.textMuted} />
             <Text style={[styles.dateText, { color: theme.textSecondary }]}>
-              {t('admin.proximo')}: {new Date(item.next_billing_date).toLocaleDateString()}
+              {t('admin.proximo')}: {new Date(item.next_billing_date).toLocaleDateString(locale)}
             </Text>
           </View>
         </View>

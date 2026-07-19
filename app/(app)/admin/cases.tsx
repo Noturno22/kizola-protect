@@ -15,6 +15,25 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useTranslation } from 'react-i18next';
+
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
 import { supabase } from '@/lib/supabase';
 import {
   ArrowLeft,
@@ -54,7 +73,8 @@ interface CaseItem {
 
 export default function AdminCases() {
   const { theme, isDark } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = useMemo(() => mapToLocale(i18n.language), [i18n.language]);
   const router = useRouter();
 
   const [cases, setCases] = useState<CaseItem[]>([]);
@@ -266,7 +286,7 @@ export default function AdminCases() {
             <Text style={[styles.typeBadgeText, { color: typeColor }]}>{typeLabel}</Text>
           </View>
           <Text style={[styles.dateText, { color: theme.textMuted }]}>
-            {new Date(item.created_at).toLocaleDateString()}
+            {new Date(item.created_at).toLocaleDateString(locale)}
           </Text>
         </View>
 
@@ -427,9 +447,9 @@ export default function AdminCases() {
                   <View style={styles.modalHeader}>
                     <View style={[styles.typeBadge, { backgroundColor: selectedCase.case_type === 'support' ? '#3B82F620' : selectedCase.case_type === 'housing' ? '#F59E0B20' : '#8B5CF620' }]}>
                       {getCaseIcon(selectedCase.case_type, 16, selectedCase.case_type === 'support' ? '#3B82F6' : selectedCase.case_type === 'housing' ? '#F59E0B' : '#8B5CF6')}
-                      <Text style={[styles.typeBadgeText, { color: selectedCase.case_type === 'support' ? '#3B82F6' : selectedCase.case_type === 'housing' ? '#F59E0B' : '#8B5CF6' }]}>
-                        {selectedCase.case_type.toUpperCase()}
-                      </Text>
+                <Text style={[styles.typeBadgeText, { color: selectedCase.case_type === 'support' ? '#3B82F6' : selectedCase.case_type === 'housing' ? '#F59E0B' : '#8B5CF6' }]}>
+                  {selectedCase.case_type === 'support' ? t('admin.casesTabSupport') : selectedCase.case_type === 'housing' ? t('admin.casesTabHousing') : t('admin.casesTabFinance')}
+                </Text>
                     </View>
                     <Text style={[styles.dateText, { color: theme.textMuted }]}>
                       {new Date(selectedCase.created_at).toLocaleString()}
