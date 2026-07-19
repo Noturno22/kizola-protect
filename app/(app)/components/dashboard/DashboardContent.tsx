@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    paddingBottom: 24,
+    paddingBottom: 12,
   },
 });
 

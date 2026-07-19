@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { Zap, ChevronRight, Calendar } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { PulseDot, GlowingShield, ProgressBar } from '@/components/dashboard';
+import { useRouter } from 'expo-router';
 
 type Props = {
   theme: any;
@@ -25,9 +27,21 @@ export function MembershipCard({
   nextBillingText,
 }: Props) {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const scale = useSharedValue(1);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
 
   return (
-    <View style={styles.cardContainer}>
+    <Pressable
+      onPressIn={() => { scale.value = withSpring(0.96, { damping: 15, stiffness: 300 }); }}
+      onPressOut={() => { scale.value = withSpring(1, { damping: 12, stiffness: 250 }); }}
+      onPress={() => router.push('/benefits')}
+    >
+      <Animated.View style={[styles.cardContainer, animatedStyle]}>
       <LinearGradient
         colors={planInfo?.color || theme.cardGradient}
         style={[styles.membershipCard, { borderColor: theme.cardBorder }]}
@@ -40,14 +54,14 @@ export function MembershipCard({
           <View style={[styles.planBadge, { borderColor: theme.accent }]}>
             <Zap size={12} color={theme.accent} />
             <Text style={[styles.planBadgeText, { color: theme.accent }]}>
-              {planInfo?.name ? `${planInfo.name} ${t('dashboard.planSuffix')}` : (t('common.noPlan') === 'common.noPlan' ? 'Sem Plano' : t('common.noPlan'))}
+              {planInfo?.name ? `${planInfo.name} ${t('dashboard.planSuffix')}` : (t('common.noPlan') === 'common.noPlan' ? 'Plano Grátis' : t('common.noPlan'))}
             </Text>
           </View>
           <View style={[styles.statusBadge, {
-            backgroundColor: isActive ? 'rgba(34,197,94,0.12)' : 'rgba(239,68,68,0.12)',
-            borderColor: isActive ? 'rgba(34,197,94,0.35)' : 'rgba(239,68,68,0.35)',
+            backgroundColor: isActive ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)',
+            borderColor: isActive ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)',
           }]}>
-            <PulseDot color={isActive ? '#22C55E' : '#EF4444'} size={12} />
+            <PulseDot color={isActive ? '#22C55E' : '#EF4444'} size={8} />
             <Text style={[styles.statusText, { color: isActive ? '#22C55E' : '#EF4444' }]}>
               {isActive ? t('common.active') || 'Ativo' : t('common.inactive') || 'Inativo'}
             </Text>
@@ -76,7 +90,8 @@ export function MembershipCard({
           <ChevronRight size={16} color={theme.isDark || planInfo?.color ? 'rgba(255,255,255,0.3)' : theme.textMuted} />
         </View>
       </LinearGradient>
-    </View>
+      </Animated.View>
+    </Pressable>
   );
 }
 

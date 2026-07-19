@@ -15,7 +15,7 @@ export function PulseDot({ color, size = 10 }: PulseDotProps) {
       Animated.sequence([
         Animated.parallel([
           Animated.timing(pulseAnim, {
-            toValue: 2.2,
+            toValue: 3,
             duration: 1200,
             useNativeDriver: true,
           }),
@@ -32,7 +32,7 @@ export function PulseDot({ color, size = 10 }: PulseDotProps) {
             useNativeDriver: true,
           }),
           Animated.timing(opacityAnim, {
-            toValue: 0.4,
+            toValue: 0.6,
             duration: 0,
             useNativeDriver: true,
           }),
@@ -45,10 +45,10 @@ export function PulseDot({ color, size = 10 }: PulseDotProps) {
   }, [pulseAnim, opacityAnim]);
 
   const dotSize = size;
-  const ringSize = size * 0.8;
+  const ringSize = size * 1.6;
 
   return (
-    <View style={[styles.container, { width: size + 8, height: size + 8 }]}>
+    <View style={[styles.container, { width: size * 5, height: size * 5 }]}>
       <Animated.View
         style={[
           styles.ring,
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
   dot: {
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowOpacity: 0.4,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });

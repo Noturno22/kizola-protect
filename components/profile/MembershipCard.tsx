@@ -20,16 +20,22 @@ interface MembershipCardProps {
   subscriptionData: SubscriptionData | null;
   onPressPlan: () => void;
   t: (key: string) => string;
+  i18nLanguage?: string;
 }
 
-function formatDate(dateStr: string | null | undefined): string {
+function formatDate(dateStr: string | null | undefined, locale: string): string {
   if (!dateStr) return '—';
   const d = new Date(dateStr);
   if (isNaN(d.getTime())) return '—';
-  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+  const dateLocale =
+    locale === 'pt' ? 'pt-AO' :
+    locale === 'fr' ? 'fr-FR' :
+    locale === 'es' || locale === 'es-US' ? 'es-ES' :
+    locale;
+  return d.toLocaleDateString(dateLocale, { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-export default function MembershipCard({ theme, planInfo, subscriptionData, onPressPlan, t }: MembershipCardProps) {
+export default function MembershipCard({ theme, planInfo, subscriptionData, onPressPlan, t, i18nLanguage = 'en' }: MembershipCardProps) {
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   return (
@@ -84,15 +90,15 @@ export default function MembershipCard({ theme, planInfo, subscriptionData, onPr
           <Text style={styles.sectionTitle}>{t('profile.subscription')}</Text>
           <View style={styles.subscriptionInfo}>
             <Text style={styles.subscriptionLabel}>{t('profile.startDate')}:</Text>
-            <Text style={styles.subscriptionValue}>{formatDate(subscriptionData.start_date)}</Text>
+            <Text style={styles.subscriptionValue}>{formatDate(subscriptionData.start_date, i18nLanguage)}</Text>
           </View>
           <View style={styles.subscriptionInfo}>
             <Text style={styles.subscriptionLabel}>{t('profile.nextBilling')}:</Text>
-            <Text style={styles.subscriptionValue}>{formatDate(subscriptionData.next_billing_date)}</Text>
+            <Text style={styles.subscriptionValue}>{formatDate(subscriptionData.next_billing_date, i18nLanguage)}</Text>
           </View>
           <View style={styles.subscriptionInfo}>
             <Text style={styles.subscriptionLabel}>{t('profile.status')}:</Text>
-            <Text style={styles.subscriptionValue}>{subscriptionData.status}</Text>
+            <Text style={styles.subscriptionValue}>{t(subscriptionData.status === 'active' ? 'common.active' : 'common.inactive')}</Text>
           </View>
         </View>
       )}

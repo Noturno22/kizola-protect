@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
 const THEME_KEY = 'kizola_theme';
@@ -136,24 +136,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const toggleTheme = async () => {
-    try {
-      const newMode = !isDark;
-      setIsDark(newMode);
-      await SecureStore.setItemAsync(THEME_KEY, newMode ? 'dark' : 'light');
-    } catch (error) {
-      console.error('Error saving theme:', error);
-    }
-  };
+  const toggleTheme = useCallback(() => {
+    setIsDark((prev) => {
+      const newMode = !prev;
+      SecureStore.setItemAsync(THEME_KEY, newMode ? 'dark' : 'light').catch((error) => {
+        console.error('Error saving theme:', error);
+      });
+      return newMode;
+    });
+  }, []);
 
-  const setTheme = async (mode: 'light' | 'dark') => {
-    try {
-      setIsDark(mode === 'dark');
-      await SecureStore.setItemAsync(THEME_KEY, mode);
-    } catch (error) {
+  const setTheme = useCallback((mode: 'light' | 'dark') => {
+    setIsDark(mode === 'dark');
+    SecureStore.setItemAsync(THEME_KEY, mode).catch((error) => {
       console.error('Error setting theme:', error);
-    }
-  };
+    });
+  }, []);
 
   const theme = isDark ? darkTheme : lightTheme;
 

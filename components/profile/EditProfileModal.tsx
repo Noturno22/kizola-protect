@@ -11,7 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import { useMemo } from 'react';
-import { User, Mail, Phone, X } from 'lucide-react-native';
+import { User, Mail, Phone, X, Globe } from 'lucide-react-native';
 
 interface EditProfileModalProps {
   visible: boolean;
@@ -20,12 +20,16 @@ interface EditProfileModalProps {
   name: string;
   email: string;
   phone: string;
+  nationality?: string;
+  nationalityFlag?: string;
   onChangeName: (v: string) => void;
   onChangeEmail: (v: string) => void;
   onChangePhone: (v: string) => void;
+  onChangeNationality?: (code: string, flag: string) => void;
   onSave: () => void;
   loading: boolean;
   t: (key: string) => string;
+  onOpenCountryPicker?: () => void;
 }
 
 export default function EditProfileModal({
@@ -35,12 +39,15 @@ export default function EditProfileModal({
   name,
   email,
   phone,
+  nationality,
+  nationalityFlag,
   onChangeName,
   onChangeEmail,
   onChangePhone,
   onSave,
   loading,
   t,
+  onOpenCountryPicker,
 }: EditProfileModalProps) {
   const styles = useMemo(() => createStyles(theme), [theme]);
 
@@ -62,7 +69,7 @@ export default function EditProfileModal({
 
             <ScrollView contentContainerStyle={styles.modalBody}>
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Full Name</Text>
+                <Text style={styles.inputLabel}>{t('profile.fullName') || 'Full Name'}</Text>
                 <View style={styles.inputWrapper}>
                   <User size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
@@ -78,7 +85,7 @@ export default function EditProfileModal({
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Email Address</Text>
+                <Text style={styles.inputLabel}>{t('profile.emailAddress') || 'Email Address'}</Text>
                 <View style={styles.inputWrapper}>
                   <Mail size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
@@ -96,7 +103,7 @@ export default function EditProfileModal({
               </View>
 
               <View style={styles.inputContainer}>
-                <Text style={styles.inputLabel}>Phone Number (Optional)</Text>
+                <Text style={styles.inputLabel}>{t('profile.phoneNumber') || 'Phone Number (Optional)'}</Text>
                 <View style={styles.inputWrapper}>
                   <Phone size={18} color={theme.textMuted} style={styles.inputIcon} />
                   <TextInput
@@ -110,6 +117,27 @@ export default function EditProfileModal({
                     accessibilityRole="none"
                   />
                 </View>
+              </View>
+
+              {/* Nationality */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputLabel}>{t('profile.nationality') || 'Nationality'}</Text>
+                <TouchableOpacity
+                  style={styles.inputWrapper}
+                  onPress={onOpenCountryPicker}
+                  accessibilityLabel={nationality ? `${t('profile.nationality')}: ${nationality}` : t('profile.selectNationality')}
+                  accessibilityRole="button"
+                >
+                  <Globe size={18} color={theme.textMuted} style={styles.inputIcon} />
+                  <View style={styles.nationalityContent}>
+                    {nationalityFlag ? (
+                      <Text style={styles.nationalityFlag}>{nationalityFlag}</Text>
+                    ) : null}
+                    <Text style={[styles.nationalityText, !nationality && styles.placeholder]}>
+                      {nationality || t('profile.selectNationality')}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity
@@ -196,6 +224,24 @@ const createStyles = (theme: any) =>
       height: 50,
       fontSize: 15,
       color: theme.text,
+    },
+    nationalityContent: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 50,
+    },
+    nationalityFlag: {
+      fontSize: 24,
+      marginRight: 10,
+    },
+    nationalityText: {
+      flex: 1,
+      fontSize: 15,
+      color: theme.text,
+    },
+    placeholder: {
+      color: theme.textMuted,
     },
     saveButton: {
       backgroundColor: theme.accent,

@@ -4,7 +4,6 @@ import { Notification, supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { useAuth } from './AuthProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { preloadNotificationSound, playNotificationSound, unloadNotificationSound } from '@/lib/notificationSound';
-import i18n from '@/lib/i18n';
 export const [NotificationProvider, useNotifications] = createContextHook(() => {
   const { user, isDemoMode } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -27,8 +26,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
             {
               id: '1',
               user_id: user.id,
-              title: i18n.t('notifWelcomeTitle'),
-              message: i18n.t('notifWelcomeMessage'),
+              title: 'notifWelcomeTitle',
+              message: 'notifWelcomeMessage',
               type: 'success',
               read: false,
               created_at: new Date().toISOString(),
@@ -36,8 +35,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
             {
               id: '2',
               user_id: user.id,
-              title: i18n.t('notifLearning.title'),
-              message: i18n.t('notifLearning.message'),
+              title: 'notifLearning.title',
+              message: 'notifLearning.message',
               type: 'info',
               read: false,
               created_at: new Date(Date.now() - 86400000).toISOString(),
@@ -177,7 +176,8 @@ export const [NotificationProvider, useNotifications] = createContextHook(() => 
         return;
       }
 
-      const { error } = await supabase.from('notifications').insert(newNotification);
+      const { metadata, ...dbNotification } = newNotification;
+      const { error } = await supabase.from('notifications').insert(dbNotification);
       if (error) throw error;
 
       setNotifications(prev => [newNotification, ...prev]);

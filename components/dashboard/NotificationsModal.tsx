@@ -72,8 +72,8 @@ export function NotificationsModal({ visible, onClose }: { visible: boolean; onC
                       <Icon size={18} color={colors.icon} />
                     </View>
                     <View style={{ flex: 1 }}>
-                      <Text style={{ fontSize: 13, fontWeight: '600', color: theme.text, marginBottom: 2 }}>{t(n.title)}</Text>
-                      <Text style={{ fontSize: 12, lineHeight: 17, color: theme.textSecondary, marginBottom: 4 }} numberOfLines={2}>{t(n.message)}</Text>
+                      <Text style={{ fontSize: 13, fontWeight: '600', color: theme.text, marginBottom: 2 }}>{t(n.title, n.metadata)}</Text>
+                      <Text style={{ fontSize: 12, lineHeight: 17, color: theme.textSecondary, marginBottom: 4 }} numberOfLines={2}>{t(n.message, n.metadata)}</Text>
                       <Text style={{ fontSize: 11, color: theme.textMuted }}>{formatDate(n.created_at)}</Text>
                     </View>
                     {!n.read && <View style={{ width: 8, height: 8, borderRadius: 4, marginTop: 4, flexShrink: 0, backgroundColor: theme.accent }} />}
