@@ -8,6 +8,7 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import { SplashBackground } from './SplashBackground';
+import * as ExpoSplashScreen from 'expo-splash-screen';
 
 const FADE_OUT_DURATION = 400;
 
@@ -22,6 +23,11 @@ export function SplashScreen({
 }: SplashScreenProps) {
   const opacity = useSharedValue(1);
   const hasFadedOut = useRef(false);
+
+  useEffect(() => {
+    // Hide native splash as soon as the custom splash is mounted
+    ExpoSplashScreen.hideAsync().catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (!readyToDismiss || hasFadedOut.current) return;
