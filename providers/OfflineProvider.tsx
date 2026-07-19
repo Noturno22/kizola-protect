@@ -1,16 +1,23 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import NetInfo, { type NetInfoState } from '@react-native-community/netinfo';
 import { COLORS } from '@/constants/colors';
-
 import i18n from '@/lib/i18n';
+import { offlineCache } from '@/lib/offlineCache';
+import { syncQueue } from '@/lib/syncQueue';
 
 interface OfflineContextValue {
   isConnected: boolean;
+  pendingSyncCount: number;
+  refreshPendingCount: () => Promise<void>;
 }
 
-const OfflineContext = createContext<OfflineContextValue>({ isConnected: true });
+const OfflineContext = createContext<OfflineContextValue>({
+  isConnected: true,
+  pendingSyncCount: 0,
+  refreshPendingCount: async () => {},
+});
 
 export function useOffline(): OfflineContextValue {
   return useContext(OfflineContext);
@@ -22,19 +29,38 @@ interface OfflineProviderProps {
 
 export function OfflineProvider({ children }: OfflineProviderProps) {
   const [isConnected, setIsConnected] = useState(true);
+  const [pendingSyncCount, setPendingSyncCount] = useState(0);
+
+  const refreshPendingCount = useCallback(async () => {
+    const count = await syncQueue.getPendingCount();
+    setPendingSyncCount(count);
+  }, []);
 
   useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener((state: NetInfoState) => {
-      setIsConnected(state.isConnected ?? true);
+    offlineCache.init();
+    syncQueue.init().then(refreshPendingCount);
+
+    const unsubscribe = NetInfo.addEventListener(async (state: NetInfoState) => {
+      const connected = state.isConnected ?? true;
+      setIsConnected(connected);
+      offlineCache.isConnected = connected;
+
+      if (connected) {
+        const result = await syncQueue.syncAll();
+        if (result.synced > 0 || result.failed > 0) {
+          refreshPendingCount();
+        }
+      }
     });
 
     return () => {
       unsubscribe();
+      offlineCache.destroy();
     };
-  }, []);
+  }, [refreshPendingCount]);
 
   return (
-    <OfflineContext.Provider value={{ isConnected }}>
+    <OfflineContext.Provider value={{ isConnected, pendingSyncCount, refreshPendingCount }}>
       {children}
       {!isConnected && <OfflineBanner accessibilityLabel="You are offline" />}
     </OfflineContext.Provider>
