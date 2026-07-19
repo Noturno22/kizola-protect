@@ -7,15 +7,7 @@ export default function AppLayout() {
     const { theme } = useTheme();
     const { user, loading } = useAuth();
 
-    if (loading) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: theme.background }}>
-                <ActivityIndicator size="large" color={theme.accent} />
-            </View>
-        );
-    }
-
-    if (!user) {
+    if (!loading && !user) {
         return null;
     }
 

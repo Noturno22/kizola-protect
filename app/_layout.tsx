@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { useEffect, useState, useCallback } from 'react';
 import '@/lib/i18n';
-import { LogBox, StyleSheet, View } from 'react-native';
+import { LogBox, StyleSheet, View, InteractionManager } from 'react-native';
 import { AuthProvider } from '@/providers/AuthProvider';
 import { NotificationProvider } from '@/providers/NotificationProvider';
 import { OfflineProvider } from '@/providers/OfflineProvider';
@@ -17,12 +17,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SplashScreen as PremiumSplash } from '@/src/components/Splash/SplashScreen';
 import i18n from '@/lib/i18n';
-import { preloadAllTranslations } from '@/lib/i18n';
 
-// Preload heavy modules while splash is visible so they render instantly later
-import '@expo/vector-icons';
-
-SplashScreen.hideAsync().catch(() => {});
+SplashScreen.preventAutoHideAsync();
 
 initSentry();
 
@@ -31,6 +27,7 @@ const queryClient = new QueryClient();
 export default function RootLayout() {
   const [authReady, setAuthReady] = useState(false);
   const [splashDismissed, setSplashDismissed] = useState(false);
+  const [readyToDismiss, setReadyToDismiss] = useState(false);
 
   useEffect(() => {
     if (!__DEV__) return;
@@ -38,24 +35,18 @@ export default function RootLayout() {
       'Unable to activate keep awake',
       'Possible Unhandled Promise Rejection',
     ]);
-    const originalFetch = globalThis.fetch.bind(globalThis);
-    globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-      console.log('FETCH URL:', input);
-      try {
-        const response = await originalFetch(input, init);
-        console.log('FETCH STATUS:', response.status);
-        return response;
-      } catch (error) {
-        console.error('FETCH FAILED:', input);
-        console.error(error);
-        throw error;
-      }
-    };
   }, []);
+
+  useEffect(() => {
+    if (!authReady) return;
+    const task = InteractionManager.runAfterInteractions(() => {
+      setReadyToDismiss(true);
+    });
+    return () => task.cancel();
+  }, [authReady]);
 
   const handlePremiumSplashComplete = useCallback(() => {
     setSplashDismissed(true);
-    preloadAllTranslations();
   }, []);
 
   return (
@@ -99,7 +90,7 @@ export default function RootLayout() {
       {!splashDismissed && (
         <View style={StyleSheet.absoluteFill} pointerEvents="none">
           <PremiumSplash
-            readyToDismiss={authReady}
+            readyToDismiss={readyToDismiss}
             onAnimationComplete={handlePremiumSplashComplete}
           />
         </View>

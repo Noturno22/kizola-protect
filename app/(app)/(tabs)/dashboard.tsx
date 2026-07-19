@@ -8,6 +8,7 @@ import { RecentRequests } from '../components/dashboard/RecentRequests';
 import { LearningCard } from '../components/dashboard/LearningCard';
 import { PlanBenefits } from '../components/dashboard/PlanBenefits';
 import { HelpCard } from '../components/dashboard/HelpCard';
+import { Marquee } from '../components/dashboard/Marquee';
 import { NotificationsModal } from '@/components/dashboard';
 
 export default function Dashboard() {
@@ -75,6 +76,7 @@ export default function Dashboard() {
       <LearningCard theme={theme} styles={styles} onPress={handleLearnPress} />
       <PlanBenefits theme={theme} styles={styles} user={user} onPress={handleBenefitsPress} />
       <HelpCard theme={theme} styles={styles} onPress={handleSupportPress} />
+      <Marquee theme={theme} />
     </DashboardContent>
   );
 }

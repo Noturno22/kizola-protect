@@ -35,7 +35,10 @@ import EditProfileModal from '@/components/profile/EditProfileModal';
 import ChangePasswordModal from '@/components/profile/ChangePasswordModal';
 import BeneficiaryModal from '@/components/profile/BeneficiaryModal';
 import LanguageModal from '@/components/profile/LanguageModal';
+import CountryPickerModal from '@/components/profile/CountryPickerModal';
+import { SavedDocumentsSection } from '@/components/offline/SavedDocumentsSection';
 import { useBeneficiaries } from '@/hooks/useBeneficiaries';
+import { COUNTRIES, getCountryName, Country } from '@/lib/countries';
 
 const DEMO_MODE_KEY = 'kizola_demo_user';
 
@@ -56,6 +59,10 @@ export default function Profile() {
   const [editName, setEditName] = useState(user?.name || '');
   const [editEmail, setEditEmail] = useState(user?.email || '');
   const [editPhone, setEditPhone] = useState(user?.phone || '');
+  const [editNationality, setEditNationality] = useState(user?.nationality || '');
+  const [editNationalityFlag, setEditNationalityFlag] = useState('');
+  const [editNationalityName, setEditNationalityName] = useState('');
+  const [countryPickerVisible, setCountryPickerVisible] = useState(false);
 
   // Change password state
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
@@ -183,6 +190,7 @@ export default function Profile() {
           name: editName.trim(),
           email: editEmail.trim(),
           phone: editPhone.trim(),
+          nationality: editNationality,
         };
         await SecureStore.setItemAsync(DEMO_MODE_KEY, JSON.stringify(demoUser));
         setUser(demoUser as any);
@@ -193,6 +201,7 @@ export default function Profile() {
             full_name: editName.trim(),
             email: editEmail.trim(),
             phone: editPhone.trim(),
+            nationality: editNationality,
           })
           .eq('id', user?.id);
 
@@ -202,6 +211,7 @@ export default function Profile() {
           name: editName.trim(),
           email: editEmail.trim(),
           phone: editPhone.trim(),
+          nationality: editNationality,
         } as any);
       }
 
@@ -266,7 +276,7 @@ export default function Profile() {
       icon: CreditCard,
       title: t('profile.myPlan'),
       subtitle: planInfo?.name || t('profile.noActivePlan') || 'No active plan',
-      onPress: () => router.push('/plan-details'),
+      onPress: () => router.push(planInfo ? '/plan-details' : '/plans'),
       color: theme.primary,
     },
     {
@@ -305,6 +315,11 @@ export default function Profile() {
         setEditName(user?.name || '');
         setEditEmail(user?.email || '');
         setEditPhone(user?.phone || '');
+        const currentNationality = user?.nationality || '';
+        setEditNationality(currentNationality);
+        const found: Country | undefined = COUNTRIES.find((c: Country) => c.code === currentNationality);
+        setEditNationalityFlag(found?.flag || '');
+        setEditNationalityName(found ? getCountryName(found, i18n.language) : '');
         setEditModalVisible(true);
       },
       color: theme.warning,
@@ -387,8 +402,9 @@ export default function Profile() {
             theme={theme}
             planInfo={planInfo}
             subscriptionData={subscriptionData}
-            onPressPlan={() => router.push('/plan-details')}
+            onPressPlan={() => router.push(planInfo ? '/plan-details' : '/plans')}
             t={t}
+            i18nLanguage={i18n.language}
           />
 
           <BeneficiariesSection
@@ -402,6 +418,10 @@ export default function Profile() {
 
           <MenuList theme={theme} items={menuItems} t={t} />
 
+          <View style={{ marginHorizontal: 20 }}>
+            <SavedDocumentsSection />
+          </View>
+
           {/* Logout Button */}
           <TouchableOpacity
             style={styles.logoutButton}
@@ -414,7 +434,7 @@ export default function Profile() {
           </TouchableOpacity>
 
           {/* Version */}
-          <Text style={styles.versionText}>Kizola Protect v2.0.0</Text>
+          <Text style={styles.versionText}>Kizola Protect v2.0.1</Text>
         </ScrollView>
 
         <EditProfileModal
@@ -424,11 +444,27 @@ export default function Profile() {
           name={editName}
           email={editEmail}
           phone={editPhone}
+          nationality={editNationalityName || editNationality}
+          nationalityFlag={editNationalityFlag}
           onChangeName={setEditName}
           onChangeEmail={setEditEmail}
           onChangePhone={setEditPhone}
           onSave={handleUpdateProfile}
           loading={loading}
+          t={t}
+          onOpenCountryPicker={() => setCountryPickerVisible(true)}
+        />
+
+        <CountryPickerModal
+          visible={countryPickerVisible}
+          onClose={() => setCountryPickerVisible(false)}
+          onSelect={(country: Country) => {
+            setEditNationality(country.code);
+            setEditNationalityFlag(country.flag);
+            setEditNationalityName(getCountryName(country, i18n.language));
+          }}
+          selectedCountry={editNationality || undefined}
+          theme={theme}
           t={t}
         />
 
@@ -467,7 +503,7 @@ export default function Profile() {
           onClose={() => setLanguageModalVisible(false)}
           theme={theme}
           currentLanguage={i18n.language}
-          onChangeLanguage={(lang) => i18n.changeLanguage(lang)}
+          onChangeLanguage={(lang: string) => i18n.changeLanguage(lang)}
           t={t}
         />
       </KeyboardAvoidingView>
