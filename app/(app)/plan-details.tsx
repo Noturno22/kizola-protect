@@ -11,7 +11,8 @@ import {
   AlertTriangle,
   Crown,
   Star,
-  ArrowUpRight
+  ArrowUpRight,
+  ArrowLeft
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
@@ -126,10 +127,13 @@ export default function PlanDetails() {
       <StatusBar style={isDark ? "light" : "dark"} />
       <LinearGradient colors={theme.headerGradient} style={StyleSheet.absoluteFill} />
       <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Header */}
-        <LinearGradient colors={theme.headerGradient} style={styles.header}>
-          <Text style={styles.headerTitle}>{t('planDetails.title')}</Text>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          {/* Header */}
+          <LinearGradient colors={theme.headerGradient} style={styles.header}>
+            <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+              <ArrowLeft size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>{t('planDetails.title')}</Text>
           <Text style={styles.headerSubtitle}>{t('planDetails.subtitle')}</Text>
         </LinearGradient>
 
@@ -357,6 +361,15 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 40,
+  },
+  backButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
   },
   headerTitle: {
     fontSize: 28,

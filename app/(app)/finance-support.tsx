@@ -33,6 +33,8 @@ import { useRouter } from 'expo-router';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
+import { useOffline } from '@/providers/OfflineProvider';
+import { syncQueue } from '@/lib/syncQueue';
 
 const US_STATES = [
   'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -52,6 +54,7 @@ export default function FinanceSupport() {
   const { addNotification } = useNotifications();
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const { isConnected } = useOffline();
 
   const FINANCE_TYPES = [
     { id: 'ebt', label: t('financeForm.type_ebt'), icon: '🍎', description: t('financeForm.type_ebt_desc') },
@@ -108,6 +111,14 @@ export default function FinanceSupport() {
         const requests = existing || [];
         requests.unshift({ ...requestData, id: 'demo-finance-' + Date.now() });
         await setSecureItem(SECURE_KEYS.FINANCE_REQUESTS(user?.id ?? ''), requests);
+      } else if (!isConnected) {
+        await syncQueue.enqueue('finance_requests', requestData);
+        addNotification({
+          title: 'offline.queuedTitle',
+          message: 'offline.queuedMessage',
+          type: 'info',
+          read: false,
+        });
       } else {
         const { error } = await supabase.from('finance_requests').insert(requestData);
         if (error) throw error;
@@ -121,8 +132,8 @@ export default function FinanceSupport() {
       }
 
       addNotification({
-        title: t('financeForm.notificationTitle'),
-        message: t('financeForm.notificationMessage'),
+        title: 'financeForm.notificationTitle',
+        message: 'financeForm.notificationMessage',
         type: 'success',
         read: false,
       });
@@ -222,8 +233,10 @@ export default function FinanceSupport() {
 
             {/* Header */}
             <View style={styles.header}>
-              <View style={styles.headerIconWrapper}>
-                <DollarSign size={36} color={isDark ? '#FFFFFF' : theme.accent} />
+              <View style={[styles.headerIconWrapper, { backgroundColor: theme.accent + '20', borderColor: theme.accent + '40' }]}>
+                <View style={[styles.headerIconInner, { backgroundColor: theme.accent }]}>
+                  <DollarSign size={32} color="#FFFFFF" />
+                </View>
               </View>
               <Text style={[styles.headerTitle, { color: isDark ? '#FFFFFF' : theme.text }]}>
                 {t('financeForm.title')}
@@ -231,32 +244,49 @@ export default function FinanceSupport() {
               <Text style={[styles.headerSubtitle, { color: isDark ? 'rgba(255,255,255,0.8)' : theme.textSecondary }]}>
                 {t('financeForm.subtitle')}
               </Text>
+              <View style={[styles.headerBadge, { backgroundColor: theme.accent + '15', borderColor: theme.accent + '30' }]}>
+                <Sparkles size={14} color={theme.accent} />
+                <Text style={[styles.headerBadgeText, { color: theme.accent }]}>{t('financeForm.freeAssistance')}</Text>
+              </View>
             </View>
 
             {/* Quick Info Cards */}
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.quickInfoScroll}
-              style={styles.quickInfoContainer}
-            >
-              {[
-                { icon: '💰', label: 'EBT/SNAP', desc: t('financeForm.quickInfo_ebt') },
-                { icon: '📑', label: 'Tax Return', desc: t('financeForm.quickInfo_tax') },
-                { icon: '🏛️', label: t('financeForm.type_benefits'), desc: t('financeForm.quickInfo_benefits') },
-                { icon: '📋', label: 'ITIN', desc: t('financeForm.quickInfo_itin') },
-              ].map((item, i) => (
-                <View key={i} style={[styles.quickInfoCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-                  <Text style={styles.quickInfoEmoji}>{item.icon}</Text>
-                  <Text style={[styles.quickInfoLabel, { color: theme.text }]}>{item.label}</Text>
-                  <Text style={[styles.quickInfoDesc, { color: theme.textMuted }]}>{item.desc}</Text>
-                </View>
-              ))}
-            </ScrollView>
+            <View style={styles.quickInfoSection}>
+              <Text style={[styles.sectionLabel, { color: isDark ? 'rgba(255,255,255,0.7)' : theme.textSecondary }]}>
+                {t('financeForm.whatWeHelpWith')}
+              </Text>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.quickInfoScroll}
+                style={styles.quickInfoContainer}
+              >
+                {[
+                  { icon: '💰', label: 'EBT/SNAP', desc: t('financeForm.quickInfo_ebt') },
+                  { icon: '📑', label: 'Tax Return', desc: t('financeForm.quickInfo_tax') },
+                  { icon: '🏛️', label: t('financeForm.type_benefits'), desc: t('financeForm.quickInfo_benefits') },
+                  { icon: '📋', label: 'ITIN', desc: t('financeForm.quickInfo_itin') },
+                ].map((item, i) => (
+                  <View key={i} style={[styles.quickInfoCard, { backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.03)', borderColor: theme.cardBorderAlt }]}>
+                    <View style={[styles.quickInfoEmojiWrapper, { backgroundColor: theme.accent + '15' }]}>
+                      <Text style={styles.quickInfoEmoji}>{item.icon}</Text>
+                    </View>
+                    <Text style={[styles.quickInfoLabel, { color: isDark ? '#FFFFFF' : theme.text }]}>{item.label}</Text>
+                    <Text style={[styles.quickInfoDesc, { color: isDark ? 'rgba(255,255,255,0.6)' : theme.textMuted }]}>{item.desc}</Text>
+                  </View>
+                ))}
+              </ScrollView>
+            </View>
 
             {/* Form */}
             <View style={[styles.formCard, { backgroundColor: theme.surface, borderColor: theme.cardBorderAlt }]}>
-              <Text style={[styles.formTitle, { color: theme.text }]}>💼 {t('financeForm.formTitle')}</Text>
+              <View style={styles.formTitleRow}>
+                <View style={[styles.formTitleIcon, { backgroundColor: theme.accent + '15' }]}>
+                  <FileText size={20} color={theme.accent} />
+                </View>
+                <Text style={[styles.formTitle, { color: theme.text }]}>{t('financeForm.formTitle')}</Text>
+              </View>
+              <Text style={[styles.formSubtitle, { color: theme.textMuted }]}>{t('financeForm.formSubtitle')}</Text>
 
               {/* Tipo de Ajuda */}
               <View style={styles.inputGroup}>
@@ -435,35 +465,68 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   header: {
     paddingHorizontal: 24,
     paddingTop: 16,
-    paddingBottom: 24,
+    paddingBottom: 28,
     alignItems: 'center',
   },
   headerIconWrapper: {
-    width: 80,
-    height: 80,
-    borderRadius: 28,
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.25)',
+    width: 88,
+    height: 88,
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 20,
+    borderWidth: 1,
+  },
+  headerIconInner: {
+    width: 64,
+    height: 64,
+    borderRadius: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerTitle: { fontSize: 28, fontWeight: '800', marginBottom: 10, letterSpacing: -0.5, textAlign: 'center' },
-  headerSubtitle: { fontSize: 15, lineHeight: 22, textAlign: 'center' },
+  headerSubtitle: { fontSize: 15, lineHeight: 22, textAlign: 'center', maxWidth: 280 },
+  headerBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 16,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+  },
+  headerBadgeText: { fontSize: 13, fontWeight: '700' },
 
+  quickInfoSection: { marginTop: 8 },
+  sectionLabel: {
+    fontSize: 13,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+    marginHorizontal: 24,
+    marginBottom: 12,
+  },
   quickInfoContainer: { marginBottom: 0 },
-  quickInfoScroll: { paddingHorizontal: 16, paddingVertical: 16, gap: 12 },
+  quickInfoScroll: { paddingHorizontal: 16, paddingVertical: 8, gap: 12 },
   quickInfoCard: {
     alignItems: 'center',
-    padding: 16,
-    borderRadius: 18,
+    padding: 18,
+    borderRadius: 20,
     borderWidth: 1,
-    width: 100,
+    width: 110,
   },
-  quickInfoEmoji: { fontSize: 24, marginBottom: 6 },
-  quickInfoLabel: { fontSize: 13, fontWeight: '700', marginBottom: 2 },
-  quickInfoDesc: { fontSize: 11, textAlign: 'center' },
+  quickInfoEmojiWrapper: {
+    width: 48,
+    height: 48,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  quickInfoEmoji: { fontSize: 24 },
+  quickInfoLabel: { fontSize: 13, fontWeight: '700', marginBottom: 4, textAlign: 'center' },
+  quickInfoDesc: { fontSize: 11, textAlign: 'center', lineHeight: 15 },
 
   formCard: {
     marginHorizontal: 16,
@@ -477,7 +540,21 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     shadowRadius: 20,
     elevation: 6,
   },
-  formTitle: { fontSize: 20, fontWeight: '800', marginBottom: 20 },
+  formTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginBottom: 6,
+  },
+  formTitleIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  formTitle: { fontSize: 20, fontWeight: '800' },
+  formSubtitle: { fontSize: 13, lineHeight: 18, marginBottom: 24, marginLeft: 52 },
 
   inputGroup: { marginBottom: 18 },
   inputLabel: { fontSize: 12, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 8 },
@@ -497,11 +574,11 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   dropdownButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 14,
-    paddingHorizontal: 14,
-    borderWidth: 1,
-    minHeight: 52,
-    paddingVertical: 10,
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    borderWidth: 1.5,
+    minHeight: 58,
+    paddingVertical: 12,
   },
   dropdownText: { fontSize: 15 },
   dropdownSubText: { fontSize: 12, marginTop: 2 },
@@ -531,29 +608,30 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 14,
     borderBottomWidth: 1,
     borderBottomColor: theme.cardBorderAlt,
-    gap: 10,
+    gap: 12,
   },
-  dropdownItemEmoji: { fontSize: 18 },
-  dropdownItemText: { fontSize: 15, fontWeight: '500' },
-  dropdownItemSubText: { fontSize: 12, marginTop: 1 },
+  dropdownItemEmoji: { fontSize: 22 },
+  dropdownItemText: { fontSize: 15, fontWeight: '600' },
+  dropdownItemSubText: { fontSize: 12, marginTop: 2, lineHeight: 16 },
 
   submitButton: {
-    borderRadius: 16,
+    borderRadius: 18,
     overflow: 'hidden',
-    height: 56,
+    height: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
     marginBottom: 16,
+    marginTop: 8,
     shadowColor: theme.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 12,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 14,
+    elevation: 8,
   },
   submitButtonDisabled: { opacity: 0.6 },
   submitButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '700' },

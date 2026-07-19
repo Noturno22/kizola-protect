@@ -109,8 +109,8 @@ export function useSupport() {
       }
 
       addNotification({
-        title: t('support.requestSubmitted'),
-        message: t('support.thankYou'),
+        title: 'support.requestSubmitted',
+        message: 'support.thankYou',
         type: 'success',
         read: false,
       });

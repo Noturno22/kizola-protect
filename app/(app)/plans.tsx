@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIn
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Check, Star, Crown, Shield, ArrowRight, Sparkles } from 'lucide-react-native';
+import { Check, Star, Crown, Shield, ArrowRight, Sparkles, ArrowLeft } from 'lucide-react-native';
 import { useTheme, Theme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
 import { useState, useMemo, useRef, useCallback } from 'react';
@@ -18,13 +18,16 @@ export default function Plans() {
   const { t } = useTranslation();
   const { user, updateUserPlan } = useAuth();
   const { theme, isDark } = useTheme();
-  const styles = useMemo(() => createStyles(theme), [theme]);
+  const styles = useMemo(() => createStyles(theme, isDark), [theme, isDark]);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(user?.plan && user.plan !== 'none' ? user.plan : null);
   const [loading, setLoading] = useState(false);
   const carouselRef = useRef<ScrollView>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const isPremium = user?.plan === 'premium' && user?.status === 'active';
+
+  // Premium accent color - uses theme purple with gold as special accent
+  const premiumAccent = '#D4AF37';
 
   // Determine which plans to show
   const visiblePlanKeys = useMemo(() => {
@@ -38,9 +41,6 @@ export default function Plans() {
     const currentLevel = user?.plan ? planOrder.indexOf(user.plan as typeof planOrder[number]) : 0;
 
     return allKeys.filter((planId) => {
-      // Never show free plan in the carousel
-      if (planId === 'free') return false;
-      // Show current plan and all higher plans
       const level = planOrder.indexOf(planId);
       return level >= currentLevel;
     });
@@ -100,7 +100,7 @@ export default function Plans() {
   const getPlanIcon = (planId: string, size: number = 24) => {
     switch (planId) {
       case 'premium':
-        return <Crown size={size} color={isPremium ? '#D4AF37' : theme.accentPurple} />;
+        return <Crown size={size} color={premiumAccent} />;
       case 'pro':
         return <Star size={size} color={theme.accentBlue} />;
       case 'basic':
@@ -110,16 +110,18 @@ export default function Plans() {
     }
   };
 
-  const getPlanGradient = (planId: string) => {
+  const getPlanGradient = (planId: string): readonly [string, string, ...string[]] => {
     switch (planId) {
       case 'premium':
-        return ['#8B5CF6', '#6366F1'] as const;
+        return [theme.accentPurple, isDark ? '#4C1D95' : '#6D28D9'] as const;
       case 'pro':
-        return ['#0EA5E9', '#2563EB'] as const;
+        return [theme.accentBlue, isDark ? '#1D4ED8' : '#2563EB'] as const;
       case 'basic':
-        return ['#10B981', '#059669'] as const;
+        return [theme.success, isDark ? '#047857' : '#059669'] as const;
       default:
-        return ['#1E293B', '#0F172A'] as const;
+        return isDark
+          ? ['#1E293B', '#0F172A'] as const
+          : ['#475569', '#334155'] as const;
     }
   };
 
@@ -134,18 +136,18 @@ export default function Plans() {
         key={planId}
         style={[
           styles.planCard,
-          isPremium && isPremiumPlan && styles.premiumPlanCard,
+          isPremiumPlan && styles.premiumPlanCard,
         ]}
       >
         {/* Current Plan Badge */}
         {isCurrentPlan && (
           <View style={[
             styles.currentBadge,
-            isPremium && isPremiumPlan && styles.premiumBadge,
+            isPremiumPlan && styles.premiumCurrentBadge,
           ]}>
-            {isPremium && isPremiumPlan ? (
+            {isPremiumPlan ? (
               <View style={styles.premiumBadgeInner}>
-                <Crown size={10} color="#D4AF37" />
+                <Crown size={10} color="#FFFFFF" />
                 <Text style={styles.premiumBadgeText}>{t('plans.currentPlan')}</Text>
               </View>
             ) : (
@@ -154,27 +156,24 @@ export default function Plans() {
           </View>
         )}
 
-        {/* Premium Member Indicator (only when user IS on premium) */}
+        {/* Premium Member Indicator */}
         {isPremium && isPremiumPlan && (
           <View style={styles.premiumMemberBanner}>
-            <Sparkles size={14} color="#D4AF37" />
+            <Sparkles size={14} color={premiumAccent} />
             <Text style={styles.premiumMemberText}>{t('plans.premiumMember')}</Text>
           </View>
         )}
 
         {/* Plan Header */}
         <LinearGradient
-          colors={isPremium && isPremiumPlan ? ['#7C3AED', '#5B21B6', '#4C1D95'] : getPlanGradient(planId)}
-          style={[
-            styles.planHeader,
-            isPremium && isPremiumPlan && styles.premiumHeader,
-          ]}
+          colors={getPlanGradient(planId)}
+          style={styles.planHeader}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
         >
           <View style={[
             styles.planIconContainer,
-            isPremium && isPremiumPlan && styles.premiumIconContainer,
+            isPremiumPlan && styles.premiumIconContainer,
           ]}>
             {getPlanIcon(planId, 28)}
           </View>
@@ -198,9 +197,9 @@ export default function Plans() {
                 <View key={index} style={styles.benefitItem}>
                   <View style={[
                     styles.benefitCheck,
-                    isPremium && isPremiumPlan && styles.premiumBenefitCheck,
+                    isPremiumPlan && styles.premiumBenefitCheck,
                   ]}>
-                    <Check size={14} color={isPremium && isPremiumPlan ? '#D4AF37' : theme.success} />
+                    <Check size={14} color={isPremiumPlan ? premiumAccent : theme.success} />
                   </View>
                   <Text style={styles.benefitText}>{benefit}</Text>
                 </View>
@@ -212,11 +211,12 @@ export default function Plans() {
             style={[
               styles.selectButton,
               isCurrentPlan && styles.currentButton,
-              isPremium && isPremiumPlan && isCurrentPlan && styles.premiumCurrentButton,
+              isPremiumPlan && isCurrentPlan && styles.premiumCurrentButton,
               isSelected && !isCurrentPlan && styles.selectedButton,
             ]}
             onPress={() => handleSelectPlan(planId as 'basic' | 'pro' | 'premium')}
             disabled={loading || isCurrentPlan}
+            activeOpacity={0.8}
           >
             {loading && selectedPlan === planId ? (
               <ActivityIndicator color={isCurrentPlan ? theme.textSecondary : '#FFFFFF'} />
@@ -225,7 +225,7 @@ export default function Plans() {
                 <Text style={[
                   styles.selectButtonText,
                   isCurrentPlan && styles.currentButtonText,
-                  isPremium && isPremiumPlan && isCurrentPlan && styles.premiumCurrentButtonText,
+                  isPremiumPlan && isCurrentPlan && styles.premiumCurrentButtonText,
                   isSelected && !isCurrentPlan && styles.selectedButtonText,
                 ]}>
                   {isCurrentPlan ? t('plans.currentPlan') : isSelected ? t('plans.selected') : t('plans.selectPlan')}
@@ -233,7 +233,7 @@ export default function Plans() {
                 {!isCurrentPlan && (
                   <ArrowRight
                     size={18}
-                    color={isSelected ? theme.accent : isPremium && isPremiumPlan ? '#D4AF37' : '#FFFFFF'}
+                    color={isSelected ? theme.accent : isPremiumPlan ? premiumAccent : '#FFFFFF'}
                   />
                 )}
               </>
@@ -245,23 +245,32 @@ export default function Plans() {
   };
 
   return (
-    <View style={[styles.outerContainer, { backgroundColor: theme.headerGradient?.[0] ?? theme.background }]}>
-      <StatusBar style={isDark ? "light" : "dark"} />
+    <View style={styles.outerContainer}>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      {/* Full-screen gradient background covering status bar area */}
+      <LinearGradient
+        colors={theme.headerGradient}
+        locations={[0, 0.35, 0.5]}
+        style={StyleSheet.absoluteFill}
+      />
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {/* Header */}
           <LinearGradient
-            colors={isPremium ? ['#4C1D95', '#5B21B6', '#6D28D9'] : theme.headerGradient}
+            colors={theme.headerGradient}
             style={styles.header}
           >
             <View style={styles.headerRow}>
+              <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                <ArrowLeft size={24} color={isDark ? '#FFFFFF' : theme.text} />
+              </TouchableOpacity>
               <View style={styles.headerTextContainer}>
                 <Text style={styles.headerTitle}>{t('plans.title')}</Text>
                 <Text style={styles.headerSubtitle}>{t('plans.subtitle')}</Text>
               </View>
               {isPremium && (
                 <View style={styles.headerPremiumBadge}>
-                  <Crown size={20} color="#D4AF37" />
+                  <Crown size={20} color={premiumAccent} />
                 </View>
               )}
             </View>
@@ -309,7 +318,6 @@ export default function Plans() {
                       style={[
                         styles.dot,
                         index === activeIndex && styles.dotActive,
-                        isPremium && index === activeIndex && styles.dotPremiumActive,
                       ]}
                     />
                   ))}
@@ -319,14 +327,11 @@ export default function Plans() {
           )}
 
           {/* Note */}
-          <View style={[
-            styles.noteContainer,
-            isPremium && styles.premiumNoteContainer,
-          ]}>
+          <View style={styles.noteContainer}>
             {isPremium ? (
               <View style={styles.premiumNoteContent}>
-                <Crown size={16} color="#D4AF37" />
-                <Text style={[styles.noteText, styles.premiumNoteText]}>
+                <Crown size={16} color={premiumAccent} />
+                <Text style={styles.premiumNoteText}>
                   {t('plans.premiumNote')}
                 </Text>
               </View>
@@ -340,7 +345,7 @@ export default function Plans() {
   );
 }
 
-const createStyles = (theme: Theme) => StyleSheet.create({
+const createStyles = (theme: Theme, isDark: boolean) => StyleSheet.create({
   outerContainer: {
     flex: 1,
   },
@@ -361,26 +366,35 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
+  backButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
   headerTextContainer: {
     flex: 1,
   },
   headerTitle: {
     fontSize: 28,
     fontWeight: '700',
-    color: theme.isDark ? '#FFFFFF' : theme.text,
+    color: isDark ? '#FFFFFF' : theme.text,
     marginBottom: 8,
   },
   headerSubtitle: {
     fontSize: 16,
-    color: theme.isDark ? 'rgba(255,255,255,0.8)' : theme.textSecondary,
+    color: isDark ? 'rgba(255,255,255,0.7)' : theme.textSecondary,
   },
   headerPremiumBadge: {
     width: 44,
     height: 44,
     borderRadius: 14,
-    backgroundColor: 'rgba(212, 175, 55, 0.15)',
+    backgroundColor: 'rgba(212, 175, 55, 0.12)',
     borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.3)',
+    borderColor: 'rgba(212, 175, 55, 0.25)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -408,32 +422,28 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: theme.textMuted,
+    backgroundColor: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)',
   },
   dotActive: {
     backgroundColor: theme.accent,
     width: 24,
-  },
-  dotPremiumActive: {
-    backgroundColor: '#D4AF37',
   },
   // Plan Card
   planCard: {
     backgroundColor: theme.surface,
     borderRadius: 20,
     overflow: 'hidden',
-    shadowColor: '#000',
+    shadowColor: isDark ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.08)',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    elevation: 4,
-    borderWidth: 2,
-    borderColor: 'transparent',
+    shadowOpacity: 1,
+    shadowRadius: 16,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: theme.cardBorderAlt,
   },
   premiumPlanCard: {
     borderColor: 'rgba(212, 175, 55, 0.3)',
-    shadowColor: '#D4AF37',
-    shadowOpacity: 0.15,
+    shadowColor: 'rgba(212, 175, 55, 0.15)',
     shadowRadius: 20,
     elevation: 8,
   },
@@ -443,14 +453,12 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     right: 12,
     backgroundColor: theme.success,
     paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingVertical: 5,
     borderRadius: 12,
     zIndex: 1,
   },
-  premiumBadge: {
-    backgroundColor: 'rgba(212, 175, 55, 0.2)',
-    borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.4)',
+  premiumCurrentBadge: {
+    backgroundColor: '#B8860B',
   },
   premiumBadgeInner: {
     flexDirection: 'row',
@@ -458,9 +466,10 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     gap: 4,
   },
   premiumBadgeText: {
-    color: '#D4AF37',
+    color: '#FFFFFF',
     fontSize: 11,
     fontWeight: '700',
+    letterSpacing: 0.5,
   },
   currentBadgeText: {
     color: '#FFFFFF',
@@ -472,16 +481,17 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
-    paddingVertical: 8,
-    backgroundColor: 'rgba(212, 175, 55, 0.08)',
+    paddingVertical: 10,
+    backgroundColor: isDark ? 'rgba(212, 175, 55, 0.08)' : 'rgba(212, 175, 55, 0.1)',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(212, 175, 55, 0.15)',
+    borderBottomColor: isDark ? 'rgba(212, 175, 55, 0.15)' : 'rgba(212, 175, 55, 0.2)',
   },
   premiumMemberText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
     color: '#D4AF37',
-    letterSpacing: 0.5,
   },
   planHeader: {
     flexDirection: 'row',
@@ -489,21 +499,23 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     padding: 20,
     gap: 16,
   },
-  premiumHeader: {
-    // Slightly deeper gradient for premium
-  },
   planIconContainer: {
     width: 52,
     height: 52,
     borderRadius: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   premiumIconContainer: {
-    backgroundColor: 'rgba(212, 175, 55, 0.15)',
-    borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.3)',
+    backgroundColor: '#D4AF37',
+    borderWidth: 2,
+    borderColor: 'rgba(255, 215, 0, 0.5)',
+    shadowColor: '#B8860B',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 4,
   },
   planTitleContainer: {
     flex: 1,
@@ -557,13 +569,13 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     width: 22,
     height: 22,
     borderRadius: 11,
-    backgroundColor: theme.success + '15',
+    backgroundColor: isDark ? 'rgba(34, 197, 94, 0.15)' : 'rgba(16, 185, 129, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 1,
   },
   premiumBenefitCheck: {
-    backgroundColor: 'rgba(212, 175, 55, 0.12)',
+    backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.15)',
   },
   benefitText: {
     flex: 1,
@@ -584,9 +596,7 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     backgroundColor: theme.cardBorderAlt,
   },
   premiumCurrentButton: {
-    backgroundColor: 'rgba(212, 175, 55, 0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.3)',
+    backgroundColor: '#B8860B',
   },
   selectedButton: {
     backgroundColor: theme.surface,
@@ -602,7 +612,8 @@ const createStyles = (theme: Theme) => StyleSheet.create({
     color: theme.textSecondary,
   },
   premiumCurrentButtonText: {
-    color: '#D4AF37',
+    color: '#FFFFFF',
+    fontWeight: '700',
   },
   selectedButtonText: {
     color: theme.accent,
@@ -610,28 +621,28 @@ const createStyles = (theme: Theme) => StyleSheet.create({
   noteContainer: {
     margin: 20,
     padding: 16,
-    backgroundColor: theme.accentAmber + '15',
+    backgroundColor: isDark ? 'rgba(245, 158, 11, 0.08)' : 'rgba(245, 158, 11, 0.06)',
     borderRadius: 12,
-  },
-  premiumNoteContainer: {
-    backgroundColor: 'rgba(212, 175, 55, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.15)',
+    borderColor: isDark ? 'rgba(245, 158, 11, 0.12)' : 'rgba(245, 158, 11, 0.1)',
   },
   premiumNoteContent: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
   },
-  noteText: {
-    fontSize: 13,
-    color: theme.accentAmber,
-    textAlign: 'center',
-    lineHeight: 20,
-  },
   premiumNoteText: {
+    flex: 1,
+    fontSize: 13,
     color: '#D4AF37',
     textAlign: 'left',
-    flex: 1,
+    fontWeight: '600',
+    lineHeight: 20,
+  },
+  noteText: {
+    fontSize: 13,
+    color: isDark ? 'rgba(245, 158, 11, 0.85)' : '#B45309',
+    textAlign: 'center',
+    lineHeight: 20,
   },
 });

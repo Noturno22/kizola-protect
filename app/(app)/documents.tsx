@@ -6,10 +6,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
 import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
-import { Upload, RefreshCw, Search, X, Filter, FolderOpen } from 'lucide-react-native';
+import { Upload, RefreshCw, Search, X, Filter, FolderOpen, ArrowLeft } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import { useRouter } from 'expo-router';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import {
@@ -28,6 +29,7 @@ export default function Documents() {
   const { user, isDemoMode } = useAuth();
   const { theme, isDark } = useTheme();
   const { t } = useTranslation();
+  const router = useRouter();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   const [documents, setDocuments] = useState<LocalDocument[]>([]);
@@ -256,9 +258,14 @@ export default function Documents() {
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View style={styles.header}>
-            <View>
-              <Text style={styles.headerTitle}>{t('documents.title') || 'Meus Documentos'}</Text>
-              <Text style={styles.headerSubtitle}>{t('documents.subtitle') || 'Gerencie seus documentos'}</Text>
+            <View style={styles.headerRow}>
+              <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                <ArrowLeft size={24} color={theme.isDark ? '#FFFFFF' : theme.text} />
+              </TouchableOpacity>
+              <View>
+                <Text style={styles.headerTitle}>{t('documents.title') || 'Meus Documentos'}</Text>
+                <Text style={styles.headerSubtitle}>{t('documents.subtitle') || 'Gerencie seus documentos'}</Text>
+              </View>
             </View>
             <TouchableOpacity
               style={[styles.refreshButton, { backgroundColor: theme.surface + '80' }]}
@@ -382,8 +389,19 @@ const createStyles = (theme: any) =>
     headerGradient: { position: 'absolute', top: 0, left: 0, right: 0, height: 180 },
     scrollContent: { flexGrow: 1, paddingBottom: 32 },
     header: {
-      flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
       paddingHorizontal: 20, paddingTop: 16, paddingBottom: 24,
+    },
+    headerRow: {
+      flexDirection: 'row', alignItems: 'center',
+    },
+    backButton: {
+      width: 40,
+      height: 40,
+      borderRadius: 12,
+      backgroundColor: 'rgba(255,255,255,0.15)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginRight: 12,
     },
     headerTitle: { fontSize: 28, fontWeight: '700', color: theme.isDark ? '#FFFFFF' : theme.text, marginBottom: 4 },
     headerSubtitle: { fontSize: 15, color: theme.isDark ? 'rgba(255,255,255,0.8)' : theme.textSecondary },

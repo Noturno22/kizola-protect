@@ -34,7 +34,7 @@ import { purchaseProduct, verifyReceipt } from '@/services/iap/iapService';
 const STRIPE_PAYMENT_LINKS: Record<string, string> = {
   basic: 'https://buy.stripe.com/test_bJe3cp4Nrb271YvfyNdnW00',
   pro: 'https://buy.stripe.com/test_fZu5kxeo1c6b1Yv86ldnW01',
-  premium: 'https://buy.stripe.com/test_3clcMZ1Bf8TZ7iP0DTdnW02',
+  premium: 'https://buy.stripe.com/test_3cIcMZ1Bf8TZ7iP0DTdnW02',
 };
 
 export default function Checkout() {

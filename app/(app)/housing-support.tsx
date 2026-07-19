@@ -33,6 +33,8 @@ import { useRouter } from 'expo-router';
 import { useNotifications } from '@/providers/NotificationProvider';
 import { getSecureItem, setSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTranslation } from 'react-i18next';
+import { useOffline } from '@/providers/OfflineProvider';
+import { syncQueue } from '@/lib/syncQueue';
 
 export default function HousingSupport() {
   const router = useRouter();
@@ -42,9 +44,12 @@ export default function HousingSupport() {
   const { addNotification } = useNotifications();
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const { isConnected } = useOffline();
 
   const HOUSING_NEEDS = [
     { id: 'rental_search', label: t('housingForm.need_rental_search'), icon: '🏠' },
+    { id: 'voucher_housing', label: t('housingForm.need_voucher_housing'), icon: '🎫' },
+    { id: 'section8', label: t('housingForm.need_section8'), icon: '📋' },
     { id: 'shelter_move', label: t('housingForm.need_shelter_move'), icon: '🏢' },
     { id: 'housing_program', label: t('housingForm.need_housing_program'), icon: '📋' },
     { id: 'tenant_rights', label: t('housingForm.need_tenant_rights'), icon: '⚖️' },
@@ -60,6 +65,8 @@ export default function HousingSupport() {
     { id: 'overcrowded', label: t('housingForm.situation_overcrowded') },
     { id: 'temporary', label: t('housingForm.situation_temporary') },
     { id: 'rental', label: t('housingForm.situation_rental') },
+    { id: 'voucher_waitlist', label: t('housingForm.situation_voucher_waitlist') },
+    { id: 'voucher_active', label: t('housingForm.situation_voucher_active') },
     { id: 'other', label: t('housingForm.situation_other') },
   ];
 
@@ -103,6 +110,14 @@ export default function HousingSupport() {
         const requests = existing || [];
         requests.unshift({ ...requestData, id: 'demo-housing-' + Date.now() });
         await setSecureItem(SECURE_KEYS.HOUSING_REQUESTS(user?.id ?? ''), requests);
+      } else if (!isConnected) {
+        await syncQueue.enqueue('housing_request', requestData);
+        addNotification({
+          title: 'offline.queuedTitle',
+          message: 'offline.queuedMessage',
+          type: 'info',
+          read: false,
+        });
       } else {
         const { error } = await supabase.from('housing_requests').insert(requestData);
         if (error) throw error;
@@ -117,8 +132,8 @@ export default function HousingSupport() {
       }
 
       addNotification({
-        title: t('housingForm.notificationTitle'),
-        message: t('housingForm.notificationMessage'),
+        title: 'housingForm.notificationTitle',
+        message: 'housingForm.notificationMessage',
         type: 'success',
         read: false,
       });

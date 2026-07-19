@@ -42,6 +42,25 @@ import { useTranslation } from 'react-i18next';
 import { getSecureItem, SECURE_KEYS } from '@/lib/secureStorage';
 import { useTheme } from '@/providers/ThemeProvider';
 
+function mapToLocale(language: string): string {
+  switch (language) {
+    case 'pt': return 'pt-BR';
+    case 'fr': return 'fr-FR';
+    case 'es':
+    case 'es-US': return 'es-ES';
+    case 'zh': return 'zh-CN';
+    case 'ja': return 'ja-JP';
+    case 'ko': return 'ko-KR';
+    case 'vi': return 'vi-VN';
+    case 'tl': return 'tl-PH';
+    case 'ar': return 'ar-SA';
+    case 'ru': return 'ru-RU';
+    case 'hi': return 'hi-IN';
+    case 'bn': return 'bn-BD';
+    default: return 'en-US';
+  }
+}
+
 const getStatusConfig = (t: any) => ({
   pending: { color: '#F59E0B', label: t('common.pending') || 'Pendente', bg: 'rgba(245,158,11,0.15)' },
   in_progress: { color: '#3B82F6', label: t('common.in_progress') || 'Em Progresso', bg: 'rgba(59,130,246,0.15)' },
@@ -123,8 +142,8 @@ export function useDashboard() {
   }
 
   const nextBillingText = (isActive && hasPlan && nextBillingObj)
-    ? nextBillingObj.toLocaleDateString(i18n.language === 'pt' ? 'pt-AO' : i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'es' || i18n.language === 'es-US' ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-    : (t('common.notApplicable') === 'common.notApplicable' ? 'Não aplicável' : t('common.notApplicable'));
+    ? new Intl.DateTimeFormat(mapToLocale(i18n.language), { month: 'long', day: 'numeric', year: 'numeric' }).format(nextBillingObj)
+    : t('common.notApplicable');
 
   let usagePercentage = 0;
   if (isActive && hasPlan && nextBillingObj) {
@@ -153,7 +172,7 @@ export function useDashboard() {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const diffH = (Date.now() - date.getTime()) / 3600000;
-    const locale = i18n.language === 'pt' ? 'pt-AO' : i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'es' || i18n.language === 'es-US' ? 'es-ES' : 'en-US';
+    const locale = mapToLocale(i18n.language);
     if (diffH < 1) return t('dashboard.justNow');
     if (diffH < 24) return t('dashboard.hoursAgo', { count: Math.floor(diffH) });
     if (diffH < 48) return t('dashboard.yesterday');
@@ -163,7 +182,7 @@ export function useDashboard() {
   const quickActions = [
     { label: t('dashboard.viewBenefits') || 'Ver\nBenefícios', sub: t('dashboard.accessServices') || 'Acesse seus serviços', icon: Gift, color: theme.accentBlue, bg: 'rgba(59,130,246,0.14)', route: '/benefits' },
     { label: t('dashboard.requestSupport') || 'Pedir\nSuporte', sub: t('dashboard.getHelpNow') || 'Obtenha ajuda agora', icon: MessageCircle, color: theme.accent, bg: 'rgba(0,200,180,0.12)', route: '/support' },
-    { label: t('dashboard.myPlan') || 'Meu\nPlano', sub: t('dashboard.manageSubscription') || 'Gerir assinatura', icon: TrendingUp, color: theme.accentPurple, bg: 'rgba(139,92,246,0.14)', route: '/plan-details' },
+    { label: t('dashboard.myPlan') || 'Meu\nPlano', sub: t('dashboard.manageSubscription') || 'Gerir assinatura', icon: TrendingUp, color: theme.accentPurple, bg: 'rgba(139,92,246,0.14)', route: hasPlan ? '/plan-details' : '/plans' },
     { label: t('dashboard.documents') || 'Documentos', sub: t('dashboard.yourFiles') || 'Os seus arquivos', icon: FileText, color: theme.accentAmber, bg: 'rgba(245,158,11,0.14)', route: '/documents' },
   ];
 
@@ -323,13 +342,13 @@ const createStyles = (theme: any, planInfo: any) =>
     statusBadge: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 6,
-      paddingHorizontal: 10,
-      paddingVertical: 5,
-      borderRadius: 12,
+      gap: 4,
+      paddingHorizontal: 8,
+      paddingVertical: 2,
+      borderRadius: 10,
       borderWidth: 1,
     },
-    statusText: { fontSize: 11, fontWeight: '600' },
+    statusText: { fontSize: 9, fontWeight: '600' },
     cardBody: {
       flexDirection: 'row',
       alignItems: 'center',

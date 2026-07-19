@@ -12,6 +12,7 @@ import {
   Briefcase,
 } from 'lucide-react-native';
 import { Theme } from '@/providers/ThemeProvider';
+import { articleImageCache } from '@/lib/articleImageCache';
 
 export const CATEGORY_CONFIG: Record<string, { icon: typeof FileText; color: string; key: string }> = {
   tax: { icon: Calculator, color: '#8B5CF6', key: 'learn.category_tax' },
@@ -98,6 +99,11 @@ export function useLearnArticles(theme: Theme) {
     setSearchQuery(query);
   }, []);
 
+  const getImageUri = useCallback(async (uri: string): Promise<string> => {
+    const local = await articleImageCache.getLocalPath(uri);
+    return local || uri;
+  }, []);
+
   return {
     selectedCategory,
     searchQuery,
@@ -111,5 +117,6 @@ export function useLearnArticles(theme: Theme) {
     handleSelectCategory,
     handleSearchChange,
     totalArticles: LEARNING_ARTICLES.length,
+    getImageUri,
   };
 }

@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
-import i18n from '@/lib/i18n';
 import * as SecureStore from 'expo-secure-store';
 import { File } from 'expo-file-system';
 import type { SessionManager } from './useSessionManager';
@@ -25,11 +24,12 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
       const demoNotif = {
         id: 'sub-' + Date.now(),
         user_id: user.id,
-        title: 'Assinatura Ativada! ✨',
-        message: `Parabéns! Você agora é um membro ${plan.toUpperCase()}. Seus benefícios já estão disponíveis.`,
+        title: 'notifPlanActivatedTitle',
+        message: 'notifPlanActivatedMessage',
         type: 'success' as const,
         read: false,
         created_at: new Date().toISOString(),
+        metadata: { plan: plan.toUpperCase() },
       };
       const existingNotifs = await SecureStore.getItemAsync(`kizola_notifications_${user.id}`);
       const parsedNotifs = existingNotifs ? JSON.parse(existingNotifs) : [];
@@ -64,8 +64,8 @@ export function useUserPlan(ctx: { sessionManager: SessionManager }) {
     try {
       await supabase.from('notifications').insert({
         user_id: session.user.id,
-        title: i18n.t('notifPlanActivatedTitle'),
-        message: i18n.t('notifPlanActivatedMessage', { plan: plan.toUpperCase() }),
+        title: 'notifPlanActivatedTitle',
+        message: 'notifPlanActivatedMessage',
         type: 'success',
         read: false,
       });
