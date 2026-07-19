@@ -4,9 +4,7 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -19,7 +17,6 @@
     "supabase/functions",
     "**/__tests__/**",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "_layout referencia.tsx"
+    "**/*.test.tsx"
   ]
 }

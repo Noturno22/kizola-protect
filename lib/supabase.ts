@@ -54,6 +54,7 @@ export type User = {
   phone?: string;
   policy_number?: string;
   avatar_url?: string;
+  nationality?: string;
 };
 
 export type Subscription = {
@@ -101,6 +102,7 @@ export type Notification = {
   type: 'info' | 'success' | 'warning' | 'alert';
   read: boolean;
   created_at: string;
+  metadata?: Record<string, string>;
 };
 
 export type ArticleDifficulty = 'beginner' | 'intermediate' | 'advanced';
@@ -329,6 +331,13 @@ export const BENEFITS = [
     description: 'Regain access to your digital life. We help recover locked or hacked accounts for Uber, DoorDash, and other essential service platforms.',
     icon: 'KeyRound',
     category: 'Digital',
+  },
+  {
+    id: 'translation',
+    title: 'Document Translation & Certification',
+    description: 'Professional translation and certification of any immigration document from any language to English. Certified translations accepted by USCIS, courts, and government agencies.',
+    icon: 'Globe',
+    category: 'Immigration',
   },
 ] as const;
 

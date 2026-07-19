@@ -36,9 +36,9 @@ const plugins = [
   [
     'expo-splash-screen',
     {
-      image: './assets/images/splash-icon.png',
+      image: false,
       resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#0D1B2E',
     },
   ],
   [
@@ -81,7 +81,7 @@ module.exports = {
   expo: {
     name: 'Kizola Protect',
     slug: 'kizola-protect',
-    owner: 'samaina',
+    owner: 'isabel239898',
     scheme: 'kizola',
     version: '1.0.0',
     orientation: 'portrait',
@@ -169,11 +169,8 @@ module.exports = {
       favicon: './assets/images/favicon.png',
     },
     extra: {
-      router: {
-        origin: 'https://kizola.app',
-      },
       eas: {
-        projectId: '347949bd-b8ba-474c-847a-5b6972a40f38',
+        projectId: 'b2ad98e1-f198-4caf-944b-f6a4e97df1e3',
       },
     },
   },
