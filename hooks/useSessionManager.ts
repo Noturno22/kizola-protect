@@ -2,11 +2,26 @@ import { useCallback, useEffect, useState } from 'react';
 import { supabase, type User, isSupabaseConfigured } from '@/lib/supabase';
 import { Session } from '@supabase/supabase-js';
 import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Linking from 'expo-linking';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
 
 const DEMO_MODE_KEY = 'kizola_demo_user';
+const CACHED_USER_KEY = 'kizola_cached_user_profile';
 export const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
+
+const cacheUserProfile = async (userData: User): Promise<void> => {
+  try {
+    await AsyncStorage.setItem(CACHED_USER_KEY, JSON.stringify(userData));
+  } catch { /* cache write failed, non-critical */ }
+};
+
+const getCachedUserProfile = async (): Promise<User | null> => {
+  try {
+    const raw = await AsyncStorage.getItem(CACHED_USER_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+};
 
 export type SessionManager = ReturnType<typeof useSessionManager>;
 
@@ -46,7 +61,14 @@ export function useSessionManager() {
       const { data: { session: currentSession } } = await supabase.auth.getSession();
       if (!currentSession?.user) {
         console.warn('[Auth] No valid session - cannot fetch or create profile');
-        setUser(null);
+        // Try cached profile when session unavailable offline
+        const cachedUser = await getCachedUserProfile();
+        if (cachedUser && cachedUser.id === userId) {
+          console.log('[Auth] Restoring user from cache (no session)');
+          setUser(cachedUser);
+        } else {
+          setUser(null);
+        }
         setLoading(false);
         return;
       }
@@ -78,8 +100,15 @@ export function useSessionManager() {
       const { data: profileData, error: profileError } = profileResult;
 
       if (profileError) {
-        console.error('[Auth] Error fetching user profile:', profileError);
-        setUser(null);
+        console.warn('[Auth] Error fetching user profile (offline?):', profileError.message);
+        // Offline fallback: restore from cache
+        const cachedUser = await getCachedUserProfile();
+        if (cachedUser && cachedUser.id === userId) {
+          console.log('[Auth] Restoring user from cache (fetch failed)');
+          setUser(cachedUser);
+        } else {
+          setUser(null);
+        }
         return;
       }
 
@@ -150,10 +179,19 @@ export function useSessionManager() {
         }
       }
 
+      // Cache user profile for offline access
+      await cacheUserProfile(userData);
       setUser(userData);
     } catch (error) {
       console.error('[Auth] fetchUserProfile error:', error);
-      setUser(null);
+      // Offline fallback: restore from cache on any error
+      const cachedUser = await getCachedUserProfile();
+      if (cachedUser) {
+        console.log('[Auth] Restoring user from cache (error fallback)');
+        setUser(cachedUser);
+      } else {
+        setUser(null);
+      }
     } finally {
       setLoading(false);
     }

@@ -13,18 +13,19 @@ import {
   Alert,
   ActivityIndicator,
   Image,
+  Linking,
 } from 'react-native';
-import * as Linking from 'expo-linking';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Moon, Sun, Mail, Lock, EyeOff, Eye, ArrowRight, Apple, Smartphone } from 'lucide-react-native';
+import { Moon, Sun, Mail, Lock, EyeOff, Eye, ArrowRight, Apple, Smartphone, WifiOff, Phone } from 'lucide-react-native';
 import { BlurView } from 'expo-blur';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/providers/ThemeProvider';
 import { useAuth } from '@/providers/AuthProvider';
+import { useOffline } from '@/providers/OfflineProvider';
 import { ComingSoonModal } from '@/components/ComingSoonModal';
 import * as AppleAuthentication from 'expo-apple-authentication';
 
@@ -82,6 +83,7 @@ export default function Login() {
   const { signIn, isDemoMode, session, user, loading: authLoading } = useAuth();
   const { t, i18n } = useTranslation();
   const { theme, isDark, toggleTheme } = useTheme();
+  const { isConnected } = useOffline();
 
 
   const [email, setEmail] = useState('');
@@ -553,6 +555,31 @@ export default function Login() {
                 </TouchableOpacity>
               </View>
 
+              {/* Offline Access */}
+              {!isConnected && (
+                <View style={[styles.offlineSection, { borderColor: '#F59E0B' }]}>
+                  <View style={styles.offlineHeader}>
+                    <WifiOff size={18} color="#F59E0B" />
+                    <Text style={[styles.offlineTitle, { color: '#F59E0B' }]}>
+                      {t('offline.mode') || 'Modo Offline'}
+                    </Text>
+                  </View>
+                  <Text style={[styles.offlineDescription, { color: theme.textSecondary }]}>
+                    {t('offline.loginHint') || 'Sem conexão. Ligue directamente para emergência.'}
+                  </Text>
+                  <TouchableOpacity
+                    style={[styles.offlineButton, { backgroundColor: '#EF4444' }]}
+                    onPress={() => Linking.openURL('tel:911')}
+                    activeOpacity={0.85}
+                  >
+                    <Phone size={16} color="#FFFFFF" />
+                    <Text style={styles.offlineButtonText}>
+                      {t('offline.callEmergency') || 'Ligar 911'}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+
             </BlurView>
 
           </ScrollView>
@@ -703,5 +730,41 @@ const styles = StyleSheet.create({
   registerSection: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 8 },
   registerText: { fontSize: 14 },
   registerLink: { fontSize: 14, fontWeight: '700', textDecorationLine: 'underline' },
+
+  offlineSection: {
+    marginTop: 20,
+    padding: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
+  },
+  offlineHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  offlineTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  offlineDescription: {
+    fontSize: 13,
+    lineHeight: 18,
+    marginBottom: 14,
+  },
+  offlineButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 12,
+  },
+  offlineButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '700',
+  },
 
 });
